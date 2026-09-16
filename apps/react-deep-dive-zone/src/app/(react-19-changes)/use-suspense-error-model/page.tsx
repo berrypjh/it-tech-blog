@@ -14,7 +14,7 @@ export const generateMetadata = async () => {
       locale === 'en'
         ? 'use() × Suspense / Error Boundary — React Lab'
         : 'use()는 Suspense / Error Boundary 흐름에 무엇을 추가했나? — React Lab',
-    description: c.hero.subtitleLines.join(' '),
+    description: c.hero.description,
   };
 };
 

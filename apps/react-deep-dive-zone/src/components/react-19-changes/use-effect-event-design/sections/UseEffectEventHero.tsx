@@ -14,12 +14,8 @@ type Props = { content: UseEffectEventContent['hero'] };
 export const UseEffectEventHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="react-19-changes/use-effect-event-design.md"
-    promptSuffix={
-      <span className="text-[var(--term-dim)]">
-        {' // separate event-like logic from the Effect body'}
-      </span>
-    }
+    promptPath="packages/react-reconciler/src/ReactFiberHooks.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.9fr)_minmax(0,_1.1fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -28,15 +24,14 @@ export const UseEffectEventHero = ({ content }: Props) => (
       </TerminalBadge>
 
       <HeroTitle>
-        <span className="block text-[var(--term-fg)]">{content.titleLines[0]}</span>
-        <span className="block text-[var(--term-fg)]">{content.titleLines[1]}</span>
-        <span className="block text-[var(--term-accent)]">{content.titleLines[2]}</span>
+        <span className="block">{content.title.line1}</span>
+        <span className="block text-[var(--term-accent)]">{content.title.line2}</span>
       </HeroTitle>
 
-      <HeroDescription maxWidth="max-w-[60ch]">{content.subtitleLines.join(' ')}</HeroDescription>
+      <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-use-effect-event">
+    <HeroVisualColumn id="hero-use-effect-event-design">
       <UseEffectEventHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

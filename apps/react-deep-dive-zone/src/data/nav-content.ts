@@ -401,29 +401,6 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
         },
       ],
     },
-    {
-      title: '실전 소스코드 읽기 체크리스트',
-      items: [
-        { id: 'start-with-question', label: '질문으로 시작한다', type: 'link' },
-        { id: 'find-public-api-entry', label: 'public API 입구를 찾는다', type: 'link' },
-        { id: 'follow-package-boundary', label: '패키지 경계를 따라간다', type: 'link' },
-        { id: 'classify-values', label: '값을 분류한다', type: 'link' },
-        { id: 'identify-phase', label: 'phase를 판별한다', type: 'link' },
-        { id: 'compress-call-path', label: '호출 경로를 압축한다', type: 'link' },
-        { id: 'verify-intent-with-tests', label: '테스트로 의도를 확인한다', type: 'link' },
-        {
-          id: 'strip-flag-comment-noise',
-          label: 'feature flag와 주석으로 노이즈를 걷어낸다',
-          type: 'link',
-        },
-        { id: 'correct-version-diff', label: '버전 차이를 교정한다', type: 'link' },
-        {
-          id: 'reconstruct-with-words-and-flow',
-          label: '내 말과 흐름도로 재구성한다',
-          type: 'link',
-        },
-      ],
-    },
   ],
   en: [
     {
@@ -828,29 +805,6 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
         {
           id: 'react-19-2-reading-method',
           label: 'Close out with a reading method for tracking 19.2+ changes',
-          type: 'link',
-        },
-      ],
-    },
-    {
-      title: 'Source Reading Checklist',
-      items: [
-        { id: 'start-with-question', label: 'Start with a question', type: 'link' },
-        { id: 'find-public-api-entry', label: 'Find the public API entry point', type: 'link' },
-        { id: 'follow-package-boundary', label: 'Follow package boundaries', type: 'link' },
-        { id: 'classify-values', label: 'Classify the values', type: 'link' },
-        { id: 'identify-phase', label: 'Identify the phase', type: 'link' },
-        { id: 'compress-call-path', label: 'Compress the call path', type: 'link' },
-        { id: 'verify-intent-with-tests', label: 'Verify intent with tests', type: 'link' },
-        {
-          id: 'strip-flag-comment-noise',
-          label: 'Strip noise from feature flags and comments',
-          type: 'link',
-        },
-        { id: 'correct-version-diff', label: 'Correct version differences', type: 'link' },
-        {
-          id: 'reconstruct-with-words-and-flow',
-          label: 'Reconstruct it in your own words and a flow diagram',
           type: 'link',
         },
       ],

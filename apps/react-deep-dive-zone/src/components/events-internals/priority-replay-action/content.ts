@@ -315,7 +315,7 @@ const ko: PriorityReplayActionContent = {
     primaryHref: REACT_DOM_EVENT_REPLAYING_HREF,
   },
   finale: {
-    progressLabel: '11/15 챕터 완료',
+    progressLabel: '11/14 챕터 완료',
     copyLine1: '클릭 한 번이 어디를 지나',
     copyLine2: '핸들러에 닿는지 끝까지 읽었습니다.',
     copyLine3: '다음은 Scheduler와 우선순위입니다.',
@@ -540,7 +540,7 @@ const en: PriorityReplayActionContent = {
     primaryHref: REACT_DOM_EVENT_REPLAYING_HREF,
   },
   finale: {
-    progressLabel: 'Chapter 11 of 15 complete',
+    progressLabel: 'Chapter 11 of 14 complete',
     copyLine1: 'You followed one click',
     copyLine2: 'all the way to the handler.',
     copyLine3: 'Next comes the Scheduler and priority.',

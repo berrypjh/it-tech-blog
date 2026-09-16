@@ -14,7 +14,7 @@ export const generateMetadata = async () => {
       locale === 'en'
         ? 'Server Components · Boundary & contract stabilized in React 19 — React Lab'
         : 'Server Components는 React 19에서 어떤 경계와 계약을 안정화했나? — React Lab',
-    description: c.hero.subtitleLines.join(' '),
+    description: c.hero.description,
   };
 };
 

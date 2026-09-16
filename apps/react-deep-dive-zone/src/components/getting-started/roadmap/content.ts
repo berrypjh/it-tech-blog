@@ -200,7 +200,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       ],
     },
     finale: {
-      progressLabel: '1/15 챕터 완료',
+      progressLabel: '1/14 챕터 완료',
       copyLine1: '준비가 끝났습니다.',
       copyLine2: '이제 실제 React 저장소를 열고,',
       copyLine3: '전체 구조부터 읽어봅니다.',
@@ -357,7 +357,7 @@ export const roadmapContent: Record<Locale, RoadmapContent> = {
       ],
     },
     finale: {
-      progressLabel: 'Chapter 1 of 15 complete',
+      progressLabel: 'Chapter 1 of 14 complete',
       copyLine1: 'You are ready.',
       copyLine2: 'Open the real React repository',
       copyLine3: 'and start with the overall structure.',

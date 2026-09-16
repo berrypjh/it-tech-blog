@@ -1,166 +1,97 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { PathKey } from './tone';
+import type { ToneKey } from '../../shared/tones';
 
-export type IconKey =
-  | 'package'
-  | 'route'
-  | 'layers'
-  | 'sparkles'
-  | 'workflow'
-  | 'code'
-  | 'split'
-  | 'shield-alert'
-  | 'triangle-alert'
-  | 'compass'
-  | 'mouse-click'
-  | 'play-circle'
-  | 'search'
-  | 'target'
-  | 'pen';
+export type PathStepId = 'jsx' | 'create' | 'element' | 'call';
 
-export type SupportQuestion = {
-  body: string;
-  iconKey: IconKey;
-};
-
-export type WhatChangedCard = {
-  path: PathKey;
-  title: string;
-  items: string[];
-  iconKey: IconKey;
-};
-
-export type FlowStep = {
-  path: PathKey;
-  title: string;
-  caption?: string;
-  code?: string;
-  iconKey: IconKey;
-};
-
-export type RefPath = {
-  path: PathKey;
+export type HeroStep = {
+  id: PathStepId;
   label: string;
-  buttonLabel: string;
-  steps: { title: string; caption: string; iconKey: IconKey }[];
+  caption: string;
+  tone: ToneKey;
 };
 
-export type Mission = {
-  number: string;
+export type PathStep = {
+  id: PathStepId;
+  num: string;
   title: string;
-  helper: string;
-  iconKey: IconKey;
+  description: string;
+  tone: ToneKey;
 };
 
-export type TakeawayCard = {
-  number: string;
-  path: PathKey;
+export type ChangeId = 'declaration' | 'route' | 'shape' | 'imperative';
+
+export type ChangeCard = {
+  id: ChangeId;
   title: string;
-  body: string;
-  iconKey: IconKey;
+  description: string;
+  badge: string;
+  tone: ToneKey;
+};
+
+export type DiffRow = {
+  topic: string;
+  before: string;
+  after: string;
 };
 
 export type RefAsPropElementShapeContent = {
   hero: {
     badge: string;
-    titleLines: [string, string];
-    subtitleLines: [string, string];
-    before: { label: string; langBadge: 'JSX'; code: string };
-    after: { label: string; langBadge: 'JSX'; code: string };
-    centerLabels: { before: string; after: string };
+    title: { line1: string; line2: string };
+    description: string;
+    diagramBadge: string;
+    diagramCaption: string;
+    steps: HeroStep[];
   };
-  question: {
-    number: string;
-    eyebrow: string;
-    questionLines: [string, string, string];
-    supportQuestions: SupportQuestion[];
-  };
-  forwardRefPattern: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    code: { fileName: string; langBadge: 'TSX'; code: string };
-    explanationTitle: string;
-    explanationPoints: string[];
-  };
-  refAsPropPattern: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    code: { fileName: string; langBadge: 'TSX'; code: string };
-    explanationTitle: string;
-    explanationPoints: string[];
-  };
-  whatChanged: {
-    number: string;
+  wrapper: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    cards: WhatChangedCard[];
+    before: { title: string; badge: string; description: string; bullets: string[] };
+    bridge: { headline: string; sub: string };
+    after: { title: string; badge: string; description: string; bullets: string[] };
+    note: string;
   };
-  elementRefDeprecation: {
-    number: string;
+  path: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    left: { title: string; codeLine: string; body: string };
-    middle: { title: string; codeLine: string; body: string };
-    warning: { title: string; body: string; badge: string };
+    steps: PathStep[];
+    note: string;
   };
-  propsRefFlow: {
-    number: string;
+  changes: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    steps: FlowStep[];
+    cards: ChangeCard[];
+    note: string;
   };
-  useImperative: {
-    number: string;
+  diff: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    code: { fileName: string; langBadge: 'TSX'; code: string };
-    exampleTitle: string;
-    exampleCode: string;
-    explanationPoints: string[];
+    headers: [string, string, string];
+    rows: DiffRow[];
+    note: string;
   };
-  internalCode: {
-    number: string;
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
-    description: string;
-    code: { fileName: string; langBadge: 'JS'; code: string };
-    fileCard: {
-      title: string;
-      filePath: string;
-      buttonLabel: string;
-      href: string;
-    };
-  };
-  pathInteractor: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    buttonsLabel: string;
-    defaultPath: 'react18' | 'react19';
-    paths: RefPath[];
-    benefitsTitle: string;
-    benefits: string[];
-  };
-  mission: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    missions: Mission[];
-  };
-  takeaways: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    cards: TakeawayCard[];
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -171,355 +102,229 @@ export type RefAsPropElementShapeContent = {
   };
 };
 
-const ko: RefAsPropElementShapeContent = {
-  hero: {
-    badge: 'React 19 변화 · 5/10단계',
-    titleLines: ['ref as prop은 React Element와', '컴포넌트 호출 경로를 어떻게 바꿨나?'],
-    subtitleLines: ['React 19에서는 함수 컴포넌트도', 'ref를 일반 prop처럼 받을 수 있습니다.'],
-    before: {
-      label: 'React 18 (forwardRef)',
-      langBadge: 'JSX',
-      code: `import { forwardRef } from "react";
-
-const MyInput = forwardRef(function MyInput(props, ref) {
-  return <input {...props} ref={ref} />;
-});
-
-// 사용
-<MyInput ref={inputRef} placeholder="이름" />;`,
-    },
-    after: {
-      label: 'React 19 (ref as prop)',
-      langBadge: 'JSX',
-      code: `function MyInput({ placeholder, ref, ...props }) {
-  return <input placeholder={placeholder} ref={ref} {...props} />;
-}
-
-// 사용
-<MyInput ref={inputRef} placeholder="이름" />;`,
-    },
-    centerLabels: { before: 'Before', after: 'After' },
-  },
-  question: {
-    number: '02',
-    eyebrow: '오늘 해결할 질문',
-    questionLines: [
-      'forwardRef 없이 ref를 받는다는 것은',
-      'React 내부 표현 관점에서 무엇이',
-      '달라졌다는 뜻일까?',
-    ],
-    supportQuestions: [
-      { body: '왜 forwardRef가 필요했을까?', iconKey: 'package' },
-      { body: 'ref 표현이 어디에서 중심이 되었을까?', iconKey: 'target' },
-      { body: 'Element와 컴포넌트 호출 경로는?', iconKey: 'route' },
-      { body: 'React 19 코드에서 어떻게 구현됐을까?', iconKey: 'code' },
-    ],
-  },
-  forwardRefPattern: {
-    number: '01',
-    eyebrow: 'React 18 패턴',
-    title: 'React 18의 forwardRef 패턴',
-    code: {
-      fileName: 'MyInput.tsx · React 18',
-      langBadge: 'TSX',
-      code: `import { forwardRef } from "react";
-
-const MyInput = forwardRef(function MyInput(
-  props: React.InputHTMLAttributes<HTMLInputElement>,
-  ref: React.Ref<HTMLInputElement>,
-) {
-  return <input {...props} ref={ref} />;
-});`,
-    },
-    explanationTitle: '설명',
-    explanationPoints: [
-      '함수 컴포넌트는 ref를 직접 받지 못했습니다.',
-      '특수 컴포넌트로 감싸야 React가 ref를 두 번째 인자로 전달했습니다.',
-      'wrapper 컴포넌트가 하나 더 생겼습니다.',
-      '타입 정의, 컴포넌트 이름, 디버깅 흐름이 복잡해졌습니다.',
-    ],
-  },
-  refAsPropPattern: {
-    number: '02',
-    eyebrow: 'React 19 패턴',
-    title: 'React 19의 ref as prop 패턴',
-    code: {
-      fileName: 'MyInput.tsx · React 19',
-      langBadge: 'TSX',
-      code: `function MyInput({
-  placeholder,
-  ref,
-  ...props
-}: React.ComponentPropsWithRef<"input">) {
-  return <input placeholder={placeholder} ref={ref} {...props} />;
-}`,
-    },
-    explanationTitle: '설명',
-    explanationPoints: [
-      'ref가 props 구조 안에서 일반 prop처럼 전달됩니다.',
-      '별도의 forwardRef wrapper가 필요 없습니다.',
-      '컴포넌트 선언이 간결해지고, 타입 추론/디버깅도 쉬워집니다.',
-      'ref가 props가 되는 흐름에서 이해됩니다.',
-    ],
-  },
-  whatChanged: {
-    number: '03',
-    eyebrow: '변화 정리',
-    title: '무엇이 달라졌는가?',
-    description: '코드 외형뿐 아니라 ref 전달 경로와 Element 표현의 기준점이 함께 이동했습니다.',
-    cards: [
-      {
-        path: 'react19',
-        title: '컴포넌트 선언 간결화',
-        items: ['forwardRef 제거', '함수 컴포넌트 그대로 사용', '코드 가독성 향상'],
-        iconKey: 'code',
-      },
-      {
-        path: 'propsRef',
-        title: 'ref 전달 경로 단순화',
-        items: ['별도 wrapper 없음', 'props.ref로 직접 전달', '디버깅/추적 단순화'],
-        iconKey: 'route',
-      },
-      {
-        path: 'internals',
-        title: 'Element 표현 기준 이동',
-        items: ['element.ref → props.ref', 'props.ref가 source of truth', 'React 내부 표현 변화'],
-        iconKey: 'layers',
-      },
-    ],
-  },
-  elementRefDeprecation: {
-    number: '04',
-    eyebrow: 'element.ref 변화',
-    title: 'element.ref 접근의 변화',
-    description: 'Element 위에서 ref를 어디서 읽을지의 기준이 React 19에서 이동합니다.',
-    left: {
-      title: '이전 감각 (React 18)',
-      codeLine: 'element.ref',
-      body: '직접 접근관계인 듯한 감각에서 출발',
-    },
-    middle: {
-      title: 'React 19 방향',
-      codeLine: 'element.props.ref',
-      body: 'props.ref가 ref 표현의 중심',
-    },
-    warning: {
-      title: 'element.ref deprecation',
-      body: 'React 19에서는 element.ref 접근이 점점 더 이상 권장되지 않습니다.',
-      badge: 'Deprecated',
-    },
-  },
-  propsRefFlow: {
-    number: '05',
-    eyebrow: '단일 진실 공급원',
-    title: 'props.ref가 source of truth가 되는 구조',
-    description:
-      'JSX에서 시작한 ref가 React.createElement 내부와 컴포넌트 호출까지 모두 props.ref 한 경로로 흐릅니다.',
-    steps: [
-      {
-        path: 'propsRef',
-        title: 'JSX',
-        code: `<MyInput ref={r} />`,
-        iconKey: 'pen',
-      },
-      {
-        path: 'propsRef',
-        title: 'props.ref 저장',
-        caption: 'React.createElement 내부에서 props.ref 보관',
-        iconKey: 'package',
-      },
-      {
-        path: 'internals',
-        title: 'Element ref 계산',
-        caption: 'ref = props.ref ?? null',
-        iconKey: 'layers',
-      },
-      {
-        path: 'react19',
-        title: '컴포넌트 호출 시 전달',
-        caption: 'props.ref로 컴포넌트에 전달',
-        iconKey: 'workflow',
-      },
-    ],
-  },
-  useImperative: {
-    number: '06',
-    eyebrow: 'useImperativeHandle 연결',
-    title: 'useImperativeHandle과 연결',
-    description:
-      'ref를 prop으로 받더라도 useImperativeHandle은 그대로 동작합니다. wrapper가 사라졌을 뿐 흐름은 같습니다.',
-    code: {
-      fileName: 'CustomInput.tsx',
-      langBadge: 'TSX',
-      code: `import { useRef, useImperativeHandle } from "react";
-
-function CustomInput({
-  ref,
-  ...props
-}: {
-  ref: React.Ref<{ focus: () => void }>;
-} & React.InputHTMLAttributes<HTMLInputElement>) {
-  const innerRef = useRef<HTMLInputElement>(null);
-
-  useImperativeHandle(ref, () => ({
-    focus() {
-      innerRef.current?.focus();
-    },
-  }));
-
-  return <input ref={innerRef} {...props} />;
-}`,
-    },
-    exampleTitle: 'Imperative Handle 예시',
-    exampleCode: `{
-  focus() {
-    // 내부 input에 포커스 지향
-  }
-}`,
-    explanationPoints: [
-      '부모 컴포넌트는 ref.current.focus() 호출 가능',
-      'ref는 props를 통해 직접 전달되어 구현부에서 사용할 수 있음',
-      'forwardRef 없이도 동일한 imperative handle 구성이 가능',
-    ],
-  },
-  internalCode: {
-    number: '07',
-    eyebrow: '코드 체크포인트',
-    title: '실제 코드 미리보기 (ReactJSXElement.js)',
-    description:
-      'React.createElement 내부에서 props.ref가 그대로 ref 표현의 기준이 되는 흐름을 확인할 수 있습니다.',
-    code: {
-      fileName: 'ReactJSXElement.js · 발췌',
-      langBadge: 'JS',
-      code: `function ReactJSXElement(type, key, self, source, getOwner, props) {
-  // props.ref가 ref 표현의 기준이 됩니다.
+const KO_CODE = `// packages/react/src/jsx/ReactJSXElement.js
+function ReactElement(type, key, self, source, owner, props) {
+  // React 19: ref는 더 이상 별도 인자가 아니라 props에서 꺼낸다
   const refProp = props.ref;
   const ref = refProp !== undefined ? refProp : null;
 
-  // ...
+  const element = {
+    $$typeof: REACT_ELEMENT_TYPE,
+    type,
+    key,
+    props,          // ref가 이 안에 그대로 들어 있다
+    _owner: owner,
+  };
 
+  // ref는 element의 고정 슬롯이 아니라, 개발 모드에서 경고를 붙인 접근자로 남는다
   return element;
-}`,
+}`;
+
+const EN_CODE = `// packages/react/src/jsx/ReactJSXElement.js
+function ReactElement(type, key, self, source, owner, props) {
+  // React 19: ref is no longer a separate argument, it comes out of props
+  const refProp = props.ref;
+  const ref = refProp !== undefined ? refProp : null;
+
+  const element = {
+    $$typeof: REACT_ELEMENT_TYPE,
+    type,
+    key,
+    props,          // ref sits right inside here
+    _owner: owner,
+  };
+
+  // ref survives not as a fixed slot but as a dev-mode accessor that warns
+  return element;
+}`;
+
+const JSX_ELEMENT_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js';
+
+const ko: RefAsPropElementShapeContent = {
+  hero: {
+    badge: 'React 19 변화 · 5/10단계',
+    title: { line1: 'forwardRef가 사라진 것이 아니라', line2: 'ref가 props로 내려온 것이다' },
+    description:
+      '편의 문법이 하나 늘어난 게 아닙니다. Element가 ref를 어디에 담는지, 그 기준 자체가 옮겨 갔습니다.',
+    diagramBadge: 'one path',
+    diagramCaption: 'ref lives in props all the way down',
+    steps: [
+      { id: 'jsx', label: '<MyInput ref={r} />', caption: 'JSX에 ref를 쓴다', tone: 'cyan' },
+      { id: 'create', label: 'props.ref = r', caption: 'props 객체에 담긴다', tone: 'teal' },
+      {
+        id: 'element',
+        label: 'element.props',
+        caption: '별도 ref 슬롯이 없다',
+        tone: 'indigo',
+      },
+      {
+        id: 'call',
+        label: 'MyInput({ ref })',
+        caption: '컴포넌트가 props로 받는다',
+        tone: 'emerald',
+      },
+    ],
+  },
+  wrapper: {
+    badge: '01',
+    eyebrow: 'why a wrapper',
+    title: 'forwardRef는 무엇을 대신하고 있었나',
+    description:
+      'forwardRef는 편의 함수가 아니라 표현의 빈틈을 메우는 우회로였습니다. 빈틈이 메워지자 필요가 없어졌습니다.',
+    before: {
+      title: '우회로가 필요했던 시절',
+      badge: 'React 18',
+      description:
+        'ref는 props가 아니라 Element의 별도 슬롯이어서, 컴포넌트까지 내려가지 않았습니다.',
+      bullets: [
+        'createElement가 props에서 ref를 꺼내 별도 슬롯에 넣었다',
+        '함수 컴포넌트는 props만 받으므로 ref를 볼 수 없었다',
+        'forwardRef로 감싸야 React가 ref를 두 번째 인자로 넘겨 줬다',
+        '컴포넌트 이름과 타입이 한 겹씩 더 감싸여 디버깅이 번거로웠다',
+      ],
     },
-    fileCard: {
-      title: '파일 위치',
-      filePath: 'packages/react/src/jsx/ReactJSXElement.js',
-      buttonLabel: 'GitHub에서 코드 보기',
-      href: 'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
+    bridge: {
+      headline: 'ref를 props에서\n꺼내지 않기로 한다',
+      sub: '한 줄의 결정이 wrapper·별도 인자·별도 슬롯을 한 번에 없앴습니다.',
     },
+    after: {
+      title: '우회로가 필요 없어진 뒤',
+      badge: 'React 19',
+      description: 'ref가 props에 남아 있으므로 함수 컴포넌트가 그냥 구조 분해로 받습니다.',
+      bullets: [
+        'createElement가 props.ref를 그대로 둔다',
+        '함수 컴포넌트가 { ref }로 구조 분해해 받는다',
+        'wrapper가 없으니 컴포넌트 이름이 그대로 스택에 남는다',
+        'ComponentPropsWithRef 같은 타입이 자연스럽게 맞아떨어진다',
+      ],
+    },
+    note: 'forwardRef는 React 19에서도 동작합니다. 다만 새 코드에서 쓸 이유가 사라졌고, 문서에서도 권장하지 않습니다.',
   },
-  pathInteractor: {
-    number: '08',
-    eyebrow: '경로 비교',
-    title: 'ref 경로 비교 인터랙션',
-    description: 'parent ref가 input DOM까지 닿는 경로를 React 18 / React 19로 나눠 비교합니다.',
-    buttonsLabel: '버전 선택',
-    defaultPath: 'react19',
-    paths: [
+  path: {
+    badge: '02',
+    eyebrow: 'one route',
+    title: 'ref가 지나가는 네 칸',
+    description: '네 칸 모두 props 안에 있습니다. 중간에 꺼냈다 다시 넣는 구간이 없습니다.',
+    steps: [
       {
-        path: 'react18',
-        label: 'React 18 경로',
-        buttonLabel: 'React 18',
-        steps: [
-          { title: 'parent ref', caption: '부모에서 만든 ref', iconKey: 'mouse-click' },
-          { title: 'forwardRef wrapper', caption: '특수 컴포넌트로 감쌈', iconKey: 'package' },
-          {
-            title: '두 번째 인자 ref 전달',
-            caption: 'wrapper가 ref를 두 번째 인자로 전달',
-            iconKey: 'split',
-          },
-          { title: 'input DOM', caption: '실제 DOM에 연결', iconKey: 'target' },
-        ],
+        id: 'jsx',
+        num: '01',
+        title: 'JSX에 ref를 쓴다',
+        description: '작성하는 쪽 문법은 React 18과 완전히 같습니다. 바뀐 것은 받는 쪽입니다.',
+        tone: 'cyan',
       },
       {
-        path: 'react19',
-        label: 'React 19 경로',
-        buttonLabel: 'React 19',
-        steps: [
-          { title: 'parent ref', caption: '부모에서 만든 ref', iconKey: 'mouse-click' },
-          { title: 'props.ref', caption: 'JSX의 ref가 props.ref로 흐름', iconKey: 'route' },
-          {
-            title: '컴포넌트 내부에서 직접 사용',
-            caption: 'wrapper 없이 함수 컴포넌트가 받음',
-            iconKey: 'workflow',
-          },
-          { title: 'input DOM', caption: '실제 DOM에 연결', iconKey: 'target' },
-        ],
+        id: 'create',
+        num: '02',
+        title: 'props 객체에 담긴다',
+        description: 'jsx 변환이 만든 props에 ref가 그대로 들어갑니다. key만 여전히 따로 빠집니다.',
+        tone: 'teal',
+      },
+      {
+        id: 'element',
+        num: '03',
+        title: 'Element가 props를 통째로 들고 있다',
+        description:
+          'Element에 ref 전용 슬롯을 따로 두지 않습니다. 읽을 곳이 한 군데로 정리됐습니다.',
+        tone: 'indigo',
+      },
+      {
+        id: 'call',
+        num: '04',
+        title: '컴포넌트가 props로 받는다',
+        description:
+          '함수 컴포넌트는 첫 번째 인자에서 ref를 꺼냅니다. 두 번째 인자는 더 이상 쓰이지 않습니다.',
+        tone: 'emerald',
       },
     ],
-    benefitsTitle: 'React 19의 이점',
-    benefits: [
-      '경로가 더 직관적입니다.',
-      '컴포넌트 트리 깊이가 줄어듭니다.',
-      '디버깅과 타입 추론이 쉬워집니다.',
-      'Element 표현이 일관됩니다.',
-    ],
+    note: 'key는 아직 props에서 빠집니다. ref만 props로 내려왔고 key는 여전히 Element의 고유 슬롯입니다.',
   },
-  mission: {
-    number: '09',
-    eyebrow: '코드 따라가기',
-    title: '직접 따라가기 보기',
-    description: '문서·코드·실습을 직접 잡아 가며 ref as prop 변화를 손에 익혀 봅니다.',
-    missions: [
-      {
-        number: '01',
-        title: 'forwardRef가 왜 필요했는지 먼저 정리한다',
-        helper: 'React 18의 제약 이해',
-        iconKey: 'compass',
-      },
-      {
-        number: '02',
-        title: 'React 19 코드에서 props.ref 기준 흐름을 확인한다',
-        helper: 'ReactJSXElement.js 읽기',
-        iconKey: 'search',
-      },
-      {
-        number: '03',
-        title: 'useImperativeHandle 예제를 ref as prop 스타일로 바꿔본다',
-        helper: '실습으로 익히기',
-        iconKey: 'pen',
-      },
-      {
-        number: '04',
-        title: 'ref 전달 경로가 어떻게 단순화됐는지 구조적으로 설명한다',
-        helper: '나만의 언어로 정리',
-        iconKey: 'route',
-      },
-    ],
-  },
-  takeaways: {
-    number: '10',
-    eyebrow: '핵심 정리',
-    title: '핵심 정리',
+  changes: {
+    badge: '03',
+    eyebrow: 'what moved',
+    title: '이 변화가 실제로 건드린 네 곳',
+    description: '문법이 짧아진 것은 결과일 뿐입니다. 진짜 변화는 아래 네 곳에서 일어났습니다.',
     cards: [
       {
-        number: '01',
-        path: 'react19',
-        title: 'React 19는 ref 전달 경로를 더 직접적으로 만들었다.',
-        body: 'forwardRef wrapper 없이 props.ref로 직접 전달됩니다.',
-        iconKey: 'route',
+        id: 'declaration',
+        title: '컴포넌트 선언',
+        description: 'wrapper 호출이 사라지고 평범한 함수 선언 하나로 돌아왔습니다.',
+        badge: 'forwardRef 제거',
+        tone: 'teal',
       },
       {
-        number: '02',
-        path: 'propsRef',
-        title: 'props.ref가 ref 표현의 중심이 된다.',
-        body: 'Element 표현 기준이 element.ref에서 props.ref로 이동했습니다.',
-        iconKey: 'target',
+        id: 'route',
+        title: '전달 경로',
+        description: 'ref가 props에서 나갔다 들어오는 구간이 없어 추적이 단순해졌습니다.',
+        badge: 'props.ref 한 경로',
+        tone: 'cyan',
       },
       {
-        number: '03',
-        path: 'internals',
-        title: '이는 Element 표현과 함수 컴포넌트 API 모두에 영향을 준다.',
-        body: '디버깅, 타입 추론, 유지보수성이 전반적으로 향상됩니다.',
-        iconKey: 'layers',
+        id: 'shape',
+        title: 'Element 표현',
+        description: 'Element의 고정 필드가 하나 줄었습니다. 읽는 기준이 props로 통일됐습니다.',
+        badge: 'element.ref 비권장',
+        tone: 'indigo',
+      },
+      {
+        id: 'imperative',
+        title: '명령형 핸들',
+        description: 'useImperativeHandle은 그대로입니다. 받는 경로만 바뀌고 쓰는 법은 같습니다.',
+        badge: 'useImperativeHandle 유지',
+        tone: 'violet',
       },
     ],
+    note: '네 번째가 중요합니다. ref를 prop으로 받아도 useImperativeHandle에 그대로 넘기면 예전과 똑같이 동작합니다.',
+  },
+  diff: {
+    badge: '04',
+    eyebrow: 'side by side',
+    title: '같은 질문에 대한 두 버전의 답',
+    description: '마이그레이션할 때 실제로 확인하게 되는 네 가지입니다.',
+    headers: ['확인할 것', 'React 18', 'React 19'],
+    rows: [
+      {
+        topic: '함수 컴포넌트가 ref를 받으려면',
+        before: 'forwardRef로 감싸야 한다',
+        after: 'props에서 ref를 꺼내면 된다',
+      },
+      {
+        topic: '컴포넌트가 ref를 읽는 위치',
+        before: '두 번째 인자',
+        after: '첫 번째 인자의 ref 키',
+      },
+      {
+        topic: 'Element에서 ref를 읽는 곳',
+        before: 'element.ref',
+        after: 'element.props.ref',
+      },
+      {
+        topic: '타입 선언',
+        before: 'ForwardedRef를 따로 붙인다',
+        after: 'ComponentPropsWithRef 하나로 끝난다',
+      },
+    ],
+    note: '세 번째 줄이 깨지기 쉬운 지점입니다. 라이브러리가 element.ref를 읽고 있으면 개발 모드에서 경고가 납니다.',
+  },
+  checkpoint: {
+    badge: '05',
+    eyebrow: 'code checkpoint',
+    title: 'ref가 props에 남는 바로 그 줄',
+    fileLabel: '파일',
+    filePath: 'packages/react/src/jsx/ReactJSXElement.js',
+    lookForLabel: '볼 것',
+    lookFor: 'const refProp = props.ref',
+    whyLabel: '설명',
+    why: 'React 18이 props에서 ref를 빼내던 자리입니다. 그 한 줄이 사라지면서 forwardRef의 존재 이유도 함께 사라졌습니다.',
+    code: KO_CODE,
+    primaryCta: 'ReactJSXElement.js 소스 보기',
+    primaryHref: JSX_ELEMENT_HREF,
   },
   nextStep: {
-    eyebrow: '다음 학습으로 이어집니다',
-    title: 'Metadata와 Resource Components',
-    description:
-      '다음 페이지에서는 React 19가 문서 자원과 head 관리 모델을 어떻게 확장했는지 살펴봅니다.',
+    eyebrow: '다음 단계',
+    title: 'title과 meta를 컴포넌트로 쓰면 무슨 일이 생길까',
+    description: 'Element 표현 축을 마치고 DOM 자원 관리 축으로 넘어갑니다.',
     cta: '다음 페이지로 이동',
     href: '/metadata-resource-react-dom',
   },
@@ -528,361 +333,194 @@ function CustomInput({
 const en: RefAsPropElementShapeContent = {
   hero: {
     badge: 'React 19 Changes · 5/10',
-    titleLines: ['How did ref as prop reshape React Element', 'and the component call path?'],
-    subtitleLines: [
-      'In React 19, function components can also',
-      'receive ref like any other prop.',
+    title: { line1: 'forwardRef did not disappear.', line2: 'ref moved down into props.' },
+    description:
+      'This is not one more piece of sugar. Where an Element keeps its ref, the reference point itself moved.',
+    diagramBadge: 'one path',
+    diagramCaption: 'ref lives in props all the way down',
+    steps: [
+      { id: 'jsx', label: '<MyInput ref={r} />', caption: 'you write ref in JSX', tone: 'cyan' },
+      {
+        id: 'create',
+        label: 'props.ref = r',
+        caption: 'it lands in the props object',
+        tone: 'teal',
+      },
+      {
+        id: 'element',
+        label: 'element.props',
+        caption: 'there is no separate slot',
+        tone: 'indigo',
+      },
+      {
+        id: 'call',
+        label: 'MyInput({ ref })',
+        caption: 'the component receives it as a prop',
+        tone: 'emerald',
+      },
     ],
+  },
+  wrapper: {
+    badge: '01',
+    eyebrow: 'why a wrapper',
+    title: 'What forwardRef was standing in for',
+    description:
+      'forwardRef was not a convenience but a detour around a gap in the representation. Close the gap and the detour is pointless.',
     before: {
-      label: 'React 18 (forwardRef)',
-      langBadge: 'JSX',
-      code: `import { forwardRef } from "react";
-
-const MyInput = forwardRef(function MyInput(props, ref) {
-  return <input {...props} ref={ref} />;
-});
-
-// usage
-<MyInput ref={inputRef} placeholder="Name" />;`,
+      title: 'When the detour was needed',
+      badge: 'React 18',
+      description:
+        'ref was a separate Element slot rather than a prop, so it never reached the component.',
+      bullets: [
+        'createElement pulled ref out of props into its own slot',
+        'A function component only receives props, so it could not see ref',
+        'Wrapping in forwardRef made React pass ref as a second argument',
+        'The extra layer blurred component names and types while debugging',
+      ],
+    },
+    bridge: {
+      headline: 'Decide to stop pulling\nref out of props',
+      sub: 'One decision removed the wrapper, the second argument and the separate slot at once.',
     },
     after: {
-      label: 'React 19 (ref as prop)',
-      langBadge: 'JSX',
-      code: `function MyInput({ placeholder, ref, ...props }) {
-  return <input placeholder={placeholder} ref={ref} {...props} />;
-}
-
-// usage
-<MyInput ref={inputRef} placeholder="Name" />;`,
+      title: 'Once the detour is gone',
+      badge: 'React 19',
+      description: 'ref stays in props, so a function component just destructures it.',
+      bullets: [
+        'createElement leaves props.ref where it is',
+        'The function component takes it with { ref }',
+        'With no wrapper, the component name stays in the stack as written',
+        'Types like ComponentPropsWithRef line up naturally',
+      ],
     },
-    centerLabels: { before: 'Before', after: 'After' },
+    note: 'forwardRef still works in React 19. There is simply no reason to reach for it in new code, and the docs no longer suggest it.',
   },
-  question: {
-    number: '02',
-    eyebrow: "Today's question",
-    questionLines: [
-      'When ref arrives without forwardRef,',
-      "what really changed inside React's",
-      'internal representation?',
-    ],
-    supportQuestions: [
-      { body: 'Why was forwardRef needed?', iconKey: 'package' },
-      { body: 'Where did the center of ref representation move?', iconKey: 'target' },
-      { body: 'What about the Element / component call path?', iconKey: 'route' },
-      { body: 'How is this written in React 19 code?', iconKey: 'code' },
-    ],
-  },
-  forwardRefPattern: {
-    number: '01',
-    eyebrow: 'REACT 18 PATTERN',
-    title: 'The React 18 forwardRef pattern',
-    code: {
-      fileName: 'MyInput.tsx · React 18',
-      langBadge: 'TSX',
-      code: `import { forwardRef } from "react";
-
-const MyInput = forwardRef(function MyInput(
-  props: React.InputHTMLAttributes<HTMLInputElement>,
-  ref: React.Ref<HTMLInputElement>,
-) {
-  return <input {...props} ref={ref} />;
-});`,
-    },
-    explanationTitle: 'What this means',
-    explanationPoints: [
-      "Function components couldn't receive ref directly.",
-      'A special wrapper was needed so React would pass ref as the second argument.',
-      'One extra wrapper component appeared in the tree.',
-      'Typing, naming, and debugging all got more involved.',
-    ],
-  },
-  refAsPropPattern: {
-    number: '02',
-    eyebrow: 'REACT 19 PATTERN',
-    title: 'The React 19 ref-as-prop pattern',
-    code: {
-      fileName: 'MyInput.tsx · React 19',
-      langBadge: 'TSX',
-      code: `function MyInput({
-  placeholder,
-  ref,
-  ...props
-}: React.ComponentPropsWithRef<"input">) {
-  return <input placeholder={placeholder} ref={ref} {...props} />;
-}`,
-    },
-    explanationTitle: 'What this means',
-    explanationPoints: [
-      'ref is passed inside the props shape like any other prop.',
-      'No separate forwardRef wrapper is required.',
-      'The component declaration is shorter; typing and debugging are simpler.',
-      "It's understood as 'ref flows through props.'",
-    ],
-  },
-  whatChanged: {
-    number: '03',
-    eyebrow: 'WHAT CHANGED',
-    title: 'What actually changed?',
-    description:
-      "Not just the syntax — the ref-flow path and the Element's source-of-truth move together.",
-    cards: [
-      {
-        path: 'react19',
-        title: 'Simpler component declaration',
-        items: ['forwardRef removed', 'Function component used as-is', 'Better readability'],
-        iconKey: 'code',
-      },
-      {
-        path: 'propsRef',
-        title: 'Simpler ref-flow path',
-        items: ['No separate wrapper', 'Direct via props.ref', 'Easier debugging / tracing'],
-        iconKey: 'route',
-      },
-      {
-        path: 'internals',
-        title: 'Element representation shift',
-        items: ['element.ref → props.ref', 'props.ref is source of truth', 'Internal shape change'],
-        iconKey: 'layers',
-      },
-    ],
-  },
-  elementRefDeprecation: {
-    number: '04',
-    eyebrow: 'ELEMENT.REF SHIFT',
-    title: 'How element.ref access changed',
-    description: "The 'where to read ref from on an Element' baseline moves in React 19.",
-    left: {
-      title: 'Old intuition (React 18)',
-      codeLine: 'element.ref',
-      body: 'Felt like a direct-access slot',
-    },
-    middle: {
-      title: 'React 19 direction',
-      codeLine: 'element.props.ref',
-      body: 'props.ref is the center of ref representation',
-    },
-    warning: {
-      title: 'element.ref deprecation',
-      body: 'In React 19, accessing element.ref is increasingly discouraged.',
-      badge: 'Deprecated',
-    },
-  },
-  propsRefFlow: {
-    number: '05',
-    eyebrow: 'SOURCE OF TRUTH',
-    title: 'props.ref as the source of truth',
-    description:
-      'ref starts in JSX and flows through React.createElement and component invocation all via a single props.ref path.',
+  path: {
+    badge: '02',
+    eyebrow: 'one route',
+    title: 'The four slots ref passes through',
+    description: 'All four are inside props. Nothing pulls it out and puts it back.',
     steps: [
       {
-        path: 'propsRef',
-        title: 'JSX',
-        code: `<MyInput ref={r} />`,
-        iconKey: 'pen',
+        id: 'jsx',
+        num: '01',
+        title: 'You write ref in JSX',
+        description: 'The authoring syntax is identical to React 18. The receiving side changed.',
+        tone: 'cyan',
       },
       {
-        path: 'propsRef',
-        title: 'Store props.ref',
-        caption: 'React.createElement keeps props.ref',
-        iconKey: 'package',
+        id: 'create',
+        num: '02',
+        title: 'It lands in the props object',
+        description:
+          'ref goes into the props the jsx transform builds. Only key is still split out.',
+        tone: 'teal',
       },
       {
-        path: 'internals',
-        title: 'Compute Element ref',
-        caption: 'ref = props.ref ?? null',
-        iconKey: 'layers',
+        id: 'element',
+        num: '03',
+        title: 'The Element carries props whole',
+        description:
+          'No dedicated ref slot on the Element. There is now exactly one place to read it.',
+        tone: 'indigo',
       },
       {
-        path: 'react19',
-        title: 'Pass on component call',
-        caption: 'Forwarded as props.ref to the component',
-        iconKey: 'workflow',
+        id: 'call',
+        num: '04',
+        title: 'The component receives it as a prop',
+        description:
+          'A function component takes ref from its first argument. The second argument is unused.',
+        tone: 'emerald',
       },
     ],
+    note: 'key is still split out of props. Only ref moved down; key remains an Element slot of its own.',
   },
-  useImperative: {
-    number: '06',
-    eyebrow: 'USEIMPERATIVEHANDLE',
-    title: 'Hooking into useImperativeHandle',
+  changes: {
+    badge: '03',
+    eyebrow: 'what moved',
+    title: 'The four places this change actually touched',
     description:
-      'Even with ref as prop, useImperativeHandle still works the same way — only the wrapper disappears.',
-    code: {
-      fileName: 'CustomInput.tsx',
-      langBadge: 'TSX',
-      code: `import { useRef, useImperativeHandle } from "react";
-
-function CustomInput({
-  ref,
-  ...props
-}: {
-  ref: React.Ref<{ focus: () => void }>;
-} & React.InputHTMLAttributes<HTMLInputElement>) {
-  const innerRef = useRef<HTMLInputElement>(null);
-
-  useImperativeHandle(ref, () => ({
-    focus() {
-      innerRef.current?.focus();
-    },
-  }));
-
-  return <input ref={innerRef} {...props} />;
-}`,
-    },
-    exampleTitle: 'Imperative handle shape',
-    exampleCode: `{
-  focus() {
-    // focus the inner input
-  }
-}`,
-    explanationPoints: [
-      'Parent can call ref.current.focus()',
-      'ref arrives directly via props so the implementation can use it',
-      'Same imperative-handle setup works without forwardRef',
-    ],
-  },
-  internalCode: {
-    number: '07',
-    eyebrow: 'CODE CHECKPOINT',
-    title: 'Source preview (ReactJSXElement.js)',
-    description:
-      'Inside React.createElement, props.ref becomes the baseline for the ref expression on the Element.',
-    code: {
-      fileName: 'ReactJSXElement.js · excerpt',
-      langBadge: 'JS',
-      code: `function ReactJSXElement(type, key, self, source, getOwner, props) {
-  // props.ref is the basis for ref representation.
-  const refProp = props.ref;
-  const ref = refProp !== undefined ? refProp : null;
-
-  // ...
-
-  return element;
-}`,
-    },
-    fileCard: {
-      title: 'File location',
-      filePath: 'packages/react/src/jsx/ReactJSXElement.js',
-      buttonLabel: 'Open on GitHub',
-      href: 'https://github.com/facebook/react/blob/main/packages/react/src/jsx/ReactJSXElement.js',
-    },
-  },
-  pathInteractor: {
-    number: '08',
-    eyebrow: 'PATH COMPARISON',
-    title: 'ref path interactor',
-    description: 'Compare the path from parent ref to input DOM in React 18 vs React 19.',
-    buttonsLabel: 'Pick a version',
-    defaultPath: 'react19',
-    paths: [
-      {
-        path: 'react18',
-        label: 'React 18 path',
-        buttonLabel: 'React 18',
-        steps: [
-          { title: 'parent ref', caption: 'ref created by the parent', iconKey: 'mouse-click' },
-          {
-            title: 'forwardRef wrapper',
-            caption: 'Wrapped by special component',
-            iconKey: 'package',
-          },
-          {
-            title: 'Pass ref as second arg',
-            caption: 'Wrapper forwards ref to the inner fn',
-            iconKey: 'split',
-          },
-          { title: 'input DOM', caption: 'Attached to real DOM', iconKey: 'target' },
-        ],
-      },
-      {
-        path: 'react19',
-        label: 'React 19 path',
-        buttonLabel: 'React 19',
-        steps: [
-          { title: 'parent ref', caption: 'ref created by the parent', iconKey: 'mouse-click' },
-          { title: 'props.ref', caption: 'JSX ref flows into props.ref', iconKey: 'route' },
-          {
-            title: 'Used directly in component',
-            caption: 'Function component receives it directly',
-            iconKey: 'workflow',
-          },
-          { title: 'input DOM', caption: 'Attached to real DOM', iconKey: 'target' },
-        ],
-      },
-    ],
-    benefitsTitle: 'React 19 benefits',
-    benefits: [
-      'The path is more intuitive.',
-      'Tree depth is reduced.',
-      'Debugging and type inference are easier.',
-      'Element representation is consistent.',
-    ],
-  },
-  mission: {
-    number: '09',
-    eyebrow: 'FOLLOW ALONG',
-    title: 'Follow-along missions',
-    description:
-      'Docs → real source → hands-on rewrite — get the ref-as-prop change into your hands.',
-    missions: [
-      {
-        number: '01',
-        title: 'Write down why forwardRef was needed in the first place',
-        helper: "Understand React 18's constraint",
-        iconKey: 'compass',
-      },
-      {
-        number: '02',
-        title: 'Trace the props.ref-based flow in React 19 code',
-        helper: 'Read ReactJSXElement.js',
-        iconKey: 'search',
-      },
-      {
-        number: '03',
-        title: 'Rewrite a useImperativeHandle example in ref-as-prop style',
-        helper: 'Hands-on practice',
-        iconKey: 'pen',
-      },
-      {
-        number: '04',
-        title: 'Explain structurally how the ref path got simpler',
-        helper: 'Put it in your own words',
-        iconKey: 'route',
-      },
-    ],
-  },
-  takeaways: {
-    number: '10',
-    eyebrow: 'KEY TAKEAWAYS',
-    title: 'Key takeaways',
+      'Shorter syntax is only the outcome. The real change happened in these four places.',
     cards: [
       {
-        number: '01',
-        path: 'react19',
-        title: 'React 19 made the ref-forwarding path more direct.',
-        body: 'No forwardRef wrapper — ref is forwarded via props.ref.',
-        iconKey: 'route',
+        id: 'declaration',
+        title: 'Component declaration',
+        description: 'The wrapper call is gone and it is an ordinary function declaration again.',
+        badge: 'no forwardRef',
+        tone: 'teal',
       },
       {
-        number: '02',
-        path: 'propsRef',
-        title: 'props.ref becomes the center of ref representation.',
-        body: "The Element's baseline moved from element.ref to props.ref.",
-        iconKey: 'target',
+        id: 'route',
+        title: 'The delivery route',
+        description: 'ref never leaves props and comes back, which makes tracing much simpler.',
+        badge: 'one props.ref route',
+        tone: 'cyan',
       },
       {
-        number: '03',
-        path: 'internals',
-        title: 'It affects both Element representation and function component API.',
-        body: 'Debugging, type inference, and maintainability all improve overall.',
-        iconKey: 'layers',
+        id: 'shape',
+        title: 'Element shape',
+        description: 'One fixed field fewer on the Element, and one place to read ref from.',
+        badge: 'element.ref discouraged',
+        tone: 'indigo',
+      },
+      {
+        id: 'imperative',
+        title: 'Imperative handles',
+        description: 'useImperativeHandle is untouched. Only the route in changed, not the usage.',
+        badge: 'useImperativeHandle stays',
+        tone: 'violet',
       },
     ],
+    note: 'The fourth matters: take ref as a prop, pass it to useImperativeHandle, and it behaves exactly as before.',
+  },
+  diff: {
+    badge: '04',
+    eyebrow: 'side by side',
+    title: 'Two versions answering the same question',
+    description: 'These four are what you actually check while migrating.',
+    headers: ['What to check', 'React 18', 'React 19'],
+    rows: [
+      {
+        topic: 'For a function component to take a ref',
+        before: 'It must be wrapped in forwardRef',
+        after: 'Read ref out of props',
+      },
+      {
+        topic: 'Where the component reads ref',
+        before: 'The second argument',
+        after: 'The ref key of the first argument',
+      },
+      {
+        topic: 'Where to read ref on an Element',
+        before: 'element.ref',
+        after: 'element.props.ref',
+      },
+      {
+        topic: 'Type declaration',
+        before: 'ForwardedRef bolted on separately',
+        after: 'ComponentPropsWithRef alone',
+      },
+    ],
+    note: 'The third row breaks most easily. A library reading element.ref will warn in development mode.',
+  },
+  checkpoint: {
+    badge: '05',
+    eyebrow: 'code checkpoint',
+    title: 'The exact line where ref stays in props',
+    fileLabel: 'File',
+    filePath: 'packages/react/src/jsx/ReactJSXElement.js',
+    lookForLabel: 'Look for',
+    lookFor: 'const refProp = props.ref',
+    whyLabel: 'Why',
+    why: 'This is where React 18 lifted ref out of props. With that line gone, the reason for forwardRef went with it.',
+    code: EN_CODE,
+    primaryCta: 'View ReactJSXElement.js',
+    primaryHref: JSX_ELEMENT_HREF,
   },
   nextStep: {
-    eyebrow: 'The journey continues',
-    title: 'Metadata & Resource Components',
-    description:
-      'Next we look at how React 19 extended document-resource and head-management model.',
+    eyebrow: 'Next step',
+    title: 'What happens when title and meta become components',
+    description: 'The Element shape axis is done; DOM resources are next.',
     cta: 'Go to the next page',
     href: '/metadata-resource-react-dom',
   },

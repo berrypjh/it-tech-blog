@@ -14,7 +14,7 @@ export const generateMetadata = async () => {
       locale === 'en'
         ? 'Form Actions × event system · React internals pipeline — React Lab'
         : 'Form Actions는 이벤트 시스템과 어떻게 연결되는가? — React Lab',
-    description: c.hero.subtitleLines.join(' '),
+    description: c.hero.description,
   };
 };
 

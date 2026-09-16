@@ -123,7 +123,7 @@ export const explorationContent: Record<Locale, ExplorationContent> = {
       ],
     },
     finale: {
-      progressLabel: '2/15 챕터 완료',
+      progressLabel: '2/14 챕터 완료',
       copyLine1: '저장소 구조를 읽는',
       copyLine2: '준비가 끝났습니다.',
       copyLine3: '이제 패키지 내부로 들어갑니다.',
@@ -222,7 +222,7 @@ export const explorationContent: Record<Locale, ExplorationContent> = {
       ],
     },
     finale: {
-      progressLabel: 'Chapter 2 of 15 complete',
+      progressLabel: 'Chapter 2 of 14 complete',
       copyLine1: 'You are ready to read',
       copyLine2: 'the repository structure.',
       copyLine3: 'Now step inside the packages.',

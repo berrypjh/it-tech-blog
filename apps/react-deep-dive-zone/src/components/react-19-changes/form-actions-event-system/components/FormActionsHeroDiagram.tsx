@@ -1,131 +1,64 @@
 import { cx } from '@berrypjh/react-ui';
+import { Database, type LucideIcon, MousePointerClick, Puzzle, Timer, Zap } from 'lucide-react';
 
-import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
+import { TerminalBadge } from '../../../shared/terminal';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { FormActionsEventSystemContent, PipelineMiniStep } from '../content';
-import { HourglassIcon, PuzzleIcon, SendIcon, WorkflowIcon, ZapIcon } from '../icons';
-import type { PipelineKey } from '../tone';
+import { toneTokens } from '../../../shared/tones';
+import type { FormActionsEventSystemContent, HeroStage, StageId } from '../content';
 
-type Props = { content: FormActionsEventSystemContent['hero']; className?: string };
+type Props = { content: FormActionsEventSystemContent['hero'] };
 
-/** 페이지 고유 PipelineKey → 공유 ToneKey 매핑. purple은 가장 가까운 violet으로. */
-const pipelineToneKey: Record<PipelineKey, ToneKey> = {
-  submit: 'blue',
-  plugin: 'violet',
-  action: 'teal',
-  formData: 'cyan',
-  pending: 'indigo',
-  transition: 'emerald',
+const stageIcon: Record<StageId, LucideIcon> = {
+  submit: MousePointerClick,
+  plugin: Puzzle,
+  formdata: Database,
+  pending: Timer,
+  transition: Zap,
 };
 
-const stepIcon: Record<PipelineKey, typeof SendIcon> = {
-  submit: SendIcon,
-  plugin: PuzzleIcon,
-  action: PuzzleIcon,
-  formData: PuzzleIcon,
-  pending: HourglassIcon,
-  transition: ZapIcon,
-};
-
-/**
- * Hero 핵심 비주얼.
- * <form action={fn}>의 submit 이벤트가 이벤트 플러그인 → pendingState →
- * transition 실행으로 이어지는 React 내부 Action 파이프라인을
- * 위에서 아래로 잇는 컴팩트 stepper.
- */
-export const FormActionsHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.pipeline.title}: ${content.pipeline.steps
-    .map((s) => s.title)
-    .join(' → ')}. ${content.pipeline.footer}`;
+/** Hero 핵심 비주얼: native submit이 transition까지 가는 다섯 칸. */
+export const FormActionsHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.title.line1} ${content.title.line2} ${content.description}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
-      <div className="relative flex flex-col gap-sm">
-        <header className="flex items-center gap-sm" aria-hidden="true">
-          <ToneIconBox tone="teal" size="sm">
-            <WorkflowIcon className="h-[18px] w-[18px]" />
-          </ToneIconBox>
-          <span className="font-mono text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
-            {content.pipeline.title}
+    <HeroDiagramShell a11yLabel={a11y}>
+      <div className="relative flex flex-col gap-sm" aria-hidden="true">
+        <div className="flex items-center justify-between">
+          <TerminalBadge dotClassName="bg-[var(--term-accent)]">
+            {content.diagramBadge}
+          </TerminalBadge>
+          <span className="font-mono text-[10px] text-[var(--term-muted)]">
+            {'//'} {content.diagramCaption}
           </span>
-        </header>
+        </div>
 
-        <CodePreviewPanel
-          code={content.heroCode.code}
-          header={content.heroCode.fileName}
-          language={content.heroCode.langBadge}
-          showWindowDots
-          size="md"
-        />
-
-        <DownArrow />
-
-        <ol className="flex flex-col gap-sm" aria-hidden="true">
-          {content.pipeline.steps.map((step, i) => (
-            <li key={step.title} className="flex flex-col gap-sm">
-              <PipelineStepRow step={step} />
-              {i < content.pipeline.steps.length - 1 && <DownArrow />}
-            </li>
-          ))}
-        </ol>
-
-        <p
-          className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep"
-          aria-hidden="true"
-        >
-          {content.pipeline.footer}
-        </p>
+        {content.stages.map((stage, i) => (
+          <div key={stage.id} className="flex flex-col gap-sm">
+            <StageRow stage={stage} />
+            {i < content.stages.length - 1 && <DownArrow />}
+          </div>
+        ))}
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
-const PipelineStepRow = ({ step }: { step: PipelineMiniStep }) => {
-  const tone = pipelineToneKey[step.pipeline];
-  const t = toneTokens[tone];
-  const Icon = stepIcon[step.pipeline];
+const StageRow = ({ stage }: { stage: HeroStage }) => {
+  const Icon = stageIcon[stage.id];
+  const t = toneTokens[stage.tone];
   return (
-    <article
-      className={cx(
-        'group flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
-        t.borderHover,
-      )}
-    >
-      <ToneIconBox tone={tone} size="sm">
-        <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
+    <article className="flex items-center gap-sm rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] px-md py-2.5 shadow-[0_2px_0_var(--term-border)]">
+      <ToneIconBox tone={stage.tone} size="sm" className="h-8 w-8">
+        <Icon className="h-4 w-4" />
       </ToneIconBox>
-      <div className="flex min-w-0 flex-col">
-        <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>
-          {step.title}
-        </span>
-        <span className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
-          {step.caption}
-        </span>
+      <div className="flex min-w-0 flex-col gap-0.5">
+        <code className={cx('font-mono text-[11px] font-bold tracking-tight', t.text)}>
+          {stage.label}
+        </code>
+        <span className="text-[10px] text-[var(--term-muted)] break-keep">{stage.caption}</span>
       </div>
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

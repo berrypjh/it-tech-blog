@@ -14,7 +14,7 @@ export const generateMetadata = async () => {
       locale === 'en'
         ? 'ref as prop · How React Element and component call path changed — React Lab'
         : 'ref as prop은 React Element와 컴포넌트 호출 경로를 어떻게 바꿨나? — React Lab',
-    description: c.hero.subtitleLines.join(' '),
+    description: c.hero.description,
   };
 };
 

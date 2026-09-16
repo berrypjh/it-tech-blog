@@ -16,7 +16,7 @@ type Story = StoryObj<typeof FinalLaunchBanner>;
 export const Default: Story = {
   args: {
     content: {
-      progressLabel: '1/15 챕터 완료',
+      progressLabel: '1/14 챕터 완료',
       copyLine1: '준비가 끝났습니다.',
       copyLine2: '이제 실제 React 저장소를 열고,',
       copyLine3: '전체 구조부터 읽어봅니다.',

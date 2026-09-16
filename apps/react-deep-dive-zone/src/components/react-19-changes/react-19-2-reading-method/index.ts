@@ -1,2 +1,2 @@
-export { After192Page } from './After192Page';
-export { after192Content } from './content';
+export { react192ReadingMethodContent } from './content';
+export { React192ReadingMethodPage } from './React192ReadingMethodPage';

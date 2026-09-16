@@ -1,205 +1,99 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { BoundaryKey } from './tone';
+import type { ToneKey } from '../../shared/tones';
 
-export type IconKey =
-  | 'server'
-  | 'monitor'
-  | 'braces'
-  | 'database'
-  | 'package'
-  | 'workflow'
-  | 'route'
-  | 'compass'
-  | 'search'
-  | 'sparkles'
-  | 'cloud'
-  | 'shield-check'
-  | 'mouse-click'
-  | 'play-circle'
-  | 'globe'
-  | 'split'
-  | 'plug'
-  | 'hammer'
-  | 'settings'
-  | 'network'
-  | 'hard-drive'
-  | 'folder'
-  | 'target'
-  | 'layers';
+export type ZoneId = 'server' | 'boundary' | 'client' | 'function';
 
-export type SupportQuestion = {
+export type HeroZone = {
+  id: ZoneId;
   label: string;
-  body: string;
-  iconKey: IconKey;
-};
-
-export type BoundaryCard = {
-  boundary: BoundaryKey;
-  title: string;
   caption: string;
-  items: string[];
-  iconKey: IconKey;
+  tone: ToneKey;
 };
 
-export type DefinitionCard = {
-  boundary: BoundaryKey;
+export type KindId = 'server' | 'client' | 'function';
+
+export type KindCard = {
+  id: KindId;
   title: string;
-  body: string;
-  iconKey: IconKey;
+  description: string;
+  badge: string;
+  tone: ToneKey;
 };
 
-export type ModuleTreeNode = {
-  indent: number;
-  label: string;
-  kind: 'server' | 'client' | 'action' | 'boundary-note';
-};
+export type CallStepId = 'invoke' | 'reference' | 'execute' | 'serialize' | 'apply';
 
-export type LegendItem = { tag: string; meaning: string; kind: 'server' | 'client' | 'boundary' };
-
-export type FlowStep = {
-  boundary: BoundaryKey;
+export type CallStep = {
+  id: CallStepId;
+  num: string;
   title: string;
-  body: string;
-  iconKey: IconKey;
+  description: string;
+  tone: ToneKey;
 };
 
-export type ResponsibilityItem = { boundary: BoundaryKey; body: string };
-
-export type ExplorerFile = {
-  key: string;
-  fileName: string;
-  kind: 'server' | 'client' | 'action';
-  analysis: {
-    type: string;
-    boundary: string;
-    bundle: string;
-    runtime: string;
-    feature: string;
-  };
-};
-
-export type Mission = {
-  number: string;
-  title: string;
-  helper: string;
-  iconKey: IconKey;
-};
-
-export type TakeawayCard = {
-  number: string;
-  boundary: BoundaryKey;
-  title: string;
-  body: string;
-  iconKey: IconKey;
+export type CapabilityRow = {
+  topic: string;
+  server: string;
+  client: string;
 };
 
 export type ServerComponentsContractContent = {
   hero: {
     badge: string;
-    titleLines: [string, string, string];
-    subtitleLines: [string, string];
-    diagram: {
-      title: string;
-      cards: BoundaryCard[];
-      boundaryLabels: {
-        useClient: { primary: string; secondary: string };
-        useServer: { primary: string; secondary: string };
-      };
-      footer: string;
-    };
+    title: { line1: string; line2: string };
+    description: string;
+    diagramBadge: string;
+    diagramCaption: string;
+    zones: HeroZone[];
   };
-  question: {
-    number: string;
-    eyebrow: string;
-    questionLines: [string, string];
-    supportQuestions: SupportQuestion[];
-  };
-  definition: {
-    number: string;
+  kinds: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    cards: DefinitionCard[];
-  };
-  useClient: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    treeTitle: string;
-    tree: ModuleTreeNode[];
-    explanationTitle: string;
-    explanationPoints: string[];
-    legendTitle: string;
-    legendItems: LegendItem[];
-  };
-  useServer: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    code: { fileName: string; langBadge: 'TS'; code: string };
-    flowTitle: string;
-    flow: FlowStep[];
-  };
-  callFlow: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    steps: FlowStep[];
-  };
-  reactServerExport: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    descriptionCardTitle: string;
-    descriptionCardBody: string;
-    code: { fileName: string; langBadge: 'JSON'; code: string };
-    explanationTitle: string;
-    explanationPoints: string[];
+    cards: KindCard[];
     note: string;
   };
-  frameworkBoundary: {
-    number: string;
+  directives: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    reactCardTitle: string;
-    reactItems: ResponsibilityItem[];
-    centerLabel: string;
-    centerSubLabel: string;
-    frameworkCardTitle: string;
-    frameworkItems: ResponsibilityItem[];
+    client: { title: string; badge: string; description: string; bullets: string[] };
+    bridge: { headline: string; sub: string };
+    server: { title: string; badge: string; description: string; bullets: string[] };
+    note: string;
   };
-  explorer: {
-    number: string;
+  callFlow: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    projectStructureTitle: string;
-    projectStructure: ModuleTreeNode[];
-    fileSelectionTitle: string;
-    analysisTitle: string;
-    defaultFileKey: string;
-    files: ExplorerFile[];
-    ruleSummaryTitle: string;
-    rules: string[];
+    steps: CallStep[];
+    note: string;
   };
-  mission: {
-    number: string;
+  capabilities: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    missions: Mission[];
+    headers: [string, string, string];
+    rows: CapabilityRow[];
+    note: string;
   };
-  takeaways: {
-    number: string;
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
-    cards: TakeawayCard[];
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -210,384 +104,225 @@ export type ServerComponentsContractContent = {
   };
 };
 
+const KO_CODE = `// packages/react/package.json - 번들러가 읽는 계약
+"exports": {
+  ".": {
+    "react-server": "./react.react-server.js",   // 서버 그래프에서 고르는 빌드
+    "default": "./index.js"                       // 그 외 모든 곳
+  },
+  "./jsx-runtime": {
+    "react-server": "./jsx-runtime.react-server.js",
+    "default": "./jsx-runtime.js"
+  }
+}
+
+// react-server 빌드에는 useState 같은 클라이언트 전용 API가 아예 없다.
+// 서버 그래프에서 useState를 부르면 런타임이 아니라 import 단계에서 막힌다.`;
+
+const EN_CODE = `// packages/react/package.json - the contract a bundler reads
+"exports": {
+  ".": {
+    "react-server": "./react.react-server.js",   // the build chosen in the server graph
+    "default": "./index.js"                       // everywhere else
+  },
+  "./jsx-runtime": {
+    "react-server": "./jsx-runtime.react-server.js",
+    "default": "./jsx-runtime.js"
+  }
+}
+
+// The react-server build simply has no client-only APIs such as useState.
+// Calling useState in the server graph fails at import time, not at runtime.`;
+
+const PACKAGE_HREF = 'https://github.com/facebook/react/blob/main/packages/react/package.json';
+
 const ko: ServerComponentsContractContent = {
   hero: {
     badge: 'React 19 변화 · 7/10단계',
-    titleLines: ['Server Components는', 'React 19에서 어떤 경계와', '계약을 안정화했나?'],
-    subtitleLines: [
-      '핵심은 서버에서 실행되는 컴포넌트가 아니라,',
-      '서버와 클라이언트의 경계를 어떻게 선언하고 전달하는가입니다.',
-    ],
-    diagram: {
-      title: 'React 19의 경계 모델',
-      cards: [
-        {
-          boundary: 'server',
-          title: 'Server Component',
-          caption: '서버에서 실행',
-          items: ['DB / filesystem 접근', '렌더 결과만 전송'],
-          iconKey: 'server',
-        },
-        {
-          boundary: 'client',
-          title: 'Client Component',
-          caption: '클라이언트에서 실행',
-          items: ['상태 / 이벤트 / Effects', '브라우저 API 접근'],
-          iconKey: 'monitor',
-        },
-        {
-          boundary: 'function',
-          title: 'Server Function',
-          caption: '서버에서 실행되는 함수',
-          items: ['서버 리소스 접근', '호출은 참조로 전달'],
-          iconKey: 'braces',
-        },
-      ],
-      boundaryLabels: {
-        useClient: { primary: '경계', secondary: `'use client'` },
-        useServer: { primary: '호출 참조', secondary: `'use server'` },
-      },
-      footer: 'React 19의 경계 모델',
-    },
-  },
-  question: {
-    number: '02',
-    eyebrow: '오늘 해결할 질문',
-    questionLines: [
-      'React 19는 서버와 클라이언트 코드의 경계를',
-      '어떤 문법과 패키지 계약으로 표현할까?',
-    ],
-    supportQuestions: [
-      { label: '경계 선언', body: `'use client' / 'use server'`, iconKey: 'split' },
-      { label: '참조 전달', body: 'Server Function Reference', iconKey: 'route' },
-      { label: '패키지 계약', body: 'react-server export condition', iconKey: 'package' },
-      { label: '책임 분리', body: 'React vs Framework', iconKey: 'workflow' },
-    ],
-  },
-  definition: {
-    number: '01',
-    eyebrow: '서버 컴포넌트 정의',
-    title: 'Server Component란 무엇인가?',
+    title: { line1: 'RSC의 핵심은 서버 실행이 아니라', line2: '모듈 그래프가 둘로 갈린 것이다' },
     description:
-      'Server Component는 단지 "서버에서 실행되는 컴포넌트"가 아니라, 직렬화·전송·번들 측면에서 다른 컴포넌트입니다.',
+      '어디서 도느냐보다 어디에 속하느냐가 먼저입니다. 두 그래프를 잇는 문법이 use client와 use server입니다.',
+    diagramBadge: 'two graphs',
+    diagramCaption: 'server graph ↔ client graph',
+    zones: [
+      { id: 'server', label: 'Server Component', caption: '서버 그래프에 속한다', tone: 'emerald' },
+      { id: 'boundary', label: "'use client'", caption: '여기서 그래프가 갈린다', tone: 'indigo' },
+      {
+        id: 'client',
+        label: 'Client Component',
+        caption: '클라이언트 그래프에 속한다',
+        tone: 'cyan',
+      },
+      { id: 'function', label: "'use server'", caption: '참조로 서버를 다시 부른다', tone: 'teal' },
+    ],
+  },
+  kinds: {
+    badge: '01',
+    eyebrow: 'three kinds',
+    title: '이름이 비슷한 세 가지를 먼저 갈라 둔다',
+    description:
+      'Server Component와 Server Function은 다른 것입니다. 하나는 렌더 결과를, 하나는 호출 참조를 만듭니다.',
     cards: [
       {
-        boundary: 'server',
-        title: '서버에서 실행',
-        body: '요청 시 서버에서 렌더되고, 결과를 직렬화해 전송합니다.',
-        iconKey: 'server',
+        id: 'server',
+        title: 'Server Component',
+        description:
+          '서버에서 렌더되고 결과만 직렬화되어 내려옵니다. 코드 자체는 브라우저로 가지 않습니다.',
+        badge: '기본값',
+        tone: 'emerald',
       },
       {
-        boundary: 'function',
-        title: 'DB / filesystem 접근 가능',
-        body: '데이터베이스, 파일시스템 등 서버 리소스를 직접 사용할 수 있습니다.',
-        iconKey: 'database',
+        id: 'client',
+        title: 'Client Component',
+        description:
+          "'use client'가 붙은 파일부터입니다. 상태·이벤트·브라우저 API는 여기서만 됩니다.",
+        badge: "'use client'",
+        tone: 'cyan',
       },
       {
-        boundary: 'react',
-        title: '클라이언트 bundle에 포함되지 않음',
-        body: '브라우저로 전송되지 않으며 번들 크기에 영향을 주지 않습니다.',
-        iconKey: 'package',
+        id: 'function',
+        title: 'Server Function',
+        description:
+          '클라이언트가 부르지만 본문은 서버에서 돕니다. 클라이언트에는 참조만 내려갑니다.',
+        badge: "'use server'",
+        tone: 'teal',
       },
     ],
+    note: 'Server Component가 기본값이라는 점이 중요합니다. 지시어가 없는 파일은 서버 그래프에 속합니다.',
   },
-  useClient: {
-    number: '02',
-    eyebrow: '클라이언트 경계 선언',
-    title: "'use client' 경계: 클라이언트 컴포넌트 진입점",
+  directives: {
+    badge: '02',
+    eyebrow: 'two directives',
+    title: '두 지시어는 반대 방향의 문이다',
     description:
-      "`'use client'`가 선언된 파일을 기준으로 그 아래는 모두 클라이언트 모듈 경계가 됩니다.",
-    treeTitle: '모듈 트리',
-    tree: [
-      { indent: 0, label: 'PostPage.server.tsx (Server Component)', kind: 'server' },
-      { indent: 1, label: '├─ Article.server.tsx (Server Component)', kind: 'server' },
-      { indent: 1, label: '└─ CommentEditor.client.tsx (Client Component)', kind: 'client' },
-      { indent: 2, label: "   ↑ 'use client' 선언으로 경계 시작", kind: 'boundary-note' },
-    ],
-    explanationTitle: '설명',
-    explanationPoints: [
-      "'use client'가 선언된 파일부터 하위는 모두 클라이언트 경계입니다.",
-      '이 경계를 기준으로 클라이언트 참조와 필요한 코드만 번들에 포함됩니다.',
-      '서버 컴포넌트는 경계 너머의 클라이언트 컴포넌트를 사용할 수 있습니다.',
-    ],
-    legendTitle: '범례',
-    legendItems: [
-      { tag: '.server.tsx', meaning: '서버 컴포넌트', kind: 'server' },
-      { tag: '.client.tsx', meaning: '클라이언트 컴포넌트', kind: 'client' },
-      { tag: 'Boundary', meaning: '서버와 클라이언트 사이 경계', kind: 'boundary' },
-    ],
-  },
-  useServer: {
-    number: '03',
-    eyebrow: '서버 함수 선언',
-    title: "'use server' 경계: 서버 함수 선언",
-    description:
-      "`'use server'`로 표시한 함수는 클라이언트에서 호출되어도 본문은 서버에서 실행됩니다. 클라이언트에는 참조만 전달됩니다.",
-    code: {
-      fileName: 'actions.ts',
-      langBadge: 'TS',
-      code: `"use server";
-
-export async function saveComment(formData: FormData) {
-  // 서버 리소스 접근 가능
-  const content = formData.get("content");
-
-  await db.comment.create({
-    data: { content },
-  });
-
-  revalidatePath("/post");
-  return { ok: true };
-}`,
+      '둘 다 문자열 한 줄이지만 하는 일이 다릅니다. 하나는 경계를 긋고, 하나는 경계를 건너 돌아옵니다.',
+    client: {
+      title: "'use client'",
+      badge: '경계를 긋는다',
+      description: '이 파일부터 아래는 클라이언트 그래프라고 번들러에게 알립니다.',
+      bullets: [
+        '파일 맨 위에 한 번 쓰면 그 모듈과 그 아래가 클라이언트가 된다',
+        '서버 컴포넌트는 이 경계 너머의 컴포넌트를 자식으로 쓸 수 있다',
+        '경계를 넘겨 주는 props는 직렬화 가능한 값이어야 한다',
+        '함수를 넘기려면 그 함수가 Server Function이어야 한다',
+      ],
     },
-    flowTitle: '서버 함수 호출 흐름',
-    flow: [
-      {
-        boundary: 'client',
-        title: 'Client UI',
-        body: '버튼 클릭 등',
-        iconKey: 'mouse-click',
-      },
-      {
-        boundary: 'contract',
-        title: 'Server Function Reference 전달',
-        body: '함수 코드가 아닌 참조만 전송',
-        iconKey: 'route',
-      },
-      {
-        boundary: 'server',
-        title: '서버에서 실행',
-        body: 'DB / 파일 / API',
-        iconKey: 'server',
-      },
-      {
-        boundary: 'contract',
-        title: '결과 직렬화',
-        body: '클라이언트로 전달',
-        iconKey: 'network',
-      },
-      {
-        boundary: 'function',
-        title: 'UI 업데이트 & 반영',
-        body: '클라이언트 UI 갱신',
-        iconKey: 'sparkles',
-      },
-    ],
+    bridge: {
+      headline: '한쪽은 경계를 긋고\n한쪽은 경계를 건넌다',
+      sub: '그래서 둘은 대칭이 아닙니다. use client는 모듈에, use server는 함수에 붙습니다.',
+    },
+    server: {
+      title: "'use server'",
+      badge: '경계를 건넌다',
+      description: '이 함수는 서버에서만 실행된다고 표시하고, 호출 가능한 참조를 만듭니다.',
+      bullets: [
+        '파일 맨 위 또는 함수 본문 첫 줄에 쓴다',
+        '클라이언트에는 함수 코드가 아니라 id 같은 참조만 내려간다',
+        '호출하면 네트워크 요청이 되므로 인자는 직렬화 가능해야 한다',
+        'form의 action에 그대로 꽂으면 두 번째 페이지의 Action 흐름과 합류한다',
+      ],
+    },
+    note: "이름 때문에 헷갈리기 쉽습니다. 'use client'는 클라이언트에서 실행하라는 뜻이 아니라, 여기가 클라이언트 진입점이라는 표시입니다.",
   },
   callFlow: {
-    number: '04',
-    eyebrow: '서버 함수 호출',
-    title: 'Server Function 호출',
-    description:
-      'Server Function의 핵심은 “함수 코드를 보내는 것이 아니라 참조를 보낸다”는 점입니다.',
+    badge: '03',
+    eyebrow: 'one call',
+    title: 'Server Function 한 번이 지나가는 다섯 칸',
+    description: '평범한 함수 호출처럼 보이지만 실제로는 네트워크를 한 번 건너갑니다.',
     steps: [
       {
-        boundary: 'client',
-        title: 'Client UI',
-        body: '사용자 상호작용으로 Server Function을 호출',
-        iconKey: 'mouse-click',
+        id: 'invoke',
+        num: '01',
+        title: '클라이언트에서 호출한다',
+        description: '버튼 클릭이든 form 제출이든, 코드에서는 그냥 함수를 부르는 모양입니다.',
+        tone: 'cyan',
       },
       {
-        boundary: 'contract',
-        title: 'Reference 전달',
-        body: '함수 코드를 전송하는 것이 아니라 참조(Reference)를 전송',
-        iconKey: 'route',
+        id: 'reference',
+        num: '02',
+        title: '참조와 인자만 보낸다',
+        description:
+          '함수 본문은 브라우저에 없습니다. 어떤 함수인지 가리키는 id와 직렬화된 인자만 갑니다.',
+        tone: 'teal',
       },
       {
-        boundary: 'server',
-        title: '서버 실행',
-        body: '서버에서 함수가 실행되고 결과가 만들어짐',
-        iconKey: 'server',
+        id: 'execute',
+        num: '03',
+        title: '서버에서 본문이 돈다',
+        description: 'DB나 파일시스템에 닿는 코드가 이 칸 안에서만 실행됩니다.',
+        tone: 'emerald',
       },
       {
-        boundary: 'function',
-        title: '결과 반영',
-        body: '결과가 직렬화되어 클라이언트로 전송, UI가 갱신됨',
-        iconKey: 'sparkles',
+        id: 'serialize',
+        num: '04',
+        title: '결과를 직렬화해 돌려준다',
+        description:
+          '반환값도 경계를 넘으므로 직렬화 가능해야 합니다. 클래스 인스턴스는 넘길 수 없습니다.',
+        tone: 'indigo',
+      },
+      {
+        id: 'apply',
+        num: '05',
+        title: 'UI에 반영한다',
+        description: 'Action으로 호출했다면 이 시점에 pending이 꺼지고 결과가 상태로 들어갑니다.',
+        tone: 'sky',
       },
     ],
+    note: '02와 04가 이 모델의 제약입니다. 경계를 넘는 모든 값은 직렬화를 통과해야 합니다.',
   },
-  reactServerExport: {
-    number: '05',
-    eyebrow: '패키지 계약',
-    title: 'react-server export condition',
-    description:
-      '라이브러리가 서버/클라이언트별로 다른 빌드를 제공할 수 있도록, package.json의 exports에 새로운 조건을 둡니다.',
-    descriptionCardTitle: '왜 필요한가?',
-    descriptionCardBody:
-      '라이브러리가 서버 전용 번들을 따로 제공할 수 있도록 React 19가 조건부 export 계약을 정리합니다.',
-    code: {
-      fileName: 'package.json · 발췌',
-      langBadge: 'JSON',
-      code: `{
-  "name": "my-lib",
-  "exports": {
-    ".": {
-      "react-server": "./dist/server.js",
-      "default": "./dist/client.js"
-    }
-  }
-}`,
-    },
-    explanationTitle: `'react-server' 조건이 매칭되면 서버 전용 구현을 사용합니다.`,
-    explanationPoints: [
-      '서버 번들에서는 서버 런타임에 맞는 코드 사용',
-      '클라이언트에서는 default 사용',
-      '더 작은 번들과 더 명확한 책임 분리 가능',
+  capabilities: {
+    badge: '04',
+    eyebrow: 'what you can do',
+    title: '어느 쪽에서 무엇이 되는가',
+    description: '경계를 잘못 그었을 때 실제로 부딪히는 다섯 가지입니다.',
+    headers: ['확인할 것', 'Server Component', 'Client Component'],
+    rows: [
+      {
+        topic: 'useState / useEffect',
+        server: '쓸 수 없다 - 빌드에 존재하지 않는다',
+        client: '평소처럼 쓴다',
+      },
+      {
+        topic: 'onClick 같은 이벤트',
+        server: '넘길 수 없다 - 직렬화되지 않는다',
+        client: '평소처럼 쓴다',
+      },
+      {
+        topic: 'DB와 파일시스템',
+        server: '직접 접근한다',
+        client: '접근할 수 없다 - Server Function으로 부른다',
+      },
+      {
+        topic: '클라이언트 번들 크기',
+        server: '영향이 없다 - 코드가 내려가지 않는다',
+        client: '그대로 번들에 포함된다',
+      },
+      {
+        topic: 'async 컴포넌트',
+        server: '가능하다 - 렌더가 await를 기다린다',
+        client: '불가능하다 - use()로 읽는다',
+      },
     ],
-    note: 'Node.js 조건부 exports와 유사한 개념',
+    note: '마지막 줄이 앞 페이지와 이어집니다. 클라이언트에서 비동기 값을 읽는 방법이 곧 use()입니다.',
   },
-  frameworkBoundary: {
-    number: '06',
-    eyebrow: '책임 경계',
-    title: '프레임워크 API와 React API의 경계',
-    description:
-      'React 19는 RSC의 “경계와 계약”을 정의하고, 프레임워크는 그 위에서 번들·전송·라우팅·캐싱을 구현합니다.',
-    reactCardTitle: 'React가 제공하는 것 (핵심 모델)',
-    reactItems: [
-      { boundary: 'react', body: 'Server Components 개념' },
-      { boundary: 'react', body: "'use client', 'use server' directives" },
-      { boundary: 'react', body: 'Server Function 참조 모델' },
-      { boundary: 'react', body: '경계 기반 렌더링 & 직렬화 계약' },
-      { boundary: 'react', body: 'react-server export condition' },
-    ],
-    centerLabel: 'RSC',
-    centerSubLabel: '책임 분리',
-    frameworkCardTitle: '프레임워크가 구현하는 것',
-    frameworkItems: [
-      { boundary: 'framework', body: '번들러 구성 / 코드 분할 전략' },
-      { boundary: 'framework', body: 'transport 네트워크 프로토콜' },
-      { boundary: 'framework', body: '라우팅 / 데이터 로딩 통합' },
-      { boundary: 'framework', body: '캐싱 전략' },
-      { boundary: 'framework', body: '배포 / 런타임 환경 / 에러 처리' },
-    ],
-  },
-  explorer: {
-    number: '07',
-    eyebrow: '코드 체크포인트',
-    title: 'Module Boundary Explorer',
-    description:
-      '파일을 선택하면 그 파일이 어디서 실행되는 모듈인지, 어느 번들에 들어가는지 한눈에 확인할 수 있습니다.',
-    projectStructureTitle: '프로젝트 구조',
-    projectStructure: [
-      { indent: 0, label: 'App.server.tsx', kind: 'server' },
-      { indent: 1, label: '├─ Header.server.tsx', kind: 'server' },
-      { indent: 1, label: '├─ Editor.client.tsx', kind: 'client' },
-      { indent: 1, label: '└─ actions.ts', kind: 'action' },
-    ],
-    fileSelectionTitle: '파일 선택',
-    analysisTitle: '분석 결과',
-    defaultFileKey: 'editor',
-    files: [
-      {
-        key: 'header',
-        fileName: 'Header.server.tsx',
-        kind: 'server',
-        analysis: {
-          type: '서버 컴포넌트',
-          boundary: '서버 경계 (기본)',
-          bundle: '클라이언트 번들 미포함',
-          runtime: '서버',
-          feature: 'DB / 파일 / 비동기 데이터 접근',
-        },
-      },
-      {
-        key: 'editor',
-        fileName: 'Editor.client.tsx',
-        kind: 'client',
-        analysis: {
-          type: '클라이언트 컴포넌트',
-          boundary: `'use client' 선언 파일`,
-          bundle: '클라이언트 번들 포함',
-          runtime: '브라우저',
-          feature: '상태, 이벤트, 훅 사용 가능',
-        },
-      },
-      {
-        key: 'actions',
-        fileName: 'actions.ts',
-        kind: 'action',
-        analysis: {
-          type: 'Server Function',
-          boundary: `'use server' 선언 모듈`,
-          bundle: '참조만 클라이언트로 전달',
-          runtime: '서버',
-          feature: '서버 리소스 접근, 직렬화된 결과 반환',
-        },
-      },
-    ],
-    ruleSummaryTitle: '핵심 규칙 요약',
-    rules: [
-      '서버 → 클라이언트는 경계를 넘어 참조로 전달',
-      '클라이언트 → 서버는 Server Function 참조 호출',
-      '경계는 파일 단위로 시작된다',
-    ],
-  },
-  mission: {
-    number: '08',
-    eyebrow: '코드 따라가기',
-    title: '직접 따라가기 보기',
-    description: '경계 / 함수 / 책임 분리를 직접 짚어보며 RSC의 모델을 손에 익혀 봅니다.',
-    missions: [
-      {
-        number: '01',
-        title: `'use client'와 'use server'를 직접 비교한다`,
-        helper: '둘의 목적과 적용 범위가 다릅니다.',
-        iconKey: 'split',
-      },
-      {
-        number: '02',
-        title: 'Server Component와 Server Function을 구분한다',
-        helper: '컴포넌트는 렌더링, 함수는 실행 계약입니다.',
-        iconKey: 'braces',
-      },
-      {
-        number: '03',
-        title: 'React가 정한 경계와 프레임워크 구현을 분리한다',
-        helper: '책임을 나누어 읽는 습관을 들이기',
-        iconKey: 'workflow',
-      },
-      {
-        number: '04',
-        title: 'react-server export condition 예제를 코드로 확인한다',
-        helper: '라이브러리 관점의 이점 파악',
-        iconKey: 'package',
-      },
-    ],
-  },
-  takeaways: {
-    number: '09',
-    eyebrow: '핵심 정리',
-    title: '핵심 정리',
-    cards: [
-      {
-        number: '01',
-        boundary: 'server',
-        title: 'React 19는 서버-클라이언트 경계 표현을 안정화했다.',
-        body: `'use client'로 경계를 선언하고, 참조 기반으로 필요한 코드만 전달합니다.`,
-        iconKey: 'shield-check',
-      },
-      {
-        number: '02',
-        boundary: 'function',
-        title: `'use client'와 'use server'는 역할이 다르다.`,
-        body: `'use client'는 경계 선언, 'use server'는 서버 함수 선언입니다.`,
-        iconKey: 'split',
-      },
-      {
-        number: '03',
-        boundary: 'framework',
-        title: 'RSC는 React와 프레임워크 책임을 구분해서 읽어야 한다.',
-        body: 'React는 계약을 정의하고, 프레임워크는 이를 구현하고 최적화합니다.',
-        iconKey: 'workflow',
-      },
-    ],
+  checkpoint: {
+    badge: '05',
+    eyebrow: 'code checkpoint',
+    title: '그래프가 갈린다는 사실이 적힌 곳',
+    fileLabel: '파일',
+    filePath: 'packages/react/package.json',
+    lookForLabel: '볼 것',
+    lookFor: '"react-server" export condition',
+    whyLabel: '설명',
+    why: '경계가 런타임 검사가 아니라 번들러 계약이라는 증거입니다. 서버 그래프는 React의 다른 빌드를 아예 다른 파일로 가져갑니다.',
+    code: KO_CODE,
+    primaryCta: 'react/package.json 보기',
+    primaryHref: PACKAGE_HREF,
   },
   nextStep: {
-    eyebrow: '다음 학습으로 이어집니다',
-    title: 'Activity는 숨긴 UI를 어떻게 관리할까?',
-    description:
-      '다음 페이지에서는 React 19.2의 Activity가 숨겨진 UI의 상태와 우선순위를 어떻게 관리하는지 살펴봅니다.',
+    eyebrow: '다음 단계',
+    title: '보이지 않는 UI는 어떻게 살려 둘까',
+    description: '서버 경계 축을 마치고 19.2가 넓힌 우선순위 축으로 넘어갑니다.',
     cta: '다음 페이지로 이동',
     href: '/activity-hidden-ui',
   },
@@ -596,383 +331,206 @@ export async function saveComment(formData: FormData) {
 const en: ServerComponentsContractContent = {
   hero: {
     badge: 'React 19 Changes · 7/10',
-    titleLines: [
-      'What boundaries and contracts',
-      'did Server Components stabilize',
-      'in React 19?',
-    ],
-    subtitleLines: [
-      'The point is not "a component that runs on the server",',
-      'but how the server / client boundary is declared and passed.',
-    ],
-    diagram: {
-      title: "React 19's boundary model",
-      cards: [
-        {
-          boundary: 'server',
-          title: 'Server Component',
-          caption: 'Runs on the server',
-          items: ['DB / filesystem access', 'Only the rendered output is sent'],
-          iconKey: 'server',
-        },
-        {
-          boundary: 'client',
-          title: 'Client Component',
-          caption: 'Runs on the client',
-          items: ['State / events / Effects', 'Browser API access'],
-          iconKey: 'monitor',
-        },
-        {
-          boundary: 'function',
-          title: 'Server Function',
-          caption: 'A function that runs on the server',
-          items: ['Server resource access', 'Invoked via a reference'],
-          iconKey: 'braces',
-        },
-      ],
-      boundaryLabels: {
-        useClient: { primary: 'boundary', secondary: `'use client'` },
-        useServer: { primary: 'call reference', secondary: `'use server'` },
-      },
-      footer: "React 19's boundary model",
+    title: {
+      line1: 'RSC is not about running on a server.',
+      line2: 'The module graph split in two.',
     },
-  },
-  question: {
-    number: '02',
-    eyebrow: "Today's question",
-    questionLines: [
-      'How does React 19 express the server / client',
-      'code boundary as a syntax + package contract?',
-    ],
-    supportQuestions: [
-      { label: 'Boundary directives', body: `'use client' / 'use server'`, iconKey: 'split' },
-      { label: 'Passing references', body: 'Server Function Reference', iconKey: 'route' },
-      { label: 'Package contract', body: 'react-server export condition', iconKey: 'package' },
-      { label: 'Responsibility split', body: 'React vs Framework', iconKey: 'workflow' },
-    ],
-  },
-  definition: {
-    number: '01',
-    eyebrow: 'DEFINITION',
-    title: 'What is a Server Component?',
     description:
-      'Not just "a component that runs on the server" — it differs in serialization, transport, and bundle.',
+      'Where code belongs matters before where it runs. use client and use server are the syntax that joins the two graphs.',
+    diagramBadge: 'two graphs',
+    diagramCaption: 'server graph ↔ client graph',
+    zones: [
+      {
+        id: 'server',
+        label: 'Server Component',
+        caption: 'belongs to the server graph',
+        tone: 'emerald',
+      },
+      { id: 'boundary', label: "'use client'", caption: 'the graph splits here', tone: 'indigo' },
+      {
+        id: 'client',
+        label: 'Client Component',
+        caption: 'belongs to the client graph',
+        tone: 'cyan',
+      },
+      {
+        id: 'function',
+        label: "'use server'",
+        caption: 'calls back across by reference',
+        tone: 'teal',
+      },
+    ],
+  },
+  kinds: {
+    badge: '01',
+    eyebrow: 'three kinds',
+    title: 'Separate the three similar names first',
+    description:
+      'A Server Component and a Server Function are different things: one produces render output, the other a call reference.',
     cards: [
       {
-        boundary: 'server',
-        title: 'Runs on the server',
-        body: 'Rendered server-side per request; only the result is serialized and sent.',
-        iconKey: 'server',
+        id: 'server',
+        title: 'Server Component',
+        description:
+          'Rendered on the server; only the result is serialized down. The code never reaches the browser.',
+        badge: 'the default',
+        tone: 'emerald',
       },
       {
-        boundary: 'function',
-        title: 'Direct DB / filesystem access',
-        body: 'Can use server resources like databases and the filesystem directly.',
-        iconKey: 'database',
+        id: 'client',
+        title: 'Client Component',
+        description:
+          "Starts at a file marked 'use client'. State, events and browser APIs only work here.",
+        badge: "'use client'",
+        tone: 'cyan',
       },
       {
-        boundary: 'react',
-        title: 'Not in the client bundle',
-        body: "It isn't shipped to the browser, so it doesn't grow the bundle.",
-        iconKey: 'package',
+        id: 'function',
+        title: 'Server Function',
+        description:
+          'Called from the client but its body runs on the server. Only a reference goes down.',
+        badge: "'use server'",
+        tone: 'teal',
       },
     ],
+    note: 'That Server Component is the default matters: a file with no directive belongs to the server graph.',
   },
-  useClient: {
-    number: '02',
-    eyebrow: 'CLIENT BOUNDARY',
-    title: "'use client' boundary: the client-component entry point",
+  directives: {
+    badge: '02',
+    eyebrow: 'two directives',
+    title: 'The two directives are doors facing opposite ways',
     description:
-      "From any file marked `'use client'`, everything below becomes a client module boundary.",
-    treeTitle: 'Module tree',
-    tree: [
-      { indent: 0, label: 'PostPage.server.tsx (Server Component)', kind: 'server' },
-      { indent: 1, label: '├─ Article.server.tsx (Server Component)', kind: 'server' },
-      { indent: 1, label: '└─ CommentEditor.client.tsx (Client Component)', kind: 'client' },
-      { indent: 2, label: "   ↑ boundary starts at 'use client'", kind: 'boundary-note' },
-    ],
-    explanationTitle: 'What it means',
-    explanationPoints: [
-      "Once 'use client' is declared, every child below is on the client side.",
-      'Only client references and the code they need ship in the client bundle.',
-      'Server components can use client components across the boundary.',
-    ],
-    legendTitle: 'Legend',
-    legendItems: [
-      { tag: '.server.tsx', meaning: 'Server component', kind: 'server' },
-      { tag: '.client.tsx', meaning: 'Client component', kind: 'client' },
-      { tag: 'Boundary', meaning: 'Boundary between server and client', kind: 'boundary' },
-    ],
-  },
-  useServer: {
-    number: '03',
-    eyebrow: 'SERVER FUNCTION',
-    title: "'use server' boundary: declaring server functions",
-    description:
-      "A function marked `'use server'` can be called from the client, but the body executes on the server. The client only receives a reference.",
-    code: {
-      fileName: 'actions.ts',
-      langBadge: 'TS',
-      code: `"use server";
-
-export async function saveComment(formData: FormData) {
-  // server resources are accessible
-  const content = formData.get("content");
-
-  await db.comment.create({
-    data: { content },
-  });
-
-  revalidatePath("/post");
-  return { ok: true };
-}`,
+      'Both are a one-line string, but they do different jobs. One draws the border; the other crosses back over it.',
+    client: {
+      title: "'use client'",
+      badge: 'draws the border',
+      description: 'It tells the bundler that this file and below belong to the client graph.',
+      bullets: [
+        'Written once at the top of a file, it makes that module and its imports client code',
+        'A server component may still use components from beyond that border as children',
+        'Props crossing the border must be serializable values',
+        'To pass a function across, that function has to be a Server Function',
+      ],
     },
-    flowTitle: 'Server-function call flow',
-    flow: [
-      {
-        boundary: 'client',
-        title: 'Client UI',
-        body: 'User clicks a button, etc.',
-        iconKey: 'mouse-click',
-      },
-      {
-        boundary: 'contract',
-        title: 'Server Function Reference is passed',
-        body: 'Only a reference is sent, not the function code',
-        iconKey: 'route',
-      },
-      {
-        boundary: 'server',
-        title: 'Runs on the server',
-        body: 'DB / files / APIs',
-        iconKey: 'server',
-      },
-      {
-        boundary: 'contract',
-        title: 'Result serialized',
-        body: 'Sent back to the client',
-        iconKey: 'network',
-      },
-      {
-        boundary: 'function',
-        title: 'UI updates',
-        body: 'The client UI is updated',
-        iconKey: 'sparkles',
-      },
-    ],
+    bridge: {
+      headline: 'One draws the border,\nthe other crosses it',
+      sub: 'They are not symmetric: use client applies to a module, use server applies to a function.',
+    },
+    server: {
+      title: "'use server'",
+      badge: 'crosses the border',
+      description:
+        'It marks a function as server-only and produces a reference the client can call.',
+      bullets: [
+        'Written at the top of a file or as the first line of a function body',
+        'The client gets a reference such as an id, never the function code',
+        'Calling it is a network request, so the arguments must be serializable',
+        'Drop it into a form action and it joins the Action flow from page two',
+      ],
+    },
+    note: "The names mislead: 'use client' does not mean run this on the client, it marks where the client entry point is.",
   },
   callFlow: {
-    number: '04',
-    eyebrow: 'CALL FLOW',
-    title: 'Calling a Server Function',
-    description: "The key idea: it's not function code that's sent, it's a reference.",
+    badge: '03',
+    eyebrow: 'one call',
+    title: 'The five slots one Server Function call passes through',
+    description: 'It looks like an ordinary function call, but it crosses the network once.',
     steps: [
       {
-        boundary: 'client',
-        title: 'Client UI',
-        body: 'User interaction triggers a Server Function call',
-        iconKey: 'mouse-click',
+        id: 'invoke',
+        num: '01',
+        title: 'The client calls it',
+        description: 'Click or form submit, in code it looks exactly like calling a function.',
+        tone: 'cyan',
       },
       {
-        boundary: 'contract',
-        title: 'Reference passed',
-        body: 'A reference is sent — not the function code',
-        iconKey: 'route',
+        id: 'reference',
+        num: '02',
+        title: 'Only a reference and arguments go out',
+        description:
+          'The body is not in the browser. An id identifying the function and serialized arguments travel.',
+        tone: 'teal',
       },
       {
-        boundary: 'server',
-        title: 'Server runs it',
-        body: 'The function executes on the server and produces a result',
-        iconKey: 'server',
+        id: 'execute',
+        num: '03',
+        title: 'The body runs on the server',
+        description: 'Code touching a database or the filesystem only ever runs inside this slot.',
+        tone: 'emerald',
       },
       {
-        boundary: 'function',
-        title: 'Result applied',
-        body: 'Result is serialized, sent to the client, and the UI updates',
-        iconKey: 'sparkles',
+        id: 'serialize',
+        num: '04',
+        title: 'The result is serialized back',
+        description:
+          'The return value crosses the border too, so it must serialize. Class instances cannot travel.',
+        tone: 'indigo',
+      },
+      {
+        id: 'apply',
+        num: '05',
+        title: 'The UI is updated',
+        description:
+          'Called through an Action, this is when pending turns off and the result becomes state.',
+        tone: 'sky',
       },
     ],
+    note: 'Slots 02 and 04 are the constraint of this model: everything crossing the border must survive serialization.',
   },
-  reactServerExport: {
-    number: '05',
-    eyebrow: 'PACKAGE CONTRACT',
-    title: 'react-server export condition',
+  capabilities: {
+    badge: '04',
+    eyebrow: 'what you can do',
+    title: 'What works on which side',
     description:
-      "A new condition in package.json's exports lets a library ship a server-only build alongside the client build.",
-    descriptionCardTitle: 'Why is it needed?',
-    descriptionCardBody:
-      'React 19 formalizes a conditional-export contract so libraries can ship a server-only bundle.',
-    code: {
-      fileName: 'package.json · excerpt',
-      langBadge: 'JSON',
-      code: `{
-  "name": "my-lib",
-  "exports": {
-    ".": {
-      "react-server": "./dist/server.js",
-      "default": "./dist/client.js"
-    }
-  }
-}`,
-    },
-    explanationTitle: `When the 'react-server' condition matches, the server-only build is used.`,
-    explanationPoints: [
-      'Server bundle uses code tuned for the server runtime',
-      'Client uses the default export',
-      'Smaller bundles and clearer responsibility split',
+      'These five are what you actually hit when the border is drawn in the wrong place.',
+    headers: ['What to check', 'Server Component', 'Client Component'],
+    rows: [
+      {
+        topic: 'useState / useEffect',
+        server: 'Unavailable - not in that build at all',
+        client: 'Works as usual',
+      },
+      {
+        topic: 'Handlers such as onClick',
+        server: 'Cannot be passed - it does not serialize',
+        client: 'Works as usual',
+      },
+      {
+        topic: 'Database and filesystem',
+        server: 'Accessed directly',
+        client: 'No access - call a Server Function',
+      },
+      {
+        topic: 'Client bundle size',
+        server: 'No effect - the code never ships',
+        client: 'Included in the bundle as written',
+      },
+      {
+        topic: 'async components',
+        server: 'Allowed - the render awaits',
+        client: 'Not allowed - read it with use()',
+      },
     ],
-    note: "Similar to Node.js's conditional exports.",
+    note: 'The last row loops back to the previous page: use() is how the client reads an async value.',
   },
-  frameworkBoundary: {
-    number: '06',
-    eyebrow: 'RESPONSIBILITY BOUNDARY',
-    title: 'React API vs Framework API boundary',
-    description:
-      'React 19 defines the RSC "boundary and contract"; frameworks implement bundling, transport, routing, caching on top.',
-    reactCardTitle: 'What React provides (core model)',
-    reactItems: [
-      { boundary: 'react', body: 'Server Components concept' },
-      { boundary: 'react', body: `'use client', 'use server' directives` },
-      { boundary: 'react', body: 'Server Function reference model' },
-      { boundary: 'react', body: 'Boundary-based rendering & serialization contract' },
-      { boundary: 'react', body: 'react-server export condition' },
-    ],
-    centerLabel: 'RSC',
-    centerSubLabel: 'responsibility split',
-    frameworkCardTitle: 'What frameworks implement',
-    frameworkItems: [
-      { boundary: 'framework', body: 'Bundler configuration / code splitting' },
-      { boundary: 'framework', body: 'Transport network protocol' },
-      { boundary: 'framework', body: 'Routing / data-loading integration' },
-      { boundary: 'framework', body: 'Caching strategy' },
-      { boundary: 'framework', body: 'Deployment / runtime / error handling' },
-    ],
-  },
-  explorer: {
-    number: '07',
-    eyebrow: 'CODE CHECKPOINT',
-    title: 'Module Boundary Explorer',
-    description:
-      'Pick a file to see where it runs, which boundary applies, and which bundle it ends up in.',
-    projectStructureTitle: 'Project structure',
-    projectStructure: [
-      { indent: 0, label: 'App.server.tsx', kind: 'server' },
-      { indent: 1, label: '├─ Header.server.tsx', kind: 'server' },
-      { indent: 1, label: '├─ Editor.client.tsx', kind: 'client' },
-      { indent: 1, label: '└─ actions.ts', kind: 'action' },
-    ],
-    fileSelectionTitle: 'Pick a file',
-    analysisTitle: 'Analysis',
-    defaultFileKey: 'editor',
-    files: [
-      {
-        key: 'header',
-        fileName: 'Header.server.tsx',
-        kind: 'server',
-        analysis: {
-          type: 'Server component',
-          boundary: 'Server side by default',
-          bundle: 'Not in the client bundle',
-          runtime: 'Server',
-          feature: 'DB / files / async data access',
-        },
-      },
-      {
-        key: 'editor',
-        fileName: 'Editor.client.tsx',
-        kind: 'client',
-        analysis: {
-          type: 'Client component',
-          boundary: `Declared with 'use client'`,
-          bundle: 'Included in the client bundle',
-          runtime: 'Browser',
-          feature: 'State, events, and hooks are usable',
-        },
-      },
-      {
-        key: 'actions',
-        fileName: 'actions.ts',
-        kind: 'action',
-        analysis: {
-          type: 'Server Function',
-          boundary: `Declared with 'use server'`,
-          bundle: 'Only a reference is sent to the client',
-          runtime: 'Server',
-          feature: 'Server resource access; serialized result',
-        },
-      },
-    ],
-    ruleSummaryTitle: 'Rule summary',
-    rules: [
-      'Server → client: things cross the boundary as references',
-      'Client → server: invoked via a Server Function reference',
-      'The boundary starts at the file level',
-    ],
-  },
-  mission: {
-    number: '08',
-    eyebrow: 'FOLLOW ALONG',
-    title: 'Follow-along missions',
-    description: 'Trace boundaries, functions, and responsibilities by hand to internalize RSC.',
-    missions: [
-      {
-        number: '01',
-        title: `Compare 'use client' and 'use server' side by side`,
-        helper: 'Their goals and scopes differ.',
-        iconKey: 'split',
-      },
-      {
-        number: '02',
-        title: 'Distinguish Server Component vs Server Function',
-        helper: 'Components are about rendering; functions are an execution contract.',
-        iconKey: 'braces',
-      },
-      {
-        number: '03',
-        title: "Split React's boundary from the framework's implementation",
-        helper: 'Make a habit of reading them as separate concerns.',
-        iconKey: 'workflow',
-      },
-      {
-        number: '04',
-        title: 'Walk through a real react-server export condition example',
-        helper: 'Understand the library-side benefit.',
-        iconKey: 'package',
-      },
-    ],
-  },
-  takeaways: {
-    number: '09',
-    eyebrow: 'KEY TAKEAWAYS',
-    title: 'Key takeaways',
-    cards: [
-      {
-        number: '01',
-        boundary: 'server',
-        title: 'React 19 stabilized server-client boundary expression.',
-        body: `Declare boundaries with 'use client'; ship only the necessary code via references.`,
-        iconKey: 'shield-check',
-      },
-      {
-        number: '02',
-        boundary: 'function',
-        title: `'use client' and 'use server' play different roles.`,
-        body: `'use client' declares a boundary; 'use server' declares a server function.`,
-        iconKey: 'split',
-      },
-      {
-        number: '03',
-        boundary: 'framework',
-        title: 'RSC must be read as React + framework responsibilities split.',
-        body: 'React defines the contract; frameworks implement and optimize it.',
-        iconKey: 'workflow',
-      },
-    ],
+  checkpoint: {
+    badge: '05',
+    eyebrow: 'code checkpoint',
+    title: 'Where the split is written down',
+    fileLabel: 'File',
+    filePath: 'packages/react/package.json',
+    lookForLabel: 'Look for',
+    lookFor: '"react-server" export condition',
+    whyLabel: 'Why',
+    why: 'Proof that the border is a bundler contract, not a runtime check. The server graph pulls an entirely different build of React.',
+    code: EN_CODE,
+    primaryCta: 'View react/package.json',
+    primaryHref: PACKAGE_HREF,
   },
   nextStep: {
-    eyebrow: 'The journey continues',
-    title: 'How does Activity manage hidden UI?',
-    description: "We'll look at how React 19.2's Activity manages hidden UI state and priority.",
+    eyebrow: 'Next step',
+    title: 'How do you keep invisible UI alive',
+    description: 'The server boundary is done; the priority axis 19.2 widened is next.',
     cta: 'Go to the next page',
     href: '/activity-hidden-ui',
   },

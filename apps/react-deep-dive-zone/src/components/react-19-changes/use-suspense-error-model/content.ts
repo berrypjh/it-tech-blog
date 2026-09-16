@@ -1,215 +1,98 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { StateKey } from './tone';
+import type { ToneKey } from '../../shared/tones';
 
-export type IconKey =
-  | 'hourglass'
-  | 'loader'
-  | 'check'
-  | 'x-circle'
-  | 'triangle-alert'
-  | 'sparkles'
-  | 'shield-check'
-  | 'shield-alert'
-  | 'route'
-  | 'workflow'
-  | 'box'
-  | 'boxes'
-  | 'search'
-  | 'split'
-  | 'atom'
-  | 'compass'
-  | 'mouse-click'
-  | 'play-circle'
-  | 'pause-circle'
-  | 'layers'
-  | 'rotate'
-  | 'target';
+export type StatusId = 'pending' | 'fulfilled' | 'rejected';
 
-export type PromiseStateCard = {
-  state: StateKey;
-  title: string;
-  subtitle: string;
-  result: string;
-  iconKey: IconKey;
-};
-
-export type SupportQuestion = {
-  body: string;
-  iconKey: IconKey;
-};
-
-export type ReadableCard = {
-  state: StateKey;
-  title: string;
-  body: string;
-  result: string;
-  iconKey: IconKey;
-};
-
-export type ComparisonRow = {
-  topic: string;
-  legacy: { value: string; supported: boolean };
-  useResult: { value: string; supported: boolean };
-  note: string;
-};
-
-export type PromiseBranch = {
-  state: StateKey;
-  title: string;
-  handle: string;
-  result: string;
-  resultLines: [string, string];
-  iconKey: IconKey;
-};
-
-export type ThenableTrackingStep = {
-  state: StateKey;
-  title: string;
-  caption?: string;
-  items?: string[];
-  iconKey: IconKey;
-};
-
-export type ThenableTrackingBranch = {
-  state: StateKey;
-  title: string;
+export type HeroBranch = {
+  id: StatusId;
+  label: string;
   caption: string;
-  iconKey: IconKey;
+  tone: ToneKey;
 };
 
-export type Mission = {
-  number: string;
+export type BranchCard = {
+  id: StatusId;
   title: string;
-  helper: string;
-  iconKey: IconKey;
+  description: string;
+  outcome: string;
+  tone: ToneKey;
 };
 
-export type TakeawayCard = {
-  number: string;
-  state: StateKey;
+export type TrackStepId = 'call' | 'register' | 'inspect' | 'suspend' | 'replay';
+
+export type TrackStep = {
+  id: TrackStepId;
+  num: string;
   title: string;
-  body: string;
-  iconKey: IconKey;
+  description: string;
+  tone: ToneKey;
+};
+
+export type RuleRow = {
+  topic: string;
+  hook: string;
+  use: string;
 };
 
 export type UseSuspenseErrorModelContent = {
   hero: {
     badge: string;
-    titleLines: [string, string, string];
-    subtitleLines: [string, string];
-    heroCode: {
-      fileName: string;
-      langBadge: 'TSX';
-      code: string;
-    };
-    diagram: {
-      title: string;
-      cards: PromiseStateCard[];
-    };
+    title: { line1: string; line2: string };
+    description: string;
+    diagramBadge: string;
+    diagramCaption: string;
+    callLabel: string;
+    branches: HeroBranch[];
   };
-  question: {
-    number: string;
+  branches: {
+    badge: string;
     eyebrow: string;
-    questionLines: [string, string, string];
-    supportQuestions: SupportQuestion[];
+    title: string;
+    description: string;
+    cards: BranchCard[];
+    note: string;
   };
   readable: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    cards: ReadableCard[];
+    promise: { title: string; badge: string; description: string; bullets: string[] };
+    bridge: { headline: string; sub: string };
+    context: { title: string; badge: string; description: string; bullets: string[] };
+    note: string;
   };
-  comparison: {
-    number: string;
+  rules: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    columns: { topic: string; legacy: string; useApi: string; note: string };
-    rows: ComparisonRow[];
+    headers: [string, string, string];
+    rows: RuleRow[];
+    note: string;
   };
-  promiseFlow: {
-    number: string;
+  tracking: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    centerTitle: string;
-    centerSubtitle: string;
-    branches: PromiseBranch[];
+    steps: TrackStep[];
+    note: string;
   };
-  suspenseConnection: {
-    number: string;
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
-    description: string;
-    code: { fileName: string; langBadge: 'TSX'; code: string };
-    explanation: string;
-    fallback: { title: string; loadingText: string };
-  };
-  rejectedFlow: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    steps: {
-      state: StateKey;
-      title: string;
-      caption: string;
-      iconKey: IconKey;
-    }[];
-    errorFallback: { message: string; buttonLabel: string };
-  };
-  thenableTracking: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    steps: ThenableTrackingStep[];
-    branches: ThenableTrackingBranch[];
-  };
-  internalCode: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    panels: {
-      title: string;
-      langBadge: 'JS';
-      code: string;
-      state: StateKey;
-    }[];
-    fileCard: { title: string; fileName: string; buttonLabel: string; href: string };
-  };
-  stateBoard: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    buttonLabel: string;
-    defaultState: 'pending' | 'fulfilled' | 'rejected';
-    states: {
-      key: 'pending' | 'fulfilled' | 'rejected';
-      buttonLabel: string;
-      panelTitle: string;
-      caption: string;
-      profile?: { name: string; role: string; badge: string };
-      loading?: { text: string };
-      error?: { message: string; buttonLabel: string };
-    }[];
-  };
-  mission: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    missions: Mission[];
-  };
-  takeaways: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    cards: TakeawayCard[];
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -220,398 +103,238 @@ export type UseSuspenseErrorModelContent = {
   };
 };
 
+const KO_CODE = `// packages/react-reconciler/src/ReactFiberThenable.js
+export function trackUsedThenable(thenableState, thenable, index) {
+  const previous = thenableState[index];
+  if (previous === undefined) {
+    thenableState.push(thenable);      // 처음 본 thenable을 자리에 기록한다
+  } else if (previous !== thenable) {
+    thenable.then(noop, noop);         // 재렌더에서 바뀌었으면 이전 것을 그대로 쓴다
+    thenable = previous;
+  }
+
+  switch (thenable.status) {
+    case 'fulfilled':
+      return thenable.value;           // 값이 있으면 그냥 돌려준다
+    case 'rejected':
+      throw thenable.reason;           // 실패면 reason을 던진다 - Error Boundary로 간다
+    default: {
+      // pending - 완료되면 status/value를 채우도록 붙여 두고 중단한다
+      suspendedThenable = thenable;
+      throw SuspenseException;
+    }
+  }
+}`;
+
+const EN_CODE = `// packages/react-reconciler/src/ReactFiberThenable.js
+export function trackUsedThenable(thenableState, thenable, index) {
+  const previous = thenableState[index];
+  if (previous === undefined) {
+    thenableState.push(thenable);      // record a thenable seen for the first time
+  } else if (previous !== thenable) {
+    thenable.then(noop, noop);         // on a re-render, keep the previous one
+    thenable = previous;
+  }
+
+  switch (thenable.status) {
+    case 'fulfilled':
+      return thenable.value;           // a settled value is returned directly
+    case 'rejected':
+      throw thenable.reason;           // a failure throws reason - it goes to a boundary
+    default: {
+      // pending - attach so status/value get filled in, then stop this render
+      suspendedThenable = thenable;
+      throw SuspenseException;
+    }
+  }
+}`;
+
+const THENABLE_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberThenable.js';
+
 const ko: UseSuspenseErrorModelContent = {
   hero: {
     badge: 'React 19 변화 · 4/10단계',
-    titleLines: ['use()는 Suspense /', 'Error Boundary 흐름에', '무엇을 추가했나?'],
-    subtitleLines: ['React 19는 렌더 중 리소스를 읽는 흐름을', '공식 API로 끌어올렸습니다.'],
-    heroCode: {
-      fileName: 'UserProfile.tsx',
-      langBadge: 'TSX',
-      code: `import { use } from "react";
-
-export function UserProfile({
-  userPromise,
-}: {
-  userPromise: Promise<User>;
-}) {
-  const user = use(userPromise);
-
-  return <div>{user.name}</div>;
-}`,
-    },
-    diagram: {
-      title: 'Promise 상태 의미와 use()의 결과',
-      cards: [
-        {
-          state: 'pending',
-          title: 'pending',
-          subtitle: '대기 중',
-          result: '→ Suspense',
-          iconKey: 'hourglass',
-        },
-        {
-          state: 'fulfilled',
-          title: 'fulfilled',
-          subtitle: '완료됨',
-          result: '→ 값 반환',
-          iconKey: 'check',
-        },
-        {
-          state: 'rejected',
-          title: 'rejected',
-          subtitle: '실패',
-          result: '→ Error Boundary',
-          iconKey: 'triangle-alert',
-        },
-      ],
-    },
-  },
-  question: {
-    number: '02',
-    eyebrow: '오늘 해결할 질문',
-    questionLines: [
-      'use(Promise)는 왜 일반 Hook이 아니며',
-      '어떻게 Suspense와 Error Boundary에',
-      '바로 연결될까?',
-    ],
-    supportQuestions: [
-      { body: '렌더 중 리소스 읽기란?', iconKey: 'play-circle' },
-      { body: 'Hook 규칙과 어떻게 다른가?', iconKey: 'split' },
-      { body: 'Promise 상태에 따라 어떻게 분기할까?', iconKey: 'route' },
-      { body: 'Suspense / Error Boundary 흐름과 어떻게 결합할까?', iconKey: 'workflow' },
+    title: { line1: 'use()는 새 기능이 아니라', line2: '있던 내부 규약의 공개판이다' },
+    description:
+      'Suspense는 원래 던져진 Promise로 동작했습니다. React 19는 그 비공식 규약에 이름을 붙이고 문을 열어 준 것입니다.',
+    diagramBadge: 'one call',
+    diagramCaption: 'use(promise) → three outcomes',
+    callLabel: 'use(promise)',
+    branches: [
+      { id: 'pending', label: 'pending', caption: '가장 가까운 Suspense로', tone: 'violet' },
+      { id: 'fulfilled', label: 'fulfilled', caption: '값을 그대로 돌려준다', tone: 'emerald' },
+      { id: 'rejected', label: 'rejected', caption: '가장 가까운 경계로', tone: 'amber' },
     ],
   },
-  readable: {
-    number: '01',
-    eyebrow: 'use()가 읽는 대상',
-    title: 'use()가 읽을 수 있는 것',
-    description: 'use()는 단순 Promise 외에 Context도 같은 호출 표면으로 읽어옵니다.',
+  branches: {
+    badge: '01',
+    eyebrow: 'three outcomes',
+    title: '같은 호출이 세 갈래로 끝난다',
+    description:
+      'use()의 반환은 Promise의 status 하나로 결정됩니다. 분기는 컴포넌트가 아니라 React가 합니다.',
     cards: [
       {
-        state: 'pending',
-        title: 'Promise',
-        body: '비동기 리소스의 상태를 읽음',
-        result: '→ Suspense / Error Boundary와 연결',
-        iconKey: 'loader',
+        id: 'pending',
+        title: '아직 기다리는 중',
+        description:
+          '렌더를 그 자리에서 멈추고 SuspenseException을 던집니다. 컴포넌트는 반환하지 않습니다.',
+        outcome: '→ Suspense fallback',
+        tone: 'violet',
       },
       {
-        state: 'context',
-        title: 'Context',
-        body: '조건문, 반복문 안에서도 읽기 가능',
-        result: '→ React의 규칙 확장',
-        iconKey: 'boxes',
+        id: 'fulfilled',
+        title: '이미 값이 있다',
+        description: '던지지 않고 value를 그대로 반환합니다. 일반 함수 호출과 구분되지 않습니다.',
+        outcome: '→ 값 반환',
+        tone: 'emerald',
+      },
+      {
+        id: 'rejected',
+        title: '실패했다',
+        description:
+          'reason을 던집니다. 던져진 것이 thenable이 아니므로 Suspense가 아니라 Error Boundary가 받습니다.',
+        outcome: '→ Error Boundary',
+        tone: 'amber',
       },
     ],
+    note: 'rejected가 Error Boundary로 간다는 점이 자주 헷갈립니다. Promise였다는 사실은 이 시점에 이미 사라져 있습니다.',
   },
-  comparison: {
-    number: '02',
-    eyebrow: '일반 Hook과 비교',
-    title: '일반 Hook과 다른 점',
-    description: 'use()는 Hooks 규칙의 일부 제약을 풀고, 렌더 흐름에 직접 연결됩니다.',
-    columns: {
-      topic: '비교 항목',
-      legacy: '일반 Hook(useState 등)',
-      useApi: 'use()',
-      note: '비고',
+  readable: {
+    badge: '02',
+    eyebrow: 'two readables',
+    title: 'use()가 읽을 수 있는 두 가지',
+    description:
+      '이름은 하나지만 대상은 둘입니다. 공통점은 둘 다 "렌더 중에 값을 요청한다"는 것입니다.',
+    promise: {
+      title: 'Promise 읽기',
+      badge: 'thenable',
+      description: 'then을 가진 값이면 무엇이든 됩니다. 실제로 확인하는 것은 status 하나입니다.',
+      bullets: [
+        '렌더 중에 thenable을 넘기면 React가 그 자리를 기억한다',
+        'pending이면 렌더를 중단하고 완료되면 다시 렌더한다',
+        '같은 자리에서 같은 thenable을 계속 넘겨야 캐시가 맞는다',
+        '매 렌더 새 Promise를 만들면 영원히 pending으로 보인다',
+      ],
     },
+    bridge: {
+      headline: '읽는 대상은 다르지만\n호출 표면은 하나다',
+      sub: 'use는 hook 슬롯을 쓰지 않기 때문에 조건문과 반복문 안에서도 호출할 수 있습니다.',
+    },
+    context: {
+      title: 'Context 읽기',
+      badge: 'context',
+      description: 'useContext와 같은 값을 읽지만, 규칙이 훨씬 느슨합니다.',
+      bullets: [
+        'if 안에서 조건부로 context를 읽을 수 있다',
+        '반복문 안에서 여러 context를 순회하며 읽을 수 있다',
+        '조기 return 뒤에 호출해도 hook 순서가 깨지지 않는다',
+        '읽기 전용이므로 Provider 쪽 동작은 그대로다',
+      ],
+    },
+    note: '조건문 안에서 호출해도 되는 이유는 단순합니다. use는 hook 배열의 한 칸을 차지하지 않기 때문입니다.',
+  },
+  rules: {
+    badge: '03',
+    eyebrow: 'rule diff',
+    title: '일반 hook과 규칙이 어디서 갈리는가',
+    description: 'Hook 규칙 전체가 사라진 것이 아니라, 슬롯을 쓰지 않는 만큼만 풀렸습니다.',
+    headers: ['비교 항목', '일반 hook', 'use()'],
     rows: [
       {
         topic: '조건문 안 호출',
-        legacy: { value: '불가능', supported: false },
-        useResult: { value: '가능', supported: true },
-        note: 'Hooks 규칙을 따르지 않아도 됨',
+        hook: '불가능 - 슬롯 순서가 어긋난다',
+        use: '가능 - 슬롯을 쓰지 않는다',
       },
       {
         topic: '반복문 안 호출',
-        legacy: { value: '불가능', supported: false },
-        useResult: { value: '가능', supported: true },
-        note: '동적 조건에서도 안전',
+        hook: '불가능 - 호출 횟수가 달라진다',
+        use: '가능 - 호출마다 독립적이다',
       },
       {
-        topic: 'Promise 읽기',
-        legacy: { value: '직접 불가', supported: false },
-        useResult: { value: '가능', supported: true },
-        note: '렌더 중 리소스 읽기 지원',
+        topic: '렌더 중 Promise 읽기',
+        hook: '직접은 불가 - Effect로 우회',
+        use: '가능 - 그것이 존재 이유다',
       },
       {
         topic: 'Suspense 연결',
-        legacy: { value: '간접', supported: false },
-        useResult: { value: '직접', supported: true },
-        note: '렌더 중 즉시 Suspense로 전환',
+        hook: '간접 - 라이브러리가 대신 던진다',
+        use: '직접 - React가 직접 던진다',
       },
       {
-        topic: 'Error Boundary 연결',
-        legacy: { value: '간접', supported: false },
-        useResult: { value: '직접', supported: true },
-        note: 'rejected 시 자동으로 Error Boundary로 이동',
+        topic: '호출 위치',
+        hook: '컴포넌트와 커스텀 hook 안',
+        use: '컴포넌트와 커스텀 hook 안 (동일)',
       },
     ],
+    note: '마지막 줄이 경계입니다. 컴포넌트 밖이나 이벤트 핸들러에서는 use도 쓸 수 없습니다.',
   },
-  promiseFlow: {
-    number: '03',
-    eyebrow: 'Promise 상태별 흐름',
-    title: 'Promise 상태별 흐름 (use(Promise))',
+  tracking: {
+    badge: '04',
+    eyebrow: 'inside',
+    title: 'use() 한 줄이 내부에서 지나가는 다섯 칸',
     description:
-      '같은 use(Promise) 호출이라도 Promise 상태에 따라 React 렌더 흐름이 세 갈래로 자동 분기됩니다.',
-    centerTitle: 'use(Promise)',
-    centerSubtitle: '렌더 중 리소스 읽기',
-    branches: [
-      {
-        state: 'pending',
-        title: 'pending',
-        handle: '→ SuspenseException throw',
-        result: '가장 가까운 Suspense Boundary',
-        resultLines: ['가장 가까운 Suspense Boundary', 'fallback UI 전환'],
-        iconKey: 'hourglass',
-      },
-      {
-        state: 'fulfilled',
-        title: 'fulfilled',
-        handle: '→ 값 반환',
-        result: '정상 렌더 계속',
-        resultLines: ['정상 렌더 계속', '실제 값 사용'],
-        iconKey: 'check',
-      },
-      {
-        state: 'rejected',
-        title: 'rejected',
-        handle: '→ Error throw',
-        result: '가장 가까운 Error Boundary',
-        resultLines: ['가장 가까운 Error Boundary', 'error fallback으로 전환'],
-        iconKey: 'triangle-alert',
-      },
-    ],
-  },
-  suspenseConnection: {
-    number: '04',
-    eyebrow: 'Suspense 연결',
-    title: 'use(Promise)와 Suspense',
-    description:
-      'pending인 Promise를 만나면 React는 현재 렌더를 중단하고 상위 Suspense로 fallback을 위임합니다.',
-    code: {
-      fileName: 'ProfileCard.tsx',
-      langBadge: 'TSX',
-      code: `function ProfileCard({
-  userPromise,
-}: {
-  userPromise: Promise<User>;
-}) {
-  const user = use(userPromise);
-
-  return <div className="name">{user.name}</div>;
-}`,
-    },
-    explanation:
-      'pending 상태라면 현재 컴포넌트 렌더는 계속되지 않고, 가장 가까운 Suspense boundary의 fallback으로 전환됩니다.',
-    fallback: { title: 'Fallback UI 예시', loadingText: 'Loading user...' },
-  },
-  rejectedFlow: {
-    number: '05',
-    eyebrow: 'Error Boundary 연결',
-    title: 'rejected promise와 Error Boundary',
-    description:
-      'rejected promise를 만나면 use()는 error를 throw하고, 가장 가까운 Error Boundary가 이를 받습니다.',
+      '이 다섯 칸은 앞 챕터의 Suspense 모델과 정확히 같은 흐름입니다. use는 그 입구를 공개한 것입니다.',
     steps: [
       {
-        state: 'rejected',
-        title: 'rejected promise',
-        caption: '비동기 자원 실패',
-        iconKey: 'x-circle',
+        id: 'call',
+        num: '01',
+        title: 'use가 호출된다',
+        description: 'Dispatcher를 거쳐 thenable인지 context인지부터 구분합니다.',
+        tone: 'sky',
       },
       {
-        state: 'rejected',
-        title: 'error throw',
-        caption: '렌더 중 에러 발생',
-        iconKey: 'triangle-alert',
+        id: 'register',
+        num: '02',
+        title: 'thenable을 자리에 기록한다',
+        description:
+          'Fiber의 thenableState 배열에 index로 저장합니다. 재렌더에서 같은 자리를 다시 봅니다.',
+        tone: 'teal',
       },
       {
-        state: 'internals',
-        title: '가장 가까운 Error Boundary',
-        caption: '포착',
-        iconKey: 'shield-alert',
+        id: 'inspect',
+        num: '03',
+        title: 'status를 확인한다',
+        description: 'fulfilled면 value를, rejected면 reason을 꺼냅니다. 여기서 대부분 끝납니다.',
+        tone: 'blue',
       },
       {
-        state: 'rejected',
-        title: 'Error Fallback UI',
-        caption: '사용자 정보를 불러오지 못했어요.',
-        iconKey: 'shield-alert',
+        id: 'suspend',
+        num: '04',
+        title: 'pending이면 중단한다',
+        description:
+          'suspendedThenable에 담아 두고 SuspenseException을 던집니다. 렌더는 여기서 멈춥니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'replay',
+        num: '05',
+        title: '완료되면 같은 자리를 다시 읽는다',
+        description:
+          'Promise가 끝나면 React가 다시 렌더하고, 이번에는 03에서 값이 나와 그대로 통과합니다.',
+        tone: 'emerald',
       },
     ],
-    errorFallback: {
-      message: '사용자 정보를 불러오지 못했어요.',
-      buttonLabel: '다시 시도',
-    },
+    note: '05가 성립하려면 같은 Promise가 다시 넘어와야 합니다. 그래서 Promise는 렌더 밖에서 만들어 캐시해야 합니다.',
   },
-  thenableTracking: {
-    number: '06',
-    eyebrow: 'thenable 추적 흐름',
-    title: 'thenable tracking 내부 연결',
-    description:
-      'use()는 단순 API가 아니라 ReactFiberThenable.js 내부의 trackUsedThenable 흐름과 연결되어 있습니다.',
-    steps: [
-      {
-        state: 'pending',
-        title: 'use() 호출',
-        caption: 'thenable 조회',
-        iconKey: 'play-circle',
-      },
-      {
-        state: 'internals',
-        title: 'ReactFiberThenable.js',
-        items: ['trackUsedThenable(thenable)', 'suspendedThenable', 'SuspenseException'],
-        iconKey: 'atom',
-      },
-      {
-        state: 'render',
-        title: 'React 렌더 흐름',
-        caption: '예외를 감지',
-        iconKey: 'workflow',
-      },
-    ],
-    branches: [
-      {
-        state: 'pending',
-        title: 'Suspense Boundary 발견',
-        caption: 'fallback UI 렌더',
-        iconKey: 'shield-check',
-      },
-      {
-        state: 'rejected',
-        title: 'Error Boundary (rejected)',
-        caption: 'error fallback으로 전환',
-        iconKey: 'shield-alert',
-      },
-    ],
-  },
-  internalCode: {
-    number: '07',
-    eyebrow: '코드 체크포인트',
-    title: '실제 코드 미리보기 (ReactFiberThenable.js)',
-    description:
-      'trackUsedThenable이 thenable을 등록하고, suspendedThenable과 SuspenseException으로 렌더 흐름을 끊습니다.',
-    panels: [
-      {
-        title: 'trackedThenable 목록',
-        langBadge: 'JS',
-        state: 'internals',
-        code: `const previous = trackedThenables[index];
-
-if (previous === undefined) {
-  trackedThenables.push(thenable);
-}`,
-      },
-      {
-        title: 'suspendedThenable 설정 & throw',
-        langBadge: 'JS',
-        state: 'pending',
-        code: `suspendedThenable = thenable;
-throw SuspenseException;`,
-      },
-    ],
-    fileCard: {
-      title: '관련 파일',
-      fileName: 'ReactFiberThenable.js',
-      buttonLabel: 'GitHub에서 코드 보기',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberThenable.js',
-    },
-  },
-  stateBoard: {
-    number: '08',
-    eyebrow: '상태 보드',
-    title: 'use() 상태 보드',
-    description: 'Promise 상태별로 use()가 React UI에 어떻게 반영되는지 한 화면에서 비교합니다.',
-    buttonLabel: 'Promise 상태 선택',
-    defaultState: 'pending',
-    states: [
-      {
-        key: 'pending',
-        buttonLabel: 'pending',
-        panelTitle: 'Suspense Fallback',
-        caption: '→ SuspenseException으로 fallback UI 렌더',
-        loading: { text: 'Loading user...' },
-      },
-      {
-        key: 'fulfilled',
-        buttonLabel: 'fulfilled',
-        panelTitle: '정상 콘텐츠',
-        caption: '→ 값이 반환되어 정상 렌더 지속',
-        profile: { name: 'Dan Abramov', role: 'Software Engineer', badge: 'Pro' },
-      },
-      {
-        key: 'rejected',
-        buttonLabel: 'rejected',
-        panelTitle: 'Error Boundary',
-        caption: '→ Error throw로 Error Boundary 이동',
-        error: { message: '데이터를 불러오지 못했어요.', buttonLabel: '다시 시도' },
-      },
-    ],
-  },
-  mission: {
-    number: '09',
-    eyebrow: '코드 따라가기',
-    title: '직접 따라가기 보기',
-    description: '문서 → 실제 코드 → 본인 정리 순으로 use()를 손에 익혀 봅니다.',
-    missions: [
-      {
-        number: '01',
-        title: 'use() 공식 문서를 확인한다',
-        helper: '사용 가능한 값과 규칙을 정리',
-        iconKey: 'compass',
-      },
-      {
-        number: '02',
-        title: 'use(Promise)와 use(Context)를 구분하고 차이점을 정리한다',
-        helper: 'Promise와 Context의 사용 목적을 나눠보기',
-        iconKey: 'split',
-      },
-      {
-        number: '03',
-        title: 'ReactFiberThenable.js에서 suspendedThenable 흐름을 본다',
-        helper: 'SuspenseException이 어디서 설정되는지 확인',
-        iconKey: 'search',
-      },
-      {
-        number: '04',
-        title: 'use()가 Suspense / Error Boundary 흐름에 직접 연결되는 이유를 정리한다',
-        helper: 'pending, fulfilled, rejected 상태별 결과를 자기 말로 설명',
-        iconKey: 'route',
-      },
-    ],
-  },
-  takeaways: {
-    number: '10',
-    eyebrow: '핵심 정리',
-    title: '핵심 정리',
-    cards: [
-      {
-        number: '01',
-        state: 'pending',
-        title: 'use()는 렌더 중 리소스를 읽는 공식 API다.',
-        body: 'Promise와 Context를 조건문, 반복문 안에서도 안전하게 읽을 수 있다.',
-        iconKey: 'layers',
-      },
-      {
-        number: '02',
-        state: 'fulfilled',
-        title: 'Promise 상태에 따라 흐름이 자동으로 분기된다.',
-        body: 'pending → Suspense, rejected → Error Boundary, fulfilled → 값 반환.',
-        iconKey: 'route',
-      },
-      {
-        number: '03',
-        state: 'internals',
-        title: 'React 19는 이 구조를 공식 API로 제공한다.',
-        body: 'use()는 React의 렌더링 모델을 더 선언적이고 일관되게 만든다.',
-        iconKey: 'compass',
-      },
-    ],
+  checkpoint: {
+    badge: '05',
+    eyebrow: 'code checkpoint',
+    title: 'use()의 실제 몸통이 있는 파일',
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberThenable.js',
+    lookForLabel: '볼 것',
+    lookFor: 'trackUsedThenable',
+    whyLabel: '설명',
+    why: 'use가 하는 일은 사실상 이 함수 하나입니다. 세 갈래 분기가 switch 한 덩어리로 그대로 드러납니다.',
+    code: KO_CODE,
+    primaryCta: 'ReactFiberThenable.js 소스 보기',
+    primaryHref: THENABLE_HREF,
   },
   nextStep: {
-    eyebrow: '다음 학습으로 이어집니다',
-    title: 'ref as prop은 무엇을 바꿨나?',
-    description:
-      '다음 페이지에서는 ref 전달 방식이 Element와 props 표현을 어떻게 바꾸는지 살펴봅니다.',
+    eyebrow: '다음 단계',
+    title: 'ref는 왜 props의 한 키가 되었을까',
+    description: '렌더링 축을 마치고 Element 표현 축으로 넘어갑니다.',
     cta: '다음 페이지로 이동',
     href: '/ref-as-prop-element-shape',
   },
@@ -620,398 +343,188 @@ throw SuspenseException;`,
 const en: UseSuspenseErrorModelContent = {
   hero: {
     badge: 'React 19 Changes · 4/10',
-    titleLines: ['What did use() add', 'to the Suspense / Error', 'Boundary flow?'],
-    subtitleLines: [
-      'React 19 promoted the "read a resource during render" flow',
-      'into a first-class API.',
+    title: { line1: 'use() is not a new feature.', line2: 'It publishes an old contract.' },
+    description:
+      'Suspense always worked on a thrown Promise. React 19 gave that unofficial contract a name and opened the door to it.',
+    diagramBadge: 'one call',
+    diagramCaption: 'use(promise) → three outcomes',
+    callLabel: 'use(promise)',
+    branches: [
+      { id: 'pending', label: 'pending', caption: 'to the nearest Suspense', tone: 'violet' },
+      { id: 'fulfilled', label: 'fulfilled', caption: 'returns the value as is', tone: 'emerald' },
+      { id: 'rejected', label: 'rejected', caption: 'to the nearest boundary', tone: 'amber' },
     ],
-    heroCode: {
-      fileName: 'UserProfile.tsx',
-      langBadge: 'TSX',
-      code: `import { use } from "react";
-
-export function UserProfile({
-  userPromise,
-}: {
-  userPromise: Promise<User>;
-}) {
-  const user = use(userPromise);
-
-  return <div>{user.name}</div>;
-}`,
-    },
-    diagram: {
-      title: 'Promise state × what use() returns',
-      cards: [
-        {
-          state: 'pending',
-          title: 'pending',
-          subtitle: 'in flight',
-          result: '→ Suspense',
-          iconKey: 'hourglass',
-        },
-        {
-          state: 'fulfilled',
-          title: 'fulfilled',
-          subtitle: 'resolved',
-          result: '→ value returned',
-          iconKey: 'check',
-        },
-        {
-          state: 'rejected',
-          title: 'rejected',
-          subtitle: 'failed',
-          result: '→ Error Boundary',
-          iconKey: 'triangle-alert',
-        },
-      ],
-    },
   },
-  question: {
-    number: '02',
-    eyebrow: "Today's question",
-    questionLines: [
-      'Why is use(Promise) not a regular Hook,',
-      'and how does it plug straight into',
-      'Suspense and Error Boundary?',
+  branches: {
+    badge: '01',
+    eyebrow: 'three outcomes',
+    title: 'One call, three endings',
+    description:
+      'What use() returns is decided by a single Promise status. React does the branching, not your component.',
+    cards: [
+      {
+        id: 'pending',
+        title: 'Still waiting',
+        description:
+          'The render stops right there and throws SuspenseException. The component never returns.',
+        outcome: '→ Suspense fallback',
+        tone: 'violet',
+      },
+      {
+        id: 'fulfilled',
+        title: 'The value is ready',
+        description:
+          'Nothing is thrown and value is returned. It is indistinguishable from a plain call.',
+        outcome: '→ returns a value',
+        tone: 'emerald',
+      },
+      {
+        id: 'rejected',
+        title: 'It failed',
+        description:
+          'reason is thrown. What is thrown is no longer a thenable, so an Error Boundary catches it, not Suspense.',
+        outcome: '→ Error Boundary',
+        tone: 'amber',
+      },
     ],
-    supportQuestions: [
-      { body: 'What does "reading a resource during render" mean?', iconKey: 'play-circle' },
-      { body: 'How does it differ from the rules of Hooks?', iconKey: 'split' },
-      { body: 'How does it branch by Promise state?', iconKey: 'route' },
-      { body: 'How does it tie into Suspense / Error Boundary?', iconKey: 'workflow' },
-    ],
+    note: 'That rejected goes to an Error Boundary trips people up. By then the fact it was a Promise is already gone.',
   },
   readable: {
-    number: '01',
-    eyebrow: 'WHAT use() READS',
-    title: 'What use() can read',
-    description: 'use() reads both Promise and Context through the same call surface.',
-    cards: [
-      {
-        state: 'pending',
-        title: 'Promise',
-        body: 'Reads the state of an async resource',
-        result: '→ Wires into Suspense / Error Boundary',
-        iconKey: 'loader',
-      },
-      {
-        state: 'context',
-        title: 'Context',
-        body: 'Can be read inside conditions and loops too',
-        result: "→ Extends React's rules",
-        iconKey: 'boxes',
-      },
-    ],
-  },
-  comparison: {
-    number: '02',
-    eyebrow: 'HOOK vs use()',
-    title: 'How use() differs from regular Hooks',
-    description: 'use() relaxes parts of the rules of Hooks and plugs straight into render flow.',
-    columns: {
-      topic: 'Topic',
-      legacy: 'Regular Hook (useState, etc.)',
-      useApi: 'use()',
-      note: 'Note',
+    badge: '02',
+    eyebrow: 'two readables',
+    title: 'The two things use() can read',
+    description:
+      'One name, two targets. What they share is asking for a value in the middle of a render.',
+    promise: {
+      title: 'Reading a Promise',
+      badge: 'thenable',
+      description: 'Anything with a then works. What is actually inspected is a single status.',
+      bullets: [
+        'Pass a thenable during render and React remembers its slot',
+        'Pending stops the render; settling triggers a re-render',
+        'The same slot must keep receiving the same thenable for the cache to hold',
+        'Creating a new Promise each render makes it look pending forever',
+      ],
     },
+    bridge: {
+      headline: 'Different targets,\none call surface',
+      sub: 'Because use takes no hook slot, it can be called inside conditionals and loops.',
+    },
+    context: {
+      title: 'Reading a Context',
+      badge: 'context',
+      description: 'It reads the same value useContext does, under far looser rules.',
+      bullets: [
+        'A context can be read conditionally inside an if',
+        'Several contexts can be read while iterating in a loop',
+        'Calling it after an early return does not break hook order',
+        'It is read-only, so the Provider side behaves exactly as before',
+      ],
+    },
+    note: 'The reason a conditional call is allowed is simple: use does not occupy a slot in the hook array.',
+  },
+  rules: {
+    badge: '03',
+    eyebrow: 'rule diff',
+    title: 'Where the rules part ways from a normal hook',
+    description:
+      'The Rules of Hooks did not disappear. They loosened exactly as far as the missing slot allows.',
+    headers: ['Topic', 'A normal hook', 'use()'],
     rows: [
       {
-        topic: 'Call inside conditionals',
-        legacy: { value: 'Not allowed', supported: false },
-        useResult: { value: 'Allowed', supported: true },
-        note: "Doesn't need to follow rules of Hooks",
+        topic: 'Inside a conditional',
+        hook: 'Not allowed - slot order breaks',
+        use: 'Allowed - it takes no slot',
       },
       {
-        topic: 'Call inside loops',
-        legacy: { value: 'Not allowed', supported: false },
-        useResult: { value: 'Allowed', supported: true },
-        note: 'Safe under dynamic conditions',
+        topic: 'Inside a loop',
+        hook: 'Not allowed - the call count varies',
+        use: 'Allowed - each call is independent',
       },
       {
-        topic: 'Read a Promise',
-        legacy: { value: 'Not directly', supported: false },
-        useResult: { value: 'Yes', supported: true },
-        note: 'Supports reading resources during render',
+        topic: 'Reading a Promise mid-render',
+        hook: 'Not directly - you detour through an Effect',
+        use: 'Allowed - that is its reason to exist',
       },
       {
-        topic: 'Suspense link',
-        legacy: { value: 'Indirect', supported: false },
-        useResult: { value: 'Direct', supported: true },
-        note: 'Switches to Suspense mid-render',
+        topic: 'Wiring to Suspense',
+        hook: 'Indirect - a library throws on your behalf',
+        use: 'Direct - React throws itself',
       },
       {
-        topic: 'Error Boundary link',
-        legacy: { value: 'Indirect', supported: false },
-        useResult: { value: 'Direct', supported: true },
-        note: 'Rejected goes straight to Error Boundary',
+        topic: 'Where it may be called',
+        hook: 'Inside a component or custom hook',
+        use: 'Inside a component or custom hook (same)',
       },
     ],
+    note: 'The last row is the border. Outside a component or in an event handler, use is off limits too.',
   },
-  promiseFlow: {
-    number: '03',
-    eyebrow: 'PROMISE STATES',
-    title: 'Promise-state flow (use(Promise))',
+  tracking: {
+    badge: '04',
+    eyebrow: 'inside',
+    title: 'The five slots one use() call passes through',
     description:
-      'The same use(Promise) call branches into three render paths depending on Promise state.',
-    centerTitle: 'use(Promise)',
-    centerSubtitle: 'Read a resource during render',
-    branches: [
-      {
-        state: 'pending',
-        title: 'pending',
-        handle: '→ throw SuspenseException',
-        result: 'Closest Suspense Boundary fallback',
-        resultLines: ['Closest Suspense Boundary', 'switches to fallback UI'],
-        iconKey: 'hourglass',
-      },
-      {
-        state: 'fulfilled',
-        title: 'fulfilled',
-        handle: '→ return value',
-        result: 'Normal render continues',
-        resultLines: ['Normal render continues', 'use the actual value'],
-        iconKey: 'check',
-      },
-      {
-        state: 'rejected',
-        title: 'rejected',
-        handle: '→ throw Error',
-        result: 'Closest Error Boundary',
-        resultLines: ['Closest Error Boundary', 'switches to error fallback'],
-        iconKey: 'triangle-alert',
-      },
-    ],
-  },
-  suspenseConnection: {
-    number: '04',
-    eyebrow: 'SUSPENSE LINK',
-    title: 'use(Promise) and Suspense',
-    description:
-      'When the Promise is pending, React halts this render and the nearest Suspense takes over with fallback.',
-    code: {
-      fileName: 'ProfileCard.tsx',
-      langBadge: 'TSX',
-      code: `function ProfileCard({
-  userPromise,
-}: {
-  userPromise: Promise<User>;
-}) {
-  const user = use(userPromise);
-
-  return <div className="name">{user.name}</div>;
-}`,
-    },
-    explanation:
-      "If the Promise is pending, this component's render is interrupted and the nearest Suspense boundary's fallback runs instead.",
-    fallback: { title: 'Fallback UI example', loadingText: 'Loading user...' },
-  },
-  rejectedFlow: {
-    number: '05',
-    eyebrow: 'ERROR BOUNDARY LINK',
-    title: 'rejected promise and Error Boundary',
-    description:
-      'On a rejected promise, use() throws an Error and the nearest Error Boundary catches it.',
+      'These five are exactly the Suspense model from the previous chapter. use simply published its entrance.',
     steps: [
       {
-        state: 'rejected',
-        title: 'rejected promise',
-        caption: 'Async resource failed',
-        iconKey: 'x-circle',
+        id: 'call',
+        num: '01',
+        title: 'use is called',
+        description: 'Through the Dispatcher, it first sorts a thenable from a context.',
+        tone: 'sky',
       },
       {
-        state: 'rejected',
-        title: 'throw error',
-        caption: 'Error thrown during render',
-        iconKey: 'triangle-alert',
+        id: 'register',
+        num: '02',
+        title: 'The thenable is recorded in a slot',
+        description:
+          'It is stored by index in the Fiber thenableState array and re-read from the same slot.',
+        tone: 'teal',
       },
       {
-        state: 'internals',
-        title: 'Closest Error Boundary',
-        caption: 'Catches the error',
-        iconKey: 'shield-alert',
+        id: 'inspect',
+        num: '03',
+        title: 'The status is inspected',
+        description: 'fulfilled yields value, rejected yields reason. Most calls end right here.',
+        tone: 'blue',
       },
       {
-        state: 'rejected',
-        title: 'Error Fallback UI',
-        caption: "Couldn't load user information.",
-        iconKey: 'shield-alert',
+        id: 'suspend',
+        num: '04',
+        title: 'Pending stops the render',
+        description:
+          'It is held in suspendedThenable and SuspenseException is thrown. The render halts.',
+        tone: 'violet',
+      },
+      {
+        id: 'replay',
+        num: '05',
+        title: 'On settle, the same slot is read again',
+        description:
+          'React re-renders once the Promise settles, and this time step 03 produces a value.',
+        tone: 'emerald',
       },
     ],
-    errorFallback: {
-      message: "Couldn't load user information.",
-      buttonLabel: 'Try again',
-    },
+    note: 'Step 05 only works if the same Promise comes back, which is why Promises must be created and cached outside the render.',
   },
-  thenableTracking: {
-    number: '06',
-    eyebrow: 'THENABLE TRACKING',
-    title: 'Internal connection via thenable tracking',
-    description:
-      'use() is not a standalone API — it ties into the trackUsedThenable flow inside ReactFiberThenable.js.',
-    steps: [
-      {
-        state: 'pending',
-        title: 'Call use()',
-        caption: 'Look up the thenable',
-        iconKey: 'play-circle',
-      },
-      {
-        state: 'internals',
-        title: 'ReactFiberThenable.js',
-        items: ['trackUsedThenable(thenable)', 'suspendedThenable', 'SuspenseException'],
-        iconKey: 'atom',
-      },
-      {
-        state: 'render',
-        title: 'React render flow',
-        caption: 'Detects the exception',
-        iconKey: 'workflow',
-      },
-    ],
-    branches: [
-      {
-        state: 'pending',
-        title: 'Found Suspense Boundary',
-        caption: 'Render fallback UI',
-        iconKey: 'shield-check',
-      },
-      {
-        state: 'rejected',
-        title: 'Error Boundary (rejected)',
-        caption: 'Switch to error fallback',
-        iconKey: 'shield-alert',
-      },
-    ],
-  },
-  internalCode: {
-    number: '07',
-    eyebrow: 'CODE CHECKPOINT',
-    title: 'Source preview (ReactFiberThenable.js)',
-    description:
-      'trackUsedThenable registers the thenable, then suspendedThenable and SuspenseException break the render flow.',
-    panels: [
-      {
-        title: 'trackedThenable list',
-        langBadge: 'JS',
-        state: 'internals',
-        code: `const previous = trackedThenables[index];
-
-if (previous === undefined) {
-  trackedThenables.push(thenable);
-}`,
-      },
-      {
-        title: 'Set suspendedThenable & throw',
-        langBadge: 'JS',
-        state: 'pending',
-        code: `suspendedThenable = thenable;
-throw SuspenseException;`,
-      },
-    ],
-    fileCard: {
-      title: 'Related file',
-      fileName: 'ReactFiberThenable.js',
-      buttonLabel: 'Open on GitHub',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberThenable.js',
-    },
-  },
-  stateBoard: {
-    number: '08',
-    eyebrow: 'STATE BOARD',
-    title: 'use() state board',
-    description: "Compare how each Promise state shows up in React's UI side by side.",
-    buttonLabel: 'Pick a Promise state',
-    defaultState: 'pending',
-    states: [
-      {
-        key: 'pending',
-        buttonLabel: 'pending',
-        panelTitle: 'Suspense Fallback',
-        caption: '→ SuspenseException renders the fallback UI',
-        loading: { text: 'Loading user...' },
-      },
-      {
-        key: 'fulfilled',
-        buttonLabel: 'fulfilled',
-        panelTitle: 'Normal content',
-        caption: '→ Value is returned, normal render continues',
-        profile: { name: 'Dan Abramov', role: 'Software Engineer', badge: 'Pro' },
-      },
-      {
-        key: 'rejected',
-        buttonLabel: 'rejected',
-        panelTitle: 'Error Boundary',
-        caption: '→ Error throw moves control to the Error Boundary',
-        error: { message: "Couldn't load the data.", buttonLabel: 'Try again' },
-      },
-    ],
-  },
-  mission: {
-    number: '09',
-    eyebrow: 'FOLLOW ALONG',
-    title: 'Follow-along missions',
-    description: 'Move from docs → real source → your own one-liner.',
-    missions: [
-      {
-        number: '01',
-        title: 'Read the official use() docs',
-        helper: 'Note the allowed values and rules',
-        iconKey: 'compass',
-      },
-      {
-        number: '02',
-        title: 'Split use(Promise) vs use(Context) and list the differences',
-        helper: 'Separate their intended uses',
-        iconKey: 'split',
-      },
-      {
-        number: '03',
-        title: 'Read suspendedThenable flow in ReactFiberThenable.js',
-        helper: 'Find where SuspenseException is set',
-        iconKey: 'search',
-      },
-      {
-        number: '04',
-        title: 'Write why use() plugs into Suspense / Error Boundary directly',
-        helper: 'Restate pending / fulfilled / rejected in your own words',
-        iconKey: 'route',
-      },
-    ],
-  },
-  takeaways: {
-    number: '10',
-    eyebrow: 'KEY TAKEAWAYS',
-    title: 'Key takeaways',
-    cards: [
-      {
-        number: '01',
-        state: 'pending',
-        title: 'use() is the official "read a resource during render" API.',
-        body: 'Promise and Context can be safely read inside conditionals and loops.',
-        iconKey: 'layers',
-      },
-      {
-        number: '02',
-        state: 'fulfilled',
-        title: 'The flow branches automatically by Promise state.',
-        body: 'pending → Suspense, rejected → Error Boundary, fulfilled → value.',
-        iconKey: 'route',
-      },
-      {
-        number: '03',
-        state: 'internals',
-        title: 'React 19 makes this structure a first-class API.',
-        body: "use() makes React's render model more declarative and consistent.",
-        iconKey: 'compass',
-      },
-    ],
+  checkpoint: {
+    badge: '05',
+    eyebrow: 'code checkpoint',
+    title: 'The file that holds the body of use()',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberThenable.js',
+    lookForLabel: 'Look for',
+    lookFor: 'trackUsedThenable',
+    whyLabel: 'Why',
+    why: 'What use does is essentially this one function. The three-way branch sits right there as a single switch.',
+    code: EN_CODE,
+    primaryCta: 'View ReactFiberThenable.js',
+    primaryHref: THENABLE_HREF,
   },
   nextStep: {
-    eyebrow: 'The journey continues',
-    title: 'What did ref as prop change?',
-    description:
-      'Next we look at how passing ref differently changes how Element and props are shaped.',
+    eyebrow: 'Next step',
+    title: 'Why did ref become just another prop',
+    description: 'The render axis is done; the Element shape axis is next.',
     cta: 'Go to the next page',
     href: '/ref-as-prop-element-shape',
   },

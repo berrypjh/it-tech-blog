@@ -1,233 +1,99 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { ToneKey } from './tone';
+import type { ToneKey } from '../../shared/tones';
 
-export type IconKey =
-  | 'plug'
-  | 'plug-zap'
-  | 'unplug'
-  | 'refresh'
-  | 'zap'
-  | 'palette'
-  | 'bell'
-  | 'split'
-  | 'sparkles'
-  | 'shield-alert'
-  | 'shield-check'
-  | 'route'
-  | 'compass'
-  | 'search'
-  | 'workflow'
-  | 'settings'
-  | 'timer'
-  | 'check'
-  | 'x'
-  | 'ban'
-  | 'globe'
-  | 'network'
-  | 'target'
-  | 'layers';
+export type SignalId = 'target' | 'reaction' | 'before' | 'after';
 
-export type SupportQuestion = { body: string; iconKey: IconKey };
-
-export type ProblemCard = {
-  tone: ToneKey;
-  title: string;
+export type HeroSignal = {
+  id: SignalId;
+  label: string;
   caption: string;
-  conclusion: string;
-  iconKey: IconKey;
-  connector?: '+' | '→' | null;
+  tone: ToneKey;
 };
 
-export type ProblemListItem = { text: string };
+export type RoleId = 'effect' | 'event' | 'fresh' | 'deps';
 
-export type SeparationCard = {
-  tone: ToneKey;
+export type RoleCard = {
+  id: RoleId;
   title: string;
   description: string;
-  items: string[];
-  iconKey: IconKey;
-};
-
-export type FlowStep = {
+  badge: string;
   tone: ToneKey;
-  title: string;
-  body: string;
-  iconKey: IconKey;
 };
 
-export type ConstraintCard = {
+export type ApplyStepId = 'separate' | 'extract' | 'call' | 'shrink';
+
+export type ApplyStep = {
+  id: ApplyStepId;
+  num: string;
+  title: string;
+  description: string;
   tone: ToneKey;
-  title: string;
-  items: string[];
-  iconKey: IconKey;
 };
 
-export type ComparisonRow = {
+export type BehaviorRow = {
   topic: string;
-  beforeLines: string[];
-  afterLines: string[];
-  explanation: string;
+  before: string;
+  after: string;
 };
-
-export type SimulatorTabKey = 'theme' | 'roomId';
-
-export type SimulatorStep = {
-  title: string;
-  caption?: string;
-  legend: 'detect' | 'rerun' | 'disconnect' | 'connect' | 'connected' | 'notify' | 'keep';
-};
-
-export type SimulatorScenario = {
-  key: SimulatorTabKey;
-  tabLabel: string;
-  scenarioLabel: string;
-  beforeFlow: SimulatorStep[];
-  beforeResult: string;
-  beforeResultTone: ToneKey;
-  afterFlow: SimulatorStep[];
-  afterResult: string;
-  afterResultTone: ToneKey;
-};
-
-export type Mission = {
-  number: string;
-  title: string;
-  helper: string;
-  iconKey: IconKey;
-};
-
-export type TakeawayCard = {
-  number: string;
-  tone: ToneKey;
-  title: string;
-  body: string;
-  iconKey: IconKey;
-};
-
-export type LegendItem = { label: string; legend: SimulatorStep['legend'] };
 
 export type UseEffectEventContent = {
   hero: {
     badge: string;
-    titleLines: [string, string, string];
-    subtitleLines: [string, string];
-    beforeCode: {
-      title: string;
-      langBadge: 'JSX';
-      code: string;
-      footerLines: [string, string];
-    };
-    reconnect: {
-      title: string;
-      beforeLabel: string;
-      beforeBody: string;
-      afterLabel: string;
-      afterBody: string;
-    };
-    afterCode: {
-      title: string;
-      langBadge: 'JSX';
-      code: string;
-      footerLines: [string, string];
-    };
+    title: { line1: string; line2: string };
+    description: string;
+    diagramBadge: string;
+    diagramCaption: string;
+    signals: HeroSignal[];
   };
-  question: {
-    number: string;
-    eyebrow: string;
-    questionLines: [string, string];
-    supportQuestions: SupportQuestion[];
-  };
-  problem: {
-    number: string;
+  deps: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    cards: ProblemCard[];
+    before: { title: string; badge: string; description: string; bullets: string[] };
+    bridge: { headline: string; sub: string };
+    after: { title: string; badge: string; description: string; bullets: string[] };
+    note: string;
   };
-  before: {
-    number: string;
+  roles: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    code: { fileName: string; langBadge: 'JSX'; code: string };
-    problemCardTitle: string;
-    problems: ProblemListItem[];
-    summary: string;
+    cards: RoleCard[];
+    note: string;
   };
-  after: {
-    number: string;
+  apply: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    code: { fileName: string; langBadge: 'JSX'; code: string };
-    improvementCardTitle: string;
-    improvements: ProblemListItem[];
-    summary: string;
+    steps: ApplyStep[];
+    note: string;
   };
-  separation: {
-    number: string;
+  behavior: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    left: SeparationCard;
-    center: string;
-    right: SeparationCard;
+    headers: [string, string, string];
+    rows: BehaviorRow[];
+    note: string;
   };
-  dependency: {
-    number: string;
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
-    description: string;
-    flow: FlowStep[];
-    dependencyCardTitle: string;
-    beforeLabel: string;
-    beforeValue: string;
-    beforeBody: string;
-    afterLabel: string;
-    afterValue: string;
-    afterBody: string;
-  };
-  restriction: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    cards: ConstraintCard[];
-  };
-  comparison: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    columns: { topic: string; before: string; after: string; explanation: string };
-    rows: ComparisonRow[];
-  };
-  simulator: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    tabsLabel: string;
-    defaultScenario: SimulatorTabKey;
-    scenarios: SimulatorScenario[];
-    legendTitle: string;
-    legendItems: LegendItem[];
-    beforeTitle: string;
-    afterTitle: string;
-  };
-  mission: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    missions: Mission[];
-  };
-  takeaways: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    cards: TakeawayCard[];
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -238,408 +104,232 @@ export type UseEffectEventContent = {
   };
 };
 
-const BEFORE_CODE = `useEffect(() => {
-  const connection = createConnection(serverUrl, roomId);
+const KO_CODE = `// packages/react-reconciler/src/ReactFiberHooks.js
+function mountEvent(callback) {
+  const hook = mountWorkInProgressHook();
+  const ref = { impl: callback };   // 실제 함수 본문은 이 상자 안에 들어간다
+  hook.memoizedState = ref;
 
-  connection.on("connected", () => {
-    showNotification("Connected!", theme);
-  });
+  // 돌려주는 함수 자체는 렌더마다 바뀌지 않는다.
+  // 호출되는 순간에 상자를 열어 가장 최신 impl을 부른다.
+  return function eventFn() {
+    if (isInvalidExecutionContextForEventFunction()) {
+      throw new Error('useEffectEvent로 감싼 함수는 렌더 중에 부를 수 없다');
+    }
+    return ref.impl.apply(undefined, arguments);
+  };
+}
 
-  connection.connect();
+// 업데이트 때는 이 상자의 impl만 갈아 끼운다.
+// 바깥 함수의 정체성이 그대로이므로 의존성 배열이 흔들리지 않는다.`;
 
-  return () => connection.disconnect();
-}, [roomId, theme]);`;
+const EN_CODE = `// packages/react-reconciler/src/ReactFiberHooks.js
+function mountEvent(callback) {
+  const hook = mountWorkInProgressHook();
+  const ref = { impl: callback };   // the real body goes inside this box
+  hook.memoizedState = ref;
 
-const AFTER_CODE = `const onConnected = useEffectEvent(() => {
-  showNotification("Connected!", theme);
-});
+  // The returned function itself never changes between renders.
+  // At call time it opens the box and invokes the freshest impl.
+  return function eventFn() {
+    if (isInvalidExecutionContextForEventFunction()) {
+      throw new Error('a function wrapped in useEffectEvent cannot be called during render');
+    }
+    return ref.impl.apply(undefined, arguments);
+  };
+}
 
-useEffect(() => {
-  const connection = createConnection(serverUrl, roomId);
+// On update only the impl inside the box is swapped.
+// The outer function keeps its identity, so dependency arrays stay stable.`;
 
-  connection.on("connected", () => {
-    onConnected();
-  });
-
-  connection.connect();
-
-  return () => connection.disconnect();
-}, [roomId]);`;
+const HOOKS_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js';
 
 const ko: UseEffectEventContent = {
   hero: {
     badge: 'React 19 변화 · 9/10단계',
-    titleLines: ['useEffectEvent는', 'Effect 설계에 무엇을', '새로 추가했나?'],
-    subtitleLines: [
-      'Effect가 하는 일과 Effect 안에서',
-      '발생하는 이벤트성 로직을 분리하는 API입니다.',
-    ],
-    beforeCode: {
-      title: 'Before (기존 useEffect)',
-      langBadge: 'JSX',
-      code: BEFORE_CODE,
-      footerLines: ['Dependency: [roomId, theme]', 'theme 변경 시에도 reconnect 발생'],
-    },
-    reconnect: {
-      title: 'reconnect 감소',
-      beforeLabel: 'Before',
-      beforeBody: 'theme 변경 시 reconnect 발생',
-      afterLabel: 'After',
-      afterBody: 'theme 변경 시 reconnect 없음',
-    },
-    afterCode: {
-      title: 'After (useEffectEvent 적용)',
-      langBadge: 'JSX',
-      code: AFTER_CODE,
-      footerLines: ['Dependency: [roomId]', 'theme 변경 시에도 reconnect 없음'],
-    },
-  },
-  question: {
-    number: '02',
-    eyebrow: '오늘 해결할 질문',
-    questionLines: ['theme만 바뀌었는데 왜 채팅 연결까지', '다시 열어야 할까?'],
-    supportQuestions: [
-      { body: 'Effect 본체와 이벤트 로직 분리', iconKey: 'split' },
-      { body: '불필요한 재연결 감소', iconKey: 'plug' },
-      { body: '최신 props/state 안전하게 사용', iconKey: 'shield-check' },
-      { body: '더 명확한 Effect 설계', iconKey: 'sparkles' },
-    ],
-  },
-  problem: {
-    number: '01',
-    eyebrow: '기존 Effect의 한계',
-    title: '기존 Effect의 문제',
+    title: { line1: '의존성 배열은 두 가지 질문에', line2: '한 번에 답하려 해 왔다' },
     description:
-      '같은 dependency 배열에 묶여 있지만, roomId와 theme는 성격이 완전히 다른 값입니다.',
+      '언제 다시 연결할지와 어떤 값을 읽을지는 다른 질문입니다. useEffectEvent는 그 둘을 떼어 놓습니다.',
+    diagramBadge: 'two questions',
+    diagramCaption: 'when to re-run vs what to read',
+    signals: [
+      { id: 'target', label: 'roomId', caption: '바뀌면 다시 연결해야 한다', tone: 'cyan' },
+      { id: 'reaction', label: 'theme', caption: '읽기만 하면 된다', tone: 'violet' },
+      {
+        id: 'before',
+        label: '[roomId, theme]',
+        caption: '둘 다 재실행 조건이 된다',
+        tone: 'amber',
+      },
+      { id: 'after', label: '[roomId]', caption: '읽는 값은 빠진다', tone: 'emerald' },
+    ],
+  },
+  deps: {
+    badge: '01',
+    eyebrow: 'why it re-ran',
+    title: '재실행 조건과 읽는 값이 한 배열에 있었다',
+    description:
+      'lint 규칙은 옳았습니다. Effect가 쓰는 값은 전부 넣어야 했고, 그래서 필요 없는 재실행이 생겼습니다.',
+    before: {
+      title: '한 배열에 섞여 있을 때',
+      badge: '[roomId, theme]',
+      description:
+        'Effect 본문이 theme를 읽으니 배열에 넣어야 하고, 넣으면 theme가 바뀔 때마다 다시 연결됩니다.',
+      bullets: [
+        '연결 대상이 아닌 theme가 재연결을 일으킨다',
+        '배열에서 빼면 오래된 theme를 읽는 stale closure가 된다',
+        'ref에 담아 우회하면 코드가 늘고 의도가 흐려진다',
+        'lint 규칙을 주석으로 끄는 습관이 생긴다',
+      ],
+    },
+    bridge: {
+      headline: '읽기만 하는 값은\n재실행 조건이 아니다',
+      sub: '이벤트성 로직을 따로 감싸면, 그 안에서 읽는 값은 배열에 넣지 않아도 항상 최신입니다.',
+    },
+    after: {
+      title: '두 질문을 갈라 놓으면',
+      badge: '[roomId]',
+      description:
+        '알림 로직을 Effect Event로 빼면 Effect 본문은 연결만 남고 배열도 그만큼 줄어듭니다.',
+      bullets: [
+        'theme가 바뀌어도 연결은 유지된다',
+        '알림 문구는 호출 시점의 최신 theme를 읽는다',
+        '배열이 재실행 조건만 담게 되어 의도가 드러난다',
+        'lint 규칙을 끄지 않아도 된다',
+      ],
+    },
+    note: 'ref로 최신 값을 들고 다니던 관용구가 정식 API가 된 것입니다. 하던 일은 같고, 규칙이 생겼습니다.',
+  },
+  roles: {
+    badge: '02',
+    eyebrow: 'four roles',
+    title: '분리하고 나면 각자 맡는 것',
+    description: '같은 Effect 안에 있지만 책임이 다릅니다. 무엇이 어디에 속하는지가 기준입니다.',
     cards: [
       {
-        tone: 'concept',
-        title: 'roomId 변경',
-        caption: '연결 대상 변경',
-        conclusion: '재연결 필요',
-        iconKey: 'network',
-        connector: '+',
+        id: 'effect',
+        title: 'Effect 본문',
+        description:
+          '외부 시스템과의 연결과 정리를 맡습니다. 언제 다시 해야 하는지가 유일한 관심사입니다.',
+        badge: 'connect / cleanup',
+        tone: 'cyan',
       },
       {
-        tone: 'advanced',
-        title: 'theme 변경',
-        caption: '알림 텍스트만 변경',
-        conclusion: '알림 텍스트만 바꾸면 됨',
-        iconKey: 'palette',
-        connector: '→',
+        id: 'event',
+        title: 'Effect Event',
+        description:
+          '연결 위에서 일어나는 반응을 맡습니다. 알림·로그·분석 호출 같은 일회성 동작입니다.',
+        badge: 'useEffectEvent',
+        tone: 'violet',
       },
       {
-        tone: 'problem',
-        title: '하지만 기존 Effect는',
-        caption: '둘 다 dependency라서 둘 다 재실행',
-        conclusion: '불필요한 reconnect 발생',
-        iconKey: 'shield-alert',
-        connector: null,
+        id: 'fresh',
+        title: '최신 값 보장',
+        description: '호출되는 순간의 props와 state를 읽습니다. 캡처된 과거 값이 아닙니다.',
+        badge: '항상 최신',
+        tone: 'teal',
+      },
+      {
+        id: 'deps',
+        title: '안정된 정체성',
+        description:
+          '돌려주는 함수는 렌더마다 바뀌지 않습니다. 그래서 의존성 배열에 넣을 필요가 없습니다.',
+        badge: '배열에서 제외',
+        tone: 'indigo',
       },
     ],
+    note: '세 번째와 네 번째가 한 몸입니다. 겉함수는 고정하고 속 구현만 갈아 끼우기 때문에 둘이 동시에 성립합니다.',
   },
-  before: {
-    number: '02',
-    eyebrow: '기존 접근',
-    title: 'Before 코드 (기존 접근)',
-    description:
-      'theme도 dependency에 포함되어 있으면, 알림 문구만 바꾸고 싶을 때도 연결을 끊고 다시 엽니다.',
-    code: { fileName: 'ChatRoom.jsx', langBadge: 'JSX', code: BEFORE_CODE },
-    problemCardTitle: '문제점',
-    problems: [
-      { text: 'theme가 바뀌어도 Effect 전체가 다시 실행됩니다.' },
-      { text: '연결을 끊고 다시 열기 때문에 비용이 발생합니다.' },
-      { text: '의도상 알림 문구만 최신이면 되는 조건이 복잡해집니다.' },
-    ],
-    summary: 'theme 변경은 알림 문구만 바꾸면 되는데, 연결까지 다시 열고 있습니다.',
-  },
-  after: {
-    number: '03',
-    eyebrow: '개선 접근',
-    title: 'useEffectEvent 도입 (After)',
-    description:
-      'Effect Event로 알림 로직을 분리하면, Effect 본체는 연결 관리에만 집중하고 알림 로직은 최신 theme를 그대로 읽습니다.',
-    code: { fileName: 'ChatRoom.jsx', langBadge: 'JSX', code: AFTER_CODE },
-    improvementCardTitle: '개선 효과',
-    improvements: [
-      { text: 'theme가 바뀌어도 Effect 본체는 다시 실행되지 않습니다.' },
-      { text: '알림 문구만 최신 theme로 업데이트됩니다.' },
-      { text: '의존성 배열이 [roomId]로 줄어 재실행 조건이 명확해집니다.' },
-    ],
-    summary: '연결 로직은 안정적으로 유지되고, 알림 로직은 항상 최신 값을 사용합니다.',
-  },
-  separation: {
-    number: '04',
-    eyebrow: '역할 분리',
-    title: 'Effect와 Effect Event 분리',
-    description:
-      'Effect는 외부 시스템 연결과 정리 같은 구조적 작업을, Effect Event는 그 위에서 일어나는 이벤트성 반응을 담당합니다.',
-    left: {
-      tone: 'concept',
-      title: 'Effect (본체)',
-      description: '연결을 만들고 정리하는 구조적 작업',
-      items: ['연결 생성 / 연결하지 않음 점검', '외부 시스템과의 생명주기 관리'],
-      iconKey: 'settings',
-    },
-    center: '분리',
-    right: {
-      tone: 'advanced',
-      title: 'Effect Event (이벤트 로직)',
-      description: '연결 성공 시 실행되는 이벤트성 로직',
-      items: ['최신 props/state 읽기', 'UI 반응, 알림, 로그 등 처리'],
-      iconKey: 'zap',
-    },
-  },
-  dependency: {
-    number: '05',
-    eyebrow: '의존성 변화',
-    title: '의존성 배열이 줄어드는 이유',
-    description:
-      'theme는 실행 시점마다 “최신 값”을 그대로 읽기만 하면 되므로, Effect 본체의 재실행 조건에 들어갈 필요가 없습니다.',
-    flow: [
+  apply: {
+    badge: '03',
+    eyebrow: 'how to apply',
+    title: '기존 Effect에 적용하는 네 칸',
+    description: '적용 순서가 곧 판단 순서입니다. 무엇이 재실행 조건인지부터 답해야 합니다.',
+    steps: [
       {
-        tone: 'concept',
-        title: 'theme',
-        body: '알림 문구',
-        iconKey: 'palette',
+        id: 'separate',
+        num: '01',
+        title: '두 질문으로 값을 가른다',
+        description:
+          '이 값이 바뀌면 다시 연결해야 하는가, 아니면 읽기만 하면 되는가를 값마다 답합니다.',
+        tone: 'cyan',
       },
       {
-        tone: 'advanced',
-        title: 'Effect Event가 읽는 최신 값',
-        body: '실행 시점에 최신으로 읽음',
-        iconKey: 'zap',
+        id: 'extract',
+        num: '02',
+        title: '읽기만 하는 쪽을 감싼다',
+        description:
+          '그 값을 쓰는 이벤트성 로직을 useEffectEvent로 빼냅니다. 본문은 연결만 남깁니다.',
+        tone: 'violet',
       },
       {
-        tone: 'improvement',
-        title: 'Effect 본체의 재실행 조건이 아님',
-        body: 'dependency에서 빠짐',
-        iconKey: 'shield-check',
+        id: 'call',
+        num: '03',
+        title: 'Effect 안에서만 부른다',
+        description:
+          '렌더 중이나 이벤트 핸들러에서 부르면 안 됩니다. 규칙을 어기면 개발 모드에서 던집니다.',
+        tone: 'indigo',
+      },
+      {
+        id: 'shrink',
+        num: '04',
+        title: '배열에서 그 값을 뺀다',
+        description:
+          '이제 배열에는 재실행 조건만 남습니다. lint 규칙도 이 함수는 넣으라고 하지 않습니다.',
+        tone: 'emerald',
       },
     ],
-    dependencyCardTitle: 'Dependency 변화',
-    beforeLabel: 'Before',
-    beforeValue: '[roomId, theme]',
-    beforeBody: 'theme도 재실행 조건',
-    afterLabel: 'After',
-    afterValue: '[roomId]',
-    afterBody: '연결 대상만 재실행 조건',
+    note: '01을 건너뛰고 배열을 줄이는 용도로만 쓰면 원래 문제가 그대로 돌아옵니다. 가르는 일이 먼저입니다.',
   },
-  restriction: {
-    number: '06',
-    eyebrow: '사용 규칙',
-    title: '사용 위치 제약 (규칙 중요)',
-    description:
-      'useEffectEvent는 강력한 만큼 사용 위치가 제한됩니다. 잘못된 위치에서 부르면 의도가 무너집니다.',
-    cards: [
-      {
-        tone: 'improvement',
-        title: '허용되는 호출 위치',
-        items: ['Effect 내부에서', '다른 Effect Event 내부에서'],
-        iconKey: 'shield-check',
-      },
-      {
-        tone: 'problem',
-        title: '이렇게 쓰면 안 됩니다',
-        items: ['dependency 회피용 꼼수', 'Effect 밖에서 직접 호출'],
-        iconKey: 'ban',
-      },
-      {
-        tone: 'problem',
-        title: '규칙 중요',
-        items: ['올바른 설계를 위한 대상 구조', '규칙을 어기면 의도된 효과가 사라짐'],
-        iconKey: 'shield-alert',
-      },
-    ],
-  },
-  comparison: {
-    number: '07',
-    eyebrow: '동작 비교',
-    title: 'Before / After 동작 비교',
-    description:
-      'theme 변경과 roomId 변경 두 시나리오에서, Before와 After가 어떻게 다르게 동작하는지 한 표로 비교합니다.',
-    columns: {
-      topic: '변화 상황',
-      before: 'Before (기존)',
-      after: 'After (useEffectEvent)',
-      explanation: '설명',
-    },
+  behavior: {
+    badge: '04',
+    eyebrow: 'side by side',
+    title: '같은 변화에 두 코드가 다르게 반응한다',
+    description: '적용 전후로 실제 동작이 어떻게 갈리는지 네 가지 상황으로 봅니다.',
+    headers: ['상황', 'Before', 'After'],
     rows: [
       {
-        topic: 'theme 변경',
-        beforeLines: ['reconnect 발생', 'Effect 전체 재실행', '연결 끊고 다시 연결'],
-        afterLines: ['reconnect 없음', '알림만 최신 theme로 업데이트', '연결 유지'],
-        explanation: 'Effect Event가 최신 theme를 읽어 알림만 업데이트',
+        topic: 'theme만 바뀔 때',
+        before: '연결을 끊고 다시 연다',
+        after: '연결은 그대로고 알림 문구만 최신이 된다',
       },
       {
-        topic: 'roomId 변경',
-        beforeLines: ['reconnect 발생(필요)', 'Effect 전체 재실행', '연결 끊고 새 연결'],
-        afterLines: ['reconnect 발생(동일)', 'Effect 재실행', '연결 끊고 새 연결'],
-        explanation: '연결 대상이 바뀌므로 둘 다 재연결이 필요',
+        topic: 'roomId가 바뀔 때',
+        before: '다시 연결한다',
+        after: '다시 연결한다 - 여기는 그대로다',
+      },
+      {
+        topic: '읽는 값의 신선도',
+        before: '배열에서 빼면 오래된 값을 읽는다',
+        after: '호출 시점의 최신 값을 읽는다',
+      },
+      {
+        topic: '호출할 수 있는 곳',
+        before: '제약 없음 - 그래서 실수도 쉽다',
+        after: 'Effect와 다른 Effect Event 안에서만',
       },
     ],
+    note: '두 번째 줄이 중요합니다. 진짜 재실행이 필요한 경우는 그대로 재실행됩니다. 줄어든 것은 불필요한 쪽뿐입니다.',
   },
-  simulator: {
-    number: '08',
-    eyebrow: '재연결 시뮬레이터',
-    title: 'Effect Reconnect 비교기',
-    description:
-      '시나리오를 선택해 Before / After 흐름을 직접 비교해 보세요. 같은 변경이라도 결과가 어떻게 갈리는지 보입니다.',
-    tabsLabel: '시나리오 선택',
-    defaultScenario: 'theme',
-    scenarios: [
-      {
-        key: 'theme',
-        tabLabel: 'theme 변경',
-        scenarioLabel: '시나리오: theme 변경',
-        beforeFlow: [
-          {
-            title: 'theme 변경 감지',
-            caption: '이벤트성 변경',
-            legend: 'detect',
-          },
-          { title: 'Effect 전체 재실행', legend: 'rerun' },
-          { title: 'disconnect', legend: 'disconnect' },
-          { title: 'connect', legend: 'connect' },
-          { title: 'connected', legend: 'connected' },
-          {
-            title: '알림 표시',
-            caption: '새 theme',
-            legend: 'notify',
-          },
-        ],
-        beforeResult: '불필요한 reconnect 발생',
-        beforeResultTone: 'problem',
-        afterFlow: [
-          {
-            title: 'theme 변경 감지',
-            caption: 'EffectEvent 로직만 읽음',
-            legend: 'detect',
-          },
-          { title: '연결 유지', legend: 'keep' },
-          {
-            title: '알림 표시',
-            caption: '최신 theme',
-            legend: 'notify',
-          },
-        ],
-        afterResult: 'reconnect 없이 알림만 업데이트',
-        afterResultTone: 'improvement',
-      },
-      {
-        key: 'roomId',
-        tabLabel: 'roomId 변경',
-        scenarioLabel: '시나리오: roomId 변경',
-        beforeFlow: [
-          {
-            title: 'roomId 변경 감지',
-            caption: '연결 대상이 바뀜',
-            legend: 'detect',
-          },
-          { title: 'Effect 전체 재실행', legend: 'rerun' },
-          { title: 'disconnect', legend: 'disconnect' },
-          { title: 'connect', legend: 'connect' },
-          { title: 'connected', legend: 'connected' },
-          {
-            title: '알림 표시',
-            caption: '새 roomId',
-            legend: 'notify',
-          },
-        ],
-        beforeResult: '필요한 reconnect 발생',
-        beforeResultTone: 'concept',
-        afterFlow: [
-          {
-            title: 'roomId 변경 감지',
-            caption: '연결 대상이 바뀜',
-            legend: 'detect',
-          },
-          { title: 'Effect 재실행', legend: 'rerun' },
-          { title: 'disconnect', legend: 'disconnect' },
-          { title: 'connect', legend: 'connect' },
-          { title: 'connected', legend: 'connected' },
-          {
-            title: '알림 표시',
-            caption: '최신 theme',
-            legend: 'notify',
-          },
-        ],
-        afterResult: '필요한 reconnect 발생 (대상이 바뀌므로)',
-        afterResultTone: 'concept',
-      },
-    ],
-    legendTitle: '범례',
-    legendItems: [
-      { label: '변경 감지', legend: 'detect' },
-      { label: 'Effect 재실행', legend: 'rerun' },
-      { label: '연결 끊김', legend: 'disconnect' },
-      { label: '연결 생성', legend: 'connect' },
-      { label: '연결 성공', legend: 'connected' },
-      { label: '알림 표시', legend: 'notify' },
-      { label: '연결 유지', legend: 'keep' },
-    ],
-    beforeTitle: 'Before (기존)',
-    afterTitle: 'After (useEffectEvent)',
-  },
-  mission: {
-    number: '09',
-    eyebrow: '코드 따라가기',
-    title: '직접 따라가기 보기',
-    description:
-      'API 사용법만이 아니라, Effect 설계 관점에서 useEffectEvent를 다루도록 손에 익혀 봅니다.',
-    missions: [
-      {
-        number: '01',
-        title: 'Effect 본체와 이벤트성 로직을 분리해본다',
-        helper: '연결/구독 등 구조적 작업과 UI 반응 로직을 구분한다.',
-        iconKey: 'split',
-      },
-      {
-        number: '02',
-        title: 'useEffectEvent를 dependency 배열 회피용으로 쓰지 않는다',
-        helper: '올바른 목적의 이벤트 로직을 지키며 사용한다.',
-        iconKey: 'shield-alert',
-      },
-      {
-        number: '03',
-        title: 'theme 변경 시 어떤 코드가 재실행되는지 비교한다',
-        helper: 'Before/After의 실행 범위를 직접 확인한다.',
-        iconKey: 'refresh',
-      },
-    ],
-  },
-  takeaways: {
-    number: '10',
-    eyebrow: '핵심 정리',
-    title: '핵심 정리',
-    cards: [
-      {
-        number: '01',
-        tone: 'concept',
-        title: 'useEffectEvent는 Effect 내부 이벤트 로직을 분리한다.',
-        body: '연결/구독 등의 생명주기와 UI 반응 로직을 명확하게 나눌 수 있다.',
-        iconKey: 'split',
-      },
-      {
-        number: '02',
-        tone: 'improvement',
-        title: '최신 props/state를 읽으면서도 불필요한 재연결을 줄일 수 있다.',
-        body: 'Effect 본체 재실행 없이도 이벤트 로직이 항상 최신 값을 안전하게 사용한다.',
-        iconKey: 'shield-check',
-      },
-      {
-        number: '03',
-        tone: 'advanced',
-        title: 'dependency 회피 꼼수로 이해하면 안 된다.',
-        body: '올바른 설계 문맥과 사용 규칙 안에서만 사용해야 효과가 있다.',
-        iconKey: 'shield-alert',
-      },
-    ],
+  checkpoint: {
+    badge: '05',
+    eyebrow: 'code checkpoint',
+    title: '겉은 고정하고 속만 바꾸는 상자',
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
+    lookForLabel: '볼 것',
+    lookFor: 'mountEvent',
+    whyLabel: '설명',
+    why: 'ref 상자 하나로 두 성질을 동시에 얻습니다. 바깥 함수는 안정적이고, 안의 구현은 매번 최신으로 교체됩니다.',
+    code: KO_CODE,
+    primaryCta: 'ReactFiberHooks.js 소스 보기',
+    primaryHref: HOOKS_HREF,
   },
   nextStep: {
-    eyebrow: '다음 학습으로 이어집니다',
-    title: 'React 19.2 이후 변화 읽기',
-    description:
-      'cacheSignal, Partial Pre-rendering, SSR batching 등 React 19.2 이후 변화를 읽는 기준을 정리합니다.',
+    eyebrow: '다음 단계',
+    title: '다음 릴리스는 스스로 어떻게 읽을까',
+    description: '열 번째 페이지에서 이 지도를 계속 쓰는 방법으로 챕터를 닫습니다.',
     cta: '다음 페이지로 이동',
     href: '/react-19-2-reading-method',
   },
@@ -648,350 +338,191 @@ const ko: UseEffectEventContent = {
 const en: UseEffectEventContent = {
   hero: {
     badge: 'React 19 Changes · 9/10',
-    titleLines: ['What did useEffectEvent', 'add to Effect design', 'in React 19.2?'],
-    subtitleLines: [
-      'An API for separating what an Effect does',
-      'from event-like logic that happens inside it.',
-    ],
-    beforeCode: {
-      title: 'Before (plain useEffect)',
-      langBadge: 'JSX',
-      code: BEFORE_CODE,
-      footerLines: ['Dependency: [roomId, theme]', 'Reconnects even when theme changes'],
-    },
-    reconnect: {
-      title: 'Fewer reconnects',
-      beforeLabel: 'Before',
-      beforeBody: 'Reconnects on theme change',
-      afterLabel: 'After',
-      afterBody: 'No reconnect on theme change',
-    },
-    afterCode: {
-      title: 'After (with useEffectEvent)',
-      langBadge: 'JSX',
-      code: AFTER_CODE,
-      footerLines: ['Dependency: [roomId]', 'No reconnect on theme change'],
-    },
-  },
-  question: {
-    number: '02',
-    eyebrow: "Today's question",
-    questionLines: ['Why should the chat reconnect', 'just because the theme changed?'],
-    supportQuestions: [
-      { body: 'Separate Effect body from event logic', iconKey: 'split' },
-      { body: 'Reduce unnecessary reconnects', iconKey: 'plug' },
-      { body: 'Read the latest props/state safely', iconKey: 'shield-check' },
-      { body: 'Clearer Effect design', iconKey: 'sparkles' },
-    ],
-  },
-  problem: {
-    number: '01',
-    eyebrow: 'EXISTING LIMITATION',
-    title: 'The problem with the existing Effect',
+    title: { line1: 'A dependency array has been', line2: 'answering two questions at once' },
     description:
-      'They share a dependency array, but roomId and theme are completely different in nature.',
+      'When to reconnect and which value to read are different questions. useEffectEvent pulls them apart.',
+    diagramBadge: 'two questions',
+    diagramCaption: 'when to re-run vs what to read',
+    signals: [
+      { id: 'target', label: 'roomId', caption: 'a change means reconnecting', tone: 'cyan' },
+      { id: 'reaction', label: 'theme', caption: 'only needs to be read', tone: 'violet' },
+      {
+        id: 'before',
+        label: '[roomId, theme]',
+        caption: 'both become re-run conditions',
+        tone: 'amber',
+      },
+      { id: 'after', label: '[roomId]', caption: 'the read-only value drops out', tone: 'emerald' },
+    ],
+  },
+  deps: {
+    badge: '01',
+    eyebrow: 'why it re-ran',
+    title: 'Re-run conditions and read values shared one array',
+    description:
+      'The lint rule was right: every value the Effect uses had to be listed, and that produced needless re-runs.',
+    before: {
+      title: 'While they are mixed together',
+      badge: '[roomId, theme]',
+      description:
+        'The body reads theme, so theme must be listed, and once listed every theme change reconnects.',
+      bullets: [
+        'theme, which is not the connection target, triggers reconnection',
+        'Dropping it from the array leaves a stale closure reading an old theme',
+        'Working around it with a ref adds code and blurs the intent',
+        'You get into the habit of silencing the lint rule with a comment',
+      ],
+    },
+    bridge: {
+      headline: 'A value you only read\nis not a re-run condition',
+      sub: 'Wrap the event-like logic and the values it reads stay fresh without entering the array.',
+    },
+    after: {
+      title: 'Once the questions are split',
+      badge: '[roomId]',
+      description:
+        'Move the notification into an Effect Event and the body keeps only the connection, shrinking the array.',
+      bullets: [
+        'A theme change leaves the connection alone',
+        'The notification text reads the theme current at call time',
+        'The array holds only re-run conditions, so intent becomes visible',
+        'There is no need to disable the lint rule',
+      ],
+    },
+    note: 'The old ref idiom for carrying a fresh value became an official API. The job is the same; now there are rules.',
+  },
+  roles: {
+    badge: '02',
+    eyebrow: 'four roles',
+    title: 'What each part owns after the split',
+    description:
+      'They live in the same Effect with different responsibilities. The question is what belongs where.',
     cards: [
       {
-        tone: 'concept',
-        title: 'roomId change',
-        caption: 'Connection target changes',
-        conclusion: 'Needs reconnect',
-        iconKey: 'network',
-        connector: '+',
+        id: 'effect',
+        title: 'The Effect body',
+        description:
+          'Owns connecting to and cleaning up an external system. Its only concern is when to redo that.',
+        badge: 'connect / cleanup',
+        tone: 'cyan',
       },
       {
-        tone: 'advanced',
-        title: 'theme change',
-        caption: 'Only the notification text changes',
-        conclusion: 'Only the notification needs to update',
-        iconKey: 'palette',
-        connector: '→',
+        id: 'event',
+        title: 'The Effect Event',
+        description:
+          'Owns reactions on top of the connection: notifications, logs, analytics calls.',
+        badge: 'useEffectEvent',
+        tone: 'violet',
       },
       {
-        tone: 'problem',
-        title: 'But the existing Effect…',
-        caption: 'Both are dependencies, so both re-run',
-        conclusion: 'Unnecessary reconnect',
-        iconKey: 'shield-alert',
-        connector: null,
+        id: 'fresh',
+        title: 'Freshness guarantee',
+        description:
+          'It reads the props and state current at call time, not a captured past value.',
+        badge: 'always current',
+        tone: 'teal',
+      },
+      {
+        id: 'deps',
+        title: 'Stable identity',
+        description:
+          'The returned function does not change between renders, so it never needs to be in the array.',
+        badge: 'out of the array',
+        tone: 'indigo',
       },
     ],
+    note: 'The third and fourth are one thing: the outer function is pinned while the inner implementation is swapped.',
   },
-  before: {
-    number: '02',
-    eyebrow: 'EXISTING APPROACH',
-    title: 'Before (existing approach)',
+  apply: {
+    badge: '03',
+    eyebrow: 'how to apply',
+    title: 'Four slots for applying it to an existing Effect',
     description:
-      'When theme is in the dependency array, even a notification-only update tears the connection down and rebuilds it.',
-    code: { fileName: 'ChatRoom.jsx', langBadge: 'JSX', code: BEFORE_CODE },
-    problemCardTitle: 'Problems',
-    problems: [
-      { text: 'The whole Effect re-runs even on a theme change.' },
-      { text: 'Disconnecting and reconnecting costs time.' },
-      { text: 'Hard to express “the notification just needs the latest theme.”' },
-    ],
-    summary:
-      "All you needed was to update the notification text, but you're reopening the connection too.",
-  },
-  after: {
-    number: '03',
-    eyebrow: 'IMPROVED APPROACH',
-    title: 'Adopting useEffectEvent (After)',
-    description:
-      'With Effect Event, the Effect body focuses on connection management while the notification logic reads the latest theme.',
-    code: { fileName: 'ChatRoom.jsx', langBadge: 'JSX', code: AFTER_CODE },
-    improvementCardTitle: 'Improvements',
-    improvements: [
-      { text: "The Effect body doesn't re-run on theme change." },
-      { text: 'Only the notification text updates with the latest theme.' },
-      { text: 'Dependency shrinks to [roomId] — re-run conditions become clear.' },
-    ],
-    summary: 'Connection logic stays stable; notification logic always uses the latest value.',
-  },
-  separation: {
-    number: '04',
-    eyebrow: 'ROLE SPLIT',
-    title: 'Effect vs Effect Event',
-    description:
-      'Effect handles structural work like external-system lifecycle. Effect Event handles event-like reactions on top.',
-    left: {
-      tone: 'concept',
-      title: 'Effect (body)',
-      description: 'Structural work of creating and cleaning up connections',
-      items: ['Create / decide not to connect', 'Manage external-system lifecycle'],
-      iconKey: 'settings',
-    },
-    center: 'split',
-    right: {
-      tone: 'advanced',
-      title: 'Effect Event (event logic)',
-      description: 'Event-like logic that runs on connection success',
-      items: ['Reads the latest props/state', 'UI reactions, notifications, logs'],
-      iconKey: 'zap',
-    },
-  },
-  dependency: {
-    number: '05',
-    eyebrow: 'DEPENDENCY SHIFT',
-    title: 'Why the dependency array shrinks',
-    description:
-      "theme just needs the latest value at run time — it doesn't need to be a re-run trigger for the Effect body.",
-    flow: [
+      'The order of application is the order of judgement. Start by answering what a re-run condition is.',
+    steps: [
       {
-        tone: 'concept',
-        title: 'theme',
-        body: 'Notification text',
-        iconKey: 'palette',
+        id: 'separate',
+        num: '01',
+        title: 'Sort values by the two questions',
+        description:
+          'For each value, ask whether a change means reconnecting or whether it is only read.',
+        tone: 'cyan',
       },
       {
-        tone: 'advanced',
-        title: 'Read by Effect Event',
-        body: 'Latest value at call time',
-        iconKey: 'zap',
+        id: 'extract',
+        num: '02',
+        title: 'Wrap the read-only side',
+        description:
+          'Pull the event-like logic using that value into useEffectEvent, leaving only the connection.',
+        tone: 'violet',
       },
       {
-        tone: 'improvement',
-        title: 'Not a re-run trigger',
-        body: 'Removed from dependencies',
-        iconKey: 'shield-check',
+        id: 'call',
+        num: '03',
+        title: 'Call it only inside an Effect',
+        description:
+          'Never during render or in an event handler. Breaking the rule throws in development.',
+        tone: 'indigo',
+      },
+      {
+        id: 'shrink',
+        num: '04',
+        title: 'Drop that value from the array',
+        description:
+          'Now the array holds only re-run conditions, and the lint rule does not ask for the function.',
+        tone: 'emerald',
       },
     ],
-    dependencyCardTitle: 'Dependency shift',
-    beforeLabel: 'Before',
-    beforeValue: '[roomId, theme]',
-    beforeBody: 'theme is also a re-run trigger',
-    afterLabel: 'After',
-    afterValue: '[roomId]',
-    afterBody: 'Only the connection target triggers a re-run',
+    note: 'Skip 01 and use it purely to shrink an array and the original problem comes right back. Sorting comes first.',
   },
-  restriction: {
-    number: '06',
-    eyebrow: 'USAGE RULE',
-    title: 'Usage location rules (important)',
-    description:
-      'useEffectEvent is powerful, so its call site is restricted. Using it in the wrong place breaks the intent.',
-    cards: [
-      {
-        tone: 'improvement',
-        title: 'Where you can call it',
-        items: ['Inside an Effect', 'Inside another Effect Event'],
-        iconKey: 'shield-check',
-      },
-      {
-        tone: 'problem',
-        title: "Don't use it as",
-        items: ['A way to dodge dependencies', 'A direct call from outside an Effect'],
-        iconKey: 'ban',
-      },
-      {
-        tone: 'problem',
-        title: 'Rules matter',
-        items: ['Designed for proper separation', 'Breaking the rule loses the intended benefit'],
-        iconKey: 'shield-alert',
-      },
-    ],
-  },
-  comparison: {
-    number: '07',
-    eyebrow: 'BEHAVIOR COMPARISON',
-    title: 'Before / After behavior comparison',
-    description:
-      'See in one table how Before / After differ across theme change and roomId change.',
-    columns: {
-      topic: 'Scenario',
-      before: 'Before (existing)',
-      after: 'After (useEffectEvent)',
-      explanation: 'Note',
-    },
+  behavior: {
+    badge: '04',
+    eyebrow: 'side by side',
+    title: 'Two versions react differently to the same change',
+    description: 'Four situations showing how behavior parts before and after.',
+    headers: ['Situation', 'Before', 'After'],
     rows: [
       {
-        topic: 'theme change',
-        beforeLines: ['Reconnects', 'Whole Effect re-runs', 'Disconnect + reconnect'],
-        afterLines: [
-          'No reconnect',
-          'Only notification updates with latest theme',
-          'Connection kept',
-        ],
-        explanation: 'Effect Event reads the latest theme; only the notification updates.',
+        topic: 'Only theme changes',
+        before: 'The connection is torn down and reopened',
+        after: 'The connection stays; only the notification text updates',
       },
       {
-        topic: 'roomId change',
-        beforeLines: ['Reconnect (needed)', 'Whole Effect re-runs', 'Disconnect + new connect'],
-        afterLines: ['Reconnect (same)', 'Effect re-runs', 'Disconnect + new connect'],
-        explanation: 'The connection target changes, so both need to reconnect.',
+        topic: 'roomId changes',
+        before: 'It reconnects',
+        after: 'It reconnects - unchanged here',
+      },
+      {
+        topic: 'Freshness of read values',
+        before: 'Dropping it from the array reads a stale value',
+        after: 'It reads the value current at call time',
+      },
+      {
+        topic: 'Where it may be called',
+        before: 'No restriction - which makes mistakes easy',
+        after: 'Only inside an Effect or another Effect Event',
       },
     ],
+    note: 'The second row matters: genuine reconnections still happen. Only the unnecessary ones went away.',
   },
-  simulator: {
-    number: '08',
-    eyebrow: 'RECONNECT SIMULATOR',
-    title: 'Effect Reconnect simulator',
-    description:
-      'Pick a scenario and compare the Before / After flows. See how the same change diverges in outcome.',
-    tabsLabel: 'Pick a scenario',
-    defaultScenario: 'theme',
-    scenarios: [
-      {
-        key: 'theme',
-        tabLabel: 'theme change',
-        scenarioLabel: 'Scenario: theme change',
-        beforeFlow: [
-          { title: 'Detect theme change', caption: 'Event-like change', legend: 'detect' },
-          { title: 'Whole Effect re-runs', legend: 'rerun' },
-          { title: 'disconnect', legend: 'disconnect' },
-          { title: 'connect', legend: 'connect' },
-          { title: 'connected', legend: 'connected' },
-          { title: 'Show notification', caption: 'new theme', legend: 'notify' },
-        ],
-        beforeResult: 'Unnecessary reconnect',
-        beforeResultTone: 'problem',
-        afterFlow: [
-          { title: 'Detect theme change', caption: 'Only Effect Event reads it', legend: 'detect' },
-          { title: 'Connection kept', legend: 'keep' },
-          { title: 'Show notification', caption: 'latest theme', legend: 'notify' },
-        ],
-        afterResult: 'Notification updates without reconnect',
-        afterResultTone: 'improvement',
-      },
-      {
-        key: 'roomId',
-        tabLabel: 'roomId change',
-        scenarioLabel: 'Scenario: roomId change',
-        beforeFlow: [
-          { title: 'Detect roomId change', caption: 'Connection target changes', legend: 'detect' },
-          { title: 'Whole Effect re-runs', legend: 'rerun' },
-          { title: 'disconnect', legend: 'disconnect' },
-          { title: 'connect', legend: 'connect' },
-          { title: 'connected', legend: 'connected' },
-          { title: 'Show notification', caption: 'new roomId', legend: 'notify' },
-        ],
-        beforeResult: 'Needed reconnect',
-        beforeResultTone: 'concept',
-        afterFlow: [
-          { title: 'Detect roomId change', caption: 'Connection target changes', legend: 'detect' },
-          { title: 'Effect re-runs', legend: 'rerun' },
-          { title: 'disconnect', legend: 'disconnect' },
-          { title: 'connect', legend: 'connect' },
-          { title: 'connected', legend: 'connected' },
-          { title: 'Show notification', caption: 'latest theme', legend: 'notify' },
-        ],
-        afterResult: 'Needed reconnect (target changed)',
-        afterResultTone: 'concept',
-      },
-    ],
-    legendTitle: 'Legend',
-    legendItems: [
-      { label: 'Change detected', legend: 'detect' },
-      { label: 'Effect re-runs', legend: 'rerun' },
-      { label: 'Disconnected', legend: 'disconnect' },
-      { label: 'Connecting', legend: 'connect' },
-      { label: 'Connected', legend: 'connected' },
-      { label: 'Notification', legend: 'notify' },
-      { label: 'Connection kept', legend: 'keep' },
-    ],
-    beforeTitle: 'Before (existing)',
-    afterTitle: 'After (useEffectEvent)',
-  },
-  mission: {
-    number: '09',
-    eyebrow: 'FOLLOW ALONG',
-    title: 'Follow-along missions',
-    description:
-      'Beyond the API surface — practice useEffectEvent from an Effect-design perspective.',
-    missions: [
-      {
-        number: '01',
-        title: 'Separate Effect body from event-like logic',
-        helper: 'Split structural work (connect / subscribe) from UI reactions.',
-        iconKey: 'split',
-      },
-      {
-        number: '02',
-        title: "Don't use useEffectEvent to dodge dependencies",
-        helper: 'Use it for genuine event logic, not as a shortcut.',
-        iconKey: 'shield-alert',
-      },
-      {
-        number: '03',
-        title: 'Compare what re-runs on a theme change',
-        helper: 'Confirm the Before/After execution scope yourself.',
-        iconKey: 'refresh',
-      },
-    ],
-  },
-  takeaways: {
-    number: '10',
-    eyebrow: 'KEY TAKEAWAYS',
-    title: 'Key takeaways',
-    cards: [
-      {
-        number: '01',
-        tone: 'concept',
-        title: 'useEffectEvent separates event logic inside an Effect.',
-        body: 'Lifecycle of connect/subscribe vs UI reactions become clearly split.',
-        iconKey: 'split',
-      },
-      {
-        number: '02',
-        tone: 'improvement',
-        title: 'Read the latest props/state without unnecessary reconnects.',
-        body: 'Without re-running the Effect body, event logic still uses the latest value safely.',
-        iconKey: 'shield-check',
-      },
-      {
-        number: '03',
-        tone: 'advanced',
-        title: "Don't treat it as a dependency-dodging trick.",
-        body: 'It only works as intended when used inside the right design context and rules.',
-        iconKey: 'shield-alert',
-      },
-    ],
+  checkpoint: {
+    badge: '05',
+    eyebrow: 'code checkpoint',
+    title: 'A box with a fixed lid and a swappable inside',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
+    lookForLabel: 'Look for',
+    lookFor: 'mountEvent',
+    whyLabel: 'Why',
+    why: 'One ref box buys both properties at once: the outer function stays stable while the implementation inside is replaced each render.',
+    code: EN_CODE,
+    primaryCta: 'View ReactFiberHooks.js',
+    primaryHref: HOOKS_HREF,
   },
   nextStep: {
-    eyebrow: 'The journey continues',
-    title: 'Reading React 19.2 and beyond',
-    description:
-      "We'll set up a frame for reading cacheSignal, Partial Pre-rendering, SSR batching, and beyond.",
+    eyebrow: 'Next step',
+    title: 'How do you read the next release on your own',
+    description: 'Page ten closes the chapter with how to keep using this map.',
     cta: 'Go to the next page',
     href: '/react-19-2-reading-method',
   },

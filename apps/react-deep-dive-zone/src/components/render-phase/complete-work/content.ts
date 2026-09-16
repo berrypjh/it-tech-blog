@@ -444,7 +444,7 @@ const ko: CompleteWorkContent = {
     ],
   },
   finale: {
-    progressLabel: '8/15 챕터 완료',
+    progressLabel: '8/14 챕터 완료',
     copyLine1: 'Render Phase의 흐름을',
     copyLine2: '끝까지 따라갔습니다.',
     copyLine3: '이제 Commit Phase로.',
@@ -659,7 +659,7 @@ const en: CompleteWorkContent = {
     ],
   },
   finale: {
-    progressLabel: 'Chapter 8 of 15 complete',
+    progressLabel: 'Chapter 8 of 14 complete',
     copyLine1: 'You followed the Render',
     copyLine2: 'Phase to the end.',
     copyLine3: 'Now into the Commit Phase.',

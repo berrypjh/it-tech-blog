@@ -493,7 +493,7 @@ const ko: PassiveEffectsContent = {
     cards: nextChapterCardsKo,
   },
   finale: {
-    progressLabel: '9/15 챕터 완료',
+    progressLabel: '9/14 챕터 완료',
     copyLine1: 'Commit Phase와 DOM',
     copyLine2: '반영까지 끝냈습니다.',
     copyLine3: '이제 Hooks 내부 구조로.',
@@ -603,7 +603,7 @@ const en: PassiveEffectsContent = {
     cards: nextChapterCardsEn,
   },
   finale: {
-    progressLabel: 'Chapter 9 of 15 complete',
+    progressLabel: 'Chapter 9 of 14 complete',
     copyLine1: 'You finished the Commit',
     copyLine2: 'Phase and DOM updates.',
     copyLine3: 'Now into Hooks internals.',

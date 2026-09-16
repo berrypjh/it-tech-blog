@@ -14,7 +14,7 @@ export const generateMetadata = async () => {
       locale === 'en'
         ? 'Metadata & Resource Components · How react-dom broadened its role — React Lab'
         : 'Metadata와 Resource Components는 react-dom의 역할을 어떻게 넓혔나? — React Lab',
-    description: c.hero.subtitleLines.join(' '),
+    description: c.hero.description,
   };
 };
 

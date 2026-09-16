@@ -3,18 +3,12 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { FollowAlongMission } from './sections/FollowAlongMission';
-import { InternalCodePreviewSection } from './sections/InternalCodePreviewSection';
-import { KeyTakeaways } from './sections/KeyTakeaways';
-import { PromiseStateFlow } from './sections/PromiseStateFlow';
-import { RejectedPromiseErrorBoundaryFlow } from './sections/RejectedPromiseErrorBoundaryFlow';
-import { ThenableTrackingSection } from './sections/ThenableTrackingSection';
-import { TodayQuestionCard } from './sections/TodayQuestionCard';
-import { UseHero } from './sections/UseHero';
-import { UsePromiseSuspenseSection } from './sections/UsePromiseSuspenseSection';
-import { UseReadableResourcesSection } from './sections/UseReadableResourcesSection';
-import { UseStateBoard } from './sections/UseStateBoard';
-import { UseVsHooksComparisonTable } from './sections/UseVsHooksComparisonTable';
+import { HookRuleTable } from './sections/HookRuleTable';
+import { ThenableTrackingSteps } from './sections/ThenableTrackingSteps';
+import { ThreeOutcomeCards } from './sections/ThreeOutcomeCards';
+import { TwoReadables } from './sections/TwoReadables';
+import { UseModelCodeCheckpoint } from './sections/UseModelCodeCheckpoint';
+import { UseModelHero } from './sections/UseModelHero';
 import { useSuspenseErrorModelContent } from './content';
 
 type Props = { locale: Locale };
@@ -24,18 +18,12 @@ export const UseSuspenseErrorModelPage = ({ locale }: Props) => {
 
   return (
     <StartPageShell>
-      <UseHero content={c.hero} />
-      <TodayQuestionCard content={c.question} />
-      <UseReadableResourcesSection content={c.readable} />
-      <UseVsHooksComparisonTable content={c.comparison} />
-      <PromiseStateFlow content={c.promiseFlow} />
-      <UsePromiseSuspenseSection content={c.suspenseConnection} />
-      <RejectedPromiseErrorBoundaryFlow content={c.rejectedFlow} />
-      <ThenableTrackingSection content={c.thenableTracking} />
-      <InternalCodePreviewSection content={c.internalCode} />
-      <UseStateBoard content={c.stateBoard} />
-      <FollowAlongMission content={c.mission} />
-      <KeyTakeaways content={c.takeaways} />
+      <UseModelHero content={c.hero} />
+      <ThreeOutcomeCards content={c.branches} />
+      <TwoReadables content={c.readable} />
+      <HookRuleTable content={c.rules} />
+      <ThenableTrackingSteps content={c.tracking} />
+      <UseModelCodeCheckpoint content={c.checkpoint} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

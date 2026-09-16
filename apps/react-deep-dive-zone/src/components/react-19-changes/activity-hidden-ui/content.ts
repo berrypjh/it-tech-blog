@@ -1,214 +1,99 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { ActivityKey } from './tone';
+import type { ToneKey } from '../../shared/tones';
 
-export type IconKey =
-  | 'eye'
-  | 'eye-off'
-  | 'pause'
-  | 'play'
-  | 'gauge'
-  | 'brush'
-  | 'timer'
-  | 'sparkles'
-  | 'rotate'
-  | 'workflow'
-  | 'split'
-  | 'route'
-  | 'compass'
-  | 'search'
-  | 'check'
-  | 'x-circle'
-  | 'shield-check'
-  | 'layers'
-  | 'database'
-  | 'box'
-  | 'boxes'
-  | 'zap'
-  | 'mouse-click'
-  | 'target';
+export type PhaseId = 'visible' | 'hide' | 'keep' | 'restore';
 
-export type SupportQuestion = {
+export type HeroPhase = {
+  id: PhaseId;
   label: string;
-  body: string;
-  iconKey: IconKey;
+  caption: string;
+  tone: ToneKey;
 };
 
-export type ProblemItem = { text: string };
-export type BenefitItem = { text: string };
+export type BehaviorId = 'display' | 'cleanup' | 'state' | 'priority';
 
-export type ModeTableRow = {
+export type BehaviorCard = {
+  id: BehaviorId;
+  title: string;
+  description: string;
+  badge: string;
+  tone: ToneKey;
+};
+
+export type LifeStepId = 'using' | 'switch' | 'cleanup' | 'preserve' | 'back';
+
+export type LifeStep = {
+  id: LifeStepId;
+  num: string;
+  title: string;
+  description: string;
+  tone: ToneKey;
+};
+
+export type ModeRow = {
   topic: string;
   visible: string;
   hidden: string;
 };
 
-export type HiddenBehaviorCard = {
-  number: string;
-  activity: ActivityKey;
-  title: string;
-  body: string;
-  iconKey: IconKey;
-};
-
-export type TimelineStep = {
-  number: string;
-  title: string;
-  body: string;
-  code: string;
-  activity: ActivityKey;
-  iconKey: IconKey;
-};
-
-export type PriorityFlowStep = {
-  activity: ActivityKey;
-  title: string;
-  body: string;
-  iconKey: IconKey;
-};
-
-export type ManagementItem = {
-  body: string;
-  iconKey: IconKey;
-};
-
-export type ModePanel = {
-  mode: 'visible' | 'hidden';
-  title: string;
-  items: string[];
-  iconKey: IconKey;
-};
-
-export type Mission = {
-  number: string;
-  title: string;
-  helper: string;
-  iconKey: IconKey;
-};
-
-export type TakeawayCard = {
-  number: string;
-  activity: ActivityKey;
-  title: string;
-  body: string;
-  iconKey: IconKey;
-};
-
 export type ActivityHiddenUiContent = {
   hero: {
     badge: string;
-    titleLines: [string, string, string];
-    subtitleLines: [string, string];
-    conditionalCode: {
-      title: string;
-      langBadge: 'JSX';
-      code: string;
-    };
-    modeSwitch: {
-      title: string;
-      visibleLabel: string;
-      visibleCaption: string;
-      hiddenLabel: string;
-      hiddenCaption: string;
-      footer: string;
-    };
-    activityCode: {
-      title: string;
-      langBadge: 'JSX';
-      code: string;
-    };
+    title: { line1: string; line2: string };
+    description: string;
+    diagramBadge: string;
+    diagramCaption: string;
+    phases: HeroPhase[];
   };
-  question: {
-    questionLines: [string, string];
-    supportQuestions: SupportQuestion[];
-  };
-  comparison: {
-    number: string;
+  versus: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    beforeTitle: string;
-    beforeCode: { langBadge: 'JSX'; code: string };
-    beforeProblems: ProblemItem[];
-    versus: string;
-    afterTitle: string;
-    afterCode: { langBadge: 'JSX'; code: string };
-    afterBenefits: BenefitItem[];
+    conditional: { title: string; badge: string; description: string; bullets: string[] };
+    bridge: { headline: string; sub: string };
+    activity: { title: string; badge: string; description: string; bullets: string[] };
+    note: string;
   };
-  modeTable: {
-    number: string;
+  behaviors: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    headerTopic: string;
-    headerVisible: string;
-    headerHidden: string;
-    rows: ModeTableRow[];
+    cards: BehaviorCard[];
+    note: string;
   };
-  hiddenBehavior: {
-    number: string;
+  lifecycle: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    cards: HiddenBehaviorCard[];
+    steps: LifeStep[];
+    note: string;
   };
-  statePreservation: {
-    number: string;
+  modes: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    steps: TimelineStep[];
+    headers: [string, string, string];
+    rows: ModeRow[];
+    note: string;
   };
-  priorityFlow: {
-    number: string;
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
-    description: string;
-    steps: PriorityFlowStep[];
-    footer: string;
-  };
-  offscreen: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    diagramTitle: string;
-    diagramDescription: string;
-    diagramLines: { indent: number; label: string; activity: ActivityKey }[];
-    managementTitle: string;
-    managementItems: ManagementItem[];
-  };
-  sourceCode: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    code: { fileName: string; langBadge: 'JS'; code: string };
-    explanationTitle: string;
-    explanationPoints: string[];
-    fileCard: { title: string; fileName: string; buttonLabel: string; href: string };
-  };
-  simulator: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    selectLabel: string;
-    defaultMode: 'visible' | 'hidden';
-    panels: ModePanel[];
-  };
-  mission: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    missions: Mission[];
-  };
-  takeaways: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    cards: TakeawayCard[];
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -219,391 +104,222 @@ export type ActivityHiddenUiContent = {
   };
 };
 
+const KO_CODE = `// packages/react-reconciler/src/ReactFiberBeginWork.js
+function updateOffscreenComponent(current, workInProgress, renderLanes) {
+  const nextProps = workInProgress.pendingProps;
+  const nextChildren = nextProps.children;
+
+  if (nextProps.mode === 'hidden') {
+    if (!includesSomeLane(renderLanes, OffscreenLane)) {
+      // 지금은 숨겨진 트리를 그리지 않는다.
+      // 대신 "여기 할 일이 남아 있다"를 OffscreenLane으로만 적어 둔다.
+      workInProgress.lanes = workInProgress.childLanes = laneToLanes(OffscreenLane);
+      pushOffscreenSuspenseHandler(workInProgress);
+      return null;                 // 자식으로 내려가지 않고 bailout
+    }
+  }
+
+  // visible이거나 Offscreen 차례가 오면 평소처럼 자식을 조정한다
+  reconcileChildren(current, workInProgress, nextChildren, renderLanes);
+  return workInProgress.child;
+}`;
+
+const EN_CODE = `// packages/react-reconciler/src/ReactFiberBeginWork.js
+function updateOffscreenComponent(current, workInProgress, renderLanes) {
+  const nextProps = workInProgress.pendingProps;
+  const nextChildren = nextProps.children;
+
+  if (nextProps.mode === 'hidden') {
+    if (!includesSomeLane(renderLanes, OffscreenLane)) {
+      // Do not paint the hidden tree right now.
+      // Just note "there is work left here" as an OffscreenLane.
+      workInProgress.lanes = workInProgress.childLanes = laneToLanes(OffscreenLane);
+      pushOffscreenSuspenseHandler(workInProgress);
+      return null;                 // bail out without descending into children
+    }
+  }
+
+  // Visible, or the Offscreen turn has come: reconcile children as usual
+  reconcileChildren(current, workInProgress, nextChildren, renderLanes);
+  return workInProgress.child;
+}`;
+
+const BEGIN_WORK_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberBeginWork.js';
+
 const ko: ActivityHiddenUiContent = {
   hero: {
     badge: 'React 19 변화 · 8/10단계',
-    titleLines: ['Activity는 숨긴 UI를', '어떻게 관리하고', '우선순위를 낮출까?'],
-    subtitleLines: [
-      '보이지 않는 UI를 언마운트하지 않고,',
-      '상태를 보존한 채 더 낮은 우선순위로 유지합니다.',
-    ],
-    conditionalCode: {
-      title: '조건부 렌더링 (Unmount)',
-      langBadge: 'JSX',
-      code: `function App() {
-  const [isOpen, setIsOpen] = useState(true);
-
-  return (
-    <>
-      <button onClick={() => setIsOpen((v) => !v)}>toggle</button>
-
-      {isOpen && <Sidebar />}
-    </>
-  );
-}`,
-    },
-    modeSwitch: {
-      title: '모드 전환',
-      visibleLabel: 'visible',
-      visibleCaption: '화면 표시',
-      hiddenLabel: 'hidden',
-      hiddenCaption: '화면 숨김',
-      footer: '상태 보존 + 우선순위 하향',
-    },
-    activityCode: {
-      title: 'Activity (Hide)',
-      langBadge: 'JSX',
-      code: `function App() {
-  const [isOpen, setIsOpen] = useState(true);
-
-  return (
-    <>
-      <button onClick={() => setIsOpen((v) => !v)}>toggle</button>
-
-      <Activity mode={isOpen ? "visible" : "hidden"}>
-        <Sidebar />
-      </Activity>
-    </>
-  );
-}`,
-    },
-  },
-  question: {
-    questionLines: ['탭을 숨길 때 왜 그냥 unmount하지 않고', 'Activity로 관리하는가?'],
-    supportQuestions: [
-      { label: '숨김 ≠ 삭제', body: '상태 보존의 의미', iconKey: 'eye-off' },
-      { label: 'Effects 정리', body: '백그라운드 비용 감소', iconKey: 'brush' },
-      { label: '낮은 우선순위', body: 'Scheduler 연결', iconKey: 'gauge' },
-      { label: '빠른 복귀', body: '즉시 재사용 가능', iconKey: 'zap' },
-    ],
-  },
-  comparison: {
-    number: '01',
-    eyebrow: '변경 전과 후',
-    title: '조건부 렌더링과 Activity 비교',
+    title: { line1: '숨기는 것과 지우는 것은', line2: '지금까지 같은 문법이었다' },
     description:
-      '같은 "보이는지/안 보이는지" 문제를 다루지만, 컴포넌트 수명과 상태 측면에서 결과가 완전히 다릅니다.',
-    beforeTitle: 'Before: 조건부 렌더링',
-    beforeCode: {
-      langBadge: 'JSX',
-      code: `{isOpen && <Sidebar />}`,
-    },
-    beforeProblems: [
-      { text: '숨기면 언마운트' },
-      { text: '상태 초기화' },
-      { text: 'Effects 자동 정리' },
-      { text: '다시 열 때 처음부터 렌더' },
-    ],
-    versus: 'VS',
-    afterTitle: 'After: Activity 사용',
-    afterCode: {
-      langBadge: 'JSX',
-      code: `<Activity mode={isOpen ? "visible" : "hidden"}>
-  <Sidebar />
-</Activity>`,
-    },
-    afterBenefits: [
-      { text: '숨겨도 언마운트되지 않음' },
-      { text: '상태 보존' },
-      { text: 'Effects 정리 가능' },
-      { text: '다시 열면 즉시 재사용' },
+      '조건부 렌더링은 숨김과 삭제를 구분하지 못했습니다. Activity는 그 둘을 다른 일로 나눈 첫 문법입니다.',
+    diagramBadge: 'keep alive',
+    diagramCaption: 'hidden but not unmounted',
+    phases: [
+      { id: 'visible', label: 'visible', caption: '평범하게 보이고 동작한다', tone: 'cyan' },
+      { id: 'hide', label: 'hidden', caption: '화면에서 빠지고 effect가 정리된다', tone: 'violet' },
+      { id: 'keep', label: 'state 보존', caption: 'Fiber와 state는 살아 있다', tone: 'teal' },
+      {
+        id: 'restore',
+        label: 'visible',
+        caption: '처음부터가 아니라 그 자리에서',
+        tone: 'emerald',
+      },
     ],
   },
-  modeTable: {
-    number: '02',
-    eyebrow: '모드 비교표',
-    title: 'visible / hidden 모드',
+  versus: {
+    badge: '01',
+    eyebrow: 'hide vs remove',
+    title: '지금까지는 숨기려면 지워야 했다',
     description:
-      'Activity의 두 모드가 화면·DOM·상태·Effects·우선순위 측면에서 어떻게 달라지는지 한 표로 비교합니다.',
-    headerTopic: '구분',
-    headerVisible: 'visible',
-    headerHidden: 'hidden',
+      '같은 토글이지만 결과가 완전히 다릅니다. 무엇이 남고 무엇이 사라지는지를 비교합니다.',
+    conditional: {
+      title: '조건부 렌더링',
+      badge: '{isOpen && ...}',
+      description: '숨김을 표현할 방법이 없어서, 안 보이게 하려면 트리에서 빼는 수밖에 없었습니다.',
+      bullets: [
+        'false가 되는 순간 언마운트되고 Fiber가 사라진다',
+        '입력 중이던 값과 스크롤 위치 같은 state가 초기화된다',
+        'effect의 cleanup이 돌고 다음에는 처음부터 다시 마운트된다',
+        '다시 열 때 데이터 요청부터 렌더까지 전부 새로 한다',
+      ],
+    },
+    bridge: {
+      headline: '안 보이는 것과\n없는 것을 구분한다',
+      sub: '트리에 남기되 화면에서 빼고 우선순위를 낮추는 세 번째 상태가 생겼습니다.',
+    },
+    activity: {
+      title: 'Activity',
+      badge: 'mode="hidden"',
+      description: '보이지 않는 동안에도 Fiber와 state를 유지하면서 비용만 줄입니다.',
+      bullets: [
+        '언마운트되지 않으므로 state가 그대로 남는다',
+        'effect는 정리되어 백그라운드 비용을 만들지 않는다',
+        '숨겨진 subtree의 업데이트는 낮은 우선순위로 밀린다',
+        '다시 보일 때 마운트가 아니라 재개에 가깝다',
+      ],
+    },
+    note: '탭·모달·라우트 전환처럼 "잠시 가려 두는" UI가 이 문법의 대상입니다. 영영 사라지는 것은 여전히 조건부 렌더링입니다.',
+  },
+  behaviors: {
+    badge: '02',
+    eyebrow: 'four effects',
+    title: 'hidden으로 바뀔 때 동시에 일어나는 네 가지',
+    description: 'hidden은 CSS 한 줄이 아닙니다. 네 층이 한꺼번에 움직입니다.',
+    cards: [
+      {
+        id: 'display',
+        title: '화면에서 빠진다',
+        description: 'DOM은 남지만 display: none이 걸려 레이아웃과 페인트에서 제외됩니다.',
+        badge: 'display: none',
+        tone: 'violet',
+      },
+      {
+        id: 'cleanup',
+        title: 'effect가 정리된다',
+        description:
+          'passive와 layout effect의 cleanup이 돕니다. 타이머나 구독이 뒤에서 돌지 않습니다.',
+        badge: 'cleanup 실행',
+        tone: 'amber',
+      },
+      {
+        id: 'state',
+        title: 'state는 남는다',
+        description: 'Fiber가 살아 있으므로 useState 값도, ref도 그대로 보존됩니다.',
+        badge: 'state 유지',
+        tone: 'teal',
+      },
+      {
+        id: 'priority',
+        title: '우선순위가 내려간다',
+        description: '숨겨진 subtree의 업데이트는 OffscreenLane으로 기록되어 나중에 처리됩니다.',
+        badge: 'OffscreenLane',
+        tone: 'indigo',
+      },
+    ],
+    note: '두 번째와 세 번째가 짝입니다. effect는 끄고 state는 남기는 것이 Activity가 고른 절충입니다.',
+  },
+  lifecycle: {
+    badge: '03',
+    eyebrow: 'round trip',
+    title: '숨겼다 다시 보이기까지 다섯 칸',
+    description: '언마운트와 다른 점은 03과 04 사이입니다. 여기서 무엇이 남는지가 갈립니다.',
+    steps: [
+      {
+        id: 'using',
+        num: '01',
+        title: '사용하는 동안 state가 쌓인다',
+        description: '입력값·스크롤 위치·열어 둔 아코디언 같은 것이 Fiber에 쌓입니다.',
+        tone: 'cyan',
+      },
+      {
+        id: 'switch',
+        num: '02',
+        title: 'mode가 hidden으로 바뀐다',
+        description: '커밋에서 display: none이 걸리고, 이 subtree는 화면에서 빠집니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'cleanup',
+        num: '03',
+        title: 'effect만 정리된다',
+        description:
+          '언마운트가 아니라 effect cleanup입니다. 컴포넌트 함수가 버려지는 것이 아닙니다.',
+        tone: 'amber',
+      },
+      {
+        id: 'preserve',
+        num: '04',
+        title: 'Fiber와 state가 남는다',
+        description:
+          '숨겨진 채로 트리에 남아 있고, 그 사이 들어온 업데이트는 OffscreenLane에 쌓입니다.',
+        tone: 'teal',
+      },
+      {
+        id: 'back',
+        num: '05',
+        title: 'visible로 돌아오면 이어서 한다',
+        description:
+          'display가 풀리고 effect가 다시 붙습니다. 값은 처음부터가 아니라 그때 그대로입니다.',
+        tone: 'emerald',
+      },
+    ],
+    note: '03에서 cleanup이 돈다는 점을 기억해야 합니다. 구독을 다시 붙이는 비용은 여전히 들고, 아낀 것은 렌더와 state입니다.',
+  },
+  modes: {
+    badge: '04',
+    eyebrow: 'two modes',
+    title: '두 모드에서 각 층이 어떻게 달라지는가',
+    description: '모드를 바꾼다는 것이 실제로 무엇을 바꾸는지 한 표로 봅니다.',
+    headers: ['구분', 'visible', 'hidden'],
     rows: [
-      { topic: '화면 표시', visible: '표시됨', hidden: '숨김(display: none)' },
-      { topic: 'DOM 존재', visible: '존재', hidden: '존재(다만 표시되지 않음)' },
-      { topic: '상태(state)', visible: '유지', hidden: '유지(보존)' },
-      { topic: 'Effects', visible: '활성(실행 중)', hidden: '정리(cleanup 실행, 비활성)' },
-      {
-        topic: '업데이트 우선순위',
-        visible: '일반 우선순위',
-        hidden: '낮은 우선순위(deprioritized)',
-      },
-      { topic: '언마운트 여부', visible: '아니오', hidden: '아니오' },
+      { topic: '화면 표시', visible: '보인다', hidden: 'display: none으로 빠진다' },
+      { topic: 'DOM 노드', visible: '존재한다', hidden: '존재한다 - 지우지 않는다' },
+      { topic: 'state와 ref', visible: '유지된다', hidden: '유지된다' },
+      { topic: 'effect', visible: '붙어 있다', hidden: 'cleanup되어 비활성이다' },
+      { topic: '업데이트 우선순위', visible: '평소와 같다', hidden: 'OffscreenLane으로 밀린다' },
+      { topic: '언마운트', visible: '아니다', hidden: '아니다' },
     ],
+    note: '마지막 두 줄이 조건부 렌더링과의 결정적 차이입니다. 언마운트가 아니기 때문에 우선순위라는 개념이 성립합니다.',
   },
-  hiddenBehavior: {
-    number: '03',
-    eyebrow: '숨김 동작',
-    title: 'hidden 상태에서 무엇이 일어나는가?',
-    description:
-      'hidden은 단순한 "안 보임"이 아니라 DOM/Effects/우선순위 세 측면이 동시에 움직입니다.',
-    cards: [
-      {
-        number: '01',
-        activity: 'hidden',
-        title: 'display: none',
-        body: '숨겨진 UI는 화면에서 사라지지만, 데이터와 상태는 대상에서 제외되지 않습니다.',
-        iconKey: 'eye-off',
-      },
-      {
-        number: '02',
-        activity: 'visible',
-        title: 'Effects cleanup',
-        body: 'passive / layout Effects가 정리되어 백그라운드 비용을 줄입니다.',
-        iconKey: 'brush',
-      },
-      {
-        number: '03',
-        activity: 'scheduler',
-        title: '업데이트 우선순위 하향',
-        body: '숨겨진 subtree의 업데이트는 낮은 우선순위로 예약되어, 중요한 UI를 방해하지 않습니다.',
-        iconKey: 'gauge',
-      },
-    ],
-  },
-  statePreservation: {
-    number: '04',
-    eyebrow: '상태 보존',
-    title: '상태 보존과 빠른 복귀',
-    description:
-      'hidden으로 갔다가 visible로 돌아오면, 컴포넌트가 그대로 살아있고 state도 그대로입니다.',
-    steps: [
-      {
-        number: '01',
-        title: 'Sidebar visible',
-        body: '사용 중, 상태가 쌓입니다.',
-        code: `state: { count: 3, input: "hello" }`,
-        activity: 'visible',
-        iconKey: 'eye',
-      },
-      {
-        number: '02',
-        title: 'hidden(숨김)',
-        body: '화면에서 숨겨집니다.',
-        code: `display: none\nEffects cleanup`,
-        activity: 'hidden',
-        iconKey: 'eye-off',
-      },
-      {
-        number: '03',
-        title: 'state 보존',
-        body: '상태는 그대로 보존됩니다.',
-        code: `state: { count: 3, input: "hello" }`,
-        activity: 'preservation',
-        iconKey: 'shield-check',
-      },
-      {
-        number: '04',
-        title: 'visible 복귀',
-        body: '다시 화면에 즉시 표시됩니다.',
-        code: `즉시 사용 가능`,
-        activity: 'visible',
-        iconKey: 'eye',
-      },
-      {
-        number: '05',
-        title: '즉시 재사용',
-        body: '기존 상태로 계속 사용됩니다.',
-        code: `state 유지됨\n재렌더 최소화`,
-        activity: 'visible',
-        iconKey: 'sparkles',
-      },
-    ],
-  },
-  priorityFlow: {
-    number: '05',
-    eyebrow: '스케줄러와 우선순위',
-    title: '낮은 우선순위 업데이트 흐름',
-    description:
-      '숨겨진 subtree의 업데이트는 React Scheduler가 일반 작업보다 뒤로 미루어 처리합니다.',
-    steps: [
-      {
-        activity: 'hidden',
-        title: '숨겨진 subtree에서 업데이트 발생',
-        body: '예: hidden 상태에서 가벼운 동기화',
-        iconKey: 'eye-off',
-      },
-      {
-        activity: 'scheduler',
-        title: '업데이트 예약',
-        body: '일반 업데이트보다 낮은 우선순위로 예약',
-        iconKey: 'timer',
-      },
-      {
-        activity: 'scheduler',
-        title: 'Scheduler 판단',
-        body: 'urgent 업데이트가 있으면 숨겨진 작업을 뒤로 미룸',
-        iconKey: 'gauge',
-      },
-      {
-        activity: 'preservation',
-        title: '나중에 처리',
-        body: '여유가 생기면 업데이트 처리',
-        iconKey: 'workflow',
-      },
-      {
-        activity: 'visible',
-        title: '화면 복귀 시 반영',
-        body: 'visible로 돌아오면 최신 상태로 반영',
-        iconKey: 'sparkles',
-      },
-    ],
-    footer: 'React Scheduler와 우선순위 시스템과 연결',
-  },
-  offscreen: {
-    number: '06',
-    eyebrow: '오프스크린 연결',
-    title: 'Offscreen 구조와 연결',
-    description:
-      'Activity는 단독으로 동작하지 않습니다. 내부의 Offscreen Fiber가 mode를 기준으로 숨겨진 subtree를 관리합니다.',
-    diagramTitle: 'Activity Fiber 구조',
-    diagramDescription: 'Offscreen 계열 내부 로직이 숨겨진 subtree를 관리합니다.',
-    diagramLines: [
-      { indent: 0, label: 'Activity Fiber', activity: 'activity' },
-      { indent: 1, label: '↓', activity: 'scheduler' },
-      { indent: 0, label: 'Offscreen Fiber (mode: hidden / visible)', activity: 'offscreen' },
-      { indent: 1, label: '├─ Child Fiber', activity: 'child' },
-      { indent: 1, label: '├─ Child Fiber', activity: 'child' },
-      { indent: 1, label: '└─ Child Fiber', activity: 'child' },
-    ],
-    managementTitle: '숨겨진 subtree 관리 포인트',
-    managementItems: [
-      { body: 'DOM은 유지하되 display:none으로 숨김', iconKey: 'eye-off' },
-      { body: 'Effects는 정리되어 백그라운드 비용 감소', iconKey: 'brush' },
-      { body: '상태는 메모리에 유지', iconKey: 'shield-check' },
-      { body: '우선순위 낮은 작업으로 스케줄링', iconKey: 'gauge' },
-    ],
-  },
-  sourceCode: {
-    number: '07',
-    eyebrow: '코드 체크포인트',
-    title: '실제 코드 미리보기',
-    description:
-      'Activity의 핵심은 새 Fiber 종류가 아니라, 이미 있던 Offscreen 처리 경로를 mode로 분기시키는 것입니다.',
-    code: {
-      fileName: 'ReactFiberBeginWork.js · 발췌',
-      langBadge: 'JS',
-      code: `function updateActivityComponent(
-  current,
-  workInProgress,
-  renderLanes,
-  nextProps,
-) {
-  return updateOffscreenComponent(
-    current,
-    workInProgress,
-    renderLanes,
-    nextProps,
-  );
-}`,
-    },
-    explanationTitle: 'Offscreen 계열로 위임',
-    explanationPoints: [
-      'Activity는 내부적으로 Offscreen 계열 업데이트를 사용합니다.',
-      'mode에 따라 visible / hidden 분기로 처리됩니다.',
-      '숨긴 상태의 모든 Fiber와 state는 유지됩니다.',
-      'updateOffscreenComponent가 핵심 진입점입니다.',
-    ],
-    fileCard: {
-      title: '관련 파일',
-      fileName: 'ReactFiberBeginWork.js',
-      buttonLabel: 'GitHub에서 코드 보기',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberBeginWork.js',
-    },
-  },
-  simulator: {
-    number: '08',
-    eyebrow: '모드 시뮬레이터',
-    title: 'Activity Mode Simulator',
-    description:
-      'visible / hidden을 선택해 각 모드에서 UI/Effects/우선순위/state가 어떻게 달라지는지 직접 비교해 보세요.',
-    selectLabel: '모드 선택',
-    defaultMode: 'visible',
-    panels: [
-      {
-        mode: 'visible',
-        title: 'visible 모드',
-        items: [
-          'UI 표시',
-          'Effects active(실행 중)',
-          '일반 우선순위 업데이트',
-          '레이아웃 / 페인트 포함',
-        ],
-        iconKey: 'eye',
-      },
-      {
-        mode: 'hidden',
-        title: 'hidden 모드',
-        items: [
-          'UI 숨김(display:none)',
-          'Effects cleanup(정리됨)',
-          '낮은 우선순위 update',
-          'state 유지',
-        ],
-        iconKey: 'eye-off',
-      },
-    ],
-  },
-  mission: {
-    number: '09',
-    eyebrow: '코드 따라가기',
-    title: '직접 따라가기 보기',
-    description:
-      '단순 비교가 아니라 hidden 상태의 동작과 Scheduler 관점까지 본인의 언어로 정리해 봅니다.',
-    missions: [
-      {
-        number: '01',
-        title: '조건부 렌더링 vs Activity',
-        helper: '단순히 보이지 않는 것과 언마운트되지 않는 차이를 정리한다.',
-        iconKey: 'split',
-      },
-      {
-        number: '02',
-        title: 'hidden 상태의 동작',
-        helper: 'display, Effects, state 보존, 우선순위 관점에서 무엇이 달라지는지 구분한다.',
-        iconKey: 'eye-off',
-      },
-      {
-        number: '03',
-        title: 'Scheduler 관점 정리',
-        helper: '왜 숨겨진 subtree 업데이트가 낮은 우선순위로 처리되는지 정리한다.',
-        iconKey: 'gauge',
-      },
-    ],
-  },
-  takeaways: {
-    number: '10',
-    eyebrow: '핵심 정리',
-    title: '핵심 정리',
-    cards: [
-      {
-        number: '01',
-        activity: 'visible',
-        title: 'Activity는 숨긴 UI를 완전히 버리지 않는다.',
-        body: '언마운트가 아니라 숨김으로 다루며 상태를 유지해야 빠른 복귀를 가능하게 한다.',
-        iconKey: 'shield-check',
-      },
-      {
-        number: '02',
-        activity: 'scheduler',
-        title: 'state는 유지하되 Effects는 정리할 수 있다.',
-        body: '숨김 상태에서 Effects는 정리되어 백그라운드 UI 비용을 줄인다.',
-        iconKey: 'brush',
-      },
-      {
-        number: '03',
-        activity: 'offscreen',
-        title: '숨겨진 subtree는 낮은 우선순위로 관리된다.',
-        body: 'Scheduler와 연동되어 urgent UI를 방해하지 않고 나중에 업데이트된다.',
-        iconKey: 'gauge',
-      },
-    ],
+  checkpoint: {
+    badge: '05',
+    eyebrow: 'code checkpoint',
+    title: '숨긴 트리를 건너뛰는 그 분기',
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberBeginWork.js',
+    lookForLabel: '볼 것',
+    lookFor: 'updateOffscreenComponent',
+    whyLabel: '설명',
+    why: 'hidden이면 자식으로 내려가지 않고 OffscreenLane만 남기고 돌아섭니다. "나중에 하겠다"는 의사가 코드에 그대로 적혀 있습니다.',
+    code: KO_CODE,
+    primaryCta: 'ReactFiberBeginWork.js 소스 보기',
+    primaryHref: BEGIN_WORK_HREF,
   },
   nextStep: {
-    eyebrow: '다음 학습으로 이어집니다',
-    title: 'useEffectEvent는 Effect 설계에 무엇을 추가했나?',
-    description:
-      '다음 페이지에서는 useEffectEvent가 Effect 본체와 이벤트성 로직을 어떻게 분리하는지 살펴봅니다.',
+    eyebrow: '다음 단계',
+    title: 'Effect 안의 이벤트성 로직은 어디로 가야 할까',
+    description: '같은 19.2 축에서 수명 이야기를 한 칸 더 들어갑니다.',
     cta: '다음 페이지로 이동',
     href: '/use-effect-event-design',
   },
@@ -612,376 +328,184 @@ const ko: ActivityHiddenUiContent = {
 const en: ActivityHiddenUiContent = {
   hero: {
     badge: 'React 19 Changes · 8/10',
-    titleLines: ['How does Activity manage', 'hidden UI and lower its', 'update priority?'],
-    subtitleLines: [
-      "Invisible UI isn't unmounted —",
-      "it's preserved and kept at a lower priority.",
-    ],
-    conditionalCode: {
-      title: 'Conditional rendering (Unmount)',
-      langBadge: 'JSX',
-      code: `function App() {
-  const [isOpen, setIsOpen] = useState(true);
-
-  return (
-    <>
-      <button onClick={() => setIsOpen((v) => !v)}>toggle</button>
-
-      {isOpen && <Sidebar />}
-    </>
-  );
-}`,
-    },
-    modeSwitch: {
-      title: 'Mode switch',
-      visibleLabel: 'visible',
-      visibleCaption: 'shown',
-      hiddenLabel: 'hidden',
-      hiddenCaption: 'hidden from view',
-      footer: 'state preserved + lower priority',
-    },
-    activityCode: {
-      title: 'Activity (Hide)',
-      langBadge: 'JSX',
-      code: `function App() {
-  const [isOpen, setIsOpen] = useState(true);
-
-  return (
-    <>
-      <button onClick={() => setIsOpen((v) => !v)}>toggle</button>
-
-      <Activity mode={isOpen ? "visible" : "hidden"}>
-        <Sidebar />
-      </Activity>
-    </>
-  );
-}`,
-    },
-  },
-  question: {
-    questionLines: ['When you hide a tab, why use Activity', 'instead of simply unmounting it?'],
-    supportQuestions: [
-      { label: 'Hide ≠ delete', body: 'What state preservation means', iconKey: 'eye-off' },
-      { label: 'Effects cleanup', body: 'Lower background cost', iconKey: 'brush' },
-      { label: 'Low priority', body: 'Scheduler integration', iconKey: 'gauge' },
-      { label: 'Fast return', body: 'Reuse instantly', iconKey: 'zap' },
-    ],
-  },
-  comparison: {
-    number: '01',
-    eyebrow: 'BEFORE VS AFTER',
-    title: 'Conditional rendering vs Activity',
+    title: { line1: 'Hiding and deleting have shared', line2: 'the same syntax until now' },
     description:
-      'Both handle "show or hide", but they differ completely in component lifetime and state.',
-    beforeTitle: 'Before: conditional rendering',
-    beforeCode: {
-      langBadge: 'JSX',
-      code: `{isOpen && <Sidebar />}`,
-    },
-    beforeProblems: [
-      { text: 'Unmounts when hidden' },
-      { text: 'State is reset' },
-      { text: 'Effects auto-cleanup' },
-      { text: 'Re-renders from scratch on reopen' },
-    ],
-    versus: 'VS',
-    afterTitle: 'After: with Activity',
-    afterCode: {
-      langBadge: 'JSX',
-      code: `<Activity mode={isOpen ? "visible" : "hidden"}>
-  <Sidebar />
-</Activity>`,
-    },
-    afterBenefits: [
-      { text: "Doesn't unmount when hidden" },
-      { text: 'State is preserved' },
-      { text: 'Effects can be cleaned up' },
-      { text: 'Reused instantly when reopened' },
+      'Conditional rendering could not tell hiding from removing. Activity is the first syntax that splits them apart.',
+    diagramBadge: 'keep alive',
+    diagramCaption: 'hidden but not unmounted',
+    phases: [
+      { id: 'visible', label: 'visible', caption: 'shown and working normally', tone: 'cyan' },
+      {
+        id: 'hide',
+        label: 'hidden',
+        caption: 'off screen, effects cleaned up',
+        tone: 'violet',
+      },
+      { id: 'keep', label: 'state kept', caption: 'the Fiber and state survive', tone: 'teal' },
+      {
+        id: 'restore',
+        label: 'visible',
+        caption: 'resumed in place, not restarted',
+        tone: 'emerald',
+      },
     ],
   },
-  modeTable: {
-    number: '02',
-    eyebrow: 'MODE TABLE',
-    title: 'visible / hidden modes',
-    description: 'Compare the two Activity modes across screen, DOM, state, Effects, and priority.',
-    headerTopic: 'Aspect',
-    headerVisible: 'visible',
-    headerHidden: 'hidden',
+  versus: {
+    badge: '01',
+    eyebrow: 'hide vs remove',
+    title: 'Until now, hiding meant deleting',
+    description:
+      'The same toggle, completely different outcomes. Compare what survives and what disappears.',
+    conditional: {
+      title: 'Conditional rendering',
+      badge: '{isOpen && ...}',
+      description:
+        'With no way to express hiding, the only way to make something invisible was to take it out of the tree.',
+      bullets: [
+        'The moment it turns false the subtree unmounts and the Fiber is gone',
+        'State such as a half-typed value or scroll position resets',
+        'Effect cleanups run and next time it mounts from scratch',
+        'Reopening redoes everything from the data request to the render',
+      ],
+    },
+    bridge: {
+      headline: 'Separate being invisible\nfrom being gone',
+      sub: 'A third state appeared: stay in the tree, leave the screen and drop in priority.',
+    },
+    activity: {
+      title: 'Activity',
+      badge: 'mode="hidden"',
+      description: 'It keeps the Fiber and state alive while invisible and only cuts the cost.',
+      bullets: [
+        'Nothing unmounts, so state stays exactly as it was',
+        'Effects are cleaned up so nothing runs in the background',
+        'Updates in the hidden subtree are pushed to a lower priority',
+        'Coming back is closer to resuming than to mounting',
+      ],
+    },
+    note: 'Tabs, modals and route transitions are what this syntax is for. Something gone for good is still conditional rendering.',
+  },
+  behaviors: {
+    badge: '02',
+    eyebrow: 'four effects',
+    title: 'Four things that happen together on hidden',
+    description: 'hidden is not one line of CSS. Four layers move at once.',
+    cards: [
+      {
+        id: 'display',
+        title: 'It leaves the screen',
+        description: 'The DOM stays, but display: none takes it out of layout and paint.',
+        badge: 'display: none',
+        tone: 'violet',
+      },
+      {
+        id: 'cleanup',
+        title: 'Effects are cleaned up',
+        description:
+          'Passive and layout effect cleanups run, so timers and subscriptions stop in the background.',
+        badge: 'cleanup runs',
+        tone: 'amber',
+      },
+      {
+        id: 'state',
+        title: 'State survives',
+        description: 'The Fiber is alive, so useState values and refs are preserved.',
+        badge: 'state kept',
+        tone: 'teal',
+      },
+      {
+        id: 'priority',
+        title: 'Priority drops',
+        description:
+          'Updates in the hidden subtree are recorded as an OffscreenLane and handled later.',
+        badge: 'OffscreenLane',
+        tone: 'indigo',
+      },
+    ],
+    note: 'The second and third are a pair: turn effects off, keep state on. That is the trade Activity chose.',
+  },
+  lifecycle: {
+    badge: '03',
+    eyebrow: 'round trip',
+    title: 'Five slots from hidden and back again',
+    description:
+      'What differs from unmounting sits between 03 and 04, where it is decided what survives.',
+    steps: [
+      {
+        id: 'using',
+        num: '01',
+        title: 'State builds up while in use',
+        description: 'Typed values, scroll positions and open accordions accumulate on the Fiber.',
+        tone: 'cyan',
+      },
+      {
+        id: 'switch',
+        num: '02',
+        title: 'mode flips to hidden',
+        description: 'Commit applies display: none and the subtree leaves the screen.',
+        tone: 'violet',
+      },
+      {
+        id: 'cleanup',
+        num: '03',
+        title: 'Only effects are cleaned up',
+        description:
+          'This is effect cleanup, not unmount. The component function is not thrown away.',
+        tone: 'amber',
+      },
+      {
+        id: 'preserve',
+        num: '04',
+        title: 'The Fiber and state remain',
+        description:
+          'It stays in the tree hidden, and updates arriving meanwhile pile up on the OffscreenLane.',
+        tone: 'teal',
+      },
+      {
+        id: 'back',
+        num: '05',
+        title: 'Back to visible, it continues',
+        description:
+          'display is lifted and effects reattach. Values pick up where they were, not from scratch.',
+        tone: 'emerald',
+      },
+    ],
+    note: 'Remember that cleanup runs at 03. Re-subscribing still costs something; what you saved is the render and the state.',
+  },
+  modes: {
+    badge: '04',
+    eyebrow: 'two modes',
+    title: 'How each layer differs between the two modes',
+    description: 'One table for what flipping the mode actually changes.',
+    headers: ['Topic', 'visible', 'hidden'],
     rows: [
-      { topic: 'Shown on screen', visible: 'shown', hidden: 'hidden (display: none)' },
-      { topic: 'DOM exists', visible: 'yes', hidden: 'yes (but not displayed)' },
-      { topic: 'State', visible: 'kept', hidden: 'kept (preserved)' },
-      { topic: 'Effects', visible: 'active (running)', hidden: 'cleaned up (inactive)' },
-      { topic: 'Update priority', visible: 'normal', hidden: 'lowered (deprioritized)' },
-      { topic: 'Unmounted', visible: 'no', hidden: 'no' },
+      { topic: 'On screen', visible: 'Shown', hidden: 'Removed via display: none' },
+      { topic: 'DOM node', visible: 'Exists', hidden: 'Exists - it is not deleted' },
+      { topic: 'State and refs', visible: 'Kept', hidden: 'Kept' },
+      { topic: 'Effects', visible: 'Attached', hidden: 'Cleaned up and inactive' },
+      { topic: 'Update priority', visible: 'As usual', hidden: 'Pushed onto OffscreenLane' },
+      { topic: 'Unmount', visible: 'No', hidden: 'No' },
     ],
+    note: 'The last two rows are the decisive difference. Because nothing unmounts, priority becomes meaningful at all.',
   },
-  hiddenBehavior: {
-    number: '03',
-    eyebrow: 'HIDDEN BEHAVIOR',
-    title: "What actually happens in 'hidden'?",
-    description: 'Hidden is not just "not shown" — DOM, Effects, and priority all shift together.',
-    cards: [
-      {
-        number: '01',
-        activity: 'hidden',
-        title: 'display: none',
-        body: 'The UI disappears from view, but its data and state are not excluded.',
-        iconKey: 'eye-off',
-      },
-      {
-        number: '02',
-        activity: 'visible',
-        title: 'Effects cleanup',
-        body: 'passive / layout Effects are cleaned up to reduce background cost.',
-        iconKey: 'brush',
-      },
-      {
-        number: '03',
-        activity: 'scheduler',
-        title: 'Lowered update priority',
-        body: "Updates inside a hidden subtree are scheduled at lower priority so they don't block important UI.",
-        iconKey: 'gauge',
-      },
-    ],
-  },
-  statePreservation: {
-    number: '04',
-    eyebrow: 'STATE PRESERVATION',
-    title: 'State preservation and fast return',
-    description:
-      'After going hidden and coming back, the component is still alive and so is its state.',
-    steps: [
-      {
-        number: '01',
-        title: 'Sidebar visible',
-        body: 'In use; state builds up.',
-        code: `state: { count: 3, input: "hello" }`,
-        activity: 'visible',
-        iconKey: 'eye',
-      },
-      {
-        number: '02',
-        title: 'hidden',
-        body: 'Hidden from view.',
-        code: `display: none\nEffects cleanup`,
-        activity: 'hidden',
-        iconKey: 'eye-off',
-      },
-      {
-        number: '03',
-        title: 'state preserved',
-        body: 'State is preserved as-is.',
-        code: `state: { count: 3, input: "hello" }`,
-        activity: 'preservation',
-        iconKey: 'shield-check',
-      },
-      {
-        number: '04',
-        title: 'visible again',
-        body: 'Shown again instantly.',
-        code: `ready to use`,
-        activity: 'visible',
-        iconKey: 'eye',
-      },
-      {
-        number: '05',
-        title: 'instant reuse',
-        body: 'Continues from the previous state.',
-        code: `state retained\nminimal re-render`,
-        activity: 'visible',
-        iconKey: 'sparkles',
-      },
-    ],
-  },
-  priorityFlow: {
-    number: '05',
-    eyebrow: 'SCHEDULER × PRIORITY',
-    title: 'Low-priority update flow',
-    description:
-      'Updates in a hidden subtree are scheduled after normal work by the React Scheduler.',
-    steps: [
-      {
-        activity: 'hidden',
-        title: 'Update inside hidden subtree',
-        body: 'e.g. a light background sync while hidden',
-        iconKey: 'eye-off',
-      },
-      {
-        activity: 'scheduler',
-        title: 'Scheduled',
-        body: 'Scheduled at lower priority than normal updates',
-        iconKey: 'timer',
-      },
-      {
-        activity: 'scheduler',
-        title: 'Scheduler decision',
-        body: 'Defers the hidden work if there is anything urgent',
-        iconKey: 'gauge',
-      },
-      {
-        activity: 'preservation',
-        title: 'Run later',
-        body: 'Processed when there is slack',
-        iconKey: 'workflow',
-      },
-      {
-        activity: 'visible',
-        title: 'Reflected on return',
-        body: 'When it becomes visible, the latest state shows up',
-        iconKey: 'sparkles',
-      },
-    ],
-    footer: 'Wired to the React Scheduler and priority system',
-  },
-  offscreen: {
-    number: '06',
-    eyebrow: 'OFFSCREEN',
-    title: 'Connected to the Offscreen structure',
-    description:
-      "Activity doesn't operate on its own — under the hood, an Offscreen Fiber manages the hidden subtree by mode.",
-    diagramTitle: 'Activity Fiber tree',
-    diagramDescription: 'The Offscreen-family internal logic manages the hidden subtree.',
-    diagramLines: [
-      { indent: 0, label: 'Activity Fiber', activity: 'activity' },
-      { indent: 1, label: '↓', activity: 'scheduler' },
-      { indent: 0, label: 'Offscreen Fiber (mode: hidden / visible)', activity: 'offscreen' },
-      { indent: 1, label: '├─ Child Fiber', activity: 'child' },
-      { indent: 1, label: '├─ Child Fiber', activity: 'child' },
-      { indent: 1, label: '└─ Child Fiber', activity: 'child' },
-    ],
-    managementTitle: 'Hidden subtree management points',
-    managementItems: [
-      { body: 'Keep the DOM but hide with display:none', iconKey: 'eye-off' },
-      { body: 'Clean up Effects to reduce background cost', iconKey: 'brush' },
-      { body: 'Keep state in memory', iconKey: 'shield-check' },
-      { body: 'Schedule as low-priority work', iconKey: 'gauge' },
-    ],
-  },
-  sourceCode: {
-    number: '07',
-    eyebrow: 'CODE CHECKPOINT',
-    title: 'Source preview',
-    description:
-      "The trick isn't a brand-new Fiber kind — Activity just delegates to the existing Offscreen path with a mode flag.",
-    code: {
-      fileName: 'ReactFiberBeginWork.js · excerpt',
-      langBadge: 'JS',
-      code: `function updateActivityComponent(
-  current,
-  workInProgress,
-  renderLanes,
-  nextProps,
-) {
-  return updateOffscreenComponent(
-    current,
-    workInProgress,
-    renderLanes,
-    nextProps,
-  );
-}`,
-    },
-    explanationTitle: 'Delegates to the Offscreen family',
-    explanationPoints: [
-      'Activity uses Offscreen-family updates internally.',
-      'mode drives the visible / hidden branch.',
-      'All Fibers and state under a hidden tree are kept.',
-      'updateOffscreenComponent is the entry point.',
-    ],
-    fileCard: {
-      title: 'Related file',
-      fileName: 'ReactFiberBeginWork.js',
-      buttonLabel: 'Open on GitHub',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberBeginWork.js',
-    },
-  },
-  simulator: {
-    number: '08',
-    eyebrow: 'MODE SIMULATOR',
-    title: 'Activity Mode Simulator',
-    description:
-      'Pick visible / hidden and compare how UI / Effects / priority / state shift between them.',
-    selectLabel: 'Pick a mode',
-    defaultMode: 'visible',
-    panels: [
-      {
-        mode: 'visible',
-        title: 'visible mode',
-        items: ['UI shown', 'Effects active', 'Normal-priority updates', 'Layout / paint included'],
-        iconKey: 'eye',
-      },
-      {
-        mode: 'hidden',
-        title: 'hidden mode',
-        items: [
-          'UI hidden (display:none)',
-          'Effects cleaned up',
-          'Low-priority updates',
-          'State kept',
-        ],
-        iconKey: 'eye-off',
-      },
-    ],
-  },
-  mission: {
-    number: '09',
-    eyebrow: 'FOLLOW ALONG',
-    title: 'Follow-along missions',
-    description:
-      'Go beyond comparison — restate hidden-state behavior and the Scheduler perspective in your own words.',
-    missions: [
-      {
-        number: '01',
-        title: 'Conditional rendering vs Activity',
-        helper: 'Tell the difference between "not shown" and "not unmounted".',
-        iconKey: 'split',
-      },
-      {
-        number: '02',
-        title: 'Hidden-state behavior',
-        helper: 'Differentiate display / Effects / state / priority shifts.',
-        iconKey: 'eye-off',
-      },
-      {
-        number: '03',
-        title: 'Scheduler perspective',
-        helper: 'Write why hidden updates are processed at low priority.',
-        iconKey: 'gauge',
-      },
-    ],
-  },
-  takeaways: {
-    number: '10',
-    eyebrow: 'KEY TAKEAWAYS',
-    title: 'Key takeaways',
-    cards: [
-      {
-        number: '01',
-        activity: 'visible',
-        title: "Activity doesn't throw hidden UI away.",
-        body: 'It hides instead of unmounting, preserving state so the return is fast.',
-        iconKey: 'shield-check',
-      },
-      {
-        number: '02',
-        activity: 'scheduler',
-        title: 'State stays, Effects can be cleaned up.',
-        body: 'In the hidden state, Effects are cleaned up to reduce background UI cost.',
-        iconKey: 'brush',
-      },
-      {
-        number: '03',
-        activity: 'offscreen',
-        title: 'Hidden subtrees run at lower priority.',
-        body: "Wired to the Scheduler — won't block urgent UI, updates later.",
-        iconKey: 'gauge',
-      },
-    ],
+  checkpoint: {
+    badge: '05',
+    eyebrow: 'code checkpoint',
+    title: 'The branch that skips a hidden tree',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberBeginWork.js',
+    lookForLabel: 'Look for',
+    lookFor: 'updateOffscreenComponent',
+    whyLabel: 'Why',
+    why: 'When hidden, it turns back without descending and leaves only an OffscreenLane. The intent to do it later is written right into the code.',
+    code: EN_CODE,
+    primaryCta: 'View ReactFiberBeginWork.js',
+    primaryHref: BEGIN_WORK_HREF,
   },
   nextStep: {
-    eyebrow: 'The journey continues',
-    title: 'What did useEffectEvent add to Effect design?',
-    description: "We'll look at how useEffectEvent separates an Effect body from event-like logic.",
+    eyebrow: 'Next step',
+    title: 'Where should event-like logic inside an Effect go',
+    description: 'One more slot into lifetime, on the same 19.2 axis.',
     cta: 'Go to the next page',
     href: '/use-effect-event-design',
   },

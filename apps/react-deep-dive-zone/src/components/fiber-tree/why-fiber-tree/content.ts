@@ -219,7 +219,7 @@ const ko: FiberCentralContent = {
     ],
   },
   finale: {
-    progressLabel: '6/15 챕터 완료',
+    progressLabel: '6/14 챕터 완료',
     copyLine1: 'Fiber 트리가 렌더링의',
     copyLine2: '중심임을 이해했습니다.',
     copyLine3: '이제 업데이트의 시작으로.',
@@ -389,7 +389,7 @@ const en: FiberCentralContent = {
     ],
   },
   finale: {
-    progressLabel: 'Chapter 6 of 15 complete',
+    progressLabel: 'Chapter 6 of 14 complete',
     copyLine1: 'You see why the Fiber',
     copyLine2: 'tree is central to rendering.',
     copyLine3: 'Now how updates begin.',

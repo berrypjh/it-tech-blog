@@ -2,7 +2,7 @@ import { getServerLocale } from '@it-tech-blog/preferences/server';
 
 import {
   useEffectEventContent,
-  UseEffectEventPage,
+  UseEffectEventDesignPage,
 } from '@/components/react-19-changes/use-effect-event-design';
 
 export const generateMetadata = async () => {
@@ -14,13 +14,13 @@ export const generateMetadata = async () => {
       locale === 'en'
         ? 'useEffectEvent · What did it add to Effect design? — React Lab'
         : 'useEffectEvent는 Effect 설계에 무엇을 새로 추가했나? — React Lab',
-    description: c.hero.subtitleLines.join(' '),
+    description: c.hero.description,
   };
 };
 
 const Page = async () => {
   const locale = await getServerLocale();
-  return <UseEffectEventPage locale={locale} />;
+  return <UseEffectEventDesignPage locale={locale} />;
 };
 
 export default Page;

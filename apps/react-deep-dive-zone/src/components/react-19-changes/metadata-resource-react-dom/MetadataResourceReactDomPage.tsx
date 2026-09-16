@@ -3,18 +3,12 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { FollowAlongMission } from './sections/FollowAlongMission';
-import { HeadHoistingFlow } from './sections/HeadHoistingFlow';
-import { HeadHoistingSimulator } from './sections/HeadHoistingSimulator';
-import { InternalCodePreviewSection } from './sections/InternalCodePreviewSection';
-import { KeyTakeaways } from './sections/KeyTakeaways';
-import { MetadataExampleSection } from './sections/MetadataExampleSection';
+import { HeadOwnership } from './sections/HeadOwnership';
+import { HoistingSteps } from './sections/HoistingSteps';
+import { MetadataCodeCheckpoint } from './sections/MetadataCodeCheckpoint';
 import { MetadataHero } from './sections/MetadataHero';
-import { PreviousHeadManagementProblems } from './sections/PreviousHeadManagementProblems';
-import { ReactTreeDomHeadSplit } from './sections/ReactTreeDomHeadSplit';
-import { ResourceComponentsGrid } from './sections/ResourceComponentsGrid';
-import { SsrSuspenseConnectionSection } from './sections/SsrSuspenseConnectionSection';
-import { TodayQuestionCard } from './sections/TodayQuestionCard';
+import { PlacementRuleTable } from './sections/PlacementRuleTable';
+import { ResourceKindCards } from './sections/ResourceKindCards';
 import { metadataResourceContent } from './content';
 
 type Props = { locale: Locale };
@@ -25,17 +19,11 @@ export const MetadataResourceReactDomPage = ({ locale }: Props) => {
   return (
     <StartPageShell>
       <MetadataHero content={c.hero} />
-      <TodayQuestionCard content={c.question} />
-      <PreviousHeadManagementProblems content={c.priorProblems} />
-      <MetadataExampleSection content={c.example} />
-      <ReactTreeDomHeadSplit content={c.treeDomSplit} />
-      <ResourceComponentsGrid content={c.resources} />
-      <HeadHoistingFlow content={c.hoistingFlow} />
-      <SsrSuspenseConnectionSection content={c.ssrSuspense} />
-      <InternalCodePreviewSection content={c.internalCode} />
-      <HeadHoistingSimulator content={c.simulator} />
-      <FollowAlongMission content={c.mission} />
-      <KeyTakeaways content={c.takeaways} />
+      <HeadOwnership content={c.before} />
+      <ResourceKindCards content={c.resources} />
+      <HoistingSteps content={c.hoisting} />
+      <PlacementRuleTable content={c.rules} />
+      <MetadataCodeCheckpoint content={c.checkpoint} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

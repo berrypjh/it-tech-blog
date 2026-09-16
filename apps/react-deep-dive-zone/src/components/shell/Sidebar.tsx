@@ -29,7 +29,6 @@ const groupSlugs = [
   'scheduler',
   'suspense',
   'react-19',
-  'checklist',
 ];
 
 const sectionNumber = (i: number) => i.toString().padStart(2, '0');

@@ -1,183 +1,128 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { LayerKey } from './tone';
+import type { ToneKey } from '../../shared/tones';
 
-export type IconKey =
-  | 'refresh'
-  | 'loader'
-  | 'code'
-  | 'file'
-  | 'server'
-  | 'activity'
-  | 'layers'
-  | 'milestone'
-  | 'map'
-  | 'compass'
-  | 'sparkles'
-  | 'route'
-  | 'target'
-  | 'workflow'
-  | 'telescope'
-  | 'flag';
+export type LayerId = 'update' | 'render' | 'element' | 'dom' | 'server' | 'priority';
 
 export type HeroLayer = {
-  layer: LayerKey;
-  number: string;
-  name: string;
+  id: LayerId;
+  label: string;
   feature: string;
-  caption: string;
+  tone: ToneKey;
 };
 
-export type HeroSideBadge = { label: string; iconKey: IconKey };
-
-export type ChangeAxisCard = {
-  number: string;
-  layer: LayerKey;
-  iconKey: IconKey;
+export type AxisCard = {
+  id: LayerId;
+  num: string;
   title: string;
+  question: string;
   features: string;
-  body: string;
-  tags: string[];
+  tone: ToneKey;
 };
 
-export type TimelineCard = {
+export type VersionId = 'v190' | 'v192' | 'v1926';
+
+export type VersionEntry = {
+  id: VersionId;
   version: string;
   date: string;
   meaning: string;
-  description?: string;
+  description: string;
   tags: string[];
-  cta?: { label: string; href: string };
+  tone: ToneKey;
 };
 
-export type ConnectionRow = {
+export type MapRow = {
   question: string;
   feature: string;
-  layer: LayerKey;
-  structureLines: string[];
+  reading: string;
 };
 
-export type RoadmapItem = {
-  number: string;
+export type RoadmapId =
+  | 'map'
+  | 'actions'
+  | 'form'
+  | 'use'
+  | 'ref'
+  | 'metadata'
+  | 'server'
+  | 'activity'
+  | 'effect-event'
+  | 'after';
+
+export type RoadmapStep = {
+  id: RoadmapId;
+  num: string;
   title: string;
-  body: string;
-  active?: boolean;
-};
-
-export type ClassifierTabKey = 'actions' | 'use' | 'ref' | 'activity';
-
-export type ClassifierResult = {
-  label: string;
-  layer: LayerKey;
-  resultTitle: string;
-  resultSubtitle: string;
-  flow: string[];
   description: string;
-  cta: { label: string; href: string };
-};
-
-export type FollowMission = {
-  mission: string;
-  helper: string;
-};
-
-export type TakeawayCard = {
-  number: string;
-  title: string;
-  body: string;
-  iconKey: IconKey;
+  tone: ToneKey;
 };
 
 export type React19ChangeMapContent = {
   hero: {
     badge: string;
-    titleLines: [string, string];
-    subtitleLines: [string, string, string];
-    diagram: {
-      title: string;
-      layers: HeroLayer[];
-    };
-    questionCard: {
-      eyebrow: string;
-      questionLines: [string, string, string];
-      badges: HeroSideBadge[];
-    };
-    guideCard: {
-      eyebrow: string;
-      bodyLines: [string, string, string];
-      source: string;
-    };
+    title: { line1: string; line2: string };
+    description: string;
+    diagramBadge: string;
+    diagramCaption: string;
+    layers: HeroLayer[];
   };
-  featureListTrap: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    leftCard: {
-      title: string;
-      items: string[];
-    };
-    arrowLabel: string;
-    rightCard: {
-      title: string;
-      items: { feature: string; body: string; layer: LayerKey }[];
-    };
-  };
-  changeAxes: {
-    number: string;
+  trap: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    cards: ChangeAxisCard[];
+    list: { title: string; badge: string; description: string; bullets: string[] };
+    bridge: { headline: string; sub: string };
+    structure: { title: string; badge: string; description: string; bullets: string[] };
+    note: string;
   };
-  versionTimeline: {
-    number: string;
+  axes: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    cards: TimelineCard[];
+    cards: AxisCard[];
+    note: string;
   };
-  previousTopicMap: {
-    number: string;
+  versions: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    headings: { question: string; feature: string; structure: string };
-    rows: ConnectionRow[];
+    entries: VersionEntry[];
+    note: string;
   };
-  tenPageRoadmap: {
-    number: string;
+  bridgeMap: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    items: RoadmapItem[];
-    sidePanel: {
-      title: string;
-      bodyLines: string[];
-      tagLabel: string;
-      tags: string[];
-    };
+    headers: [string, string, string];
+    rows: MapRow[];
+    note: string;
   };
-  changeLayerClassifier: {
-    number: string;
+  roadmap: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    tabLabel: string;
-    resultLabel: string;
-    defaultTab: ClassifierTabKey;
-    results: Record<ClassifierTabKey, ClassifierResult>;
+    steps: RoadmapStep[];
+    note: string;
   };
-  followAlongMission: {
-    number: string;
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
-    description: string;
-    missions: FollowMission[];
-  };
-  keyTakeaways: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    cards: TakeawayCard[];
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -186,763 +131,617 @@ export type React19ChangeMapContent = {
     cta: string;
     href: string;
   };
-  versionNote: {
-    left: string;
-    right: string;
-  };
 };
+
+const KO_CODE = `// packages/react/src/ReactClient.js - React의 공개 표면 (발췌)
+export {
+  use,              // 19.0 · 렌더 도중 thenable / context 읽기
+  useActionState,   // 19.0 · Action 결과를 상태로 받기
+  useOptimistic,    // 19.0 · 낙관적 업데이트
+  useEffectEvent,   // 19.2 · 이벤트성 Effect 로직 분리
+  useTransition,    // 이전부터 존재 · Actions가 내부에서 사용
+  useDeferredValue,
+  useState,
+  useReducer,
+} from './ReactHooks';
+
+// 같은 파일에서 Fragment · Suspense · Profiler · StrictMode 같은 심볼과
+// cache · createContext · forwardRef 등이 함께 밖으로 나간다.`;
+
+const EN_CODE = `// packages/react/src/ReactClient.js - React's public surface (excerpt)
+export {
+  use,              // 19.0 · read a thenable / context during render
+  useActionState,   // 19.0 · take an Action result as state
+  useOptimistic,    // 19.0 · optimistic updates
+  useEffectEvent,   // 19.2 · split event-like logic out of an Effect
+  useTransition,    // pre-existing · Actions use it internally
+  useDeferredValue,
+  useState,
+  useReducer,
+} from './ReactHooks';
+
+// The same file also ships symbols such as Fragment, Suspense, Profiler and
+// StrictMode, along with cache, createContext and forwardRef.`;
+
+const REACT_CLIENT_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react/src/ReactClient.js';
 
 const ko: React19ChangeMapContent = {
   hero: {
     badge: 'React 19 변화 · 1/10단계',
-    titleLines: ['React 19는 무엇이 달라졌고,', '어떤 기준으로 읽어야 할까?'],
-    subtitleLines: [
-      '신기능 목록을 외우는 대신,',
-      '기존 React 내부 구조 위에',
-      '무엇이 새로 얹혔는지 읽습니다.',
-    ],
-    diagram: {
-      title: 'React 19 변화의 6개 층',
-      layers: [
-        {
-          layer: 'update',
-          number: '01',
-          name: '업데이트 모델',
-          feature: 'Actions',
-          caption: '비동기 update · form action · pending 상태',
-        },
-        {
-          layer: 'render',
-          number: '02',
-          name: '렌더링 모델',
-          feature: 'use()',
-          caption: '렌더 중 리소스 읽기 · Suspense 연결',
-        },
-        {
-          layer: 'element',
-          number: '03',
-          name: 'Element 표현',
-          feature: 'ref as prop',
-          caption: 'props.ref · element.ref deprecation',
-        },
-        {
-          layer: 'dom',
-          number: '04',
-          name: 'DOM 자원 관리',
-          feature: 'metadata',
-          caption: 'title · meta · link · script · style',
-        },
-        {
-          layer: 'server',
-          number: '05',
-          name: '서버 경계',
-          feature: 'RSC',
-          caption: 'Server Components · use client · use server',
-        },
-        {
-          layer: 'priority',
-          number: '06',
-          name: '우선순위 확장',
-          feature: 'Activity',
-          caption: 'hidden subtree · 낮은 우선순위 렌더',
-        },
-      ],
-    },
-    questionCard: {
-      eyebrow: '오늘 해결할 질문',
-      questionLines: [
-        'Actions, use(), ref as prop,',
-        'Activity는 각각 React 내부',
-        '어디에 연결되는 변화일까?',
-      ],
-      badges: [
-        { label: '변화 지도', iconKey: 'map' },
-        { label: '버전 구분', iconKey: 'milestone' },
-        { label: '내부 구조 연결', iconKey: 'route' },
-      ],
-    },
-    guideCard: {
-      eyebrow: '읽기 가이드',
-      bodyLines: [
-        '이 페이지는 React 19.0 ~ 19.2.6에 이르는',
-        '변화를 기존 내부 구조의 확장으로',
-        '이해하기 위한 지도입니다.',
-      ],
-      source: '소스 기준: react@19.2.6',
-    },
-  },
-  featureListTrap: {
-    number: '01',
-    eyebrow: '목록 vs 구조',
-    title: 'React 19를 신기능 목록으로만 보면 놓치는 것',
-    leftCard: {
-      title: "기능을 '목록'으로만 보면…",
-      items: ['Actions', 'use()', 'ref as prop', 'metadata', 'Activity'],
-    },
-    arrowLabel: '구조 위에 올려 본다',
-    rightCard: {
-      title: "하지만 '구조' 위에 올려 보면…",
-      items: [
-        { feature: 'Actions', body: '업데이트 흐름 확장', layer: 'update' },
-        { feature: 'use()', body: '렌더 중 리소스 읽기', layer: 'render' },
-        { feature: 'ref as prop', body: 'Element / props 표현 변화', layer: 'element' },
-        { feature: 'Activity', body: '숨겨진 UI와 낮은 우선순위 렌더', layer: 'priority' },
-      ],
-    },
-  },
-  changeAxes: {
-    number: '02',
-    eyebrow: '6개 축',
-    title: 'React 19 변화의 6개 축',
+    title: { line1: 'React 19는 새 기능 목록이 아니라', line2: '여섯 레이어가 넓어진 사건이다' },
     description:
-      '각 신기능은 “새로운 무엇”이 아니라, 이미 존재하던 내부 축이 어디로 확장됐는지를 보여 줍니다.',
-    cards: [
-      {
-        number: '01',
-        layer: 'update',
-        iconKey: 'refresh',
-        title: '업데이트 흐름',
-        features: 'Actions, Form Actions, useActionState',
-        body: '업데이트는 어디서 시작되고, 어떻게 상태와 서버 action까지 연결되는가?',
-        tags: ['Actions', 'Form Actions', 'useActionState'],
-      },
-      {
-        number: '02',
-        layer: 'render',
-        iconKey: 'loader',
-        title: '렌더링 모델',
-        features: 'use(), Suspense, Error Boundary',
-        body: '렌더 도중 비동기 리소스를 읽고, 대기와 에러를 어디로 이어붙일 것인가?',
-        tags: ['use()', 'Suspense', 'Error Boundary'],
-      },
-      {
-        number: '03',
-        layer: 'element',
-        iconKey: 'code',
-        title: 'Element 표현',
-        features: 'ref as prop, element.ref deprecation',
-        body: 'Element와 props가 무엇을 담고, 어떻게 컴포넌트 호출 방식에 영향을 주는가?',
-        tags: ['ref as prop', 'element.ref dep'],
-      },
-      {
-        number: '04',
-        layer: 'dom',
-        iconKey: 'file',
-        title: 'DOM 자원 관리',
-        features: 'title, meta, link, script, style',
-        body: '문서/헤드 리소스를 컴포넌트 단위로 선언하고 효율적으로 관리하는 모델.',
-        tags: ['title', 'meta', 'link', 'script', 'style'],
-      },
-      {
-        number: '05',
-        layer: 'server',
-        iconKey: 'server',
-        title: '서버 경계',
-        features: 'Server Components, use client, use server',
-        body: '컴포넌트 경계를 기준으로 클라이언트와 서버의 역할을 명확히 나누는 구조.',
-        tags: ['RSC', 'use client', 'use server'],
-      },
-      {
-        number: '06',
-        layer: 'priority',
-        iconKey: 'activity',
-        title: '우선순위와 수명 확장',
-        features: 'Activity, useEffectEvent, cacheSignal, PPR',
-        body: '숨겨진 UI와 낮은 우선순위, 이벤트 수명, 캐시 신호, 부분 사전 렌더링까지 확장.',
-        tags: ['Activity', 'useEffectEvent', 'PPR'],
-      },
+      '기능 이름을 외우면 금방 잊습니다. 지금까지 읽은 내부 구조 어디가 넓어졌는지로 읽으면, 이름은 위치의 별명이 됩니다.',
+    diagramBadge: 'six layers',
+    diagramCaption: 'layer → what React 19 added',
+    layers: [
+      { id: 'update', label: '업데이트 모델', feature: 'Actions', tone: 'cyan' },
+      { id: 'render', label: '렌더링 모델', feature: 'use()', tone: 'sky' },
+      { id: 'element', label: 'Element 표현', feature: 'ref as prop', tone: 'teal' },
+      { id: 'dom', label: 'DOM 자원 관리', feature: 'metadata', tone: 'indigo' },
+      { id: 'server', label: '서버 경계', feature: 'RSC', tone: 'emerald' },
+      { id: 'priority', label: '우선순위와 수명', feature: 'Activity', tone: 'violet' },
     ],
   },
-  versionTimeline: {
-    number: '03',
-    eyebrow: '버전 타임라인',
-    title: '19.0 → 19.2 → 19.2.6, 같은 버전에서도 변화의 무게가 다르다',
-    description: '버전을 분리해 두면 같은 단어라도 “언제 들어왔는지”가 같이 읽힙니다.',
+  trap: {
+    badge: '01',
+    eyebrow: 'list vs structure',
+    title: '목록으로 읽으면 놓치고, 구조로 읽으면 남는다',
+    description:
+      '같은 다섯 기능을 두 가지 방식으로 적어 봅니다. 왼쪽은 릴리스 노트고, 오른쪽은 지도입니다.',
+    list: {
+      title: '목록으로 읽기',
+      badge: '릴리스 노트',
+      description: '나열된 이름 사이에 아무 관계가 없어서, 외우는 것 말고는 할 일이 없습니다.',
+      bullets: [
+        'Actions, use(), ref as prop, metadata, Activity가 평평하게 놓인다',
+        '어느 기능이 어느 기능을 전제하는지 알 수 없다',
+        '버전이 섞여 있어 19.0과 19.2가 구분되지 않는다',
+        '새 버전이 나오면 목록을 다시 외워야 한다',
+      ],
+    },
+    bridge: {
+      headline: '같은 기능을\n내부 구조 위에 올려 둔다',
+      sub: '이름 대신 위치를 기억하면, 다음 버전의 기능도 같은 자리에 놓을 수 있습니다.',
+    },
+    structure: {
+      title: '구조로 읽기',
+      badge: '변화 지도',
+      description: '각 기능이 기존 내부 축 어디를 넓혔는지 적으면, 이름은 위치의 별명이 됩니다.',
+      bullets: [
+        'Actions는 업데이트 흐름이 비동기까지 넓어진 것',
+        'use()는 렌더 도중 리소스를 읽게 된 것',
+        'ref as prop은 Element와 props 표현이 바뀐 것',
+        'Activity는 숨겨진 subtree가 우선순위 모델에 들어온 것',
+      ],
+    },
+    note: '이 챕터의 나머지 아홉 페이지는 전부 오른쪽 방식으로 읽습니다. 기능마다 먼저 "어느 레이어인가"를 묻고 시작합니다.',
+  },
+  axes: {
+    badge: '02',
+    eyebrow: 'six axes',
+    title: 'React 19가 넓힌 여섯 개 축',
+    description:
+      '각 축은 새로 생긴 것이 아니라 이미 있던 것입니다. React 19는 그 축의 끝을 한 칸씩 늘렸습니다.',
     cards: [
       {
+        id: 'update',
+        num: '01',
+        title: '업데이트 흐름',
+        question: '업데이트는 어디서 시작하고 어디까지 이어지는가',
+        features: 'Actions · Form Actions · useActionState',
+        tone: 'cyan',
+      },
+      {
+        id: 'render',
+        num: '02',
+        title: '렌더링 모델',
+        question: '렌더 도중 비동기 리소스를 어떻게 읽는가',
+        features: 'use() · Suspense · Error Boundary',
+        tone: 'sky',
+      },
+      {
+        id: 'element',
+        num: '03',
+        title: 'Element 표현',
+        question: 'Element와 props는 무엇을 담는가',
+        features: 'ref as prop · element.ref deprecation',
+        tone: 'teal',
+      },
+      {
+        id: 'dom',
+        num: '04',
+        title: 'DOM 자원 관리',
+        question: '문서와 head 리소스는 누가 관리하는가',
+        features: 'title · meta · link · script · style',
+        tone: 'indigo',
+      },
+      {
+        id: 'server',
+        num: '05',
+        title: '서버 경계',
+        question: '컴포넌트 경계로 서버와 클라이언트를 어떻게 나누는가',
+        features: 'Server Components · use client · use server',
+        tone: 'emerald',
+      },
+      {
+        id: 'priority',
+        num: '06',
+        title: '우선순위와 수명',
+        question: '보이지 않는 UI는 어떤 우선순위로 살아 있는가',
+        features: 'Activity · useEffectEvent · cacheSignal',
+        tone: 'violet',
+      },
+    ],
+    note: '여섯 축 중 앞의 다섯은 19.0에서, 여섯 번째는 19.2에서 크게 움직였습니다. 다음 절에서 그 시점을 분리합니다.',
+  },
+  versions: {
+    badge: '03',
+    eyebrow: 'timeline',
+    title: '19.0과 19.2는 성격이 다른 릴리스다',
+    description:
+      '같은 "React 19"라도 언제 들어온 기능인지에 따라 목적이 다릅니다. 버전을 붙여 두면 혼동이 줄어듭니다.',
+    entries: [
+      {
+        id: 'v190',
         version: 'React 19.0',
         date: '2024.12',
-        meaning: '기본 기능과 표현 모델의 대규모 정리',
-        tags: ['Actions', 'use()', 'ref as prop', 'metadata', 'RSC 안정화'],
+        meaning: '기본 모델과 표현의 대규모 정리',
+        description:
+          '업데이트·렌더링·Element·DOM 자원·서버 경계, 다섯 축이 한 번에 움직였습니다. 이 챕터의 2~7페이지가 여기에 해당합니다.',
+        tags: ['Actions', 'use()', 'ref as prop', 'metadata', 'RSC'],
+        tone: 'sky',
       },
       {
+        id: 'v192',
         version: 'React 19.2',
         date: '2025.04',
         meaning: '우선순위·수명·캐시 개념의 확장',
+        description:
+          '새 모델을 만들기보다 기존 모델의 수명과 우선순위를 다듬었습니다. 8~9페이지가 여기에 해당합니다.',
         tags: ['Activity', 'useEffectEvent', 'cacheSignal', 'Partial Pre-rendering'],
+        tone: 'violet',
       },
       {
+        id: 'v1926',
         version: 'React 19.2.6',
         date: '2025.05',
-        meaning: '최신 안정 코드 탐색 기준',
-        description: '이 강의의 모든 예제와 구조 해석은 react@19.2.6을 기준으로 설명합니다.',
-        tags: ['소스 기준', '예제 기준', '구조 해석 기준'],
-        cta: {
-          label: 'react@19.2.6 소스 보기',
-          href: 'https://github.com/facebook/react/releases/tag/v19.2.6',
-        },
+        meaning: '이 챕터가 코드를 읽는 기준점',
+        description:
+          '모든 파일 경로와 코드 발췌는 이 태그를 기준으로 합니다. 버전이 다르면 파일이 갈라지거나 이름이 바뀌어 있을 수 있습니다.',
+        tags: ['소스 기준', '경로 기준', '발췌 기준'],
+        tone: 'blue',
       },
     ],
+    note: '릴리스 노트를 읽을 때도 같은 습관이 통합니다. "무엇이 추가됐나"보다 "어느 축이 움직였나"를 먼저 보세요.',
   },
-  previousTopicMap: {
-    number: '04',
-    eyebrow: '이전 주제 연결',
-    title: '앞선 대주제와 연결되는 변화 지도',
-    description: '앞서 읽은 내부 구조 위에 React 19 기능이 어떻게 얹히는지 한 줄로 정리합니다.',
-    headings: {
-      question: '기존 학습 질문',
-      feature: 'React 19 기능',
-      structure: '내부 구조 변화 해석',
-    },
+  bridgeMap: {
+    badge: '04',
+    eyebrow: 'connections',
+    title: '앞선 열세 챕터와 이어 붙이기',
+    description:
+      '이 챕터의 기능은 전부 이미 읽은 구조 위에 얹힙니다. 왼쪽 질문이 기억난다면 오른쪽은 그 질문의 후속편입니다.',
+    headers: ['앞에서 던졌던 질문', 'React 19 기능', '구조 변화로 읽으면'],
     rows: [
       {
-        question: '업데이트는 어떻게 시작되는가?',
+        question: '업데이트는 어떻게 시작되는가',
         feature: 'Actions',
-        layer: 'update',
-        structureLines: ['업데이트 모델 확장', 'Action → 상태 / 서버 / 폼 흐름을 더 잘 연결'],
+        reading: 'setState 한 번으로 끝나던 진입점이 비동기 함수와 form까지 넓어졌다',
       },
       {
-        question: 'Suspense / Error / Hydration',
+        question: '렌더 중 실패는 어떻게 처리되는가',
         feature: 'use()',
-        layer: 'render',
-        structureLines: ['렌더링 모델 확장', '렌더 도중 리소스 읽기와 Thenable 추적'],
+        reading: 'thenable 추적이 공개 API가 되어 Suspense와 Error Boundary에 정식 연결됐다',
       },
       {
-        question: 'React Element와 JSX의 정체',
+        question: 'Element와 JSX는 무엇인가',
         feature: 'ref as prop',
-        layer: 'element',
-        structureLines: ['Element 표현 변화', 'ref 전달 방식이 Element / props 표현에 영향을 줌'],
+        reading: 'ref가 별도 슬롯에서 props의 한 키로 내려와 Element 모양이 단순해졌다',
       },
       {
-        question: 'Commit / DOM 반영',
+        question: 'Commit은 DOM에 무엇을 반영하는가',
         feature: 'metadata / resource',
-        layer: 'dom',
-        structureLines: ['DOM 자원 관리 확장', 'Head / 문서 리소스에 대한 수명 통합 관리'],
+        reading: 'head 리소스의 수명 관리가 react-dom의 책임으로 들어왔다',
       },
       {
-        question: 'Scheduler와 우선순위',
+        question: 'Scheduler는 무엇을 먼저 하는가',
         feature: 'Activity',
-        layer: 'priority',
-        structureLines: ['우선순위와 수명 확장', '숨겨진 subtree와 낮은 우선순위 렌더'],
+        reading: '숨겨진 subtree가 "버리는 것"이 아니라 "낮은 우선순위로 살아 있는 것"이 됐다',
       },
     ],
+    note: '표의 왼쪽 열이 낯설다면 그 챕터를 먼저 보고 오는 편이 빠릅니다. 이 챕터는 앞을 전제로 씁니다.',
   },
-  tenPageRoadmap: {
-    number: '05',
-    eyebrow: '로드맵',
-    title: '이번 10개 페이지의 전체 로드맵',
-    description: '이 페이지 다음 9개의 챕터가 각 변화 축을 차례대로 깊게 파고듭니다.',
-    items: [
-      { number: '01', title: '변화 지도', body: '전체 구조와 읽기 기준 정리', active: true },
-      { number: '02', title: 'Actions', body: '업데이트 흐름 확장 이해' },
-      { number: '03', title: 'Form Actions', body: '폼과 이벤트 시스템 연결' },
-      { number: '04', title: 'use()', body: '렌더 중 리소스 읽기와 Suspense 연결' },
-      { number: '05', title: 'ref as prop', body: 'Element 표현 변화 읽기' },
-      { number: '06', title: 'Metadata', body: '문서 자원 관리의 새로운 모델' },
-      { number: '07', title: 'Server Components', body: '서버 경계와 계약 모델' },
-      { number: '08', title: 'Activity', body: '숨겨진 UI와 우선순위 제어' },
-      { number: '09', title: 'useEffectEvent', body: '이벤트성 Effect 로직 분리' },
-      { number: '10', title: '19.2 이후 읽기법', body: '앞으로의 변경을 스스로 읽는 기준' },
-    ],
-    sidePanel: {
-      title: '지금 보고 있는 페이지',
-      bodyLines: [
-        '01 변화 지도는 다음 9개 페이지의 출발점입니다.',
-        '각 페이지는 6개 축 중 하나의 변화를 깊이 읽습니다.',
-        '여기서 잡은 “레이어로 읽기” 관점을 끝까지 유지하세요.',
-      ],
-      tagLabel: '이번 파트의 목표',
-      tags: ['레이어로 읽기', '버전으로 분리', '내부 구조와 연결'],
-    },
-  },
-  changeLayerClassifier: {
-    number: '06',
-    eyebrow: '분류기',
-    title: '변화 레이어 분류기',
-    description:
-      '신기능 이름을 누르면 어느 내부 구조와 연결되는 변화인지 한 줄 흐름으로 보여 줍니다.',
-    tabLabel: '신기능 선택',
-    resultLabel: '연결되는 기존 내부 구조',
-    defaultTab: 'use',
-    results: {
-      actions: {
-        label: 'Actions',
-        layer: 'update',
-        resultTitle: '선택한 변화: Actions',
-        resultSubtitle: '연결되는 기존 내부 구조',
-        flow: ['업데이트 진입점', 'updateQueue', 'transition / pending 상태'],
-        description:
-          'Actions는 setState 너머의 비동기 업데이트 흐름을 정의합니다. 기존 updateQueue / lane 위에 form action과 pending이 추가로 얹힙니다.',
-        cta: { label: '관련 코드 살펴보기', href: '/actions-update-flow' },
-      },
-      use: {
-        label: 'use()',
-        layer: 'render',
-        resultTitle: '선택한 변화: use()',
-        resultSubtitle: '연결되는 기존 내부 구조',
-        flow: ['Suspense', 'Error Boundary', 'Thenable tracking'],
-        description:
-          'use()는 렌더 과정에서 Thenable을 읽고, Suspense와 Error Boundary가 이에 맞춰 UI를 이어받을 수 있도록 내부 추적 흐름에 연결됩니다.',
-        cta: { label: '관련 코드 살펴보기', href: '/use-suspense-error-model' },
-      },
-      ref: {
-        label: 'ref as prop',
-        layer: 'element',
-        resultTitle: '선택한 변화: ref as prop',
-        resultSubtitle: '연결되는 기존 내부 구조',
-        flow: ['createElement', 'props 표현', 'forwardRef deprecation'],
-        description:
-          'ref가 더 이상 createElement에서 별도 슬롯이 아니라 props의 한 키로 다뤄집니다. Element와 forwardRef의 의미가 함께 재정렬됩니다.',
-        cta: { label: '관련 코드 살펴보기', href: '/ref-as-prop-element-shape' },
-      },
-      activity: {
-        label: 'Activity',
-        layer: 'priority',
-        resultTitle: '선택한 변화: Activity',
-        resultSubtitle: '연결되는 기존 내부 구조',
-        flow: ['hidden subtree', 'Scheduler / lane', 'effect 수명'],
-        description:
-          'Activity는 보이지 않는 subtree를 낮은 우선순위로 살려 두는 모델입니다. Scheduler · lane · effect 수명의 정의가 함께 확장됩니다.',
-        cta: { label: '관련 코드 살펴보기', href: '/activity-hidden-ui' },
-      },
-    },
-  },
-  followAlongMission: {
-    number: '07',
-    eyebrow: '코드 따라가기',
-    title: '직접 따라가기 보기',
-    description: '읽은 내용을 손으로 다시 정리해 보면 “지도 위 위치”가 더 또렷해집니다.',
-    missions: [
+  roadmap: {
+    badge: '05',
+    eyebrow: 'roadmap',
+    title: '남은 아홉 페이지가 지나갈 순서',
+    description: '여섯 축을 하나씩 깊게 팝니다. 각 페이지는 축 하나와 소스 파일 하나로 끝납니다.',
+    steps: [
       {
-        mission: 'React 19 변화는 단순 목록이 아니라 구조 지도라는 점을 정리한다',
-        helper: '변화가 어디에 얹히는지 먼저 본다.',
+        id: 'map',
+        num: '01',
+        title: '변화 지도',
+        description: '지금 페이지. 여섯 축과 두 버전을 나누는 기준을 세운다.',
+        tone: 'blue',
       },
       {
-        mission: '19.0과 19.2 변화를 분리해 본다',
-        helper: '버전별 맥락을 구분하면 이해가 쉬워진다.',
+        id: 'actions',
+        num: '02',
+        title: 'Actions',
+        description: '업데이트 진입점이 비동기까지 넓어진 과정을 따라간다.',
+        tone: 'cyan',
       },
       {
-        mission: '앞으로 각 기능을 “어느 레이어 변화인가?”로 읽겠다는 기준을 세운다',
-        helper: '모든 내용을 지도 위에서 해석한다.',
+        id: 'form',
+        num: '03',
+        title: 'Form Actions',
+        description: 'form submit이 이벤트 시스템을 지나 Action으로 바뀌는 지점을 본다.',
+        tone: 'cyan',
+      },
+      {
+        id: 'use',
+        num: '04',
+        title: 'use()',
+        description: '렌더 도중 리소스를 읽는 규칙과 Suspense 연결을 확인한다.',
+        tone: 'sky',
+      },
+      {
+        id: 'ref',
+        num: '05',
+        title: 'ref as prop',
+        description: 'Element와 props 표현이 어떻게 단순해졌는지 읽는다.',
+        tone: 'teal',
+      },
+      {
+        id: 'metadata',
+        num: '06',
+        title: 'Metadata / Resource',
+        description: 'head 리소스를 컴포넌트로 선언하면 무슨 일이 일어나는지 본다.',
+        tone: 'indigo',
+      },
+      {
+        id: 'server',
+        num: '07',
+        title: 'Server Components',
+        description: 'use client와 use server가 만드는 모듈 경계를 정리한다.',
+        tone: 'emerald',
+      },
+      {
+        id: 'activity',
+        num: '08',
+        title: 'Activity',
+        description: '숨겨진 subtree의 상태와 effect가 어떻게 관리되는지 본다.',
+        tone: 'violet',
+      },
+      {
+        id: 'effect-event',
+        num: '09',
+        title: 'useEffectEvent',
+        description: 'Effect에서 이벤트성 로직을 떼어 내는 설계를 읽는다.',
+        tone: 'violet',
+      },
+      {
+        id: 'after',
+        num: '10',
+        title: '19.2 이후 읽기법',
+        description: '다음 릴리스를 스스로 이 지도 위에 올리는 방법으로 마무리한다.',
+        tone: 'blue',
       },
     ],
+    note: '순서대로 읽으면 좋지만, 축 단위로 끊어 읽어도 됩니다. 각 페이지는 자기 축 안에서 닫혀 있습니다.',
   },
-  keyTakeaways: {
-    number: '08',
-    eyebrow: '핵심 정리',
-    title: '이번 페이지에서 반드시 기억할 것',
-    cards: [
-      {
-        number: '01',
-        iconKey: 'layers',
-        title: 'React 19는 여러 내부 레이어에 걸친 변화다.',
-        body: '업데이트, 렌더링, 표현, 자원 관리, 서버 경계, 우선순위까지 확장된다.',
-      },
-      {
-        number: '02',
-        iconKey: 'milestone',
-        title: '19.0과 19.2를 나눠 읽어야 혼동이 줄어든다.',
-        body: '버전별 변화의 폭과 목적이 다르다.',
-      },
-      {
-        number: '03',
-        iconKey: 'map',
-        title: '이번 파트는 변화의 위치를 읽는 지도 역할을 한다.',
-        body: '다음 페이지부터 각 변화의 내부 구조를 하나씩 파고든다.',
-      },
-    ],
+  checkpoint: {
+    badge: '06',
+    eyebrow: 'code checkpoint',
+    title: '변화를 가장 빨리 확인하는 파일',
+    fileLabel: '파일',
+    filePath: 'packages/react/src/ReactClient.js',
+    lookForLabel: '볼 것',
+    lookFor: "export { ... } from './ReactHooks'",
+    whyLabel: '설명',
+    why: '기능이 늘었는지 줄었는지는 이 export 목록의 변화로 가장 먼저 드러납니다. 릴리스 노트보다 이 파일의 diff가 정확합니다.',
+    code: KO_CODE,
+    primaryCta: 'ReactClient.js 소스 보기',
+    primaryHref: REACT_CLIENT_HREF,
   },
   nextStep: {
-    eyebrow: '다음 학습으로 이어집니다',
-    title: 'Actions는 왜 업데이트 모델의 확장일까?',
-    description: '업데이트 흐름의 진입점과 상태 / 서버 연결을 깊이 파헤쳐 봅니다.',
+    eyebrow: '다음 단계',
+    title: 'Actions는 업데이트 흐름을 어디까지 넓혔을까',
+    description: '첫 번째 축부터 봅니다. setState 하나로 끝나던 진입점이 어디까지 이어지는지.',
     cta: '다음 페이지로 이동',
     href: '/actions-update-flow',
-  },
-  versionNote: {
-    left: '기준 버전: react@19.2.6',
-    right: '이 페이지의 구조 해석은 모두 해당 버전을 기준으로 합니다.',
   },
 };
 
 const en: React19ChangeMapContent = {
   hero: {
     badge: 'React 19 Changes · 1/10',
-    titleLines: ['What changed in React 19,', 'and how should we read it?'],
-    subtitleLines: [
-      'Instead of memorizing a list of new features,',
-      'we read what got layered on top of',
-      "React's existing internal structure.",
-    ],
-    diagram: {
-      title: 'Six layers of change in React 19',
-      layers: [
-        {
-          layer: 'update',
-          number: '01',
-          name: 'Update model',
-          feature: 'Actions',
-          caption: 'Async updates · form actions · pending state',
-        },
-        {
-          layer: 'render',
-          number: '02',
-          name: 'Render model',
-          feature: 'use()',
-          caption: 'Read resources during render · Suspense link',
-        },
-        {
-          layer: 'element',
-          number: '03',
-          name: 'Element shape',
-          feature: 'ref as prop',
-          caption: 'props.ref · element.ref deprecation',
-        },
-        {
-          layer: 'dom',
-          number: '04',
-          name: 'DOM resource mgmt',
-          feature: 'metadata',
-          caption: 'title · meta · link · script · style',
-        },
-        {
-          layer: 'server',
-          number: '05',
-          name: 'Server boundary',
-          feature: 'RSC',
-          caption: 'Server Components · use client · use server',
-        },
-        {
-          layer: 'priority',
-          number: '06',
-          name: 'Priority / lifetime',
-          feature: 'Activity',
-          caption: 'Hidden subtree · low-priority render',
-        },
-      ],
-    },
-    questionCard: {
-      eyebrow: "Today's question",
-      questionLines: [
-        'Where exactly inside React do',
-        'Actions, use(), ref as prop, and Activity',
-        'each plug in?',
-      ],
-      badges: [
-        { label: 'Change map', iconKey: 'map' },
-        { label: 'Version split', iconKey: 'milestone' },
-        { label: 'Internal link', iconKey: 'route' },
-      ],
-    },
-    guideCard: {
-      eyebrow: 'Reading guide',
-      bodyLines: [
-        'This page is a map for reading the',
-        'React 19.0 ~ 19.2.6 changes as extensions',
-        "of React's existing internal structure.",
-      ],
-      source: 'Source basis: react@19.2.6',
-    },
-  },
-  featureListTrap: {
-    number: '01',
-    eyebrow: 'LIST VS STRUCTURE',
-    title: 'What you miss when you read React 19 only as a feature list',
-    leftCard: {
-      title: "If you only see the 'list'…",
-      items: ['Actions', 'use()', 'ref as prop', 'metadata', 'Activity'],
-    },
-    arrowLabel: 'Place them on the structure',
-    rightCard: {
-      title: "But once placed on the 'structure'…",
-      items: [
-        { feature: 'Actions', body: 'Extends the update flow', layer: 'update' },
-        { feature: 'use()', body: 'Reads resources during render', layer: 'render' },
-        { feature: 'ref as prop', body: 'Reshapes Element / props', layer: 'element' },
-        { feature: 'Activity', body: 'Hidden UI & low-priority render', layer: 'priority' },
-      ],
-    },
-  },
-  changeAxes: {
-    number: '02',
-    eyebrow: 'SIX AXES',
-    title: 'The six axes of change in React 19',
+    title: { line1: 'React 19 is not a feature list.', line2: 'Six layers each got wider.' },
     description:
-      'Each new feature is not "something brand new" — it shows where an existing internal axis got extended.',
-    cards: [
-      {
-        number: '01',
-        layer: 'update',
-        iconKey: 'refresh',
-        title: 'Update flow',
-        features: 'Actions, Form Actions, useActionState',
-        body: 'Where does an update start, and how does it reach state and server actions?',
-        tags: ['Actions', 'Form Actions', 'useActionState'],
-      },
-      {
-        number: '02',
-        layer: 'render',
-        iconKey: 'loader',
-        title: 'Render model',
-        features: 'use(), Suspense, Error Boundary',
-        body: 'How do we read async resources mid-render and connect waiting & errors?',
-        tags: ['use()', 'Suspense', 'Error Boundary'],
-      },
-      {
-        number: '03',
-        layer: 'element',
-        iconKey: 'code',
-        title: 'Element shape',
-        features: 'ref as prop, element.ref deprecation',
-        body: 'What do Element and props carry, and how does it affect component calls?',
-        tags: ['ref as prop', 'element.ref dep'],
-      },
-      {
-        number: '04',
-        layer: 'dom',
-        iconKey: 'file',
-        title: 'DOM resource mgmt',
-        features: 'title, meta, link, script, style',
-        body: 'Declare and manage document/head resources at the component level.',
-        tags: ['title', 'meta', 'link', 'script', 'style'],
-      },
-      {
-        number: '05',
-        layer: 'server',
-        iconKey: 'server',
-        title: 'Server boundary',
-        features: 'Server Components, use client, use server',
-        body: 'Split client and server roles cleanly along component boundaries.',
-        tags: ['RSC', 'use client', 'use server'],
-      },
-      {
-        number: '06',
-        layer: 'priority',
-        iconKey: 'activity',
-        title: 'Priority & lifetime',
-        features: 'Activity, useEffectEvent, cacheSignal, PPR',
-        body: 'Extends hidden UI, low priority, event lifetime, cache signals, and PPR.',
-        tags: ['Activity', 'useEffectEvent', 'PPR'],
-      },
+      'Memorized names fade fast. Read each feature as "which internal axis grew" and the name becomes a nickname for a location.',
+    diagramBadge: 'six layers',
+    diagramCaption: 'layer → what React 19 added',
+    layers: [
+      { id: 'update', label: 'Update model', feature: 'Actions', tone: 'cyan' },
+      { id: 'render', label: 'Render model', feature: 'use()', tone: 'sky' },
+      { id: 'element', label: 'Element shape', feature: 'ref as prop', tone: 'teal' },
+      { id: 'dom', label: 'DOM resources', feature: 'metadata', tone: 'indigo' },
+      { id: 'server', label: 'Server boundary', feature: 'RSC', tone: 'emerald' },
+      { id: 'priority', label: 'Priority and lifetime', feature: 'Activity', tone: 'violet' },
     ],
   },
-  versionTimeline: {
-    number: '03',
-    eyebrow: 'VERSION TIMELINE',
-    title: '19.0 → 19.2 → 19.2.6, the weight of change differs',
-    description: 'Splitting versions lets the same word carry "when it landed" alongside.',
+  trap: {
+    badge: '01',
+    eyebrow: 'list vs structure',
+    title: 'A list is forgotten, a map is kept',
+    description:
+      'Here are the same five features written two ways. The left one is a release note, the right one is a map.',
+    list: {
+      title: 'Reading it as a list',
+      badge: 'release note',
+      description:
+        'Nothing connects the names to each other, so there is nothing to do but memorize them.',
+      bullets: [
+        'Actions, use(), ref as prop, metadata and Activity all sit flat',
+        'Nothing tells you which feature presupposes which',
+        'Versions are mixed, so 19.0 and 19.2 blur together',
+        'Every new release means memorizing the list again',
+      ],
+    },
+    bridge: {
+      headline: 'Put the same features\non top of the internals',
+      sub: 'Remember locations instead of names and the next release lands in the same places.',
+    },
+    structure: {
+      title: 'Reading it as structure',
+      badge: 'change map',
+      description:
+        'Write down which existing axis each feature widened and the name becomes a nickname for a location.',
+      bullets: [
+        'Actions widened the update flow to cover async work',
+        'use() let a render read a resource while it is running',
+        'ref as prop changed how Element and props are shaped',
+        'Activity brought hidden subtrees into the priority model',
+      ],
+    },
+    note: 'The remaining nine pages all read the right-hand way. Each one starts by asking which layer the feature belongs to.',
+  },
+  axes: {
+    badge: '02',
+    eyebrow: 'six axes',
+    title: 'The six axes React 19 widened',
+    description: 'None of these axes are new. React 19 pushed each of them one notch further out.',
     cards: [
       {
+        id: 'update',
+        num: '01',
+        title: 'Update flow',
+        question: 'Where does an update start and how far does it reach',
+        features: 'Actions · Form Actions · useActionState',
+        tone: 'cyan',
+      },
+      {
+        id: 'render',
+        num: '02',
+        title: 'Render model',
+        question: 'How does a render read an async resource',
+        features: 'use() · Suspense · Error Boundary',
+        tone: 'sky',
+      },
+      {
+        id: 'element',
+        num: '03',
+        title: 'Element shape',
+        question: 'What do an Element and its props actually hold',
+        features: 'ref as prop · element.ref deprecation',
+        tone: 'teal',
+      },
+      {
+        id: 'dom',
+        num: '04',
+        title: 'DOM resources',
+        question: 'Who owns the document and head resources',
+        features: 'title · meta · link · script · style',
+        tone: 'indigo',
+      },
+      {
+        id: 'server',
+        num: '05',
+        title: 'Server boundary',
+        question: 'How does a component boundary split server from client',
+        features: 'Server Components · use client · use server',
+        tone: 'emerald',
+      },
+      {
+        id: 'priority',
+        num: '06',
+        title: 'Priority and lifetime',
+        question: 'At what priority does invisible UI stay alive',
+        features: 'Activity · useEffectEvent · cacheSignal',
+        tone: 'violet',
+      },
+    ],
+    note: 'The first five axes moved in 19.0 and the sixth moved in 19.2. The next section separates those moments.',
+  },
+  versions: {
+    badge: '03',
+    eyebrow: 'timeline',
+    title: '19.0 and 19.2 are different kinds of release',
+    description:
+      'Both are "React 19", but the purpose differs by when a feature landed. Tagging the version removes most of the confusion.',
+    entries: [
+      {
+        id: 'v190',
         version: 'React 19.0',
         date: '2024.12',
-        meaning: 'Large-scale reorganization of core features & shape',
-        tags: ['Actions', 'use()', 'ref as prop', 'metadata', 'RSC stable'],
+        meaning: 'A large cleanup of the base models',
+        description:
+          'Update, render, Element, DOM resources and the server boundary all moved at once. Pages 2 through 7 of this chapter cover it.',
+        tags: ['Actions', 'use()', 'ref as prop', 'metadata', 'RSC'],
+        tone: 'sky',
       },
       {
+        id: 'v192',
         version: 'React 19.2',
         date: '2025.04',
-        meaning: 'Extends priority · lifetime · cache concepts',
+        meaning: 'Priority, lifetime and cache signals',
+        description:
+          'Rather than new models, it sharpened the lifetime and priority of existing ones. Pages 8 and 9 cover it.',
         tags: ['Activity', 'useEffectEvent', 'cacheSignal', 'Partial Pre-rendering'],
+        tone: 'violet',
       },
       {
+        id: 'v1926',
         version: 'React 19.2.6',
         date: '2025.05',
-        meaning: 'Baseline for the latest stable source exploration',
+        meaning: 'The baseline this chapter reads from',
         description:
-          'Every example and structural reading in this course is based on react@19.2.6.',
-        tags: ['Source basis', 'Example basis', 'Reading basis'],
-        cta: {
-          label: 'Open react@19.2.6 source',
-          href: 'https://github.com/facebook/react/releases/tag/v19.2.6',
-        },
+          'Every file path and code excerpt follows this tag. On another version a file may have been split or renamed.',
+        tags: ['source baseline', 'path baseline', 'excerpt baseline'],
+        tone: 'blue',
       },
     ],
+    note: 'The same habit works on release notes. Ask which axis moved before you ask what was added.',
   },
-  previousTopicMap: {
-    number: '04',
-    eyebrow: 'CONNECT TO PREVIOUS TOPICS',
-    title: 'A change map that links to previous topics',
+  bridgeMap: {
+    badge: '04',
+    eyebrow: 'connections',
+    title: 'Stitching this onto the previous thirteen chapters',
     description:
-      'On top of the internal structure you already read, see where each React 19 feature lands.',
-    headings: {
-      question: 'Previous question',
-      feature: 'React 19 feature',
-      structure: 'Structural reading',
-    },
+      'Every feature here sits on structure you have already read. If the question on the left rings a bell, the right side is its sequel.',
+    headers: ['A question asked earlier', 'React 19 feature', 'Read as a structural change'],
     rows: [
       {
-        question: 'How does an update start?',
+        question: 'How does an update start',
         feature: 'Actions',
-        layer: 'update',
-        structureLines: ['Update model extended', 'Action → state / server / form, better linked'],
+        reading:
+          'The entry point that ended at one setState now stretches to async functions and forms',
       },
       {
-        question: 'Suspense / Error / Hydration',
+        question: 'How is a failure during render handled',
         feature: 'use()',
-        layer: 'render',
-        structureLines: ['Render model extended', 'Read resources mid-render & track Thenables'],
+        reading:
+          'Thenable tracking became a public API, formally wired to Suspense and Error Boundary',
       },
       {
-        question: 'What React Element & JSX really are',
+        question: 'What are Element and JSX',
         feature: 'ref as prop',
-        layer: 'element',
-        structureLines: ['Element shape changed', 'How ref is passed reshapes Element / props'],
+        reading: 'ref moved out of its own slot into a props key, so the Element shape got simpler',
       },
       {
-        question: 'Commit / DOM application',
+        question: 'What does commit put into the DOM',
         feature: 'metadata / resource',
-        layer: 'dom',
-        structureLines: ['DOM resource mgmt extended', 'Unified lifetime for head / doc resources'],
+        reading: 'Lifetime management of head resources became react-dom responsibility',
       },
       {
-        question: 'Scheduler & priority',
+        question: 'What does the scheduler do first',
         feature: 'Activity',
-        layer: 'priority',
-        structureLines: ['Priority & lifetime extended', 'Hidden subtree & low-priority render'],
+        reading: 'A hidden subtree stopped being discarded and became alive at a low priority',
       },
     ],
+    note: 'If the left column feels unfamiliar, that chapter is the faster place to start. This one assumes them.',
   },
-  tenPageRoadmap: {
-    number: '05',
-    eyebrow: 'ROADMAP',
-    title: 'The full roadmap of these 10 pages',
-    description: 'The next nine chapters after this one dive into each axis of change in turn.',
-    items: [
+  roadmap: {
+    badge: '05',
+    eyebrow: 'roadmap',
+    title: 'The order the remaining nine pages take',
+    description:
+      'One axis at a time, in depth. Each page closes on a single axis and a single source file.',
+    steps: [
       {
-        number: '01',
+        id: 'map',
+        num: '01',
         title: 'Change map',
-        body: 'Overall structure & reading basis',
-        active: true,
-      },
-      { number: '02', title: 'Actions', body: 'Understand the update flow extension' },
-      { number: '03', title: 'Form Actions', body: 'Forms × event system' },
-      { number: '04', title: 'use()', body: 'Read resources mid-render, connect Suspense' },
-      { number: '05', title: 'ref as prop', body: 'Reading the Element shape change' },
-      { number: '06', title: 'Metadata', body: 'A new model for document resources' },
-      { number: '07', title: 'Server Components', body: 'Server boundary & contract' },
-      { number: '08', title: 'Activity', body: 'Hidden UI & priority control' },
-      { number: '09', title: 'useEffectEvent', body: 'Separating event-like Effect logic' },
-      { number: '10', title: 'Reading 19.2+', body: 'Your own method for future changes' },
-    ],
-    sidePanel: {
-      title: 'You are here',
-      bodyLines: [
-        '01 Change map is the entry point for the next 9 chapters.',
-        'Each chapter reads one of the six axes of change deeply.',
-        'Carry the "read it as a layer" perspective through to the end.',
-      ],
-      tagLabel: 'Goals of this part',
-      tags: ['Read as layers', 'Split by version', 'Connect to internals'],
-    },
-  },
-  changeLayerClassifier: {
-    number: '06',
-    eyebrow: 'CLASSIFIER',
-    title: 'Change-layer classifier',
-    description:
-      'Click a feature name to see which internal structure that change connects to, as a one-line flow.',
-    tabLabel: 'Pick a feature',
-    resultLabel: 'Connected internal structure',
-    defaultTab: 'use',
-    results: {
-      actions: {
-        label: 'Actions',
-        layer: 'update',
-        resultTitle: 'Selected: Actions',
-        resultSubtitle: 'Connected internal structure',
-        flow: ['Update entry', 'updateQueue', 'transition / pending state'],
-        description:
-          'Actions define the async update flow beyond setState. Form actions and pending get layered on top of the existing updateQueue / lane model.',
-        cta: { label: 'Look at related code', href: '/actions-update-flow' },
-      },
-      use: {
-        label: 'use()',
-        layer: 'render',
-        resultTitle: 'Selected: use()',
-        resultSubtitle: 'Connected internal structure',
-        flow: ['Suspense', 'Error Boundary', 'Thenable tracking'],
-        description:
-          'use() reads a Thenable during render, hooking into the internal tracking flow so Suspense and Error Boundary can pick the UI back up.',
-        cta: { label: 'Look at related code', href: '/use-suspense-error-model' },
-      },
-      ref: {
-        label: 'ref as prop',
-        layer: 'element',
-        resultTitle: 'Selected: ref as prop',
-        resultSubtitle: 'Connected internal structure',
-        flow: ['createElement', 'props shape', 'forwardRef deprecation'],
-        description:
-          'ref is no longer a separate slot inside createElement — it becomes a key in props. Element and forwardRef are re-aligned together.',
-        cta: { label: 'Look at related code', href: '/ref-as-prop-element-shape' },
-      },
-      activity: {
-        label: 'Activity',
-        layer: 'priority',
-        resultTitle: 'Selected: Activity',
-        resultSubtitle: 'Connected internal structure',
-        flow: ['hidden subtree', 'Scheduler / lane', 'effect lifetime'],
-        description:
-          'Activity keeps an invisible subtree alive at a lower priority. Scheduler · lane · effect lifetime get extended together.',
-        cta: { label: 'Look at related code', href: '/activity-hidden-ui' },
-      },
-    },
-  },
-  followAlongMission: {
-    number: '07',
-    eyebrow: 'FOLLOW ALONG',
-    title: 'Follow-along missions',
-    description:
-      'Restating what you read with your own hands makes the "place on the map" sharper.',
-    missions: [
-      {
-        mission: 'Capture that React 19 changes are a structural map, not just a list',
-        helper: 'First, see where the change is placed.',
+        description: 'This page. Sets the six axes and separates the two versions.',
+        tone: 'blue',
       },
       {
-        mission: 'Split 19.0 and 19.2 changes and read them apart',
-        helper: 'Separating versions makes the picture easier.',
+        id: 'actions',
+        num: '02',
+        title: 'Actions',
+        description: 'Follows how the update entry point stretched to cover async work.',
+        tone: 'cyan',
       },
       {
-        mission: 'Commit to reading every feature as "which layer changed?"',
-        helper: 'Interpret everything on the map.',
+        id: 'form',
+        num: '03',
+        title: 'Form Actions',
+        description: 'Watches a form submit pass through the event system and become an Action.',
+        tone: 'cyan',
+      },
+      {
+        id: 'use',
+        num: '04',
+        title: 'use()',
+        description: 'Checks the rules for reading a resource mid-render and the Suspense wiring.',
+        tone: 'sky',
+      },
+      {
+        id: 'ref',
+        num: '05',
+        title: 'ref as prop',
+        description: 'Reads how the Element and props shape got simpler.',
+        tone: 'teal',
+      },
+      {
+        id: 'metadata',
+        num: '06',
+        title: 'Metadata / Resource',
+        description: 'Sees what happens when head resources are declared as components.',
+        tone: 'indigo',
+      },
+      {
+        id: 'server',
+        num: '07',
+        title: 'Server Components',
+        description: 'Sorts out the module boundary that use client and use server create.',
+        tone: 'emerald',
+      },
+      {
+        id: 'activity',
+        num: '08',
+        title: 'Activity',
+        description: 'Looks at how state and effects of a hidden subtree are managed.',
+        tone: 'violet',
+      },
+      {
+        id: 'effect-event',
+        num: '09',
+        title: 'useEffectEvent',
+        description: 'Reads the design that pulls event-like logic out of an Effect.',
+        tone: 'violet',
+      },
+      {
+        id: 'after',
+        num: '10',
+        title: 'Reading past 19.2',
+        description: 'Closes with a way to place the next release on this map yourself.',
+        tone: 'blue',
       },
     ],
+    note: 'Reading in order helps, but axis by axis works too. Each page is closed within its own axis.',
   },
-  keyTakeaways: {
-    number: '08',
-    eyebrow: 'KEY TAKEAWAYS',
-    title: 'What you must remember from this page',
-    cards: [
-      {
-        number: '01',
-        iconKey: 'layers',
-        title: 'React 19 is a change across several internal layers.',
-        body: 'It extends update, render, shape, resource mgmt, server boundary, and priority.',
-      },
-      {
-        number: '02',
-        iconKey: 'milestone',
-        title: 'Read 19.0 and 19.2 separately to reduce confusion.',
-        body: 'The scope and goal of change differ by version.',
-      },
-      {
-        number: '03',
-        iconKey: 'map',
-        title: 'This part is the map for reading where the changes live.',
-        body: 'From the next page on, each axis is unpacked one by one.',
-      },
-    ],
+  checkpoint: {
+    badge: '06',
+    eyebrow: 'code checkpoint',
+    title: 'The fastest file for spotting a change',
+    fileLabel: 'File',
+    filePath: 'packages/react/src/ReactClient.js',
+    lookForLabel: 'Look for',
+    lookFor: "export { ... } from './ReactHooks'",
+    whyLabel: 'Why',
+    why: 'Whether the API grew or shrank shows up here first. The diff of this file is more precise than a release note.',
+    code: EN_CODE,
+    primaryCta: 'View ReactClient.js',
+    primaryHref: REACT_CLIENT_HREF,
   },
   nextStep: {
-    eyebrow: 'The journey continues',
-    title: 'Why are Actions an extension of the update model?',
-    description: 'Dig into the entry points of the update flow and the state / server connections.',
+    eyebrow: 'Next step',
+    title: 'How far did Actions widen the update flow',
+    description:
+      'Start with the first axis: how far an entry point that ended at one setState now reaches.',
     cta: 'Go to the next page',
     href: '/actions-update-flow',
-  },
-  versionNote: {
-    left: 'Baseline version: react@19.2.6',
-    right: 'All structural readings on this page assume this version.',
   },
 };
 

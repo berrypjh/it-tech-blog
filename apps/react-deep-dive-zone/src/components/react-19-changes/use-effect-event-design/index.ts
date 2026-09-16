@@ -1,2 +1,2 @@
 export { useEffectEventContent } from './content';
-export { UseEffectEventPage } from './UseEffectEventPage';
+export { UseEffectEventDesignPage } from './UseEffectEventDesignPage';

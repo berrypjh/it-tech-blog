@@ -1,109 +1,68 @@
 import { cx } from '@berrypjh/react-ui';
+import { Boxes, Code2, type LucideIcon, PenLine, Workflow } from 'lucide-react';
 
-import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
+import { TerminalBadge } from '../../../shared/terminal';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { RefAsPropElementShapeContent } from '../content';
-import { BoxIcon, CodeIcon } from '../icons';
+import { toneTokens } from '../../../shared/tones';
+import type { HeroStep, PathStepId, RefAsPropElementShapeContent } from '../content';
 
-type Props = { content: RefAsPropElementShapeContent['hero']; className?: string };
+type Props = { content: RefAsPropElementShapeContent['hero'] };
 
-type SideKey = 'before' | 'after';
-
-const sideTone: Record<SideKey, ToneKey> = {
-  before: 'indigo',
-  after: 'emerald',
+const stepIcon: Record<PathStepId, LucideIcon> = {
+  jsx: PenLine,
+  create: Code2,
+  element: Boxes,
+  call: Workflow,
 };
 
-const sideIcon: Record<SideKey, typeof BoxIcon> = {
-  before: BoxIcon,
-  after: CodeIcon,
-};
-
-/**
- * Hero 핵심 비주얼.
- * React 18의 forwardRef wrapper → (ref as prop) → React 19의 props.ref 직접 수신으로
- * Element 외형이 바뀌는 흐름을 위에서 아래로 잇는 컴팩트 before/after stepper.
- */
-export const RefAsPropHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.before.label}: forwardRef wrapper. ${content.after.label}: props.ref direct.`;
+/** Hero 핵심 비주얼: ref가 props 안에서만 흐르는 네 칸. */
+export const RefAsPropHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.title.line1} ${content.title.line2} ${content.description}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
-        <ShapeCard
-          side="before"
-          label={content.before.label}
-          phase={content.centerLabels.before}
-          code={content.before.code}
-        />
+        <div className="flex items-center justify-between">
+          <TerminalBadge dotClassName="bg-[var(--term-accent)]">
+            {content.diagramBadge}
+          </TerminalBadge>
+          <span className="font-mono text-[10px] text-[var(--term-muted)]">
+            {'//'} {content.diagramCaption}
+          </span>
+        </div>
 
-        <DownArrow label="ref as prop" />
-
-        <ShapeCard
-          side="after"
-          label={content.after.label}
-          phase={content.centerLabels.after}
-          code={content.after.code}
-        />
+        {content.steps.map((step, i) => (
+          <div key={step.id} className="flex flex-col gap-sm">
+            <StepRowItem step={step} />
+            {i < content.steps.length - 1 && <DownArrow />}
+          </div>
+        ))}
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
-const ShapeCard = ({
-  side,
-  label,
-  phase,
-  code,
-}: {
-  side: SideKey;
-  label: string;
-  phase: string;
-  code: string;
-}) => {
-  const t = toneTokens[sideTone[side]];
-  const Icon = sideIcon[side];
+const StepRowItem = ({ step }: { step: HeroStep }) => {
+  const Icon = stepIcon[step.id];
+  const t = toneTokens[step.tone];
   return (
-    <article className="flex flex-col gap-sm">
-      <header className="flex items-center gap-sm">
-        <ToneIconBox tone={sideTone[side]} size="sm">
-          <Icon className="h-[18px] w-[18px]" />
-        </ToneIconBox>
-        <span className={cx('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
-          {label}
-        </span>
-        <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-          {phase}
-        </span>
-      </header>
-      <CodePreviewPanel code={code} showWindowDots language="JSX" size="sm" />
+    <article className="flex items-center gap-sm rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] px-md py-2.5 shadow-[0_2px_0_var(--term-border)]">
+      <ToneIconBox tone={step.tone} size="sm" className="h-8 w-8">
+        <Icon className="h-4 w-4" />
+      </ToneIconBox>
+      <div className="flex min-w-0 flex-col gap-0.5">
+        <code
+          className={cx(
+            'font-mono text-[11px] font-bold tracking-tight [overflow-wrap:anywhere]',
+            t.text,
+          )}
+        >
+          {step.label}
+        </code>
+        <span className="text-[10px] text-[var(--term-muted)] break-keep">{step.caption}</span>
+      </div>
     </article>
   );
 };
-
-const DownArrow = ({ label }: { label: string }) => (
-  <div className="flex items-center justify-center gap-2">
-    <span
-      aria-hidden="true"
-      className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-    >
-      ↓
-    </span>
-    <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--term-accent)] break-keep">
-      {label}
-    </span>
-  </div>
-);

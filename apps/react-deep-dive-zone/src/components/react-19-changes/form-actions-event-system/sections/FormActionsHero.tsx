@@ -9,19 +9,13 @@ import { TerminalBadge } from '../../../shared/terminal';
 import { FormActionsHeroDiagram } from '../components/FormActionsHeroDiagram';
 import type { FormActionsEventSystemContent } from '../content';
 
-import { CodePanel } from './_CodePanel';
-
 type Props = { content: FormActionsEventSystemContent['hero'] };
 
 export const FormActionsHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="react-19-changes/form-actions-event-system.md"
-    promptSuffix={
-      <span className="text-[var(--term-dim)]">
-        {' // submit event → plugin → pendingState → transition'}
-      </span>
-    }
+    promptPath="packages/react-dom-bindings/src/events/plugins/FormActionEventPlugin.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -30,22 +24,14 @@ export const FormActionsHero = ({ content }: Props) => (
       </TerminalBadge>
 
       <HeroTitle>
-        <span className="block text-[var(--term-fg)]">{content.titleLines[0]}</span>
-        <span className="block text-[var(--term-fg)]">{content.titleLines[1]}</span>
-        <span className="block text-[var(--term-accent)]">{content.titleLines[2]}</span>
+        <span className="block">{content.title.line1}</span>
+        <span className="block text-[var(--term-accent)]">{content.title.line2}</span>
       </HeroTitle>
 
-      <HeroDescription maxWidth="max-w-[46ch]">{content.subtitleLines.join(' ')}</HeroDescription>
-
-      {/* hero code panel */}
-      <CodePanel
-        code={content.heroCode.code}
-        fileName={content.heroCode.fileName}
-        langBadge={content.heroCode.langBadge}
-      />
+      <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-form-actions" className="w-full">
+    <HeroVisualColumn id="hero-form-actions-event-system">
       <FormActionsHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

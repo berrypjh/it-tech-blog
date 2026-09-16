@@ -1,76 +1,69 @@
 import { cx } from '@berrypjh/react-ui';
+import {
+  Brush,
+  EyeOff,
+  Gauge,
+  Layers,
+  Lightbulb,
+  type LucideIcon,
+  ShieldCheck,
+} from 'lucide-react';
 
-import type { ActivityHiddenUiContent } from '../content';
-import { activityTone } from '../tone';
+import { SectionNote } from '../../../shared/note';
+import { SectionBadgeHeader } from '../../../shared/section';
+import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
+import { toneTokens } from '../../../shared/tones';
+import type { ActivityHiddenUiContent, BehaviorId } from '../content';
 
-import { iconRegistry } from './_iconRegistry';
-import { SectionHeader } from './_SectionHeader';
+type Props = { content: ActivityHiddenUiContent['behaviors'] };
 
-type Props = { content: ActivityHiddenUiContent['hiddenBehavior'] };
+const cardIcon: Record<BehaviorId, LucideIcon> = {
+  display: EyeOff,
+  cleanup: Brush,
+  state: ShieldCheck,
+  priority: Gauge,
+};
 
 export const HiddenBehaviorCards = ({ content }: Props) => (
-  <section aria-labelledby="hidden-behavior-heading" className="flex flex-col">
-    <SectionHeader
-      id="hidden-behavior-heading"
-      number={content.number}
+  <section id="behaviors" aria-labelledby="heading-behaviors" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
+      id="behaviors"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
+      icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
-    <ul className="grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-3 items-stretch">
+    <ToneCardGrid>
       {content.cards.map((card) => {
-        const tone = activityTone[card.activity];
-        const Icon = iconRegistry[card.iconKey];
+        const Icon = cardIcon[card.id];
         return (
-          <li key={card.number} className="h-full">
-            <article
-              className={cx(
-                'group relative flex h-full flex-col gap-sm overflow-hidden rounded-2xl border-2 p-md sm:p-lg',
-                'bg-white dark:bg-[var(--term-bg)]',
-                tone.border,
-                'shadow-[0_2px_0_var(--term-border)]',
-                'transition-all motion-safe:hover:-translate-y-0.5',
-                'motion-safe:hover:shadow-[0_4px_0_var(--term-border)]',
-              )}
-            >
-              <span
-                aria-hidden="true"
-                className={cx('absolute inset-x-0 top-0 h-1', tone.solidBg, 'opacity-80')}
-              />
-
-              <div className="flex items-start justify-between gap-2 pt-1">
-                <span
-                  aria-hidden="true"
-                  className={cx(
-                    'inline-flex h-11 w-11 items-center justify-center rounded-xl border',
-                    tone.iconChip,
-                  )}
-                >
-                  <Icon className="h-5 w-5" />
-                </span>
-                <span
-                  aria-hidden="true"
-                  className={cx(
-                    'inline-flex h-7 items-center px-1.5 rounded-md border font-mono text-[10px] font-bold tabular-nums',
-                    tone.chip,
-                  )}
-                >
-                  {card.number}
-                </span>
-              </div>
-
-              <h3 className={cx('text-sm sm:text-md font-bold break-keep leading-snug', tone.text)}>
+          <ToneCardItem
+            key={card.id}
+            tone={card.tone}
+            icon={<Icon className="h-5 w-5" />}
+            badge={card.badge}
+          >
+            <div className="flex min-w-0 flex-col gap-2">
+              <h3
+                className={cx(
+                  'text-sm sm:text-md font-bold tracking-tight break-keep',
+                  toneTokens[card.tone].text,
+                )}
+              >
                 {card.title}
               </h3>
-
-              <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
-                {card.body}
+              <p className="text-xsm text-[var(--term-muted)] leading-relaxed break-keep">
+                {card.description}
               </p>
-            </article>
-          </li>
+            </div>
+          </ToneCardItem>
         );
       })}
-    </ul>
+    </ToneCardGrid>
+
+    <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
   </section>
 );

@@ -14,10 +14,8 @@ type Props = { content: RefAsPropElementShapeContent['hero'] };
 export const RefAsPropHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="react-19-changes/ref-as-prop-element-shape.md"
-    promptSuffix={
-      <span className="text-[var(--term-dim)]">{' // forwardRef wrapper → props.ref direct'}</span>
-    }
+    promptPath="packages/react/src/jsx/ReactJSXElement.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.9fr)_minmax(0,_1.1fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -26,14 +24,14 @@ export const RefAsPropHero = ({ content }: Props) => (
       </TerminalBadge>
 
       <HeroTitle>
-        <span className="block text-[var(--term-fg)]">{content.titleLines[0]}</span>
-        <span className="block text-[var(--term-accent)]">{content.titleLines[1]}</span>
+        <span className="block">{content.title.line1}</span>
+        <span className="block text-[var(--term-accent)]">{content.title.line2}</span>
       </HeroTitle>
 
-      <HeroDescription maxWidth="max-w-[60ch]">{content.subtitleLines.join(' ')}</HeroDescription>
+      <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-ref-as-prop" className="w-full">
+    <HeroVisualColumn id="hero-ref-as-prop-element-shape">
       <RefAsPropHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

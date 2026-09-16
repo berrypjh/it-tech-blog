@@ -302,7 +302,7 @@ const ko: HooksRecapContent = {
     primaryHref: REACT_FIBER_HOOKS_HREF,
   },
   finale: {
-    progressLabel: '10/15 챕터 완료',
+    progressLabel: '10/14 챕터 완료',
     copyLine1: 'Hooks가 어디에 저장되고',
     copyLine2: '언제 실행되는지까지 읽었습니다.',
     copyLine3: '다음은 이벤트 시스템입니다.',
@@ -517,7 +517,7 @@ const en: HooksRecapContent = {
     primaryHref: REACT_FIBER_HOOKS_HREF,
   },
   finale: {
-    progressLabel: 'Chapter 10 of 15 complete',
+    progressLabel: 'Chapter 10 of 14 complete',
     copyLine1: 'You have read where Hooks are stored',
     copyLine2: 'and when they actually run.',
     copyLine3: 'Next comes the event system.',

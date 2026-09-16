@@ -14,7 +14,7 @@ export const generateMetadata = async () => {
       locale === 'en'
         ? 'Actions · Why Actions extend the update model — React Lab'
         : 'Actions는 왜 단순한 폼 API가 아니라 업데이트 모델의 확장일까? — React Lab',
-    description: c.hero.subtitleLines.join(' '),
+    description: c.hero.description,
   };
 };
 

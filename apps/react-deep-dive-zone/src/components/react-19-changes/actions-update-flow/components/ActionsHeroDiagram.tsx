@@ -1,113 +1,68 @@
 import { cx } from '@berrypjh/react-ui';
+import { AlertTriangle, Clock, type LucideIcon, Send, Zap } from 'lucide-react';
 
-import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
+import { TerminalBadge } from '../../../shared/terminal';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { ActionsUpdateFlowContent, StateCard } from '../content';
-import { AtomIcon } from '../icons';
-import { iconRegistry } from '../sections/_iconRegistry';
-import type { StateKey } from '../tone';
+import { toneTokens } from '../../../shared/tones';
+import type { ActionsUpdateFlowContent, HeroSlot, SlotId } from '../content';
 
-type Props = { content: ActionsUpdateFlowContent['hero']; className?: string };
+type Props = { content: ActionsUpdateFlowContent['hero'] };
 
-/** StateKey → 공유 ToneKey 매핑 (가장 가까운 톤). */
-const stateToneKey: Record<StateKey, ToneKey> = {
-  pending: 'teal',
-  error: 'violet',
-  form: 'blue',
-  optimistic: 'emerald',
+const slotIcon: Record<SlotId, LucideIcon> = {
+  form: Send,
+  pending: Clock,
+  optimistic: Zap,
+  error: AlertTriangle,
 };
 
-/**
- * Hero 핵심 비주얼.
- * Action 코어 한 줄 선언이 pending · error · form · optimistic 네 가지 상태를
- * 하나의 선언적 모델로 묶는다는 점을, 코어 헤더 → 상태 카드 그리드로 보여준다.
- */
-export const ActionsHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.diagram.centerTitle} ${content.diagram.centerSubtitle}: ${content.diagram.cards
-    .map((c) => `${c.title}(${c.keyword})`)
-    .join('; ')}`;
+/** Hero 핵심 비주얼: Action 하나가 동시에 채우는 네 칸. */
+export const ActionsHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.title.line1} ${content.title.line2} ${content.description}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
-        <header className="flex items-center gap-sm">
-          <ToneIconBox tone="teal" size="sm">
-            <AtomIcon className="h-[18px] w-[18px]" />
-          </ToneIconBox>
-          <span className="font-mono text-sm font-bold tracking-tight text-[var(--term-fg)]">
-            {content.diagram.centerTitle}
+        <div className="flex items-center justify-between">
+          <TerminalBadge dotClassName="bg-[var(--term-accent)]">
+            {content.diagramBadge}
+          </TerminalBadge>
+          <span className="font-mono text-[10px] text-[var(--term-muted)]">
+            {'//'} {content.diagramCaption}
           </span>
-          <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-            {content.diagram.centerSubtitle}
-          </span>
-        </header>
+        </div>
 
-        <CodePreviewPanel
-          code="const [state, formAction, isPending] = useActionState(action);"
-          showWindowDots
-          language="TS"
-          size="md"
-        />
+        <div className="rounded-xl border border-[var(--term-border)] bg-[var(--term-surface)] px-md py-2.5 text-center shadow-[0_2px_0_var(--term-border)]">
+          <code className="font-mono text-[11px] font-bold text-[var(--term-accent)]">
+            {content.centerLabel}
+          </code>
+        </div>
 
         <DownArrow />
 
-        <ol className="grid grid-cols-1 gap-sm @sm:grid-cols-2">
-          {content.diagram.cards.map((card) => (
-            <li key={card.state}>
-              <StateCardBox card={card} />
-            </li>
+        <div className="grid grid-cols-2 gap-sm">
+          {content.slots.map((slot) => (
+            <SlotCell key={slot.id} slot={slot} />
           ))}
-        </ol>
+        </div>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
-const StateCardBox = ({ card }: { card: StateCard }) => {
-  const tone = stateToneKey[card.state];
-  const t = toneTokens[tone];
-  const Icon = iconRegistry[card.iconKey];
+const SlotCell = ({ slot }: { slot: HeroSlot }) => {
+  const Icon = slotIcon[slot.id];
+  const t = toneTokens[slot.tone];
   return (
-    <article
-      className={cx(
-        'flex h-full flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
-        t.borderHover,
-      )}
-    >
-      <header className="flex items-center gap-sm">
-        <ToneIconBox tone={tone} size="sm">
-          <Icon className="h-4 w-4" />
-        </ToneIconBox>
-        <h3 className={cx('text-xsm font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
-      </header>
-      <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{card.caption}</p>
-      <span className="w-fit rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] px-1.5 py-0.5 font-mono text-[11px] leading-none text-[var(--term-muted)]">
-        {card.keyword}
-      </span>
+    <article className="flex items-center gap-sm rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] px-sm py-2 shadow-[0_2px_0_var(--term-border)]">
+      <ToneIconBox tone={slot.tone} size="sm" className="h-8 w-8">
+        <Icon className="h-4 w-4" />
+      </ToneIconBox>
+      <div className="flex min-w-0 flex-col gap-0.5">
+        <span className="text-[10px] font-bold text-[var(--term-fg)] break-keep">{slot.label}</span>
+        <code className={cx('font-mono text-[10px] font-bold', t.text)}>{slot.api}</code>
+      </div>
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

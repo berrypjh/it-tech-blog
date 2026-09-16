@@ -257,7 +257,7 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       },
     },
     finale: {
-      progressLabel: '3/15 챕터 완료',
+      progressLabel: '3/14 챕터 완료',
       copyLine1: '패키지 구조와 역할을',
       copyLine2: '모두 살펴봤습니다.',
       copyLine3: '이제 React Element와 JSX로.',
@@ -383,7 +383,7 @@ export const packageDesignContent: Record<Locale, PackageDesignContent> = {
       },
     },
     finale: {
-      progressLabel: 'Chapter 3 of 15 complete',
+      progressLabel: 'Chapter 3 of 14 complete',
       copyLine1: 'You explored the package',
       copyLine2: 'structure and roles.',
       copyLine3: 'Now on to Elements and JSX.',

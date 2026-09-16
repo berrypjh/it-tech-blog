@@ -348,7 +348,7 @@ const ko: ReactElementSummaryBeforeFiberContent = {
       'type 값의 성격에 따라 Host / Function / Class / Fragment 등 서로 다른 Fiber가 만들어집니다.',
   },
   finale: {
-    progressLabel: '4/15 챕터 완료',
+    progressLabel: '4/14 챕터 완료',
     copyLine1: 'React Element와 JSX의',
     copyLine2: '정체를 파악했습니다.',
     copyLine3: '이제 Element가 Fiber로.',
@@ -613,7 +613,7 @@ const en: ReactElementSummaryBeforeFiberContent = {
     infoBanner: 'The type drives the split into Host / Function / Class / Fragment Fibers.',
   },
   finale: {
-    progressLabel: 'Chapter 4 of 15 complete',
+    progressLabel: 'Chapter 4 of 14 complete',
     copyLine1: 'You understand what',
     copyLine2: 'Elements and JSX really are.',
     copyLine3: 'Now Elements become Fibers.',

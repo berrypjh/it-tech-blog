@@ -284,7 +284,7 @@ const ko: SchedulerOverallFlowContent = {
     primaryHref: REACT_FIBER_ROOT_SCHEDULER_HREF,
   },
   finale: {
-    progressLabel: '12/15 챕터 완료',
+    progressLabel: '12/14 챕터 완료',
     copyLine1: '업데이트가 언제 어떤 순서로',
     copyLine2: '실행되는지 끝까지 읽었습니다.',
     copyLine3: '다음은 Suspense와 복구 모델입니다.',
@@ -492,7 +492,7 @@ const en: SchedulerOverallFlowContent = {
     primaryHref: REACT_FIBER_ROOT_SCHEDULER_HREF,
   },
   finale: {
-    progressLabel: 'Chapter 12 of 15 complete',
+    progressLabel: 'Chapter 12 of 14 complete',
     copyLine1: 'You have read when updates run',
     copyLine2: 'and in what order.',
     copyLine3: 'Next comes Suspense and the recovery model.',

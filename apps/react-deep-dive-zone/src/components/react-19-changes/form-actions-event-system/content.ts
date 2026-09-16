@@ -1,203 +1,97 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { PipelineKey } from './tone';
+import type { ToneKey } from '../../shared/tones';
 
-export type IconKey =
-  | 'mouse-click'
-  | 'globe'
-  | 'atom'
-  | 'puzzle'
-  | 'filter'
-  | 'target'
-  | 'search'
-  | 'workflow'
-  | 'split'
-  | 'database'
-  | 'hourglass'
-  | 'zap'
-  | 'send'
-  | 'route'
-  | 'compass'
-  | 'layers';
+export type StageId = 'submit' | 'plugin' | 'formdata' | 'pending' | 'transition';
 
-export type PipelineMiniStep = {
-  pipeline: PipelineKey;
-  title: string;
+export type HeroStage = {
+  id: StageId;
+  label: string;
   caption: string;
+  tone: ToneKey;
 };
 
-export type SupportQuestion = {
-  body: string;
-  iconKey: IconKey;
-};
-
-export type SubmitEntryStep = {
-  pipeline: PipelineKey;
+export type PipelineStep = {
+  id: StageId;
+  num: string;
   title: string;
-  caption: string;
-  iconKey: IconKey;
+  description: string;
+  tone: ToneKey;
 };
 
-export type PluginRoleCard = {
-  pipeline: PipelineKey;
+export type FieldId = 'pending' | 'data' | 'method' | 'action';
+
+export type PendingField = {
+  id: FieldId;
   title: string;
-  body: string;
-  iconKey: IconKey;
+  description: string;
+  value: string;
+  tone: ToneKey;
+};
+
+export type DeclarationRow = {
+  declaration: string;
+  runs: string;
+  note: string;
 };
 
 export type FormActionsEventSystemContent = {
   hero: {
     badge: string;
-    titleLines: [string, string, string];
-    subtitleLines: [string, string, string];
-    heroCode: {
-      fileName: string;
-      langBadge: 'TSX';
-      code: string;
-    };
-    pipeline: {
-      title: string;
-      steps: PipelineMiniStep[];
-      footer: string;
-    };
+    title: { line1: string; line2: string };
+    description: string;
+    diagramBadge: string;
+    diagramCaption: string;
+    stages: HeroStage[];
   };
-  question: {
-    number: string;
-    eyebrow: string;
-    questionLines: [string, string, string, string];
-    supportQuestions: SupportQuestion[];
-  };
-  userFormCode: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    code: {
-      fileName: string;
-      langBadge: 'TSX';
-      code: string;
-    };
-    mock: {
-      title: string;
-      label: string;
-      placeholder: string;
-      button: string;
-      info: string;
-    };
-  };
-  submitPipeline: {
-    number: string;
+  pipeline: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    steps: SubmitEntryStep[];
+    steps: PipelineStep[];
+    note: string;
   };
-  pluginRole: {
-    number: string;
+  which: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    cards: PluginRoleCard[];
-  };
-  actionExtraction: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    left: {
-      title: string;
-      code: string;
-      result: string;
-    };
-    middle: {
-      title: string;
-      code: string;
-      result: string;
-    };
-    right: {
-      title: string;
-      decision: string;
-      yesLabel: string;
-      yesBody: string;
-      noLabel: string;
-      noBody: string;
-      final: string;
-    };
-  };
-  formData: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    inputTitle: string;
-    inputCode: string;
-    objectTitle: string;
-    objectLines: string[];
-    descriptionBody: string;
+    form: { title: string; badge: string; description: string; bullets: string[] };
+    bridge: { headline: string; sub: string };
+    button: { title: string; badge: string; description: string; bullets: string[] };
+    note: string;
   };
   pendingState: {
-    number: string;
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
+    fields: PendingField[];
+    note: string;
+  };
+  declarations: {
+    badge: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    headers: [string, string, string];
+    rows: DeclarationRow[];
+    note: string;
+  };
+  checkpoint: {
+    badge: string;
+    eyebrow: string;
+    title: string;
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
     code: string;
-    useFormStatusTitle: string;
-    useFormStatusBody: string;
-    useFormStatusCode: string;
-  };
-  startHostTransition: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    steps: { pipeline: PipelineKey; title: string; caption: string; iconKey: IconKey }[];
-    info: string;
-  };
-  internalCode: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    panels: { title: string; langBadge: 'JS'; code: string; pipeline: PipelineKey }[];
-    fileCard: {
-      title: string;
-      fileName: string;
-      buttonLabel: string;
-      href: string;
-    };
-  };
-  interactor: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    leftTitle: string;
-    leftLabel: string;
-    leftPlaceholder: string;
-    leftButton: string;
-    leftDescription: string;
-    steps: { pipeline: PipelineKey; title: string; caption: string; iconKey: IconKey }[];
-    statusLabels: { idle: string; current: string; done: string };
-  };
-  mission: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    checklist: string[];
-    readingGuideTitle: string;
-    readingGuide: { body: string; highlights: string[] }[];
-  };
-  takeaways: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    cards: {
-      number: string;
-      pipeline: PipelineKey;
-      title: string;
-      body: string;
-      iconKey: IconKey;
-    }[];
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -208,387 +102,245 @@ export type FormActionsEventSystemContent = {
   };
 };
 
+const KO_CODE = `// packages/react-dom-bindings/src/events/plugins/FormActionEventPlugin.js
+function extractEvents(dispatchQueue, domEventName, maybeTargetInst, nativeEvent) {
+  if (domEventName !== 'submit') return;          // 다른 이벤트는 건드리지 않는다
+
+  const form = nativeEvent.target;
+  const submitter = nativeEvent.submitter;
+  let action = getFiberCurrentPropsFromNode(form).action;
+
+  if (submitter) {
+    const submitterProps = getFiberCurrentPropsFromNode(submitter);
+    action = submitterProps.formAction ?? action;  // 버튼 쪽이 이긴다
+  }
+  if (typeof action !== 'function') return;        // 문자열이면 브라우저에 맡긴다
+
+  nativeEvent.preventDefault();
+  const formData = submitter ? new FormData(form, submitter) : new FormData(form);
+  const pendingState = { pending: true, data: formData, method: form.method, action };
+
+  startHostTransition(formInst, pendingState, action, formData);
+}`;
+
+const EN_CODE = `// packages/react-dom-bindings/src/events/plugins/FormActionEventPlugin.js
+function extractEvents(dispatchQueue, domEventName, maybeTargetInst, nativeEvent) {
+  if (domEventName !== 'submit') return;          // leaves every other event alone
+
+  const form = nativeEvent.target;
+  const submitter = nativeEvent.submitter;
+  let action = getFiberCurrentPropsFromNode(form).action;
+
+  if (submitter) {
+    const submitterProps = getFiberCurrentPropsFromNode(submitter);
+    action = submitterProps.formAction ?? action;  // the button wins
+  }
+  if (typeof action !== 'function') return;        // a string is left to the browser
+
+  nativeEvent.preventDefault();
+  const formData = submitter ? new FormData(form, submitter) : new FormData(form);
+  const pendingState = { pending: true, data: formData, method: form.method, action };
+
+  startHostTransition(formInst, pendingState, action, formData);
+}`;
+
+const PLUGIN_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/plugins/FormActionEventPlugin.js';
+
 const ko: FormActionsEventSystemContent = {
   hero: {
     badge: 'React 19 변화 · 3/10단계',
-    titleLines: ['Form Actions는', '이벤트 시스템과', '어떻게 연결되는가?'],
-    subtitleLines: [
-      '<form action={fn}>은 submit 이벤트를',
-      'pending state와 transition 실행으로',
-      '이어주는 내부 파이프라인입니다.',
-    ],
-    heroCode: {
-      fileName: 'TodoForm.tsx',
-      langBadge: 'TSX',
-      code: `function TodoForm() {
-  async function saveTodo(formData: FormData) {
-    await createTodo(formData);
-  }
-
-  return (
-    <form action={saveTodo}>
-      <input name="title" />
-      <button type="submit">저장</button>
-    </form>
-  );
-}`,
+    title: {
+      line1: 'form의 action은 문자열이 아니라',
+      line2: '이벤트 플러그인 하나가 여는 문이다',
     },
-    pipeline: {
-      title: 'React 내부 Action 파이프라인',
-      steps: [
-        { pipeline: 'submit', title: 'Submit Event', caption: '폼 제출 이벤트 감지' },
-        { pipeline: 'plugin', title: 'Action', caption: 'FormActionEventPlugin' },
-        { pipeline: 'pending', title: 'Pending', caption: 'pendingState 생성' },
-        { pipeline: 'transition', title: 'Transition', caption: 'startHostTransition 실행' },
-      ],
-      footer: '<form action={fn}> → React 업데이트 모델까지 한 흐름',
-    },
-  },
-  question: {
-    number: '02',
-    eyebrow: '오늘 해결할 질문',
-    questionLines: [
-      '폼 제출이 발생했을 때,',
-      'React는 어떻게 action 함수를 찾고',
-      'pending 상태를 만들며',
-      'transition으로 이어갈까?',
-    ],
-    supportQuestions: [
-      { body: '어디서 submit 이벤트를 받아올까?', iconKey: 'mouse-click' },
-      { body: '어떤 action을 실행할지 어떻게 결정할까?', iconKey: 'split' },
-      { body: 'pending 상태를 왜 만들고, 어디로 전달할까?', iconKey: 'hourglass' },
-      { body: '어떻게 transition으로 연결되어 실행될까?', iconKey: 'zap' },
-    ],
-  },
-  userFormCode: {
-    number: '01',
-    eyebrow: '코드 체크포인트',
-    title: '사용자가 보는 form action 코드',
-    code: {
-      fileName: 'TodoForm.tsx',
-      langBadge: 'TSX',
-      code: `function TodoForm() {
-  async function saveTodo(formData: FormData) {
-    await createTodo(formData);
-  }
-
-  return (
-    <form action={saveTodo}>
-      <input name="title" placeholder="할 일을 입력하세요" />
-      <button type="submit">저장</button>
-    </form>
-  );
-}`,
-    },
-    mock: {
-      title: '실제 렌더된 폼 UI',
-      label: '할 일',
-      placeholder: '할 일을 입력하세요',
-      button: '저장',
-      info: '이 폼을 submit하면 React 내부 Action 파이프라인이 시작됩니다.',
-    },
-  },
-  submitPipeline: {
-    number: '02',
-    eyebrow: 'submit 진입 흐름',
-    title: 'submit 이벤트가 들어오는 순간',
     description:
-      '브라우저의 submit 이벤트가 React 이벤트 시스템 안의 plugin에 도달하기까지의 4단계.',
+      '앞 페이지의 Action이 어디서 시작되는지를 봅니다. 답은 이벤트 시스템에 플러그인 하나가 더 붙은 것입니다.',
+    diagramBadge: 'submit pipeline',
+    diagramCaption: 'native submit → startHostTransition',
+    stages: [
+      { id: 'submit', label: 'submit', caption: '브라우저가 native 이벤트를 쏜다', tone: 'cyan' },
+      { id: 'plugin', label: 'plugin', caption: 'FormActionEventPlugin이 받는다', tone: 'cyan' },
+      { id: 'formdata', label: 'FormData', caption: '입력값을 표준 객체로 모은다', tone: 'blue' },
+      { id: 'pending', label: 'pendingState', caption: '제출 스냅샷을 만든다', tone: 'violet' },
+      {
+        id: 'transition',
+        label: 'transition',
+        caption: 'Action을 업데이트 모델에 올린다',
+        tone: 'emerald',
+      },
+    ],
+  },
+  pipeline: {
+    badge: '01',
+    eyebrow: 'five stages',
+    title: '제출 버튼에서 transition까지 다섯 칸',
+    description:
+      '이 다섯 칸은 전부 한 함수 안에 있습니다. 플러그인의 extractEvents가 순서대로 다 합니다.',
     steps: [
       {
-        pipeline: 'submit',
-        title: '사용자 클릭',
-        caption: 'button submit',
-        iconKey: 'mouse-click',
+        id: 'submit',
+        num: '01',
+        title: 'submit 이벤트만 걸러 낸다',
+        description: '이벤트 위임으로 올라온 것 중 submit이 아니면 이 플러그인은 곧바로 빠집니다.',
+        tone: 'cyan',
       },
       {
-        pipeline: 'submit',
-        title: 'native submit event',
-        caption: '브라우저의 이벤트',
-        iconKey: 'globe',
+        id: 'plugin',
+        num: '02',
+        title: '실행할 함수를 고른다',
+        description:
+          'form의 action과 눌린 버튼의 formAction을 읽고, 함수가 아니면 브라우저에 넘깁니다.',
+        tone: 'cyan',
       },
       {
-        pipeline: 'action',
-        title: 'React event system',
-        caption: '이벤트 위임',
-        iconKey: 'atom',
+        id: 'formdata',
+        num: '03',
+        title: 'FormData를 만든다',
+        description:
+          'preventDefault로 기본 제출을 막고, 폼의 name/value를 표준 FormData로 모읍니다.',
+        tone: 'blue',
       },
       {
-        pipeline: 'plugin',
-        title: 'FormActionEventPlugin',
-        caption: 'React 내부 플러그인',
-        iconKey: 'puzzle',
+        id: 'pending',
+        num: '04',
+        title: 'pendingState를 만든다',
+        description:
+          'pending·data·method·action 네 칸짜리 스냅샷을 만듭니다. useFormStatus가 읽을 값입니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'transition',
+        num: '05',
+        title: 'startHostTransition으로 넘긴다',
+        description:
+          '여기서부터는 폼이 아니라 업데이트입니다. 앞 페이지에서 본 Action 흐름과 합류합니다.',
+        tone: 'emerald',
       },
     ],
+    note: '세 번째 칸의 preventDefault가 경계입니다. 그 이후로 브라우저는 이 제출에 관여하지 않습니다.',
   },
-  pluginRole: {
-    number: '03',
-    eyebrow: '플러그인 역할',
-    title: 'FormActionEventPlugin의 역할',
-    description: '하나의 plugin이 submit 흐름을 React action 흐름으로 바꾸는 4가지 작업.',
-    cards: [
-      {
-        pipeline: 'submit',
-        title: 'submit 이벤트만 감지',
-        body: '필요한 이벤트는 수거하고 form submit만 처리합니다.',
-        iconKey: 'filter',
-      },
-      {
-        pipeline: 'action',
-        title: 'form 요소 확인',
-        body: '이벤트가 발생한 form 요소를 정확히 찾아냅니다.',
-        iconKey: 'target',
-      },
-      {
-        pipeline: 'plugin',
-        title: 'action prop 추출',
-        body: 'formAction 또는 button.formAction을 읽어 action 함수를 찾습니다.',
-        iconKey: 'search',
-      },
-      {
-        pipeline: 'transition',
-        title: 'React action 흐름으로 변환',
-        body: 'pendingState 생성과 transition 실행으로 이어지게 만듭니다.',
-        iconKey: 'workflow',
-      },
-    ],
-  },
-  actionExtraction: {
-    number: '04',
-    eyebrow: 'action / formAction 추출',
-    title: 'action / formAction 추출',
-    description: '두 가지 선언 방식 중 어느 함수를 실제로 호출하는지 결정하는 흐름.',
-    left: {
-      title: '폼 실질 action',
-      code: `<form action={saveTodo}>
-  <button type="submit">저장</button>
-</form>`,
-      result: '폼의 action(saveTodo)이 실행',
-    },
-    middle: {
-      title: '버튼별 formAction 우선',
-      code: `<form action={saveTodo}>
-  <button type="submit" formAction={saveDraft}>
-    임시저장
-  </button>
-</form>`,
-      result: '버튼의 formAction(saveDraft)이 실행',
-    },
-    right: {
-      title: '실제 실행할 action 결정 흐름',
-      decision: '버튼에 formAction이 있나?',
-      yesLabel: 'Yes',
-      yesBody: 'button.formAction 우선 실행',
-      noLabel: 'No',
-      noBody: 'form.action 실행',
-      final: '결정된 action 함수 호출',
-    },
-  },
-  formData: {
-    number: '05',
-    eyebrow: 'FormData 생성',
-    title: 'FormData 생성',
+  which: {
+    badge: '02',
+    eyebrow: 'who wins',
+    title: '폼과 버튼이 둘 다 함수를 들고 있으면',
     description:
-      '폼 안의 name/value 쌍이 표준 FormData 객체로 수집되어 action의 인자로 전달됩니다.',
-    inputTitle: '폼 입력 예시',
-    inputCode: `<input name="title" value="React 19" />
-<input name="priority" value="high" />`,
-    objectTitle: 'FormData',
-    objectLines: ['{', '  title: "React 19",', '  priority: "high"', '}'],
-    descriptionBody: '폼의 모든 name/value 쌍이 FormData로 수집되어 action에 전달됩니다.',
+      'HTML의 formaction 속성이 form의 action을 덮는 규칙을 React가 그대로 따릅니다. 새 규칙이 아닙니다.',
+    form: {
+      title: 'form의 action',
+      badge: '기본값',
+      description: '폼 전체의 기본 제출 동작입니다. 버튼이 따로 말하지 않으면 이것이 실행됩니다.',
+      bullets: [
+        'form 요소의 props에서 action을 읽는다',
+        '함수면 React가 가로채고, 문자열이면 브라우저가 처리한다',
+        '폼 안의 모든 submit 버튼이 이 동작을 공유한다',
+        'useActionState가 돌려준 formAction도 보통 여기에 꽂는다',
+      ],
+    },
+    bridge: {
+      headline: '눌린 버튼이 있으면\n버튼 쪽을 먼저 본다',
+      sub: 'submitter의 formAction이 있으면 그것이 form의 action을 덮습니다. HTML 표준과 같은 순서입니다.',
+    },
+    button: {
+      title: '버튼의 formAction',
+      badge: '우선',
+      description:
+        '같은 폼에서 버튼마다 다른 동작이 필요할 때 씁니다. 임시저장과 제출 같은 경우입니다.',
+      bullets: [
+        'nativeEvent.submitter로 실제 눌린 버튼을 찾는다',
+        '그 버튼의 props에서 formAction을 읽는다',
+        '값이 있으면 form의 action 대신 이것을 실행한다',
+        'FormData도 submitter를 넘겨 만들어 버튼의 name/value가 포함된다',
+      ],
+    },
+    note: 'FormData를 만들 때 submitter를 같이 넘기는 점이 중요합니다. 어떤 버튼이 눌렸는지가 데이터에 남습니다.',
   },
   pendingState: {
-    number: '06',
-    eyebrow: 'pendingState 생성',
-    title: 'pendingState 생성',
+    badge: '03',
+    eyebrow: 'snapshot',
+    title: 'pendingState가 담는 네 칸',
     description:
-      'pendingState는 현재 form action의 상태 스냅샷이며, 하위 컴포넌트가 useFormStatus로 읽을 값입니다.',
-    code: `const pendingState = {
-  pending: true,
-  data: formData,
-  method: form.method,
-  action: action,
-};`,
-    useFormStatusTitle: 'useFormStatus와 연결',
-    useFormStatusBody: '하위 컴포넌트에서 현재 form action의 진행 상태를 읽을 수 있게 됩니다.',
-    useFormStatusCode: `const { pending } = useFormStatus();`,
+      '이 객체 하나가 제출의 전부입니다. 하위 컴포넌트는 useFormStatus로 이 네 칸을 그대로 읽습니다.',
+    fields: [
+      {
+        id: 'pending',
+        title: '진행 중인가',
+        description: 'Action이 도는 동안 true입니다. 제출 버튼을 잠그는 데 가장 많이 씁니다.',
+        value: 'pending: true',
+        tone: 'blue',
+      },
+      {
+        id: 'data',
+        title: '무엇을 보냈나',
+        description: '방금 만든 FormData입니다. 낙관적 UI에서 보낸 값을 미리 그릴 때 씁니다.',
+        value: 'data: FormData',
+        tone: 'cyan',
+      },
+      {
+        id: 'method',
+        title: '어떤 메서드인가',
+        description: 'form의 method 속성입니다. 대개 post이며 그대로 스냅샷에 실립니다.',
+        value: "method: 'post'",
+        tone: 'indigo',
+      },
+      {
+        id: 'action',
+        title: '무엇을 실행하나',
+        description: '앞 단계에서 고른 함수 자체입니다. 어떤 Action이 도는지 식별할 수 있습니다.',
+        value: 'action: fn',
+        tone: 'violet',
+      },
+    ],
+    note: 'useFormStatus가 하위 컴포넌트에서만 동작하는 이유가 여기 있습니다. 이 스냅샷은 form Fiber에 붙어 context로 내려갑니다.',
   },
-  startHostTransition: {
-    number: '07',
-    eyebrow: 'startHostTransition 연결',
-    title: 'startHostTransition 연결',
-    description: 'pendingState가 준비된 순간 Action은 React의 Transition 스케줄링에 올라탑니다.',
-    steps: [
+  declarations: {
+    badge: '04',
+    eyebrow: 'four shapes',
+    title: '네 가지 선언이 각각 무엇을 실행하는가',
+    description: '같은 action 속성이라도 값의 타입에 따라 주인이 달라집니다.',
+    headers: ['선언', '실제로 실행되는 것', '비고'],
+    rows: [
       {
-        pipeline: 'pending',
-        title: 'pendingState 준비 완료',
-        caption: 'pending, data, method, action 모두 준비된 상태',
-        iconKey: 'hourglass',
+        declaration: '<form action={fn}>',
+        runs: 'React가 fn을 Action으로 실행',
+        note: 'preventDefault가 걸리고 페이지는 이동하지 않는다',
       },
       {
-        pipeline: 'plugin',
-        title: 'startHostTransition(...) 호출',
-        caption: 'React의 Transition 시스템을 통해 비동기 action 실행을 스케줄링',
-        iconKey: 'zap',
+        declaration: '<form action="/path">',
+        runs: '브라우저의 기본 제출',
+        note: '플러그인이 함수가 아님을 보고 그대로 빠진다',
       },
       {
-        pipeline: 'transition',
-        title: 'Transition 기반 action 실행',
-        caption: 'action 함수 실행 → 결과 반영 → pending 해제 및 UI 업데이트',
-        iconKey: 'workflow',
+        declaration: '<button formAction={fn}>',
+        runs: '그 버튼을 눌렀을 때만 fn',
+        note: 'form의 action보다 우선한다',
+      },
+      {
+        declaration: '<form action={formAction}>',
+        runs: 'useActionState가 감싼 Action',
+        note: '결과가 state로 돌아오고 isPending이 함께 움직인다',
       },
     ],
-    info: '이 지점에서 Actions는 React의 업데이트 모델에 올라선 상태가 됩니다.',
+    note: '두 번째 줄이 중요합니다. React 19에서도 문자열 action은 그대로 살아 있고, 점진적 향상이 깨지지 않습니다.',
   },
-  internalCode: {
-    number: '08',
-    eyebrow: '코드 체크포인트',
-    title: '실제 코드 미리보기 (React 내부)',
-    description: 'FormActionEventPlugin의 실제 코드 흐름을 두 패널로 압축해 보여줍니다.',
-    panels: [
-      {
-        title: 'submit 이벤트 필터링',
-        langBadge: 'JS',
-        pipeline: 'submit',
-        code: `function extractEvents(dispatchQueue, domEventName, targetInst, nativeEvent) {
-  if (domEventName !== "submit") {
-    return;
-  }
-
-  // submit 이벤트가 아니면 이 플러그인은 아무것도 하지 않음
-}`,
-      },
-      {
-        title: 'pendingState 생성 및 Transition 실행',
-        langBadge: 'JS',
-        pipeline: 'transition',
-        code: `const pendingState = {
-  pending: true,
-  data: formData,
-  method: form.method,
-  action,
-};
-
-startHostTransition(formInst, pendingState, action, formData);`,
-      },
-    ],
-    fileCard: {
-      title: '관련 파일',
-      fileName: 'FormActionEventPlugin.js',
-      buttonLabel: 'GitHub에서 코드 보기',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/plugins/FormActionEventPlugin.js',
-    },
-  },
-  interactor: {
-    number: '09',
-    eyebrow: '파이프라인 인터랙터',
-    title: 'Form Action 파이프라인 인터랙터',
-    description:
-      '왼쪽 폼을 submit하면 오른쪽 stepper가 단계별로 활성화됩니다. 버튼 한 번에 5단계가 모두 통과합니다.',
-    leftTitle: '실행: 폼 제출 흐름 단계',
-    leftLabel: '할 일',
-    leftPlaceholder: '할 일을 입력하세요',
-    leftButton: '저장',
-    leftDescription: '버튼을 클릭하면 각 단계가 순서대로 활성화됩니다.',
-    steps: [
-      {
-        pipeline: 'submit',
-        title: 'submit 감지',
-        caption: 'native submit event가 발생하고 React가 감지',
-        iconKey: 'mouse-click',
-      },
-      {
-        pipeline: 'plugin',
-        title: 'action 추출',
-        caption: 'form action 또는 button formAction을 추출',
-        iconKey: 'search',
-      },
-      {
-        pipeline: 'formData',
-        title: 'FormData 생성',
-        caption: '폼의 입력 값이 FormData로 변환',
-        iconKey: 'database',
-      },
-      {
-        pipeline: 'pending',
-        title: 'pendingState 생성',
-        caption: 'pending: true 상태 객체 생성',
-        iconKey: 'hourglass',
-      },
-      {
-        pipeline: 'transition',
-        title: 'transition 실행',
-        caption: 'startHostTransition으로 비동기 Action 실행',
-        iconKey: 'zap',
-      },
-    ],
-    statusLabels: { idle: '대기 중', current: '현재 단계', done: '완료' },
-  },
-  mission: {
-    number: '10',
-    eyebrow: '코드 따라가기',
-    title: '직접 따라가기 보기',
-    description: '코드를 직접 열고, 함수 흐름을 손가락으로 짚어가며 따라가 보세요.',
-    checklist: [
-      'submit event에서 FormActionEventPlugin으로 들어가는 흐름을 찾는다.',
-      '폼 action과 버튼 formAction이 어떻게 구분되는지 본다.',
-      'pendingState 객체의 역할을 확인한다.',
-      'startHostTransition이 왜 필요한지 한 줄로 적는다.',
-      '한 줄 요약을 적는다.',
-    ],
-    readingGuideTitle: '읽기 가이드',
-    readingGuide: [
-      {
-        body: 'ReactSource에서 [[FormActionEventPlugin.js]] 열기',
-        highlights: ['FormActionEventPlugin.js'],
-      },
-      {
-        body: '[[extractEvents]], [[createEventListenerWrapper]], [[extractFormAction]] 등 함수 흐름 확인',
-        highlights: ['extractEvents', 'createEventListenerWrapper', 'extractFormAction'],
-      },
-      {
-        body: '[[pendingState]]가 [[useFormStatus]]와 어떻게 연결되는지 확인',
-        highlights: ['pendingState', 'useFormStatus'],
-      },
-      {
-        body: '[[startHostTransition]]이 스케줄링 / 업데이트 우선순위에 어떤 영향을 주는지 확인',
-        highlights: ['startHostTransition'],
-      },
-    ],
-  },
-  takeaways: {
-    number: '11',
-    eyebrow: '핵심 정리',
-    title: '핵심 정리',
-    cards: [
-      {
-        number: '01',
-        pipeline: 'submit',
-        title: 'Form Actions는 submit 이벤트에서 시작된다.',
-        body: '브라우저의 submit 이벤트가 React 이벤트 시스템으로 들어온다.',
-        iconKey: 'mouse-click',
-      },
-      {
-        number: '02',
-        pipeline: 'action',
-        title: 'FormActionEventPlugin이 실행 준비를 담당한다.',
-        body: 'action 추출, FormData 생성, pendingState 구성까지 처리한다.',
-        iconKey: 'workflow',
-      },
-      {
-        number: '03',
-        pipeline: 'transition',
-        title: 'pendingState와 transition이 React 19 action 흐름의 핵심이다.',
-        body: 'useFormStatus와 연결되고, Transition을 통해 비동기 action이 실행된다.',
-        iconKey: 'zap',
-      },
-    ],
+  checkpoint: {
+    badge: '05',
+    eyebrow: 'code checkpoint',
+    title: '폼과 업데이트 모델이 만나는 한 파일',
+    fileLabel: '파일',
+    filePath: 'packages/react-dom-bindings/src/events/plugins/FormActionEventPlugin.js',
+    lookForLabel: '볼 것',
+    lookFor: 'startHostTransition(formInst, pendingState, action, formData)',
+    whyLabel: '설명',
+    why: '이 한 줄이 경계입니다. 왼쪽은 DOM 이벤트의 세계고 오른쪽부터는 앞 페이지에서 본 업데이트 모델입니다.',
+    code: KO_CODE,
+    primaryCta: 'FormActionEventPlugin.js 소스 보기',
+    primaryHref: PLUGIN_HREF,
   },
   nextStep: {
-    eyebrow: '다음 학습으로 이어집니다',
-    title: 'use()는 Suspense / Error Boundary 흐름에 무엇을 추가했나?',
-    description:
-      '다음 페이지에서는 use()가 Promise, Suspense, Error Boundary, thenable tracking과 어떻게 연결되는지 살펴봅니다.',
+    eyebrow: '다음 단계',
+    title: 'use()는 렌더 도중 무엇을 읽을 수 있을까',
+    description: '업데이트 축을 마치고 렌더링 축으로 넘어갑니다.',
     cta: '다음 페이지로 이동',
     href: '/use-suspense-error-model',
   },
@@ -597,382 +349,210 @@ startHostTransition(formInst, pendingState, action, formData);`,
 const en: FormActionsEventSystemContent = {
   hero: {
     badge: 'React 19 Changes · 3/10',
-    titleLines: ['How do Form Actions', 'connect to the', 'event system?'],
-    subtitleLines: [
-      '<form action={fn}> is the internal pipeline that',
-      'turns a submit event into pending state',
-      'and transition-scheduled action execution.',
-    ],
-    heroCode: {
-      fileName: 'TodoForm.tsx',
-      langBadge: 'TSX',
-      code: `function TodoForm() {
-  async function saveTodo(formData: FormData) {
-    await createTodo(formData);
-  }
-
-  return (
-    <form action={saveTodo}>
-      <input name="title" />
-      <button type="submit">Save</button>
-    </form>
-  );
-}`,
+    title: {
+      line1: 'A form action is not a string.',
+      line2: 'One event plugin opens the door.',
     },
-    pipeline: {
-      title: "React's internal Action pipeline",
-      steps: [
-        { pipeline: 'submit', title: 'Submit Event', caption: 'Detect the form submit' },
-        { pipeline: 'plugin', title: 'Action', caption: 'FormActionEventPlugin' },
-        { pipeline: 'pending', title: 'Pending', caption: 'Build pendingState' },
-        { pipeline: 'transition', title: 'Transition', caption: 'Run startHostTransition' },
-      ],
-      footer: '<form action={fn}> → React update model, in one flow',
-    },
-  },
-  question: {
-    number: '02',
-    eyebrow: "Today's question",
-    questionLines: [
-      'When the form submits, how does React',
-      'find the action function, build a pending',
-      'state, and hand it off to a transition?',
-      '',
-    ],
-    supportQuestions: [
-      { body: 'Where is the submit event received?', iconKey: 'mouse-click' },
-      { body: 'How is it decided which action runs?', iconKey: 'split' },
-      { body: 'Why build a pending state, and where does it go?', iconKey: 'hourglass' },
-      { body: 'How does it get wired into a transition?', iconKey: 'zap' },
+    description:
+      'This page asks where the Action from the previous page starts. The answer is one more plugin in the event system.',
+    diagramBadge: 'submit pipeline',
+    diagramCaption: 'native submit → startHostTransition',
+    stages: [
+      { id: 'submit', label: 'submit', caption: 'the browser fires a native event', tone: 'cyan' },
+      { id: 'plugin', label: 'plugin', caption: 'FormActionEventPlugin receives it', tone: 'cyan' },
+      {
+        id: 'formdata',
+        label: 'FormData',
+        caption: 'inputs are gathered into a standard object',
+        tone: 'blue',
+      },
+      {
+        id: 'pending',
+        label: 'pendingState',
+        caption: 'a snapshot of the submit is built',
+        tone: 'violet',
+      },
+      {
+        id: 'transition',
+        label: 'transition',
+        caption: 'the Action joins the update model',
+        tone: 'emerald',
+      },
     ],
   },
-  userFormCode: {
-    number: '01',
-    eyebrow: 'CODE CHECKPOINT',
-    title: 'The form action code the user actually writes',
-    code: {
-      fileName: 'TodoForm.tsx',
-      langBadge: 'TSX',
-      code: `function TodoForm() {
-  async function saveTodo(formData: FormData) {
-    await createTodo(formData);
-  }
-
-  return (
-    <form action={saveTodo}>
-      <input name="title" placeholder="Enter a todo" />
-      <button type="submit">Save</button>
-    </form>
-  );
-}`,
-    },
-    mock: {
-      title: 'Rendered form UI',
-      label: 'Todo',
-      placeholder: 'Enter a todo',
-      button: 'Save',
-      info: "Submitting this form kicks off React's internal Action pipeline.",
-    },
-  },
-  submitPipeline: {
-    number: '02',
-    eyebrow: 'SUBMIT ENTRY PIPELINE',
-    title: 'The moment the submit event enters React',
-    description: 'Four steps from native browser submit to a React-internal plugin.',
+  pipeline: {
+    badge: '01',
+    eyebrow: 'five stages',
+    title: 'Five slots from the submit button to a transition',
+    description: 'All five live inside one function. The plugin extractEvents does them in order.',
     steps: [
       {
-        pipeline: 'submit',
-        title: 'User clicks',
-        caption: 'button submit',
-        iconKey: 'mouse-click',
+        id: 'submit',
+        num: '01',
+        title: 'Filter for submit only',
+        description:
+          'Of everything delegation delivers, anything that is not submit makes the plugin bail immediately.',
+        tone: 'cyan',
       },
       {
-        pipeline: 'submit',
-        title: 'Native submit event',
-        caption: 'Browser event fires',
-        iconKey: 'globe',
+        id: 'plugin',
+        num: '02',
+        title: 'Pick the function to run',
+        description:
+          'Read the form action and the pressed button formAction; if it is not a function, hand it to the browser.',
+        tone: 'cyan',
       },
       {
-        pipeline: 'action',
-        title: 'React event system',
-        caption: 'Delegated event handling',
-        iconKey: 'atom',
+        id: 'formdata',
+        num: '03',
+        title: 'Build the FormData',
+        description:
+          'preventDefault stops the native submit, then the form name/value pairs are gathered into standard FormData.',
+        tone: 'blue',
       },
       {
-        pipeline: 'plugin',
-        title: 'FormActionEventPlugin',
-        caption: 'React-internal plugin',
-        iconKey: 'puzzle',
+        id: 'pending',
+        num: '04',
+        title: 'Build the pendingState',
+        description:
+          'A four-field snapshot of pending, data, method and action. This is what useFormStatus reads.',
+        tone: 'violet',
+      },
+      {
+        id: 'transition',
+        num: '05',
+        title: 'Hand it to startHostTransition',
+        description:
+          'From here it is an update, not a form. It merges with the Action flow from the previous page.',
+        tone: 'emerald',
       },
     ],
+    note: 'The preventDefault in the third slot is the border. Past it, the browser has nothing more to do with this submit.',
   },
-  pluginRole: {
-    number: '03',
-    eyebrow: 'PLUGIN ROLES',
-    title: "FormActionEventPlugin's responsibilities",
-    description: 'Four jobs the plugin does to turn a submit into a React action flow.',
-    cards: [
-      {
-        pipeline: 'submit',
-        title: 'Only handle submit',
-        body: 'Other events flow through; only form submits are picked up.',
-        iconKey: 'filter',
-      },
-      {
-        pipeline: 'action',
-        title: 'Identify the form element',
-        body: 'Finds the exact form element the event came from.',
-        iconKey: 'target',
-      },
-      {
-        pipeline: 'plugin',
-        title: 'Extract action prop',
-        body: 'Reads formAction or button.formAction to locate the action function.',
-        iconKey: 'search',
-      },
-      {
-        pipeline: 'transition',
-        title: 'Hand off to action flow',
-        body: 'Builds pendingState and kicks off the transition.',
-        iconKey: 'workflow',
-      },
-    ],
-  },
-  actionExtraction: {
-    number: '04',
-    eyebrow: 'ACTION / FORMACTION',
-    title: 'Picking the action / formAction',
-    description: 'How the plugin decides which function will actually run.',
-    left: {
-      title: 'Form-level action',
-      code: `<form action={saveTodo}>
-  <button type="submit">Save</button>
-</form>`,
-      result: "The form's action(saveTodo) runs",
-    },
-    middle: {
-      title: 'Button formAction wins',
-      code: `<form action={saveTodo}>
-  <button type="submit" formAction={saveDraft}>
-    Save draft
-  </button>
-</form>`,
-      result: "The button's formAction(saveDraft) runs",
-    },
-    right: {
-      title: 'Decision flow for which action runs',
-      decision: 'Does the button have a formAction?',
-      yesLabel: 'Yes',
-      yesBody: 'Run button.formAction first',
-      noLabel: 'No',
-      noBody: 'Run form.action',
-      final: 'Call the chosen action function',
-    },
-  },
-  formData: {
-    number: '05',
-    eyebrow: 'FORMDATA',
-    title: 'Building FormData',
+  which: {
+    badge: '02',
+    eyebrow: 'who wins',
+    title: 'When the form and the button both hold a function',
     description:
-      'name/value pairs inside the form are collected into a standard FormData object and passed to the action.',
-    inputTitle: 'Form input example',
-    inputCode: `<input name="title" value="React 19" />
-<input name="priority" value="high" />`,
-    objectTitle: 'FormData',
-    objectLines: ['{', '  title: "React 19",', '  priority: "high"', '}'],
-    descriptionBody: 'All name/value pairs are collected into FormData and passed to the action.',
+      'React follows the HTML rule where a formaction attribute overrides the form action. Nothing new was invented.',
+    form: {
+      title: 'The form action',
+      badge: 'default',
+      description:
+        'The default submit behavior of the whole form. It runs unless a button says otherwise.',
+      bullets: [
+        'Read from the action prop of the form element',
+        'A function is intercepted by React; a string is left to the browser',
+        'Every submit button inside the form shares this behavior',
+        'The formAction returned by useActionState usually goes here too',
+      ],
+    },
+    bridge: {
+      headline: 'If a button was pressed,\nlook at the button first',
+      sub: 'A formAction on the submitter overrides the form action, in the same order the HTML standard uses.',
+    },
+    button: {
+      title: 'The button formAction',
+      badge: 'wins',
+      description:
+        'Used when buttons in one form need different behavior, such as save draft versus submit.',
+      bullets: [
+        'nativeEvent.submitter identifies the button actually pressed',
+        'formAction is read from that button props',
+        'If present it runs instead of the form action',
+        'FormData is built with the submitter, so its name/value is included',
+      ],
+    },
+    note: 'Passing the submitter into FormData matters: which button was pressed stays visible in the data.',
   },
   pendingState: {
-    number: '06',
-    eyebrow: 'PENDINGSTATE',
-    title: 'Constructing pendingState',
+    badge: '03',
+    eyebrow: 'snapshot',
+    title: 'The four fields pendingState carries',
     description:
-      'pendingState is a snapshot of the current form action — exactly what children read via useFormStatus.',
-    code: `const pendingState = {
-  pending: true,
-  data: formData,
-  method: form.method,
-  action: action,
-};`,
-    useFormStatusTitle: 'Wired to useFormStatus',
-    useFormStatusBody: "Children can read the current form action's progress.",
-    useFormStatusCode: `const { pending } = useFormStatus();`,
+      'This one object is the whole submit. A child reads exactly these four fields through useFormStatus.',
+    fields: [
+      {
+        id: 'pending',
+        title: 'Is it in flight',
+        description: 'True while the Action runs. Most often used to lock the submit button.',
+        value: 'pending: true',
+        tone: 'blue',
+      },
+      {
+        id: 'data',
+        title: 'What was sent',
+        description:
+          'The FormData just built. Useful for painting the submitted values optimistically.',
+        value: 'data: FormData',
+        tone: 'cyan',
+      },
+      {
+        id: 'method',
+        title: 'Which method',
+        description: 'The form method attribute, usually post, copied straight into the snapshot.',
+        value: "method: 'post'",
+        tone: 'indigo',
+      },
+      {
+        id: 'action',
+        title: 'What runs',
+        description:
+          'The function chosen in the previous stage, so you can tell which Action runs.',
+        value: 'action: fn',
+        tone: 'violet',
+      },
+    ],
+    note: 'This is why useFormStatus only works in a child: the snapshot is attached to the form Fiber and flows down as context.',
   },
-  startHostTransition: {
-    number: '07',
-    eyebrow: 'STARTHOSTTRANSITION',
-    title: 'Connecting startHostTransition',
-    description: "Once pendingState is ready, the Action rides on React's transition scheduling.",
-    steps: [
+  declarations: {
+    badge: '04',
+    eyebrow: 'four shapes',
+    title: 'What each of the four declarations actually runs',
+    description: 'For the same action attribute, the owner changes with the type of the value.',
+    headers: ['Declaration', 'What actually runs', 'Note'],
+    rows: [
       {
-        pipeline: 'pending',
-        title: 'pendingState ready',
-        caption: 'pending, data, method, action all set',
-        iconKey: 'hourglass',
+        declaration: '<form action={fn}>',
+        runs: 'React runs fn as an Action',
+        note: 'preventDefault applies and the page does not navigate',
       },
       {
-        pipeline: 'plugin',
-        title: 'Call startHostTransition(...)',
-        caption: "Schedules async action via React's Transition system",
-        iconKey: 'zap',
+        declaration: '<form action="/path">',
+        runs: 'The native browser submit',
+        note: 'The plugin sees a non-function and bails out',
       },
       {
-        pipeline: 'transition',
-        title: 'Transition-based action run',
-        caption: 'Run action → apply result → clear pending → UI update',
-        iconKey: 'workflow',
+        declaration: '<button formAction={fn}>',
+        runs: 'fn, but only for that button',
+        note: 'Takes precedence over the form action',
+      },
+      {
+        declaration: '<form action={formAction}>',
+        runs: 'The Action wrapped by useActionState',
+        note: 'The result comes back as state and isPending moves with it',
       },
     ],
-    info: "At this point, Actions are riding on React's update model.",
+    note: 'The second row matters: string actions still work in React 19, so progressive enhancement is not broken.',
   },
-  internalCode: {
-    number: '08',
-    eyebrow: 'CODE CHECKPOINT',
-    title: 'Source-level preview (React internals)',
-    description: "FormActionEventPlugin's real flow, compressed into two panels.",
-    panels: [
-      {
-        title: 'Submit-event filter',
-        langBadge: 'JS',
-        pipeline: 'submit',
-        code: `function extractEvents(dispatchQueue, domEventName, targetInst, nativeEvent) {
-  if (domEventName !== "submit") {
-    return;
-  }
-
-  // If it's not a submit event, this plugin does nothing.
-}`,
-      },
-      {
-        title: 'pendingState + Transition',
-        langBadge: 'JS',
-        pipeline: 'transition',
-        code: `const pendingState = {
-  pending: true,
-  data: formData,
-  method: form.method,
-  action,
-};
-
-startHostTransition(formInst, pendingState, action, formData);`,
-      },
-    ],
-    fileCard: {
-      title: 'Related file',
-      fileName: 'FormActionEventPlugin.js',
-      buttonLabel: 'Open on GitHub',
-      href: 'https://github.com/facebook/react/blob/main/packages/react-dom-bindings/src/events/plugins/FormActionEventPlugin.js',
-    },
-  },
-  interactor: {
-    number: '09',
-    eyebrow: 'PIPELINE INTERACTOR',
-    title: 'Form Action pipeline interactor',
-    description: 'Submitting the form on the left activates each step on the right in order.',
-    leftTitle: 'Run: form submit stages',
-    leftLabel: 'Todo',
-    leftPlaceholder: 'Enter a todo',
-    leftButton: 'Save',
-    leftDescription: 'Click the button to walk through each stage in order.',
-    steps: [
-      {
-        pipeline: 'submit',
-        title: 'Detect submit',
-        caption: 'Native submit event fires and React picks it up',
-        iconKey: 'mouse-click',
-      },
-      {
-        pipeline: 'plugin',
-        title: 'Extract action',
-        caption: 'Pull the form action or button formAction',
-        iconKey: 'search',
-      },
-      {
-        pipeline: 'formData',
-        title: 'Build FormData',
-        caption: 'Form inputs are turned into FormData',
-        iconKey: 'database',
-      },
-      {
-        pipeline: 'pending',
-        title: 'Build pendingState',
-        caption: 'pending: true state object',
-        iconKey: 'hourglass',
-      },
-      {
-        pipeline: 'transition',
-        title: 'Run transition',
-        caption: 'Async Action runs via startHostTransition',
-        iconKey: 'zap',
-      },
-    ],
-    statusLabels: { idle: 'Idle', current: 'Active step', done: 'Done' },
-  },
-  mission: {
-    number: '10',
-    eyebrow: 'FOLLOW ALONG',
-    title: 'Follow-along missions',
-    description: 'Open the real code and walk through the function chain yourself.',
-    checklist: [
-      'Trace from submit event into FormActionEventPlugin.',
-      'See how form action and button formAction are distinguished.',
-      "Verify pendingState's role.",
-      'Write one line about why startHostTransition is needed.',
-      'Write a one-line summary of the whole flow.',
-    ],
-    readingGuideTitle: 'Reading guide',
-    readingGuide: [
-      {
-        body: 'Open [[FormActionEventPlugin.js]] in the React source',
-        highlights: ['FormActionEventPlugin.js'],
-      },
-      {
-        body: 'Check the function flow: [[extractEvents]], [[createEventListenerWrapper]], [[extractFormAction]]',
-        highlights: ['extractEvents', 'createEventListenerWrapper', 'extractFormAction'],
-      },
-      {
-        body: 'See how [[pendingState]] is wired into [[useFormStatus]]',
-        highlights: ['pendingState', 'useFormStatus'],
-      },
-      {
-        body: 'See how [[startHostTransition]] affects scheduling and update priority',
-        highlights: ['startHostTransition'],
-      },
-    ],
-  },
-  takeaways: {
-    number: '11',
-    eyebrow: 'KEY TAKEAWAYS',
-    title: 'Key takeaways',
-    cards: [
-      {
-        number: '01',
-        pipeline: 'submit',
-        title: 'Form Actions start at the submit event.',
-        body: "The browser's submit event flows into React's event system.",
-        iconKey: 'mouse-click',
-      },
-      {
-        number: '02',
-        pipeline: 'action',
-        title: 'FormActionEventPlugin prepares the run.',
-        body: 'Extracts the action, builds FormData, constructs pendingState.',
-        iconKey: 'workflow',
-      },
-      {
-        number: '03',
-        pipeline: 'transition',
-        title: 'pendingState + transition is the heart of React 19 Actions.',
-        body: 'Wired into useFormStatus, then run async via Transition.',
-        iconKey: 'zap',
-      },
-    ],
+  checkpoint: {
+    badge: '05',
+    eyebrow: 'code checkpoint',
+    title: 'The one file where forms meet the update model',
+    fileLabel: 'File',
+    filePath: 'packages/react-dom-bindings/src/events/plugins/FormActionEventPlugin.js',
+    lookForLabel: 'Look for',
+    lookFor: 'startHostTransition(formInst, pendingState, action, formData)',
+    whyLabel: 'Why',
+    why: 'That single line is the border. To its left is the DOM event world; to its right is the update model from the previous page.',
+    code: EN_CODE,
+    primaryCta: 'View FormActionEventPlugin.js',
+    primaryHref: PLUGIN_HREF,
   },
   nextStep: {
-    eyebrow: 'The journey continues',
-    title: 'What did use() add to Suspense / Error Boundary?',
-    description:
-      'Next we look at how use() connects Promise, Suspense, Error Boundary, and thenable tracking.',
+    eyebrow: 'Next step',
+    title: 'What can use() read during a render',
+    description: 'The update axis is done; the render axis is next.',
     cta: 'Go to the next page',
     href: '/use-suspense-error-model',
   },

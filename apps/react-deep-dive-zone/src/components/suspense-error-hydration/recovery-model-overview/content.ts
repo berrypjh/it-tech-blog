@@ -298,7 +298,7 @@ const ko: RecoveryModelOverviewContent = {
     primaryHref: REACT_FIBER_THROW_HREF,
   },
   finale: {
-    progressLabel: '13/15 챕터 완료',
+    progressLabel: '13/14 챕터 완료',
     copyLine1: '렌더가 실패해도',
     copyLine2: '화면이 버티는 이유를 읽었습니다.',
     copyLine3: '다음은 React 19에서 달라진 지점입니다.',
@@ -458,7 +458,7 @@ const en: RecoveryModelOverviewContent = {
     primaryHref: REACT_FIBER_THROW_HREF,
   },
   finale: {
-    progressLabel: 'Chapter 13 of 15 complete',
+    progressLabel: 'Chapter 13 of 14 complete',
     copyLine1: 'You have read why the screen holds',
     copyLine2: 'even when a render fails.',
     copyLine3: 'Next comes what changed in React 19.',

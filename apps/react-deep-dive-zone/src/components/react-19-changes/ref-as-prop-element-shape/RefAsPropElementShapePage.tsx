@@ -3,17 +3,12 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { ElementRefDeprecationSection } from './sections/ElementRefDeprecationSection';
-import { FollowAlongMission } from './sections/FollowAlongMission';
-import { InternalCodePreviewSection } from './sections/InternalCodePreviewSection';
-import { KeyTakeaways } from './sections/KeyTakeaways';
-import { PatternSection } from './sections/PatternSection';
-import { PropsRefSourceOfTruthFlow } from './sections/PropsRefSourceOfTruthFlow';
+import { RefAsPropCodeCheckpoint } from './sections/RefAsPropCodeCheckpoint';
 import { RefAsPropHero } from './sections/RefAsPropHero';
-import { RefPathComparisonInteractor } from './sections/RefPathComparisonInteractor';
-import { TodayQuestionCard } from './sections/TodayQuestionCard';
-import { UseImperativeHandleSection } from './sections/UseImperativeHandleSection';
-import { WhatChangedCards } from './sections/WhatChangedCards';
+import { RefPathSteps } from './sections/RefPathSteps';
+import { VersionDiffTable } from './sections/VersionDiffTable';
+import { WhatMovedCards } from './sections/WhatMovedCards';
+import { WrapperGap } from './sections/WrapperGap';
 import { refAsPropElementShapeContent } from './content';
 
 type Props = { locale: Locale };
@@ -24,35 +19,11 @@ export const RefAsPropElementShapePage = ({ locale }: Props) => {
   return (
     <StartPageShell>
       <RefAsPropHero content={c.hero} />
-      <TodayQuestionCard content={c.question} />
-      <PatternSection
-        number={c.forwardRefPattern.number}
-        eyebrow={c.forwardRefPattern.eyebrow}
-        title={c.forwardRefPattern.title}
-        path="react18"
-        code={c.forwardRefPattern.code}
-        explanationTitle={c.forwardRefPattern.explanationTitle}
-        explanationPoints={c.forwardRefPattern.explanationPoints}
-        slug="forward-ref-pattern"
-      />
-      <PatternSection
-        number={c.refAsPropPattern.number}
-        eyebrow={c.refAsPropPattern.eyebrow}
-        title={c.refAsPropPattern.title}
-        path="react19"
-        code={c.refAsPropPattern.code}
-        explanationTitle={c.refAsPropPattern.explanationTitle}
-        explanationPoints={c.refAsPropPattern.explanationPoints}
-        slug="ref-as-prop-pattern"
-      />
-      <WhatChangedCards content={c.whatChanged} />
-      <ElementRefDeprecationSection content={c.elementRefDeprecation} />
-      <PropsRefSourceOfTruthFlow content={c.propsRefFlow} />
-      <UseImperativeHandleSection content={c.useImperative} />
-      <InternalCodePreviewSection content={c.internalCode} />
-      <RefPathComparisonInteractor content={c.pathInteractor} />
-      <FollowAlongMission content={c.mission} />
-      <KeyTakeaways content={c.takeaways} />
+      <WrapperGap content={c.wrapper} />
+      <RefPathSteps content={c.path} />
+      <WhatMovedCards content={c.changes} />
+      <VersionDiffTable content={c.diff} />
+      <RefAsPropCodeCheckpoint content={c.checkpoint} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

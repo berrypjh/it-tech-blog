@@ -564,7 +564,7 @@ const ko: UpdateToRenderSummaryContent = {
     ],
   },
   finale: {
-    progressLabel: '7/15 챕터 완료',
+    progressLabel: '7/14 챕터 완료',
     copyLine1: '업데이트가 어떻게',
     copyLine2: '시작되는지 따라갔습니다.',
     copyLine3: '이제 Render Phase로.',
@@ -819,7 +819,7 @@ const en: UpdateToRenderSummaryContent = {
     ],
   },
   finale: {
-    progressLabel: 'Chapter 7 of 15 complete',
+    progressLabel: 'Chapter 7 of 14 complete',
     copyLine1: 'You followed how an',
     copyLine2: 'update begins.',
     copyLine3: 'Now into the Render Phase.',

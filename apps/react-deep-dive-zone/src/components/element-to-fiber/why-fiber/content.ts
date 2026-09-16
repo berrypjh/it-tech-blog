@@ -204,7 +204,7 @@ const ko: FiberWhyNeededContent = {
     ],
   },
   finale: {
-    progressLabel: '5/15 챕터 완료',
+    progressLabel: '5/14 챕터 완료',
     copyLine1: '컴포넌트가 어떻게',
     copyLine2: 'Fiber가 되는지 익혔습니다.',
     copyLine3: '이제 Fiber 트리 구조로.',
@@ -352,7 +352,7 @@ const en: FiberWhyNeededContent = {
     ],
   },
   finale: {
-    progressLabel: 'Chapter 5 of 15 complete',
+    progressLabel: 'Chapter 5 of 14 complete',
     copyLine1: 'You learned how',
     copyLine2: 'components become Fibers.',
     copyLine3: 'Now the Fiber tree structure.',

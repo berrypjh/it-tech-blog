@@ -1,185 +1,98 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { StateKey } from './tone';
+import type { ToneKey } from '../../shared/tones';
 
-export type IconKey =
-  | 'clock'
-  | 'triangle-alert'
-  | 'send'
-  | 'zap'
-  | 'rotate'
-  | 'shield-alert'
-  | 'shield-check'
-  | 'sparkles'
-  | 'workflow'
-  | 'play-circle'
-  | 'mouse-click'
-  | 'server'
-  | 'check-circle'
-  | 'x-circle'
-  | 'layers'
-  | 'compass'
-  | 'target';
+export type SlotId = 'pending' | 'error' | 'form' | 'optimistic';
 
-export type StateCard = {
-  state: StateKey;
-  title: string;
-  caption: string;
-  keyword: string;
-  iconKey: IconKey;
+export type HeroSlot = {
+  id: SlotId;
+  label: string;
+  api: string;
+  tone: ToneKey;
 };
 
-export type QuadrantState = {
-  state: StateKey;
+export type HubCard = {
+  id: SlotId;
   title: string;
   description: string;
-  arrowApi: string;
-  iconKey: IconKey;
+  api: string;
+  tone: ToneKey;
 };
 
-export type SupportCard = {
-  title: string;
-  body: string;
-  iconKey: IconKey;
-};
-
-export type ApiCard = {
-  number: string;
-  hookName: string;
-  langBadge: 'TS' | 'JS';
-  code: string;
-  state: StateKey;
-  points: string[];
-};
-
-export type ComparisonRow = {
-  hookName: string;
-  state: StateKey;
-  role: string;
-  problem: string;
-  where: string;
-  returnValue: string;
-};
-
-export type SimulatorScenario = 'success' | 'failure';
+export type FlowStepId = 'submit' | 'invoke' | 'pending' | 'optimistic' | 'settle' | 'commit';
 
 export type FlowStep = {
+  id: FlowStepId;
+  num: string;
   title: string;
-  caption: string;
-  successState: StateKey | 'neutral';
-  failureState?: StateKey | 'neutral';
+  description: string;
+  tone: ToneKey;
 };
 
-export type DocCard = {
-  hookName: string;
-  state: StateKey;
-  when: string;
-  iconKey: IconKey;
-  cta: { label: string; href: string };
-};
-
-export type Mission = {
-  number: string;
-  title: string;
-  helper: string;
-};
-
-export type TakeawayCard = {
-  number: string;
-  state: StateKey;
-  title: string;
-  body: string;
-  iconKey: IconKey;
+export type HookRow = {
+  hook: string;
+  role: string;
+  returns: string;
 };
 
 export type ActionsUpdateFlowContent = {
   hero: {
     badge: string;
-    titleLines: [string, string, string];
-    subtitleLines: [string, string, string];
-    diagram: {
-      centerTitle: string;
-      centerSubtitle: string;
-      cards: StateCard[];
-    };
+    title: { line1: string; line2: string };
+    description: string;
+    diagramBadge: string;
+    diagramCaption: string;
+    centerLabel: string;
+    slots: HeroSlot[];
   };
-  question: {
-    number: string;
-    eyebrow: string;
-    questionLines: [string, string];
-    supportCards: SupportCard[];
-  };
-  legacySubmit: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    codeFile: string;
-    code: string;
-    problemTitle: string;
-    problems: string[];
-  };
-  quadrant: {
-    number: string;
+  before: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    centerTitle: string;
-    centerSubtitle: string;
-    states: QuadrantState[];
+    manual: { title: string; badge: string; description: string; bullets: string[] };
+    bridge: { headline: string; sub: string };
+    action: { title: string; badge: string; description: string; bullets: string[] };
+    note: string;
   };
-  apiCards: {
-    number: string;
+  hub: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    cards: ApiCard[];
+    cards: HubCard[];
+    note: string;
   };
-  comparison: {
-    number: string;
+  flow: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    columns: {
-      api: string;
-      role: string;
-      problem: string;
-      where: string;
-      returnValue: string;
-    };
-    rows: ComparisonRow[];
-  };
-  simulator: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    description: string;
-    scenarioLabel: string;
-    scenarios: { key: SimulatorScenario; label: string; description: string }[];
-    defaultScenario: SimulatorScenario;
-    flowLabel: string;
     steps: FlowStep[];
-    failureNote: string;
-    successNote: string;
+    note: string;
   };
-  officialDocs: {
-    number: string;
+  hooks: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    cards: DocCard[];
+    headers: [string, string, string];
+    rows: HookRow[];
+    note: string;
   };
-  mission: {
-    number: string;
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
-    description: string;
-    missions: Mission[];
-  };
-  takeaways: {
-    number: string;
-    eyebrow: string;
-    title: string;
-    cards: TakeawayCard[];
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -190,386 +103,233 @@ export type ActionsUpdateFlowContent = {
   };
 };
 
+const KO_CODE = `// packages/react-reconciler/src/ReactFiberHooks.js
+function mountActionState(action, initialStateProp) {
+  // 1. Action의 결과를 담는 hook
+  const stateHook = mountWorkInProgressHook();
+  stateHook.memoizedState = stateHook.baseState = initialState;
+
+  // 2. pending을 담는 hook - useTransition이 쓰는 것과 같은 자리
+  const pendingStateHook = mountStateImpl(false);
+  const setPendingState = dispatchOptimisticSetState.bind(
+    null, currentlyRenderingFiber, false, pendingStateHook.queue,
+  );
+
+  // 3. Action을 줄 세우는 큐를 담는 hook
+  const actionQueueHook = mountWorkInProgressHook();
+  const actionQueue = { state: initialState, dispatch: null, action, pending: null };
+  actionQueueHook.queue = actionQueue;
+
+  return [initialState, dispatch, false];
+}`;
+
+const EN_CODE = `// packages/react-reconciler/src/ReactFiberHooks.js
+function mountActionState(action, initialStateProp) {
+  // 1. the hook that holds the Action result
+  const stateHook = mountWorkInProgressHook();
+  stateHook.memoizedState = stateHook.baseState = initialState;
+
+  // 2. the hook that holds pending - the same slot useTransition uses
+  const pendingStateHook = mountStateImpl(false);
+  const setPendingState = dispatchOptimisticSetState.bind(
+    null, currentlyRenderingFiber, false, pendingStateHook.queue,
+  );
+
+  // 3. the hook that holds the queue Actions line up in
+  const actionQueueHook = mountWorkInProgressHook();
+  const actionQueue = { state: initialState, dispatch: null, action, pending: null };
+  actionQueueHook.queue = actionQueue;
+
+  return [initialState, dispatch, false];
+}`;
+
+const HOOKS_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js';
+
 const ko: ActionsUpdateFlowContent = {
   hero: {
     badge: 'React 19 변화 · 2/10단계',
-    titleLines: ['Actions는 왜', '단순한 폼 API가 아니라', '업데이트 모델의 확장일까?'],
-    subtitleLines: [
-      'React 19는 비동기 UI 업데이트를',
-      'pending, error, optimistic state까지 포함해',
-      '더 선언적으로 다룰 수 있게 만들었습니다.',
+    title: { line1: 'Actions는 폼 편의 기능이 아니라', line2: '업데이트가 비동기를 품은 것이다' },
+    description:
+      '손으로 관리하던 pending·error·낙관적 값이 업데이트 흐름 안으로 들어왔습니다. 새 기능이 아니라 진입점이 넓어진 것입니다.',
+    diagramBadge: 'one action',
+    diagramCaption: 'submit → four things at once',
+    centerLabel: 'Action',
+    slots: [
+      { id: 'form', label: '폼 제출', api: 'formAction', tone: 'cyan' },
+      { id: 'pending', label: '진행 상태', api: 'isPending', tone: 'blue' },
+      { id: 'optimistic', label: '낙관적 값', api: 'useOptimistic', tone: 'violet' },
+      { id: 'error', label: '실패 처리', api: 'error', tone: 'amber' },
     ],
-    diagram: {
-      centerTitle: 'Action',
-      centerSubtitle: '(Core)',
-      cards: [
-        {
-          state: 'pending',
-          title: 'Pending State',
-          caption: '진행 상태 추적',
-          keyword: 'isPending',
-          iconKey: 'clock',
-        },
-        {
-          state: 'error',
-          title: 'Error Handling',
-          caption: '액션 결과 관리',
-          keyword: 'error',
-          iconKey: 'triangle-alert',
-        },
-        {
-          state: 'form',
-          title: 'Form Submission',
-          caption: '폼 제출 흐름 연결',
-          keyword: 'formAction',
-          iconKey: 'send',
-        },
-        {
-          state: 'optimistic',
-          title: 'Optimistic Update',
-          caption: '낙관적 UI 즉시 반영',
-          keyword: 'optimistic',
-          iconKey: 'zap',
-        },
+  },
+  before: {
+    badge: '01',
+    eyebrow: 'before and after',
+    title: '같은 제출을 두 번 써 보면 차이가 보인다',
+    description:
+      '왼쪽은 React 18까지의 전형적인 비동기 제출입니다. 오른쪽은 같은 일을 Actions로 옮긴 것입니다.',
+    manual: {
+      title: '손으로 관리하던 것',
+      badge: 'React 18',
+      description: '업데이트는 동기 setState 하나였고, 나머지는 전부 개발자 몫이었습니다.',
+      bullets: [
+        'setPending(true)와 finally의 setPending(false)를 직접 짝지어야 한다',
+        'try / catch로 잡은 에러를 별도 state에 옮겨 담아야 한다',
+        '로딩과 에러 상태가 컴포넌트마다 흩어져 같은 코드가 반복된다',
+        '낙관적 UI는 별도 state와 롤백 로직을 따로 만들어야 한다',
       ],
     },
+    bridge: {
+      headline: '비동기 함수 자체를\n업데이트로 받아들인다',
+      sub: 'React가 함수의 시작과 끝을 알기 때문에 pending과 롤백을 대신 관리할 수 있습니다.',
+    },
+    action: {
+      title: 'Actions가 맡는 것',
+      badge: 'React 19',
+      description: '비동기 함수를 그대로 넘기면 나머지 네 가지를 React가 이어 붙입니다.',
+      bullets: [
+        'pending은 useTransition과 같은 자리에서 자동으로 켜지고 꺼진다',
+        '던져진 에러는 Action 결과 상태로 돌아오거나 경계로 올라간다',
+        'form의 action 속성에 그대로 꽂으면 제출이 Action이 된다',
+        'useOptimistic으로 올린 값은 Action이 끝나면 자동으로 정리된다',
+      ],
+    },
+    note: '줄어든 코드가 핵심이 아닙니다. pending과 롤백의 소유자가 개발자에서 React로 옮겨 간 것이 핵심입니다.',
   },
-  question: {
-    number: '02',
-    eyebrow: '오늘 해결할 질문',
-    questionLines: [
-      'Actions는 왜 form 제출 편의 기능을 넘어',
-      'React의 업데이트 흐름 변화로 봐야 할까?',
-    ],
-    supportCards: [
-      {
-        title: '업데이트 모델 확장',
-        body: '상태/서버/폼/낙관적 UI 포함',
-        iconKey: 'layers',
-      },
-      {
-        title: '선언적 흐름',
-        body: '코드를 줄이고 일관성 향상',
-        iconKey: 'sparkles',
-      },
-      {
-        title: '폼과 UI의 통합',
-        body: '서버/클라이언트 경계 연결',
-        iconKey: 'workflow',
-      },
-    ],
-  },
-  legacySubmit: {
-    number: '01',
-    eyebrow: '변경 전',
-    title: '이전 async submit의 번거로움',
-    codeFile: 'before/handle-submit.js',
-    code: `async function handleSubmit() {
-  setPending(true);
-
-  try {
-    await updateName(name);
-    setError(null);
-  } catch (error) {
-    setError(error);
-  } finally {
-    setPending(false);
-  }
-}`,
-    problemTitle: '기존 방식의 문제',
-    problems: [
-      '수동으로 pending 상태 관리',
-      '수동으로 error 상태 관리',
-      '로딩/에러 상태가 여러 컴포넌트에 분산',
-      '낙관적 UI는 별도 로직으로 구현해야 함',
-      '폼 제출과 UI 업데이트가 분리되어 복잡',
-    ],
-  },
-  quadrant: {
-    number: '02',
-    eyebrow: '액션 허브',
-    title: 'Actions가 묶는 4가지 상태',
-    description: '한 번의 선언으로 pending · error · form submission · optimistic이 함께 흐릅니다.',
-    centerTitle: 'Action',
-    centerSubtitle: '(Declarative Flow)',
-    states: [
-      {
-        state: 'pending',
-        title: 'Pending',
-        description: 'Action 실행 중 상태 추적',
-        arrowApi: 'isPending',
-        iconKey: 'clock',
-      },
-      {
-        state: 'error',
-        title: 'Error',
-        description: '액션 실행 결과 에러 관리',
-        arrowApi: 'error',
-        iconKey: 'triangle-alert',
-      },
-      {
-        state: 'form',
-        title: 'Form Submission',
-        description: '폼 제출과 액션 실행 연결',
-        arrowApi: 'formAction',
-        iconKey: 'send',
-      },
-      {
-        state: 'optimistic',
-        title: 'Optimistic Update',
-        description: '서버 응답 전 UI 미리 갱신',
-        arrowApi: 'useOptimistic',
-        iconKey: 'zap',
-      },
-    ],
-  },
-  apiCards: {
-    number: '03',
-    eyebrow: '세 개의 훅',
-    title: '세 개의 hook으로 분리되어 들어온다',
+  hub: {
+    badge: '02',
+    eyebrow: 'four slots',
+    title: 'Action 하나가 동시에 채우는 네 칸',
     description:
-      'useActionState · useOptimistic · useFormStatus는 같은 모델의 서로 다른 조각을 담당합니다.',
+      '제출 한 번이 네 곳을 같이 움직입니다. 네 칸을 따로 배우면 어렵고, 한 흐름으로 보면 단순합니다.',
     cards: [
       {
-        number: '03-A',
-        hookName: 'useActionState',
-        langBadge: 'TS',
-        state: 'form',
-        code: `const [state, formAction, isPending] = useActionState(
-  updateNameAction,
-  initialState,
-);`,
-        points: [
-          'Action 실행 결과 상태(state)를 관리',
-          'form action으로 바로 연결 가능(formAction)',
-          '실행 중 상태를 isPending으로 제공',
-        ],
+        id: 'form',
+        title: '폼 제출',
+        description: 'form의 action에 함수를 주면 submit 이벤트가 Action 실행으로 바뀝니다.',
+        api: 'formAction',
+        tone: 'cyan',
       },
       {
-        number: '03-B',
-        hookName: 'useOptimistic',
-        langBadge: 'TS',
-        state: 'optimistic',
-        code: `const [optimisticCount, addOptimistic] = useOptimistic(
-  initialCount,
-  (count, delta) => {
-    return count + delta;
-  },
-);`,
-        points: [
-          '서버 응답 전에도 UI를 즉시 갱신',
-          '낙관적 UI를 실패 시 자동으로 롤백',
-          '사용자 경험을 부드럽게 개선',
-        ],
+        id: 'pending',
+        title: '진행 상태',
+        description:
+          'Action이 도는 동안 켜지는 플래그입니다. 하위 컴포넌트는 useFormStatus로 읽습니다.',
+        api: 'isPending',
+        tone: 'blue',
       },
       {
-        number: '03-C',
-        hookName: 'useFormStatus',
-        langBadge: 'TS',
-        state: 'pending',
-        code: `const { pending } = useFormStatus();`,
-        points: [
-          '현재 form action의 진행 상태를 읽음',
-          '하위 컴포넌트에서 pending 상태 확인 가능',
-          '제출 버튼 비활성화 등에 활용',
-        ],
+        id: 'optimistic',
+        title: '낙관적 값',
+        description: '응답 전에 보여 줄 값입니다. Action이 끝나면 실제 값으로 되돌아갑니다.',
+        api: 'useOptimistic',
+        tone: 'violet',
+      },
+      {
+        id: 'error',
+        title: '실패 처리',
+        description: 'Action이 던진 에러는 결과 상태로 돌아오거나 Error Boundary로 올라갑니다.',
+        api: 'error',
+        tone: 'amber',
       },
     ],
+    note: '네 칸 모두 새 저장소가 아닙니다. 기존 hook 슬롯과 updateQueue 위에 이름만 새로 붙은 것입니다.',
   },
-  comparison: {
-    number: '04',
-    eyebrow: '역할 비교표',
-    title: '세 API의 역할 비교',
-    description: '같은 단어를 다른 API가 다루는 부분을 표 한 장으로 정리합니다.',
-    columns: {
-      api: 'API',
-      role: '핵심 역할',
-      problem: '해결하는 문제',
-      where: '어디서 사용?',
-      returnValue: '대표 값',
-    },
-    rows: [
-      {
-        hookName: 'useActionState',
-        state: 'form',
-        role: 'Action 결과 상태 관리 + form action 제공',
-        problem: '결과/에러/로딩 상태를 일관되게 관리',
-        where: '폼 컴포넌트 또는 상태 관리가 필요한 컴포넌트',
-        returnValue: 'state, formAction, isPending',
-      },
-      {
-        hookName: 'useOptimistic',
-        state: 'optimistic',
-        role: '낙관적 UI 관리',
-        problem: '서버 응답 전 즉각 피드백 제공, 실패 시 롤백',
-        where: '좋아요, 카운트, 리스트 추가 등 즉시 반응이 필요한 UI',
-        returnValue: 'optimisticValue, addOptimistic',
-      },
-      {
-        hookName: 'useFormStatus',
-        state: 'pending',
-        role: '폼 제출 진행 상태 제공',
-        problem: '하위 컴포넌트에서 pending을 쉽게 읽을 수 있게 함',
-        where: '버튼, 로딩 인디케이터 등 하위 폼 UI',
-        returnValue: 'pending, data, method, action',
-      },
-    ],
-  },
-  simulator: {
-    number: '05',
-    eyebrow: '액션 흐름 시뮬레이터',
-    title: '액션 흐름 시뮬레이터',
-    description: '성공과 실패가 같은 흐름의 어느 지점에서 갈리는지 직접 따라가 봅니다.',
-    scenarioLabel: '시나리오 선택',
-    scenarios: [
-      {
-        key: 'success',
-        label: '성공 시나리오',
-        description: '서버 응답이 정상이면 낙관적 UI가 그대로 확정됩니다.',
-      },
-      {
-        key: 'failure',
-        label: '실패 시나리오',
-        description: '서버 실패 시 error가 설정되고 낙관적 UI가 롤백됩니다.',
-      },
-    ],
-    defaultScenario: 'success',
-    flowLabel: '6단계 흐름',
+  flow: {
+    badge: '03',
+    eyebrow: 'one submit',
+    title: '제출 한 번이 지나가는 여섯 단계',
+    description: '성공과 실패는 다른 흐름이 아니라, 같은 흐름의 다섯 번째 칸에서 갈립니다.',
     steps: [
       {
-        title: '사용자 submit',
-        caption: '폼 제출 이벤트 발생',
-        successState: 'form',
-        failureState: 'form',
+        id: 'submit',
+        num: '01',
+        title: '사용자가 제출한다',
+        description: 'form의 submit 이벤트가 발생하고, react-dom이 기본 동작을 막습니다.',
+        tone: 'cyan',
       },
       {
-        title: 'Action 시작',
-        caption: 'Server Action 호출',
-        successState: 'form',
-        failureState: 'form',
+        id: 'invoke',
+        num: '02',
+        title: 'Action이 호출된다',
+        description: 'action에 준 비동기 함수가 transition 안에서 실행을 시작합니다.',
+        tone: 'cyan',
       },
       {
-        title: 'pending = true',
-        caption: 'isPending 활성화',
-        successState: 'pending',
-        failureState: 'pending',
+        id: 'pending',
+        num: '03',
+        title: 'pending이 켜진다',
+        description: 'Action이 반환한 Promise가 살아 있는 동안 pending 상태가 true로 유지됩니다.',
+        tone: 'blue',
       },
       {
-        title: 'optimistic UI',
-        caption: '낙관적 업데이트 반영',
-        successState: 'optimistic',
-        failureState: 'optimistic',
+        id: 'optimistic',
+        num: '04',
+        title: '낙관적 값이 먼저 보인다',
+        description: 'useOptimistic으로 올린 값이 응답을 기다리지 않고 화면에 반영됩니다.',
+        tone: 'violet',
       },
       {
-        title: '서버 성공',
-        caption: '데이터 저장 완료',
-        successState: 'optimistic',
-        failureState: 'neutral',
+        id: 'settle',
+        num: '05',
+        title: '여기서 갈린다',
+        description: 'Promise가 resolve면 결과가 상태로, reject면 에러가 결과나 경계로 향합니다.',
+        tone: 'amber',
       },
       {
-        title: '최종 UI 반영',
-        caption: '정상 상태로 확정',
-        successState: 'optimistic',
-        failureState: 'neutral',
+        id: 'commit',
+        num: '06',
+        title: '확정하거나 되돌린다',
+        description: 'pending이 꺼지고 낙관적 값이 정리되면서 실제 상태가 화면에 남습니다.',
+        tone: 'emerald',
       },
     ],
-    failureNote:
-      '실패 시나리오에서는 5단계에서 서버 실패 → error 설정 → 낙관적 UI 롤백으로 전환됩니다.',
-    successNote: '성공 시나리오에서는 5~6단계에서 서버 응답이 그대로 최종 UI로 확정됩니다.',
+    note: '실패해도 흐름이 끊기지 않습니다. 05에서 방향만 바뀌고 06은 성공과 실패 모두 같은 자리에서 끝납니다.',
   },
-  officialDocs: {
-    number: '06',
-    eyebrow: '문서',
-    title: '실제 코드 / 문서 확인',
-    description: '관련 hook의 공식 문서로 바로 이동해 더 깊게 읽어볼 수 있습니다.',
-    cards: [
+  hooks: {
+    badge: '04',
+    eyebrow: 'three hooks',
+    title: '세 개의 hook이 나눠 가진 역할',
+    description:
+      '같은 모델을 세 조각으로 나눈 것뿐입니다. 어느 조각이 어느 칸을 읽는지만 구분하면 됩니다.',
+    headers: ['hook', '맡는 역할', '돌려주는 값'],
+    rows: [
       {
-        hookName: 'useActionState',
-        state: 'form',
-        when: 'Action 결과와 로딩/에러 상태를 함께 관리하고 폼 제출을 자동으로 연결하고 싶을 때',
-        iconKey: 'send',
-        cta: { label: '문서 보기', href: 'https://react.dev/reference/react/useActionState' },
+        hook: 'useActionState',
+        role: 'Action 결과를 상태로 보관하고 form에 꽂을 action을 만든다',
+        returns: 'state, formAction, isPending',
       },
       {
-        hookName: 'useOptimistic',
-        state: 'optimistic',
-        when: '서버 응답 전에도 즉각적인 UI 피드백이 필요할 때',
-        iconKey: 'zap',
-        cta: { label: '문서 보기', href: 'https://react.dev/reference/react/useOptimistic' },
+        hook: 'useOptimistic',
+        role: '응답 전에 보여 줄 값을 만들고, Action이 끝나면 정리한다',
+        returns: 'optimisticValue, addOptimistic',
       },
       {
-        hookName: 'useFormStatus',
-        state: 'pending',
-        when: '폼 내부의 하위 UI에서 제출 진행 상태를 읽고 싶을 때',
-        iconKey: 'clock',
-        cta: {
-          label: '문서 보기',
-          href: 'https://react.dev/reference/react-dom/hooks/useFormStatus',
-        },
+        hook: 'useFormStatus',
+        role: '상위 form이 제출 중인지를 하위 컴포넌트에서 읽는다',
+        returns: 'pending, data, method, action',
       },
     ],
+    note: 'useFormStatus만 react-dom에서 옵니다. 폼이라는 DOM 개념에 묶여 있기 때문입니다.',
   },
-  mission: {
-    number: '07',
-    eyebrow: '코드 따라가기',
-    title: '직접 따라가기 보기',
-    description: '읽기만 하는 단계에서 멈추지 말고 손으로 한 번 더 정리해 봅니다.',
-    missions: [
-      {
-        number: '01',
-        title: '기존 submit 코드를 Actions 방식으로 바꿔본다',
-        helper: '비교하며 장단점을 정리해보세요.',
-      },
-      {
-        number: '02',
-        title: 'pending / optimistic / result state를 각각 어떤 API가 담당하는지 분류한다',
-        helper: '역할별 표로 정리해보세요.',
-      },
-      {
-        number: '03',
-        title: 'Actions를 “업데이트 모델 확장”으로 한 줄 정의해본다',
-        helper: '팀원에게 설명해보세요.',
-      },
-      {
-        number: '04',
-        title: '실제 서비스 시나리오에 적용 가능한 포인트를 하나 정리한다',
-        helper: '작은 화면부터 시도해보세요.',
-      },
-    ],
-  },
-  takeaways: {
-    number: '08',
-    eyebrow: '핵심 정리',
-    title: '핵심 정리',
-    cards: [
-      {
-        number: '01',
-        state: 'form',
-        title: 'Actions는 비동기 UI 업데이트를 선언적으로 묶는 모델이다.',
-        body: 'pending, error, optimistic, form submission을 하나의 흐름으로 다룹니다.',
-        iconKey: 'workflow',
-      },
-      {
-        number: '02',
-        state: 'pending',
-        title: 'useActionState, useOptimistic, useFormStatus는 각기 다른 조각을 담당한다.',
-        body: '결과/에러, 낙관 UI, 진행 상태를 역할별로 분리해 관리합니다.',
-        iconKey: 'layers',
-      },
-      {
-        number: '03',
-        state: 'error',
-        title: 'Form Actions의 내부 구조는 다음 페이지에서 이벤트 시스템과 연결된다.',
-        body: 'React의 업데이트 모델 확장이 이벤트 시스템으로 어떻게 들어오는지 살펴봅니다.',
-        iconKey: 'compass',
-      },
-    ],
+  checkpoint: {
+    badge: '05',
+    eyebrow: 'code checkpoint',
+    title: 'Actions가 hook 세 개로 앉는 자리',
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
+    lookForLabel: '볼 것',
+    lookFor: 'mountActionState',
+    whyLabel: '설명',
+    why: 'useActionState 한 번이 hook 슬롯을 세 개 씁니다. 결과·pending·큐가 각각 별도 슬롯이라는 사실이 이 함수에 그대로 드러납니다.',
+    code: KO_CODE,
+    primaryCta: 'ReactFiberHooks.js 소스 보기',
+    primaryHref: HOOKS_HREF,
   },
   nextStep: {
-    eyebrow: '다음 학습으로 이어집니다',
-    title: 'Form Actions는 이벤트 시스템과 어떻게 연결되는가?',
-    description:
-      '`<form action={fn}>`이 submit event, FormActionEventPlugin, FormData, pendingState, startHostTransition으로 어떻게 이어지는지 살펴봅니다.',
+    eyebrow: '다음 단계',
+    title: 'form의 submit은 어디서 Action으로 바뀔까',
+    description: '같은 축을 한 칸 더 들어갑니다. 이번에는 이벤트 시스템 쪽에서 봅니다.',
     cta: '다음 페이지로 이동',
     href: '/form-actions-event-system',
   },
@@ -578,384 +338,194 @@ const ko: ActionsUpdateFlowContent = {
 const en: ActionsUpdateFlowContent = {
   hero: {
     badge: 'React 19 Changes · 2/10',
-    titleLines: ['Why Actions are not', 'just a form API but an', 'extension of the update model?'],
-    subtitleLines: [
-      'React 19 lets you handle async UI updates',
-      'declaratively — including pending, error,',
-      'and optimistic state.',
+    title: {
+      line1: 'Actions are not a form helper.',
+      line2: 'The update model absorbed async.',
+    },
+    description:
+      'Pending, error and optimistic values that you used to manage by hand moved inside the update flow. Not a new feature, a wider entry point.',
+    diagramBadge: 'one action',
+    diagramCaption: 'submit → four things at once',
+    centerLabel: 'Action',
+    slots: [
+      { id: 'form', label: 'Form submit', api: 'formAction', tone: 'cyan' },
+      { id: 'pending', label: 'In flight', api: 'isPending', tone: 'blue' },
+      { id: 'optimistic', label: 'Optimistic value', api: 'useOptimistic', tone: 'violet' },
+      { id: 'error', label: 'Failure', api: 'error', tone: 'amber' },
     ],
-    diagram: {
-      centerTitle: 'Action',
-      centerSubtitle: '(Core)',
-      cards: [
-        {
-          state: 'pending',
-          title: 'Pending State',
-          caption: 'Track in-flight progress',
-          keyword: 'isPending',
-          iconKey: 'clock',
-        },
-        {
-          state: 'error',
-          title: 'Error Handling',
-          caption: 'Manage action results',
-          keyword: 'error',
-          iconKey: 'triangle-alert',
-        },
-        {
-          state: 'form',
-          title: 'Form Submission',
-          caption: 'Wire form submit flow',
-          keyword: 'formAction',
-          iconKey: 'send',
-        },
-        {
-          state: 'optimistic',
-          title: 'Optimistic Update',
-          caption: 'Apply UI immediately',
-          keyword: 'optimistic',
-          iconKey: 'zap',
-        },
+  },
+  before: {
+    badge: '01',
+    eyebrow: 'before and after',
+    title: 'Write the same submit twice and the difference shows',
+    description:
+      'On the left is the typical async submit up to React 18. On the right is the same work moved onto Actions.',
+    manual: {
+      title: 'What you managed by hand',
+      badge: 'React 18',
+      description: 'An update was one synchronous setState, and everything around it was your job.',
+      bullets: [
+        'You pair setPending(true) with setPending(false) in a finally block yourself',
+        'An error caught by try / catch has to be copied into a separate state',
+        'Loading and error state scatter across components and the code repeats',
+        'Optimistic UI needs its own state plus its own rollback logic',
       ],
     },
+    bridge: {
+      headline: 'Accept the async function\nitself as the update',
+      sub: 'Because React knows where the function starts and ends, it can own pending and rollback.',
+    },
+    action: {
+      title: 'What Actions take over',
+      badge: 'React 19',
+      description: 'Hand over the async function and React wires up the remaining four things.',
+      bullets: [
+        'Pending turns on and off in the same slot useTransition uses',
+        'A thrown error comes back as the Action result or climbs to a boundary',
+        'Drop it straight into a form action attribute and the submit becomes an Action',
+        'A value raised through useOptimistic is cleaned up when the Action settles',
+      ],
+    },
+    note: 'The point is not the shorter code. The point is that ownership of pending and rollback moved from you to React.',
   },
-  question: {
-    number: '02',
-    eyebrow: "Today's question",
-    questionLines: [
-      'Why should Actions be read as a change in',
-      "React's update flow, not just a form-submit nicety?",
-    ],
-    supportCards: [
-      {
-        title: 'Update model extended',
-        body: 'State / server / form / optimistic UI',
-        iconKey: 'layers',
-      },
-      {
-        title: 'Declarative flow',
-        body: 'Less code, better consistency',
-        iconKey: 'sparkles',
-      },
-      {
-        title: 'Forms × UI united',
-        body: 'Connect server / client boundary',
-        iconKey: 'workflow',
-      },
-    ],
-  },
-  legacySubmit: {
-    number: '01',
-    eyebrow: 'BEFORE',
-    title: 'The friction of pre-Actions async submit',
-    codeFile: 'before/handle-submit.js',
-    code: `async function handleSubmit() {
-  setPending(true);
-
-  try {
-    await updateName(name);
-    setError(null);
-  } catch (error) {
-    setError(error);
-  } finally {
-    setPending(false);
-  }
-}`,
-    problemTitle: 'Problems with the old way',
-    problems: [
-      'Manually manage pending state',
-      'Manually manage error state',
-      'Loading/error state spread across components',
-      'Optimistic UI has to be built separately',
-      'Form submit and UI update stay disjoint',
-    ],
-  },
-  quadrant: {
-    number: '02',
-    eyebrow: 'ACTION AS HUB',
-    title: 'The four states Actions tie together',
-    description: 'One declaration carries pending · error · form submission · optimistic together.',
-    centerTitle: 'Action',
-    centerSubtitle: '(Declarative Flow)',
-    states: [
-      {
-        state: 'pending',
-        title: 'Pending',
-        description: 'Track in-flight action progress',
-        arrowApi: 'isPending',
-        iconKey: 'clock',
-      },
-      {
-        state: 'error',
-        title: 'Error',
-        description: 'Manage action result errors',
-        arrowApi: 'error',
-        iconKey: 'triangle-alert',
-      },
-      {
-        state: 'form',
-        title: 'Form Submission',
-        description: 'Wire form submit to action',
-        arrowApi: 'formAction',
-        iconKey: 'send',
-      },
-      {
-        state: 'optimistic',
-        title: 'Optimistic Update',
-        description: 'Apply UI before server reply',
-        arrowApi: 'useOptimistic',
-        iconKey: 'zap',
-      },
-    ],
-  },
-  apiCards: {
-    number: '03',
-    eyebrow: 'THREE HOOKS',
-    title: 'Delivered as three different hooks',
+  hub: {
+    badge: '02',
+    eyebrow: 'four slots',
+    title: 'The four slots one Action fills at once',
     description:
-      'useActionState · useOptimistic · useFormStatus each own a different piece of the same model.',
+      'A single submit moves four places together. Learned separately they are hard; seen as one flow they are simple.',
     cards: [
       {
-        number: '03-A',
-        hookName: 'useActionState',
-        langBadge: 'TS',
-        state: 'form',
-        code: `const [state, formAction, isPending] = useActionState(
-  updateNameAction,
-  initialState,
-);`,
-        points: [
-          'Manages action result state',
-          'Wires directly into form action (formAction)',
-          'Exposes execution state as isPending',
-        ],
+        id: 'form',
+        title: 'Form submit',
+        description: 'Give a form action a function and its submit event becomes an Action call.',
+        api: 'formAction',
+        tone: 'cyan',
       },
       {
-        number: '03-B',
-        hookName: 'useOptimistic',
-        langBadge: 'TS',
-        state: 'optimistic',
-        code: `const [optimisticCount, addOptimistic] = useOptimistic(
-  initialCount,
-  (count, delta) => {
-    return count + delta;
-  },
-);`,
-        points: [
-          'Applies UI immediately, before the server replies',
-          'Automatically rolls back on failure',
-          'Smooths out user experience',
-        ],
+        id: 'pending',
+        title: 'In flight',
+        description:
+          'A flag that stays on while the Action runs. Children read it through useFormStatus.',
+        api: 'isPending',
+        tone: 'blue',
       },
       {
-        number: '03-C',
-        hookName: 'useFormStatus',
-        langBadge: 'TS',
-        state: 'pending',
-        code: `const { pending } = useFormStatus();`,
-        points: [
-          "Reads the current form action's progress",
-          'Lets child components observe pending easily',
-          'Use it to disable submit buttons, etc.',
-        ],
+        id: 'optimistic',
+        title: 'Optimistic value',
+        description: 'A value shown before the response. It falls back to the real one on settle.',
+        api: 'useOptimistic',
+        tone: 'violet',
+      },
+      {
+        id: 'error',
+        title: 'Failure',
+        description:
+          'An error thrown by the Action returns as result state or climbs to an Error Boundary.',
+        api: 'error',
+        tone: 'amber',
       },
     ],
+    note: 'None of the four is a new store. They are new names on existing hook slots and the update queue.',
   },
-  comparison: {
-    number: '04',
-    eyebrow: 'ROLE TABLE',
-    title: 'Side-by-side roles of the three APIs',
-    description: 'A single table to separate what each hook owns.',
-    columns: {
-      api: 'API',
-      role: 'Core role',
-      problem: 'What it solves',
-      where: 'Where to use',
-      returnValue: 'Return value',
-    },
-    rows: [
-      {
-        hookName: 'useActionState',
-        state: 'form',
-        role: 'Action result state + provides a form action',
-        problem: 'Consistent handling of result / error / loading',
-        where: 'Forms and components needing state management',
-        returnValue: 'state, formAction, isPending',
-      },
-      {
-        hookName: 'useOptimistic',
-        state: 'optimistic',
-        role: 'Manages optimistic UI',
-        problem: 'Immediate feedback before the server replies, with rollback',
-        where: 'Likes, counters, list additions — UI that needs instant reaction',
-        returnValue: 'optimisticValue, addOptimistic',
-      },
-      {
-        hookName: 'useFormStatus',
-        state: 'pending',
-        role: 'Exposes form submission progress',
-        problem: 'Lets child components read pending easily',
-        where: 'Buttons, loading indicators inside a form',
-        returnValue: 'pending, data, method, action',
-      },
-    ],
-  },
-  simulator: {
-    number: '05',
-    eyebrow: 'ACTION FLOW SIMULATOR',
-    title: 'Action flow simulator',
-    description: 'See exactly where success and failure diverge inside the same flow.',
-    scenarioLabel: 'Pick a scenario',
-    scenarios: [
-      {
-        key: 'success',
-        label: 'Success scenario',
-        description: 'On a normal server reply, the optimistic UI is confirmed as-is.',
-      },
-      {
-        key: 'failure',
-        label: 'Failure scenario',
-        description: 'On a server failure, error is set and the optimistic UI rolls back.',
-      },
-    ],
-    defaultScenario: 'success',
-    flowLabel: 'Six-step flow',
+  flow: {
+    badge: '03',
+    eyebrow: 'one submit',
+    title: 'The six stages one submit passes through',
+    description:
+      'Success and failure are not different flows. They split at the fifth slot of the same one.',
     steps: [
       {
-        title: 'User submits',
-        caption: 'Form submit event fires',
-        successState: 'form',
-        failureState: 'form',
+        id: 'submit',
+        num: '01',
+        title: 'The user submits',
+        description: 'The form fires a submit event and react-dom prevents the default behavior.',
+        tone: 'cyan',
       },
       {
-        title: 'Action starts',
-        caption: 'Server Action is invoked',
-        successState: 'form',
-        failureState: 'form',
+        id: 'invoke',
+        num: '02',
+        title: 'The Action is called',
+        description: 'The async function given to action starts running inside a transition.',
+        tone: 'cyan',
       },
       {
-        title: 'pending = true',
-        caption: 'isPending becomes active',
-        successState: 'pending',
-        failureState: 'pending',
+        id: 'pending',
+        num: '03',
+        title: 'Pending turns on',
+        description: 'While the returned Promise is alive, the pending state stays true.',
+        tone: 'blue',
       },
       {
-        title: 'Optimistic UI',
-        caption: 'Optimistic update applied',
-        successState: 'optimistic',
-        failureState: 'optimistic',
+        id: 'optimistic',
+        num: '04',
+        title: 'The optimistic value shows first',
+        description: 'A value raised via useOptimistic paints without waiting for the response.',
+        tone: 'violet',
       },
       {
-        title: 'Server success',
-        caption: 'Data save completes',
-        successState: 'optimistic',
-        failureState: 'neutral',
+        id: 'settle',
+        num: '05',
+        title: 'This is where it splits',
+        description:
+          'On resolve the result becomes state; on reject the error goes to the result or a boundary.',
+        tone: 'amber',
       },
       {
-        title: 'Final UI committed',
-        caption: 'Confirmed as normal state',
-        successState: 'optimistic',
-        failureState: 'neutral',
+        id: 'commit',
+        num: '06',
+        title: 'Commit or roll back',
+        description:
+          'Pending turns off, the optimistic value is cleaned up and the real state stays on screen.',
+        tone: 'emerald',
       },
     ],
-    failureNote:
-      'In the failure scenario, step 5 flips to server failure → error set → optimistic UI rolls back.',
-    successNote:
-      'In the success scenario, steps 5~6 confirm the server reply directly as the final UI.',
+    note: 'A failure does not break the flow. Only the direction changes at 05; 06 ends in the same place either way.',
   },
-  officialDocs: {
-    number: '06',
-    eyebrow: 'DOCS',
-    title: 'Source / official docs',
-    description: 'Jump to the React docs to read each hook in more depth.',
-    cards: [
+  hooks: {
+    badge: '04',
+    eyebrow: 'three hooks',
+    title: 'How three hooks split the work',
+    description:
+      'They are three pieces of one model. All you need is which piece reads which slot.',
+    headers: ['hook', 'What it owns', 'What it returns'],
+    rows: [
       {
-        hookName: 'useActionState',
-        state: 'form',
-        when: 'When you want action results together with loading/error, wired to form submit.',
-        iconKey: 'send',
-        cta: { label: 'Open docs', href: 'https://react.dev/reference/react/useActionState' },
+        hook: 'useActionState',
+        role: 'Keeps the Action result as state and builds the action a form can take',
+        returns: 'state, formAction, isPending',
       },
       {
-        hookName: 'useOptimistic',
-        state: 'optimistic',
-        when: 'When you need instant UI feedback before the server replies.',
-        iconKey: 'zap',
-        cta: { label: 'Open docs', href: 'https://react.dev/reference/react/useOptimistic' },
+        hook: 'useOptimistic',
+        role: 'Builds the value shown before the response and clears it when the Action settles',
+        returns: 'optimisticValue, addOptimistic',
       },
       {
-        hookName: 'useFormStatus',
-        state: 'pending',
-        when: 'When a child inside a form needs to read submit progress.',
-        iconKey: 'clock',
-        cta: {
-          label: 'Open docs',
-          href: 'https://react.dev/reference/react-dom/hooks/useFormStatus',
-        },
+        hook: 'useFormStatus',
+        role: 'Lets a child read whether the enclosing form is submitting',
+        returns: 'pending, data, method, action',
       },
     ],
+    note: 'Only useFormStatus comes from react-dom, because it is tied to the DOM concept of a form.',
   },
-  mission: {
-    number: '07',
-    eyebrow: 'FOLLOW ALONG',
-    title: 'Follow-along missions',
-    description: 'Move past reading — restate it with your own hands.',
-    missions: [
-      {
-        number: '01',
-        title: 'Rewrite an existing submit as Actions',
-        helper: 'Compare the two and list trade-offs.',
-      },
-      {
-        number: '02',
-        title: 'Classify pending / optimistic / result by which API owns them',
-        helper: 'Make a small table.',
-      },
-      {
-        number: '03',
-        title: 'Define Actions in one line as "an extension of the update model"',
-        helper: 'Explain it out loud to a teammate.',
-      },
-      {
-        number: '04',
-        title: 'Pick one realistic service scenario you could apply this to',
-        helper: 'Start from a tiny screen.',
-      },
-    ],
-  },
-  takeaways: {
-    number: '08',
-    eyebrow: 'KEY TAKEAWAYS',
-    title: 'Key takeaways',
-    cards: [
-      {
-        number: '01',
-        state: 'form',
-        title: 'Actions are a declarative model for async UI updates.',
-        body: 'They handle pending, error, optimistic, and form submission as one flow.',
-        iconKey: 'workflow',
-      },
-      {
-        number: '02',
-        state: 'pending',
-        title: 'useActionState, useOptimistic, useFormStatus each own a piece.',
-        body: 'Result/error, optimistic UI, and progress are split by role.',
-        iconKey: 'layers',
-      },
-      {
-        number: '03',
-        state: 'error',
-        title: "Form Actions' internals connect to the event system next.",
-        body: "We'll see how the update model extension reaches into the event system.",
-        iconKey: 'compass',
-      },
-    ],
+  checkpoint: {
+    badge: '05',
+    eyebrow: 'code checkpoint',
+    title: 'Where Actions sit as three hooks',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
+    lookForLabel: 'Look for',
+    lookFor: 'mountActionState',
+    whyLabel: 'Why',
+    why: 'One useActionState call takes three hook slots. This function shows plainly that result, pending and queue each live in their own slot.',
+    code: EN_CODE,
+    primaryCta: 'View ReactFiberHooks.js',
+    primaryHref: HOOKS_HREF,
   },
   nextStep: {
-    eyebrow: 'The journey continues',
-    title: 'How do Form Actions connect to the event system?',
-    description:
-      'See how `<form action={fn}>` reaches submit event, FormActionEventPlugin, FormData, pendingState, and startHostTransition.',
+    eyebrow: 'Next step',
+    title: 'Where does a form submit turn into an Action',
+    description: 'One notch deeper on the same axis, this time from the event system side.',
     cta: 'Go to the next page',
     href: '/form-actions-event-system',
   },

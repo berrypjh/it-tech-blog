@@ -3,19 +3,12 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { ActionExtractionSection } from './sections/ActionExtractionSection';
-import { FollowAlongMission } from './sections/FollowAlongMission';
-import { FormActionPipelineInteractor } from './sections/FormActionPipelineInteractor';
-import { FormActionPluginRoleGrid } from './sections/FormActionPluginRoleGrid';
+import { DeclarationTable } from './sections/DeclarationTable';
+import { FormActionsCodeCheckpoint } from './sections/FormActionsCodeCheckpoint';
 import { FormActionsHero } from './sections/FormActionsHero';
-import { FormDataCreationSection } from './sections/FormDataCreationSection';
-import { InternalCodePreviewSection } from './sections/InternalCodePreviewSection';
-import { KeyTakeaways } from './sections/KeyTakeaways';
-import { PendingStateSection } from './sections/PendingStateSection';
-import { StartHostTransitionSection } from './sections/StartHostTransitionSection';
-import { SubmitEventPipeline } from './sections/SubmitEventPipeline';
-import { TodayQuestionCard } from './sections/TodayQuestionCard';
-import { UserFacingFormCodeSection } from './sections/UserFacingFormCodeSection';
+import { PendingStateFields } from './sections/PendingStateFields';
+import { SubmitPipelineSteps } from './sections/SubmitPipelineSteps';
+import { WhichActionWins } from './sections/WhichActionWins';
 import { formActionsEventSystemContent } from './content';
 
 type Props = { locale: Locale };
@@ -26,18 +19,11 @@ export const FormActionsEventSystemPage = ({ locale }: Props) => {
   return (
     <StartPageShell>
       <FormActionsHero content={c.hero} />
-      <TodayQuestionCard content={c.question} />
-      <UserFacingFormCodeSection content={c.userFormCode} />
-      <SubmitEventPipeline content={c.submitPipeline} />
-      <FormActionPluginRoleGrid content={c.pluginRole} />
-      <ActionExtractionSection content={c.actionExtraction} />
-      <FormDataCreationSection content={c.formData} />
-      <PendingStateSection content={c.pendingState} />
-      <StartHostTransitionSection content={c.startHostTransition} />
-      <InternalCodePreviewSection content={c.internalCode} />
-      <FormActionPipelineInteractor content={c.interactor} />
-      <FollowAlongMission content={c.mission} />
-      <KeyTakeaways content={c.takeaways} />
+      <SubmitPipelineSteps content={c.pipeline} />
+      <WhichActionWins content={c.which} />
+      <PendingStateFields content={c.pendingState} />
+      <DeclarationTable content={c.declarations} />
+      <FormActionsCodeCheckpoint content={c.checkpoint} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
