@@ -1,158 +1,91 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type RootAccent = 'blue' | 'teal' | 'violet';
+import type { ToneKey } from '../../shared/tones';
 
-export type HeroStep = {
-  title: string;
-  content: string[];
-  footer: string;
-  accent: RootAccent;
-};
+export type StageId = 'fiber' | 'root' | 'scheduler';
 
-export type ConceptCard = { title: string; description: string; accent: RootAccent };
-
-export type FiberNode = {
+export type Stage = {
+  id: StageId;
   label: string;
-  level: number;
-  emphasis?: boolean;
+  caption: string;
+  tone: ToneKey;
 };
 
-export type DestinationStep = { title: string };
+export type LaneFieldId = 'pending' | 'suspended' | 'pinged' | 'expired' | 'finished';
 
-export type FlowStep = {
-  title: string;
+export type LaneField = {
+  id: LaneFieldId;
+  name: string;
+  role: string;
   description: string;
-  isCode?: boolean;
-  accent: RootAccent;
+  tone: ToneKey;
 };
 
-export type MarkRootStep = {
+export type MarkStepId = 'climb' | 'or' | 'unsuspend' | 'ensure';
+
+export type MarkStep = {
+  id: MarkStepId;
+  badge: string;
   title: string;
-  code: string;
-  description?: string;
-  accent: RootAccent;
+  body: string;
+  tone: ToneKey;
 };
 
-export type PendingLanesChangeCard = {
-  title: string;
-  bits: string; // 16-char string of '0'/'1'
-  description: string;
-  state: 'before' | 'transition' | 'sync-transition';
-};
-
-export type EnsureStep = {
-  title: string;
-  body: string[];
-  accent: RootAccent;
-};
-
-export type SimulatorLane = {
-  key: 'sync' | 'transition' | 'retry';
-  label: string;
-  buttonLabel: string;
-  /** bit index from the right (bit 0 = rightmost) */
-  bitIndex: number;
-  accent: RootAccent;
-};
-
-export type MissionCard = { title: string; description: string; accent: RootAccent };
-
-export type TakeawayCard = {
-  number: string;
-  title: string;
-  description: string;
-  accent: RootAccent;
+export type ClearRow = {
+  moment: string;
+  field: string;
+  effect: string;
 };
 
 export type RootPendingWorkContent = {
   hero: {
     badge: string;
-    titleLines: [string, string];
-    highlight: string;
-    subtitle: string;
-    steps: HeroStep[];
+    title: { line1: string; line2: string };
+    description: string;
+    diagramBadge: string;
+    diagramCaption: string;
+    stages: Stage[];
+    rootLabel: string;
+    rootCode: string;
   };
-  question: {
+  fields: {
+    badge: string;
     eyebrow: string;
-    question: string;
-    cards: ConceptCard[];
-  };
-  destination: {
-    number: string;
-    title: string;
-    fiberTreeTitle: string;
-    fiberNodes: FiberNode[];
-    steps: DestinationStep[];
-    rootObjectTitle: string;
-    rootObjectCode: string;
-  };
-  scheduleFlow: {
-    number: string;
-    title: string;
-    steps: FlowStep[];
-  };
-  markRoot: {
-    number: string;
     title: string;
     description: string;
-    steps: MarkRootStep[];
-  };
-  pendingLanesChange: {
-    number: string;
-    title: string;
-    cards: PendingLanesChangeCard[];
+    items: LaneField[];
     note: string;
   };
-  suspended: {
-    number: string;
+  marking: {
+    badge: string;
+    eyebrow: string;
     title: string;
     description: string;
-    leftTitle: string;
-    leftFlow: string;
-    middleTitle: string;
-    rightTitle: string;
-    rightFlow: string;
-    corePointTitle: string;
-    corePointBody: string;
+    steps: MarkStep[];
+    note: string;
   };
-  ensure: {
-    number: string;
+  clearing: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    steps: EnsureStep[];
-  };
-  code: {
-    number: string;
-    title: string;
-    cardA: { title: string; fileLabel: string; code: string };
-    cardB: { title: string; fileLabel: string; code: string };
-    explanationTitle: string;
-    explanation: string[];
-    button: { label: string; href: string };
-  };
-  simulator: {
-    number: string;
-    title: string;
-    actionTitle: string;
-    resetLabel: string;
-    lanes: SimulatorLane[];
-    bitmaskTitle: string;
-    bitmaskSubtitle: string;
-    binaryLabel: string;
-    decimalLabel: string;
-    statusTitle: string;
-    emptyStatus: string;
-    activeStatus: string;
     description: string;
+    headers: [string, string, string];
+    rows: ClearRow[];
+    note: string;
   };
-  mission: {
-    number: string;
+  checkpoint: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    cards: MissionCard[];
-  };
-  takeaways: {
-    number: string;
-    title: string;
-    cards: TakeawayCard[];
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -163,615 +96,413 @@ export type RootPendingWorkContent = {
   };
 };
 
-const REACT_FIBER_WORK_LOOP_URL =
-  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.js';
-
-const ROOT_OBJECT_CODE = `FiberRoot {
+const ROOT_SHAPE_CODE = `FiberRoot {
   tag: ConcurrentRoot,
   containerInfo: DOMNode,
   current: Fiber,
-  pendingLanes: 0b0000000000000000,
-  suspendedLanes: 0b0000000000000000,
+
+  pendingLanes:   0b0000000000000000000000000100010,
+  suspendedLanes: 0b0000000000000000000000000000000,
+  pingedLanes:    0b0000000000000000000000000000000,
+  expiredLanes:   0b0000000000000000000000000000000,
+  finishedLanes:  0b0000000000000000000000000000000,
   ...
 }`;
 
-const CODE_A = `// 1) root에 이 lane의 작업이 있음을 기록
-markRootUpdated(root, lane);
-
-// 2) root scheduling 단계로 진행
-ensureRootIsScheduled(root);`;
-
-const CODE_A_EN = `// 1) Record that this lane has pending work on the root
-markRootUpdated(root, lane);
-
-// 2) Move to the root scheduling step
-ensureRootIsScheduled(root);`;
-
-const CODE_B = `function markRootUpdated(root, updateLane) {
-  // 기존 pendingLanes와 새 lane을 OR 연산으로 합침
+const MARK_ROOT_UPDATED_CODE = `export function markRootUpdated(root: FiberRoot, updateLane: Lane) {
+  // 새 lane 비트를 pendingLanes에 켠다
   root.pendingLanes |= updateLane;
 
-  // 이 높은 우선순위 lane이 들어왔을 때
-  // suspended lanes / entangled lanes 등 관리 로직
-  // ...
+  // Idle 작업이면 여기서 끝
+  if (updateLane !== IdleLane) {
+    root.suspendedLanes = NoLanes;
+    root.pingedLanes = NoLanes;
+    root.warmLanes = NoLanes;
+  }
+}
+
+// scheduleUpdateOnFiber에서 fiber → root로 올라가는 부분
+function markUpdateLaneFromFiberToRoot(sourceFiber, lane) {
+  sourceFiber.lanes = mergeLanes(sourceFiber.lanes, lane);
+
+  let node = sourceFiber.return;
+  while (node !== null) {
+    node.childLanes = mergeLanes(node.childLanes, lane);
+    node = node.return;
+  }
 }`;
 
-const CODE_B_EN = `function markRootUpdated(root, updateLane) {
-  // OR the new lane into the existing pendingLanes
-  root.pendingLanes |= updateLane;
-
-  // When a higher-priority lane arrives, manage
-  // suspended lanes / entangled lanes, etc.
-  // ...
-}`;
+const REACT_FIBER_WORK_LOOP_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.js';
 
 const ko: RootPendingWorkContent = {
   hero: {
     badge: 'Scheduler · 6/10단계',
-    titleLines: ['Lane을 받았다고', '바로 렌더링이 시작되지는 않는다'],
-    highlight: '바로 렌더링이 시작되지는 않는다',
-    subtitle: '먼저 root가 처리해야 할 작업이 있다는 사실을 기록합니다.',
-    steps: [
-      {
-        title: 'Fiber 업데이트 발생',
-        content: ['<Button />', 'setState()'],
-        footer: 'lane 할당 완료',
-        accent: 'blue',
-      },
-      {
-        title: 'Root (FiberRoot)',
-        content: ['root.pendingLanes', '에 기록'],
-        footer: '여기에 작업이 쌓인다',
-        accent: 'teal',
-      },
-      {
-        title: 'Root Scheduler',
-        content: ['언제, 어떤 순서로', '이 작업을 실행할지 결정'],
-        footer: '다음 페이지로 이어짐',
-        accent: 'violet',
-      },
-    ],
-  },
-  question: {
-    eyebrow: '오늘의 질문',
-    question: 'requestUpdateLane 다음, React는 이 작업을 어디에 기록할까?',
-    cards: [
-      { title: '작업 기록 위치', description: 'root.pendingLanes', accent: 'blue' },
-      { title: '여러 작업 누적', description: '비트마스크로 관리', accent: 'teal' },
-      { title: '다음 단계 연결', description: 'Root Scheduler로 이동', accent: 'violet' },
-    ],
-  },
-  destination: {
-    number: '1',
-    title: 'Lane을 받은 update의 다음 목적지',
-    fiberTreeTitle: 'Fiber 트리 일부',
-    fiberNodes: [
-      { label: 'App', level: 0 },
-      { label: 'List', level: 1 },
-      { label: 'SearchBox', level: 1 },
-      { label: 'Button', level: 2, emphasis: true },
-      { label: 'setState()', level: 3, emphasis: true },
-    ],
-    steps: [
-      { title: 'setState() 발생' },
-      { title: 'update에 lane 할당' },
-      { title: 'fiber에서 root로 올라감' },
-      { title: 'root.pendingLanes에 반영' },
-    ],
-    rootObjectTitle: 'Root 객체',
-    rootObjectCode: ROOT_OBJECT_CODE,
-  },
-  scheduleFlow: {
-    number: '2',
-    title: 'scheduleUpdateOnFiber 전체 흐름',
-    steps: [
-      {
-        title: 'scheduleUpdateOnFiber(root, fiber, lane)',
-        description: '새로운 update를 루트에 보고',
-        isCode: true,
-        accent: 'blue',
-      },
-      {
-        title: 'suspended 상태 확인',
-        description: '현재 진행 중 render와 충돌 여부 확인',
-        accent: 'teal',
-      },
-      {
-        title: 'markRootUpdated(root, lane)',
-        description: 'root에 이 lane의 작업을 기록',
-        isCode: true,
-        accent: 'teal',
-      },
-      {
-        title: 'ensureRootIsScheduled(root)',
-        description: 'Root Scheduler 단계로 진행',
-        isCode: true,
-        accent: 'violet',
-      },
-    ],
-  },
-  markRoot: {
-    number: '3',
-    title: 'markRootUpdated(root, lane)',
-    description: 'root에 이 lane의 작업이 pending 상태임을 기록합니다.',
-    steps: [
-      {
-        title: '호출 시점',
-        code: 'markRootUpdated(root, lane)',
-        accent: 'blue',
-      },
-      {
-        title: '기록되는 내용',
-        code: 'root.pendingLanes |= lane;',
-        description: '비트마스크 OR 연산으로 누적',
-        accent: 'teal',
-      },
-      {
-        title: 'Root 객체 변경 후',
-        code: 'pendingLanes: 0b0000000000000010',
-        accent: 'violet',
-      },
-    ],
-  },
-  pendingLanesChange: {
-    number: '4',
-    title: 'root.pendingLanes 변화',
-    cards: [
-      {
-        title: 'Before (아무 작업 없음)',
-        bits: '0000000000000000',
-        description: '아직 처리해야 할 작업 없음',
-        state: 'before',
-      },
-      {
-        title: 'After: Transition update 추가',
-        bits: '0000000100000000',
-        description: 'TransitionLane 비트가 켜짐',
-        state: 'transition',
-      },
-      {
-        title: 'After: Sync + Transition 추가',
-        bits: '0000000100000010',
-        description: '여러 lane이 함께 누적됨',
-        state: 'sync-transition',
-      },
-    ],
-    note: '비트 OR로 누적되어 동시에 여러 종류의 작업이 표현됩니다.',
-  },
-  suspended: {
-    number: '5',
-    title: '이미 진행 중인 suspended render가 있다면?',
+    title: { line1: 'lane을 받았다고', line2: '렌더가 시작되지는 않는다' },
     description:
-      'SuspendedOnData / SuspendedOnAction 상태일 때, 새로운 update가 들어오면 기존 render attempt를 깨고 fresh stack을 준비할 수 있습니다.',
-    leftTitle: '기존 render 시도 (suspended)',
-    leftFlow: '시작 → 작업 → 중단됨',
-    middleTitle: '새 update 발생',
-    rightTitle: '새 render 준비 (fresh stack)',
-    rightFlow: '새 시작 → 작업 → ...',
-    corePointTitle: '핵심 포인트',
-    corePointBody:
-      'suspended 상태는 때로 새로운 더 높은 우선순위의 작업이 들어오면 무시되고 새로 시작합니다.',
+      '업데이트는 자기 Fiber에서 root까지 올라가며 흔적을 남깁니다. root.pendingLanes에 비트가 켜지는 것이 그 흔적입니다.',
+    diagramBadge: 'pending work',
+    diagramCaption: 'fiber → root → scheduler',
+    stages: [
+      {
+        id: 'fiber',
+        label: 'setState가 일어난 Fiber',
+        caption: 'fiber.lanes에 비트를 켠다',
+        tone: 'cyan',
+      },
+      {
+        id: 'root',
+        label: 'root.pendingLanes',
+        caption: '올라가며 childLanes를 켜고 root에 도착',
+        tone: 'indigo',
+      },
+      {
+        id: 'scheduler',
+        label: 'ensureRootIsScheduled',
+        caption: '이제 실행 시점을 정할 차례',
+        tone: 'violet',
+      },
+    ],
+    rootLabel: 'FiberRoot',
+    rootCode: ROOT_SHAPE_CODE,
   },
-  ensure: {
-    number: '6',
-    title: 'ensureRootIsScheduled로 연결',
+  fields: {
+    badge: '01',
+    eyebrow: 'root lane fields',
+    title: 'root가 들고 있는 lane 칸들',
+    description:
+      'root에는 lane 비트마스크가 여러 개 있습니다. 각각이 "이 lane들은 지금 어떤 상태인가"를 다르게 기록합니다.',
+    items: [
+      {
+        id: 'pending',
+        name: 'pendingLanes',
+        role: '할 일이 남은 lane',
+        description:
+          '업데이트가 들어올 때마다 OR로 켜집니다. 비어 있으면 root는 할 일이 없는 상태입니다.',
+        tone: 'indigo',
+      },
+      {
+        id: 'suspended',
+        name: 'suspendedLanes',
+        role: '기다리는 중인 lane',
+        description:
+          '렌더하다 데이터를 기다리며 멈춘 lane입니다. 다시 시도해도 같은 곳에서 멈추므로 건너뜁니다.',
+        tone: 'amber',
+      },
+      {
+        id: 'pinged',
+        name: 'pingedLanes',
+        role: '다시 해 볼 만한 lane',
+        description:
+          '기다리던 데이터가 도착하면 suspended에서 여기로 옮겨집니다. 이제 재시도할 수 있습니다.',
+        tone: 'teal',
+      },
+      {
+        id: 'expired',
+        name: 'expiredLanes',
+        role: '너무 오래 밀린 lane',
+        description:
+          '계속 뒤로 밀린 lane에 표시합니다. 표시되면 중단 없이 동기로 끝까지 렌더합니다.',
+        tone: 'sky',
+      },
+      {
+        id: 'finished',
+        name: 'finishedLanes',
+        role: '렌더가 끝난 lane',
+        description:
+          '렌더는 끝났고 커밋을 기다리는 lane입니다. 커밋이 끝나면 pendingLanes에서 지워집니다.',
+        tone: 'emerald',
+      },
+    ],
+    note: '다섯 칸 모두 같은 비트 자리를 씁니다. 그래서 한 lane이 pending이면서 동시에 suspended일 수 있습니다.',
+  },
+  marking: {
+    badge: '02',
+    eyebrow: 'markRootUpdated',
+    title: '흔적을 남기는 네 단계',
+    description:
+      'setState 한 번은 Fiber 하나만 건드리지 않습니다. 루트까지 이어지는 경로 전체에 표시를 남깁니다.',
     steps: [
       {
-        title: 'root에 pending work 표시 완료',
-        body: ['root.pendingLanes |= lane', '작업이 누적됨'],
-        accent: 'blue',
+        id: 'climb',
+        badge: 'step 1',
+        title: 'Fiber에서 root까지 올라간다',
+        body: 'return 포인터를 타고 올라가며 각 조상의 childLanes에 비트를 켭니다.',
+        tone: 'cyan',
       },
       {
-        title: 'ensureRootIsScheduled(root)',
-        body: ['이 root를 실제로 언제/어떻게 실행할지', 'Root Scheduler에게 점검'],
-        accent: 'teal',
+        id: 'or',
+        badge: 'step 2',
+        title: 'pendingLanes에 OR',
+        body: 'root에 도착하면 이 lane 비트를 pendingLanes에 켭니다. 이미 있으면 그대로입니다.',
+        tone: 'indigo',
       },
       {
-        title: '다음 단계 (다음 페이지)',
-        body: ['Scheduler가 nextLanes를 계산하고', 'task를 등록하여 실행을 준비'],
-        accent: 'violet',
+        id: 'unsuspend',
+        badge: 'step 3',
+        title: 'suspended 상태 해제',
+        body: 'Idle이 아닌 업데이트가 들어오면 기다리던 lane 표시를 전부 지웁니다.',
+        tone: 'amber',
+      },
+      {
+        id: 'ensure',
+        badge: 'step 4',
+        title: 'ensureRootIsScheduled',
+        body: '기록이 끝났으니 실행 예약이 되어 있는지 확인하러 넘어갑니다.',
+        tone: 'violet',
       },
     ],
+    note: '01의 childLanes 덕분에 렌더할 때 변경이 없는 가지를 통째로 건너뛸 수 있습니다. bailout의 근거가 여기서 만들어집니다.',
   },
-  code: {
-    number: '7',
-    title: '실제 코드 미리보기',
-    cardA: {
-      title: 'scheduleUpdateOnFiber 내부: root에 lane 기록',
-      fileLabel: 'ReactFiberWorkLoop.js',
-      code: CODE_A,
-    },
-    cardB: {
-      title: 'markRootUpdated: pendingLanes에 OR로 누적',
-      fileLabel: 'ReactFiberLane.js',
-      code: CODE_B,
-    },
-    explanationTitle: '설명',
-    explanation: [
-      '모든 update는 root의 pendingLanes에 비트로 누적됩니다.',
-      '이후 ensureRootIsScheduled가 Root Scheduler에게 실행을 위임합니다.',
+  clearing: {
+    badge: '03',
+    eyebrow: 'lifecycle',
+    title: '켜진 비트는 언제 꺼지는가',
+    description:
+      '비트를 켜는 곳은 한 군데지만 끄는 곳은 여러 군데입니다. 언제 무엇이 지워지는지가 스케줄러 동작을 좌우합니다.',
+    headers: ['시점', '바뀌는 필드', '무슨 일이 일어나나'],
+    rows: [
+      {
+        moment: '렌더를 시작할 때',
+        field: 'pendingLanes는 그대로',
+        effect: '고른 lane을 renderLanes로 잡을 뿐, pending에서 지우지는 않습니다.',
+      },
+      {
+        moment: '렌더 중 데이터 대기',
+        field: 'suspendedLanes',
+        effect: '그 lane을 suspended로 옮겨 다음 선택에서 건너뛰게 합니다.',
+      },
+      {
+        moment: '기다리던 데이터 도착',
+        field: 'pingedLanes',
+        effect: 'suspended에서 pinged로 옮겨 다시 시도할 수 있게 만듭니다.',
+      },
+      {
+        moment: '커밋이 끝났을 때',
+        field: 'pendingLanes에서 제거',
+        effect: 'markRootFinished가 끝난 lane 비트를 지우고 관련 상태도 함께 정리합니다.',
+      },
     ],
-    button: { label: 'GitHub에서 코드 보기', href: REACT_FIBER_WORK_LOOP_URL },
+    note: '렌더를 시작할 때 지우지 않는 것이 중요합니다. 렌더가 중간에 버려져도 할 일이 사라지지 않기 때문입니다.',
   },
-  simulator: {
-    number: '8',
-    title: 'pendingLanes 시뮬레이터',
-    actionTitle: '작업 선택',
-    resetLabel: '초기화',
-    lanes: [
-      {
-        key: 'sync',
-        label: 'SyncLane',
-        buttonLabel: 'Sync update 추가',
-        bitIndex: 1,
-        accent: 'blue',
-      },
-      {
-        key: 'transition',
-        label: 'TransitionLane',
-        buttonLabel: 'Transition update 추가',
-        bitIndex: 8,
-        accent: 'teal',
-      },
-      {
-        key: 'retry',
-        label: 'RetryLane',
-        buttonLabel: 'Retry lane 추가',
-        bitIndex: 12,
-        accent: 'violet',
-      },
-    ],
-    bitmaskTitle: 'root.pendingLanes 비트마스크',
-    bitmaskSubtitle: '32비트 중 하위 16비트 표시',
-    binaryLabel: '현재값 (이진)',
-    decimalLabel: '현재값 (10진)',
-    statusTitle: '작업 상태',
-    emptyStatus: 'Pending work 없음',
-    activeStatus: 'Pending work 있음',
-    description: '여러 종류의 작업이 비트로 누적되며, 각 bit는 서로 다른 lane을 의미합니다.',
-  },
-  mission: {
-    number: '9',
-    title: '직접 코드에서 따라가 보기',
-    cards: [
-      {
-        title: 'scheduleUpdateOnFiber 찾기',
-        description: 'ReactFiberWorkLoop.js에서 scheduleUpdateOnFiber 함수를 찾습니다.',
-        accent: 'blue',
-      },
-      {
-        title: 'markRootUpdated 호출 찾기',
-        description:
-          'scheduleUpdateOnFiber 내부에서 markRootUpdated(root, lane)을 호출하는 지점을 확인합니다.',
-        accent: 'teal',
-      },
-      {
-        title: 'ensureRootIsScheduled 연결 확인',
-        description:
-          '그 다음 ensureRootIsScheduled(root)가 호출되어 Root Scheduler로 연결되는 흐름을 확인합니다.',
-        accent: 'violet',
-      },
-      {
-        title: 'root.pendingLanes 변화 이해',
-        description:
-          '왜 bitmask로 누적해야 하는지, 여러 lane이 동시에 pending될 수 있기 때문임을 정리합니다.',
-        accent: 'blue',
-      },
-    ],
-  },
-  takeaways: {
-    number: '10',
-    title: '핵심 정리',
-    cards: [
-      {
-        number: '01',
-        title: 'update는 root에 pending work로 표시된다.',
-        description: 'markRootUpdated가 root.pendingLanes에 lane을 OR로 누적 기록합니다.',
-        accent: 'blue',
-      },
-      {
-        number: '02',
-        title: 'markRootUpdated가 그 표시를 담당한다.',
-        description: 'root의 상태에 이 lane의 작업이 있음을 비트마스크로 남깁니다.',
-        accent: 'teal',
-      },
-      {
-        number: '03',
-        title: '이후 Root Scheduler가 실행 순서를 결정한다.',
-        description: 'ensureRootIsScheduled가 호출되면서 다음 단계로 넘어갑니다.',
-        accent: 'violet',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+    lookForLabel: '볼 것',
+    lookFor: 'markRootUpdated, markUpdateLaneFromFiberToRoot, markRootFinished',
+    whyLabel: '설명',
+    why: 'pendingLanes를 켜는 줄이 |= 하나뿐이라는 점, 그리고 지우는 코드는 markRootFinished에만 있다는 점을 확인하세요.',
+    code: MARK_ROOT_UPDATED_CODE,
+    primaryCta: 'ReactFiberWorkLoop.js 읽기',
+    primaryHref: REACT_FIBER_WORK_LOOP_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'Root Scheduler 보기',
-    description: 'Root Scheduler는 무엇을 결정할까?',
+    title: '쌓인 것 중 무엇을 먼저 할까',
+    description:
+      'pendingLanes에 여러 비트가 켜져 있습니다. 그중 무엇을 골라 렌더할지 정하는 로직을 봅니다.',
     cta: '다음 페이지로 이동',
     href: '/pick-next-work',
   },
 };
 
+const ROOT_SHAPE_CODE_EN = ROOT_SHAPE_CODE;
+
+const MARK_ROOT_UPDATED_CODE_EN = `export function markRootUpdated(root: FiberRoot, updateLane: Lane) {
+  // turn the new lane bit on in pendingLanes
+  root.pendingLanes |= updateLane;
+
+  // nothing more to do for idle work
+  if (updateLane !== IdleLane) {
+    root.suspendedLanes = NoLanes;
+    root.pingedLanes = NoLanes;
+    root.warmLanes = NoLanes;
+  }
+}
+
+// the part of scheduleUpdateOnFiber that climbs fiber → root
+function markUpdateLaneFromFiberToRoot(sourceFiber, lane) {
+  sourceFiber.lanes = mergeLanes(sourceFiber.lanes, lane);
+
+  let node = sourceFiber.return;
+  while (node !== null) {
+    node.childLanes = mergeLanes(node.childLanes, lane);
+    node = node.return;
+  }
+}`;
+
 const en: RootPendingWorkContent = {
   hero: {
     badge: 'Scheduler · 6/10',
-    titleLines: ['Getting a Lane', "doesn't start rendering right away"],
-    highlight: "doesn't start rendering right away",
-    subtitle: 'First the root records that there is work to do.',
-    steps: [
-      {
-        title: 'Fiber update happens',
-        content: ['<Button />', 'setState()'],
-        footer: 'Lane assigned',
-        accent: 'blue',
-      },
-      {
-        title: 'Root (FiberRoot)',
-        content: ['root.pendingLanes', 'gets the lane'],
-        footer: 'Work accumulates here',
-        accent: 'teal',
-      },
-      {
-        title: 'Root Scheduler',
-        content: ['Decides when and in what order', 'to actually run this work'],
-        footer: 'Continues on the next page',
-        accent: 'violet',
-      },
-    ],
-  },
-  question: {
-    eyebrow: "Today's question",
-    question: 'After requestUpdateLane, where does React record this work?',
-    cards: [
-      { title: 'Where the work is recorded', description: 'root.pendingLanes', accent: 'blue' },
-      { title: 'Accumulating multiple works', description: 'Managed as a bitmask', accent: 'teal' },
-      {
-        title: 'Wiring to the next step',
-        description: 'Moves to the Root Scheduler',
-        accent: 'violet',
-      },
-    ],
-  },
-  destination: {
-    number: '1',
-    title: 'The next destination for a lane-assigned update',
-    fiberTreeTitle: 'Fiber tree (excerpt)',
-    fiberNodes: [
-      { label: 'App', level: 0 },
-      { label: 'List', level: 1 },
-      { label: 'SearchBox', level: 1 },
-      { label: 'Button', level: 2, emphasis: true },
-      { label: 'setState()', level: 3, emphasis: true },
-    ],
-    steps: [
-      { title: 'setState() is called' },
-      { title: 'A lane is assigned to the update' },
-      { title: 'Bubble up from the fiber to the root' },
-      { title: 'Reflected in root.pendingLanes' },
-    ],
-    rootObjectTitle: 'Root object',
-    rootObjectCode: ROOT_OBJECT_CODE,
-  },
-  scheduleFlow: {
-    number: '2',
-    title: 'Full flow of scheduleUpdateOnFiber',
-    steps: [
-      {
-        title: 'scheduleUpdateOnFiber(root, fiber, lane)',
-        description: 'Report the new update up to the root',
-        isCode: true,
-        accent: 'blue',
-      },
-      {
-        title: 'Check suspended state',
-        description: 'See if it conflicts with an in-flight render',
-        accent: 'teal',
-      },
-      {
-        title: 'markRootUpdated(root, lane)',
-        description: 'Record that this lane has work on the root',
-        isCode: true,
-        accent: 'teal',
-      },
-      {
-        title: 'ensureRootIsScheduled(root)',
-        description: 'Hand off to the Root Scheduler step',
-        isCode: true,
-        accent: 'violet',
-      },
-    ],
-  },
-  markRoot: {
-    number: '3',
-    title: 'markRootUpdated(root, lane)',
-    description: "Record that this lane's work is now pending on the root.",
-    steps: [
-      { title: 'Call site', code: 'markRootUpdated(root, lane)', accent: 'blue' },
-      {
-        title: 'What is recorded',
-        code: 'root.pendingLanes |= lane;',
-        description: 'Accumulated via bitmask OR',
-        accent: 'teal',
-      },
-      {
-        title: 'Root object after',
-        code: 'pendingLanes: 0b0000000000000010',
-        accent: 'violet',
-      },
-    ],
-  },
-  pendingLanesChange: {
-    number: '4',
-    title: 'How root.pendingLanes changes',
-    cards: [
-      {
-        title: 'Before (no work yet)',
-        bits: '0000000000000000',
-        description: 'No work to process yet',
-        state: 'before',
-      },
-      {
-        title: 'After: Transition update added',
-        bits: '0000000100000000',
-        description: 'TransitionLane bit is on',
-        state: 'transition',
-      },
-      {
-        title: 'After: Sync + Transition added',
-        bits: '0000000100000010',
-        description: 'Multiple lanes accumulate together',
-        state: 'sync-transition',
-      },
-    ],
-    note: 'Bits accumulate via OR so several kinds of work can be expressed simultaneously.',
-  },
-  suspended: {
-    number: '5',
-    title: 'What if a render is already suspended?',
+    title: { line1: 'Being assigned a lane', line2: 'does not start a render' },
     description:
-      'In SuspendedOnData / SuspendedOnAction state, a new incoming update can throw away the in-flight render attempt and prepare a fresh stack.',
-    leftTitle: 'Existing render attempt (suspended)',
-    leftFlow: 'start → work → stopped',
-    middleTitle: 'New update arrives',
-    rightTitle: 'Fresh stack render',
-    rightFlow: 'new start → work → ...',
-    corePointTitle: 'Key insight',
-    corePointBody:
-      'A suspended state can be discarded when a new, higher-priority update arrives — and rendering starts fresh.',
+      'An update climbs from its own Fiber up to the root, leaving marks along the way. A bit set in root.pendingLanes is that mark.',
+    diagramBadge: 'pending work',
+    diagramCaption: 'fiber → root → scheduler',
+    stages: [
+      {
+        id: 'fiber',
+        label: 'The Fiber where setState ran',
+        caption: 'sets a bit in fiber.lanes',
+        tone: 'cyan',
+      },
+      {
+        id: 'root',
+        label: 'root.pendingLanes',
+        caption: 'sets childLanes on the way up and arrives at the root',
+        tone: 'indigo',
+      },
+      {
+        id: 'scheduler',
+        label: 'ensureRootIsScheduled',
+        caption: 'now it is time to decide when to run',
+        tone: 'violet',
+      },
+    ],
+    rootLabel: 'FiberRoot',
+    rootCode: ROOT_SHAPE_CODE_EN,
   },
-  ensure: {
-    number: '6',
-    title: 'Wiring to ensureRootIsScheduled',
+  fields: {
+    badge: '01',
+    eyebrow: 'root lane fields',
+    title: 'The lane slots the root carries',
+    description:
+      'The root holds several lane bitmasks. Each records something different about the state those lanes are in.',
+    items: [
+      {
+        id: 'pending',
+        name: 'pendingLanes',
+        role: 'Lanes with work left',
+        description:
+          'OR-ed on with every incoming update. An empty value means the root has nothing to do.',
+        tone: 'indigo',
+      },
+      {
+        id: 'suspended',
+        name: 'suspendedLanes',
+        role: 'Lanes that are waiting',
+        description:
+          'Lanes that stalled mid-render waiting for data. Retrying would stall again, so they are skipped.',
+        tone: 'amber',
+      },
+      {
+        id: 'pinged',
+        name: 'pingedLanes',
+        role: 'Lanes worth retrying',
+        description:
+          'When the awaited data arrives, lanes move here from suspended and become retryable.',
+        tone: 'teal',
+      },
+      {
+        id: 'expired',
+        name: 'expiredLanes',
+        role: 'Lanes starved too long',
+        description:
+          'Marks lanes pushed back repeatedly. Once marked, they render synchronously without yielding.',
+        tone: 'sky',
+      },
+      {
+        id: 'finished',
+        name: 'finishedLanes',
+        role: 'Lanes that finished rendering',
+        description:
+          'Rendered and waiting to commit. They are removed from pendingLanes once the commit completes.',
+        tone: 'emerald',
+      },
+    ],
+    note: 'All five use the same bit positions, so one lane can be pending and suspended at the same time.',
+  },
+  marking: {
+    badge: '02',
+    eyebrow: 'markRootUpdated',
+    title: 'Four steps to leave the mark',
+    description:
+      'One setState does not touch a single Fiber. It leaves marks along the entire path up to the root.',
     steps: [
       {
-        title: 'Pending work mark done on the root',
-        body: ['root.pendingLanes |= lane', 'Work is now accumulated'],
-        accent: 'blue',
+        id: 'climb',
+        badge: 'step 1',
+        title: 'Climb from Fiber to root',
+        body: 'Follow return pointers, setting the bit in each ancestor childLanes.',
+        tone: 'cyan',
       },
       {
-        title: 'ensureRootIsScheduled(root)',
-        body: ['Check with the Root Scheduler', 'when and how to actually run this root'],
-        accent: 'teal',
+        id: 'or',
+        badge: 'step 2',
+        title: 'OR into pendingLanes',
+        body: 'On arrival the lane bit is set on the root. If already set, nothing changes.',
+        tone: 'indigo',
       },
       {
-        title: 'Next step (next page)',
-        body: ['The Scheduler computes nextLanes', 'and registers a task to run'],
-        accent: 'violet',
+        id: 'unsuspend',
+        badge: 'step 3',
+        title: 'Clear the suspended state',
+        body: 'Any non-idle update wipes the marks for lanes that were waiting.',
+        tone: 'amber',
+      },
+      {
+        id: 'ensure',
+        badge: 'step 4',
+        title: 'ensureRootIsScheduled',
+        body: 'With the record written, move on to check whether work is already booked.',
+        tone: 'violet',
       },
     ],
+    note: 'The childLanes from step 01 are what let rendering skip whole untouched branches. Bailout is grounded right here.',
   },
-  code: {
-    number: '7',
-    title: 'Source code preview',
-    cardA: {
-      title: 'Inside scheduleUpdateOnFiber: record lane on root',
-      fileLabel: 'ReactFiberWorkLoop.js',
-      code: CODE_A_EN,
-    },
-    cardB: {
-      title: 'markRootUpdated: OR-accumulate pendingLanes',
-      fileLabel: 'ReactFiberLane.js',
-      code: CODE_B_EN,
-    },
-    explanationTitle: 'Explanation',
-    explanation: [
-      'Every update accumulates as a bit in the root pendingLanes.',
-      'Then ensureRootIsScheduled hands execution off to the Root Scheduler.',
+  clearing: {
+    badge: '03',
+    eyebrow: 'lifecycle',
+    title: 'When does a set bit turn off',
+    description:
+      'Bits are set in one place but cleared in several. Knowing when each clears explains most scheduler behaviour.',
+    headers: ['Moment', 'Field that changes', 'What happens'],
+    rows: [
+      {
+        moment: 'When a render starts',
+        field: 'pendingLanes is untouched',
+        effect: 'The chosen lane becomes renderLanes; it is not removed from pending.',
+      },
+      {
+        moment: 'Waiting for data mid-render',
+        field: 'suspendedLanes',
+        effect: 'That lane moves to suspended so the next selection skips it.',
+      },
+      {
+        moment: 'The awaited data arrives',
+        field: 'pingedLanes',
+        effect: 'The lane moves from suspended to pinged and becomes retryable.',
+      },
+      {
+        moment: 'When the commit finishes',
+        field: 'Removed from pendingLanes',
+        effect: 'markRootFinished clears the finished lane bits and tidies related state.',
+      },
     ],
-    button: { label: 'See the code on GitHub', href: REACT_FIBER_WORK_LOOP_URL },
+    note: 'Not clearing at render start matters: work is not lost even when a render is thrown away mid-flight.',
   },
-  simulator: {
-    number: '8',
-    title: 'pendingLanes simulator',
-    actionTitle: 'Pick work',
-    resetLabel: 'Reset',
-    lanes: [
-      {
-        key: 'sync',
-        label: 'SyncLane',
-        buttonLabel: 'Add Sync update',
-        bitIndex: 1,
-        accent: 'blue',
-      },
-      {
-        key: 'transition',
-        label: 'TransitionLane',
-        buttonLabel: 'Add Transition update',
-        bitIndex: 8,
-        accent: 'teal',
-      },
-      {
-        key: 'retry',
-        label: 'RetryLane',
-        buttonLabel: 'Add Retry lane',
-        bitIndex: 12,
-        accent: 'violet',
-      },
-    ],
-    bitmaskTitle: 'root.pendingLanes bitmask',
-    bitmaskSubtitle: 'Showing the low 16 bits of 32',
-    binaryLabel: 'Current value (binary)',
-    decimalLabel: 'Current value (decimal)',
-    statusTitle: 'Work status',
-    emptyStatus: 'No pending work',
-    activeStatus: 'Pending work present',
-    description: 'Each bit represents a different lane; multiple kinds of work accumulate as bits.',
-  },
-  mission: {
-    number: '9',
-    title: 'Walk it in the source',
-    cards: [
-      {
-        title: 'Find scheduleUpdateOnFiber',
-        description: 'Look up the scheduleUpdateOnFiber function in ReactFiberWorkLoop.js.',
-        accent: 'blue',
-      },
-      {
-        title: 'Find the markRootUpdated call',
-        description: 'Find where scheduleUpdateOnFiber calls markRootUpdated(root, lane).',
-        accent: 'teal',
-      },
-      {
-        title: 'Check the ensureRootIsScheduled wiring',
-        description:
-          'Then see how ensureRootIsScheduled(root) is called and connects to the Root Scheduler.',
-        accent: 'violet',
-      },
-      {
-        title: 'Understand root.pendingLanes changes',
-        description: 'Note why a bitmask is the right shape — many lanes can be pending at once.',
-        accent: 'blue',
-      },
-    ],
-  },
-  takeaways: {
-    number: '10',
-    title: 'Key takeaways',
-    cards: [
-      {
-        number: '01',
-        title: 'Updates are marked as pending work on the root.',
-        description: 'markRootUpdated OR-accumulates the lane into root.pendingLanes.',
-        accent: 'blue',
-      },
-      {
-        number: '02',
-        title: 'markRootUpdated is what does that marking.',
-        description: 'It records on the root that this lane has work, as a bitmask.',
-        accent: 'teal',
-      },
-      {
-        number: '03',
-        title: 'Then the Root Scheduler decides the run order.',
-        description: 'ensureRootIsScheduled is called and we move on to the next step.',
-        accent: 'violet',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+    lookForLabel: 'Look for',
+    lookFor: 'markRootUpdated, markUpdateLaneFromFiberToRoot, markRootFinished',
+    whyLabel: 'Why',
+    why: 'Note that setting pendingLanes is a single |= line, and that the clearing code lives only in markRootFinished.',
+    code: MARK_ROOT_UPDATED_CODE_EN,
+    primaryCta: 'Read ReactFiberWorkLoop.js',
+    primaryHref: REACT_FIBER_WORK_LOOP_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'meet the Root Scheduler',
-    description: 'What does the Root Scheduler decide?',
+    title: 'Which of the pending items goes first',
+    description:
+      'Several bits are set in pendingLanes. Next comes the logic that picks which one to render.',
     cta: 'Go to the next page',
     href: '/pick-next-work',
   },

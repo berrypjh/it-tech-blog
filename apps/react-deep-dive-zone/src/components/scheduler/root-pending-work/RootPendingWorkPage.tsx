@@ -3,18 +3,11 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { EnsureRootScheduledConnection } from './sections/EnsureRootScheduledConnection';
-import { LaneUpdateDestination } from './sections/LaneUpdateDestination';
-import { MarkRootUpdatedSection } from './sections/MarkRootUpdatedSection';
-import { PendingLanesChange } from './sections/PendingLanesChange';
-import { PendingLanesSimulator } from './sections/PendingLanesSimulator';
-import { RootPendingWorkCodePreview } from './sections/RootPendingWorkCodePreview';
+import { LaneLifecycle } from './sections/LaneLifecycle';
+import { MarkingSteps } from './sections/MarkingSteps';
+import { RootLaneFields } from './sections/RootLaneFields';
+import { RootPendingWorkCodeCheckpoint } from './sections/RootPendingWorkCodeCheckpoint';
 import { RootPendingWorkHero } from './sections/RootPendingWorkHero';
-import { RootPendingWorkKeyTakeaways } from './sections/RootPendingWorkKeyTakeaways';
-import { RootPendingWorkMission } from './sections/RootPendingWorkMission';
-import { RootPendingWorkQuestionPanel } from './sections/RootPendingWorkQuestionPanel';
-import { ScheduleUpdateOnFiberFlow } from './sections/ScheduleUpdateOnFiberFlow';
-import { SuspendedRenderHandling } from './sections/SuspendedRenderHandling';
 import { rootPendingWorkContent } from './content';
 
 type Props = { locale: Locale };
@@ -25,17 +18,10 @@ export const RootPendingWorkPage = ({ locale }: Props) => {
   return (
     <StartPageShell>
       <RootPendingWorkHero content={c.hero} />
-      <RootPendingWorkQuestionPanel content={c.question} />
-      <LaneUpdateDestination content={c.destination} />
-      <ScheduleUpdateOnFiberFlow content={c.scheduleFlow} />
-      <MarkRootUpdatedSection content={c.markRoot} />
-      <PendingLanesChange content={c.pendingLanesChange} />
-      <SuspendedRenderHandling content={c.suspended} />
-      <EnsureRootScheduledConnection content={c.ensure} />
-      <RootPendingWorkCodePreview content={c.code} />
-      <PendingLanesSimulator content={c.simulator} />
-      <RootPendingWorkMission content={c.mission} />
-      <RootPendingWorkKeyTakeaways content={c.takeaways} />
+      <RootLaneFields content={c.fields} />
+      <MarkingSteps content={c.marking} />
+      <LaneLifecycle content={c.clearing} />
+      <RootPendingWorkCodeCheckpoint content={c.checkpoint} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

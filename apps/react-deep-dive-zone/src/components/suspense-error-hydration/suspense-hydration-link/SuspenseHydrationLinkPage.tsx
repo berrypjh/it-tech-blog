@@ -3,18 +3,11 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { BoundaryHydrationFlowSection } from './sections/BoundaryHydrationFlowSection';
-import { ClaimSuspenseSection } from './sections/ClaimSuspenseSection';
-import { CodePreviewSection } from './sections/CodePreviewSection';
-import { FallbackHtmlSection } from './sections/FallbackHtmlSection';
-import { FollowAlongSection } from './sections/FollowAlongSection';
-import { ForceClientRenderFlowSection } from './sections/ForceClientRenderFlowSection';
-import { HeroSection } from './sections/HeroSection';
-import { InteractiveTimelineSection } from './sections/InteractiveTimelineSection';
-import { QuestionSection } from './sections/QuestionSection';
-import { ServerSuspendErrorSection } from './sections/ServerSuspendErrorSection';
-import { TakeawaysSection } from './sections/TakeawaysSection';
-import { TimelineSection } from './sections/TimelineSection';
+import { BoundaryRoles } from './sections/BoundaryRoles';
+import { PlacementTable } from './sections/PlacementTable';
+import { StreamingSteps } from './sections/StreamingSteps';
+import { SuspenseHydrationCodeCheckpoint } from './sections/SuspenseHydrationCodeCheckpoint';
+import { SuspenseHydrationHero } from './sections/SuspenseHydrationHero';
 import { suspenseHydrationLinkContent } from './content';
 
 type Props = { locale: Locale };
@@ -24,18 +17,11 @@ export const SuspenseHydrationLinkPage = ({ locale }: Props) => {
 
   return (
     <StartPageShell>
-      <HeroSection content={c.hero} />
-      <QuestionSection content={c.question} />
-      <ServerSuspendErrorSection content={c.serverPaths} />
-      <FallbackHtmlSection content={c.fallbackHtml} />
-      <BoundaryHydrationFlowSection content={c.boundaryHydrationFlow} />
-      <ClaimSuspenseSection content={c.claim} />
-      <ForceClientRenderFlowSection content={c.forceClientRender} />
-      <TimelineSection content={c.timeline} />
-      <CodePreviewSection content={c.code} />
-      <InteractiveTimelineSection content={c.interactive} />
-      <FollowAlongSection content={c.followAlong} />
-      <TakeawaysSection content={c.takeaways} />
+      <SuspenseHydrationHero content={c.hero} />
+      <BoundaryRoles content={c.roles} />
+      <StreamingSteps content={c.streaming} />
+      <PlacementTable content={c.placement} />
+      <SuspenseHydrationCodeCheckpoint content={c.checkpoint} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

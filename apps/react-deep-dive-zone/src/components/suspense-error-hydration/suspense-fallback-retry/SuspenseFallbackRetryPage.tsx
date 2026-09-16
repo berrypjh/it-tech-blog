@@ -3,17 +3,11 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { BoundarySearchSection } from './sections/BoundarySearchSection';
-import { CaptureFallbackSection } from './sections/CaptureFallbackSection';
-import { CodePreviewSection } from './sections/CodePreviewSection';
-import { FollowAlongSection } from './sections/FollowAlongSection';
-import { HeroSection } from './sections/HeroSection';
-import { PendingFlowSection } from './sections/PendingFlowSection';
-import { QuestionSection } from './sections/QuestionSection';
-import { RetryQueueFlowSection } from './sections/RetryQueueFlowSection';
-import { RetrySimulator } from './sections/RetrySimulator';
-import { TakeawaysSection } from './sections/TakeawaysSection';
-import { UserCodeSection } from './sections/UserCodeSection';
+import { BehaviorTable } from './sections/BehaviorTable';
+import { BoundaryStates } from './sections/BoundaryStates';
+import { CaptureSteps } from './sections/CaptureSteps';
+import { SuspenseFallbackRetryCodeCheckpoint } from './sections/SuspenseFallbackRetryCodeCheckpoint';
+import { SuspenseFallbackRetryHero } from './sections/SuspenseFallbackRetryHero';
 import { suspenseFallbackRetryContent } from './content';
 
 type Props = { locale: Locale };
@@ -23,17 +17,11 @@ export const SuspenseFallbackRetryPage = ({ locale }: Props) => {
 
   return (
     <StartPageShell>
-      <HeroSection content={c.hero} />
-      <QuestionSection content={c.question} />
-      <UserCodeSection content={c.userCode} />
-      <PendingFlowSection content={c.pending} />
-      <BoundarySearchSection content={c.search} />
-      <CaptureFallbackSection content={c.capture} />
-      <RetryQueueFlowSection content={c.retryQueue} />
-      <CodePreviewSection content={c.code} />
-      <RetrySimulator content={c.simulator} />
-      <FollowAlongSection content={c.followAlong} />
-      <TakeawaysSection content={c.takeaways} />
+      <SuspenseFallbackRetryHero content={c.hero} />
+      <CaptureSteps content={c.capture} />
+      <BoundaryStates content={c.states} />
+      <BehaviorTable content={c.behaviors} />
+      <SuspenseFallbackRetryCodeCheckpoint content={c.checkpoint} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

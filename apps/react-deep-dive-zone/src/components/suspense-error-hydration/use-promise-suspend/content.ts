@@ -1,152 +1,87 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { PromiseState } from './tone';
+import type { ToneKey } from '../../shared/tones';
 
-export type StateCard = {
-  state: PromiseState;
+export type StateId = 'pending' | 'fulfilled' | 'rejected';
+
+export type PromiseState = {
+  id: StateId;
   label: string;
-  sublabel: string;
+  decision: string;
   description: string;
-  decisionLabel: string;
-  decisionText: string;
+  tone: ToneKey;
 };
 
-export type DiagramRow = {
-  state: PromiseState;
-  label: string;
-  description: string;
-  steps: string[];
-  previewKind: 'fulfilled' | 'pending' | 'rejected';
-  previewLabel?: string;
-};
+export type UseStepId = 'call' | 'track' | 'inspect' | 'throw' | 'resume';
 
-export type ExplainCard = {
-  state: PromiseState;
-  number: string;
+export type UseStep = {
+  id: UseStepId;
+  num: string;
   title: string;
   description: string;
-  preview: 'fulfilled' | 'pending' | 'rejected';
-  fulfilledCode?: string;
-  pendingLabel?: string;
-  rejectedTitle?: string;
-  rejectedBody?: string;
+  tone: ToneKey;
 };
 
-export type ConceptCard = { icon: 'pause' | 'lightning' | 'refresh' | 'shield'; label: string };
+export type TrackFactId = 'index' | 'status' | 'ping';
 
-export type ChecklistItem = { title: string; description: string };
-
-export type TakeawayCard = {
-  number: string;
+export type TrackFact = {
+  id: TrackFactId;
   title: string;
-  body: string;
-  accent: PromiseState | 'mixed';
-};
-
-export type SelectorResult = {
-  state: PromiseState;
-  title: string;
+  role: string;
   description: string;
-  preview: 'fulfilled' | 'pending' | 'rejected';
-  pendingLabel?: string;
-  fulfilledCode?: string;
-  rejectedTitle?: string;
-  rejectedBody?: string;
+  tone: ToneKey;
 };
 
 export type UsePromiseSuspendContent = {
   hero: {
     badge: string;
-    titleLines: [string, string];
+    title: { line1: string; line2: string };
     description: string;
-    code: {
-      label: string;
-      pill: string;
-      fileLabel: string;
-      content: string;
-    };
-    flowCard: {
-      title: string;
-      rootLabel: string;
-      states: {
-        state: PromiseState;
-        label: string;
-        result: string;
-      }[];
-    };
+    diagramBadge: string;
+    diagramCaption: string;
+    callLabel: string;
+    call: string;
+    states: PromiseState[];
   };
-  question: {
-    number: string;
+  states: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    question: string;
-    concepts: ConceptCard[];
+    description: string;
+    items: PromiseState[];
+    note: string;
   };
-  promiseStates: {
-    number: string;
+  steps: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    cards: StateCard[];
+    description: string;
+    items: UseStep[];
+    note: string;
   };
-  diagram: {
-    number: string;
+  tracking: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    rootTitle: string;
-    rootSubtitle: string;
-    rows: DiagramRow[];
+    description: string;
+    codeHeader: string;
+    code: string;
+    facts: TrackFact[];
+    note: string;
   };
-  explains: {
-    fulfilledLabel: string;
-    cards: ExplainCard[];
-  };
-  thenable: {
-    number: string;
-    title: string;
-    leftTitle: string;
-    leftIntro: string;
-    leftBullets: string[];
-    centerTitle: string;
-    indexes: string[];
-    hookCalls: string[];
-    tracked: string[];
-    rightTitle: string;
-    rightBody: string;
-  };
-  code: {
-    number: string;
+  checkpoint: {
+    badge: string;
+    eyebrow: string;
     title: string;
     fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
     code: string;
-    explanationTitle: string;
-    bullets: { name: string; description: string }[];
-    button: { label: string; href: string };
-  };
-  switcher: {
-    number: string;
-    title: string;
-    subtitle: string;
-    selectorLabel: string;
-    resultLabel: string;
-    timelineTitle: string;
-    options: {
-      state: PromiseState;
-      label: string;
-      sublabel: string;
-    }[];
-    results: Record<PromiseState, SelectorResult>;
-    timeline: {
-      primary: { label: string; state?: PromiseState }[];
-      alternativeLabel: string;
-      alternative: { label: string; state?: PromiseState }[];
-    };
-  };
-  followAlong: {
-    number: string;
-    title: string;
-    items: ChecklistItem[];
-  };
-  takeaways: {
-    number: string;
-    title: string;
-    cards: TakeawayCard[];
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -157,558 +92,390 @@ export type UsePromiseSuspendContent = {
   };
 };
 
-const HERO_CODE = `function Message({ messagePromise }) {
-  const message = use(messagePromise);
-
-  return <p>{message}</p>;
-}`;
-
-const THENABLE_CODE = `export function trackUsedThenable(thenableState, thenable, index) {
-  const trackedThenables = getThenablesFromState(thenableState);
-
+const TRACK_THENABLE_CODE = `export function trackUsedThenable<T>(
+  thenableState: ThenableState,
+  thenable: Thenable<T>,
+  index: number,
+): T {
+  const trackedThenables = thenableState;
   const previous = trackedThenables[index];
 
   if (previous === undefined) {
     trackedThenables.push(thenable);
+  } else if (previous !== thenable) {
+    // 같은 자리에 다른 thenable이 왔다: 이전 것은 버린다
+    thenable.then(noop, noop);
+    thenable = previous;
+  }
+
+  switch (thenable.status) {
+    case 'fulfilled':
+      return thenable.value;
+    case 'rejected':
+      throw thenable.reason;
+    default: {
+      if (typeof thenable.status === 'string') {
+        // 이미 누군가 추적을 붙여 둔 thenable
+        thenable.then(noop, noop);
+      } else {
+        // 처음 보는 Promise면 status를 심고 구독한다
+        const pending: PendingThenable<T> = (thenable: any);
+        pending.status = 'pending';
+        pending.then(
+          (fulfilledValue) => { /* status를 fulfilled로 */ },
+          (error) => { /* status를 rejected로 */ },
+        );
+      }
+      // 아직 값이 없으므로 렌더를 여기서 끊는다
+      suspendedThenable = thenable;
+      throw SuspenseException;
+    }
   }
 }`;
 
-const THENABLE_URL =
+const REACT_FIBER_THENABLE_HREF =
   'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberThenable.js';
+
+const KO_STATES: PromiseState[] = [
+  {
+    id: 'pending',
+    label: 'pending',
+    decision: '렌더를 끊는다',
+    description:
+      '값이 없으므로 반환할 것이 없습니다. SuspenseException을 던져 가장 가까운 Suspense로 넘깁니다.',
+    tone: 'violet',
+  },
+  {
+    id: 'fulfilled',
+    label: 'fulfilled',
+    decision: '값을 반환한다',
+    description: '이미 담겨 있는 value를 그대로 돌려줍니다. 렌더는 아무 일 없이 계속됩니다.',
+    tone: 'emerald',
+  },
+  {
+    id: 'rejected',
+    label: 'rejected',
+    decision: 'reason을 던진다',
+    description:
+      '보관해 둔 reason을 throw합니다. thenable이 아니므로 Error Boundary 경로로 갑니다.',
+    tone: 'amber',
+  },
+];
+
+const EN_STATES: PromiseState[] = [
+  {
+    id: 'pending',
+    label: 'pending',
+    decision: 'Cut the render short',
+    description:
+      'There is no value to return, so it throws SuspenseException and hands off to the nearest Suspense.',
+    tone: 'violet',
+  },
+  {
+    id: 'fulfilled',
+    label: 'fulfilled',
+    decision: 'Return the value',
+    description: 'The stored value is handed back and the render continues as if nothing happened.',
+    tone: 'emerald',
+  },
+  {
+    id: 'rejected',
+    label: 'rejected',
+    decision: 'Throw the reason',
+    description:
+      'The stored reason is thrown. It is not a thenable, so it takes the Error Boundary path.',
+    tone: 'amber',
+  },
+];
 
 const ko: UsePromiseSuspendContent = {
   hero: {
     badge: 'Suspense/Error · 2/10단계',
-    titleLines: ['use(Promise)는', '렌더링을 어떻게 멈출까?'],
+    title: { line1: 'use는 Promise를 기다리지 않는다', line2: '렌더를 끊고 나중에 다시 한다' },
     description:
-      'Promise가 아직 준비되지 않았다면 React는 값을 기다리는 대신 Suspense 경로로 렌더링을 넘깁니다.',
-    code: {
-      label: '사용자 코드 예시',
-      pill: 'JSX',
-      fileLabel: 'Message.tsx',
-      content: HERO_CODE,
-    },
-    flowCard: {
-      title: 'Promise 상태에 따른 세 갈래 흐름',
-      rootLabel: 'use(messagePromise)',
-      states: [
-        { state: 'pending', label: 'pending', result: 'Suspense 경로' },
-        { state: 'fulfilled', label: 'fulfilled', result: '값 렌더' },
-        { state: 'rejected', label: 'rejected', result: 'Error Boundary 경로' },
-      ],
-    },
+      'await처럼 보이지만 완전히 다릅니다. 값이 없으면 함수 실행을 예외로 중단하고, 준비된 뒤 컴포넌트를 처음부터 다시 실행합니다.',
+    diagramBadge: 'use(promise)',
+    diagramCaption: 'three states, three exits',
+    callLabel: '컴포넌트 본문',
+    call: 'const message = use(messagePromise);',
+    states: KO_STATES,
   },
-  question: {
-    number: '1',
-    title: '오늘 해결할 질문',
-    question:
-      'use(messagePromise)를 호출했는데 Promise가 pending 상태라면 React는 실제로 무엇을 할까?',
-    concepts: [
-      { icon: 'pause', label: '렌더링이 중단되는 순간' },
-      { icon: 'lightning', label: '어디로 제어가 이동할까?' },
-      { icon: 'refresh', label: '다시 이어지는 조건은?' },
-      { icon: 'shield', label: '에러는 어떻게 다를까?' },
-    ],
+  states: {
+    badge: '01',
+    eyebrow: 'three states',
+    title: 'Promise 상태가 곧 분기다',
+    description:
+      'use는 thenable의 status 하나만 봅니다. 값이 있으면 주고, 없으면 끊고, 실패했으면 던집니다.',
+    items: KO_STATES,
+    note: 'React는 이 status를 Promise에 직접 심어 둡니다. 표준 Promise에는 없는 필드라 처음 볼 때 낯설 수 있습니다.',
   },
-  promiseStates: {
-    number: '2',
-    title: 'Promise 상태 3가지',
-    cards: [
-      {
-        state: 'pending',
-        label: 'pending',
-        sublabel: '대기 중',
-        description: '아직 값이 준비되지 않음',
-        decisionLabel: 'React 렌더링 결정',
-        decisionText: 'Suspense fallback으로 전환',
-      },
-      {
-        state: 'fulfilled',
-        label: 'fulfilled',
-        sublabel: '성공',
-        description: '값이 준비됨',
-        decisionLabel: 'React 렌더링 결정',
-        decisionText: '실제 값으로 렌더 계속',
-      },
-      {
-        state: 'rejected',
-        label: 'rejected',
-        sublabel: '실패',
-        description: '값 생성 중 오류 발생',
-        decisionLabel: 'React 렌더링 결정',
-        decisionText: 'Error Boundary로 이동',
-      },
-    ],
-  },
-  diagram: {
-    number: '3',
-    title: '상태별 내부 흐름 다이어그램',
-    rootTitle: 'use(Promise)',
-    rootSubtitle: 'React 19',
-    rows: [
-      {
-        state: 'pending',
-        label: 'pending',
-        description: '값이 아직 없음',
-        steps: ['렌더 중단 (suspend)', '가장 가까운 <Suspense> fallback'],
-        previewKind: 'pending',
-      },
-      {
-        state: 'fulfilled',
-        label: 'fulfilled',
-        description: '값이 준비됨',
-        steps: ['resolved value 반환', 'JSX 렌더 계속 진행'],
-        previewKind: 'fulfilled',
-      },
-      {
-        state: 'rejected',
-        label: 'rejected',
-        description: '값 생성 실패',
-        steps: ['에러 다시 throw', '<ErrorBoundary> fallback'],
-        previewKind: 'rejected',
-      },
-    ],
-  },
-  explains: {
-    fulfilledLabel: '렌더 결과 예시',
-    cards: [
-      {
-        state: 'fulfilled',
-        number: '4',
-        title: 'fulfilled일 때',
-        description:
-          'Promise가 해결되면 resolved value를 반환합니다. 이후 JSX 렌더링이 계속 진행됩니다.',
-        preview: 'fulfilled',
-        fulfilledCode: '<p>안녕하세요, React!</p>',
-      },
-      {
-        state: 'pending',
-        number: '5',
-        title: 'pending일 때',
-        description:
-          '값을 반환하지 않고 렌더를 중단합니다. 가장 가까운 Suspense fallback이 표시됩니다.',
-        preview: 'pending',
-        pendingLabel: '로딩 중...',
-      },
-      {
-        state: 'rejected',
-        number: '6',
-        title: 'rejected일 때',
-        description:
-          'Promise가 거부되면 에러가 다시 throw됩니다. 에러는 Error Boundary로 전달됩니다.',
-        preview: 'rejected',
-        rejectedTitle: '오류가 발생했습니다',
-        rejectedBody: '잠시 후 다시 시도해주세요.',
-      },
-    ],
-  },
-  thenable: {
-    number: '7',
-    title: 'ReactFiberThenable.js는 무엇을 추적하나?',
-    leftTitle: '렌더 순서 기반 추적',
-    leftIntro: 'React는 렌더 순서(인덱스) 기준으로 thenable(Promise)을 추적합니다.',
-    leftBullets: [
-      '같은 렌더 내에서 동일한 인덱스의 Promise를 안정적으로 관리',
-      '중복 구독 방지',
-      '상태 변화를 정확히 재개하기 위함',
-    ],
-    centerTitle: '렌더 순서 기반 추적 예시',
-    indexes: ['0', '1', '2', '3', '4'],
-    hookCalls: ['user()', 'use(p1)', 'use(p2)', 'use(p3)', 'use(p4)'],
-    tracked: ['-', 'p1', 'p2', 'p3', 'p4'],
-    rightTitle: '핵심 포인트',
-    rightBody:
-      'thenable은 값이 아니라 "대기 가능한 작업"입니다. React는 그 작업의 상태를 추적해, 언제 멈추고 언제 다시 이어야 할지 결정합니다.',
-  },
-  code: {
-    number: '8',
-    title: '실제 코드 미리보기 (ReactFiberThenable.js)',
-    fileLabel: 'ReactFiberThenable.js',
-    code: THENABLE_CODE,
-    explanationTitle: '설명',
-    bullets: [
-      { name: 'thenableState', description: '현재 렌더에서 사용 중인 thenable 상태' },
-      { name: 'thenable', description: 'use()에 전달된 Promise 또는 thenable' },
-      { name: 'index', description: '렌더 순서상 이 use() 호출의 위치' },
-      {
-        name: '같은 위치에서 같은 Promise를 재사용',
-        description: '재사용해야 안정성이 보장됩니다.',
-      },
-    ],
-    button: { label: 'GitHub에서 코드 보기', href: THENABLE_URL },
-  },
-  switcher: {
-    number: '9',
-    title: 'Promise 상태 변환기',
-    subtitle: '상태를 선택해 결과를 확인해보세요',
-    selectorLabel: '상태 선택',
-    resultLabel: '결과',
-    timelineTitle: '상태 변화 타임라인',
-    options: [
-      { state: 'pending', label: 'pending', sublabel: '대기 중' },
-      { state: 'fulfilled', label: 'fulfilled', sublabel: '성공' },
-      { state: 'rejected', label: 'rejected', sublabel: '실패' },
-    ],
-    results: {
-      pending: {
-        state: 'pending',
-        title: 'pending → Suspense fallback',
-        description:
-          '값이 아직 준비되지 않았기 때문에 렌더가 중단되고, Suspense fallback UI가 보입니다.',
-        preview: 'pending',
-        pendingLabel: '로딩 중...',
-      },
-      fulfilled: {
-        state: 'fulfilled',
-        title: 'fulfilled → 실제 값 렌더',
-        description:
-          'Promise가 resolved value를 가지므로, React는 값을 반환하고 JSX 렌더를 계속합니다.',
-        preview: 'fulfilled',
-        fulfilledCode: '<p>메시지 내용</p>',
-      },
-      rejected: {
-        state: 'rejected',
-        title: 'rejected → Error Boundary',
-        description:
-          'Promise가 실패했기 때문에, React는 error를 다시 throw하고 Error Boundary 경로로 보냅니다.',
-        preview: 'rejected',
-        rejectedTitle: '오류가 발생했습니다',
-      },
-    },
-    timeline: {
-      primary: [
-        { label: '요청 시작' },
-        { label: 'pending', state: 'pending' },
-        { label: 'fulfilled', state: 'fulfilled' },
-        { label: 'resolved 렌더 재개' },
-      ],
-      alternativeLabel: '또는',
-      alternative: [
-        { label: 'rejected', state: 'rejected' },
-        { label: '에러 결과 Error Boundary' },
-      ],
-    },
-  },
-  followAlong: {
-    number: '10',
-    title: '직접 코드에서 따라가 보기',
+  steps: {
+    badge: '02',
+    eyebrow: 'what use does',
+    title: 'use 호출이 지나는 다섯 칸',
+    description:
+      '이름이 Hook처럼 생겼지만 Hook 리스트를 쓰지 않습니다. 대신 렌더 순서에 따른 별도 배열을 씁니다.',
     items: [
       {
-        title: 'React use 공식 문서 확인',
-        description: 'use의 API가 Promise를 어떻게 처리하는지 읽어보세요.',
+        id: 'call',
+        num: '01',
+        title: 'use(promise) 호출',
+        description: '컴포넌트 본문에서 아직 값인지 아닌지 모르는 것을 읽으려 합니다.',
+        tone: 'sky',
       },
       {
-        title: 'ReactFiberThenable.js 열기',
-        description: 'thenable 추적 로직을 이해해 봅니다.',
+        id: 'track',
+        num: '02',
+        title: 'thenable 추적 배열에 등록',
+        description: '이번 렌더에서 몇 번째 use인지를 인덱스로 삼아 배열에 담습니다.',
+        tone: 'teal',
       },
       {
-        title: 'trackUsedThenable 찾기',
-        description: '렌더 순서 기반 추적 방식을 확인합니다.',
+        id: 'inspect',
+        num: '03',
+        title: 'status 확인',
+        description: 'fulfilled면 value를, rejected면 reason을 꺼냅니다.',
+        tone: 'cyan',
       },
       {
-        title: 'Promise가 pending일 때',
-        description: '정상 값 반환 경로로 가지 않는 점을 정리합니다.',
+        id: 'throw',
+        num: '04',
+        title: 'pending이면 SuspenseException',
+        description: 'Promise 자체가 아니라 특별한 sentinel 값을 던져 렌더를 끊습니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'resume',
+        num: '05',
+        title: 'settle되면 재시도',
+        description: 'Promise가 풀리면 React가 렌더를 다시 걸고, 이번에는 03에서 값을 얻습니다.',
+        tone: 'emerald',
       },
     ],
+    note: '05에서 "이어서"가 아니라 "처음부터"라는 점이 중요합니다. 컴포넌트 함수가 통째로 다시 실행됩니다.',
   },
-  takeaways: {
-    number: '11',
-    title: '핵심 정리',
-    cards: [
+  tracking: {
+    badge: '03',
+    eyebrow: 'ReactFiberThenable',
+    title: '같은 Promise인지 어떻게 아는가',
+    description:
+      '재시도하면 컴포넌트가 다시 실행됩니다. 그때 같은 use 호출이 같은 Promise를 보게 하는 장치가 이 추적 배열입니다.',
+    codeHeader: 'packages/react-reconciler/src/ReactFiberThenable.js',
+    code: TRACK_THENABLE_CODE,
+    facts: [
       {
-        number: '1',
-        title: 'use(Promise)는 pending 상태에서 Suspense 경로를 만든다.',
-        body: '값 대신 "대기"를 모델링하고, 가장 가까운 Suspense fallback으로 이동한다.',
-        accent: 'pending',
+        id: 'index',
+        title: '순서로 식별한다',
+        role: '인덱스 기반',
+        description:
+          'Hook과 마찬가지로 이름이 아니라 호출 순서로 짝을 맞춥니다. 조건부 use가 위험한 이유입니다.',
+        tone: 'indigo',
       },
       {
-        number: '2',
-        title: 'fulfilled는 정상 렌더, rejected는 error 경로로 간다.',
-        body: '성공 시 resolved value, 실패 시 에러를 다시 throw하여 Error Boundary로 전달된다.',
-        accent: 'mixed',
+        id: 'status',
+        title: 'Promise에 status를 심는다',
+        role: '상태 캐시',
+        description:
+          '표준에 없는 status·value·reason 필드를 직접 붙여, 다음 렌더에서 동기적으로 읽습니다.',
+        tone: 'teal',
       },
       {
-        number: '3',
-        title: 'React는 thenable을 렌더 순서 기준으로 추적한다.',
-        body: '같은 위치의 Promise를 안정적으로 관리해 중복 구독을 막고, 재개 지점을 정확히 찾는다.',
-        accent: 'pending',
+        id: 'ping',
+        title: 'settle되면 깨운다',
+        role: '재시도 트리거',
+        description: 'then으로 구독해 두었다가 풀리는 순간 해당 root에 다시 렌더를 걸어 줍니다.',
+        tone: 'emerald',
       },
     ],
+    note: '렌더 중에 만든 Promise를 use에 넘기면 매번 새 객체라 인덱스는 같아도 다른 thenable이 됩니다. 무한 대기의 흔한 원인입니다.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberThenable.js',
+    lookForLabel: '볼 것',
+    lookFor: 'trackUsedThenable, SuspenseException, thenable.status',
+    whyLabel: '설명',
+    why: 'Promise가 아니라 SuspenseException이라는 sentinel을 던진다는 점이, 사용자 Promise와 섞이지 않게 하는 장치입니다.',
+    code: TRACK_THENABLE_CODE,
+    primaryCta: 'ReactFiberThenable.js 읽기',
+    primaryHref: REACT_FIBER_THENABLE_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'throwException은 Promise와 Error를 어떻게 구분할까?',
+    title: '던져진 것이 Promise인지 Error인지',
     description:
-      'render 중 던져진 값이 thenable인지 일반 에러인지 throwException이 어떻게 가르는지 이어서 살펴봅니다.',
+      '던지는 쪽을 봤으니 이제 받는 쪽입니다. React가 둘을 어떻게 가려내는지 확인합니다.',
     cta: '다음 페이지로 이동',
     href: '/promise-vs-error-split',
   },
 };
 
+const TRACK_THENABLE_CODE_EN = `export function trackUsedThenable<T>(
+  thenableState: ThenableState,
+  thenable: Thenable<T>,
+  index: number,
+): T {
+  const trackedThenables = thenableState;
+  const previous = trackedThenables[index];
+
+  if (previous === undefined) {
+    trackedThenables.push(thenable);
+  } else if (previous !== thenable) {
+    // a different thenable arrived at the same slot, so drop the new one
+    thenable.then(noop, noop);
+    thenable = previous;
+  }
+
+  switch (thenable.status) {
+    case 'fulfilled':
+      return thenable.value;
+    case 'rejected':
+      throw thenable.reason;
+    default: {
+      if (typeof thenable.status === 'string') {
+        // someone already attached tracking to this thenable
+        thenable.then(noop, noop);
+      } else {
+        // first time seeing it: stamp a status and subscribe
+        const pending: PendingThenable<T> = (thenable: any);
+        pending.status = 'pending';
+        pending.then(
+          (fulfilledValue) => { /* set status to fulfilled */ },
+          (error) => { /* set status to rejected */ },
+        );
+      }
+      // no value yet, so cut the render off here
+      suspendedThenable = thenable;
+      throw SuspenseException;
+    }
+  }
+}`;
+
 const en: UsePromiseSuspendContent = {
   hero: {
-    badge: 'Suspense·Error · 2/10',
-    titleLines: ['How does use(Promise)', 'pause rendering?'],
+    badge: 'Suspense/Error · 2/10',
+    title: { line1: 'use does not wait for a Promise', line2: 'it cuts the render and retries' },
     description:
-      'When a Promise is not ready yet, React does not wait for it — it hands the render over to the Suspense path.',
-    code: {
-      label: 'User code example',
-      pill: 'JSX',
-      fileLabel: 'Message.tsx',
-      content: HERO_CODE,
-    },
-    flowCard: {
-      title: 'Three branches by Promise state',
-      rootLabel: 'use(messagePromise)',
-      states: [
-        { state: 'pending', label: 'pending', result: 'Suspense path' },
-        { state: 'fulfilled', label: 'fulfilled', result: 'Render value' },
-        { state: 'rejected', label: 'rejected', result: 'Error Boundary path' },
-      ],
-    },
+      'It looks like await but behaves nothing like it. Without a value it aborts the function by throwing, then runs the component again from the top once ready.',
+    diagramBadge: 'use(promise)',
+    diagramCaption: 'three states, three exits',
+    callLabel: 'component body',
+    call: 'const message = use(messagePromise);',
+    states: EN_STATES,
   },
-  question: {
-    number: '1',
-    title: "Today's question",
-    question:
-      'You call use(messagePromise), but the Promise is pending — what does React actually do?',
-    concepts: [
-      { icon: 'pause', label: 'When the render is paused' },
-      { icon: 'lightning', label: 'Where control flows next' },
-      { icon: 'refresh', label: 'When it resumes' },
-      { icon: 'shield', label: 'How errors differ' },
-    ],
+  states: {
+    badge: '01',
+    eyebrow: 'three states',
+    title: 'The Promise state is the branch',
+    description:
+      'use looks at a single field: the thenable status. Value present, hand it over; absent, cut; failed, throw.',
+    items: EN_STATES,
+    note: 'React stamps that status onto the Promise itself. It is not a standard field, which makes it surprising on first sight.',
   },
-  promiseStates: {
-    number: '2',
-    title: 'Three Promise states',
-    cards: [
-      {
-        state: 'pending',
-        label: 'pending',
-        sublabel: 'waiting',
-        description: 'The value is not ready yet',
-        decisionLabel: "React's render decision",
-        decisionText: 'Switch to Suspense fallback',
-      },
-      {
-        state: 'fulfilled',
-        label: 'fulfilled',
-        sublabel: 'success',
-        description: 'The value is ready',
-        decisionLabel: "React's render decision",
-        decisionText: 'Continue rendering with the value',
-      },
-      {
-        state: 'rejected',
-        label: 'rejected',
-        sublabel: 'failure',
-        description: 'An error happened while resolving',
-        decisionLabel: "React's render decision",
-        decisionText: 'Hand off to the Error Boundary',
-      },
-    ],
-  },
-  diagram: {
-    number: '3',
-    title: 'Internal flow diagram per state',
-    rootTitle: 'use(Promise)',
-    rootSubtitle: 'React 19',
-    rows: [
-      {
-        state: 'pending',
-        label: 'pending',
-        description: 'No value yet',
-        steps: ['Suspend the render', 'Nearest <Suspense> fallback'],
-        previewKind: 'pending',
-      },
-      {
-        state: 'fulfilled',
-        label: 'fulfilled',
-        description: 'Value is ready',
-        steps: ['Return the resolved value', 'Continue rendering JSX'],
-        previewKind: 'fulfilled',
-      },
-      {
-        state: 'rejected',
-        label: 'rejected',
-        description: 'Resolving failed',
-        steps: ['Re-throw the error', '<ErrorBoundary> fallback'],
-        previewKind: 'rejected',
-      },
-    ],
-  },
-  explains: {
-    fulfilledLabel: 'Render result example',
-    cards: [
-      {
-        state: 'fulfilled',
-        number: '4',
-        title: 'When fulfilled',
-        description:
-          'When the Promise resolves, the resolved value is returned and JSX rendering continues.',
-        preview: 'fulfilled',
-        fulfilledCode: '<p>Hello, React!</p>',
-      },
-      {
-        state: 'pending',
-        number: '5',
-        title: 'When pending',
-        description:
-          'No value is returned — the render is suspended, and the nearest Suspense fallback is shown.',
-        preview: 'pending',
-        pendingLabel: 'Loading...',
-      },
-      {
-        state: 'rejected',
-        number: '6',
-        title: 'When rejected',
-        description:
-          'When the Promise is rejected the error is re-thrown and forwarded to the Error Boundary.',
-        preview: 'rejected',
-        rejectedTitle: 'Something went wrong',
-        rejectedBody: 'Please try again in a moment.',
-      },
-    ],
-  },
-  thenable: {
-    number: '7',
-    title: 'What does ReactFiberThenable.js track?',
-    leftTitle: 'Render-order based tracking',
-    leftIntro: 'React tracks each thenable (Promise) by its render-order index.',
-    leftBullets: [
-      'Same index in the same render is reused stably',
-      'Prevents duplicate subscriptions',
-      'Lets state transitions resume at the right place',
-    ],
-    centerTitle: 'Render-order tracking example',
-    indexes: ['0', '1', '2', '3', '4'],
-    hookCalls: ['user()', 'use(p1)', 'use(p2)', 'use(p3)', 'use(p4)'],
-    tracked: ['-', 'p1', 'p2', 'p3', 'p4'],
-    rightTitle: 'Key point',
-    rightBody:
-      'A thenable is not a value but a "waitable task". React tracks the state of that task to decide when to pause and when to resume.',
-  },
-  code: {
-    number: '8',
-    title: 'Source preview (ReactFiberThenable.js)',
-    fileLabel: 'ReactFiberThenable.js',
-    code: THENABLE_CODE,
-    explanationTitle: 'Explanation',
-    bullets: [
-      { name: 'thenableState', description: 'Thenable state used in the current render' },
-      { name: 'thenable', description: 'Promise or thenable passed into use()' },
-      { name: 'index', description: 'Position of this use() call in render order' },
-      {
-        name: 'Reuse the same Promise at the same position',
-        description: 'so stability is guaranteed.',
-      },
-    ],
-    button: { label: 'View source on GitHub', href: THENABLE_URL },
-  },
-  switcher: {
-    number: '9',
-    title: 'Promise state switcher',
-    subtitle: 'Pick a state to see the result',
-    selectorLabel: 'Pick a state',
-    resultLabel: 'Result',
-    timelineTitle: 'State transition timeline',
-    options: [
-      { state: 'pending', label: 'pending', sublabel: 'waiting' },
-      { state: 'fulfilled', label: 'fulfilled', sublabel: 'success' },
-      { state: 'rejected', label: 'rejected', sublabel: 'failure' },
-    ],
-    results: {
-      pending: {
-        state: 'pending',
-        title: 'pending → Suspense fallback',
-        description:
-          'Because the value is not ready yet, the render is suspended and the Suspense fallback UI is shown.',
-        preview: 'pending',
-        pendingLabel: 'Loading...',
-      },
-      fulfilled: {
-        state: 'fulfilled',
-        title: 'fulfilled → render the value',
-        description:
-          'Because the Promise has a resolved value, React returns it and keeps rendering JSX.',
-        preview: 'fulfilled',
-        fulfilledCode: '<p>Message content</p>',
-      },
-      rejected: {
-        state: 'rejected',
-        title: 'rejected → Error Boundary',
-        description:
-          'Because the Promise failed, React re-throws the error and forwards it down the Error Boundary path.',
-        preview: 'rejected',
-        rejectedTitle: 'Something went wrong',
-      },
-    },
-    timeline: {
-      primary: [
-        { label: 'Start request' },
-        { label: 'pending', state: 'pending' },
-        { label: 'fulfilled', state: 'fulfilled' },
-        { label: 'Resume rendering with resolved value' },
-      ],
-      alternativeLabel: 'or',
-      alternative: [
-        { label: 'rejected', state: 'rejected' },
-        { label: 'Error result → Error Boundary' },
-      ],
-    },
-  },
-  followAlong: {
-    number: '10',
-    title: 'Walk it in the source',
+  steps: {
+    badge: '02',
+    eyebrow: 'what use does',
+    title: 'Five stops inside one use call',
+    description:
+      'It is shaped like a Hook but does not use the Hook list. It keeps a separate array indexed by call order.',
     items: [
       {
-        title: 'Read the use() docs',
-        description: 'Read how the use API handles Promises.',
+        id: 'call',
+        num: '01',
+        title: 'use(promise) is called',
+        description:
+          'The component body tries to read something that may or may not be a value yet.',
+        tone: 'sky',
       },
       {
-        title: 'Open ReactFiberThenable.js',
-        description: 'Understand the thenable tracking logic.',
+        id: 'track',
+        num: '02',
+        title: 'Register in the thenable array',
+        description: 'Which use call this is during this render becomes its index in the array.',
+        tone: 'teal',
       },
       {
-        title: 'Find trackUsedThenable',
-        description: 'Confirm the render-order based tracking.',
+        id: 'inspect',
+        num: '03',
+        title: 'Inspect the status',
+        description: 'Take value when fulfilled, take reason when rejected.',
+        tone: 'cyan',
       },
       {
-        title: 'When Promise is pending',
-        description: 'Note that it does not go through the normal return path.',
+        id: 'throw',
+        num: '04',
+        title: 'Pending throws SuspenseException',
+        description: 'A dedicated sentinel — not the Promise itself — is thrown to cut the render.',
+        tone: 'violet',
+      },
+      {
+        id: 'resume',
+        num: '05',
+        title: 'Retry once it settles',
+        description: 'React re-schedules the render, and this time step 03 finds a value.',
+        tone: 'emerald',
       },
     ],
+    note: 'Step 05 restarts rather than resumes: the whole component function runs again from the top.',
   },
-  takeaways: {
-    number: '11',
-    title: 'Key recap',
-    cards: [
+  tracking: {
+    badge: '03',
+    eyebrow: 'ReactFiberThenable',
+    title: 'How it knows it is the same Promise',
+    description:
+      'A retry re-runs the component. This tracking array is what makes the same use call see the same Promise again.',
+    codeHeader: 'packages/react-reconciler/src/ReactFiberThenable.js',
+    code: TRACK_THENABLE_CODE_EN,
+    facts: [
       {
-        number: '1',
-        title: 'use(Promise) sets up the Suspense path when pending.',
-        body: 'It models a "wait" instead of a value and moves to the nearest Suspense fallback.',
-        accent: 'pending',
+        id: 'index',
+        title: 'Identified by order',
+        role: 'Index based',
+        description:
+          'Like Hooks, pairing is by call order rather than name — which is why a conditional use is dangerous.',
+        tone: 'indigo',
       },
       {
-        number: '2',
-        title: 'fulfilled is normal render, rejected is the error path.',
-        body: 'On success the resolved value flows through; on failure the error is re-thrown to the Error Boundary.',
-        accent: 'mixed',
+        id: 'status',
+        title: 'Status is stamped on the Promise',
+        role: 'State cache',
+        description:
+          'Non-standard status, value and reason fields are attached so the next render can read synchronously.',
+        tone: 'teal',
       },
       {
-        number: '3',
-        title: 'React tracks thenables by render order.',
-        body: 'It stably manages the same Promise at the same position to avoid duplicate subscriptions and resume at the right point.',
-        accent: 'pending',
+        id: 'ping',
+        title: 'Wakes up on settle',
+        role: 'Retry trigger',
+        description:
+          'A then subscription schedules another render on that root the moment the Promise settles.',
+        tone: 'emerald',
       },
     ],
+    note: 'Passing a Promise created during render means a new object every time — same index, different thenable. A common cause of endless loading.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberThenable.js',
+    lookForLabel: 'Look for',
+    lookFor: 'trackUsedThenable, SuspenseException, thenable.status',
+    whyLabel: 'Why',
+    why: 'Throwing a SuspenseException sentinel rather than the Promise keeps React from confusing it with your own values.',
+    code: TRACK_THENABLE_CODE_EN,
+    primaryCta: 'Read ReactFiberThenable.js',
+    primaryHref: REACT_FIBER_THENABLE_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'How does throwException tell Promise from Error?',
+    title: 'Promise or Error — telling them apart',
     description:
-      'Continue with how throwException decides whether a thrown value is a thenable or a regular error.',
+      'Having seen the throwing side, next comes the catching side and how React sorts the two.',
     cta: 'Go to the next page',
     href: '/promise-vs-error-split',
   },

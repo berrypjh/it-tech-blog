@@ -1,149 +1,93 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type ContextAccent = 'blue' | 'teal' | 'violet';
+import type { ToneKey } from '../../shared/tones';
 
-export type ConceptCard = { title: string; description: string; accent: ContextAccent };
+export type ContextId = 'click' | 'transition' | 'render';
 
 export type ContextCard = {
-  key: 'click' | 'transition' | 'render';
+  id: ContextId;
   label: string;
-  subtitle: string;
-  descriptionLines: string[];
-  accent: ContextAccent;
+  caption: string;
+  lane: string;
+  tone: ToneKey;
 };
 
-export type SameSetStateCard = {
-  key: 'click' | 'transition' | 'render';
-  title: string;
-  subtitle: string;
-  fileLabel: string;
+export type ResultRow = {
+  context: string;
   code: string;
-  assignedLane: string;
-  accent: ContextAccent;
+  lane: string;
+  why: string;
 };
 
-export type BranchNode = {
-  number: string;
-  question: string;
-  yesLabel: string;
-  yesResult: string;
-  isFinal?: boolean;
-};
+export type BranchId = 'legacy' | 'render' | 'transition' | 'event';
 
-export type BranchExplanationCard =
-  | {
-      kind: 'badge';
-      key: 'legacy';
-      title: string;
-      body: string;
-      resultBadge: string;
-      accent: ContextAccent;
-    }
-  | {
-      kind: 'render';
-      key: 'render';
-      title: string;
-      body: string;
-      middleLabel: string;
-      result: string;
-      accent: ContextAccent;
-    }
-  | {
-      kind: 'flow';
-      key: 'transition' | 'event';
-      title: string;
-      body: string;
-      flowSteps: string[];
-      accent: ContextAccent;
-    };
-
-export type MissionCard = { title: string; description: string; accent: ContextAccent };
-
-export type TakeawayCard = {
-  number: string;
+export type Branch = {
+  id: BranchId;
+  num: string;
   title: string;
   description: string;
-  accent: ContextAccent;
+  tone: ToneKey;
 };
 
-export type SimulatorScenario = {
-  key: 'click' | 'transition' | 'render';
-  tabLabel: string;
-  selectedContext: string;
-  contextDescription: string;
-  assignedLane: string;
-  bitmaskExample: string;
-  bitmaskHighlight: number[];
-  codeFlow: string[];
-  accent: ContextAccent;
-};
+export type CarrierId = 'priority' | 'transition' | 'render-lanes';
 
-export type LaneSummaryItem = {
+export type Carrier = {
+  id: CarrierId;
   name: string;
+  role: string;
   description: string;
-  accent: ContextAccent | 'amber' | 'cyan';
+  tone: ToneKey;
 };
 
-export type RequestUpdateLaneContent = {
+export type UpdateToLaneContent = {
   hero: {
     badge: string;
-    titleLines: [string, string, string];
-    highlight: string;
-    subtitle: string;
-    codePill: string;
-    contextCards: ContextCard[];
+    title: { line1: string; line2: string };
+    description: string;
+    diagramBadge: string;
+    diagramCaption: string;
+    callLabel: string;
+    call: string;
+    contexts: ContextCard[];
   };
-  question: {
+  results: {
+    badge: string;
     eyebrow: string;
-    question: string;
-    cards: ConceptCard[];
-  };
-  sameSetState: {
-    number: string;
     title: string;
-    cards: SameSetStateCard[];
+    description: string;
+    headers: [string, string, string, string];
+    rows: ResultRow[];
+    note: string;
   };
-  branchFlow: {
-    number: string;
+  branches: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    flowStart: string;
-    nodes: BranchNode[];
-    explanationTitle: string;
-    cards: BranchExplanationCard[];
+    description: string;
+    items: Branch[];
+    note: string;
   };
-  code: {
-    number: string;
+  carriers: {
+    badge: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    items: Carrier[];
+    note: string;
+  };
+  checkpoint: {
+    badge: string;
+    eyebrow: string;
     title: string;
     fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
     code: string;
-    explanationTitle: string;
-    explanation: string[];
-    apiBadges: string[];
-    button: { label: string; href: string };
-  };
-  simulator: {
-    number: string;
-    title: string;
-    tabsLabel: string;
-    scenarios: SimulatorScenario[];
-    stageLabels: {
-      context: string;
-      lane: string;
-      flow: string;
-      bitmask: string;
-    };
-    laneSummaryTitle: string;
-    laneSummary: LaneSummaryItem[];
-  };
-  mission: {
-    number: string;
-    title: string;
-    cards: MissionCard[];
-  };
-  takeaways: {
-    number: string;
-    title: string;
-    cards: TakeawayCard[];
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -154,642 +98,358 @@ export type RequestUpdateLaneContent = {
   };
 };
 
-const REACT_FIBER_WORK_LOOP_URL =
+const REQUEST_UPDATE_LANE_CODE = `export function requestUpdateLane(fiber: Fiber): Lane {
+  // 1. legacy root이면 무조건 동기
+  const mode = fiber.mode;
+  if ((mode & ConcurrentMode) === NoMode) {
+    return SyncLane;
+  }
+
+  // 2. 렌더 중에 들어온 업데이트면 지금 렌더 중인 lane을 재사용
+  if (
+    (executionContext & RenderContext) !== NoContext &&
+    workInProgressRootRenderLanes !== NoLanes
+  ) {
+    return pickArbitraryLane(workInProgressRootRenderLanes);
+  }
+
+  // 3. transition 문맥이면 transition lane
+  const transition = requestCurrentTransition();
+  if (transition !== null) {
+    return requestTransitionLane(transition);
+  }
+
+  // 4. 그 외에는 현재 이벤트 문맥을 lane으로 변환
+  return eventPriorityToLane(resolveUpdatePriority());
+}`;
+
+const REACT_FIBER_WORK_LOOP_HREF =
   'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.js';
 
-const CODE_KO =
-  'const transition = requestCurrentTransition();\n\n' +
-  'if (transition !== null) {\n' +
-  '  // transition 문맥의 update라면\n' +
-  '  return requestTransitionLane(transition);\n' +
-  '}\n\n' +
-  '// 일반 이벤트 또는 기본 문맥의 경우\n' +
-  'return eventPriorityToLane(resolveUpdatePriority());';
-
-const CODE_EN =
-  'const transition = requestCurrentTransition();\n\n' +
-  'if (transition !== null) {\n' +
-  '  // when called inside a transition\n' +
-  '  return requestTransitionLane(transition);\n' +
-  '}\n\n' +
-  '// for a regular event or default context\n' +
-  'return eventPriorityToLane(resolveUpdatePriority());';
-
-const CLICK_CODE = '<button onClick={() => setTab("detail")}>상세 탭 보기</button>';
-const CLICK_CODE_EN = '<button onClick={() => setTab("detail")}>Open detail tab</button>';
-
-const TRANSITION_CODE =
-  'import { startTransition } from "react";\n\n' +
-  'startTransition(() => {\n' +
-  '  setTab("detail");\n' +
-  '});';
-
-const RENDER_CODE =
-  'function Component() {\n' +
-  '  if (needsFix) {\n' +
-  '    setState(...); // render phase update\n' +
-  '  }\n\n' +
-  '  return <div />;\n' +
-  '}';
-
-const ko: RequestUpdateLaneContent = {
+const ko: UpdateToLaneContent = {
   hero: {
     badge: 'Scheduler · 4/10단계',
-    titleLines: ['같은 setState라도', '어떤 문맥에서 호출되었는지에 따라', '다른 Lane을 받는다'],
-    highlight: '다른 Lane을 받는다',
-    subtitle: 'React는 update가 발생한 상황을 보고 적절한 lane을 결정합니다.',
-    codePill: "setTab('detail')",
-    contextCards: [
+    title: { line1: '같은 setState 한 줄이', line2: '부르는 자리마다 다른 lane을 받는다' },
+    description:
+      'requestUpdateLane은 무엇을 바꾸는지 보지 않습니다. 지금 어떤 문맥에서 호출됐는지만 보고 lane을 정합니다.',
+    diagramBadge: 'context → lane',
+    diagramCaption: 'same call, different lane',
+    callLabel: '똑같은 호출',
+    call: "setTab('detail')",
+    contexts: [
       {
-        key: 'click',
-        label: 'Click Handler',
-        subtitle: '이벤트 핸들러',
-        descriptionLines: ['Discrete Event', '→ 높은 우선순위 Lane'],
-        accent: 'blue',
+        id: 'click',
+        label: 'onClick 안에서',
+        caption: 'discrete 이벤트 문맥',
+        lane: 'SyncLane',
+        tone: 'emerald',
       },
       {
-        key: 'transition',
-        label: 'startTransition',
-        subtitle: 'Transition 문맥',
-        descriptionLines: ['Transition Lane', '→ 낮은 우선순위'],
-        accent: 'teal',
+        id: 'transition',
+        label: 'startTransition 안에서',
+        caption: 'transition 문맥',
+        lane: 'TransitionLane',
+        tone: 'teal',
       },
       {
-        key: 'render',
-        label: 'Render Phase Update',
-        subtitle: '렌더 중 업데이트',
-        descriptionLines: ['현재 render lanes 중', '적절한 lane 재사용'],
-        accent: 'violet',
-      },
-    ],
-  },
-  question: {
-    eyebrow: '오늘의 질문',
-    question:
-      'setState가 버튼 클릭 안에서 호출됐는가, startTransition 안에서 호출됐는가에 따라 React 내부 결과가 달라질까?',
-    cards: [
-      {
-        title: '문맥에 따라 Different Lane',
-        description: '동일한 setState라도 다른 lane을 받을 수 있다',
-        accent: 'blue',
-      },
-      {
-        title: '내부 분기 이해',
-        description: 'requestUpdateLane의 분기 흐름을 이해한다',
-        accent: 'teal',
-      },
-      {
-        title: '개념 연결',
-        description: 'Event Priority, Lane과 연결되어 동작한다',
-        accent: 'violet',
+        id: 'render',
+        label: '렌더 도중',
+        caption: '이미 렌더가 돌고 있는 상태',
+        lane: '현재 render lane 재사용',
+        tone: 'violet',
       },
     ],
   },
-  sameSetState: {
-    number: '1',
-    title: '같은 setState, 다른 lane',
-    cards: [
+  results: {
+    badge: '01',
+    eyebrow: 'same call',
+    title: '한 줄이 세 가지 결과로 갈린다',
+    description:
+      '아래 세 코드는 바꾸는 상태도 값도 같습니다. 다른 것은 호출된 위치뿐인데 배정되는 lane이 달라집니다.',
+    headers: ['문맥', '코드', '받는 lane', '왜 그런가'],
+    rows: [
       {
-        key: 'click',
-        title: '버튼 클릭',
-        subtitle: '이벤트 핸들러',
-        fileLabel: 'JSX',
-        code: CLICK_CODE,
-        assignedLane: 'SyncLane (Discrete)',
-        accent: 'blue',
+        context: '이벤트 핸들러',
+        code: "onClick={() => setTab('detail')}",
+        lane: 'SyncLane',
+        why: '이벤트 wrapper가 discrete 문맥을 세워 둔 상태라 그 값이 그대로 lane이 됩니다.',
       },
       {
-        key: 'transition',
-        title: 'Transition 문맥',
-        subtitle: 'startTransition',
-        fileLabel: 'JSX',
-        code: TRANSITION_CODE,
-        assignedLane: 'TransitionLane',
-        accent: 'teal',
+        context: 'startTransition',
+        code: "startTransition(() => setTab('detail'))",
+        lane: 'TransitionLane1~14 중 하나',
+        why: '전환 문맥이 잡혀 있으면 이벤트 문맥보다 먼저 검사되어 transition lane으로 갑니다.',
       },
       {
-        key: 'render',
-        title: '렌더 중 업데이트',
-        subtitle: 'Render Phase Update',
-        fileLabel: 'JSX',
-        code: RENDER_CODE,
-        assignedLane: 'RenderLanes 중 하나',
-        accent: 'violet',
+        context: '렌더 도중',
+        code: '컴포넌트 본문에서 setTab 호출',
+        lane: '지금 렌더 중인 lane',
+        why: '새 lane을 만들면 이번 렌더가 끝나지 않으므로, 돌고 있는 lane을 그대로 씁니다.',
       },
     ],
+    note: '같은 상태를 바꾸는데 반응 속도가 다르게 느껴진다면, 대개 호출 위치가 달라진 것입니다.',
   },
-  branchFlow: {
-    number: '2',
-    title: 'requestUpdateLane 전체 분기 흐름',
-    flowStart: 'requestUpdateLane(fiber)',
-    nodes: [
+  branches: {
+    badge: '02',
+    eyebrow: 'requestUpdateLane',
+    title: '네 개의 검사가 차례로 지나간다',
+    description:
+      '함수 본문은 early return 네 개가 전부입니다. 위에 있을수록 먼저 걸리므로 순서 자체가 규칙입니다.',
+    items: [
       {
-        number: '1',
-        question: 'Legacy root인가?',
-        yesLabel: 'Yes',
-        yesResult: 'SyncLane',
+        id: 'legacy',
+        num: '01',
+        title: 'legacy root인가',
+        description:
+          'ConcurrentMode가 아니면 더 볼 것 없이 SyncLane입니다. 옛 render API로 만든 앱이 여기 걸립니다.',
+        tone: 'sky',
       },
       {
-        number: '2',
-        question: 'Render Phase update인가?',
-        yesLabel: 'Yes',
-        yesResult: '현재 render lanes에서 선택',
+        id: 'render',
+        num: '02',
+        title: '렌더 중 업데이트인가',
+        description:
+          'executionContext가 RenderContext면 지금 렌더 중인 lane 하나를 골라 재사용합니다.',
+        tone: 'violet',
       },
       {
-        number: '3',
-        question: 'Transition 문맥인가?',
-        yesLabel: 'Yes',
-        yesResult: 'requestTransitionLane(...)',
+        id: 'transition',
+        num: '03',
+        title: 'transition 문맥인가',
+        description:
+          'requestCurrentTransition이 null이 아니면 transition lane을 받아 옵니다. 이벤트 문맥보다 우선합니다.',
+        tone: 'teal',
       },
       {
-        number: '4',
-        question: '일반 Event Priority → Lane 변환',
-        yesLabel: 'Result',
-        yesResult: 'eventPriorityToLane(resolveUpdatePriority())',
-        isFinal: true,
-      },
-    ],
-    explanationTitle: '분기별 설명',
-    cards: [
-      {
-        kind: 'badge',
-        key: 'legacy',
-        title: 'A. Legacy root 분기',
-        body: 'Concurrent Mode가 아닌 오래된 root인 경우, 모든 update는 SyncLane으로 처리됩니다. 최신 React 학습의 핵심은 이후 분기입니다.',
-        resultBadge: 'SyncLane',
-        accent: 'blue',
-      },
-      {
-        kind: 'render',
-        key: 'render',
-        title: 'B. Render phase update 분기',
-        body: '렌더 도중 같은 컴포넌트에서 발생한 업데이트는 현재 렌더 중인 lanes 중 하나를 재사용합니다.',
-        middleLabel: '현재 render lanes 예시',
-        result: '재사용될 lane 선택',
-        accent: 'violet',
-      },
-      {
-        kind: 'flow',
-        key: 'transition',
-        title: 'C. Transition 분기',
-        body: '현재 transition 문맥이 존재하면, transition lane을 할당합니다.',
-        flowSteps: ['startTransition 실행 중', 'requestTransitionLane(transition)'],
-        accent: 'teal',
-      },
-      {
-        kind: 'flow',
-        key: 'event',
-        title: 'D. 일반 Event update 분기',
-        body: '어떠한 특수 문맥이 아니라면, 현재 update priority를 확인하고 해당 우선순위를 Lane으로 변환합니다.',
-        flowSteps: ['resolveUpdatePriority()', 'eventPriorityToLane(...)'],
-        accent: 'blue',
+        id: 'event',
+        num: '04',
+        title: '그 외 일반 업데이트',
+        description:
+          '앞의 셋에 걸리지 않으면 현재 이벤트 문맥을 읽어 lane으로 바꿉니다. 대부분이 여기로 옵니다.',
+        tone: 'amber',
       },
     ],
+    note: '03이 04보다 위에 있다는 점이 중요합니다. 그래서 onClick 안에서 startTransition을 쓰면 transition 쪽이 이깁니다.',
   },
-  code: {
-    number: '3',
-    title: '실제 코드 미리보기',
-    fileLabel: 'ReactFiberWorkLoop.js',
-    code: CODE_KO,
-    explanationTitle: '설명',
-    explanation: [
-      'requestCurrentTransition()은 현재 transition이 진행 중인지 확인합니다.',
-      'transition이 존재하면 requestTransitionLane으로 이동합니다.',
-      '그렇지 않다면 resolveUpdatePriority()로 현재 이벤트 우선순위를 읽고, eventPriorityToLane으로 lane을 변환합니다.',
+  carriers: {
+    badge: '03',
+    eyebrow: 'how context travels',
+    title: '문맥은 인자가 아니라 모듈 변수로 온다',
+    description:
+      'requestUpdateLane이 받는 인자는 fiber 하나뿐입니다. 나머지 판단 재료는 전부 모듈 스코프에 놓여 있습니다.',
+    items: [
+      {
+        id: 'priority',
+        name: 'currentUpdatePriority',
+        role: '이벤트 문맥',
+        description:
+          '이벤트 dispatch wrapper가 실행 직전에 세우고 끝나면 되돌리는 값입니다. 04 분기가 이것을 읽습니다.',
+        tone: 'amber',
+      },
+      {
+        id: 'transition',
+        name: 'ReactSharedInternals.T',
+        role: '전환 문맥',
+        description:
+          'startTransition이 콜백을 부르기 전에 채우고 끝나면 비웁니다. 03 분기가 이것을 봅니다.',
+        tone: 'teal',
+      },
+      {
+        id: 'render-lanes',
+        name: 'workInProgressRootRenderLanes',
+        role: '렌더 문맥',
+        description:
+          '렌더가 시작될 때 세팅되는 현재 렌더의 lane 집합입니다. 02 분기가 여기서 하나를 골라 씁니다.',
+        tone: 'violet',
+      },
     ],
-    apiBadges: [
-      'requestCurrentTransition',
-      'requestTransitionLane',
-      'eventPriorityToLane',
-      'resolveUpdatePriority',
-    ],
-    button: { label: 'GitHub에서 코드 보기', href: REACT_FIBER_WORK_LOOP_URL },
+    note: '문맥을 인자로 넘기지 않기 때문에 비동기 경계를 넘으면 문맥이 사라집니다. await 뒤의 setState가 다른 lane을 받는 이유입니다.',
   },
-  simulator: {
-    number: '4',
-    title: '문맥별 Lane 시뮬레이터',
-    tabsLabel: 'context selector',
-    scenarios: [
-      {
-        key: 'click',
-        tabLabel: 'Click handler',
-        selectedContext: 'Click handler',
-        contextDescription: '버튼 클릭 등 Discrete Event 핸들러 안에서 setState가 호출됨',
-        assignedLane: 'SyncLane (Discrete)',
-        bitmaskExample: '0000000000010',
-        bitmaskHighlight: [10],
-        codeFlow: [
-          'requestUpdateLane(fiber)',
-          'resolveUpdatePriority() === Discrete',
-          'eventPriorityToLane(Discrete)',
-          'SyncLane 반환',
-        ],
-        accent: 'blue',
-      },
-      {
-        key: 'transition',
-        tabLabel: 'startTransition',
-        selectedContext: 'startTransition',
-        contextDescription: 'startTransition 안에서 setState가 호출됨',
-        assignedLane: 'TransitionLane',
-        bitmaskExample: '0000000010000',
-        bitmaskHighlight: [7],
-        codeFlow: [
-          'requestUpdateLane(fiber)',
-          'requestCurrentTransition() !== null',
-          'requestTransitionLane(transition)',
-          'TransitionLane 반환',
-        ],
-        accent: 'teal',
-      },
-      {
-        key: 'render',
-        tabLabel: 'Render phase',
-        selectedContext: 'Render phase update',
-        contextDescription: '렌더 도중 같은 컴포넌트에서 setState가 호출됨',
-        assignedLane: 'RenderLanes 중 하나',
-        bitmaskExample: '0000000100000',
-        bitmaskHighlight: [6],
-        codeFlow: [
-          'requestUpdateLane(fiber)',
-          'isRenderPhaseUpdate(...) === true',
-          '현재 render lanes에서 lane 선택',
-          '재사용 lane 반환',
-        ],
-        accent: 'violet',
-      },
-    ],
-    stageLabels: {
-      context: 'Selected context',
-      lane: 'Assigned Lane',
-      flow: 'Code flow',
-      bitmask: 'Bitmask 예시',
-    },
-    laneSummaryTitle: 'Lane 그룹 요약',
-    laneSummary: [
-      { name: 'SyncLane', description: '즉시 처리해야 할 업데이트', accent: 'blue' },
-      { name: 'InputContinuousLane', description: '입력 연속 이벤트', accent: 'cyan' },
-      { name: 'DefaultLane', description: '일반 업데이트', accent: 'teal' },
-      { name: 'TransitionLanes', description: '전환/상태 UI 변경', accent: 'violet' },
-      { name: 'Retry / Offscreen / Idle 등', description: '특수 목적', accent: 'amber' },
-    ],
-  },
-  mission: {
-    number: '5',
-    title: '직접 코드에서 따라가 보기',
-    cards: [
-      {
-        title: 'requestUpdateLane 찾기',
-        description: 'ReactFiberWorkLoop.js에서 이 함수 정의를 찾습니다.',
-        accent: 'blue',
-      },
-      {
-        title: 'transition 분기 확인',
-        description: 'requestCurrentTransition → requestTransitionLane 흐름을 확인합니다.',
-        accent: 'teal',
-      },
-      {
-        title: '일반 update 분기 확인',
-        description: 'eventPriorityToLane(resolveUpdatePriority())로 이어지는 경로를 확인합니다.',
-        accent: 'violet',
-      },
-      {
-        title: '문맥에 따른 lane 차이 정리',
-        description: '같은 setState라도 문맥이 다르면 lane이 달라진다는 점을 정리합니다.',
-        accent: 'blue',
-      },
-    ],
-  },
-  takeaways: {
-    number: '6',
-    title: '핵심 정리',
-    cards: [
-      {
-        number: '01',
-        title: 'Lane은 update가 발생한 문맥에 따라 결정된다.',
-        description: '이벤트, transition, 렌더 중 상황 등 다양한 문맥을 구분해 처리된다.',
-        accent: 'blue',
-      },
-      {
-        number: '02',
-        title: 'transition 문맥은 별도 transition lane으로 간다.',
-        description: 'startTransition 안에서는 낮은 우선순위 lane 그룹이 사용된다.',
-        accent: 'teal',
-      },
-      {
-        number: '03',
-        title: '일반 update는 현재 Event Priority를 Lane으로 바꾼다.',
-        description: 'eventPriorityToLane이 핵심 연결 고리이며, Event Priority와 Lane을 연결한다.',
-        accent: 'violet',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+    lookForLabel: '볼 것',
+    lookFor: 'requestUpdateLane, requestCurrentTransition, pickArbitraryLane',
+    whyLabel: '설명',
+    why: '인자가 fiber 하나뿐인데 결과가 네 갈래로 갈린다는 점이, 판단 재료가 전부 바깥에 있다는 증거입니다.',
+    code: REQUEST_UPDATE_LANE_CODE,
+    primaryCta: 'ReactFiberWorkLoop.js 읽기',
+    primaryHref: REACT_FIBER_WORK_LOOP_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'Transition과 Deferred Update 보기',
+    title: 'transition은 왜 따로 취급되는가',
     description:
-      '문맥별 Lane 분기를 익혔다면, transition과 deferred update가 어떻게 낮은 우선순위를 얻는지 살펴봅니다.',
+      '03 분기에서 갈라진 transition 쪽을 따라갑니다. useDeferredValue와는 또 어떻게 다른지도 봅니다.',
     cta: '다음 페이지로 이동',
     href: '/transition-deferred-split',
   },
 };
 
-const en: RequestUpdateLaneContent = {
+const en: UpdateToLaneContent = {
   hero: {
     badge: 'Scheduler · 4/10',
-    titleLines: ['The same setState', 'gets a different Lane', 'depending on where it is called'],
-    highlight: 'depending on where it is called',
-    subtitle: 'React looks at the context in which an update occurs to pick the right lane.',
-    codePill: "setTab('detail')",
-    contextCards: [
+    title: { line1: 'The same setState line', line2: 'gets a different lane per call site' },
+    description:
+      'requestUpdateLane never looks at what you are changing. It looks only at the context the call happens in.',
+    diagramBadge: 'context → lane',
+    diagramCaption: 'same call, different lane',
+    callLabel: 'the very same call',
+    call: "setTab('detail')",
+    contexts: [
       {
-        key: 'click',
-        label: 'Click Handler',
-        subtitle: 'Event handler',
-        descriptionLines: ['Discrete Event', '→ high-priority Lane'],
-        accent: 'blue',
+        id: 'click',
+        label: 'Inside onClick',
+        caption: 'a discrete event context',
+        lane: 'SyncLane',
+        tone: 'emerald',
       },
       {
-        key: 'transition',
-        label: 'startTransition',
-        subtitle: 'Transition context',
-        descriptionLines: ['Transition Lane', '→ low priority'],
-        accent: 'teal',
+        id: 'transition',
+        label: 'Inside startTransition',
+        caption: 'a transition context',
+        lane: 'TransitionLane',
+        tone: 'teal',
       },
       {
-        key: 'render',
-        label: 'Render Phase Update',
-        subtitle: 'Update during render',
-        descriptionLines: ['Reuses one of the', 'current render lanes'],
-        accent: 'violet',
-      },
-    ],
-  },
-  question: {
-    eyebrow: "Today's question",
-    question:
-      'Does it matter to React whether setState was called inside a click handler versus inside startTransition?',
-    cards: [
-      {
-        title: 'Different lane by context',
-        description: 'The same setState can receive a different lane.',
-        accent: 'blue',
-      },
-      {
-        title: 'Understand internal branching',
-        description: 'Learn the branch flow of requestUpdateLane.',
-        accent: 'teal',
-      },
-      {
-        title: 'Connect the concepts',
-        description: 'It connects to Event Priority and Lane.',
-        accent: 'violet',
+        id: 'render',
+        label: 'During a render',
+        caption: 'a render is already in flight',
+        lane: 'reuses the current render lane',
+        tone: 'violet',
       },
     ],
   },
-  sameSetState: {
-    number: '1',
-    title: 'Same setState, different lane',
-    cards: [
+  results: {
+    badge: '01',
+    eyebrow: 'same call',
+    title: 'One line, three outcomes',
+    description:
+      'These three change the same state to the same value. Only the call site differs, and yet the assigned lane changes.',
+    headers: ['Context', 'Code', 'Lane it gets', 'Why'],
+    rows: [
       {
-        key: 'click',
-        title: 'Button click',
-        subtitle: 'Event handler',
-        fileLabel: 'JSX',
-        code: CLICK_CODE_EN,
-        assignedLane: 'SyncLane (Discrete)',
-        accent: 'blue',
+        context: 'Event handler',
+        code: "onClick={() => setTab('detail')}",
+        lane: 'SyncLane',
+        why: 'The event wrapper has installed a discrete context, and that value becomes the lane directly.',
       },
       {
-        key: 'transition',
-        title: 'Transition context',
-        subtitle: 'startTransition',
-        fileLabel: 'JSX',
-        code: TRANSITION_CODE,
-        assignedLane: 'TransitionLane',
-        accent: 'teal',
+        context: 'startTransition',
+        code: "startTransition(() => setTab('detail'))",
+        lane: 'One of TransitionLane1–14',
+        why: 'A transition context is checked before the event context, so it wins and yields a transition lane.',
       },
       {
-        key: 'render',
-        title: 'Update during render',
-        subtitle: 'Render Phase Update',
-        fileLabel: 'JSX',
-        code: RENDER_CODE,
-        assignedLane: 'One of the RenderLanes',
-        accent: 'violet',
+        context: 'During a render',
+        code: 'setTab called in the component body',
+        lane: 'The lane currently rendering',
+        why: 'A new lane would keep this render from finishing, so the in-flight lane is reused.',
       },
     ],
+    note: 'When the same state change feels differently responsive, the call site has usually moved.',
   },
-  branchFlow: {
-    number: '2',
-    title: 'Full branch flow of requestUpdateLane',
-    flowStart: 'requestUpdateLane(fiber)',
-    nodes: [
-      { number: '1', question: 'Is it a Legacy root?', yesLabel: 'Yes', yesResult: 'SyncLane' },
+  branches: {
+    badge: '02',
+    eyebrow: 'requestUpdateLane',
+    title: 'Four checks, taken in order',
+    description:
+      'The body is four early returns. Whatever sits higher is caught first, so the order is itself the rule.',
+    items: [
       {
-        number: '2',
-        question: 'Is it a Render phase update?',
-        yesLabel: 'Yes',
-        yesResult: 'pick from current render lanes',
-      },
-      {
-        number: '3',
-        question: 'Is there a Transition context?',
-        yesLabel: 'Yes',
-        yesResult: 'requestTransitionLane(...)',
-      },
-      {
-        number: '4',
-        question: 'General Event Priority → Lane conversion',
-        yesLabel: 'Result',
-        yesResult: 'eventPriorityToLane(resolveUpdatePriority())',
-        isFinal: true,
-      },
-    ],
-    explanationTitle: 'Branch explanations',
-    cards: [
-      {
-        kind: 'badge',
-        key: 'legacy',
-        title: 'A. Legacy root branch',
-        body: 'On an older (non-Concurrent Mode) root, every update is treated as SyncLane. Modern React learning lives in the next branches.',
-        resultBadge: 'SyncLane',
-        accent: 'blue',
-      },
-      {
-        kind: 'render',
-        key: 'render',
-        title: 'B. Render phase update branch',
-        body: 'An update fired during render in the same component reuses one of the lanes currently being rendered.',
-        middleLabel: 'current render lanes example',
-        result: 'a lane to reuse',
-        accent: 'violet',
-      },
-      {
-        kind: 'flow',
-        key: 'transition',
-        title: 'C. Transition branch',
-        body: 'If a transition context is active, a transition lane is assigned.',
-        flowSteps: ['inside startTransition', 'requestTransitionLane(transition)'],
-        accent: 'teal',
-      },
-      {
-        kind: 'flow',
-        key: 'event',
-        title: 'D. General event update branch',
-        body: 'Without any special context, React reads the current update priority and converts it to a Lane.',
-        flowSteps: ['resolveUpdatePriority()', 'eventPriorityToLane(...)'],
-        accent: 'blue',
-      },
-    ],
-  },
-  code: {
-    number: '3',
-    title: 'Source code preview',
-    fileLabel: 'ReactFiberWorkLoop.js',
-    code: CODE_EN,
-    explanationTitle: 'Explanation',
-    explanation: [
-      'requestCurrentTransition() checks if a transition is currently active.',
-      'When a transition exists, control jumps to requestTransitionLane.',
-      'Otherwise resolveUpdatePriority() reads the current event priority and eventPriorityToLane converts it into a Lane.',
-    ],
-    apiBadges: [
-      'requestCurrentTransition',
-      'requestTransitionLane',
-      'eventPriorityToLane',
-      'resolveUpdatePriority',
-    ],
-    button: { label: 'See the code on GitHub', href: REACT_FIBER_WORK_LOOP_URL },
-  },
-  simulator: {
-    number: '4',
-    title: 'Context Lane simulator',
-    tabsLabel: 'context selector',
-    scenarios: [
-      {
-        key: 'click',
-        tabLabel: 'Click handler',
-        selectedContext: 'Click handler',
-        contextDescription: 'setState is called inside a Discrete Event handler such as a click',
-        assignedLane: 'SyncLane (Discrete)',
-        bitmaskExample: '0000000000010',
-        bitmaskHighlight: [10],
-        codeFlow: [
-          'requestUpdateLane(fiber)',
-          'resolveUpdatePriority() === Discrete',
-          'eventPriorityToLane(Discrete)',
-          'returns SyncLane',
-        ],
-        accent: 'blue',
-      },
-      {
-        key: 'transition',
-        tabLabel: 'startTransition',
-        selectedContext: 'startTransition',
-        contextDescription: 'setState is called inside startTransition',
-        assignedLane: 'TransitionLane',
-        bitmaskExample: '0000000010000',
-        bitmaskHighlight: [7],
-        codeFlow: [
-          'requestUpdateLane(fiber)',
-          'requestCurrentTransition() !== null',
-          'requestTransitionLane(transition)',
-          'returns TransitionLane',
-        ],
-        accent: 'teal',
-      },
-      {
-        key: 'render',
-        tabLabel: 'Render phase',
-        selectedContext: 'Render phase update',
-        contextDescription: 'setState is called during the render of the same component',
-        assignedLane: 'One of the RenderLanes',
-        bitmaskExample: '0000000100000',
-        bitmaskHighlight: [6],
-        codeFlow: [
-          'requestUpdateLane(fiber)',
-          'isRenderPhaseUpdate(...) === true',
-          'pick a lane from current render lanes',
-          'returns the reused lane',
-        ],
-        accent: 'violet',
-      },
-    ],
-    stageLabels: {
-      context: 'Selected context',
-      lane: 'Assigned Lane',
-      flow: 'Code flow',
-      bitmask: 'Bitmask example',
-    },
-    laneSummaryTitle: 'Lane group summary',
-    laneSummary: [
-      { name: 'SyncLane', description: 'Updates that must run immediately', accent: 'blue' },
-      { name: 'InputContinuousLane', description: 'Continuous input events', accent: 'cyan' },
-      { name: 'DefaultLane', description: 'General updates', accent: 'teal' },
-      { name: 'TransitionLanes', description: 'Transition / state UI changes', accent: 'violet' },
-      { name: 'Retry / Offscreen / Idle, etc.', description: 'Special purposes', accent: 'amber' },
-    ],
-  },
-  mission: {
-    number: '5',
-    title: 'Walk it in the source',
-    cards: [
-      {
-        title: 'Find requestUpdateLane',
-        description: 'Look up the definition in ReactFiberWorkLoop.js.',
-        accent: 'blue',
-      },
-      {
-        title: 'Check the transition branch',
-        description: 'Trace requestCurrentTransition → requestTransitionLane.',
-        accent: 'teal',
-      },
-      {
-        title: 'Check the general update branch',
-        description: 'Follow the path to eventPriorityToLane(resolveUpdatePriority()).',
-        accent: 'violet',
-      },
-      {
-        title: 'Summarize lane differences by context',
+        id: 'legacy',
+        num: '01',
+        title: 'Is this a legacy root',
         description:
-          'Write down that the same setState gets a different lane depending on context.',
-        accent: 'blue',
+          'Without ConcurrentMode it is SyncLane and nothing else is examined. Apps on the old render API land here.',
+        tone: 'sky',
+      },
+      {
+        id: 'render',
+        num: '02',
+        title: 'Is this a render-phase update',
+        description:
+          'When executionContext is RenderContext, one of the currently rendering lanes is reused.',
+        tone: 'violet',
+      },
+      {
+        id: 'transition',
+        num: '03',
+        title: 'Is there a transition context',
+        description:
+          'If requestCurrentTransition is not null, a transition lane is taken. This outranks the event context.',
+        tone: 'teal',
+      },
+      {
+        id: 'event',
+        num: '04',
+        title: 'Everything else',
+        description:
+          'If none of the above match, the current event context is read and converted to a lane. Most updates arrive here.',
+        tone: 'amber',
       },
     ],
+    note: 'That 03 sits above 04 matters: using startTransition inside an onClick lets the transition side win.',
   },
-  takeaways: {
-    number: '6',
-    title: 'Key takeaways',
-    cards: [
+  carriers: {
+    badge: '03',
+    eyebrow: 'how context travels',
+    title: 'Context arrives as module state, not as an argument',
+    description:
+      'requestUpdateLane takes exactly one argument, the fiber. Everything else it decides on lives in module scope.',
+    items: [
       {
-        number: '01',
-        title: 'A Lane is decided by the context the update happens in.',
-        description: 'Events, transitions, render-phase updates — each is handled distinctly.',
-        accent: 'blue',
+        id: 'priority',
+        name: 'currentUpdatePriority',
+        role: 'Event context',
+        description:
+          'Set by the event dispatch wrapper just before running and restored afterwards. Branch 04 reads it.',
+        tone: 'amber',
       },
       {
-        number: '02',
-        title: 'A transition context goes to a dedicated transition lane.',
-        description: 'Inside startTransition, the low-priority lane group is used.',
-        accent: 'teal',
+        id: 'transition',
+        name: 'ReactSharedInternals.T',
+        role: 'Transition context',
+        description:
+          'Filled by startTransition before invoking the callback and cleared after. Branch 03 checks it.',
+        tone: 'teal',
       },
       {
-        number: '03',
-        title: 'General updates convert the current Event Priority into a Lane.',
-        description: 'eventPriorityToLane is the bridge between Event Priority and Lane.',
-        accent: 'violet',
+        id: 'render-lanes',
+        name: 'workInProgressRootRenderLanes',
+        role: 'Render context',
+        description:
+          'The lane set of the render in flight, assigned when rendering starts. Branch 02 picks one from it.',
+        tone: 'violet',
       },
     ],
+    note: 'Because context is never passed as an argument, it disappears across an async boundary — which is why a setState after await gets a different lane.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+    lookForLabel: 'Look for',
+    lookFor: 'requestUpdateLane, requestCurrentTransition, pickArbitraryLane',
+    whyLabel: 'Why',
+    why: 'One argument in, four possible outcomes out — proof that everything it decides on lives outside the function.',
+    code: REQUEST_UPDATE_LANE_CODE,
+    primaryCta: 'Read ReactFiberWorkLoop.js',
+    primaryHref: REACT_FIBER_WORK_LOOP_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Transition & Deferred Update',
+    title: 'Why transitions get their own treatment',
     description:
-      "Now that you know context-based branching, let's see how transitions and deferred updates earn low priority.",
+      'Next we follow the transition branch from check 03, and see how useDeferredValue differs again.',
     cta: 'Go to the next page',
     href: '/transition-deferred-split',
   },
 };
 
-export const requestUpdateLaneContent: Record<Locale, RequestUpdateLaneContent> = { ko, en };
+export const updateToLaneContent: Record<Locale, UpdateToLaneContent> = { ko, en };

@@ -1,2 +1,2 @@
-export { laneBitmaskContent } from './content';
-export { LaneBitmaskPage } from './LaneBitmaskPage';
+export { laneShapeContent } from './content';
+export { LaneShapePage } from './LaneShapePage';

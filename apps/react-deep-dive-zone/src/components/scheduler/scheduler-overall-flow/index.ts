@@ -1,2 +1,2 @@
-export { fullFlowContent } from './content';
-export { SchedulerFullFlowReviewPage } from './SchedulerFullFlowReviewPage';
+export { schedulerOverallFlowContent } from './content';
+export { SchedulerOverallFlowPage } from './SchedulerOverallFlowPage';

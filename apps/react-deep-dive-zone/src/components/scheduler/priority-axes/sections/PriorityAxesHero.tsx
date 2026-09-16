@@ -7,20 +7,15 @@ import {
 } from '../../../shared/hero';
 import { TerminalBadge } from '../../../shared/terminal';
 import { PriorityAxesHeroDiagram } from '../components/PriorityAxesHeroDiagram';
-import type { ThreePriorityAxesContent } from '../content';
+import type { PriorityAxesContent } from '../content';
 
-type Props = { content: ThreePriorityAxesContent['hero'] };
+type Props = { content: PriorityAxesContent['hero'] };
 
 export const PriorityAxesHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="react-reconciler/priority-axes.md"
-    promptSuffix={
-      <span className="text-[var(--term-dim)]">
-        {' // event-priority → lane → scheduler-priority'}
-      </span>
-    }
-    gridColumns="lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)]"
+    promptPath="packages/react-reconciler/src/ReactFiberWorkLoop.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -29,16 +24,11 @@ export const PriorityAxesHero = ({ content }: Props) => (
       </TerminalBadge>
 
       <HeroTitle>
-        <span className="block">{content.titleLines[0]}</span>
-        <span className="block text-[var(--term-accent)]">{content.titleLines[1]}</span>
+        <span className="block">{content.title.line1}</span>
+        <span className="block text-[var(--term-accent)]">{content.title.line2}</span>
       </HeroTitle>
 
-      <HeroDescription maxWidth="max-w-[40ch]">{content.subtitle}</HeroDescription>
-
-      <div className="hidden lg:flex items-center gap-2 text-[10px] font-mono uppercase tracking-wider text-[var(--term-dim)]">
-        <span className="inline-block h-px w-8 bg-[var(--term-border)]" />
-        <span>event &rarr; lane &rarr; scheduler</span>
-      </div>
+      <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
     <HeroVisualColumn id="hero-priority-axes">

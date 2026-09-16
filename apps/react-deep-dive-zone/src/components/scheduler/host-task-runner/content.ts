@@ -1,158 +1,85 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type PkgAccent = 'blue' | 'teal' | 'violet' | 'slate' | 'amber';
+import type { ToneKey } from '../../shared/tones';
 
-export type PriorityKey = 'immediate' | 'userBlocking' | 'normal' | 'low' | 'idle';
+export type SideId = 'root' | 'package';
 
-export type ConceptCard = { title: string; description: string; accent: PkgAccent };
-
-export type ComparisonRow = {
-  label: string;
-  root: string;
-  scheduler: string;
-};
-
-export type FlowStep = {
+export type Side = {
+  id: SideId;
   title: string;
-  description: string;
-  isCode?: boolean;
-  accent: PkgAccent;
-};
-
-export type PriorityCard = {
-  key: PriorityKey;
-  title: string;
-  subtitle: string;
-  description: string;
-  badge?: string;
-  accent: PkgAccent;
-  /** for the task-queue lab: bigger sortKey = lower priority */
-  sortKey: number;
-};
-
-export type ConnectionCard = {
-  number: string;
-  title: string;
-  subtitle: string;
-  items: string[];
-  accent: PkgAccent;
-};
-
-export type MissionCard = { title: string; description: string; accent: PkgAccent };
-
-export type TakeawayCard = {
-  number: string;
-  title: string;
-  description: string;
-  accent: PkgAccent;
-};
-
-export type LabPriority = 'immediate' | 'normal' | 'low';
-
-export type LabAction = {
-  key: LabPriority;
-  label: string;
   badge: string;
-  accent: PkgAccent;
-  sortKey: number;
+  description: string;
+  bullets: string[];
+  tone: ToneKey;
 };
 
-export type SchedulerPackageContent = {
+export type PriorityId = 'immediate' | 'user-blocking' | 'normal' | 'low' | 'idle';
+
+export type PriorityLevel = {
+  id: PriorityId;
+  name: string;
+  timeout: string;
+  description: string;
+  tone: ToneKey;
+};
+
+export type QueueStepId = 'build' | 'push' | 'host-callback' | 'work-loop' | 'run';
+
+export type QueueStep = {
+  id: QueueStepId;
+  num: string;
+  title: string;
+  description: string;
+  tone: ToneKey;
+};
+
+export type HostTaskRunnerContent = {
   hero: {
     badge: string;
-    titleLines: [string, string, string];
-    highlight: string;
-    subtitle: string;
-    leftCard: {
-      title: string;
-      subtitle: string;
-      items: string[];
-    };
-    bridge: string;
-    rightCard: {
-      title: string;
-      subtitle: string;
-      items: string[];
-    };
+    title: { line1: string; line2: string };
+    description: string;
+    diagramBadge: string;
+    diagramCaption: string;
+    bridgeLabel: string;
+    sides: [Side, Side];
   };
-  question: {
+  roles: {
+    badge: string;
     eyebrow: string;
-    question: string;
-    cards: ConceptCard[];
-  };
-  comparison: {
-    number: string;
     title: string;
-    columns: { label: string; root: string; scheduler: string };
-    rows: ComparisonRow[];
-  };
-  callbackMoment: {
-    number: string;
-    title: string;
-    steps: FlowStep[];
-    bottomNote: string;
-  };
-  taskQueue: {
-    number: string;
-    title: string;
-    queueTitle: string;
-    queueSubtitle: string;
-    items: { label: string; accent: PkgAccent }[];
-    currentQueueTitle: string;
-    currentItems: { label: string; note: string; accent: PkgAccent }[];
+    description: string;
+    sides: [Side, Side];
+    bridge: { headline: string; sub: string };
   };
   priorities: {
-    number: string;
+    badge: string;
+    eyebrow: string;
     title: string;
-    cards: PriorityCard[];
-    directionStart: string;
-    directionEnd: string;
+    description: string;
+    items: PriorityLevel[];
+    note: string;
   };
-  internalFlow: {
-    number: string;
+  queue: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    steps: FlowStep[];
+    description: string;
+    steps: QueueStep[];
+    note: string;
   };
-  reactToScheduler: {
-    number: string;
+  checkpoint: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    cards: ConnectionCard[];
-  };
-  code: {
-    number: string;
-    title: string;
-    cardA: { title: string; fileLabel: string; code: string };
-    cardB: { title: string; fileLabel: string; code: string };
-    explanationTitle: string;
-    explanation: string[];
-    button: { label: string; href: string };
-  };
-  lab: {
-    number: string;
-    title: string;
-    helper: string;
-    actionTitle: string;
-    actions: LabAction[];
-    resetLabel: string;
-    queueTitle: string;
-    queueSubtitle: string;
-    emptyQueueLabel: string;
-    statusTitle: string;
-    lengthLabel: string;
-    nextLabel: string;
-    pendingActive: string;
-    pendingEmpty: string;
-    sortRule: string;
-  };
-  mission: {
-    number: string;
-    title: string;
-    cards: MissionCard[];
-  };
-  takeaways: {
-    number: string;
-    title: string;
-    cards: TakeawayCard[];
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -163,695 +90,418 @@ export type SchedulerPackageContent = {
   };
 };
 
-const REACT_FIBER_ROOT_SCHEDULER_URL =
-  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberRootScheduler.js';
-
-const CODE_A = `return Scheduler_scheduleCallback(
-  schedulerPriorityLevel,
-  performWorkOnRootViaSchedulerTask.bind(null, root),
-);`;
-
-const CODE_B_KO = `function unstable_scheduleCallback(priorityLevel, callback, options) {
+const SCHEDULE_CALLBACK_CODE = `function unstable_scheduleCallback(priorityLevel, callback, options) {
   const currentTime = getCurrentTime();
+  const startTime = currentTime;
 
-  // task 생성 및 queue 삽입
+  // 우선순위마다 다른 만료 시간을 준다
+  let timeout;
+  switch (priorityLevel) {
+    case ImmediatePriority:    timeout = -1; break;
+    case UserBlockingPriority: timeout = 250; break;
+    case IdlePriority:         timeout = 1073741823; break;
+    case LowPriority:          timeout = 10000; break;
+    default:                   timeout = 5000; break;
+  }
+
+  const expirationTime = startTime + timeout;
+
+  const newTask = {
+    id: taskIdCounter++,
+    callback,
+    priorityLevel,
+    startTime,
+    expirationTime,
+    sortIndex: -1,
+  };
+
+  newTask.sortIndex = expirationTime;
+  push(taskQueue, newTask);
+
+  // 아직 host callback이 예약되어 있지 않다면 예약한다
+  if (!isHostCallbackScheduled && !isPerformingWork) {
+    isHostCallbackScheduled = true;
+    requestHostCallback();
+  }
+
+  return newTask;
 }`;
 
-const CODE_B_EN = `function unstable_scheduleCallback(priorityLevel, callback, options) {
-  const currentTime = getCurrentTime();
+const SCHEDULER_HREF =
+  'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js';
 
-  // build the task and insert into the queue
-}`;
+const KO_SIDES: [Side, Side] = [
+  {
+    id: 'root',
+    title: 'Root Scheduler',
+    badge: 'react-reconciler 안',
+    description: '무엇을 할지 고르는 쪽입니다. React의 사정만 압니다.',
+    bullets: [
+      'pendingLanes에서 nextLanes를 고른다',
+      'lane을 Scheduler Priority로 변환한다',
+      '렌더와 커밋을 실제로 수행한다',
+      '브라우저 사정은 전혀 모른다',
+    ],
+    tone: 'indigo',
+  },
+  {
+    id: 'package',
+    title: 'scheduler 패키지',
+    badge: '독립 패키지',
+    description: '언제 할지 정하는 쪽입니다. React를 전혀 모릅니다.',
+    bullets: [
+      '우선순위별 task queue를 관리한다',
+      'MessageChannel로 host callback을 잡는다',
+      '프레임 시간이 남았는지 판단한다',
+      'Fiber도 lane도 알지 못한다',
+    ],
+    tone: 'violet',
+  },
+];
 
-const ko: SchedulerPackageContent = {
+const EN_SIDES: [Side, Side] = [
+  {
+    id: 'root',
+    title: 'Root Scheduler',
+    badge: 'inside react-reconciler',
+    description: 'The side that chooses what to do. It only knows about React.',
+    bullets: [
+      'Picks nextLanes out of pendingLanes',
+      'Converts a lane into a Scheduler Priority',
+      'Actually performs render and commit',
+      'Knows nothing about the browser',
+    ],
+    tone: 'indigo',
+  },
+  {
+    id: 'package',
+    title: 'The scheduler package',
+    badge: 'a standalone package',
+    description: 'The side that decides when. It knows nothing about React.',
+    bullets: [
+      'Maintains a task queue ordered by priority',
+      'Books a host callback through MessageChannel',
+      'Judges whether frame time remains',
+      'Has no idea what a Fiber or a lane is',
+    ],
+    tone: 'violet',
+  },
+];
+
+const ko: HostTaskRunnerContent = {
   hero: {
     badge: 'Scheduler · 8/10단계',
-    titleLines: ['React의 Root Scheduler와', 'scheduler 패키지는', '같은 것이 아니다'],
-    highlight: '같은 것이 아니다',
-    subtitle:
-      '하나는 어떤 React 작업을 실행할지 정하고, 다른 하나는 브라우저 메인 스레드에서 task 실행 시점을 조율합니다.',
-    leftCard: {
-      title: 'Root Scheduler',
-      subtitle: 'React Fiber 내부',
-      items: [
-        'nextLanes 선택',
-        '어떤 React work를 지금 처리할지 결정',
-        'Scheduler에 작업 등록을 요청',
-      ],
+    title: { line1: '고르는 쪽과 실행하는 쪽은', line2: '서로를 모른다' },
+    description:
+      'Root Scheduler와 scheduler 패키지는 다른 물건입니다. 둘을 잇는 것은 scheduleCallback 함수 하나뿐입니다.',
+    diagramBadge: 'two schedulers',
+    diagramCaption: 'what vs when',
+    bridgeLabel: 'scheduleCallback(priority, callback)',
+    sides: KO_SIDES,
+  },
+  roles: {
+    badge: '01',
+    eyebrow: 'role split',
+    title: '이름이 같아 헷갈리는 두 스케줄러',
+    description:
+      '둘 다 scheduler라고 불리지만 패키지도 책임도 다릅니다. 한쪽은 React 전용이고, 다른 쪽은 React 없이도 쓸 수 있습니다.',
+    sides: KO_SIDES,
+    bridge: {
+      headline: '무엇을 할지와\n언제 할지',
+      sub: '두 관심사를 갈라 두었기 때문에 scheduler 패키지를 React 바깥에서도 쓸 수 있고, React는 host 환경을 몰라도 됩니다.',
     },
-    bridge: 'scheduleCallback(priorityLevel, callback)',
-    rightCard: {
-      title: 'Scheduler Package',
-      subtitle: '별도 scheduler 패키지',
-      items: [
-        'host environment에서 task 실행 시점 조율',
-        'priority에 따른 queue 관리',
-        '브라우저 task로 실행',
-      ],
-    },
-  },
-  question: {
-    eyebrow: '오늘의 질문',
-    question: 'React가 nextLanes를 골랐다면, 그 작업은 브라우저에서 실제로 누가 실행할까?',
-    cards: [
-      { title: '역할 분리 이해', description: '두 스케줄러의 책임을 구분', accent: 'blue' },
-      {
-        title: '실행 경로 확인',
-        description: 'React work가 host task로 넘어가는 흐름 이해',
-        accent: 'teal',
-      },
-      {
-        title: '실행 시점 조율',
-        description: '브라우저 main thread에서 언제 실행할지 결정',
-        accent: 'violet',
-      },
-    ],
-  },
-  comparison: {
-    number: '1',
-    title: '역할 비교',
-    columns: {
-      label: '구분',
-      root: 'Root Scheduler (React Fiber 내부)',
-      scheduler: 'scheduler 패키지 (별도 패키지)',
-    },
-    rows: [
-      {
-        label: '핵심 질문',
-        root: '지금 어떤 React lanes를 처리할까?',
-        scheduler: '어떤 우선순위의 task를 언제 실행할까?',
-      },
-      {
-        label: '주요 역할',
-        root: 'nextLanes 선택, 우선순위 결정, 스케줄링 경로 선택',
-        scheduler: 'priority에 따라 task를 큐에 넣고, 실행 시점 조율',
-      },
-      {
-        label: '다루는 단위',
-        root: 'React의 lanes (비트마스크)',
-        scheduler: 'host task (JS 작업 단위)',
-      },
-      {
-        label: '결과',
-        root: 'work를 Scheduler에 넘김',
-        scheduler: '브라우저 메인 스레드에서 콜백 실행',
-      },
-    ],
-  },
-  callbackMoment: {
-    number: '2',
-    title: 'scheduleCallback이 필요한 순간',
-    steps: [
-      {
-        title: '비동기 lane 선택됨',
-        description: 'Root Scheduler가 async path 결정',
-        accent: 'blue',
-      },
-      {
-        title: 'callbackPriority 계산',
-        description: 'lane → schedulerPriorityLevel 변환',
-        accent: 'teal',
-      },
-      {
-        title: 'scheduleCallback(priorityLevel, callback)',
-        description: 'Scheduler 패키지에 task 등록',
-        isCode: true,
-        accent: 'violet',
-      },
-    ],
-    bottomNote: 'Root Scheduler → Scheduler 패키지로 작업 위임',
-  },
-  taskQueue: {
-    number: '3',
-    title: 'taskQueue 시각화',
-    queueTitle: 'taskQueue',
-    queueSubtitle: '우선순위가 높은 순서로 정렬',
-    items: [
-      { label: 'Immediate task', accent: 'blue' },
-      { label: 'UserBlocking task', accent: 'teal' },
-      { label: 'Normal task', accent: 'teal' },
-      { label: 'Low task', accent: 'violet' },
-    ],
-    currentQueueTitle: '현재 Queue 예시',
-    currentItems: [
-      { label: 'Immediate task', note: '작업 A', accent: 'blue' },
-      { label: 'Normal task', note: '작업 B', accent: 'teal' },
-      { label: 'Low task', note: '작업 C', accent: 'violet' },
-    ],
   },
   priorities: {
-    number: '4',
-    title: 'priorityLevel 카드',
-    cards: [
+    badge: '02',
+    eyebrow: 'priority levels',
+    title: '우선순위는 결국 만료 시간이다',
+    description:
+      'scheduler는 우선순위를 등급 이름으로 비교하지 않습니다. 등급마다 다른 타임아웃을 줘서 만료 시각으로 정렬합니다.',
+    items: [
       {
-        key: 'immediate',
-        title: 'Immediate',
-        subtitle: 'ImmediatePriority',
-        description: '지금 즉시 실행되어야 하는 작업. 예: Sync flush',
-        accent: 'blue',
-        sortKey: 0,
+        id: 'immediate',
+        name: 'ImmediatePriority',
+        timeout: '-1ms',
+        description: '이미 만료된 상태로 큐에 들어갑니다. 다음 기회에 무조건 먼저 실행됩니다.',
+        tone: 'emerald',
       },
       {
-        key: 'userBlocking',
-        title: 'UserBlocking',
-        subtitle: 'UserBlockingPriority',
-        description: '사용자 입력을 빠르게 반영하기 위해 최대한 빨리 실행',
-        accent: 'teal',
-        sortKey: 1,
+        id: 'user-blocking',
+        name: 'UserBlockingPriority',
+        timeout: '250ms',
+        description: '입력 반응을 지켜야 하는 작업. 사람이 지연을 느끼기 시작하는 경계값입니다.',
+        tone: 'sky',
       },
       {
-        key: 'normal',
-        title: 'Normal',
-        subtitle: 'NormalPriority',
-        description: '일반적인 작업. 기본적으로 이 레벨로 스케줄링',
-        badge: '현재 대표값',
-        accent: 'teal',
-        sortKey: 2,
+        id: 'normal',
+        name: 'NormalPriority',
+        timeout: '5000ms',
+        description: '기본값입니다. 특별한 문맥 없이 예약된 작업이 여기로 옵니다.',
+        tone: 'cyan',
       },
       {
-        key: 'low',
-        title: 'Low',
-        subtitle: 'LowPriority',
-        description: '백그라운드 성격의 덜 긴급한 작업',
-        accent: 'violet',
-        sortKey: 3,
+        id: 'low',
+        name: 'LowPriority',
+        timeout: '10000ms',
+        description: '뒤로 밀려도 괜찮은 작업. 10초 안에는 처리하겠다는 약속입니다.',
+        tone: 'teal',
       },
       {
-        key: 'idle',
-        title: 'Idle',
-        subtitle: 'IdlePriority',
-        description: '아무것도 급하지 않을 때 여유가 생기면 실행',
-        accent: 'slate',
-        sortKey: 4,
+        id: 'idle',
+        name: 'IdlePriority',
+        timeout: '사실상 무한',
+        description: '만료 시각이 없는 것이나 마찬가지입니다. 정말 할 일이 없을 때만 돌아옵니다.',
+        tone: 'violet',
       },
     ],
-    directionStart: '높은 우선순위 (즉시성 높음)',
-    directionEnd: '낮은 우선순위 (즉시성 낮음)',
+    note: '만료 시각으로 정렬하기 때문에 낮은 우선순위도 시간이 지나면 앞으로 나옵니다. 굶주림을 막는 장치가 여기에도 있습니다.',
   },
-  internalFlow: {
-    number: '5',
-    title: 'unstable_scheduleCallback 내부 개념 흐름',
+  queue: {
+    badge: '03',
+    eyebrow: 'task queue',
+    title: '등록에서 실행까지 다섯 칸',
+    description:
+      'scheduleCallback은 콜백을 부르지 않습니다. task를 만들어 힙에 넣고, 실행은 host callback이 따로 가져갑니다.',
     steps: [
       {
-        title: 'priorityLevel',
-        description: '예: NormalPriority',
-        accent: 'blue',
+        id: 'build',
+        num: '01',
+        title: 'task 객체 생성',
+        description: '우선순위에 맞는 타임아웃을 더해 만료 시각을 계산합니다.',
+        tone: 'sky',
       },
       {
-        title: 'timeout 결정',
-        description: '우선순위에 따른 만료 시간',
-        accent: 'teal',
+        id: 'push',
+        num: '02',
+        title: 'taskQueue에 삽입',
+        description: '만료 시각을 정렬 키로 쓰는 최소 힙에 넣습니다.',
+        tone: 'cyan',
       },
       {
-        title: 'task 생성',
-        description: 'callback + startTime + expiration',
-        accent: 'violet',
+        id: 'host-callback',
+        num: '03',
+        title: 'host callback 예약',
+        description: '아직 예약이 없으면 MessageChannel로 다음 매크로태스크를 잡습니다.',
+        tone: 'indigo',
       },
       {
-        title: 'taskQueue 또는 timerQueue 삽입',
-        description: '정렬 후 저장',
-        accent: 'amber',
+        id: 'work-loop',
+        num: '04',
+        title: 'workLoop 진입',
+        description: '예약한 콜백이 돌면 힙에서 가장 급한 task를 꺼냅니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'run',
+        num: '05',
+        title: 'callback 실행',
+        description: 'React가 넘긴 performWorkOnRoot가 여기서 처음 불립니다.',
+        tone: 'emerald',
       },
     ],
+    note: 'setTimeout이 아니라 MessageChannel을 쓰는 이유는 4ms 최소 지연을 피하기 위해서입니다.',
   },
-  reactToScheduler: {
-    number: '6',
-    title: 'React task → Scheduler task 연결 전체 흐름',
-    cards: [
-      {
-        number: '1',
-        title: 'ReactFiberRootScheduler',
-        subtitle: 'React Fiber 내부',
-        items: ['getNextLanes()', 'callbackPriority 결정', '비동기 lane일 경우 Scheduler에 위임'],
-        accent: 'blue',
-      },
-      {
-        number: '2',
-        title: 'Scheduler_scheduleCallback(...)',
-        subtitle: '경계 함수',
-        items: ['schedulerPriorityLevel 전달', 'performWorkOnRootViaSchedulerTask 콜백 전달'],
-        accent: 'violet',
-      },
-      {
-        number: '3',
-        title: 'Scheduler taskQueue',
-        subtitle: '별도 scheduler 패키지',
-        items: ['priority에 따라 task 정렬 및 보관'],
-        accent: 'teal',
-      },
-      {
-        number: '4',
-        title: 'host callback 실행',
-        subtitle: '브라우저 메인 스레드',
-        items: ['시간이 되었을 때 콜백을 실행하여 React work 수행'],
-        accent: 'amber',
-      },
-    ],
-  },
-  code: {
-    number: '7',
-    title: '실제 코드 미리보기',
-    cardA: {
-      title: 'ReactFiberRootScheduler.js',
-      fileLabel: 'ReactFiberRootScheduler.js',
-      code: CODE_A,
-    },
-    cardB: {
-      title: 'Scheduler.js',
-      fileLabel: 'Scheduler.js',
-      code: CODE_B_KO,
-    },
-    explanationTitle: '설명',
-    explanation: [
-      'React Fiber는 Scheduler_scheduleCallback을 호출하여 work를 scheduler 패키지로 넘깁니다.',
-      'scheduler 패키지는 priorityLevel을 기준으로 task를 생성하고 적절한 queue에 넣어, 나중에 실행할 시점을 관리합니다.',
-    ],
-    button: { label: 'GitHub에서 코드 보기', href: REACT_FIBER_ROOT_SCHEDULER_URL },
-  },
-  lab: {
-    number: '8',
-    title: 'task queue 실험기',
-    helper:
-      '순서 없이 task를 추가해도, taskQueue는 우선순위 순서에 따라 현재 실행 후보를 확인할 수 있습니다.',
-    actionTitle: '작업 추가',
-    actions: [
-      {
-        key: 'immediate',
-        label: 'Immediate task 추가',
-        badge: 'Immediate',
-        accent: 'blue',
-        sortKey: 0,
-      },
-      {
-        key: 'normal',
-        label: 'Normal task 추가',
-        badge: 'Normal',
-        accent: 'teal',
-        sortKey: 2,
-      },
-      {
-        key: 'low',
-        label: 'Low task 추가',
-        badge: 'Low',
-        accent: 'violet',
-        sortKey: 3,
-      },
-    ],
-    resetLabel: '초기화',
-    queueTitle: '현재 taskQueue',
-    queueSubtitle: '높은 우선순위 순',
-    emptyQueueLabel: 'Queue가 비어 있습니다',
-    statusTitle: '상태 정보',
-    lengthLabel: 'Queue 길이',
-    nextLabel: '다음 실행 예정',
-    pendingActive: 'Pending work 있음',
-    pendingEmpty: 'Pending work 없음',
-    sortRule: 'Immediate > UserBlocking > Normal > Low > Idle',
-  },
-  mission: {
-    number: '9',
-    title: '직접 코드에서 따라가 보기',
-    cards: [
-      {
-        title: 'ReactFiberRootScheduler.js에서 Scheduler_scheduleCallback 호출을 찾는다',
-        description: '비동기 lane 분기에서 호출되는 지점을 확인합니다.',
-        accent: 'blue',
-      },
-      {
-        title: 'Scheduler.js에서 unstable_scheduleCallback을 찾는다',
-        description: 'task 생성과 queue 삽입 흐름을 따라가 봅니다.',
-        accent: 'teal',
-      },
-      {
-        title: 'taskQueue에 작업이 들어가는 흐름을 확인한다',
-        description: '우선순위 정렬과 실행 시점 관리 과정을 이해합니다.',
-        accent: 'violet',
-      },
-      {
-        title: 'Root Scheduler와 Scheduler 패키지의 역할 차이를 정리한다',
-        description: '두 스케줄러가 한 계층이 아닌지 생각해봅니다.',
-        accent: 'amber',
-      },
-    ],
-  },
-  takeaways: {
-    number: '10',
-    title: '핵심 정리',
-    cards: [
-      {
-        number: '01',
-        title: 'Root Scheduler와 scheduler 패키지는 역할이 다르다.',
-        description: '하나는 React work를 선택하고, 다른 하나는 언제 실행할지를 정합니다.',
-        accent: 'blue',
-      },
-      {
-        number: '02',
-        title: '비동기 React work는 Scheduler task로 넘겨질 수 있다.',
-        description: 'scheduleCallback을 통해 host task로 등록됩니다.',
-        accent: 'teal',
-      },
-      {
-        number: '03',
-        title: 'scheduler는 host task 실행 시점을 관리한다.',
-        description: 'priority에 따라 queue를 정렬하고, 메인 스레드에서 작업이 실행됩니다.',
-        accent: 'violet',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/scheduler/src/forks/Scheduler.js',
+    lookForLabel: '볼 것',
+    lookFor: 'unstable_scheduleCallback, taskQueue, requestHostCallback, workLoop',
+    whyLabel: '설명',
+    why: 'sortIndex에 expirationTime을 넣는 줄이 "우선순위가 곧 만료 시각"이라는 설계를 한 줄로 보여 줍니다.',
+    code: SCHEDULE_CALLBACK_CODE,
+    primaryCta: 'Scheduler.js 읽기',
+    primaryHref: SCHEDULER_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'Yielding과 Continuation 보기',
-    description: 'Scheduler가 어떻게 yield하고 task를 이어가는지 살펴봅니다.',
+    title: '렌더 도중에 멈출 수 있는 이유',
+    description:
+      'workLoop이 매번 확인하는 것이 하나 더 있습니다. 시간이 남았는지 보고 멈추는 장치를 봅니다.',
     cta: '다음 페이지로 이동',
     href: '/pause-resume-render',
   },
 };
 
-const en: SchedulerPackageContent = {
+const SCHEDULE_CALLBACK_CODE_EN = `function unstable_scheduleCallback(priorityLevel, callback, options) {
+  const currentTime = getCurrentTime();
+  const startTime = currentTime;
+
+  // each priority gets a different timeout
+  let timeout;
+  switch (priorityLevel) {
+    case ImmediatePriority:    timeout = -1; break;
+    case UserBlockingPriority: timeout = 250; break;
+    case IdlePriority:         timeout = 1073741823; break;
+    case LowPriority:          timeout = 10000; break;
+    default:                   timeout = 5000; break;
+  }
+
+  const expirationTime = startTime + timeout;
+
+  const newTask = {
+    id: taskIdCounter++,
+    callback,
+    priorityLevel,
+    startTime,
+    expirationTime,
+    sortIndex: -1,
+  };
+
+  newTask.sortIndex = expirationTime;
+  push(taskQueue, newTask);
+
+  // book a host callback if one is not already scheduled
+  if (!isHostCallbackScheduled && !isPerformingWork) {
+    isHostCallbackScheduled = true;
+    requestHostCallback();
+  }
+
+  return newTask;
+}`;
+
+const en: HostTaskRunnerContent = {
   hero: {
     badge: 'Scheduler · 8/10',
-    titleLines: ["React's Root Scheduler and", 'the scheduler package are', 'not the same thing'],
-    highlight: 'not the same thing',
-    subtitle:
-      'One decides which React work to run; the other coordinates when tasks actually run on the browser main thread.',
-    leftCard: {
-      title: 'Root Scheduler',
-      subtitle: 'Inside React Fiber',
-      items: [
-        'Pick nextLanes',
-        'Decide which React work to run now',
-        'Ask the Scheduler to register a task',
-      ],
+    title: {
+      line1: 'The side that chooses and the side that runs',
+      line2: 'know nothing of each other',
     },
-    bridge: 'scheduleCallback(priorityLevel, callback)',
-    rightCard: {
-      title: 'Scheduler Package',
-      subtitle: 'A separate scheduler package',
-      items: [
-        'Coordinate task execution timing in the host',
-        'Manage queues by priority',
-        'Run as browser tasks',
-      ],
+    description:
+      'The Root Scheduler and the scheduler package are different things. A single function, scheduleCallback, is all that joins them.',
+    diagramBadge: 'two schedulers',
+    diagramCaption: 'what vs when',
+    bridgeLabel: 'scheduleCallback(priority, callback)',
+    sides: EN_SIDES,
+  },
+  roles: {
+    badge: '01',
+    eyebrow: 'role split',
+    title: 'Two schedulers that share a name',
+    description:
+      'Both are called a scheduler, yet they live in different packages with different duties. One is React-only; the other works without React at all.',
+    sides: EN_SIDES,
+    bridge: {
+      headline: 'What to do\nand when to do it',
+      sub: 'Splitting those concerns is why the scheduler package is usable outside React, and why React needs to know nothing about the host.',
     },
-  },
-  question: {
-    eyebrow: "Today's question",
-    question: 'Once React picks nextLanes, who actually runs that work in the browser?',
-    cards: [
-      {
-        title: 'Separate the roles',
-        description: 'Distinguish the two schedulers',
-        accent: 'blue',
-      },
-      {
-        title: 'Trace the path',
-        description: 'See how React work becomes a host task',
-        accent: 'teal',
-      },
-      {
-        title: 'Coordinate timing',
-        description: 'Decide when to run on the main thread',
-        accent: 'violet',
-      },
-    ],
-  },
-  comparison: {
-    number: '1',
-    title: 'Role comparison',
-    columns: {
-      label: 'Aspect',
-      root: 'Root Scheduler (inside React Fiber)',
-      scheduler: 'scheduler package (separate package)',
-    },
-    rows: [
-      {
-        label: 'Core question',
-        root: 'Which React lanes do we run now?',
-        scheduler: 'Which priority of task runs, and when?',
-      },
-      {
-        label: 'Main role',
-        root: 'Pick nextLanes, decide priority, choose path',
-        scheduler: 'Enqueue tasks by priority, coordinate execution timing',
-      },
-      {
-        label: 'Unit handled',
-        root: 'React lanes (bitmask)',
-        scheduler: 'Host task (a unit of JS work)',
-      },
-      {
-        label: 'Outcome',
-        root: 'Hand the work over to the Scheduler',
-        scheduler: 'Invoke the callback on the browser main thread',
-      },
-    ],
-  },
-  callbackMoment: {
-    number: '2',
-    title: 'When scheduleCallback is needed',
-    steps: [
-      {
-        title: 'Async lane chosen',
-        description: 'Root Scheduler picks the async path',
-        accent: 'blue',
-      },
-      {
-        title: 'callbackPriority computed',
-        description: 'Convert lane → schedulerPriorityLevel',
-        accent: 'teal',
-      },
-      {
-        title: 'scheduleCallback(priorityLevel, callback)',
-        description: 'Register a task with the Scheduler package',
-        isCode: true,
-        accent: 'violet',
-      },
-    ],
-    bottomNote: 'Root Scheduler hands the work over to the Scheduler package',
-  },
-  taskQueue: {
-    number: '3',
-    title: 'taskQueue visualization',
-    queueTitle: 'taskQueue',
-    queueSubtitle: 'Sorted by priority (highest first)',
-    items: [
-      { label: 'Immediate task', accent: 'blue' },
-      { label: 'UserBlocking task', accent: 'teal' },
-      { label: 'Normal task', accent: 'teal' },
-      { label: 'Low task', accent: 'violet' },
-    ],
-    currentQueueTitle: 'Current queue (example)',
-    currentItems: [
-      { label: 'Immediate task', note: 'Work A', accent: 'blue' },
-      { label: 'Normal task', note: 'Work B', accent: 'teal' },
-      { label: 'Low task', note: 'Work C', accent: 'violet' },
-    ],
   },
   priorities: {
-    number: '4',
-    title: 'priorityLevel cards',
-    cards: [
+    badge: '02',
+    eyebrow: 'priority levels',
+    title: 'Priority is really an expiry time',
+    description:
+      'The scheduler does not compare grade names. Each grade gets a different timeout, and tasks are ordered by the resulting expiry.',
+    items: [
       {
-        key: 'immediate',
-        title: 'Immediate',
-        subtitle: 'ImmediatePriority',
-        description: 'Run right now. e.g. Sync flush',
-        accent: 'blue',
-        sortKey: 0,
+        id: 'immediate',
+        name: 'ImmediatePriority',
+        timeout: '-1ms',
+        description: 'It enters the queue already expired and runs first at the next opportunity.',
+        tone: 'emerald',
       },
       {
-        key: 'userBlocking',
-        title: 'UserBlocking',
-        subtitle: 'UserBlockingPriority',
-        description: 'Run as fast as possible to keep input responsive',
-        accent: 'teal',
-        sortKey: 1,
+        id: 'user-blocking',
+        name: 'UserBlockingPriority',
+        timeout: '250ms',
+        description:
+          'Work that must keep input responsive — roughly where people start to feel lag.',
+        tone: 'sky',
       },
       {
-        key: 'normal',
-        title: 'Normal',
-        subtitle: 'NormalPriority',
-        description: 'Default scheduling level for typical work',
-        badge: 'default',
-        accent: 'teal',
-        sortKey: 2,
+        id: 'normal',
+        name: 'NormalPriority',
+        timeout: '5000ms',
+        description: 'The default. Work scheduled with no special context arrives here.',
+        tone: 'cyan',
       },
       {
-        key: 'low',
-        title: 'Low',
-        subtitle: 'LowPriority',
-        description: 'Background-style, less urgent work',
-        accent: 'violet',
-        sortKey: 3,
+        id: 'low',
+        name: 'LowPriority',
+        timeout: '10000ms',
+        description: 'Work that may be deferred, with a promise to handle it within ten seconds.',
+        tone: 'teal',
       },
       {
-        key: 'idle',
-        title: 'Idle',
-        subtitle: 'IdlePriority',
-        description: 'Runs only when nothing urgent is pending',
-        accent: 'slate',
-        sortKey: 4,
+        id: 'idle',
+        name: 'IdlePriority',
+        timeout: 'effectively infinite',
+        description:
+          'Practically without an expiry. It comes back only when there is truly nothing else.',
+        tone: 'violet',
       },
     ],
-    directionStart: 'High priority (most urgent)',
-    directionEnd: 'Low priority (least urgent)',
+    note: 'Ordering by expiry means low-priority work eventually moves to the front. Another starvation guard lives here.',
   },
-  internalFlow: {
-    number: '5',
-    title: 'unstable_scheduleCallback internal concept flow',
+  queue: {
+    badge: '03',
+    eyebrow: 'task queue',
+    title: 'Five stops from booking to running',
+    description:
+      'scheduleCallback never invokes the callback. It builds a task, heaps it, and a host callback picks it up later.',
     steps: [
-      { title: 'priorityLevel', description: 'e.g. NormalPriority', accent: 'blue' },
-      { title: 'Decide timeout', description: 'Expiration based on priority', accent: 'teal' },
-      { title: 'Build task', description: 'callback + startTime + expiration', accent: 'violet' },
       {
-        title: 'Insert into taskQueue or timerQueue',
-        description: 'Store after sorting',
-        accent: 'amber',
+        id: 'build',
+        num: '01',
+        title: 'Build the task object',
+        description: 'Add the timeout for the priority to compute an expiration time.',
+        tone: 'sky',
+      },
+      {
+        id: 'push',
+        num: '02',
+        title: 'Push onto taskQueue',
+        description: 'Insert into a min-heap that sorts by expiration time.',
+        tone: 'cyan',
+      },
+      {
+        id: 'host-callback',
+        num: '03',
+        title: 'Book a host callback',
+        description: 'If none is booked, grab the next macrotask via MessageChannel.',
+        tone: 'indigo',
+      },
+      {
+        id: 'work-loop',
+        num: '04',
+        title: 'Enter the workLoop',
+        description: 'When the booked callback fires, pop the most urgent task off the heap.',
+        tone: 'violet',
+      },
+      {
+        id: 'run',
+        num: '05',
+        title: 'Run the callback',
+        description: 'The performWorkOnRoot React handed over is finally invoked here.',
+        tone: 'emerald',
       },
     ],
+    note: 'MessageChannel rather than setTimeout is used to avoid the 4ms minimum clamp.',
   },
-  reactToScheduler: {
-    number: '6',
-    title: 'React task → Scheduler task end-to-end flow',
-    cards: [
-      {
-        number: '1',
-        title: 'ReactFiberRootScheduler',
-        subtitle: 'Inside React Fiber',
-        items: ['getNextLanes()', 'Decide callbackPriority', 'Hand off async lane to Scheduler'],
-        accent: 'blue',
-      },
-      {
-        number: '2',
-        title: 'Scheduler_scheduleCallback(...)',
-        subtitle: 'Boundary function',
-        items: [
-          'Forward schedulerPriorityLevel',
-          'Pass performWorkOnRootViaSchedulerTask callback',
-        ],
-        accent: 'violet',
-      },
-      {
-        number: '3',
-        title: 'Scheduler taskQueue',
-        subtitle: 'In the scheduler package',
-        items: ['Sort and store tasks by priority'],
-        accent: 'teal',
-      },
-      {
-        number: '4',
-        title: 'Host callback runs',
-        subtitle: 'Browser main thread',
-        items: ['Invoke the callback when the time is right, executing React work'],
-        accent: 'amber',
-      },
-    ],
-  },
-  code: {
-    number: '7',
-    title: 'Source code preview',
-    cardA: {
-      title: 'ReactFiberRootScheduler.js',
-      fileLabel: 'ReactFiberRootScheduler.js',
-      code: CODE_A,
-    },
-    cardB: {
-      title: 'Scheduler.js',
-      fileLabel: 'Scheduler.js',
-      code: CODE_B_EN,
-    },
-    explanationTitle: 'Explanation',
-    explanation: [
-      'React Fiber calls Scheduler_scheduleCallback to hand work over to the scheduler package.',
-      'The scheduler package builds a task based on priorityLevel, inserts it into the proper queue, and decides when to run it.',
-    ],
-    button: { label: 'See the code on GitHub', href: REACT_FIBER_ROOT_SCHEDULER_URL },
-  },
-  lab: {
-    number: '8',
-    title: 'task queue lab',
-    helper:
-      'Add tasks in any order — the taskQueue still surfaces the highest-priority candidate first.',
-    actionTitle: 'Add work',
-    actions: [
-      {
-        key: 'immediate',
-        label: 'Add Immediate task',
-        badge: 'Immediate',
-        accent: 'blue',
-        sortKey: 0,
-      },
-      { key: 'normal', label: 'Add Normal task', badge: 'Normal', accent: 'teal', sortKey: 2 },
-      { key: 'low', label: 'Add Low task', badge: 'Low', accent: 'violet', sortKey: 3 },
-    ],
-    resetLabel: 'Reset',
-    queueTitle: 'Current taskQueue',
-    queueSubtitle: 'Highest priority first',
-    emptyQueueLabel: 'The queue is empty',
-    statusTitle: 'Status',
-    lengthLabel: 'Queue length',
-    nextLabel: 'Next to run',
-    pendingActive: 'Pending work present',
-    pendingEmpty: 'No pending work',
-    sortRule: 'Immediate > UserBlocking > Normal > Low > Idle',
-  },
-  mission: {
-    number: '9',
-    title: 'Walk it in the source',
-    cards: [
-      {
-        title: 'Find the Scheduler_scheduleCallback call in ReactFiberRootScheduler.js',
-        description: 'Confirm where it gets called inside the async lane branch.',
-        accent: 'blue',
-      },
-      {
-        title: 'Find unstable_scheduleCallback in Scheduler.js',
-        description: 'Trace how a task is built and inserted into the queue.',
-        accent: 'teal',
-      },
-      {
-        title: 'See work flow into the taskQueue',
-        description: 'Understand priority sorting and execution-time management.',
-        accent: 'violet',
-      },
-      {
-        title: 'Summarize the role split between Root Scheduler and Scheduler package',
-        description: 'Think through how they live on different layers.',
-        accent: 'amber',
-      },
-    ],
-  },
-  takeaways: {
-    number: '10',
-    title: 'Key takeaways',
-    cards: [
-      {
-        number: '01',
-        title: 'Root Scheduler and the scheduler package play different roles.',
-        description: 'One picks React work; the other decides when to run it.',
-        accent: 'blue',
-      },
-      {
-        number: '02',
-        title: 'Async React work can be handed off to a Scheduler task.',
-        description: 'It gets registered as a host task via scheduleCallback.',
-        accent: 'teal',
-      },
-      {
-        number: '03',
-        title: 'The scheduler manages when host tasks run.',
-        description: 'It sorts queues by priority and runs work on the main thread.',
-        accent: 'violet',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/scheduler/src/forks/Scheduler.js',
+    lookForLabel: 'Look for',
+    lookFor: 'unstable_scheduleCallback, taskQueue, requestHostCallback, workLoop',
+    whyLabel: 'Why',
+    why: 'Assigning expirationTime to sortIndex states the whole design in one line: priority is an expiry time.',
+    code: SCHEDULE_CALLBACK_CODE_EN,
+    primaryCta: 'Read Scheduler.js',
+    primaryHref: SCHEDULER_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Yielding and Continuation',
-    description: 'Learn how the Scheduler yields and continues tasks.',
+    title: 'Why a render can stop midway',
+    description:
+      'The workLoop checks one more thing every round. Next: the device that looks at remaining time and stops.',
     cta: 'Go to the next page',
     href: '/pause-resume-render',
   },
 };
 
-export const schedulerPackageContent: Record<Locale, SchedulerPackageContent> = { ko, en };
+export const hostTaskRunnerContent: Record<Locale, HostTaskRunnerContent> = { ko, en };

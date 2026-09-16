@@ -1,112 +1,63 @@
 import { cx } from '@berrypjh/react-ui';
-import { Cloud, Droplets, Package, ShieldCheck } from 'lucide-react';
+import { Droplets, FileCode, type LucideIcon, Package, SquareDashed } from 'lucide-react';
 
-import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
+import { TerminalBadge } from '../../../shared/terminal';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { HeroTopCard, SuspenseHydrationLinkContent } from '../content';
+import { toneTokens } from '../../../shared/tones';
+import type { Phase, PhaseId, SuspenseHydrationLinkContent } from '../content';
 
-type Props = { content: SuspenseHydrationLinkContent['hero']; className?: string };
+type Props = { content: SuspenseHydrationLinkContent['hero'] };
 
-const cardMeta: Record<
-  HeroTopCard['kind'],
-  { tone: ToneKey; Icon: React.ComponentType<{ className?: string }> }
-> = {
-  server: { tone: 'blue', Icon: Cloud },
-  hydration: { tone: 'teal', Icon: Droplets },
-  recovery: { tone: 'emerald', Icon: ShieldCheck },
+const phaseIcon: Record<PhaseId, LucideIcon> = {
+  stream: FileCode,
+  placeholder: SquareDashed,
+  chunk: Package,
+  hydrate: Droplets,
 };
 
-/**
- * Hero 핵심 비주얼.
- * 서버 렌더 · hydration · client recovery 세 경로가 하나의 Suspense Boundary로
- * 모인다는 점을, 세 톤 카드 → 아래 화살표 → Boundary 코드 패널로 보여준다.
- */
-export const SuspenseHydrationHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.topCards
-    .map((c) => `${c.title}: ${c.description}`)
-    .join('; ')}. ${content.boundary.caption}`;
+/** Hero 핵심 비주얼: 셸 전송에서 경계 단위 hydration까지의 스트리밍 4단. */
+export const SuspenseHydrationHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.title.line1} ${content.title.line2} ${content.description}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
-        <ul className="grid grid-cols-1 gap-sm @xl:grid-cols-3">
-          {content.topCards.map((card) => (
-            <li key={card.kind}>
-              <PathCard card={card} />
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center justify-between">
+          <TerminalBadge dotClassName="bg-[var(--term-accent)]">
+            {content.diagramBadge}
+          </TerminalBadge>
+          <span className="font-mono text-[10px] text-[var(--term-muted)]">
+            {'//'} {content.diagramCaption}
+          </span>
+        </div>
 
-        <DownArrow />
-
-        <BoundaryPanel code={content.boundary.code} caption={content.boundary.caption} />
+        {content.phases.map((phase, i) => (
+          <div key={phase.id} className="flex flex-col gap-sm">
+            <PhaseCard phase={phase} />
+            {i < content.phases.length - 1 && <DownArrow />}
+          </div>
+        ))}
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
-const PathCard = ({ card }: { card: HeroTopCard }) => {
-  const { tone, Icon } = cardMeta[card.kind];
-  const t = toneTokens[tone];
+const PhaseCard = ({ phase }: { phase: Phase }) => {
+  const Icon = phaseIcon[phase.id];
+  const t = toneTokens[phase.tone];
   return (
-    <article
-      className={cx(
-        'flex h-full flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
-        t.borderHover,
-      )}
-    >
-      <header className="flex items-center gap-sm">
-        <ToneIconBox tone={tone} size="sm">
-          <Icon className="h-[18px] w-[18px]" />
-        </ToneIconBox>
-        <h3 className={cx('text-xsm font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
-      </header>
-      <p className="text-[11px] leading-snug text-[var(--term-muted)] break-keep">
-        {card.description}
-      </p>
+    <article className="flex items-center gap-sm rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]">
+      <ToneIconBox tone={phase.tone} size="sm">
+        <Icon className="h-4 w-4" />
+      </ToneIconBox>
+      <div className="flex min-w-0 flex-col gap-0.5">
+        <code className={cx('font-mono text-xsm font-bold tracking-tight break-all', t.text)}>
+          {phase.label}
+        </code>
+        <span className="text-[11px] text-[var(--term-muted)] break-keep">{phase.caption}</span>
+      </div>
     </article>
   );
 };
-
-const BoundaryPanel = ({ code, caption }: { code: string; caption: string }) => (
-  <div className="flex flex-col gap-sm">
-    <header className="flex items-center gap-sm">
-      <ToneIconBox tone="violet" size="sm">
-        <Package className="h-[18px] w-[18px]" aria-hidden="true" />
-      </ToneIconBox>
-      <span className={cx('font-mono text-sm font-bold tracking-tight', toneTokens.violet.text)}>
-        Suspense Boundary
-      </span>
-      <span
-        aria-hidden="true"
-        className="flex-1 border-t border-dashed border-[var(--term-border)]"
-      />
-    </header>
-    <CodePreviewPanel code={code} showWindowDots language="JSX" size="md" />
-    <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{caption}</p>
-  </div>
-);
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

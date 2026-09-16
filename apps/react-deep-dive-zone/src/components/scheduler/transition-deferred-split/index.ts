@@ -1,2 +1,2 @@
-export { transitionDeferredContent } from './content';
-export { TransitionDeferredPage } from './TransitionDeferredPage';
+export { transitionDeferredSplitContent } from './content';
+export { TransitionDeferredSplitPage } from './TransitionDeferredSplitPage';

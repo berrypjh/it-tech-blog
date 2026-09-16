@@ -1,154 +1,85 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type Tone = 'blue' | 'red' | 'green' | 'purple' | 'cyan' | 'emerald' | 'rose' | 'violet';
+import type { ToneKey } from '../../shared/tones';
 
-export type BranchKind = 'suspense' | 'error' | 'hydration';
+export type BranchId = 'suspense' | 'error' | 'hydration';
 
-export type FlowStep = { label: string };
-
-export type BranchCard = {
-  kind: BranchKind;
+export type Branch = {
+  id: BranchId;
   label: string;
-  title: string;
-  steps: FlowStep[];
-  caption: string;
+  outcome: string;
+  description: string;
+  steps: string[];
+  tone: ToneKey;
 };
 
-export type ComparisonRow = {
-  label: string;
+export type PathSideId = 'normal' | 'extended';
+
+export type PathSide = {
+  id: PathSideId;
+  title: string;
+  badge: string;
+  description: string;
+  bullets: string[];
+  tone: ToneKey;
+};
+
+export type CompareRow = {
+  aspect: string;
   suspense: string;
   error: string;
   hydration: string;
 };
 
-export type FlowMapRow = {
-  kind: BranchKind;
-  label: string;
-  sublabel: string;
-  steps: FlowStep[];
-  endStateLabel: string;
-};
-
-export type FileCard = {
-  kind: BranchKind | 'mixed';
-  fileName: string;
-  role: string;
-  code: string;
-  href: string;
-};
-
-export type RecoveryOptionKey = 'promise' | 'error' | 'mismatch';
-
-export type RecoveryOption = {
-  key: RecoveryOptionKey;
-  label: string;
-  description: string;
-};
-
-export type RecoveryResult = {
-  selectedLabel: string;
-  resultTitle: string;
-  description: string;
-  timeline: string[];
-  relatedFiles: string[];
-  experience: string;
-  kind: BranchKind;
-};
-
-export type ChecklistItem = { label: string; codeExample: string };
-
-export type TakeawayCard = { number: string; title: string; body: string; tone: Tone };
-
 export type WhyFailableRenderContent = {
   hero: {
     badge: string;
-    titleLines: [string, string];
+    title: { line1: string; line2: string };
     description: string;
-    illustration: {
-      backCardLabel: string;
-      frontCardLabel: string;
-      reactBadgeLabel: string;
-      pendingBadge: string;
-      retryBadge: string;
-      recoverBadge: string;
-    };
-  };
-  flows: {
-    eyebrow: string;
-    normal: {
-      title: string;
-      steps: FlowStep[];
-      captionLines: string[];
-      pill: string;
-    };
-    extended: {
-      title: string;
-      steps: { label: string; tone: Tone }[];
-      captionLines: string[];
-      pill: string;
-    };
-  };
-  question: {
-    eyebrow: string;
-    title: string;
-    question: string;
-    badges: { label: string; tone: Tone }[];
-  };
-  normalRender: {
-    title: string;
-    steps: FlowStep[];
-    caption: string;
-  };
-  threeBranches: {
-    eyebrow: string;
-    title: string;
-    description: string;
+    diagramBadge: string;
+    diagramCaption: string;
     rootLabel: string;
-    rootSublabel: string;
-    branches: BranchCard[];
+    rootCaption: string;
+    branches: Branch[];
   };
-  comparison: {
-    eyebrow: string;
-    title: string;
-    columns: { label: string; sub: string; kind: BranchKind }[];
-    rowsHeader: string;
-    rows: ComparisonRow[];
-  };
-  flowMap: {
+  paths: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    rows: FlowMapRow[];
+    sides: [PathSide, PathSide];
+    note: string;
   };
-  codeEntry: {
+  branches: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    files: FileCard[];
-    buttonLabel: string;
+    items: Branch[];
+    note: string;
   };
-  selector: {
+  compare: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    selectedBadge: string;
-    resultBadge: string;
-    timelineLabel: string;
-    relatedFilesLabel: string;
-    experienceLabel: string;
-    options: RecoveryOption[];
-    results: Record<RecoveryOptionKey, RecoveryResult>;
+    headers: [string, string, string, string];
+    rows: CompareRow[];
+    note: string;
   };
-  followAlong: {
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
-    illustrationLabel: string;
-    items: ChecklistItem[];
-  };
-  takeaways: {
-    eyebrow: string;
-    title: string;
-    cards: TakeawayCard[];
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -159,771 +90,387 @@ export type WhyFailableRenderContent = {
   };
 };
 
-const REACT_REPO = 'https://github.com/facebook/react/blob/main/packages/react-reconciler/src';
-const THENABLE_URL = `${REACT_REPO}/ReactFiberThenable.js`;
-const THROW_URL = `${REACT_REPO}/ReactFiberThrow.js`;
-const SUSPENSE_URL = `${REACT_REPO}/ReactFiberSuspenseComponent.js`;
-const HYDRATION_URL = `${REACT_REPO}/ReactFiberHydrationContext.js`;
+const THROW_EXCEPTION_CODE = `function throwException(
+  root, returnFiber, sourceFiber, value, rootRenderLanes,
+) {
+  // 이 Fiber는 일단 실패로 표시한다
+  sourceFiber.flags |= Incomplete;
+
+  if (
+    value !== null &&
+    typeof value === 'object' &&
+    typeof value.then === 'function'
+  ) {
+    // A. 던져진 것이 thenable이면 Suspense 경로
+    const wakeable: Wakeable = value;
+    markSuspenseBoundaryShouldCapture(
+      suspenseBoundary, returnFiber, sourceFiber, root, rootRenderLanes,
+    );
+    return false;
+  }
+
+  // B. 그 외에는 Error 경로: 위로 올라가며 Error Boundary를 찾는다
+  let workInProgress = returnFiber;
+  do {
+    if (workInProgress.tag === ClassComponent) {
+      const ctor = workInProgress.type;
+      const instance = workInProgress.stateNode;
+      if (
+        typeof ctor.getDerivedStateFromError === 'function' ||
+        typeof instance.componentDidCatch === 'function'
+      ) {
+        const update = createClassErrorUpdate(rootRenderLanes);
+        enqueueCapturedUpdate(workInProgress, update);
+        return false;
+      }
+    }
+    workInProgress = workInProgress.return;
+  } while (workInProgress !== null);
+
+  return false;
+}`;
+
+const REACT_FIBER_THROW_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberThrow.js';
+
+const KO_BRANCHES: Branch[] = [
+  {
+    id: 'suspense',
+    label: 'Promise가 던져졌다',
+    outcome: 'Suspense fallback',
+    description: '아직 없는 데이터를 읽으려 했습니다. 준비될 때까지 이 구역만 대기시킵니다.',
+    steps: ['use(promise) 호출', 'thenable 감지', '가장 가까운 Suspense 탐색', 'fallback 표시'],
+    tone: 'violet',
+  },
+  {
+    id: 'error',
+    label: 'Error가 던져졌다',
+    outcome: 'Error Boundary fallback',
+    description: '렌더 도중 예외가 났습니다. 앱 전체가 아니라 그 구역만 잘라 냅니다.',
+    steps: ['throw Error', 'Error Boundary 탐색', 'captured update 생성', 'fallback 렌더'],
+    tone: 'amber',
+  },
+  {
+    id: 'hydration',
+    label: 'DOM이 예상과 다르다',
+    outcome: 'Client Recovery',
+    description: '서버 HTML과 클라이언트 결과가 어긋났습니다. 그 부분만 다시 그립니다.',
+    steps: ['hydrateRoot 시작', 'DOM과 Fiber 대조', 'mismatch 감지', '해당 구역 재생성'],
+    tone: 'cyan',
+  },
+];
+
+const EN_BRANCHES: Branch[] = [
+  {
+    id: 'suspense',
+    label: 'A Promise was thrown',
+    outcome: 'Suspense fallback',
+    description: 'Something read data that does not exist yet, so only this region waits.',
+    steps: [
+      'use(promise) is called',
+      'thenable detected',
+      'Find nearest Suspense',
+      'Show fallback',
+    ],
+    tone: 'violet',
+  },
+  {
+    id: 'error',
+    label: 'An Error was thrown',
+    outcome: 'Error Boundary fallback',
+    description: 'An exception happened mid-render, so only that region is cut off — not the app.',
+    steps: ['throw Error', 'Find Error Boundary', 'Create captured update', 'Render fallback'],
+    tone: 'amber',
+  },
+  {
+    id: 'hydration',
+    label: 'The DOM differs from expectation',
+    outcome: 'Client Recovery',
+    description: 'Server HTML and the client result disagree, so just that part is redrawn.',
+    steps: ['hydrateRoot begins', 'Match DOM against Fiber', 'Mismatch detected', 'Rebuild region'],
+    tone: 'cyan',
+  },
+];
 
 const ko: WhyFailableRenderContent = {
   hero: {
     badge: 'Suspense/Error · 1/10단계',
-    titleLines: ['정상 렌더링만 이해하면', 'React의 절반만 이해한 것이다'],
+    title: { line1: '렌더가 항상 성공한다는 가정은', line2: '현실과 맞지 않는다' },
     description:
-      'React는 UI가 한 번에 완성되지 않아도 대기, 실패, 복구, 재시도 흐름을 렌더링 모델 안에서 처리합니다.',
-    illustration: {
-      backCardLabel: 'App.tsx',
-      frontCardLabel: '<Suspense />',
-      reactBadgeLabel: 'React',
-      pendingBadge: 'pending',
-      retryBadge: 'retry',
-      recoverBadge: 'recover',
-    },
-  },
-  flows: {
-    eyebrow: '두 가지 렌더 경로',
-    normal: {
-      title: '정상 흐름',
-      steps: [{ label: 'Render' }, { label: 'Commit' }],
-      captionLines: ['UI를 계산한다', 'DOM을 반영한다'],
-      pill: '모든 것이 준비될 때의 기본 경로',
-    },
-    extended: {
-      title: '확장 흐름 (현실 세계)',
-      steps: [
-        { label: 'Suspend', tone: 'purple' },
-        { label: 'Error', tone: 'red' },
-        { label: 'Hydration Mismatch', tone: 'blue' },
-        { label: 'Recovery', tone: 'green' },
-      ],
-      captionLines: ['대기', '실패', '불일치', '복구/재시도'],
-      pill: '문제가 생겨도 화면을 계속 완성해 나가는 경로',
-    },
-  },
-  question: {
-    eyebrow: '오늘 해결할 질문',
-    title: '오늘 해결할 질문',
-    question: 'React는 렌더링이 바로 끝나지 않을 때 어떻게 화면을 계속 완성해 나갈까?',
-    badges: [
-      { label: '대기', tone: 'blue' },
-      { label: '실패', tone: 'red' },
-      { label: '복구', tone: 'green' },
-      { label: '재시도', tone: 'cyan' },
-    ],
-  },
-  normalRender: {
-    title: '지금까지 배운 정상 렌더링 흐름',
-    steps: [
-      { label: 'JSX' },
-      { label: 'React Element' },
-      { label: 'Fiber' },
-      { label: 'Render Phase' },
-      { label: 'Commit Phase' },
-    ],
-    caption: '이 흐름은 문제가 없을 때의 기본 렌더 경로입니다.',
-  },
-  threeBranches: {
-    eyebrow: '핵심 시각 구역',
-    title: '실제 React는 여기서 끝나지 않는다',
-    description:
-      'Render Phase에서 다양한 상황이 발생할 수 있으며, React는 각 상황을 분리하여 다룹니다.',
+      '데이터는 늦게 오고 코드는 던지고 서버 HTML은 어긋납니다. React는 이 셋을 예외가 아니라 렌더 모델의 일부로 다룹니다.',
+    diagramBadge: 'three branches',
+    diagramCaption: 'render can fail',
     rootLabel: 'Render Phase',
-    rootSublabel: '계산 중',
-    branches: [
-      {
-        kind: 'suspense',
-        label: 'A. Render 중 Promise 발견',
-        title: 'Suspense fallback',
-        steps: [
-          { label: 'use(Promise) 호출' },
-          { label: 'thenable 감지 + throwException' },
-          { label: 'Suspense Boundary' },
-          { label: 'fallback UI 표시' },
-        ],
-        caption: '데이터가 준비될 때까지 UI를 대기시킨다.',
-      },
-      {
-        kind: 'error',
-        label: 'B. Render 중 Error 발생',
-        title: 'Error Boundary fallback',
-        steps: [
-          { label: 'throw Error 발생' },
-          { label: 'Error Boundary 탐색' },
-          { label: 'captured update' },
-          { label: 'fallback UI 렌더' },
-        ],
-        caption: '예외가 전체 앱을 무너뜨리지 않도록 보호한다.',
-      },
-      {
-        kind: 'hydration',
-        label: 'C. Hydration 중 불일치 감지',
-        title: 'Client Recovery',
-        steps: [
-          { label: 'hydrateRoot 시작' },
-          { label: 'DOM / Fiber 매칭' },
-          { label: 'mismatch 감지' },
-          { label: 'Client Recovery 실행' },
-        ],
-        caption: '서버 HTML과 클라이언트를 안전히 연결한다.',
-      },
-    ],
+    rootCaption: '컴포넌트를 실행하는 중',
+    branches: KO_BRANCHES,
   },
-  comparison: {
-    eyebrow: '세 경로의 역할',
-    title: 'Suspense / Error / Hydration 역할 비교',
-    columns: [
-      { label: 'Suspense', sub: '대기', kind: 'suspense' },
-      { label: 'Error Boundary', sub: '실패', kind: 'error' },
-      { label: 'Hydration', sub: '불일치 복구', kind: 'hydration' },
+  paths: {
+    badge: '01',
+    eyebrow: 'two paths',
+    title: '지금까지 본 것은 성공 경로뿐이다',
+    description:
+      '앞 챕터들이 다룬 흐름은 전부 "모든 것이 준비되어 있을 때"의 경로였습니다. 이 챕터는 그렇지 않을 때를 봅니다.',
+    sides: [
+      {
+        id: 'normal',
+        title: '정상 경로',
+        badge: '지금까지',
+        description: '한 번의 렌더로 트리를 다 만들고 커밋합니다.',
+        bullets: [
+          'JSX에서 Element로, Element에서 Fiber로',
+          'Render Phase가 끝까지 돌아 트리를 완성한다',
+          'Commit Phase가 DOM에 반영한다',
+          '중간에 멈출 일이 없다고 가정한다',
+        ],
+        tone: 'sky',
+      },
+      {
+        id: 'extended',
+        title: '확장 경로',
+        badge: '이 챕터',
+        description: '렌더 도중 무언가 던져지면 그 자리에서 갈라집니다.',
+        bullets: [
+          '데이터가 없으면 그 구역만 대기시킨다',
+          '예외가 나면 그 구역만 잘라 낸다',
+          '서버 HTML이 어긋나면 그 부분만 다시 만든다',
+          '준비되면 다시 시도해 이어서 완성한다',
+        ],
+        tone: 'violet',
+      },
     ],
-    rowsHeader: '구분',
+    note: '확장 경로는 별도 시스템이 아닙니다. 같은 Render Phase 안에서 던져진 값의 종류로 갈릴 뿐입니다.',
+  },
+  branches: {
+    badge: '02',
+    eyebrow: 'three branches',
+    title: '렌더가 멈추는 세 가지 이유',
+    description:
+      '원인은 다르지만 대응 모양은 같습니다. 문제가 난 구역만 격리하고, 나머지 화면은 그대로 둡니다.',
+    items: KO_BRANCHES,
+    note: '세 경우 모두 화면 전체를 버리지 않습니다. 격리 범위를 개발자가 경계 컴포넌트로 정할 수 있다는 점이 핵심입니다.',
+  },
+  compare: {
+    badge: '03',
+    eyebrow: 'side by side',
+    title: '세 경로가 다루는 것과 다루지 않는 것',
+    description:
+      '이름이 비슷해 섞이기 쉽지만 트리거도 대응도 다릅니다. 어떤 문제를 만났을 때 어느 쪽을 봐야 하는지가 여기서 갈립니다.',
+    headers: ['구분', 'Suspense', 'Error Boundary', 'Hydration'],
     rows: [
       {
-        label: '처리 대상',
-        suspense: '아직 준비되지 않은 데이터',
-        error: '렌더 중 발생한 예외',
-        hydration: '서버 HTML 연결과 불일치 복구',
+        aspect: '무엇이 트리거인가',
+        suspense: 'thenable(Promise)을 던짐',
+        error: '일반 값을 throw',
+        hydration: 'DOM과 Fiber 대조 중 불일치',
       },
       {
-        label: '트리거',
-        suspense: 'Promise / thenable 읽기',
-        error: 'throw Error',
-        hydration: 'DOM과 Fiber 비교 중 불일치',
+        aspect: '어디서 잡히나',
+        suspense: '가장 가까운 Suspense 경계',
+        error: '가장 가까운 Error Boundary',
+        hydration: 'hydration 중인 그 서브트리',
       },
       {
-        label: '반응',
-        suspense: 'Suspense fallback 표시',
-        error: 'Error Boundary fallback 표시',
-        hydration: 'Client Recovery 후 계속 진행',
+        aspect: '무엇을 보여 주나',
+        suspense: 'fallback을 보여 주고 기다린다',
+        error: 'fallback으로 갈아 끼운다',
+        hydration: '클라이언트가 다시 그린 결과',
       },
       {
-        label: '사용자 경험',
-        suspense: '로딩 중...',
-        error: '문제가 발생했습니다 / 다시 시도',
-        hydration: '연결 중... / 정상 체크',
+        aspect: '다시 시도하나',
+        suspense: '예. Promise가 풀리면 자동 재시도',
+        error: '아니오. 개발자가 리셋해야 한다',
+        hydration: '예. 그 구역만 클라이언트 렌더로',
       },
       {
-        label: '핵심 목표',
-        suspense: '기다리는 동안 UI 안정성 유지',
-        error: '실패 격리 후 UI 안정성 유지',
-        hydration: '서버 → 클라이언트 연결 안정성 유지',
+        aspect: '지키려는 것',
+        suspense: '기다리는 동안의 화면 안정성',
+        error: '실패의 전파 범위 제한',
+        hydration: '서버와 클라이언트의 일치',
       },
     ],
+    note: '네 번째 줄이 가장 큰 차이입니다. Suspense는 자동으로 다시 하고, Error Boundary는 스스로 풀리지 않습니다.',
   },
-  flowMap: {
-    eyebrow: '전체 파트 흐름 지도',
-    title: '전체 파트 흐름 지도',
-    description: 'React는 세 가지 흐름을 공통 렌더링 모델 위에서 처리합니다.',
-    rows: [
-      {
-        kind: 'suspense',
-        label: '대기',
-        sublabel: '(Suspense)',
-        steps: [
-          { label: 'use(Promise)' },
-          { label: 'throwException' },
-          { label: 'Suspense Boundary' },
-          { label: 'fallback 렌더' },
-          { label: 'Promise resolve + retry' },
-          { label: '정상 UI 커밋' },
-        ],
-        endStateLabel: 'retry',
-      },
-      {
-        kind: 'error',
-        label: '실패',
-        sublabel: '(Error)',
-        steps: [
-          { label: 'throw Error' },
-          { label: 'Error Boundary 탐색' },
-          { label: 'captured update 스케줄' },
-          { label: 'fallback 렌더' },
-          { label: '사용자/상태 변화로 재시도' },
-          { label: '복구 가능' },
-        ],
-        endStateLabel: 'recovered',
-      },
-      {
-        kind: 'hydration',
-        label: '복구',
-        sublabel: '(Hydration)',
-        steps: [
-          { label: 'hydrateRoot 시작' },
-          { label: 'DOM / Fiber 매칭' },
-          { label: 'mismatch 감지' },
-          { label: 'Client Recovery 수행' },
-          { label: '계속 진행' },
-          { label: '안정성 확인' },
-        ],
-        endStateLabel: 'stable',
-      },
-    ],
-  },
-  codeEntry: {
-    eyebrow: '실제 코드 진입점',
-    title: '실제 코드 진입점 지도',
-    description: 'React 소스코드에서 이 흐름들이 시작되는 위치입니다.',
-    buttonLabel: 'GitHub에서 보기',
-    files: [
-      {
-        kind: 'suspense',
-        fileName: 'ReactFiberThenable.js',
-        role: 'Promise / thenable 대기 처리',
-        code: `function trackUsedThenable(
-  thenableState,
-  thenable,
-  index,
-) {
-  // thenable 추적
-  return thenable;
-}`,
-        href: THENABLE_URL,
-      },
-      {
-        kind: 'error',
-        fileName: 'ReactFiberThrow.js',
-        role: 'throw된 값의 흐름 해석',
-        code: `function throwException(
-  root, returnFiber,
-  sourceFiber, value,
-) {
-  // Promise / Error 분기
-}`,
-        href: THROW_URL,
-      },
-      {
-        kind: 'mixed',
-        fileName: 'ReactFiberSuspenseComponent.js',
-        role: 'Suspense 경계 처리',
-        code: `function updateSuspenseComponent(
-  current, workInProgress,
-  renderLanes,
-) {
-  // fallback, retry 흐름
-}`,
-        href: SUSPENSE_URL,
-      },
-      {
-        kind: 'hydration',
-        fileName: 'ReactFiberHydrationContext.js',
-        role: 'Hydration 매칭과 복구',
-        code: `function enterHydrationState(
-  fiber,
-) {
-  // hydration 상태 초기화
-}`,
-        href: HYDRATION_URL,
-      },
-    ],
-  },
-  selector: {
-    eyebrow: '복구 경로 선택기',
-    title: '복구 경로 선택기',
-    description: '아래 상황을 선택하면 React가 선택하는 복구 경로를 확인할 수 있습니다.',
-    selectedBadge: '현재 선택',
-    resultBadge: '결과',
-    timelineLabel: '처리 타임라인',
-    relatedFilesLabel: '관련 파일',
-    experienceLabel: '사용자 경험',
-    options: [
-      {
-        key: 'promise',
-        label: 'Promise pending',
-        description: '데이터가 아직 준비되지 않음',
-      },
-      {
-        key: 'error',
-        label: 'Error throw',
-        description: '렌더 중 예외 발생',
-      },
-      {
-        key: 'mismatch',
-        label: 'Text mismatch',
-        description: '서버 HTML과 텍스트 불일치',
-      },
-    ],
-    results: {
-      promise: {
-        selectedLabel: 'Promise pending',
-        resultTitle: 'Suspense fallback',
-        description:
-          'Promise(thenable)를 읽은 React는 해당 값을 Suspense Boundary의 fallback UI로 보냅니다.',
-        timeline: [
-          'use(Promise) 읽기',
-          'throwException(thenable)',
-          'Suspense Boundary fallback UI',
-          'Promise resolve',
-          '정상 UI 커밋',
-        ],
-        relatedFiles: ['ReactFiberThenable.js', 'ReactFiberSuspenseComponent.js'],
-        experience: '로딩 상태 유지',
-        kind: 'suspense',
-      },
-      error: {
-        selectedLabel: 'Error throw',
-        resultTitle: 'Error Boundary fallback',
-        description:
-          '렌더 중 발생한 Error는 가장 가까운 Error Boundary에 captured update로 연결됩니다.',
-        timeline: [
-          'throw Error',
-          'Error Boundary 탐색',
-          'captured update 스케줄',
-          'fallback UI 렌더',
-          '사용자 재시도',
-        ],
-        relatedFiles: ['ReactFiberThrow.js'],
-        experience: '오류 화면 표시',
-        kind: 'error',
-      },
-      mismatch: {
-        selectedLabel: 'Text mismatch',
-        resultTitle: 'Hydration Recovery',
-        description:
-          '서버 HTML과 클라이언트 렌더 결과가 맞지 않으면 React는 복구 가능한 렌더링 경로로 전환합니다.',
-        timeline: [
-          'hydrateRoot 시작',
-          'DOM / Fiber 매칭',
-          'mismatch 감지',
-          'Client Recovery',
-          '안정적 연결',
-        ],
-        relatedFiles: ['ReactFiberHydrationContext.js'],
-        experience: '연결 복구',
-        kind: 'hydration',
-      },
-    },
-  },
-  followAlong: {
-    eyebrow: '직접 따라가 보기',
-    title: '직접 코드에서 따라가 보기',
-    illustrationLabel: 'react/packages/react-reconciler',
-    items: [
-      {
-        label: 'Suspense 공식 문서를 읽고 fallback의 역할 확인',
-        codeExample: '<Suspense fallback={<Loading />} />',
-      },
-      {
-        label: 'hydrateRoot 공식 문서에서 서버 HTML 연결 개념 확인',
-        codeExample: 'hydrateRoot(dom, <App />)',
-      },
-      {
-        label: 'ReactFiberThrow.js가 이 파트의 중심 파일임을 기억',
-        codeExample: 'throwException(root, returnFiber, sourceFiber, value)',
-      },
-    ],
-  },
-  takeaways: {
-    eyebrow: '핵심 정리',
-    title: '이번 페이지에서 반드시 기억할 것',
-    cards: [
-      {
-        number: '01',
-        title: 'React는 정상 렌더링만 처리하지 않는다.',
-        body: '현실의 UI는 항상 준비되지 않으며, React는 이를 모델 안에서 관리한다.',
-        tone: 'blue',
-      },
-      {
-        number: '02',
-        title: 'Promise 대기, 렌더 에러, hydration mismatch도 렌더링 모델 안에서 처리된다.',
-        body: '세 흐름은 서로 다르지만 렌더 위에서 동작한다.',
-        tone: 'red',
-      },
-      {
-        number: '03',
-        title: '이 파트의 핵심은 복구 가능한 렌더링이다.',
-        body: '사용자 경험을 유지하면서, 필요하면 다시 시도한다.',
-        tone: 'green',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberThrow.js',
+    lookForLabel: '볼 것',
+    lookFor: 'throwException, typeof value.then, markSuspenseBoundaryShouldCapture',
+    whyLabel: '설명',
+    why: '한 함수 안에서 thenable인지만 보고 Suspense와 Error가 갈린다는 점이 이 챕터 전체의 뼈대입니다.',
+    code: THROW_EXCEPTION_CODE,
+    primaryCta: 'ReactFiberThrow.js 읽기',
+    primaryHref: REACT_FIBER_THROW_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'use(Promise)는 렌더링을 어떻게 멈추는가?',
+    title: 'Promise를 던진다는 것의 실제',
     description:
-      'use(Promise)가 내부에서 throw로 연결되어 Suspense 흐름을 어떻게 시작하는지 코드와 함께 읽어봅니다.',
+      'use(promise)가 무엇을 던지고 React가 그것을 어떻게 알아보는지, 첫 갈래부터 따라갑니다.',
     cta: '다음 페이지로 이동',
     href: '/use-promise-suspend',
   },
 };
 
+const THROW_EXCEPTION_CODE_EN = `function throwException(
+  root, returnFiber, sourceFiber, value, rootRenderLanes,
+) {
+  // mark this Fiber as incomplete for now
+  sourceFiber.flags |= Incomplete;
+
+  if (
+    value !== null &&
+    typeof value === 'object' &&
+    typeof value.then === 'function'
+  ) {
+    // A. a thenable was thrown, so take the Suspense path
+    const wakeable: Wakeable = value;
+    markSuspenseBoundaryShouldCapture(
+      suspenseBoundary, returnFiber, sourceFiber, root, rootRenderLanes,
+    );
+    return false;
+  }
+
+  // B. otherwise take the Error path: climb up looking for an Error Boundary
+  let workInProgress = returnFiber;
+  do {
+    if (workInProgress.tag === ClassComponent) {
+      const ctor = workInProgress.type;
+      const instance = workInProgress.stateNode;
+      if (
+        typeof ctor.getDerivedStateFromError === 'function' ||
+        typeof instance.componentDidCatch === 'function'
+      ) {
+        const update = createClassErrorUpdate(rootRenderLanes);
+        enqueueCapturedUpdate(workInProgress, update);
+        return false;
+      }
+    }
+    workInProgress = workInProgress.return;
+  } while (workInProgress !== null);
+
+  return false;
+}`;
+
 const en: WhyFailableRenderContent = {
   hero: {
-    badge: 'Suspense·Error · 1/10',
-    titleLines: ['Understanding only the happy path', 'means knowing half of React'],
+    badge: 'Suspense/Error · 1/10',
+    title: { line1: 'Assuming a render always succeeds', line2: 'does not match reality' },
     description:
-      'React handles waiting, failing, recovery, and retry inside the same rendering model — even when the UI cannot finish in one pass.',
-    illustration: {
-      backCardLabel: 'App.tsx',
-      frontCardLabel: '<Suspense />',
-      reactBadgeLabel: 'React',
-      pendingBadge: 'pending',
-      retryBadge: 'retry',
-      recoverBadge: 'recover',
-    },
-  },
-  flows: {
-    eyebrow: 'Two render paths',
-    normal: {
-      title: 'Happy path',
-      steps: [{ label: 'Render' }, { label: 'Commit' }],
-      captionLines: ['Compute the UI', 'Apply it to the DOM'],
-      pill: 'The default path when everything is ready',
-    },
-    extended: {
-      title: 'Extended path (the real world)',
-      steps: [
-        { label: 'Suspend', tone: 'purple' },
-        { label: 'Error', tone: 'red' },
-        { label: 'Hydration Mismatch', tone: 'blue' },
-        { label: 'Recovery', tone: 'green' },
-      ],
-      captionLines: ['Waiting', 'Failing', 'Mismatch', 'Recovery/Retry'],
-      pill: 'Keep completing the screen even when something goes wrong',
-    },
-  },
-  question: {
-    eyebrow: "Today's question",
-    title: "Today's question",
-    question:
-      'When rendering does not finish right away, how does React keep completing the screen?',
-    badges: [
-      { label: 'Wait', tone: 'blue' },
-      { label: 'Fail', tone: 'red' },
-      { label: 'Recover', tone: 'green' },
-      { label: 'Retry', tone: 'cyan' },
-    ],
-  },
-  normalRender: {
-    title: 'The happy-path render flow you already know',
-    steps: [
-      { label: 'JSX' },
-      { label: 'React Element' },
-      { label: 'Fiber' },
-      { label: 'Render Phase' },
-      { label: 'Commit Phase' },
-    ],
-    caption: 'This is the default render path when nothing goes wrong.',
-  },
-  threeBranches: {
-    eyebrow: 'Core visual block',
-    title: 'React does not stop here',
-    description:
-      'Many situations can happen inside Render Phase, and React handles each one as a separate branch.',
+      'Data arrives late, code throws, server HTML disagrees. React treats all three as part of the render model rather than as exceptions.',
+    diagramBadge: 'three branches',
+    diagramCaption: 'render can fail',
     rootLabel: 'Render Phase',
-    rootSublabel: 'computing',
-    branches: [
-      {
-        kind: 'suspense',
-        label: 'A. Promise found during render',
-        title: 'Suspense fallback',
-        steps: [
-          { label: 'use(Promise) is called' },
-          { label: 'thenable detected + throwException' },
-          { label: 'Suspense Boundary' },
-          { label: 'fallback UI shown' },
-        ],
-        caption: 'Wait the UI until the data is ready.',
-      },
-      {
-        kind: 'error',
-        label: 'B. Error thrown during render',
-        title: 'Error Boundary fallback',
-        steps: [
-          { label: 'throw Error happens' },
-          { label: 'walk up to Error Boundary' },
-          { label: 'captured update' },
-          { label: 'fallback UI rendered' },
-        ],
-        caption: 'Protect the whole app from collapsing on an exception.',
-      },
-      {
-        kind: 'hydration',
-        label: 'C. Mismatch found during hydration',
-        title: 'Client Recovery',
-        steps: [
-          { label: 'hydrateRoot starts' },
-          { label: 'DOM / Fiber matching' },
-          { label: 'mismatch detected' },
-          { label: 'Client Recovery runs' },
-        ],
-        caption: 'Safely connect server HTML to the client.',
-      },
-    ],
+    rootCaption: 'running your components',
+    branches: EN_BRANCHES,
   },
-  comparison: {
-    eyebrow: 'How the three paths differ',
-    title: 'Suspense / Error / Hydration role comparison',
-    columns: [
-      { label: 'Suspense', sub: 'waiting', kind: 'suspense' },
-      { label: 'Error Boundary', sub: 'failing', kind: 'error' },
-      { label: 'Hydration', sub: 'recovery', kind: 'hydration' },
+  paths: {
+    badge: '01',
+    eyebrow: 'two paths',
+    title: 'Everything so far was the happy path',
+    description:
+      'Earlier chapters followed the flow for when everything is ready. This chapter looks at when it is not.',
+    sides: [
+      {
+        id: 'normal',
+        title: 'The normal path',
+        badge: 'so far',
+        description: 'One render builds the whole tree and commits it.',
+        bullets: [
+          'JSX to Element, Element to Fiber',
+          'The render phase runs to the end and completes the tree',
+          'The commit phase writes it to the DOM',
+          'It assumes nothing will stop halfway',
+        ],
+        tone: 'sky',
+      },
+      {
+        id: 'extended',
+        title: 'The extended path',
+        badge: 'this chapter',
+        description: 'When something is thrown mid-render, the flow forks right there.',
+        bullets: [
+          'Missing data suspends only that region',
+          'An exception cuts off only that region',
+          'Mismatched server HTML rebuilds only that part',
+          'Once ready, it retries and finishes the job',
+        ],
+        tone: 'violet',
+      },
     ],
-    rowsHeader: 'Aspect',
+    note: 'The extended path is not a separate system. It is the same render phase, forking on what kind of value was thrown.',
+  },
+  branches: {
+    badge: '02',
+    eyebrow: 'three branches',
+    title: 'Three reasons a render stops',
+    description:
+      'The causes differ but the response has the same shape: isolate the affected region and leave the rest of the screen alone.',
+    items: EN_BRANCHES,
+    note: 'None of the three discards the whole screen. That the developer chooses the isolation scope with boundary components is the point.',
+  },
+  compare: {
+    badge: '03',
+    eyebrow: 'side by side',
+    title: 'What each path covers, and what it does not',
+    description:
+      'They blur together by name, yet triggers and responses differ. Which one to look at for a given symptom follows from this.',
+    headers: ['Aspect', 'Suspense', 'Error Boundary', 'Hydration'],
     rows: [
       {
-        label: 'Handles',
-        suspense: 'Data that is not ready yet',
-        error: 'Exceptions thrown during render',
-        hydration: 'Server HTML connection and mismatch recovery',
+        aspect: 'What triggers it',
+        suspense: 'A thenable (Promise) is thrown',
+        error: 'An ordinary value is thrown',
+        hydration: 'A mismatch while matching DOM to Fiber',
       },
       {
-        label: 'Trigger',
-        suspense: 'Reading a Promise / thenable',
-        error: 'throw Error',
-        hydration: 'Mismatch while comparing DOM and Fiber',
+        aspect: 'Where it is caught',
+        suspense: 'The nearest Suspense boundary',
+        error: 'The nearest Error Boundary',
+        hydration: 'The subtree being hydrated',
       },
       {
-        label: 'Reaction',
-        suspense: 'Show Suspense fallback',
-        error: 'Show Error Boundary fallback',
-        hydration: 'Run Client Recovery, then continue',
+        aspect: 'What it shows',
+        suspense: 'Shows a fallback and waits',
+        error: 'Swaps in a fallback',
+        hydration: 'Whatever the client re-renders',
       },
       {
-        label: 'User experience',
-        suspense: 'Loading...',
-        error: 'Something went wrong / retry',
-        hydration: 'Connecting... / health check',
+        aspect: 'Does it retry',
+        suspense: 'Yes — automatically once the Promise settles',
+        error: 'No — you have to reset it yourself',
+        hydration: 'Yes — that region falls back to client rendering',
       },
       {
-        label: 'Goal',
-        suspense: 'Keep UI stable while waiting',
-        error: 'Keep UI stable after isolating failure',
-        hydration: 'Keep server → client connection stable',
+        aspect: 'What it protects',
+        suspense: 'Screen stability while waiting',
+        error: 'How far a failure can spread',
+        hydration: 'Agreement between server and client',
       },
     ],
+    note: 'The fourth row is the biggest difference: Suspense retries on its own, while an Error Boundary never clears itself.',
   },
-  flowMap: {
-    eyebrow: 'Full part flow map',
-    title: 'Full part flow map',
-    description: 'React handles three flows on the same rendering model.',
-    rows: [
-      {
-        kind: 'suspense',
-        label: 'Wait',
-        sublabel: '(Suspense)',
-        steps: [
-          { label: 'use(Promise)' },
-          { label: 'throwException' },
-          { label: 'Suspense Boundary' },
-          { label: 'render fallback' },
-          { label: 'Promise resolve + retry' },
-          { label: 'commit final UI' },
-        ],
-        endStateLabel: 'retry',
-      },
-      {
-        kind: 'error',
-        label: 'Fail',
-        sublabel: '(Error)',
-        steps: [
-          { label: 'throw Error' },
-          { label: 'walk to Error Boundary' },
-          { label: 'schedule captured update' },
-          { label: 'render fallback' },
-          { label: 'retry by user/state change' },
-          { label: 'recoverable' },
-        ],
-        endStateLabel: 'recovered',
-      },
-      {
-        kind: 'hydration',
-        label: 'Recover',
-        sublabel: '(Hydration)',
-        steps: [
-          { label: 'hydrateRoot starts' },
-          { label: 'DOM / Fiber matching' },
-          { label: 'mismatch detected' },
-          { label: 'Client Recovery runs' },
-          { label: 'continue' },
-          { label: 'stability check' },
-        ],
-        endStateLabel: 'stable',
-      },
-    ],
-  },
-  codeEntry: {
-    eyebrow: 'Source entry points',
-    title: 'Map of source code entry points',
-    description: 'Where these flows start in the React source code.',
-    buttonLabel: 'View on GitHub',
-    files: [
-      {
-        kind: 'suspense',
-        fileName: 'ReactFiberThenable.js',
-        role: 'Promise / thenable wait handling',
-        code: `function trackUsedThenable(
-  thenableState,
-  thenable,
-  index,
-) {
-  // track thenable
-  return thenable;
-}`,
-        href: THENABLE_URL,
-      },
-      {
-        kind: 'error',
-        fileName: 'ReactFiberThrow.js',
-        role: 'Interpret the thrown value',
-        code: `function throwException(
-  root, returnFiber,
-  sourceFiber, value,
-) {
-  // Promise / Error branch
-}`,
-        href: THROW_URL,
-      },
-      {
-        kind: 'mixed',
-        fileName: 'ReactFiberSuspenseComponent.js',
-        role: 'Suspense boundary handling',
-        code: `function updateSuspenseComponent(
-  current, workInProgress,
-  renderLanes,
-) {
-  // fallback and retry flow
-}`,
-        href: SUSPENSE_URL,
-      },
-      {
-        kind: 'hydration',
-        fileName: 'ReactFiberHydrationContext.js',
-        role: 'Hydration matching and recovery',
-        code: `function enterHydrationState(
-  fiber,
-) {
-  // init hydration state
-}`,
-        href: HYDRATION_URL,
-      },
-    ],
-  },
-  selector: {
-    eyebrow: 'Recovery path picker',
-    title: 'Recovery path picker',
-    description: 'Pick a situation below to see which recovery path React takes.',
-    selectedBadge: 'Selected',
-    resultBadge: 'Result',
-    timelineLabel: 'Processing timeline',
-    relatedFilesLabel: 'Related files',
-    experienceLabel: 'User experience',
-    options: [
-      {
-        key: 'promise',
-        label: 'Promise pending',
-        description: 'Data is not ready yet',
-      },
-      {
-        key: 'error',
-        label: 'Error throw',
-        description: 'Exception during render',
-      },
-      {
-        key: 'mismatch',
-        label: 'Text mismatch',
-        description: 'Server HTML and client text differ',
-      },
-    ],
-    results: {
-      promise: {
-        selectedLabel: 'Promise pending',
-        resultTitle: 'Suspense fallback',
-        description:
-          'When React reads a Promise (thenable), it sends that value to the Suspense Boundary fallback UI.',
-        timeline: [
-          'Read use(Promise)',
-          'throwException(thenable)',
-          'Suspense Boundary fallback UI',
-          'Promise resolve',
-          'commit final UI',
-        ],
-        relatedFiles: ['ReactFiberThenable.js', 'ReactFiberSuspenseComponent.js'],
-        experience: 'Loading state stays visible',
-        kind: 'suspense',
-      },
-      error: {
-        selectedLabel: 'Error throw',
-        resultTitle: 'Error Boundary fallback',
-        description:
-          'An Error thrown during render is hooked into the nearest Error Boundary as a captured update.',
-        timeline: [
-          'throw Error',
-          'walk to Error Boundary',
-          'schedule captured update',
-          'render fallback UI',
-          'user retries',
-        ],
-        relatedFiles: ['ReactFiberThrow.js'],
-        experience: 'Error screen is shown',
-        kind: 'error',
-      },
-      mismatch: {
-        selectedLabel: 'Text mismatch',
-        resultTitle: 'Hydration Recovery',
-        description:
-          'If server HTML and client render do not match, React switches to the recoverable rendering path.',
-        timeline: [
-          'hydrateRoot starts',
-          'DOM / Fiber matching',
-          'mismatch detected',
-          'Client Recovery',
-          'stable connection',
-        ],
-        relatedFiles: ['ReactFiberHydrationContext.js'],
-        experience: 'Connection recovers',
-        kind: 'hydration',
-      },
-    },
-  },
-  followAlong: {
-    eyebrow: 'Walk it yourself',
-    title: 'Follow along in the code',
-    illustrationLabel: 'react/packages/react-reconciler',
-    items: [
-      {
-        label: 'Read the Suspense docs and confirm the role of fallback',
-        codeExample: '<Suspense fallback={<Loading />} />',
-      },
-      {
-        label: 'Read the hydrateRoot docs for the server HTML connection concept',
-        codeExample: 'hydrateRoot(dom, <App />)',
-      },
-      {
-        label: 'Remember that ReactFiberThrow.js is the heart of this part',
-        codeExample: 'throwException(root, returnFiber, sourceFiber, value)',
-      },
-    ],
-  },
-  takeaways: {
-    eyebrow: 'Key recap',
-    title: 'Must remember from this page',
-    cards: [
-      {
-        number: '01',
-        title: 'React does not just handle the happy path.',
-        body: 'Real-world UI is rarely ready in one pass, and React handles that inside its rendering model.',
-        tone: 'blue',
-      },
-      {
-        number: '02',
-        title:
-          'Promise waiting, render errors, and hydration mismatch are all handled inside the rendering model.',
-        body: 'The three flows differ in surface, but they all live on top of render.',
-        tone: 'red',
-      },
-      {
-        number: '03',
-        title: 'The core of this part is recoverable rendering.',
-        body: 'Keep the user experience steady, and retry when needed.',
-        tone: 'green',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberThrow.js',
+    lookForLabel: 'Look for',
+    lookFor: 'throwException, typeof value.then, markSuspenseBoundaryShouldCapture',
+    whyLabel: 'Why',
+    why: 'Suspense and Error forking on a single thenable check inside one function is the spine of this whole chapter.',
+    code: THROW_EXCEPTION_CODE_EN,
+    primaryCta: 'Read ReactFiberThrow.js',
+    primaryHref: REACT_FIBER_THROW_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'How does use(Promise) pause rendering?',
+    title: 'What throwing a Promise really means',
     description:
-      'Read how use(Promise) wires into throw internally and starts the Suspense flow, side by side with the code.',
+      'Next we follow the first branch: what use(promise) throws, and how React recognises it.',
     cta: 'Go to the next page',
     href: '/use-promise-suspend',
   },

@@ -1,120 +1,70 @@
 import { cx } from '@berrypjh/react-ui';
-import { Clock3, Database, Zap } from 'lucide-react';
+import { CalendarClock, Layers, type LucideIcon, Zap } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
+import { TerminalBadge } from '../../../shared/terminal';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { HeroStep, RootAccent, RootPendingWorkContent } from '../content';
+import { toneTokens } from '../../../shared/tones';
+import type { RootPendingWorkContent, Stage, StageId } from '../content';
 
-type Props = { content: RootPendingWorkContent['hero']; className?: string };
+type Props = { content: RootPendingWorkContent['hero'] };
 
-/** RootAccent → 공유 ToneKey 매핑 (blue/teal/violet 모두 유효 ToneKey). */
-const accentTone: Record<RootAccent, ToneKey> = {
-  blue: 'blue',
-  teal: 'teal',
-  violet: 'violet',
+const stageIcon: Record<StageId, LucideIcon> = {
+  fiber: Zap,
+  root: Layers,
+  scheduler: CalendarClock,
 };
 
-const stepIcon: Record<RootAccent, typeof Zap> = {
-  blue: Zap,
-  teal: Database,
-  violet: Clock3,
-};
-
-const ROOT_LANES_CODE = `FiberRoot {
-  pendingLanes:   0b...,  // 처리 대기 작업
-  suspendedLanes: 0b...,  // 중단된 작업
-  pingedLanes:    0b...,  // 깨어난 작업
-}`;
-
-/**
- * Hero 핵심 비주얼.
- * Fiber 업데이트 → root.pendingLanes 기록 → Root Scheduler로 이어지는
- * 흐름을, root 객체의 lane 비트셋 필드와 함께 위에서 아래로 잇는 컴팩트 stepper.
- */
-export const RootPendingWorkHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.steps
-    .map((s) => `${s.title}(${s.content.join(' ')})`)
-    .join(' → ')}. ${content.subtitle}`;
+/** Hero 핵심 비주얼: 업데이트가 Fiber에서 root까지 올라가 pendingLanes에 기록되는 경로. */
+export const RootPendingWorkHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.title.line1} ${content.title.line2} ${content.description}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
-        <ol className="flex flex-col gap-sm">
-          {content.steps.map((step, i) => (
-            <li key={step.title} className="flex flex-col gap-sm">
-              <StepCard step={step} />
-              {i === content.steps.length - 1 && (
-                <CodePreviewPanel
-                  code={ROOT_LANES_CODE}
-                  header="FiberRoot"
-                  caption="pending / suspended / pinged 비트셋"
-                  size="sm"
-                />
-              )}
-              {i < content.steps.length - 1 && <DownArrow />}
-            </li>
-          ))}
-        </ol>
+        <div className="flex items-center justify-between">
+          <TerminalBadge dotClassName="bg-[var(--term-accent)]">
+            {content.diagramBadge}
+          </TerminalBadge>
+          <span className="font-mono text-[10px] text-[var(--term-muted)]">
+            {'//'} {content.diagramCaption}
+          </span>
+        </div>
+
+        {content.stages.map((stage, i) => (
+          <div key={stage.id} className="flex flex-col gap-sm">
+            <StageRow stage={stage} />
+            {i < content.stages.length - 1 && <DownArrow />}
+          </div>
+        ))}
+
+        <CodePreviewPanel
+          header={content.rootLabel}
+          badge="main"
+          code={content.rootCode}
+          showWindowDots={false}
+        />
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
-const StepCard = ({ step }: { step: HeroStep }) => {
-  const t = toneTokens[accentTone[step.accent]];
-  const Icon = stepIcon[step.accent];
+const StageRow = ({ stage }: { stage: Stage }) => {
+  const Icon = stageIcon[stage.id];
+  const t = toneTokens[stage.tone];
   return (
-    <article
-      className={cx(
-        'flex flex-col gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
-        t.borderHover,
-      )}
-    >
-      <header className="flex items-center gap-sm">
-        <ToneIconBox tone={accentTone[step.accent]} size="sm">
-          <Icon className="h-[18px] w-[18px]" />
-        </ToneIconBox>
-        <h3 className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>{step.title}</h3>
-      </header>
-
-      <ul className="flex flex-wrap gap-1">
-        {step.content.map((line) => (
-          <li
-            key={line}
-            className="rounded-md border border-[var(--term-border)] bg-[var(--term-bg)] px-1.5 py-0.5 font-mono text-[11px] leading-none text-[var(--term-muted)]"
-          >
-            {line}
-          </li>
-        ))}
-      </ul>
-
-      <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)] break-keep">
-        {step.footer}
-      </span>
+    <article className="flex items-center gap-sm rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] px-md py-2.5 shadow-[0_2px_0_var(--term-border)]">
+      <ToneIconBox tone={stage.tone} size="sm" className="h-8 w-8">
+        <Icon className="h-4 w-4" />
+      </ToneIconBox>
+      <div className="flex min-w-0 flex-col gap-0.5">
+        <code className={cx('font-mono text-[11px] font-bold tracking-tight break-all', t.text)}>
+          {stage.label}
+        </code>
+        <span className="text-[10px] text-[var(--term-muted)] break-keep">{stage.caption}</span>
+      </div>
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

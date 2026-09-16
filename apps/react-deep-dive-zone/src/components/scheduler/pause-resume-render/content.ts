@@ -1,148 +1,91 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type YieldAccent = 'blue' | 'teal' | 'violet' | 'emerald' | 'rose';
+import type { ToneKey } from '../../shared/tones';
 
-export type ConceptCard = { title: string; description: string; accent: YieldAccent };
+export type FrameId = 'frame1' | 'frame2';
 
-export type ProblemCard = { title: string; description: string; accent: YieldAccent };
-
-export type WorkLoopStep = {
-  title: string;
-  description: string;
-  emphasis?: 'yield' | 'check' | 'continue';
-  accent: YieldAccent;
-};
-
-export type DeadlineMarker = {
+export type Frame = {
+  id: FrameId;
   label: string;
-  phase: 'work' | 'budget' | 'overflow' | 'yield';
+  items: string[];
+  tail: string;
+  tone: ToneKey;
 };
 
-export type SimulatorStatus =
-  | 'idle'
-  | 'running'
-  | 'yielded'
-  | 'input-handled'
-  | 'continued'
-  | 'completed';
+export type LoopStepId = 'peek' | 'check-expired' | 'should-yield' | 'run' | 'continuation';
 
-export type MissionCard = { title: string; description: string; accent: YieldAccent };
-
-export type TakeawayCard = {
-  number: string;
+export type LoopStep = {
+  id: LoopStepId;
+  num: string;
   title: string;
   description: string;
-  accent: YieldAccent;
+  tone: ToneKey;
 };
 
-export type RenderYieldingContent = {
+export type ConditionRow = {
+  condition: string;
+  result: string;
+  why: string;
+};
+
+export type GranularityId = 'unit' | 'commit' | 'sync';
+
+export type Granularity = {
+  id: GranularityId;
+  title: string;
+  role: string;
+  description: string;
+  tone: ToneKey;
+};
+
+export type PauseResumeContent = {
   hero: {
     badge: string;
-    titleLines: [string, string];
-    highlight: string;
-    subtitle: string;
-    mainFlow: string[];
-    frame1: { title: string; items: string[]; yieldBadge: string };
-    frame2: { title: string; items: string[]; continuationBadge: string };
-    bridge: { top: string; bottom: string };
-  };
-  question: {
-    eyebrow: string;
-    question: string;
-    cards: ConceptCard[];
-  };
-  problem: {
-    number: string;
-    title: string;
-    mainCopy: string;
-    timelineTitle: string;
-    timelineLabels: string[];
-    badInputLabel: string;
-    busyLabel: string;
-    cards: ProblemCard[];
+    title: { line1: string; line2: string };
+    description: string;
+    diagramBadge: string;
+    diagramCaption: string;
+    frames: [Frame, Frame];
+    bridgeLabel: string;
   };
   workLoop: {
-    number: string;
+    badge: string;
+    eyebrow: string;
     title: string;
-    steps: WorkLoopStep[];
-    supportingCopy: string;
-  };
-  shouldYield: {
-    number: string;
-    title: string;
-    mainConcept: string;
-    formula: string;
-    continueCase: {
-      title: string;
-      condition: string;
-      result: string[];
-    };
-    yieldCase: {
-      title: string;
-      condition: string;
-      result: string[];
-    };
+    description: string;
+    steps: LoopStep[];
     note: string;
   };
-  deadline: {
-    number: string;
+  conditions: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    markers: DeadlineMarker[];
     description: string;
+    headers: [string, string, string];
+    rows: ConditionRow[];
+    note: string;
   };
-  yieldMoment: {
-    number: string;
+  granularity: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    continueCard: { title: string; description: string };
-    yieldCard: { title: string; description: string };
-    conditionFlow: string[];
+    description: string;
+    items: Granularity[];
+    note: string;
   };
-  continuation: {
-    number: string;
+  checkpoint: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    mainCopy: string;
-    flow: string[];
-    frame1: { title: string; items: string[]; tag: string };
-    frame2: { title: string; items: string[]; tag: string };
-  };
-  code: {
-    number: string;
-    title: string;
-    cardA: { title: string; fileLabel: string; code: string };
-    cardB: { title: string; fileLabel: string; code: string };
-    explanationTitle: string;
-    explanation: string[];
-    button: { label: string; href: string };
-  };
-  simulator: {
-    number: string;
-    title: string;
-    helper: string;
-    buttons: {
-      start: string;
-      input: string;
-      resume: string;
-      reset: string;
-    };
-    timelineTitle: string;
-    frame1Title: string;
-    frame2Title: string;
-    fiberItems: { frame: 1 | 2; label: string }[];
-    statusTitle: string;
-    statusLabels: Record<SimulatorStatus, string>;
-    inputTaskLabel: string;
-    yieldMarker: string;
-    completeMarker: string;
-  };
-  mission: {
-    number: string;
-    title: string;
-    cards: MissionCard[];
-  };
-  takeaways: {
-    number: string;
-    title: string;
-    cards: TakeawayCard[];
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -153,593 +96,412 @@ export type RenderYieldingContent = {
   };
 };
 
-const SCHEDULER_JS_URL =
-  'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js';
+const WORK_LOOP_CODE = `// scheduler 패키지 쪽: task 단위로 양보를 판단한다
+function workLoop(initialTime) {
+  let currentTime = initialTime;
+  currentTask = peek(taskQueue);
 
-const CODE_A = `if (currentTask.expirationTime > currentTime && shouldYieldToHost()) {
-  break;
-}`;
+  while (currentTask !== null) {
+    if (currentTask.expirationTime > currentTime && shouldYieldToHost()) {
+      // 아직 만료 전인데 시간이 다 됐으면 여기서 멈춘다
+      break;
+    }
 
-const CODE_B = `const timeElapsed = getCurrentTime() - startTime;
+    const callback = currentTask.callback;
+    currentTask.callback = null;
+    const continuationCallback = callback(didUserCallbackTimeout);
 
-if (timeElapsed < frameInterval) {
-  return false;
+    if (typeof continuationCallback === 'function') {
+      // 함수를 돌려주면 "아직 안 끝났다"는 뜻이다
+      currentTask.callback = continuationCallback;
+      return true;
+    }
+
+    currentTask = peek(taskQueue);
+  }
+
+  return currentTask !== null;
 }
 
-return true;`;
+export function shouldYieldToHost(): boolean {
+  const timeElapsed = getCurrentTime() - startTime;
+  if (timeElapsed < frameInterval) {
+    return false;
+  }
+  return true;
+}
 
-const ko: RenderYieldingContent = {
+// react-reconciler 쪽: Fiber 하나 끝낼 때마다 확인한다
+function workLoopConcurrent() {
+  while (workInProgress !== null && !shouldYield()) {
+    performUnitOfWork(workInProgress);
+  }
+}`;
+
+const SCHEDULER_HREF =
+  'https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js';
+
+const ko: PauseResumeContent = {
   hero: {
     badge: 'Scheduler · 9/10단계',
-    titleLines: ['렌더링은 끝날 때까지', '무조건 밀어붙이지 않는다'],
-    highlight: '무조건 밀어붙이지 않는다',
-    subtitle:
-      '무거운 렌더링 중에도 입력이 덜 막히는 이유는, React가 작업을 나누고 host에게 양보할 수 있기 때문입니다.',
-    mainFlow: [
-      '긴 렌더링 시작',
-      'shouldYieldToHost()',
-      'yield',
-      'continuation',
-      '다음 frame에서 재개',
-    ],
-    frame1: {
-      title: 'Frame 1',
-      items: ['Fiber A 처리', 'Fiber B 처리', 'deadline 도달 → yield'],
-      yieldBadge: 'yield',
-    },
-    frame2: {
-      title: 'Frame 2',
-      items: ['Fiber C부터 재개', 'Fiber D 처리', '완료'],
-      continuationBadge: 'continuation',
-    },
-    bridge: { top: 'host에게 양보', bottom: '다음 기회에 재개' },
-  },
-  question: {
-    eyebrow: '오늘의 질문',
-    question: '무거운 렌더링 중에도 입력이 덜 막히는 이유는 무엇일까?',
-    cards: [
+    title: { line1: '렌더는 끝까지 밀어붙이지 않는다', line2: '중간에 멈췄다 다시 시작한다' },
+    description:
+      'Fiber 하나를 끝낼 때마다 시간이 남았는지 확인합니다. 다 됐으면 하던 자리를 기억해 두고 브라우저에 제어를 돌려줍니다.',
+    diagramBadge: 'yield & resume',
+    diagramCaption: 'stop, hand over, continue',
+    frames: [
       {
-        title: 'main thread 점유',
-        description: '긴 작업은 입력과 페인트를 지연시킬 수 있음',
-        accent: 'rose',
+        id: 'frame1',
+        label: 'Frame 1',
+        items: ['Fiber A 처리', 'Fiber B 처리', 'shouldYield() → true'],
+        tail: '여기서 멈춘다',
+        tone: 'sky',
       },
       {
-        title: 'host에게 양보',
-        description: '프레임 예산을 넘기면 제어권을 돌려줌',
-        accent: 'blue',
-      },
-      {
-        title: 'continuation으로 재개',
-        description: '남은 작업을 다음 실행 기회에 이어서 처리',
-        accent: 'emerald',
+        id: 'frame2',
+        label: 'Frame 2',
+        items: ['Fiber C부터 재개', 'Fiber D 처리', '렌더 완료'],
+        tail: 'workInProgress가 그대로였다',
+        tone: 'emerald',
       },
     ],
-  },
-  problem: {
-    number: '1',
-    title: '긴 렌더링이 문제인 이유',
-    mainCopy:
-      '한 번의 렌더링 작업이 오래 이어지면 브라우저는 입력, 스크롤, 페인트를 제때 처리하지 못할 수 있습니다.',
-    timelineTitle: '한 프레임이 긴 작업으로 가득 찬 경우',
-    timelineLabels: ['Frame start', 'Fiber A', 'Fiber B', 'Fiber C', '입력 대기...', 'Paint 지연'],
-    badInputLabel: '입력 지연',
-    busyLabel: 'main thread busy',
-    cards: [
-      {
-        title: '긴 render work',
-        description: '많은 Fiber를 한 번에 처리하려고 함',
-        accent: 'blue',
-      },
-      {
-        title: '입력 대기',
-        description: '사용자 입력이 main thread 뒤에서 기다림',
-        accent: 'rose',
-      },
-      {
-        title: '체감 지연',
-        description: '타이핑, 클릭, 스크롤이 늦게 반응하는 것처럼 느껴짐',
-        accent: 'rose',
-      },
-    ],
+    bridgeLabel: '브라우저에 제어 반환 (입력·페인트 처리)',
   },
   workLoop: {
-    number: '2',
-    title: 'Scheduler workLoop 흐름',
-    steps: [
-      { title: '현재 task 선택', description: 'taskQueue의 head를 꺼낸다', accent: 'blue' },
-      {
-        title: '만료 여부 확인',
-        description: 'expirationTime이 지났는지 검사',
-        emphasis: 'check',
-        accent: 'blue',
-      },
-      {
-        title: 'yield 필요 여부 확인',
-        description: 'shouldYieldToHost() 호출',
-        emphasis: 'check',
-        accent: 'teal',
-      },
-      {
-        title: '가능하면 실행 계속',
-        description: 'callback을 호출하고 다음 task로',
-        emphasis: 'continue',
-        accent: 'emerald',
-      },
-      {
-        title: '필요하면 루프 중단',
-        description: 'workLoop를 빠져나가고 host에 양보',
-        emphasis: 'yield',
-        accent: 'violet',
-      },
-    ],
-    supportingCopy:
-      'Scheduler의 workLoop는 task를 처리하면서 현재 작업을 계속 밀어붙일지, 아니면 host에게 제어권을 돌려줄지 확인합니다.',
-  },
-  shouldYield: {
-    number: '3',
-    title: 'shouldYieldToHost',
-    mainConcept: '현재 작업이 main thread를 오래 점유했는지 확인합니다.',
-    formula: 'timeElapsed = getCurrentTime() - startTime',
-    continueCase: {
-      title: '계속 진행',
-      condition: 'timeElapsed < frameInterval',
-      result: ['아직 프레임 예산 안쪽', '계속 진행'],
-    },
-    yieldCase: {
-      title: 'yield 고려',
-      condition: 'timeElapsed >= frameInterval',
-      result: ['프레임 예산 초과', 'host에게 양보 고려'],
-    },
-    note: '특정 숫자를 외우는 것이 아니라, 작업 시간이 길어졌는지를 기준으로 양보 여부를 판단합니다.',
-  },
-  deadline: {
-    number: '4',
-    title: 'deadline과 frame interval',
-    markers: [
-      { label: '작업 시작', phase: 'work' },
-      { label: 'Fiber A', phase: 'work' },
-      { label: 'Fiber B', phase: 'budget' },
-      { label: 'frame interval 초과', phase: 'overflow' },
-      { label: 'yield 고려', phase: 'yield' },
-    ],
+    badge: '01',
+    eyebrow: 'workLoop',
+    title: '멈출 수 있게 만드는 다섯 칸',
     description:
-      'React는 브라우저가 입력과 페인트를 처리할 기회를 얻을 수 있도록 긴 작업을 한 번에 끝까지 밀어붙이지 않을 수 있습니다.',
-  },
-  yieldMoment: {
-    number: '5',
-    title: 'yield 발생 시점',
-    continueCard: {
-      title: '계속 진행',
-      description:
-        'task가 만료되었거나, 아직 host에게 양보할 필요가 없을 때 작업을 계속 수행합니다.',
-    },
-    yieldCard: {
-      title: 'yield 발생',
-      description:
-        '현재 task가 아직 만료되지 않았고, shouldYieldToHost()가 true라면 workLoop를 빠져나갑니다.',
-    },
-    conditionFlow: ['currentTask', 'not expired', 'shouldYieldToHost() === true', 'break'],
-  },
-  continuation: {
-    number: '6',
-    title: 'continuation으로 재개',
-    mainCopy:
-      'yield는 렌더링을 완전히 취소한다는 뜻이 아닙니다. 끝나지 않은 작업은 continuation으로 남고, 다음 실행 기회에 이어서 처리될 수 있습니다.',
-    flow: ['렌더링 중단', 'continuation callback 반환', '다음 기회에 다시 실행', '남은 Fiber 처리'],
-    frame1: {
-      title: 'Frame 1',
-      items: ['Fiber A 처리', 'Fiber B 처리', 'deadline 도달 → yield'],
-      tag: 'yield',
-    },
-    frame2: {
-      title: 'Frame 2',
-      items: ['Fiber C부터 재개', 'Fiber D 처리', '완료'],
-      tag: 'continuation',
-    },
-  },
-  code: {
-    number: '7',
-    title: '실제 코드 미리보기',
-    cardA: {
-      title: 'Scheduler.js - workLoop',
-      fileLabel: 'Scheduler.js',
-      code: CODE_A,
-    },
-    cardB: {
-      title: 'Scheduler.js - shouldYieldToHost',
-      fileLabel: 'Scheduler.js',
-      code: CODE_B,
-    },
-    explanationTitle: '설명',
-    explanation: [
-      'workLoop는 현재 task가 아직 만료되지 않았고 host에게 양보해야 한다면 루프를 중단합니다.',
-      'shouldYieldToHost는 현재 작업이 프레임 예산을 넘겼는지 확인합니다.',
-    ],
-    button: { label: 'GitHub에서 코드 보기', href: SCHEDULER_JS_URL },
-  },
-  simulator: {
-    number: '8',
-    title: '중단·재개 시뮬레이터',
-    helper:
-      '긴 렌더링이 한 번에 끝나지 않고, 중간에 host에게 양보한 뒤 다음 frame에서 이어지는 흐름을 확인합니다.',
-    buttons: {
-      start: '긴 렌더링 시작',
-      input: '사용자 입력 발생',
-      resume: '다음 frame으로 재개',
-      reset: '초기화',
-    },
-    timelineTitle: '프레임 타임라인',
-    frame1Title: 'Frame 1',
-    frame2Title: 'Frame 2',
-    fiberItems: [
-      { frame: 1, label: 'Fiber A' },
-      { frame: 1, label: 'Fiber B' },
-      { frame: 2, label: 'Fiber C' },
-      { frame: 2, label: 'Fiber D' },
-    ],
-    statusTitle: '현재 상태',
-    statusLabels: {
-      idle: '대기 중',
-      running: '렌더링 작업 실행 중',
-      yielded: 'host에게 양보함',
-      'input-handled': '사용자 입력 먼저 처리됨',
-      continued: 'continuation으로 재개됨',
-      completed: '작업 완료',
-    },
-    inputTaskLabel: '사용자 입력 task',
-    yieldMarker: 'deadline → yield',
-    completeMarker: '완료',
-  },
-  mission: {
-    number: '9',
-    title: '직접 코드에서 따라가 보기',
-    cards: [
+      '멈춤은 예외 처리가 아니라 정상 흐름입니다. 루프가 매 반복마다 확인하고, 멈출 때는 다음 콜백을 돌려주는 것으로 표시합니다.',
+    steps: [
       {
-        title: 'Scheduler.js에서 workLoop를 찾는다',
-        description: 'task를 처리하는 반복 루프가 어디에 있는지 확인합니다.',
-        accent: 'blue',
+        id: 'peek',
+        num: '01',
+        title: '가장 급한 task 꺼내기',
+        description: '만료 시각 기준 최소 힙에서 제일 앞을 봅니다.',
+        tone: 'sky',
       },
       {
-        title: 'shouldYieldToHost 호출 지점을 본다',
-        description: '언제 host에게 양보할지 판단하는 조건을 찾습니다.',
-        accent: 'teal',
+        id: 'check-expired',
+        num: '02',
+        title: '이미 만료됐는지 확인',
+        description: '만료된 task라면 시간과 무관하게 무조건 실행합니다. 굶주림 방지입니다.',
+        tone: 'amber',
       },
       {
-        title: 'frameInterval 비교를 확인한다',
-        description: '작업 시간이 프레임 예산을 넘겼는지 보는 흐름을 확인합니다.',
-        accent: 'violet',
+        id: 'should-yield',
+        num: '03',
+        title: 'shouldYieldToHost 확인',
+        description: '만료 전인데 프레임 예산을 다 썼으면 루프를 빠져나옵니다.',
+        tone: 'violet',
       },
       {
-        title: 'continuation이 어떻게 이어지는지 Root Scheduler 파일까지 연결해본다',
-        description: 'yield 이후 남은 작업이 다음 실행 기회에 이어지는 경로를 추적합니다.',
-        accent: 'emerald',
+        id: 'run',
+        num: '04',
+        title: 'callback 실행',
+        description: 'React의 performWorkOnRoot가 돌며 Fiber를 하나씩 처리합니다.',
+        tone: 'cyan',
+      },
+      {
+        id: 'continuation',
+        num: '05',
+        title: '함수를 돌려받으면 재예약',
+        description:
+          '콜백이 함수를 반환하면 아직 안 끝났다는 뜻입니다. 같은 task에 다시 매달아 둡니다.',
+        tone: 'emerald',
       },
     ],
+    note: '05가 재개의 전부입니다. 상태를 따로 저장하지 않고, 함수 하나를 돌려주는 것으로 "이어서 하라"를 표현합니다.',
   },
-  takeaways: {
-    number: '10',
-    title: '핵심 정리',
-    cards: [
+  conditions: {
+    badge: '02',
+    eyebrow: 'when to yield',
+    title: '멈출지 말지를 가르는 조건들',
+    description:
+      'shouldYield는 한 가지만 보지 않습니다. 렌더 성격과 남은 시간에 따라 같은 상황에서도 답이 달라집니다.',
+    headers: ['상황', '양보하는가', '이유'],
+    rows: [
       {
-        number: '01',
-        title: '긴 렌더링은 중단될 수 있다.',
-        description: 'React는 모든 render work를 끝까지 한 번에 밀어붙이지 않을 수 있습니다.',
-        accent: 'blue',
+        condition: '프레임 예산이 남았을 때',
+        result: '계속 진행',
+        why: 'frameInterval(기본 5ms) 안이면 브라우저가 할 일도 없으므로 계속 돕니다.',
       },
       {
-        number: '02',
-        title: 'shouldYieldToHost가 양보 시점을 판단한다.',
-        description: '작업이 오래 이어졌는지 확인하고 host에게 제어권을 돌려줄 수 있습니다.',
-        accent: 'teal',
+        condition: '예산을 다 썼을 때',
+        result: '양보',
+        why: '입력이나 페인트가 밀리기 시작하는 구간이라 제어를 돌려줍니다.',
       },
       {
-        number: '03',
-        title: 'React는 continuation을 통해 이후에 다시 이어간다.',
-        description: 'yield는 취소가 아니라, 남은 작업을 다음 기회에 이어가기 위한 중단입니다.',
-        accent: 'emerald',
+        condition: 'task가 이미 만료됐을 때',
+        result: '양보하지 않음',
+        why: '더 미루면 굶주립니다. 시간이 초과돼도 끝까지 밀어붙입니다.',
+      },
+      {
+        condition: 'SyncLane 렌더일 때',
+        result: '양보하지 않음',
+        why: '동기 경로는 workLoopSync를 써서 shouldYield를 아예 확인하지 않습니다.',
       },
     ],
+    note: '마지막 줄이 중요합니다. 모든 렌더가 중단 가능한 것이 아니라, lane이 concurrent인 경우에만 그렇습니다.',
+  },
+  granularity: {
+    badge: '03',
+    eyebrow: 'granularity',
+    title: '어디서는 멈출 수 있고 어디서는 못 멈춘다',
+    description:
+      '중단 지점은 아무 데나 있지 않습니다. 화면이 반쯤 바뀐 상태를 사용자에게 보여 주면 안 되기 때문입니다.',
+    items: [
+      {
+        id: 'unit',
+        title: 'Fiber 하나 사이',
+        role: '멈출 수 있음',
+        description:
+          'performUnitOfWork가 끝날 때마다 확인합니다. 아직 화면에 아무것도 반영되지 않은 시점입니다.',
+        tone: 'emerald',
+      },
+      {
+        id: 'commit',
+        title: 'Commit 단계 안',
+        role: '멈출 수 없음',
+        description: 'DOM을 실제로 바꾸는 구간입니다. 중간에 멈추면 화면이 깨진 상태로 보입니다.',
+        tone: 'amber',
+      },
+      {
+        id: 'sync',
+        title: 'Sync 렌더 전체',
+        role: '멈출 수 없음',
+        description:
+          'workLoopSync는 shouldYield를 부르지 않습니다. 시작하면 끝까지 한 번에 갑니다.',
+        tone: 'violet',
+      },
+    ],
+    note: '렌더는 중단 가능하고 커밋은 불가능하다는 비대칭이, render phase와 commit phase를 나눈 이유 중 하나입니다.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/scheduler/src/forks/Scheduler.js',
+    lookForLabel: '볼 것',
+    lookFor: 'workLoop, shouldYieldToHost, frameInterval, workLoopConcurrent',
+    whyLabel: '설명',
+    why: '콜백이 함수를 반환하면 같은 task에 다시 붙인다는 부분이, 재개를 구현하는 전부입니다.',
+    code: WORK_LOOP_CODE,
+    primaryCta: 'Scheduler.js 읽기',
+    primaryHref: SCHEDULER_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '전체 흐름 복습',
-    description: '클릭/전환/지연 업데이트가 한 화면에서 어떻게 다르게 흐르는지 살펴봅니다.',
+    title: '아홉 페이지를 한 흐름으로',
+    description:
+      '업데이트 발생부터 렌더 재개까지, 지금까지 본 조각들을 하나의 경로로 다시 잇습니다.',
     cta: '다음 페이지로 이동',
     href: '/scheduler-overall-flow',
   },
 };
 
-const en: RenderYieldingContent = {
+const WORK_LOOP_CODE_EN = `// in the scheduler package: yielding is judged per task
+function workLoop(initialTime) {
+  let currentTime = initialTime;
+  currentTask = peek(taskQueue);
+
+  while (currentTask !== null) {
+    if (currentTask.expirationTime > currentTime && shouldYieldToHost()) {
+      // not expired yet but out of time, so stop here
+      break;
+    }
+
+    const callback = currentTask.callback;
+    currentTask.callback = null;
+    const continuationCallback = callback(didUserCallbackTimeout);
+
+    if (typeof continuationCallback === 'function') {
+      // returning a function means "not finished yet"
+      currentTask.callback = continuationCallback;
+      return true;
+    }
+
+    currentTask = peek(taskQueue);
+  }
+
+  return currentTask !== null;
+}
+
+export function shouldYieldToHost(): boolean {
+  const timeElapsed = getCurrentTime() - startTime;
+  if (timeElapsed < frameInterval) {
+    return false;
+  }
+  return true;
+}
+
+// in react-reconciler: checked after finishing each Fiber
+function workLoopConcurrent() {
+  while (workInProgress !== null && !shouldYield()) {
+    performUnitOfWork(workInProgress);
+  }
+}`;
+
+const en: PauseResumeContent = {
   hero: {
     badge: 'Scheduler · 9/10',
-    titleLines: ['Rendering does not always', 'push through to the end'],
-    highlight: 'push through to the end',
-    subtitle:
-      "Even during heavy rendering, input doesn't feel as blocked because React can split work and yield to the host.",
-    mainFlow: [
-      'Heavy render begins',
-      'shouldYieldToHost()',
-      'yield',
-      'continuation',
-      'Resume in the next frame',
-    ],
-    frame1: {
-      title: 'Frame 1',
-      items: ['Process Fiber A', 'Process Fiber B', 'Reach deadline → yield'],
-      yieldBadge: 'yield',
-    },
-    frame2: {
-      title: 'Frame 2',
-      items: ['Resume from Fiber C', 'Process Fiber D', 'Done'],
-      continuationBadge: 'continuation',
-    },
-    bridge: { top: 'Yield to the host', bottom: 'Resume next chance' },
-  },
-  question: {
-    eyebrow: "Today's question",
-    question: 'Why does input still feel responsive during heavy rendering?',
-    cards: [
+    title: { line1: 'A render does not push to the end', line2: 'it stops and picks up again' },
+    description:
+      'After each Fiber, React checks whether time remains. If not, it remembers where it was and hands control back to the browser.',
+    diagramBadge: 'yield & resume',
+    diagramCaption: 'stop, hand over, continue',
+    frames: [
       {
-        title: 'Main-thread occupancy',
-        description: 'Long work can delay input and paint',
-        accent: 'rose',
+        id: 'frame1',
+        label: 'Frame 1',
+        items: ['Process Fiber A', 'Process Fiber B', 'shouldYield() → true'],
+        tail: 'stops right here',
+        tone: 'sky',
       },
       {
-        title: 'Yield to the host',
-        description: 'Hand control back if the frame budget is exceeded',
-        accent: 'blue',
-      },
-      {
-        title: 'Resume via continuation',
-        description: 'Pick up the remaining work in the next chance',
-        accent: 'emerald',
+        id: 'frame2',
+        label: 'Frame 2',
+        items: ['Resume from Fiber C', 'Process Fiber D', 'Render complete'],
+        tail: 'workInProgress was still there',
+        tone: 'emerald',
       },
     ],
-  },
-  problem: {
-    number: '1',
-    title: 'Why long renders are a problem',
-    mainCopy:
-      "When a single render runs too long, the browser can't process input, scrolling, and paint on time.",
-    timelineTitle: 'A single frame fully occupied by long work',
-    timelineLabels: [
-      'Frame start',
-      'Fiber A',
-      'Fiber B',
-      'Fiber C',
-      'Input waits...',
-      'Paint delayed',
-    ],
-    badInputLabel: 'Input delayed',
-    busyLabel: 'main thread busy',
-    cards: [
-      {
-        title: 'Long render work',
-        description: 'Tries to process many fibers at once',
-        accent: 'blue',
-      },
-      {
-        title: 'Input queued',
-        description: 'User input waits behind the busy main thread',
-        accent: 'rose',
-      },
-      {
-        title: 'Perceived lag',
-        description: 'Typing, clicking, scrolling feel late to react',
-        accent: 'rose',
-      },
-    ],
+    bridgeLabel: 'control returns to the browser (input and paint)',
   },
   workLoop: {
-    number: '2',
-    title: 'Scheduler workLoop flow',
-    steps: [
-      { title: 'Pick current task', description: 'Take the head of taskQueue', accent: 'blue' },
-      {
-        title: 'Check expiration',
-        description: 'See if expirationTime has passed',
-        emphasis: 'check',
-        accent: 'blue',
-      },
-      {
-        title: 'Check if yield is needed',
-        description: 'Call shouldYieldToHost()',
-        emphasis: 'check',
-        accent: 'teal',
-      },
-      {
-        title: 'Continue if possible',
-        description: 'Run the callback and move to the next task',
-        emphasis: 'continue',
-        accent: 'emerald',
-      },
-      {
-        title: 'Break the loop if needed',
-        description: 'Exit workLoop and hand off to the host',
-        emphasis: 'yield',
-        accent: 'violet',
-      },
-    ],
-    supportingCopy:
-      "The Scheduler's workLoop decides, while processing tasks, whether to keep pushing forward or return control to the host.",
-  },
-  shouldYield: {
-    number: '3',
-    title: 'shouldYieldToHost',
-    mainConcept: 'Checks whether the current work has been holding the main thread too long.',
-    formula: 'timeElapsed = getCurrentTime() - startTime',
-    continueCase: {
-      title: 'Continue',
-      condition: 'timeElapsed < frameInterval',
-      result: ['Still within the frame budget', 'Keep going'],
-    },
-    yieldCase: {
-      title: 'Consider yielding',
-      condition: 'timeElapsed >= frameInterval',
-      result: ['Frame budget exceeded', 'Consider yielding to the host'],
-    },
-    note: 'The point is not memorizing a number — it is judging whether the work has been running long enough to yield.',
-  },
-  deadline: {
-    number: '4',
-    title: 'Deadline & frame interval',
-    markers: [
-      { label: 'Work starts', phase: 'work' },
-      { label: 'Fiber A', phase: 'work' },
-      { label: 'Fiber B', phase: 'budget' },
-      { label: 'frame interval exceeded', phase: 'overflow' },
-      { label: 'Consider yielding', phase: 'yield' },
-    ],
+    badge: '01',
+    eyebrow: 'workLoop',
+    title: 'Five stops that make stopping possible',
     description:
-      'React may avoid pushing long work all the way to completion so the browser gets a chance to handle input and paint.',
-  },
-  yieldMoment: {
-    number: '5',
-    title: 'When yield happens',
-    continueCard: {
-      title: 'Continue',
-      description:
-        "When the task has expired, or there's no reason to yield yet, work keeps going.",
-    },
-    yieldCard: {
-      title: 'Yield',
-      description:
-        'If the current task has not expired and shouldYieldToHost() is true, we exit the workLoop.',
-    },
-    conditionFlow: ['currentTask', 'not expired', 'shouldYieldToHost() === true', 'break'],
-  },
-  continuation: {
-    number: '6',
-    title: 'Resuming via continuation',
-    mainCopy:
-      'Yielding does not mean cancelling the render. Unfinished work remains as a continuation and can be resumed at the next chance.',
-    flow: [
-      'Render pauses',
-      'Returns a continuation callback',
-      'Runs again on the next chance',
-      'Process the remaining fibers',
-    ],
-    frame1: {
-      title: 'Frame 1',
-      items: ['Process Fiber A', 'Process Fiber B', 'Reach deadline → yield'],
-      tag: 'yield',
-    },
-    frame2: {
-      title: 'Frame 2',
-      items: ['Resume from Fiber C', 'Process Fiber D', 'Done'],
-      tag: 'continuation',
-    },
-  },
-  code: {
-    number: '7',
-    title: 'Source code preview',
-    cardA: {
-      title: 'Scheduler.js - workLoop',
-      fileLabel: 'Scheduler.js',
-      code: CODE_A,
-    },
-    cardB: {
-      title: 'Scheduler.js - shouldYieldToHost',
-      fileLabel: 'Scheduler.js',
-      code: CODE_B,
-    },
-    explanationTitle: 'Explanation',
-    explanation: [
-      'workLoop breaks out when the current task is not yet expired and yielding is needed.',
-      'shouldYieldToHost checks whether the current work exceeded the frame budget.',
-    ],
-    button: { label: 'See the code on GitHub', href: SCHEDULER_JS_URL },
-  },
-  simulator: {
-    number: '8',
-    title: 'Pause & resume simulator',
-    helper:
-      "Watch how a long render doesn't finish in one go — it yields mid-way and resumes in the next frame.",
-    buttons: {
-      start: 'Start long render',
-      input: 'Fire user input',
-      resume: 'Resume next frame',
-      reset: 'Reset',
-    },
-    timelineTitle: 'Frame timeline',
-    frame1Title: 'Frame 1',
-    frame2Title: 'Frame 2',
-    fiberItems: [
-      { frame: 1, label: 'Fiber A' },
-      { frame: 1, label: 'Fiber B' },
-      { frame: 2, label: 'Fiber C' },
-      { frame: 2, label: 'Fiber D' },
-    ],
-    statusTitle: 'Current status',
-    statusLabels: {
-      idle: 'Idle',
-      running: 'Render work running',
-      yielded: 'Yielded to host',
-      'input-handled': 'User input handled first',
-      continued: 'Resumed via continuation',
-      completed: 'Work complete',
-    },
-    inputTaskLabel: 'User input task',
-    yieldMarker: 'deadline → yield',
-    completeMarker: 'complete',
-  },
-  mission: {
-    number: '9',
-    title: 'Walk it in the source',
-    cards: [
+      'Yielding is the normal path, not an error path. The loop checks each round and signals a stop by returning the next callback.',
+    steps: [
       {
-        title: 'Find workLoop in Scheduler.js',
-        description: 'Locate the loop that processes tasks.',
-        accent: 'blue',
+        id: 'peek',
+        num: '01',
+        title: 'Peek the most urgent task',
+        description: 'Look at the front of the min-heap ordered by expiration time.',
+        tone: 'sky',
       },
       {
-        title: 'See where shouldYieldToHost is called',
-        description: 'Find the condition that decides when to yield.',
-        accent: 'teal',
+        id: 'check-expired',
+        num: '02',
+        title: 'Check whether it expired',
+        description:
+          'An expired task runs regardless of remaining time. That is the starvation guard.',
+        tone: 'amber',
       },
       {
-        title: 'Check the frameInterval comparison',
-        description: 'See how the elapsed time is compared to the budget.',
-        accent: 'violet',
+        id: 'should-yield',
+        num: '03',
+        title: 'Ask shouldYieldToHost',
+        description: 'Not expired but out of frame budget means breaking out of the loop.',
+        tone: 'violet',
       },
       {
-        title: 'Trace continuation through Root Scheduler',
-        description: 'Follow how unfinished work resumes after a yield.',
-        accent: 'emerald',
+        id: 'run',
+        num: '04',
+        title: 'Run the callback',
+        description: "React's performWorkOnRoot runs and processes Fibers one at a time.",
+        tone: 'cyan',
+      },
+      {
+        id: 'continuation',
+        num: '05',
+        title: 'Re-book when a function comes back',
+        description:
+          'A returned function means the work is unfinished, so it is attached to the same task again.',
+        tone: 'emerald',
       },
     ],
+    note: 'Step 05 is the whole of resumption: no state is saved, and "carry on" is expressed by returning one function.',
   },
-  takeaways: {
-    number: '10',
-    title: 'Key takeaways',
-    cards: [
+  conditions: {
+    badge: '02',
+    eyebrow: 'when to yield',
+    title: 'What decides whether it stops',
+    description:
+      'shouldYield looks at more than one thing. The same moment can answer differently depending on the render and the time left.',
+    headers: ['Situation', 'Does it yield', 'Why'],
+    rows: [
       {
-        number: '01',
-        title: 'Long renders can be paused.',
-        description: "React doesn't always push all render work to completion in one go.",
-        accent: 'blue',
+        condition: 'Frame budget remains',
+        result: 'Keeps going',
+        why: 'Within frameInterval (5ms by default) the browser has nothing waiting, so work continues.',
       },
       {
-        number: '02',
-        title: 'shouldYieldToHost decides when to yield.',
-        description: 'It can hand control back to the host once work has run long enough.',
-        accent: 'teal',
+        condition: 'Budget is used up',
+        result: 'Yields',
+        why: 'This is where input and paint start backing up, so control is handed back.',
       },
       {
-        number: '03',
-        title: 'React continues via continuation.',
-        description: 'Yielding is a pause, not a cancel — the remaining work resumes later.',
-        accent: 'emerald',
+        condition: 'The task already expired',
+        result: 'Does not yield',
+        why: 'Deferring further would starve it, so it pushes through even past the budget.',
+      },
+      {
+        condition: 'A SyncLane render',
+        result: 'Does not yield',
+        why: 'The sync path uses workLoopSync, which never calls shouldYield at all.',
       },
     ],
+    note: 'The last row matters: not every render is interruptible — only those on a concurrent lane.',
+  },
+  granularity: {
+    badge: '03',
+    eyebrow: 'granularity',
+    title: 'Where it can stop, and where it cannot',
+    description:
+      'Stopping points are not everywhere. A half-updated screen must never be shown to the user.',
+    items: [
+      {
+        id: 'unit',
+        title: 'Between Fibers',
+        role: 'Can stop',
+        description:
+          'Checked after each performUnitOfWork, at a point where nothing has reached the screen yet.',
+        tone: 'emerald',
+      },
+      {
+        id: 'commit',
+        title: 'Inside the commit phase',
+        role: 'Cannot stop',
+        description:
+          'This is where the DOM actually changes; stopping midway would show a broken screen.',
+        tone: 'amber',
+      },
+      {
+        id: 'sync',
+        title: 'A whole sync render',
+        role: 'Cannot stop',
+        description: 'workLoopSync never calls shouldYield. Once started it runs to the end.',
+        tone: 'violet',
+      },
+    ],
+    note: 'That renders are interruptible while commits are not is one of the reasons the two phases were split apart.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/scheduler/src/forks/Scheduler.js',
+    lookForLabel: 'Look for',
+    lookFor: 'workLoop, shouldYieldToHost, frameInterval, workLoopConcurrent',
+    whyLabel: 'Why',
+    why: 'Re-attaching the returned function to the same task is the entire implementation of resumption.',
+    code: WORK_LOOP_CODE_EN,
+    primaryCta: 'Read Scheduler.js',
+    primaryHref: SCHEDULER_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'end-to-end recap',
-    description: 'See in one place how click / transition / deferred renders differ.',
+    title: 'Nine pages as one flow',
+    description:
+      'From an update being created to a render resuming, the last page rejoins every piece into a single path.',
     cta: 'Go to the next page',
     href: '/scheduler-overall-flow',
   },
 };
 
-export const renderYieldingContent: Record<Locale, RenderYieldingContent> = { ko, en };
+export const pauseResumeRenderContent: Record<Locale, PauseResumeContent> = { ko, en };

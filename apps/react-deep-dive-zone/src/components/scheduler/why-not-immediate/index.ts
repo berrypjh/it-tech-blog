@@ -1,2 +1,2 @@
 export { whyNotImmediateContent } from './content';
-export { WhyNotImmediateUpdatePage } from './WhyNotImmediateUpdatePage';
+export { WhyNotImmediatePage } from './WhyNotImmediatePage';

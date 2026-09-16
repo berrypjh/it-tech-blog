@@ -1,168 +1,82 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { CallbackKind, LogLevel, Severity } from './tone';
+import type { ToneKey } from '../../shared/tones';
 
-export type RootCallbackCard = {
-  kind: CallbackKind;
+export type CallbackId = 'uncaught' | 'caught' | 'recoverable';
+
+export type Callback = {
+  id: CallbackId;
   name: string;
-  summary: string;
+  when: string;
+  description: string;
+  tone: ToneKey;
+};
+
+export type SideId = 'before' | 'after';
+
+export type Side = {
+  id: SideId;
+  title: string;
   badge: string;
+  description: string;
+  bullets: string[];
+  tone: ToneKey;
 };
 
-export type ConceptCard = {
-  icon: 'map' | 'refresh' | 'callback' | 'chart';
-  label: string;
-};
-
-export type WhyCard = {
-  icon: 'shield' | 'search' | 'chart';
-  title: string;
-  arrow: string;
-  body: string;
-  tone: 'blue' | 'violet' | 'mixed';
-};
-
-export type CallbackTableRow = {
-  kind: CallbackKind;
-  callback: string;
-  caller: string;
-  errorType: string;
-  uiRecover: { kind: 'check' | 'cross'; label: string };
-  useCase: string;
-  severity: Severity;
-};
-
-export type FlowStep = {
-  title: string;
-  lines: string[];
-  kind: 'app' | 'callbacks' | 'monitoring' | 'server' | 'hydrate' | 'internal';
-};
-
-export type RoutingRow = {
+export type RouteRow = {
   scenario: string;
-  description: string;
-  callback: { kind: CallbackKind; name: string };
-  uiResult: string;
-  logLevel: LogLevel;
-  example: string;
-  icon: 'shield' | 'alert' | 'refresh';
-};
-
-export type ScenarioCard = {
-  kind: 'caught' | 'recoverable';
-  title: string;
-  steps: string[];
-  checks: string[];
-};
-
-export type RouterOption = {
-  key: 'boundary' | 'fatal' | 'hydration' | 'monitoring';
-  title: string;
-  description: string;
-};
-
-export type RouterResult = {
   callback: string;
-  callbackKind: CallbackKind | 'mixed';
-  uiResult: string;
-  logging: string;
-  logLevel: LogLevel | 'mixed';
-  body: string;
-};
-
-export type ChecklistItem = { title: string; description: string };
-
-export type TakeawayCard = {
-  number: string;
-  title: string;
-  body: string;
-  tone: 'blue' | 'teal' | 'violet';
+  ui: string;
 };
 
 export type React19ErrorReportingContent = {
   hero: {
     badge: string;
-    titleLines: [string, string];
+    title: { line1: string; line2: string };
     description: string;
-    callbacks: RootCallbackCard[];
+    diagramBadge: string;
+    diagramCaption: string;
+    rootLabel: string;
+    callbacks: Callback[];
   };
-  question: {
+  change: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    question: string;
-    concepts: ConceptCard[];
+    description: string;
+    sides: [Side, Side];
+    bridge: { headline: string; sub: string };
   };
-  why: {
-    number: string;
+  callbacks: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    cards: WhyCard[];
-  };
-  callbackTable: {
-    number: string;
-    title: string;
-    headers: {
-      callback: string;
-      caller: string;
-      errorType: string;
-      uiRecover: string;
-      useCase: string;
-      severity: string;
-    };
-    rows: CallbackTableRow[];
-  };
-  createRoot: {
-    number: string;
-    title: string;
-    code: { fileLabel: string; content: string };
-    flowTitle: string;
-    steps: FlowStep[];
-  };
-  hydrateRoot: {
-    number: string;
-    title: string;
-    code: { fileLabel: string; content: string };
-    flowTitle: string;
-    steps: FlowStep[];
+    description: string;
+    items: Callback[];
     note: string;
   };
   routing: {
-    number: string;
+    badge: string;
+    eyebrow: string;
     title: string;
-    headers: {
-      scenario: string;
-      description: string;
-      callback: string;
-      uiResult: string;
-      logLevel: string;
-      example: string;
-    };
-    rows: RoutingRow[];
+    description: string;
+    headers: [string, string, string];
+    rows: RouteRow[];
+    note: string;
   };
-  scenarios: {
-    number: string;
+  checkpoint: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    cards: ScenarioCard[];
-  };
-  router: {
-    number: string;
-    title: string;
-    options: RouterOption[];
-    results: Record<RouterOption['key'], RouterResult>;
-    labels: {
-      callback: string;
-      uiResult: string;
-      logging: string;
-      explain: string;
-    };
-  };
-  followAlong: {
-    number: string;
-    title: string;
-    items: ChecklistItem[];
-  };
-  takeaways: {
-    number: string;
-    title: string;
-    cards: TakeawayCard[];
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -173,723 +87,369 @@ export type React19ErrorReportingContent = {
   };
 };
 
-const CREATE_ROOT_CODE = `import { createRoot } from "react-dom/client";
-import App from "./App";
-
-const container = document.getElementById("root");
-
+const ERROR_OPTIONS_CODE = `// React 19: root를 만들 때 세 가지 리포터를 지정할 수 있다
 const root = createRoot(container, {
-  onCaughtError(error, info) {
-    reportCaptured(error, info);
+  // 1. Error Boundary가 잡지 못해 앱이 언마운트되는 에러
+  onUncaughtError: (error, errorInfo) => {
+    reportToService(error, {
+      kind: 'uncaught',
+      componentStack: errorInfo.componentStack,
+    });
   },
-  onUncaughtError(error, info) {
-    reportFatal(error, info);
+
+  // 2. Error Boundary가 잡아서 fallback으로 처리된 에러
+  onCaughtError: (error, errorInfo) => {
+    reportToService(error, {
+      kind: 'caught',
+      componentStack: errorInfo.componentStack,
+      errorBoundary: errorInfo.errorBoundary,
+    });
   },
-  onRecoverableError(error, info) {
-    reportRecoverable(error, info);
+
+  // 3. React가 스스로 복구한 에러 (재시도 성공, hydration mismatch 등)
+  onRecoverableError: (error, errorInfo) => {
+    reportToService(error, {
+      kind: 'recoverable',
+      componentStack: errorInfo.componentStack,
+    });
   },
 });
 
-root.render(<App />);`;
-
-const HYDRATE_ROOT_CODE = `import { hydrateRoot } from "react-dom/client";
-import App from "./App";
-
-const container = document.getElementById("root");
-
-hydrateRoot(container, <App />, {
-  onCaughtError(error, info) {
-    reportCaptured(error, info);
-  },
-  onUncaughtError(error, info) {
-    reportFatal(error, info);
-  },
-  onRecoverableError(error, info) {
-    reportRecoverable(error, info);
-  },
+// hydrateRoot도 같은 세 옵션을 받는다
+const hydrated = hydrateRoot(container, <App />, {
+  onUncaughtError,
+  onCaughtError,
+  onRecoverableError,
 });`;
+
+const REACT_DOM_ROOT_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js';
+
+const KO_CALLBACKS: Callback[] = [
+  {
+    id: 'uncaught',
+    name: 'onUncaughtError',
+    when: '경계가 없을 때',
+    description:
+      'Error Boundary를 찾지 못해 root까지 올라간 에러입니다. 앱 전체가 언마운트되므로 가장 심각합니다.',
+    tone: 'amber',
+  },
+  {
+    id: 'caught',
+    name: 'onCaughtError',
+    when: '경계가 잡았을 때',
+    description:
+      'Error Boundary가 처리해 fallback이 보이는 상태입니다. 사용자는 화면을 유지하지만 기록은 필요합니다.',
+    tone: 'violet',
+  },
+  {
+    id: 'recoverable',
+    name: 'onRecoverableError',
+    when: 'React가 스스로 복구',
+    description:
+      'hydration mismatch처럼 React가 알아서 고친 경우입니다. 화면은 멀쩡하지만 원인은 남아 있습니다.',
+    tone: 'cyan',
+  },
+];
+
+const EN_CALLBACKS: Callback[] = [
+  {
+    id: 'uncaught',
+    name: 'onUncaughtError',
+    when: 'No boundary found',
+    description:
+      'The error climbed to the root without finding an Error Boundary. The app unmounts, so this is the most severe.',
+    tone: 'amber',
+  },
+  {
+    id: 'caught',
+    name: 'onCaughtError',
+    when: 'A boundary caught it',
+    description:
+      'An Error Boundary handled it and a fallback is showing. The user keeps a screen, but it still needs recording.',
+    tone: 'violet',
+  },
+  {
+    id: 'recoverable',
+    name: 'onRecoverableError',
+    when: 'React recovered itself',
+    description:
+      'Cases like a hydration mismatch that React fixed on its own. The screen is fine but the cause remains.',
+    tone: 'cyan',
+  },
+];
 
 const ko: React19ErrorReportingContent = {
   hero: {
     badge: 'Suspense/Error · 6/10단계',
-    titleLines: ['React 19는 복구와', '보고를 분리했다'],
+    title: { line1: '에러를 콘솔에 흘려보내는 대신', line2: '세 갈래로 나눠 받는다' },
     description:
-      '화면 복구는 React가 수행하고, 로깅과 모니터링은 root callback으로 다룰 수 있습니다.',
-    callbacks: [
+      'React 19는 root를 만들 때 에러 리포터를 세 개까지 지정할 수 있게 했습니다. 심각도에 따라 처리를 나누라는 뜻입니다.',
+    diagramBadge: 'error reporting',
+    diagramCaption: 'three severities',
+    rootLabel: 'createRoot / hydrateRoot',
+    callbacks: KO_CALLBACKS,
+  },
+  change: {
+    badge: '01',
+    eyebrow: 'what changed',
+    title: '무엇이 달라졌나',
+    description:
+      '이전에는 잡히지 않은 에러가 콘솔로만 갔고, 복구된 에러는 구분할 방법이 없었습니다. 19에서는 경로가 갈립니다.',
+    sides: [
       {
-        kind: 'caught',
-        name: 'onCaughtError',
-        summary: 'Error Boundary가 잡은 에러',
-        badge: 'UI 복구됨',
+        id: 'before',
+        title: 'React 18까지',
+        badge: '한 갈래',
+        description: '리포팅 지점이 하나뿐이라 심각도를 구분하기 어려웠습니다.',
+        bullets: [
+          'onRecoverableError 하나만 있었다',
+          '경계가 못 잡은 에러는 콘솔로만 나갔다',
+          '경계가 잡은 에러는 componentDidCatch에서 직접 모아야 했다',
+          '세 경우가 섞여 대시보드에서 우선순위를 못 잡았다',
+        ],
+        tone: 'sky',
       },
       {
-        kind: 'uncaught',
-        name: 'onUncaughtError',
-        summary: '어떤 Boundary도 잡지 못한 에러',
-        badge: '치명적 에러',
-      },
-      {
-        kind: 'recoverable',
-        name: 'onRecoverableError',
-        summary: 'React가 자동 복구한 에러 (주로 Hydration)',
-        badge: '자동 복구됨',
+        id: 'after',
+        title: 'React 19부터',
+        badge: '세 갈래',
+        description: '심각도별로 다른 콜백이 불려 처리 방침을 나눌 수 있습니다.',
+        bullets: [
+          'onUncaughtError로 앱이 죽은 경우만 따로 받는다',
+          'onCaughtError로 경계가 처리한 것을 root에서 모은다',
+          'onRecoverableError는 자동 복구된 것만 남는다',
+          'errorInfo에 componentStack이 함께 온다',
+        ],
+        tone: 'emerald',
       },
     ],
-  },
-  question: {
-    title: '오늘 해결할 질문',
-    question:
-      'Error Boundary가 잡은 에러, 잡히지 않은 에러, hydration 복구 에러를 각각 어떻게 구분해 보고할까?',
-    concepts: [
-      { icon: 'map', label: '어떤 에러가 어디서 발생했는가?' },
-      { icon: 'refresh', label: '복구는 어떻게 이루어지는가?' },
-      { icon: 'callback', label: '어떤 callback이 호출되는가?' },
-      { icon: 'chart', label: '모니터링과 로깅은 어떻게 연결하는가?' },
-    ],
-  },
-  why: {
-    number: '2',
-    title: 'React 19에서 왜 필요한가?',
-    cards: [
-      {
-        icon: 'shield',
-        title: 'UI 복구',
-        arrow: '→ Error Boundary',
-        body: '사용자 경험을 지키기 위해 가장 가까운 Boundary가 fallback으로 복구합니다.',
-        tone: 'blue',
-      },
-      {
-        icon: 'search',
-        title: '관측 가능성',
-        arrow: '→ Root callback',
-        body: '어디서 어떤 유형의 에러가 발생했는지 root 레벨에서 정확히 파악할 수 있습니다.',
-        tone: 'violet',
-      },
-      {
-        icon: 'chart',
-        title: '프로덕션 모니터링',
-        arrow: '→ 에러 유형별 로깅',
-        body: '치명/비치명/복구 가능한 에러를 구분하여 알맞은 레벨과 채널로 전달할 수 있습니다.',
-        tone: 'mixed',
-      },
-    ],
-  },
-  callbackTable: {
-    number: '3',
-    title: '세 가지 root error callback 비교',
-    headers: {
-      callback: 'Callback',
-      caller: '누가 호출하나?',
-      errorType: '다루는 에러 유형',
-      uiRecover: 'UI 복구',
-      useCase: '주요 사용 사례',
-      severity: '심각도',
+    bridge: {
+      headline: '심각도를\n나눠 받는다',
+      sub: '세 콜백이 서로 배타적이라, 하나의 에러가 두 곳에 중복으로 오지 않습니다. 집계가 정확해집니다.',
     },
-    rows: [
-      {
-        kind: 'caught',
-        callback: 'onCaughtError(error, info)',
-        caller: 'Error Boundary가 에러를 capture 했을 때',
-        errorType: '컴포넌트 트리 안에서 Boundary가 잡은 에러',
-        uiRecover: { kind: 'check', label: 'fallback 가능' },
-        useCase: '비즈니스 로직 에러, 컴포넌트 렌더 오류',
-        severity: 'medium',
-      },
-      {
-        kind: 'uncaught',
-        callback: 'onUncaughtError(error, info)',
-        caller: '어떤 Boundary도 잡지 못했을 때',
-        errorType: '앱 전체를 깨뜨리는 치명적 에러',
-        uiRecover: { kind: 'cross', label: 'root unmount 가능' },
-        useCase: '초기 렌더링 실패, 루트 컴포넌트 예외',
-        severity: 'critical',
-      },
-      {
-        kind: 'recoverable',
-        callback: 'onRecoverableError(error, info)',
-        caller: 'React가 자동으로 복구했을 때',
-        errorType: 'Hydration mismatch 등 복구 가능한 내부 에러',
-        uiRecover: { kind: 'check', label: '자동 복구' },
-        useCase: 'SSR Hydration mismatch, recoverable hydration error',
-        severity: 'low',
-      },
-    ],
   },
-  createRoot: {
-    number: '4',
-    title: 'createRoot 예제 (Client App)',
-    code: { fileLabel: 'main.tsx', content: CREATE_ROOT_CODE },
-    flowTitle: 'Client App Monitoring 흐름',
-    steps: [
-      {
-        title: 'React App',
-        lines: ['(createRoot)'],
-        kind: 'app',
-      },
-      {
-        title: 'Root Error Callbacks',
-        lines: ['onCaughtError', 'onUncaughtError', 'onRecoverableError'],
-        kind: 'callbacks',
-      },
-      {
-        title: 'Monitoring / Logging',
-        lines: ['에러 이벤트 수집', '로그 저장 / 알림', '대시보드 / 경보'],
-        kind: 'monitoring',
-      },
-    ],
-  },
-  hydrateRoot: {
-    number: '5',
-    title: 'hydrateRoot 예제 (SSR Hydration)',
-    code: { fileLabel: 'entry-client.tsx', content: HYDRATE_ROOT_CODE },
-    flowTitle: 'SSR Hydration 복구 보고 흐름',
-    steps: [
-      { title: '서버 HTML', lines: ['(SSR)'], kind: 'server' },
-      { title: 'hydrateRoot', lines: ['(Client Hydration)'], kind: 'hydrate' },
-      { title: 'React 내부', lines: ['복구 시도'], kind: 'internal' },
-      {
-        title: 'Root Error Callbacks',
-        lines: ['onCaughtError', 'onUncaughtError', 'onRecoverableError'],
-        kind: 'callbacks',
-      },
-    ],
-    note: 'Hydration mismatch, text mismatch, 속성 불일치 등',
+  callbacks: {
+    badge: '02',
+    eyebrow: 'three callbacks',
+    title: '세 콜백이 각각 받는 것',
+    description:
+      '무엇이 불리는지는 그 에러가 어디까지 갔는지로 정해집니다. 경계가 잡았는지, root까지 갔는지, React가 고쳤는지입니다.',
+    items: KO_CALLBACKS,
+    note: '셋 다 두 번째 인자로 errorInfo를 받습니다. componentStack이 들어 있어 어느 컴포넌트에서 났는지 알 수 있습니다.',
   },
   routing: {
-    number: '6',
-    title: 'Error 유형별 라우팅 표',
-    headers: {
-      scenario: '에러 상황',
-      description: '설명',
-      callback: '호출되는 콜백',
-      uiResult: 'UI 결과',
-      logLevel: '추천 로깅 레벨',
-      example: '예시',
-    },
+    badge: '03',
+    eyebrow: 'routing',
+    title: '어떤 상황이 어디로 가는가',
+    description:
+      '실제로 겪는 상황을 세 콜백에 대응시켜 두면, 모니터링에서 무엇을 알림으로 올릴지 정하기 쉬워집니다.',
+    headers: ['상황', '불리는 콜백', '사용자가 보는 화면'],
     rows: [
       {
-        scenario: 'Boundary captured error',
-        description: '컴포넌트 트리 내에서 Error Boundary가 에러를 잡은 경우',
-        callback: { kind: 'caught', name: 'onCaughtError' },
-        uiResult: 'fallback UI 표시 · 복구됨',
-        logLevel: 'warn',
-        example: '사용자 프로필 로드 실패, 위젯 렌더 오류',
-        icon: 'shield',
-      },
-      {
-        scenario: 'Fatal / uncaught error',
-        description: '어떤 Boundary도 에러를 잡지 못한 경우',
-        callback: { kind: 'uncaught', name: 'onUncaughtError' },
-        uiResult: '앱 크래시 또는 unmount',
-        logLevel: 'error',
-        example: '초기 렌더링 실패, 루트 컴포넌트 예외',
-        icon: 'alert',
-      },
-      {
-        scenario: 'Hydration recoverable error',
-        description: 'React가 내부 복구로 문제를 해결한 경우',
-        callback: { kind: 'recoverable', name: 'onRecoverableError' },
-        uiResult: '자동 복구 · 미경고',
-        logLevel: 'info',
-        example: 'Hydration text mismatch, 속성 순서 불일치',
-        icon: 'refresh',
-      },
-    ],
-  },
-  scenarios: {
-    number: '7',
-    title: '실무 로깅 시나리오',
-    cards: [
-      {
-        kind: 'caught',
-        title: 'onCaughtError 시나리오',
-        steps: [
-          'React App',
-          'Error Boundary (fallback 표시)',
-          'Root Callback',
-          'Logging System (사용자 보존)',
-        ],
-        checks: [
-          '사용자에게는 fallback UI 제공',
-          '개별 컴포넌트 단위 에러 확인 가능',
-          '문제 영향 범위를 제한할 수 있음',
-        ],
-      },
-      {
-        kind: 'recoverable',
-        title: 'onRecoverableError 시나리오 (Hydration)',
-        steps: [
-          'SSR HTML',
-          'Hydration 진행 중',
-          'Mismatch 발생',
-          'React 복구 (자동 처리)',
-          'onRecoverableError 로그 기록',
-        ],
-        checks: [
-          '사용자에게 큰 화면 이상 없음',
-          'Hydration 품질/환경 이슈를 추적할 수 있음',
-          '렌더/빌드 시점 차이를 유추 가능',
-        ],
-      },
-    ],
-  },
-  router: {
-    number: '8',
-    title: 'Interactive Error Router',
-    options: [
-      {
-        key: 'boundary',
-        title: 'React 19 렌더링에서 Error Boundary가 잡은 에러',
-        description: '관심: 컴포넌트 / 비즈니스 로직',
-      },
-      {
-        key: 'fatal',
-        title: '어떤 Boundary도 잡지 못한 치명적 에러',
-        description: '관심: 초기 렌더 / 루트 예외',
-      },
-      {
-        key: 'hydration',
-        title: 'Hydration mismatch 등 React가 자동 복구한 에러',
-        description: '관심: SSR 품질 / 환경 차이',
-      },
-      {
-        key: 'monitoring',
-        title: '각 callback이 호출되는 상황을 Monitoring에 매핑',
-        description: '관심: 실제 서비스 로그 설계',
-      },
-    ],
-    results: {
-      boundary: {
-        callback: 'onCaughtError',
-        callbackKind: 'caught',
-        uiResult: 'fallback UI 표시',
-        logging: 'warn',
-        logLevel: 'warn',
-        body: 'Error Boundary가 에러를 잡았으므로 사용자는 fallback UI를 보고, 운영자는 captured error를 기록합니다.',
-      },
-      fatal: {
+        scenario: '렌더 중 throw, 경계 없음',
         callback: 'onUncaughtError',
-        callbackKind: 'uncaught',
-        uiResult: '앱 크래시 또는 root unmount 가능',
-        logging: 'error / critical',
-        logLevel: 'error',
-        body: '어떤 Boundary도 에러를 잡지 못했으므로 치명적 오류로 분류해 즉시 알림이 필요합니다.',
+        ui: '빈 화면. 앱 전체가 언마운트됩니다.',
       },
-      hydration: {
+      {
+        scenario: '렌더 중 throw, 경계 있음',
+        callback: 'onCaughtError',
+        ui: '해당 구역만 fallback으로 바뀝니다.',
+      },
+      {
+        scenario: 'hydration mismatch',
         callback: 'onRecoverableError',
-        callbackKind: 'recoverable',
-        uiResult: 'React가 자동 복구',
-        logging: 'info 또는 warn',
-        logLevel: 'info',
-        body: 'Hydration mismatch처럼 React가 복구 가능한 문제를 자동 처리했지만, 품질 추적을 위해 기록해야 합니다.',
-      },
-      monitoring: {
-        callback: '상황별 분기',
-        callbackKind: 'mixed',
-        uiResult: '복구 여부에 따라 다름',
-        logging: 'info / warn / error 분리',
-        logLevel: 'mixed',
-        body: '서비스에서는 callback별로 심각도와 전송 채널을 나누어 관측 가능성을 높일 수 있습니다.',
-      },
-    },
-    labels: {
-      callback: '호출되는 callback',
-      uiResult: 'UI 결과',
-      logging: '권장 로깅',
-      explain: '설명',
-    },
-  },
-  followAlong: {
-    number: '9',
-    title: '직접 코드에서 따라가 보기',
-    items: [
-      {
-        title: 'React 19 발표문에서 root error callback 확인',
-        description: '공식 블로그 / 릴리즈 노트 확인',
+        ui: '정상 화면. 그 구역만 클라이언트가 다시 그렸습니다.',
       },
       {
-        title: 'hydrateRoot 공식 문서에서 options 확인',
-        description: 'react.dev/reference/react-dom/client/hydrateRoot',
+        scenario: '동시성 렌더 실패 후 동기 재시도 성공',
+        callback: 'onRecoverableError',
+        ui: '정상 화면. 사용자는 아무것도 눈치채지 못합니다.',
       },
       {
-        title: 'Error Boundary와 root callback의 역할 차이 정리',
-        description: '복구는 Boundary, 보고는 root',
-      },
-      {
-        title: '각 callback이 호출되는 상황 매핑',
-        description: '실제 서비스 로그 설계',
+        scenario: '이벤트 핸들러의 throw',
+        callback: '아무것도 안 불림',
+        ui: '정상 화면. 브라우저 콘솔에만 남습니다.',
       },
     ],
+    note: '마지막 줄이 사각지대입니다. 이벤트 핸들러 에러는 세 콜백 어디에도 오지 않으므로 별도 수집이 필요합니다.',
   },
-  takeaways: {
-    number: '10',
-    title: '핵심 정리',
-    cards: [
-      {
-        number: '1',
-        title: 'React 19는 root 수준의 error reporting surface를 강화했다.',
-        body: 'onCaughtError / onUncaughtError / onRecoverableError로 역할을 분리했습니다.',
-        tone: 'blue',
-      },
-      {
-        number: '2',
-        title: '각 callback은 처리하는 에러 유형이 다르다.',
-        body: 'Boundary capture, 치명 에러, 복구 가능한 에러를 구분합니다.',
-        tone: 'teal',
-      },
-      {
-        number: '3',
-        title: '복구와 보고를 분리하면 실무 에러 관측성이 좋아진다.',
-        body: '사용자 경험을 지키면서도, 운영/모니터링 품질을 높일 수 있습니다.',
-        tone: 'violet',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-dom/src/client/ReactDOMRoot.js',
+    lookForLabel: '볼 것',
+    lookFor: 'onUncaughtError, onCaughtError, onRecoverableError, createRoot options',
+    whyLabel: '설명',
+    why: 'createRoot와 hydrateRoot가 같은 세 옵션을 받는다는 점이, 클라이언트와 SSR에서 리포팅을 통일할 수 있게 해 줍니다.',
+    code: ERROR_OPTIONS_CODE,
+    primaryCta: 'ReactDOMRoot.js 읽기',
+    primaryHref: REACT_DOM_ROOT_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'Hydration은 어떻게 시작되는가?',
-    description: '서버 HTML과 클라이언트 트리를 잇는 Hydration의 시작 지점을 이어서 살펴봅니다.',
+    title: '세 번째 갈래, Hydration',
+    description:
+      'onRecoverableError가 가장 자주 불리는 곳이 hydration입니다. 그 과정이 어떻게 시작되는지 봅니다.',
     cta: '다음 페이지로 이동',
     href: '/hydration-start',
   },
 };
 
+const ERROR_OPTIONS_CODE_EN = `// React 19: a root can be given three reporters
+const root = createRoot(container, {
+  // 1. errors no Error Boundary caught, which unmount the app
+  onUncaughtError: (error, errorInfo) => {
+    reportToService(error, {
+      kind: 'uncaught',
+      componentStack: errorInfo.componentStack,
+    });
+  },
+
+  // 2. errors an Error Boundary caught and turned into a fallback
+  onCaughtError: (error, errorInfo) => {
+    reportToService(error, {
+      kind: 'caught',
+      componentStack: errorInfo.componentStack,
+      errorBoundary: errorInfo.errorBoundary,
+    });
+  },
+
+  // 3. errors React recovered from itself (successful retry, hydration mismatch)
+  onRecoverableError: (error, errorInfo) => {
+    reportToService(error, {
+      kind: 'recoverable',
+      componentStack: errorInfo.componentStack,
+    });
+  },
+});
+
+// hydrateRoot takes the same three options
+const hydrated = hydrateRoot(container, <App />, {
+  onUncaughtError,
+  onCaughtError,
+  onRecoverableError,
+});`;
+
 const en: React19ErrorReportingContent = {
   hero: {
-    badge: 'Suspense·Error · 6/10',
-    titleLines: ['React 19 split', 'recovery and reporting'],
-    description:
-      'React handles UI recovery; logging and monitoring are routed through root callbacks.',
-    callbacks: [
-      {
-        kind: 'caught',
-        name: 'onCaughtError',
-        summary: 'Error caught by an Error Boundary',
-        badge: 'UI recovered',
-      },
-      {
-        kind: 'uncaught',
-        name: 'onUncaughtError',
-        summary: 'Error no Boundary could catch',
-        badge: 'Fatal error',
-      },
-      {
-        kind: 'recoverable',
-        name: 'onRecoverableError',
-        summary: 'Error React auto-recovered from (mostly Hydration)',
-        badge: 'Auto recovered',
-      },
-    ],
-  },
-  question: {
-    title: "Today's question",
-    question:
-      'How do we report errors caught by an Error Boundary, errors no one caught, and hydration recoverable errors — each in their own lane?',
-    concepts: [
-      { icon: 'map', label: 'Which error happened where?' },
-      { icon: 'refresh', label: 'How does recovery work?' },
-      { icon: 'callback', label: 'Which callback fires?' },
-      { icon: 'chart', label: 'How does monitoring connect?' },
-    ],
-  },
-  why: {
-    number: '2',
-    title: 'Why React 19 needs this',
-    cards: [
-      {
-        icon: 'shield',
-        title: 'UI recovery',
-        arrow: '→ Error Boundary',
-        body: 'The nearest Boundary recovers with a fallback to protect the user experience.',
-        tone: 'blue',
-      },
-      {
-        icon: 'search',
-        title: 'Observability',
-        arrow: '→ Root callback',
-        body: 'See exactly where and what kind of error happened at the root level.',
-        tone: 'violet',
-      },
-      {
-        icon: 'chart',
-        title: 'Production monitoring',
-        arrow: '→ Per-type logging',
-        body: 'Separate fatal / non-fatal / recoverable errors and route them with the right severity and channel.',
-        tone: 'mixed',
-      },
-    ],
-  },
-  callbackTable: {
-    number: '3',
-    title: 'Comparing the three root error callbacks',
-    headers: {
-      callback: 'Callback',
-      caller: 'Who calls it?',
-      errorType: 'Kind of error',
-      uiRecover: 'UI recovery',
-      useCase: 'Use case',
-      severity: 'Severity',
+    badge: 'Suspense/Error · 6/10',
+    title: {
+      line1: 'Instead of leaking errors to the console',
+      line2: 'React 19 splits them three ways',
     },
-    rows: [
-      {
-        kind: 'caught',
-        callback: 'onCaughtError(error, info)',
-        caller: 'When an Error Boundary captures',
-        errorType: 'Error caught by a Boundary in the component tree',
-        uiRecover: { kind: 'check', label: 'fallback' },
-        useCase: 'Business logic errors, component render errors',
-        severity: 'medium',
-      },
-      {
-        kind: 'uncaught',
-        callback: 'onUncaughtError(error, info)',
-        caller: 'When no Boundary catches it',
-        errorType: 'Fatal error that breaks the whole app',
-        uiRecover: { kind: 'cross', label: 'root unmount possible' },
-        useCase: 'Initial render failure, root component exception',
-        severity: 'critical',
-      },
-      {
-        kind: 'recoverable',
-        callback: 'onRecoverableError(error, info)',
-        caller: 'When React auto-recovers',
-        errorType: 'Recoverable internal errors like Hydration mismatch',
-        uiRecover: { kind: 'check', label: 'auto recovered' },
-        useCase: 'SSR Hydration mismatch, recoverable hydration error',
-        severity: 'low',
-      },
-    ],
+    description:
+      'React 19 lets a root register up to three error reporters, so handling can differ by severity.',
+    diagramBadge: 'error reporting',
+    diagramCaption: 'three severities',
+    rootLabel: 'createRoot / hydrateRoot',
+    callbacks: EN_CALLBACKS,
   },
-  createRoot: {
-    number: '4',
-    title: 'createRoot example (Client App)',
-    code: { fileLabel: 'main.tsx', content: CREATE_ROOT_CODE },
-    flowTitle: 'Client App monitoring flow',
-    steps: [
-      { title: 'React App', lines: ['(createRoot)'], kind: 'app' },
+  change: {
+    badge: '01',
+    eyebrow: 'what changed',
+    title: 'What actually changed',
+    description:
+      'Uncaught errors used to reach only the console, and recovered ones were indistinguishable. In 19 the paths separate.',
+    sides: [
       {
-        title: 'Root Error Callbacks',
-        lines: ['onCaughtError', 'onUncaughtError', 'onRecoverableError'],
-        kind: 'callbacks',
+        id: 'before',
+        title: 'Up to React 18',
+        badge: 'one path',
+        description: 'With a single reporting hook, severity was hard to tell apart.',
+        bullets: [
+          'Only onRecoverableError existed',
+          'Errors no boundary caught went to the console alone',
+          'Caught errors had to be gathered by hand in componentDidCatch',
+          'All three mixed together, so dashboards could not prioritise',
+        ],
+        tone: 'sky',
       },
       {
-        title: 'Monitoring / Logging',
-        lines: ['Collect error events', 'Store logs / alert', 'Dashboards / alarms'],
-        kind: 'monitoring',
+        id: 'after',
+        title: 'From React 19',
+        badge: 'three paths',
+        description: 'Different callbacks fire per severity, so policies can differ.',
+        bullets: [
+          'onUncaughtError receives only the app-killing cases',
+          'onCaughtError collects boundary-handled errors at the root',
+          'onRecoverableError is left with auto-recovered ones only',
+          'errorInfo now carries a componentStack alongside',
+        ],
+        tone: 'emerald',
       },
     ],
+    bridge: {
+      headline: 'Receive them\nby severity',
+      sub: 'The three callbacks are mutually exclusive, so one error never arrives twice. Aggregation becomes accurate.',
+    },
   },
-  hydrateRoot: {
-    number: '5',
-    title: 'hydrateRoot example (SSR Hydration)',
-    code: { fileLabel: 'entry-client.tsx', content: HYDRATE_ROOT_CODE },
-    flowTitle: 'SSR Hydration recovery reporting flow',
-    steps: [
-      { title: 'Server HTML', lines: ['(SSR)'], kind: 'server' },
-      { title: 'hydrateRoot', lines: ['(Client Hydration)'], kind: 'hydrate' },
-      { title: 'React internals', lines: ['recovery attempt'], kind: 'internal' },
-      {
-        title: 'Root Error Callbacks',
-        lines: ['onCaughtError', 'onUncaughtError', 'onRecoverableError'],
-        kind: 'callbacks',
-      },
-    ],
-    note: 'Hydration mismatch, text mismatch, attribute mismatch, etc.',
+  callbacks: {
+    badge: '02',
+    eyebrow: 'three callbacks',
+    title: 'What each callback receives',
+    description:
+      'Which one fires depends on how far the error travelled: caught by a boundary, escaped to the root, or fixed by React.',
+    items: EN_CALLBACKS,
+    note: 'All three receive errorInfo as a second argument, whose componentStack shows which component produced it.',
   },
   routing: {
-    number: '6',
-    title: 'Per-error-type routing table',
-    headers: {
-      scenario: 'Error situation',
-      description: 'Description',
-      callback: 'Callback fired',
-      uiResult: 'UI result',
-      logLevel: 'Recommended log level',
-      example: 'Example',
-    },
+    badge: '03',
+    eyebrow: 'routing',
+    title: 'Which situation goes where',
+    description:
+      'Mapping real situations onto the three callbacks makes it easy to decide what deserves an alert in monitoring.',
+    headers: ['Situation', 'Callback fired', 'What the user sees'],
     rows: [
       {
-        scenario: 'Boundary captured error',
-        description: 'An Error Boundary inside the component tree caught the error',
-        callback: { kind: 'caught', name: 'onCaughtError' },
-        uiResult: 'Fallback UI shown · recovered',
-        logLevel: 'warn',
-        example: 'User profile load failure, widget render error',
-        icon: 'shield',
-      },
-      {
-        scenario: 'Fatal / uncaught error',
-        description: 'No Boundary caught the error',
-        callback: { kind: 'uncaught', name: 'onUncaughtError' },
-        uiResult: 'App crash or unmount',
-        logLevel: 'error',
-        example: 'Initial render failure, root component exception',
-        icon: 'alert',
-      },
-      {
-        scenario: 'Hydration recoverable error',
-        description: 'React resolved the issue via internal recovery',
-        callback: { kind: 'recoverable', name: 'onRecoverableError' },
-        uiResult: 'Auto recovered · no warning to user',
-        logLevel: 'info',
-        example: 'Hydration text mismatch, attribute order mismatch',
-        icon: 'refresh',
-      },
-    ],
-  },
-  scenarios: {
-    number: '7',
-    title: 'Production logging scenarios',
-    cards: [
-      {
-        kind: 'caught',
-        title: 'onCaughtError scenario',
-        steps: [
-          'React App',
-          'Error Boundary (show fallback)',
-          'Root Callback',
-          'Logging System (user preserved)',
-        ],
-        checks: [
-          'User sees the fallback UI',
-          'Per-component error visibility',
-          'Impact scope is bounded',
-        ],
-      },
-      {
-        kind: 'recoverable',
-        title: 'onRecoverableError scenario (Hydration)',
-        steps: [
-          'SSR HTML',
-          'Hydration in progress',
-          'Mismatch happens',
-          'React recovers (auto)',
-          'onRecoverableError logs',
-        ],
-        checks: [
-          'No major UI glitch for the user',
-          'Track Hydration quality / env issues',
-          'Infer render / build time differences',
-        ],
-      },
-    ],
-  },
-  router: {
-    number: '8',
-    title: 'Interactive Error Router',
-    options: [
-      {
-        key: 'boundary',
-        title: 'Error caught by an Error Boundary during React 19 render',
-        description: 'Focus: component / business logic',
-      },
-      {
-        key: 'fatal',
-        title: 'Fatal error no Boundary caught',
-        description: 'Focus: initial render / root exception',
-      },
-      {
-        key: 'hydration',
-        title: 'Error React auto-recovered (e.g. Hydration mismatch)',
-        description: 'Focus: SSR quality / env diff',
-      },
-      {
-        key: 'monitoring',
-        title: 'Mapping callbacks to monitoring',
-        description: 'Focus: real service log design',
-      },
-    ],
-    results: {
-      boundary: {
-        callback: 'onCaughtError',
-        callbackKind: 'caught',
-        uiResult: 'Fallback UI shown',
-        logging: 'warn',
-        logLevel: 'warn',
-        body: 'Because an Error Boundary caught the error, the user sees the fallback UI and operators record the captured error.',
-      },
-      fatal: {
+        scenario: 'Throw during render, no boundary',
         callback: 'onUncaughtError',
-        callbackKind: 'uncaught',
-        uiResult: 'App crash or root unmount possible',
-        logging: 'error / critical',
-        logLevel: 'error',
-        body: 'No Boundary caught the error, so treat it as a fatal error and alert immediately.',
+        ui: 'A blank screen — the whole app unmounts.',
       },
-      hydration: {
+      {
+        scenario: 'Throw during render, boundary present',
+        callback: 'onCaughtError',
+        ui: 'Only that region switches to a fallback.',
+      },
+      {
+        scenario: 'Hydration mismatch',
         callback: 'onRecoverableError',
-        callbackKind: 'recoverable',
-        uiResult: 'React auto recovered',
-        logging: 'info or warn',
-        logLevel: 'info',
-        body: 'React auto-handled a recoverable issue like a Hydration mismatch, but it should still be logged for quality tracking.',
-      },
-      monitoring: {
-        callback: 'Per-situation branching',
-        callbackKind: 'mixed',
-        uiResult: 'Depends on recovery outcome',
-        logging: 'info / warn / error split',
-        logLevel: 'mixed',
-        body: 'In production, split severity and transport channels per callback to improve observability.',
-      },
-    },
-    labels: {
-      callback: 'Callback fired',
-      uiResult: 'UI result',
-      logging: 'Recommended logging',
-      explain: 'Explanation',
-    },
-  },
-  followAlong: {
-    number: '9',
-    title: 'Walk it yourself',
-    items: [
-      {
-        title: 'Check root error callbacks in the React 19 announcement',
-        description: 'Read the official blog / release notes',
+        ui: 'A normal screen; that region was re-rendered on the client.',
       },
       {
-        title: 'Check options in the hydrateRoot docs',
-        description: 'react.dev/reference/react-dom/client/hydrateRoot',
+        scenario: 'Concurrent render failed, sync retry succeeded',
+        callback: 'onRecoverableError',
+        ui: 'A normal screen; the user notices nothing.',
       },
       {
-        title: 'Summarize the role split: Boundary vs root callback',
-        description: 'Recovery is Boundary, reporting is root',
-      },
-      {
-        title: 'Map each callback to a service situation',
-        description: 'Design real-service logging',
+        scenario: 'Throw inside an event handler',
+        callback: 'None of them',
+        ui: 'A normal screen; it only reaches the browser console.',
       },
     ],
+    note: 'The last row is the blind spot: event handler errors reach none of the three, so they need collecting separately.',
   },
-  takeaways: {
-    number: '10',
-    title: 'Key recap',
-    cards: [
-      {
-        number: '1',
-        title: 'React 19 strengthened the root-level error reporting surface.',
-        body: 'It splits roles across onCaughtError / onUncaughtError / onRecoverableError.',
-        tone: 'blue',
-      },
-      {
-        number: '2',
-        title: 'Each callback handles a different kind of error.',
-        body: 'Boundary capture, fatal, and recoverable errors are separated.',
-        tone: 'teal',
-      },
-      {
-        number: '3',
-        title: 'Splitting recovery from reporting improves production observability.',
-        body: 'Protect the user experience while raising the quality of ops / monitoring.',
-        tone: 'violet',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-dom/src/client/ReactDOMRoot.js',
+    lookForLabel: 'Look for',
+    lookFor: 'onUncaughtError, onCaughtError, onRecoverableError, createRoot options',
+    whyLabel: 'Why',
+    why: 'createRoot and hydrateRoot taking the same three options is what lets client and SSR reporting stay unified.',
+    code: ERROR_OPTIONS_CODE_EN,
+    primaryCta: 'Read ReactDOMRoot.js',
+    primaryHref: REACT_DOM_ROOT_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'How does Hydration start?',
-    description: 'Continue with where hydration begins as it links server HTML to the client tree.',
+    title: 'The third branch: Hydration',
+    description:
+      'Hydration is where onRecoverableError fires most often. Next we see how that process begins.',
     cta: 'Go to the next page',
     href: '/hydration-start',
   },

@@ -1,2 +1,2 @@
-export { renderYieldingContent } from './content';
-export { RenderYieldingContinuationPage } from './RenderYieldingContinuationPage';
+export { pauseResumeRenderContent } from './content';
+export { PauseResumeRenderPage } from './PauseResumeRenderPage';

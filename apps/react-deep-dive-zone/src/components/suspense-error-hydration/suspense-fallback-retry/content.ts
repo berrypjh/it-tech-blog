@@ -1,160 +1,89 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { Phase } from './tone';
+import type { ToneKey } from '../../shared/tones';
 
-export type HeroFlowStep = {
-  number: string;
+export type PhaseId = 'suspend' | 'fallback' | 'resolve' | 'retry';
+
+export type Phase = {
+  id: PhaseId;
   label: string;
   caption: string;
-  icon: 'suspend' | 'fallback' | 'resolve' | 'retry' | 'content';
-  phase: Phase;
+  tone: ToneKey;
 };
 
-export type ConceptCard = {
-  icon: 'target' | 'panel' | 'refresh' | 'queue';
-  question: string;
-  answer: string;
-};
+export type CaptureStepId = 'find' | 'mark' | 'unwind' | 'render-fallback' | 'attach-ping';
 
-export type PendingStep = {
-  title: string;
-  subtitle: string;
-  inner: string;
-  innerKind: 'code' | 'status';
-  phase: Phase;
-};
-
-export type InternalChangeStep = { number: string; title: string; description: string };
-
-export type RetryStep = {
-  number: string;
+export type CaptureStep = {
+  id: CaptureStepId;
+  num: string;
   title: string;
   description: string;
-  phase: Phase;
+  tone: ToneKey;
 };
 
-export type SimulatorStep = {
-  number: string;
-  title: string;
+export type StateId = 'primary' | 'fallback' | 'retrying';
+
+export type BoundaryState = {
+  id: StateId;
+  label: string;
+  role: string;
   description: string;
-  promiseStatus: string;
-  uiStatus: string;
-  uiPreview: 'spinner' | 'profile' | 'loading' | 'capture' | 'pending' | 'ready';
+  tone: ToneKey;
 };
 
-export type ChecklistItem = { title: string; description: string };
-
-export type TakeawayCard = {
-  number: string;
-  title: string;
-  body: string;
-  tone: 'blue' | 'teal' | 'purple';
+export type BehaviorRow = {
+  situation: string;
+  behavior: string;
+  why: string;
 };
 
 export type SuspenseFallbackRetryContent = {
   hero: {
     badge: string;
-    titleLines: [string, string, string];
+    title: { line1: string; line2: string };
     description: string;
-    code: {
-      label: string;
-      pill: string;
-      fileLabel: string;
-      content: string;
-    };
-    flow: {
-      title: string;
-      steps: HeroFlowStep[];
-    };
-  };
-  question: {
-    number: string;
-    title: string;
-    question: string;
-    concepts: ConceptCard[];
-  };
-  userCode: {
-    number: string;
-    title: string;
-    description: string;
-    code: {
-      fileLabel: string;
-      content: string;
-    };
-    treeTitle: string;
-    tree: { label: string; kind: 'app' | 'suspense' | 'profile' }[];
-  };
-  pending: {
-    number: string;
-    title: string;
-    steps: PendingStep[];
-  };
-  search: {
-    number: string;
-    title: string;
-    description: string;
-    tree: {
-      app: string;
-      suspense: string;
-      suspenseTag: string;
-      intermediate: string;
-      profile: string;
-      profileTag: string;
-    };
-    rulesTitle: string;
-    rules: string[];
+    diagramBadge: string;
+    diagramCaption: string;
+    phases: Phase[];
   };
   capture: {
-    number: string;
+    badge: string;
+    eyebrow: string;
     title: string;
-    internalTitle: string;
-    internalSteps: InternalChangeStep[];
-    stateTitle: string;
-    stateLines: { key: string; value: string; highlight?: boolean }[];
-    fallbackTitle: string;
-    fallbackBody: string;
-    resultTitle: string;
-    resultSpinnerLabel: string;
+    description: string;
+    steps: CaptureStep[];
+    note: string;
   };
-  retryQueue: {
-    number: string;
+  states: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    steps: RetryStep[];
+    description: string;
+    items: BoundaryState[];
+    note: string;
   };
-  code: {
-    number: string;
+  behaviors: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    cardALabel: string;
-    cardACode: string;
-    cardABadge: string;
-    cardBLabel: string;
-    cardBCode: string;
-    cardBBadge: string;
-    explanationTitle: string;
-    explanationBullets: { tag: string; body: string }[];
-    button: { label: string; href: string };
+    description: string;
+    headers: [string, string, string];
+    rows: BehaviorRow[];
+    note: string;
   };
-  simulator: {
-    number: string;
+  checkpoint: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    leftTitle: string;
-    promiseLabel: string;
-    statusLabel: string;
-    uiLabel: string;
-    timelineTitle: string;
-    timelineSubtitle: string;
-    steps: SimulatorStep[];
-    railLabels: string[];
-  };
-  followAlong: {
-    number: string;
-    title: string;
-    items: ChecklistItem[];
-  };
-  takeaways: {
-    number: string;
-    title: string;
-    cards: TakeawayCard[];
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -165,685 +94,421 @@ export type SuspenseFallbackRetryContent = {
   };
 };
 
-const THROW_URL =
-  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberThrow.js';
+const SUSPENSE_CAPTURE_CODE = `// 1. 경계를 fallback으로 전환하도록 표시한다
+function markSuspenseBoundaryShouldCapture(
+  suspenseBoundary, returnFiber, sourceFiber, root, rootRenderLanes,
+) {
+  // 이 경계는 이번 렌더에서 fallback을 보여야 한다
+  suspenseBoundary.flags |= ShouldCapture;
 
-const HERO_CODE = `<Suspense fallback={<Spinner />}>
-  <Profile />
-</Suspense>`;
-
-const USER_CODE = `export default function App() {
-  return (
-    <Suspense fallback={<Spinner />}>
-      <Profile />
-    </Suspense>
-  );
-}`;
-
-const CODE_A = `markSuspenseBoundaryShouldCapture(
-  suspenseBoundary,
-  returnFiber,
-  sourceFiber,
-  root,
-  rootRenderLanes,
-);`;
-
-const CODE_B = `if (retryQueue === null) {
-  suspenseBoundary.updateQueue = new Set([wakeable]);
-} else {
-  retryQueue.add(wakeable);
+  // 이번 렌더 lane을 지워 두었다가 재시도할 때 다시 쓴다
+  suspenseBoundary.lanes = rootRenderLanes;
+  return suspenseBoundary;
 }
 
-attachPingListener(root, wakeable, rootRenderLanes);`;
+// 2. unwind 단계에서 ShouldCapture를 DidCapture로 바꾼다
+function unwindWork(current, workInProgress, renderLanes) {
+  switch (workInProgress.tag) {
+    case SuspenseComponent: {
+      const flags = workInProgress.flags;
+      if (flags & ShouldCapture) {
+        workInProgress.flags = (flags & ~ShouldCapture) | DidCapture;
+        return workInProgress;
+      }
+      return null;
+    }
+  }
+}
+
+// 3. 재렌더 시 DidCapture가 켜져 있으면 fallback 쪽 children을 고른다
+function updateSuspenseComponent(current, workInProgress, renderLanes) {
+  const didSuspend = (workInProgress.flags & DidCapture) !== NoFlags;
+
+  if (didSuspend) {
+    return mountSuspenseFallbackChildren(
+      workInProgress, nextPrimaryChildren, nextFallbackChildren, renderLanes,
+    );
+  }
+  return mountSuspensePrimaryChildren(workInProgress, nextPrimaryChildren, renderLanes);
+}`;
+
+const REACT_FIBER_THROW_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberThrow.js';
 
 const ko: SuspenseFallbackRetryContent = {
   hero: {
     badge: 'Suspense/Error · 4/10단계',
-    titleLines: ['Suspense는 어떻게', 'fallback으로 전환되고', '다시 원래 UI로 돌아올까?'],
+    title: { line1: 'fallback은 컴포넌트를 지우지 않는다', line2: '보이지 않게 옆에 둘 뿐이다' },
     description:
-      'React는 Boundary를 capture 대상으로 표시하고, Promise가 풀리면 retry render를 준비합니다.',
-    code: {
-      label: '사용자 코드 예시',
-      pill: 'JSX',
-      fileLabel: 'App.jsx',
-      content: HERO_CODE,
-    },
-    flow: {
-      title: '전체 흐름 한눈에 보기',
-      steps: [
-        {
-          number: '1',
-          label: 'suspend',
-          caption: 'Promise pending',
-          icon: 'suspend',
-          phase: 'pending',
-        },
-        {
-          number: '2',
-          label: 'fallback',
-          caption: 'Spinner 표시',
-          icon: 'fallback',
-          phase: 'pending',
-        },
-        {
-          number: '3',
-          label: 'resolve',
-          caption: 'Promise resolved',
-          icon: 'resolve',
-          phase: 'retry',
-        },
-        { number: '4', label: 'retry', caption: 'Boundary retry', icon: 'retry', phase: 'retry' },
-        { number: '5', label: 'content', caption: '원래 UI 복구', icon: 'content', phase: 'retry' },
-      ],
-    },
-  },
-  question: {
-    number: '1',
-    title: '오늘 해결할 질문',
-    question:
-      'Promise가 pending이면 React는 어떤 Suspense Boundary를 잡고, resolve되면 어떻게 다시 시도할까?',
-    concepts: [
-      { icon: 'target', question: '어떤 Boundary를 잡을까?', answer: '가장 가까운 Boundary' },
-      { icon: 'panel', question: 'fallback은 언제 표시될까?', answer: 'fallback pass 준비 후' },
-      { icon: 'refresh', question: 'resolve되면?', answer: '같은 Boundary 기준 retry' },
-      { icon: 'queue', question: '이전 Promise는?', answer: 'retryQueue로 관리' },
-    ],
-  },
-  userCode: {
-    number: '2',
-    title: 'Suspense 사용자 코드',
-    description: 'Profile이 suspend 되면 가장 가까운 Suspense Boundary가 fallback UI를 담당합니다.',
-    code: { fileLabel: 'App.jsx', content: USER_CODE },
-    treeTitle: '컴포넌트 트리',
-    tree: [
-      { label: 'App', kind: 'app' },
-      { label: '<Suspense />  (Boundary)', kind: 'suspense' },
-      { label: '<Profile />  (suspend 가능)', kind: 'profile' },
-    ],
-  },
-  pending: {
-    number: '3',
-    title: 'pending Promise 발생',
-    steps: [
+      'Suspense 경계는 primary와 fallback 두 벌의 자식을 동시에 들고 있습니다. 전환은 어느 쪽을 보여 줄지 고르는 일입니다.',
+    diagramBadge: 'fallback cycle',
+    diagramCaption: 'suspend → fallback → retry',
+    phases: [
       {
-        title: 'Profile render 시작',
-        subtitle: 'Profile 컴포넌트 렌더링',
-        inner: '<Profile />',
-        innerKind: 'code',
-        phase: 'capture',
+        id: 'suspend',
+        label: 'suspend',
+        caption: 'use가 SuspenseException을 던진다',
+        tone: 'sky',
       },
       {
-        title: 'use(profilePromise)',
-        subtitle: 'use()가 Promise를 읽음',
-        inner: 'use(profilePromise)',
-        innerKind: 'code',
-        phase: 'pending',
+        id: 'fallback',
+        label: 'fallback',
+        caption: '경계가 DidCapture를 켜고 fallback을 렌더',
+        tone: 'violet',
       },
       {
-        title: 'Promise pending',
-        subtitle: '값이 아직 준비되지 않음',
-        inner: 'pending',
-        innerKind: 'status',
-        phase: 'pending',
-      },
-      {
-        title: 'throwException',
-        subtitle: 'thenable이 throw 됨',
-        inner: 'throw promise;',
-        innerKind: 'code',
-        phase: 'pending',
-      },
-    ],
-  },
-  search: {
-    number: '4',
-    title: '가장 가까운 Suspense Boundary 탐색',
-    description: 'throw된 위치에서 위로 올라가 가장 가까운 Suspense Boundary를 찾습니다.',
-    tree: {
-      app: '<App />',
-      suspense: '<Suspense />',
-      suspenseTag: '가장 가까운 Boundary',
-      intermediate: '중간 컴포넌트',
-      profile: '<Profile />',
-      profileTag: 'throw 위치',
-    },
-    rulesTitle: '탐색 규칙',
-    rules: [
-      '위로(return) 방향으로 탐색',
-      'Suspense 타입을 만나면 중단',
-      '가장 가까운 하나만 capture',
-    ],
-  },
-  capture: {
-    number: '5',
-    title: 'Boundary capture와 fallback pass',
-    internalTitle: '내부 상태 변화',
-    internalSteps: [
-      { number: '1', title: 'Suspense Boundary 발견', description: 'capture 대상으로 표시' },
-      {
-        number: '2',
-        title: 'ShouldCapture 표시',
-        description: '이 Boundary가 fallback을 렌더할 것',
-      },
-      { number: '3', title: 'fallback pass 준비', description: '다음 렌더에서 fallback UI로 전환' },
-      { number: '4', title: 'Spinner 렌더', description: '사용자에게 fallback UI 표시' },
-    ],
-    stateTitle: 'Suspense Boundary',
-    stateLines: [
-      { key: 'state', value: 'PrimaryTree' },
-      { key: 'ShouldCapture', value: 'true', highlight: true },
-      { key: 'DidCapture', value: '(next pass)' },
-      { key: 'updateQueue', value: 'Set()' },
-    ],
-    fallbackTitle: 'fallback pass 실행',
-    fallbackBody: 'Primary tree 대신 Fallback tree 렌더링',
-    resultTitle: '실제 UI 결과',
-    resultSpinnerLabel: '<Spinner />',
-  },
-  retryQueue: {
-    number: '6',
-    title: 'retryQueue / wakeable / ping listener 흐름',
-    steps: [
-      {
-        number: '1',
-        title: 'wakeable 저장',
-        description: 'throw된 thenable을 wakeable로 보관',
-        phase: 'capture',
-      },
-      {
-        number: '2',
-        title: 'retryQueue 등록',
-        description: 'Boundary.updateQueue(Set)에 wakeable 추가',
-        phase: 'capture',
-      },
-      {
-        number: '3',
-        title: 'Promise resolve 감시',
-        description: 'Promise가 resolve되면 재시작 신호(ping) 발생',
-        phase: 'retry',
-      },
-      {
-        number: '4',
-        title: 'attachPingListener',
-        description: 'ping 발생 시 Scheduler에 retry 요청 등록',
-        phase: 'retry',
-      },
-      {
-        number: '5',
-        title: 'retry render',
-        description: '같은 Boundary 기준으로 retry render 실행',
-        phase: 'retry',
-      },
-    ],
-  },
-  code: {
-    number: '7',
-    title: '실제 코드 미리보기 (ReactFiberThrow.js)',
-    cardALabel: 'A · markSuspenseBoundaryShouldCapture 호출',
-    cardACode: CODE_A,
-    cardABadge: 'JS',
-    cardBLabel: 'B · retryQueue 등록 및 ping listener 설치',
-    cardBCode: CODE_B,
-    cardBBadge: 'JS',
-    explanationTitle: '설명',
-    explanationBullets: [
-      {
-        tag: 'A',
-        body: 'Boundary를 capture 대상으로 표시합니다. fallback pass에서 사용됩니다.',
-      },
-      {
-        tag: 'B',
-        body: 'wakeable을 updateQueue(Set)에 저장하고, Promise resolve 시 retry가 실행되도록 ping listener를 붙입니다.',
-      },
-    ],
-    button: { label: 'GitHub에서 코드 보기', href: THROW_URL },
-  },
-  simulator: {
-    number: '8',
-    title: 'Suspense retry 시뮬레이터',
-    leftTitle: 'Profile 컴포넌트 상태',
-    promiseLabel: 'profilePromise',
-    statusLabel: '상태',
-    uiLabel: '현재 UI 상태',
-    timelineTitle: '타임라인',
-    timelineSubtitle: '단계를 클릭해 흐름을 확인해보세요',
-    steps: [
-      {
-        number: '1',
-        title: 'Profile suspends',
-        description: 'use()가 pending으로 throw 발생',
-        promiseStatus: 'pending',
-        uiStatus: 'render 도중 — UI 없음',
-        uiPreview: 'pending',
-      },
-      {
-        number: '2',
-        title: 'Boundary captures',
-        description: '가장 가까운 Suspense Boundary가 capture됨',
-        promiseStatus: 'pending',
-        uiStatus: 'capture 표시 (다음 pass에서 fallback)',
-        uiPreview: 'capture',
-      },
-      {
-        number: '3',
-        title: 'Spinner fallback 표시',
-        description: 'fallback pass 실행되어 Spinner가 렌더됨',
-        promiseStatus: 'pending',
-        uiStatus: 'Fallback tree 표시 중',
-        uiPreview: 'spinner',
-      },
-      {
-        number: '4',
-        title: 'Promise resolves',
-        description: 'Promise가 resolve되고 ping 신호 발생',
-        promiseStatus: 'fulfilled',
-        uiStatus: 'fallback 유지 — retry 준비',
-        uiPreview: 'loading',
-      },
-      {
-        number: '5',
-        title: 'Retry render',
-        description: '같은 Boundary 기준으로 retry render 스케줄',
-        promiseStatus: 'fulfilled',
-        uiStatus: 'retry render 실행',
-        uiPreview: 'ready',
-      },
-      {
-        number: '6',
-        title: 'Profile UI 표시',
-        description: '다시 성공적으로 렌더되어 원래 UI가 복구됨',
-        promiseStatus: 'fulfilled',
-        uiStatus: '<Profile /> 정상 렌더',
-        uiPreview: 'profile',
-      },
-    ],
-    railLabels: ['render 도중', 'fallback pass', '대기 중', 'resolve 이벤트', 'retry 시작', '완료'],
-  },
-  followAlong: {
-    number: '9',
-    title: '직접 코드에서 따라가 보기',
-    items: [
-      {
-        title: 'ReactFiberThrow.js 열기',
-        description: 'Suspense 경로가 시작되는 파일을 확인합니다.',
-      },
-      {
-        title: 'markSuspenseBoundaryShouldCapture 찾기',
-        description: 'Boundary capture 표시가 어디서 일어나는지 확인합니다.',
-      },
-      {
-        title: 'retryQueue 저장 위치 보기',
-        description: 'wakeable이 Boundary.updateQueue에 저장되는 흐름을 봅니다.',
-      },
-      {
-        title: 'attachPingListener 확인',
-        description: 'Promise resolve 이후 retry가 어떻게 예약되는지 확인합니다.',
-      },
-    ],
-  },
-  takeaways: {
-    number: '10',
-    title: '핵심 정리',
-    cards: [
-      {
-        number: '1',
-        title: 'Suspense Boundary는 suspend된 render를 capture한다.',
-        body: '가장 가까운 Boundary가 선택되어 fallback pass를 준비한다.',
-        tone: 'blue',
-      },
-      {
-        number: '2',
-        title: 'fallback pass와 retry 흐름을 함께 준비한다.',
-        body: 'wakeable을 저장하고 ping listener를 통해 재시작을 예약한다.',
+        id: 'resolve',
+        label: 'resolve',
+        caption: 'Promise가 풀리며 ping이 도착',
         tone: 'teal',
       },
       {
-        number: '3',
-        title: 'Promise resolve 이후 같은 Boundary를 기준으로 재시도한다.',
-        body: '원래 UI로 자연스럽게 복구된다.',
-        tone: 'purple',
+        id: 'retry',
+        label: 'retry',
+        caption: '같은 lane으로 다시 렌더해 primary 복귀',
+        tone: 'emerald',
       },
     ],
   },
+  capture: {
+    badge: '01',
+    eyebrow: 'capture',
+    title: 'fallback으로 넘어가는 다섯 칸',
+    description:
+      '경계가 즉시 fallback을 그리지는 않습니다. 플래그를 켜 두고 되감은 뒤, 다음 completeWork에서 결정됩니다.',
+    steps: [
+      {
+        id: 'find',
+        num: '01',
+        title: '가장 가까운 Suspense 찾기',
+        description: 'return 포인터를 타고 올라가며 fallback prop을 가진 경계를 찾습니다.',
+        tone: 'sky',
+      },
+      {
+        id: 'mark',
+        num: '02',
+        title: 'ShouldCapture 켜기',
+        description: '이 경계가 이번 렌더에서 fallback을 보여야 한다고 flags에 남깁니다.',
+        tone: 'indigo',
+      },
+      {
+        id: 'unwind',
+        num: '03',
+        title: 'DidCapture로 전환',
+        description: 'unwindWork가 ShouldCapture를 끄고 DidCapture를 켜서 결정을 확정합니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'render-fallback',
+        num: '04',
+        title: 'fallback children 렌더',
+        description: 'updateSuspenseComponent가 DidCapture를 보고 fallback 쪽을 고릅니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'attach-ping',
+        num: '05',
+        title: 'Promise에 ping 연결',
+        description: 'thenable에 리스너를 붙여 settle되면 이 root에 재시도를 걸게 합니다.',
+        tone: 'teal',
+      },
+    ],
+    note: '02와 03이 나뉘어 있는 이유는 되감기 도중에 취소될 수 있기 때문입니다. 확정은 unwind 시점에 일어납니다.',
+  },
+  states: {
+    badge: '02',
+    eyebrow: 'boundary states',
+    title: '경계가 가질 수 있는 세 모습',
+    description:
+      'Suspense 경계는 자식 트리를 통째로 갈아 끼우지 않습니다. 두 벌을 들고 어느 쪽을 화면에 둘지만 바꿉니다.',
+    items: [
+      {
+        id: 'primary',
+        label: 'primary 표시',
+        role: '평상시',
+        description:
+          'DidCapture가 꺼져 있고 실제 자식이 보입니다. fallback은 아예 만들어지지 않습니다.',
+        tone: 'emerald',
+      },
+      {
+        id: 'fallback',
+        label: 'fallback 표시',
+        role: '대기 중',
+        description: 'primary 자식은 Offscreen 안에 숨긴 채 유지되고, fallback만 화면에 나옵니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'retrying',
+        label: '재시도 중',
+        role: '다시 렌더',
+        description:
+          'ping을 받아 다시 렌더 중입니다. 성공하면 primary로 돌아가고, 또 멈추면 fallback을 유지합니다.',
+        tone: 'teal',
+      },
+    ],
+    note: 'primary를 버리지 않고 숨겨 두기 때문에 상태가 보존됩니다. 재시도가 처음부터가 아니라 이어지는 것처럼 느껴지는 이유입니다.',
+  },
+  behaviors: {
+    badge: '03',
+    eyebrow: 'behaviors',
+    title: '상황에 따라 달라지는 반응',
+    description:
+      '같은 suspend라도 어떤 업데이트에서 났는지에 따라 fallback을 보여 줄지 이전 화면을 유지할지 달라집니다.',
+    headers: ['상황', 'React의 반응', '왜 그런가'],
+    rows: [
+      {
+        situation: '첫 마운트 중 suspend',
+        behavior: 'fallback을 바로 보여 준다',
+        why: '보여 줄 이전 화면이 없습니다. 빈 화면보다 fallback이 낫습니다.',
+      },
+      {
+        situation: 'transition 중 suspend',
+        behavior: '이전 화면을 유지한다',
+        why: 'startTransition은 화면이 깜빡이지 않기를 요청한 것이므로 fallback으로 바꾸지 않습니다.',
+      },
+      {
+        situation: '동기 업데이트 중 suspend',
+        behavior: 'fallback으로 전환',
+        why: '급한 업데이트라 기다릴 수 없습니다. 즉시 fallback을 보여 줍니다.',
+      },
+      {
+        situation: '재시도 중 또 suspend',
+        behavior: 'fallback을 유지한다',
+        why: '이미 fallback이 보이는 중이라 화면이 더 바뀌지 않습니다.',
+      },
+    ],
+    note: '두 번째 줄이 startTransition의 핵심 효과입니다. 같은 데이터 로딩이라도 전환 안에서 하면 깜빡임이 사라집니다.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberThrow.js',
+    lookForLabel: '볼 것',
+    lookFor: 'markSuspenseBoundaryShouldCapture, ShouldCapture, DidCapture, unwindWork',
+    whyLabel: '설명',
+    why: 'ShouldCapture와 DidCapture 두 플래그가 나뉘어 있고 unwind에서 교체된다는 점이 전환 시점을 정확히 알려 줍니다.',
+    code: SUSPENSE_CAPTURE_CODE,
+    primaryCta: 'ReactFiberThrow.js 읽기',
+    primaryHref: REACT_FIBER_THROW_HREF,
+  },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'Error Boundary는 렌더링 에러를 어떻게 붙잡을까?',
+    title: '이번에는 Error 쪽 갈래',
     description:
-      'Promise 대신 일반 에러가 던져졌을 때 Error Boundary가 어떻게 잡아 복구하는지 이어서 살펴봅니다.',
+      'Suspense가 자동으로 복구된다면 Error Boundary는 왜 스스로 풀리지 않는지 확인합니다.',
     cta: '다음 페이지로 이동',
     href: '/error-boundary-recover',
   },
 };
 
+const SUSPENSE_CAPTURE_CODE_EN = `// 1. mark the boundary so it switches to its fallback
+function markSuspenseBoundaryShouldCapture(
+  suspenseBoundary, returnFiber, sourceFiber, root, rootRenderLanes,
+) {
+  // this boundary must show its fallback for this render
+  suspenseBoundary.flags |= ShouldCapture;
+
+  // clear the render lane now and reuse it on the retry
+  suspenseBoundary.lanes = rootRenderLanes;
+  return suspenseBoundary;
+}
+
+// 2. during unwind, ShouldCapture becomes DidCapture
+function unwindWork(current, workInProgress, renderLanes) {
+  switch (workInProgress.tag) {
+    case SuspenseComponent: {
+      const flags = workInProgress.flags;
+      if (flags & ShouldCapture) {
+        workInProgress.flags = (flags & ~ShouldCapture) | DidCapture;
+        return workInProgress;
+      }
+      return null;
+    }
+  }
+}
+
+// 3. on re-render, DidCapture selects the fallback children
+function updateSuspenseComponent(current, workInProgress, renderLanes) {
+  const didSuspend = (workInProgress.flags & DidCapture) !== NoFlags;
+
+  if (didSuspend) {
+    return mountSuspenseFallbackChildren(
+      workInProgress, nextPrimaryChildren, nextFallbackChildren, renderLanes,
+    );
+  }
+  return mountSuspensePrimaryChildren(workInProgress, nextPrimaryChildren, renderLanes);
+}`;
+
 const en: SuspenseFallbackRetryContent = {
   hero: {
-    badge: 'Suspense·Error · 4/10',
-    titleLines: ['How does Suspense', 'switch to a fallback', 'and come back to the original UI?'],
+    badge: 'Suspense/Error · 4/10',
+    title: {
+      line1: 'A fallback does not delete the children',
+      line2: 'it parks them out of sight',
+    },
     description:
-      'React marks the Boundary as a capture target, and prepares a retry render once the Promise resolves.',
-    code: {
-      label: 'User code example',
-      pill: 'JSX',
-      fileLabel: 'App.jsx',
-      content: HERO_CODE,
-    },
-    flow: {
-      title: 'The whole flow at a glance',
-      steps: [
-        {
-          number: '1',
-          label: 'suspend',
-          caption: 'Promise pending',
-          icon: 'suspend',
-          phase: 'pending',
-        },
-        {
-          number: '2',
-          label: 'fallback',
-          caption: 'Spinner shown',
-          icon: 'fallback',
-          phase: 'pending',
-        },
-        {
-          number: '3',
-          label: 'resolve',
-          caption: 'Promise resolved',
-          icon: 'resolve',
-          phase: 'retry',
-        },
-        { number: '4', label: 'retry', caption: 'Boundary retry', icon: 'retry', phase: 'retry' },
-        {
-          number: '5',
-          label: 'content',
-          caption: 'Original UI restored',
-          icon: 'content',
-          phase: 'retry',
-        },
-      ],
-    },
-  },
-  question: {
-    number: '1',
-    title: "Today's question",
-    question:
-      'When a Promise is pending, which Suspense Boundary does React grab, and once it resolves, how does it retry?',
-    concepts: [
-      { icon: 'target', question: 'Which Boundary is grabbed?', answer: 'The nearest Boundary' },
+      'A Suspense boundary holds two sets of children at once. Switching is just a choice of which set is on screen.',
+    diagramBadge: 'fallback cycle',
+    diagramCaption: 'suspend → fallback → retry',
+    phases: [
       {
-        icon: 'panel',
-        question: 'When is the fallback shown?',
-        answer: 'After the fallback pass is prepared',
-      },
-      { icon: 'refresh', question: 'After resolve?', answer: 'Retry on the same Boundary' },
-      { icon: 'queue', question: 'Previous Promise?', answer: 'Tracked in the retryQueue' },
-    ],
-  },
-  userCode: {
-    number: '2',
-    title: 'Suspense user code',
-    description:
-      'When Profile suspends, the nearest Suspense Boundary is in charge of the fallback UI.',
-    code: { fileLabel: 'App.jsx', content: USER_CODE },
-    treeTitle: 'Component tree',
-    tree: [
-      { label: 'App', kind: 'app' },
-      { label: '<Suspense />  (Boundary)', kind: 'suspense' },
-      { label: '<Profile />  (can suspend)', kind: 'profile' },
-    ],
-  },
-  pending: {
-    number: '3',
-    title: 'A pending Promise happens',
-    steps: [
-      {
-        title: 'Profile render starts',
-        subtitle: 'Profile component rendering',
-        inner: '<Profile />',
-        innerKind: 'code',
-        phase: 'capture',
+        id: 'suspend',
+        label: 'suspend',
+        caption: 'use throws SuspenseException',
+        tone: 'sky',
       },
       {
-        title: 'use(profilePromise)',
-        subtitle: 'use() reads the Promise',
-        inner: 'use(profilePromise)',
-        innerKind: 'code',
-        phase: 'pending',
+        id: 'fallback',
+        label: 'fallback',
+        caption: 'the boundary sets DidCapture and renders the fallback',
+        tone: 'violet',
       },
       {
-        title: 'Promise pending',
-        subtitle: 'The value is not ready yet',
-        inner: 'pending',
-        innerKind: 'status',
-        phase: 'pending',
-      },
-      {
-        title: 'throwException',
-        subtitle: 'The thenable is thrown',
-        inner: 'throw promise;',
-        innerKind: 'code',
-        phase: 'pending',
-      },
-    ],
-  },
-  search: {
-    number: '4',
-    title: 'Walk up to the nearest Suspense Boundary',
-    description: 'From the throw site, walk upward to find the nearest Suspense Boundary.',
-    tree: {
-      app: '<App />',
-      suspense: '<Suspense />',
-      suspenseTag: 'nearest Boundary',
-      intermediate: 'intermediate component',
-      profile: '<Profile />',
-      profileTag: 'throw site',
-    },
-    rulesTitle: 'Search rules',
-    rules: [
-      'Walk in the return direction (upward)',
-      'Stop when a Suspense type is found',
-      'Only the nearest one is captured',
-    ],
-  },
-  capture: {
-    number: '5',
-    title: 'Boundary capture and fallback pass',
-    internalTitle: 'Internal state changes',
-    internalSteps: [
-      { number: '1', title: 'Suspense Boundary found', description: 'Marked as capture target' },
-      {
-        number: '2',
-        title: 'ShouldCapture marked',
-        description: 'This boundary will render the fallback',
-      },
-      {
-        number: '3',
-        title: 'Fallback pass prepared',
-        description: 'Switch to fallback UI on the next render',
-      },
-      { number: '4', title: 'Spinner rendered', description: 'Show the fallback UI to the user' },
-    ],
-    stateTitle: 'Suspense Boundary',
-    stateLines: [
-      { key: 'state', value: 'PrimaryTree' },
-      { key: 'ShouldCapture', value: 'true', highlight: true },
-      { key: 'DidCapture', value: '(next pass)' },
-      { key: 'updateQueue', value: 'Set()' },
-    ],
-    fallbackTitle: 'Fallback pass runs',
-    fallbackBody: 'Render the Fallback tree instead of the Primary tree',
-    resultTitle: 'Actual UI result',
-    resultSpinnerLabel: '<Spinner />',
-  },
-  retryQueue: {
-    number: '6',
-    title: 'retryQueue / wakeable / ping listener flow',
-    steps: [
-      {
-        number: '1',
-        title: 'Store the wakeable',
-        description: 'Keep the thrown thenable as a wakeable',
-        phase: 'capture',
-      },
-      {
-        number: '2',
-        title: 'Register in retryQueue',
-        description: 'Add the wakeable to Boundary.updateQueue (Set)',
-        phase: 'capture',
-      },
-      {
-        number: '3',
-        title: 'Watch Promise resolve',
-        description: 'When the Promise resolves, a ping signal fires',
-        phase: 'retry',
-      },
-      {
-        number: '4',
-        title: 'attachPingListener',
-        description: 'On ping, schedule a retry request with the Scheduler',
-        phase: 'retry',
-      },
-      {
-        number: '5',
-        title: 'Retry render',
-        description: 'Run a retry render against the same Boundary',
-        phase: 'retry',
-      },
-    ],
-  },
-  code: {
-    number: '7',
-    title: 'Source code preview (ReactFiberThrow.js)',
-    cardALabel: 'A · markSuspenseBoundaryShouldCapture call',
-    cardACode: CODE_A,
-    cardABadge: 'JS',
-    cardBLabel: 'B · retryQueue registration and ping listener',
-    cardBCode: CODE_B,
-    cardBBadge: 'JS',
-    explanationTitle: 'Explanation',
-    explanationBullets: [
-      {
-        tag: 'A',
-        body: 'Marks the Boundary as a capture target — used during the fallback pass.',
-      },
-      {
-        tag: 'B',
-        body: 'Stores the wakeable in updateQueue (Set), and attaches a ping listener so a retry is run when the Promise resolves.',
-      },
-    ],
-    button: { label: 'View source on GitHub', href: THROW_URL },
-  },
-  simulator: {
-    number: '8',
-    title: 'Suspense retry simulator',
-    leftTitle: 'Profile component state',
-    promiseLabel: 'profilePromise',
-    statusLabel: 'Status',
-    uiLabel: 'Current UI state',
-    timelineTitle: 'Timeline',
-    timelineSubtitle: 'Click a step to walk the flow',
-    steps: [
-      {
-        number: '1',
-        title: 'Profile suspends',
-        description: 'use() throws while the Promise is pending',
-        promiseStatus: 'pending',
-        uiStatus: 'mid-render — no UI yet',
-        uiPreview: 'pending',
-      },
-      {
-        number: '2',
-        title: 'Boundary captures',
-        description: 'The nearest Suspense Boundary is captured',
-        promiseStatus: 'pending',
-        uiStatus: 'capture marked (fallback on next pass)',
-        uiPreview: 'capture',
-      },
-      {
-        number: '3',
-        title: 'Spinner fallback shown',
-        description: 'The fallback pass renders the Spinner',
-        promiseStatus: 'pending',
-        uiStatus: 'Fallback tree visible',
-        uiPreview: 'spinner',
-      },
-      {
-        number: '4',
-        title: 'Promise resolves',
-        description: 'The Promise resolves and a ping fires',
-        promiseStatus: 'fulfilled',
-        uiStatus: 'fallback held — retry queued',
-        uiPreview: 'loading',
-      },
-      {
-        number: '5',
-        title: 'Retry render',
-        description: 'A retry render is scheduled on the same Boundary',
-        promiseStatus: 'fulfilled',
-        uiStatus: 'retry render running',
-        uiPreview: 'ready',
-      },
-      {
-        number: '6',
-        title: 'Profile UI shown',
-        description: 'The retry succeeds and the original UI is restored',
-        promiseStatus: 'fulfilled',
-        uiStatus: '<Profile /> rendered normally',
-        uiPreview: 'profile',
-      },
-    ],
-    railLabels: ['mid-render', 'fallback pass', 'waiting', 'resolve event', 'retry starts', 'done'],
-  },
-  followAlong: {
-    number: '9',
-    title: 'Walk it in the source',
-    items: [
-      {
-        title: 'Open ReactFiberThrow.js',
-        description: 'See the file where the Suspense path starts.',
-      },
-      {
-        title: 'Find markSuspenseBoundaryShouldCapture',
-        description: 'Check where the boundary capture is marked.',
-      },
-      {
-        title: 'See where retryQueue is stored',
-        description: 'Look at the flow that puts the wakeable into Boundary.updateQueue.',
-      },
-      {
-        title: 'Check attachPingListener',
-        description: 'See how a retry is scheduled after the Promise resolves.',
-      },
-    ],
-  },
-  takeaways: {
-    number: '10',
-    title: 'Key recap',
-    cards: [
-      {
-        number: '1',
-        title: 'A Suspense Boundary captures the suspended render.',
-        body: 'The nearest Boundary is chosen and prepares the fallback pass.',
-        tone: 'blue',
-      },
-      {
-        number: '2',
-        title: 'It prepares the fallback pass and the retry flow together.',
-        body: 'The wakeable is stored and a ping listener schedules the retry.',
+        id: 'resolve',
+        label: 'resolve',
+        caption: 'the Promise settles and a ping arrives',
         tone: 'teal',
       },
       {
-        number: '3',
-        title: 'After the Promise resolves, retry is run on the same Boundary.',
-        body: 'The original UI is naturally restored.',
-        tone: 'purple',
+        id: 'retry',
+        label: 'retry',
+        caption: 're-render on the same lane and return to primary',
+        tone: 'emerald',
       },
     ],
   },
+  capture: {
+    badge: '01',
+    eyebrow: 'capture',
+    title: 'Five stops to reach the fallback',
+    description:
+      'The boundary does not draw its fallback immediately. A flag is set, the work rewinds, and the decision lands on the next pass.',
+    steps: [
+      {
+        id: 'find',
+        num: '01',
+        title: 'Find the nearest Suspense',
+        description: 'Climb return pointers looking for a boundary that carries a fallback prop.',
+        tone: 'sky',
+      },
+      {
+        id: 'mark',
+        num: '02',
+        title: 'Set ShouldCapture',
+        description: 'Record in flags that this boundary must show its fallback this render.',
+        tone: 'indigo',
+      },
+      {
+        id: 'unwind',
+        num: '03',
+        title: 'Turn it into DidCapture',
+        description:
+          'unwindWork clears ShouldCapture and sets DidCapture, finalising the decision.',
+        tone: 'violet',
+      },
+      {
+        id: 'render-fallback',
+        num: '04',
+        title: 'Render the fallback children',
+        description: 'updateSuspenseComponent reads DidCapture and selects the fallback set.',
+        tone: 'violet',
+      },
+      {
+        id: 'attach-ping',
+        num: '05',
+        title: 'Attach a ping to the Promise',
+        description: 'A listener on the thenable schedules a retry on this root once it settles.',
+        tone: 'teal',
+      },
+    ],
+    note: 'Steps 02 and 03 are separate because the rewind can still be cancelled. The decision is finalised at unwind.',
+  },
+  states: {
+    badge: '02',
+    eyebrow: 'boundary states',
+    title: 'Three shapes a boundary can take',
+    description:
+      'A Suspense boundary never swaps the child tree wholesale. It keeps both sets and changes which one is on screen.',
+    items: [
+      {
+        id: 'primary',
+        label: 'Showing primary',
+        role: 'normal',
+        description:
+          'DidCapture is off and the real children show. The fallback is never even built.',
+        tone: 'emerald',
+      },
+      {
+        id: 'fallback',
+        label: 'Showing fallback',
+        role: 'waiting',
+        description:
+          'The primary children stay alive hidden inside Offscreen while only the fallback is visible.',
+        tone: 'violet',
+      },
+      {
+        id: 'retrying',
+        label: 'Retrying',
+        role: 're-rendering',
+        description:
+          'A ping arrived and it is rendering again. Success returns to primary; another suspend keeps the fallback.',
+        tone: 'teal',
+      },
+    ],
+    note: 'Because primary is hidden rather than discarded, state survives — which is why a retry feels like continuing rather than restarting.',
+  },
+  behaviors: {
+    badge: '03',
+    eyebrow: 'behaviors',
+    title: 'The response depends on the situation',
+    description:
+      'The same suspend shows a fallback or keeps the old screen depending on which update it happened in.',
+    headers: ['Situation', 'What React does', 'Why'],
+    rows: [
+      {
+        situation: 'Suspending during first mount',
+        behavior: 'Shows the fallback right away',
+        why: 'There is no previous screen to keep, and a fallback beats a blank one.',
+      },
+      {
+        situation: 'Suspending inside a transition',
+        behavior: 'Keeps the previous screen',
+        why: 'startTransition asked for no flicker, so the screen is not replaced by a fallback.',
+      },
+      {
+        situation: 'Suspending in a sync update',
+        behavior: 'Switches to the fallback',
+        why: 'The update is urgent and cannot wait, so the fallback goes up immediately.',
+      },
+      {
+        situation: 'Suspending again during a retry',
+        behavior: 'Keeps the fallback',
+        why: 'The fallback is already on screen, so nothing visibly changes.',
+      },
+    ],
+    note: 'The second row is the main effect of startTransition: the same data load stops flickering when wrapped in a transition.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberThrow.js',
+    lookForLabel: 'Look for',
+    lookFor: 'markSuspenseBoundaryShouldCapture, ShouldCapture, DidCapture, unwindWork',
+    whyLabel: 'Why',
+    why: 'Two separate flags swapped during unwind pin down exactly when the switch to a fallback becomes final.',
+    code: SUSPENSE_CAPTURE_CODE_EN,
+    primaryCta: 'Read ReactFiberThrow.js',
+    primaryHref: REACT_FIBER_THROW_HREF,
+  },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'How does the Error Boundary catch render errors?',
+    title: 'Now the Error branch',
     description:
-      'Continue with how an Error Boundary catches and recovers when a regular error is thrown instead of a Promise.',
+      'Suspense recovers on its own — next we see why an Error Boundary never clears itself.',
     cta: 'Go to the next page',
     href: '/error-boundary-recover',
   },

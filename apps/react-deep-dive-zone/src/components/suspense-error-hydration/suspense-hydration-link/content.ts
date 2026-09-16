@@ -1,142 +1,89 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { Phase } from './tone';
+import type { ToneKey } from '../../shared/tones';
 
-export type HeroTopCard = {
-  kind: 'server' | 'hydration' | 'recovery';
-  title: string;
-  description: string;
-};
+export type PhaseId = 'stream' | 'placeholder' | 'chunk' | 'hydrate';
 
-export type ConceptCard = {
-  icon: 'spinner' | 'droplet' | 'shield' | 'refresh';
+export type Phase = {
+  id: PhaseId;
   label: string;
+  caption: string;
+  tone: ToneKey;
 };
 
-export type SuspendErrorCard = {
-  kind: 'suspend' | 'error';
+export type RoleId = 'boundary' | 'streaming' | 'selective' | 'fallback';
+
+export type Role = {
+  id: RoleId;
+  title: string;
+  role: string;
+  description: string;
+  tone: ToneKey;
+};
+
+export type StreamStepId = 'shell' | 'comment' | 'resolve' | 'inject' | 'claim';
+
+export type StreamStep = {
+  id: StreamStepId;
+  num: string;
   title: string;
   description: string;
-  flow: string[];
+  tone: ToneKey;
 };
 
-export type FlowStep = {
-  title: string;
-  caption?: string;
-  phase: Phase;
-  highlight?: boolean;
-};
-
-export type ChecklistItem = { title: string; description: string };
-
-export type TakeawayCard = {
-  number: string;
-  title: string;
-  body: string;
-  tone: 'blue' | 'teal' | 'violet';
-};
-
-export type TimelineKey = 'serverSuspend' | 'serverError' | 'hydrationError';
-
-export type InteractiveTimeline = {
-  steps: { title: string; phase: Phase; highlight?: boolean }[];
-  note: string;
-  badges: { label: string; phase: Phase }[];
+export type PlacementRow = {
+  placement: string;
+  streaming: string;
+  hydration: string;
 };
 
 export type SuspenseHydrationLinkContent = {
   hero: {
     badge: string;
-    titleLines: [string, string, string];
+    title: { line1: string; line2: string };
     description: string;
-    topCards: HeroTopCard[];
-    boundary: {
-      code: string;
-      caption: string;
-    };
+    diagramBadge: string;
+    diagramCaption: string;
+    phases: Phase[];
   };
-  question: {
-    number: string;
+  roles: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    question: string;
-    concepts: ConceptCard[];
-  };
-  serverPaths: {
-    number: string;
-    title: string;
-    cards: SuspendErrorCard[];
-  };
-  fallbackHtml: {
-    number: string;
-    title: string;
-    code: { fileLabel: string; content: string };
-    descriptionTitle: string;
     description: string;
-    bullets: string[];
-    streamingTitle: string;
-    streamingSteps: string[];
-  };
-  boundaryHydrationFlow: {
-    number: string;
-    title: string;
-    steps: FlowStep[];
-    reasonTitle: string;
-    reasonBullets: string[];
-  };
-  claim: {
-    number: string;
-    title: string;
-    domTitle: string;
-    domLines: string[];
-    domLabels: string[];
-    matchTitle: string;
-    matchSteps: { label: string; phase: Phase }[];
-    fiberTitle: string;
-    fiberLines: { label: string; kind: 'root' | 'boundary' | 'children' }[];
-  };
-  forceClientRender: {
-    number: string;
-    title: string;
-    steps: FlowStep[];
+    items: Role[];
     note: string;
   };
-  timeline: {
-    number: string;
+  streaming: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    steps: FlowStep[];
+    description: string;
+    steps: StreamStep[];
+    note: string;
   };
-  code: {
-    number: string;
+  placement: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    cardALabel: string;
-    cardAFile: string;
-    cardACode: string;
-    cardBLabel: string;
-    cardBFile: string;
-    cardBCode: string;
-    relatedTitle: string;
-    related: { name: string; description: string }[];
-    button: { label: string; href: string };
+    description: string;
+    headers: [string, string, string];
+    rows: PlacementRow[];
+    note: string;
   };
-  interactive: {
-    number: string;
+  checkpoint: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    selectorTitle: string;
-    options: { key: TimelineKey; label: string; sublabel: string }[];
-    timelineTitle: string;
-    noteTitle: string;
-    badgesTitle: string;
-    results: Record<TimelineKey, InteractiveTimeline>;
-  };
-  followAlong: {
-    number: string;
-    title: string;
-    items: ChecklistItem[];
-  };
-  takeaways: {
-    number: string;
-    title: string;
-    cards: TakeawayCard[];
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -147,623 +94,440 @@ export type SuspenseHydrationLinkContent = {
   };
 };
 
-const FALLBACK_HTML = `<div id="root">
-  <!--$?-->
-  <div class="skeleton">
-    <span class="spinner" />
-    <p>로딩 중...</p>
-  </div>
-  <!--/$-->
-</div>`;
+const DEHYDRATED_CODE = `// 서버는 미완성 경계를 주석 노드로 표시해 보낸다
+// <!--$?--><template id="B:0"></template>로딩중<!--/$-->
 
-const CLAIM_CODE = `function claimNextHydratableSuspenseInstance(fiber) {
-  const nextInstance = nextHydratableInstance;
-  const suspenseInstance = nextInstance
-    ? tryHydrateSuspense(fiber, nextInstance)
-    : null;
+const SUSPENSE_START_DATA = '$';
+const SUSPENSE_PENDING_START_DATA = '$?';
+const SUSPENSE_FALLBACK_START_DATA = '$!';
 
-  if (suspenseInstance === null) {
-    throw throwOnHydrationMismatch(fiber);
+function isSuspenseInstancePending(instance: SuspenseInstance): boolean {
+  return instance.data === SUSPENSE_PENDING_START_DATA;
+}
+
+// hydration 중 아직 안 온 경계를 만나면 dehydrated 상태로 둔다
+function updateDehydratedSuspenseComponent(
+  current, workInProgress, didSuspend, nextProps, suspenseInstance, renderLanes,
+) {
+  if (!didSuspend) {
+    if (isSuspenseInstanceFallback(suspenseInstance)) {
+      // 서버가 이미 포기한 경계: 클라이언트가 처음부터 그린다
+      return retrySuspenseComponentWithoutHydrating(
+        current, workInProgress, renderLanes, null,
+      );
+    }
+
+    if (isSuspenseInstancePending(suspenseInstance)) {
+      // 아직 스트리밍 중: 도착할 때까지 이 경계만 보류한다
+      return retryDehydratedSuspenseBoundary.bind(null, current);
+    }
   }
 
-  return suspenseInstance;
+  // mismatch였다면 클라이언트 렌더를 강제한다
+  if (workInProgress.flags & ForceClientRender) {
+    return retrySuspenseComponentWithoutHydrating(
+      current, workInProgress, renderLanes, capturedValue,
+    );
+  }
 }`;
 
-const FORCE_CODE = `if (hydrationBoundary !== null) {
-  hydrationBoundary.flags |= ForceClientRender;
-
-  markSuspenseBoundaryShouldCapture(
-    hydrationBoundary,
-    returnFiber,
-    sourceFiber,
-    root,
-    rootRenderLanes,
-  );
-}`;
-
-const HYDRATION_URL =
-  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHydrationContext.js';
+const SUSPENSE_COMPONENT_HREF =
+  'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberBeginWork.js';
 
 const ko: SuspenseHydrationLinkContent = {
   hero: {
     badge: 'Suspense/Error · 9/10단계',
-    titleLines: [
-      'Suspense Boundary는',
-      '클라이언트 로딩 UI를 넘어서',
-      '서버와 복구 경계로도 작동한다',
-    ],
+    title: {
+      line1: 'Suspense 경계는 로딩 표시만이 아니다',
+      line2: 'HTML을 쪼개는 단위이기도 하다',
+    },
     description:
-      '서버 렌더링, hydration 복구, client render 전환은 Suspense Boundary를 중심으로 연결됩니다.',
-    topCards: [
+      '서버는 Suspense 경계를 기준으로 HTML을 나눠 보내고, 클라이언트는 같은 경계를 기준으로 hydration을 나눠 진행합니다.',
+    diagramBadge: 'streaming ssr',
+    diagramCaption: 'boundary = chunk unit',
+    phases: [
       {
-        kind: 'server',
-        title: 'Server Render',
-        description: '데이터 대기 / 에러 / 서버 fallback',
-      },
-      {
-        kind: 'hydration',
-        title: 'Hydration',
-        description: '서버 HTML과 연결 · boundary 단위 hydration',
+        id: 'stream',
+        label: '셸 먼저 전송',
+        caption: '경계 바깥의 완성된 HTML',
+        tone: 'sky',
       },
       {
-        kind: 'recovery',
-        title: 'Client Recovery',
-        description: '에러 / mismatch 발생 시 client recovery 경계',
-      },
-    ],
-    boundary: {
-      code: '<Suspense Boundary fallback={<... />} />',
-      caption: '서버 fallback · hydration boundary · client recovery 경계',
-    },
-  },
-  question: {
-    number: '1',
-    title: '오늘 해결할 질문',
-    question: 'Suspense는 hydration과 어떤 지점에서 만나고, 왜 서버 복구에도 중요할까?',
-    concepts: [
-      { icon: 'spinner', label: '서버 suspend는 fallback과 만나는가?' },
-      { icon: 'droplet', label: 'hydration은 boundary 단위로 진행되는가?' },
-      { icon: 'shield', label: 'hydration 중 error는 어디서 복구되는가?' },
-      { icon: 'refresh', label: '클라이언트 실제 UI는 어떻게 회복되는가?' },
-    ],
-  },
-  serverPaths: {
-    number: '2',
-    title: '서버 렌더 중 suspend / error',
-    cards: [
-      {
-        kind: 'suspend',
-        title: '서버 렌더 중 suspend',
-        description: '데이터가 준비되지 않아 suspend 발생 → Suspense fallback이 서버에서 선택됨',
-        flow: ['Component', 'suspend (throw promise)', 'Fallback HTML 생성'],
+        id: 'placeholder',
+        label: '<!--$?--> 자리 표시',
+        caption: '미완성 경계는 주석으로 남겨 둔다',
+        tone: 'violet',
       },
       {
-        kind: 'error',
-        title: '서버 렌더 중 error',
-        description: '렌더 에러 발생 → 가장 가까운 Suspense fallback 사용 가능',
-        flow: ['Component', 'throw Error', '가장 가까운 Suspense fallback'],
-      },
-    ],
-  },
-  fallbackHtml: {
-    number: '3',
-    title: '서버 fallback HTML',
-    code: { fileLabel: 'server-output.html', content: FALLBACK_HTML },
-    descriptionTitle: '클라이언트는 이 fallback HTML을 먼저 받습니다',
-    description: 'Suspense marker로 boundary 위치가 표시됩니다.',
-    bullets: [
-      '이후 데이터가 준비되면 실제 UI로 회복 가능',
-      '서버에서 fallback이 먼저 도착할 수 있음',
-      'Suspense marker로 boundary 위치 표시',
-    ],
-    streamingTitle: '스트리밍 흐름 예시',
-    streamingSteps: ['서버 시작', 'fallback HTML 전송', '데이터 준비', '나머지 HTML 전송'],
-  },
-  boundaryHydrationFlow: {
-    number: '4',
-    title: 'hydrateRoot 이후 boundary hydration',
-    steps: [
-      { title: 'hydrateRoot(컨테이너, <App />)', phase: 'hydration' },
-      { title: 'hydration context 초기화', phase: 'hydration' },
-      { title: 'Suspense marker 찾기', phase: 'boundary', highlight: true },
-      { title: 'Boundary 단위 hydration', phase: 'hydration' },
-      { title: '실패 시 연결 시도', phase: 'error' },
-    ],
-    reasonTitle: 'Boundary 단위로 관리되는 이유',
-    reasonBullets: [
-      '부분 hydration 가능',
-      '에러 / 불일치 시 복구 범위 제한',
-      '잘못된 연결로 스트리밍이 유지',
-    ],
-  },
-  claim: {
-    number: '5',
-    title: 'claimNextHydratableSuspenseInstance 역할',
-    domTitle: 'DOM (서버 HTML)',
-    domLines: ['<!--$-->', '<div class="skeleton">...</div>', '<!--/$-->'],
-    domLabels: ['Suspense start marker', 'Fallback content', 'Suspense end marker'],
-    matchTitle: '매칭 과정',
-    matchSteps: [
-      { label: '다음 hydratable Suspense marker 찾기', phase: 'hydration' },
-      { label: 'Boundary Fiber와 매칭 시도', phase: 'boundary' },
-      { label: '성공: hydration 진행', phase: 'recovery' },
-      { label: '실패: mismatch 경로로 이동', phase: 'error' },
-    ],
-    fiberTitle: 'Fiber (클라이언트)',
-    fiberLines: [
-      { label: 'HostRoot', kind: 'root' },
-      { label: 'Suspense Boundary', kind: 'boundary' },
-      { label: 'fallback={<... />}', kind: 'children' },
-      { label: '...children', kind: 'children' },
-    ],
-  },
-  forceClientRender: {
-    number: '6',
-    title: 'hydration 중 error와 ForceClientRender 흐름',
-    steps: [
-      { title: 'hydration 중 error 발생', phase: 'error' },
-      { title: '가장 가까운 Suspense Boundary 확인', phase: 'boundary' },
-      { title: 'ForceClientRender flag 설정', phase: 'error', highlight: true },
-      { title: 'Boundary 기준 client recovery', phase: 'recovery' },
-      { title: '해당 subtree만 client render로 전환', phase: 'recovery' },
-    ],
-    note: '이미 연결된 상위 트리는 유지하고, 문제 구간만 클라이언트 렌더링으로 복구합니다.',
-  },
-  timeline: {
-    number: '7',
-    title: 'server fallback → client recovery 타임라인',
-    steps: [
-      { title: '서버 렌더 중 에러', caption: '가장 가까운 Suspense fallback 사용', phase: 'error' },
-      {
-        title: 'Suspense fallback HTML 전송',
-        caption: '서버가 fallback markup 스트리밍 전송',
-        phase: 'boundary',
-      },
-      {
-        title: '클라이언트 hydration 시작',
-        caption: 'hydrateRoot 호출 · boundary 단위 hydration 시도',
-        phase: 'hydration',
-      },
-      {
-        title: '클라이언트 렌더 성공',
-        caption: '데이터 준비 완료 · 실제 UI 렌더 가능',
-        phase: 'recovery',
-      },
-      {
-        title: '실제 UI 복구 완료',
-        caption: 'Boundary subtree가 실제 UI로 교체',
-        phase: 'recovery',
-      },
-    ],
-  },
-  code: {
-    number: '8',
-    title: '실제 코드 미리보기',
-    cardALabel: 'A · claimNextHydratableSuspenseInstance',
-    cardAFile: 'ReactFiberHydrationContext.js',
-    cardACode: CLAIM_CODE,
-    cardBLabel: 'B · ForceClientRender와 capture',
-    cardBFile: 'ReactFiberThrow.js',
-    cardBCode: FORCE_CODE,
-    relatedTitle: '관련 개념',
-    related: [
-      { name: 'tryHydrateSuspense', description: 'Suspense marker와 Fiber 매칭 시도' },
-      { name: 'throwOnHydrationMismatch', description: '매칭 실패 시 recoverable error로 전환' },
-      { name: 'ForceClientRender', description: '해당 subtree를 client render로 복구' },
-    ],
-    button: { label: 'GitHub에서 코드 보기', href: HYDRATION_URL },
-  },
-  interactive: {
-    number: '9',
-    title: '인터랙티브 복구 타임라인',
-    selectorTitle: '시나리오 선택',
-    options: [
-      { key: 'serverSuspend', label: '서버 suspend', sublabel: '데이터 대기로 suspend' },
-      { key: 'serverError', label: '서버 error', sublabel: '서버 렌더 중 에러' },
-      { key: 'hydrationError', label: 'hydration 중 error', sublabel: 'hydration 도중 에러' },
-    ],
-    timelineTitle: '시나리오 타임라인',
-    noteTitle: '결과',
-    badgesTitle: '상태 배지',
-    results: {
-      serverSuspend: {
-        steps: [
-          { title: '서버 렌더 suspend 발생', phase: 'server' },
-          { title: 'fallback HTML 스트리밍', phase: 'boundary' },
-          { title: '클라이언트 hydration 시작', phase: 'hydration' },
-          { title: '데이터 준비 후 client render', phase: 'recovery' },
-          { title: '실제 UI 복구', phase: 'recovery' },
-        ],
-        note: '서버 fallback에서 시작해 클라이언트에서 실제 UI로 회복됩니다.',
-        badges: [
-          { label: '서버 렌더', phase: 'server' },
-          { label: 'fallback/streaming', phase: 'boundary' },
-          { label: '클라이언트 렌더', phase: 'hydration' },
-          { label: '복구 완료', phase: 'recovery' },
-        ],
-      },
-      serverError: {
-        steps: [
-          { title: '서버 렌더 중 error 발생', phase: 'error' },
-          { title: '가까운 Suspense fallback 선택', phase: 'boundary' },
-          { title: 'fallback HTML 전송', phase: 'boundary' },
-          { title: '클라이언트 hydration 재시도', phase: 'hydration' },
-          { title: '클라이언트 렌더 성공 시 실제 UI 복구', phase: 'recovery' },
-        ],
-        note: '서버 에러도 Suspense fallback을 통해 사용자에게 임시 UI를 제공할 수 있습니다.',
-        badges: [
-          { label: '서버 에러', phase: 'error' },
-          { label: 'fallback/streaming', phase: 'boundary' },
-          { label: '클라이언트 렌더', phase: 'hydration' },
-          { label: '복구 완료', phase: 'recovery' },
-        ],
-      },
-      hydrationError: {
-        steps: [
-          { title: 'hydrateRoot로 boundary hydration 시작', phase: 'hydration' },
-          { title: 'Suspense marker 매칭 시도', phase: 'boundary' },
-          { title: 'hydration 중 error 또는 mismatch 발생', phase: 'error' },
-          { title: 'ForceClientRender 설정', phase: 'error', highlight: true },
-          { title: '해당 Boundary subtree client recovery', phase: 'recovery' },
-        ],
-        note: '문제 구간만 client render로 전환해 연결 실패를 복구합니다.',
-        badges: [
-          { label: '클라이언트 렌더', phase: 'hydration' },
-          { label: '에러 감지', phase: 'error' },
-          { label: 'ForceClientRender', phase: 'error' },
-          { label: '복구 완료', phase: 'recovery' },
-        ],
-      },
-    },
-  },
-  followAlong: {
-    number: '10',
-    title: '직접 코드에서 따라가 보기',
-    items: [
-      {
-        title: 'Suspense 공식 문서 확인',
-        description: 'Server Rendering, Streaming, Suspense 섹션 보기',
-      },
-      {
-        title: 'Suspense hydration 매칭 함수 찾기',
-        description: 'claimNextHydratableSuspenseInstance · tryHydrateSuspense',
-      },
-      {
-        title: 'ForceClientRender 흐름 확인',
-        description: 'ReactFiberThrow.js에서 ForceClientRender 사용 위치 파악',
-      },
-      {
-        title: 'Suspense의 역할 정리',
-        description: '서버, hydration, client recovery 경계로 작동함을 정리',
-      },
-    ],
-  },
-  takeaways: {
-    number: '11',
-    title: '핵심 정리',
-    cards: [
-      {
-        number: '1',
-        title: 'Suspense는 서버와 클라이언트 복구 경계로도 작동한다.',
-        body: '서버 suspend/error, hydration, client recovery 모두 Suspense Boundary가 핵심 경계가 됩니다.',
-        tone: 'blue',
-      },
-      {
-        number: '2',
-        title: 'Hydration은 Suspense boundary 단위로 복구될 수 있다.',
-        body: '매칭 실패나 에러에서도 Boundary 단위로 client render로 전환하며 복구 범위를 제한합니다.',
+        id: 'chunk',
+        label: '준비되면 청크 도착',
+        caption: '데이터가 풀린 경계부터 뒤이어 전송',
         tone: 'teal',
       },
       {
-        number: '3',
-        title: '서버 fallback에서 클라이언트 실제 UI로 회복하는 흐름이 가능하다.',
-        body: '스트리밍된 fallback → hydration → client render로 자연스럽게 실제 UI로 전환됩니다.',
-        tone: 'violet',
+        id: 'hydrate',
+        label: '경계 단위 hydration',
+        caption: '도착한 것부터 차례로 살아난다',
+        tone: 'emerald',
       },
     ],
   },
+  roles: {
+    badge: '01',
+    eyebrow: 'four roles',
+    title: '경계 하나가 맡는 네 가지 역할',
+    description:
+      '클라이언트에서는 로딩 UI 경계로만 보이지만, SSR이 붙으면 역할이 세 개 더 생깁니다.',
+    items: [
+      {
+        id: 'boundary',
+        title: '로딩 경계',
+        role: '클라이언트',
+        description:
+          'suspend가 일어났을 때 fallback을 보여 줄 범위를 정합니다. 앞 페이지들에서 본 역할입니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'streaming',
+        title: 'HTML 청크 단위',
+        role: 'SSR 스트리밍',
+        description:
+          '서버가 이 경계를 기준으로 HTML을 쪼갭니다. 느린 부분이 빠른 부분을 막지 않습니다.',
+        tone: 'sky',
+      },
+      {
+        id: 'selective',
+        title: 'hydration 단위',
+        role: '선택적 hydration',
+        description: '경계마다 따로 hydrate됩니다. 사용자가 클릭한 쪽을 먼저 살릴 수도 있습니다.',
+        tone: 'cyan',
+      },
+      {
+        id: 'fallback',
+        title: '복구 범위',
+        role: 'mismatch 처리',
+        description:
+          '불일치가 나면 이 경계까지만 클라이언트 렌더로 되돌립니다. 앞 페이지의 blast radius입니다.',
+        tone: 'emerald',
+      },
+    ],
+    note: '네 역할이 같은 컴포넌트에 몰려 있어서, Suspense를 어디에 둘지가 로딩 UI를 넘어 성능 결정이 됩니다.',
+  },
+  streaming: {
+    badge: '02',
+    eyebrow: 'streaming',
+    title: '미완성 HTML이 오가는 다섯 칸',
+    description:
+      '서버는 데이터를 기다리며 응답을 붙잡지 않습니다. 자리만 표시해 먼저 보내고, 나중에 내용을 채워 넣습니다.',
+    steps: [
+      {
+        id: 'shell',
+        num: '01',
+        title: '셸을 먼저 흘려보낸다',
+        description: 'Suspense 바깥의 완성된 부분을 즉시 스트리밍합니다.',
+        tone: 'sky',
+      },
+      {
+        id: 'comment',
+        num: '02',
+        title: '미완성 경계에 주석 표시',
+        description: '<!--$?-->로 시작하는 주석 노드와 template 자리를 남깁니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'resolve',
+        num: '03',
+        title: '데이터 도착',
+        description: '서버에서 그 경계의 데이터가 준비되어 렌더가 끝납니다.',
+        tone: 'teal',
+      },
+      {
+        id: 'inject',
+        num: '04',
+        title: '뒤이어 청크 전송',
+        description:
+          '완성된 HTML과 작은 스크립트를 보내, 브라우저가 자리 표시를 실제 내용으로 바꾸게 합니다.',
+        tone: 'indigo',
+      },
+      {
+        id: 'claim',
+        num: '05',
+        title: '그 경계만 hydrate',
+        description: '클라이언트는 도착한 경계를 감지해 그 서브트리의 hydration을 시작합니다.',
+        tone: 'emerald',
+      },
+    ],
+    note: '04의 스크립트는 React가 아니라 순수 DOM 조작입니다. 자바스크립트 번들이 아직 없어도 자리 교체는 일어납니다.',
+  },
+  placement: {
+    badge: '03',
+    eyebrow: 'placement',
+    title: '경계를 어디 두느냐가 만드는 차이',
+    description: '같은 페이지라도 Suspense 배치에 따라 첫 화면 속도와 복구 비용이 크게 달라집니다.',
+    headers: ['배치', '스트리밍에 미치는 영향', 'hydration에 미치는 영향'],
+    rows: [
+      {
+        placement: '느린 데이터 주변에 좁게',
+        streaming: '셸이 즉시 나가고 느린 부분만 뒤따릅니다.',
+        hydration: 'mismatch가 나도 그 작은 구역만 다시 그립니다.',
+      },
+      {
+        placement: '페이지 전체를 감쌈',
+        streaming: '전부 준비될 때까지 아무것도 못 보냅니다.',
+        hydration: '불일치 하나에 페이지 전체가 클라이언트 렌더로 갑니다.',
+      },
+      {
+        placement: '경계 없음',
+        streaming: '스트리밍 자체가 성립하지 않습니다.',
+        hydration: 'root까지 올라가 서버 HTML을 전부 버립니다.',
+      },
+      {
+        placement: '과하게 잘게 쪼갬',
+        streaming: '청크가 많아져 오버헤드가 늘어납니다.',
+        hydration: '경계마다 fallback이 깜빡여 오히려 산만해집니다.',
+      },
+    ],
+    note: '기준은 "이 부분이 늦게 와도 화면이 말이 되는가"입니다. 그 단위가 곧 Suspense 경계의 크기입니다.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberBeginWork.js',
+    lookForLabel: '볼 것',
+    lookFor:
+      'updateDehydratedSuspenseComponent, isSuspenseInstancePending, retrySuspenseComponentWithoutHydrating',
+    whyLabel: '설명',
+    why: '주석 노드의 데이터 문자열($, $?, $!)만으로 경계 상태를 구분한다는 점이 스트리밍 프로토콜의 전부입니다.',
+    code: DEHYDRATED_CODE,
+    primaryCta: 'ReactFiberBeginWork.js 읽기',
+    primaryHref: SUSPENSE_COMPONENT_HREF,
+  },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '전체 복구 흐름 복습',
+    title: '아홉 페이지를 하나의 모델로',
     description:
-      '대기·실패·복구가 하나의 렌더링 모델로 이어지는 전체 흐름을 마지막으로 정리합니다.',
+      '대기와 실패와 불일치가 사실은 같은 구조였습니다. 마지막 페이지에서 한 장으로 묶습니다.',
     cta: '다음 페이지로 이동',
     href: '/recovery-model-overview',
   },
 };
 
+const DEHYDRATED_CODE_EN = `// the server marks unfinished boundaries with comment nodes
+// <!--$?--><template id="B:0"></template>Loading<!--/$-->
+
+const SUSPENSE_START_DATA = '$';
+const SUSPENSE_PENDING_START_DATA = '$?';
+const SUSPENSE_FALLBACK_START_DATA = '$!';
+
+function isSuspenseInstancePending(instance: SuspenseInstance): boolean {
+  return instance.data === SUSPENSE_PENDING_START_DATA;
+}
+
+// meeting a boundary that has not arrived leaves it dehydrated
+function updateDehydratedSuspenseComponent(
+  current, workInProgress, didSuspend, nextProps, suspenseInstance, renderLanes,
+) {
+  if (!didSuspend) {
+    if (isSuspenseInstanceFallback(suspenseInstance)) {
+      // the server already gave up here: the client renders from scratch
+      return retrySuspenseComponentWithoutHydrating(
+        current, workInProgress, renderLanes, null,
+      );
+    }
+
+    if (isSuspenseInstancePending(suspenseInstance)) {
+      // still streaming: hold just this boundary until it arrives
+      return retryDehydratedSuspenseBoundary.bind(null, current);
+    }
+  }
+
+  // after a mismatch, force a client render
+  if (workInProgress.flags & ForceClientRender) {
+    return retrySuspenseComponentWithoutHydrating(
+      current, workInProgress, renderLanes, capturedValue,
+    );
+  }
+}`;
+
 const en: SuspenseHydrationLinkContent = {
   hero: {
-    badge: 'Suspense·Error · 9/10',
-    titleLines: [
-      'A Suspense Boundary is not only',
-      'a client loading UI — it also acts as',
-      'a server and recovery boundary',
-    ],
+    badge: 'Suspense/Error · 9/10',
+    title: {
+      line1: 'A Suspense boundary is not only a spinner',
+      line2: 'it is also where HTML splits',
+    },
     description:
-      'Server rendering, hydration recovery, and client render fall-back all connect through the Suspense Boundary.',
-    topCards: [
+      'The server chunks its HTML along Suspense boundaries, and the client hydrates along exactly the same lines.',
+    diagramBadge: 'streaming ssr',
+    diagramCaption: 'boundary = chunk unit',
+    phases: [
       {
-        kind: 'server',
-        title: 'Server Render',
-        description: 'Pending data / errors / server fallback',
-      },
-      {
-        kind: 'hydration',
-        title: 'Hydration',
-        description: 'Connect to server HTML · per-boundary hydration',
+        id: 'stream',
+        label: 'Send the shell first',
+        caption: 'the finished HTML outside the boundary',
+        tone: 'sky',
       },
       {
-        kind: 'recovery',
-        title: 'Client Recovery',
-        description: 'Client recovery boundary on error / mismatch',
-      },
-    ],
-    boundary: {
-      code: '<Suspense Boundary fallback={<... />} />',
-      caption: 'server fallback · hydration boundary · client recovery edge',
-    },
-  },
-  question: {
-    number: '1',
-    title: "Today's question",
-    question:
-      'Where do Suspense and Hydration meet, and why does Suspense matter for server recovery?',
-    concepts: [
-      { icon: 'spinner', label: 'Does server suspend meet fallback?' },
-      { icon: 'droplet', label: 'Is hydration done per-boundary?' },
-      { icon: 'shield', label: 'Where does hydration-time error recover?' },
-      { icon: 'refresh', label: 'How does the real client UI come back?' },
-    ],
-  },
-  serverPaths: {
-    number: '2',
-    title: 'Server-side suspend / error',
-    cards: [
-      {
-        kind: 'suspend',
-        title: 'Suspend during server render',
-        description:
-          'Data is not ready and suspend fires → the Suspense fallback is chosen on the server',
-        flow: ['Component', 'suspend (throw promise)', 'Fallback HTML generated'],
+        id: 'placeholder',
+        label: 'Leave a <!--$?--> marker',
+        caption: 'unfinished boundaries stay as comments',
+        tone: 'violet',
       },
       {
-        kind: 'error',
-        title: 'Error during server render',
-        description: 'A render error happens → the nearest Suspense fallback can be used',
-        flow: ['Component', 'throw Error', 'nearest Suspense fallback'],
-      },
-    ],
-  },
-  fallbackHtml: {
-    number: '3',
-    title: 'Server fallback HTML',
-    code: { fileLabel: 'server-output.html', content: FALLBACK_HTML },
-    descriptionTitle: 'The client receives this fallback HTML first',
-    description: 'Suspense markers mark the boundary location.',
-    bullets: [
-      'It can be replaced by the real UI once data is ready',
-      'The fallback can arrive from the server first',
-      'Suspense markers indicate the boundary position',
-    ],
-    streamingTitle: 'Streaming sequence example',
-    streamingSteps: ['Server starts', 'Send fallback HTML', 'Data prepared', 'Send remaining HTML'],
-  },
-  boundaryHydrationFlow: {
-    number: '4',
-    title: 'Per-boundary hydration after hydrateRoot',
-    steps: [
-      { title: 'hydrateRoot(container, <App />)', phase: 'hydration' },
-      { title: 'Initialize hydration context', phase: 'hydration' },
-      { title: 'Find Suspense markers', phase: 'boundary', highlight: true },
-      { title: 'Per-boundary hydration', phase: 'hydration' },
-      { title: 'Retry on failure', phase: 'error' },
-    ],
-    reasonTitle: 'Why this is managed per boundary',
-    reasonBullets: [
-      'Partial hydration is possible',
-      'Limit recovery scope on error / mismatch',
-      'Keep streaming alive even on a bad connection',
-    ],
-  },
-  claim: {
-    number: '5',
-    title: 'Role of claimNextHydratableSuspenseInstance',
-    domTitle: 'DOM (server HTML)',
-    domLines: ['<!--$-->', '<div class="skeleton">...</div>', '<!--/$-->'],
-    domLabels: ['Suspense start marker', 'Fallback content', 'Suspense end marker'],
-    matchTitle: 'Matching process',
-    matchSteps: [
-      { label: 'Find the next hydratable Suspense marker', phase: 'hydration' },
-      { label: 'Try to match against the Boundary Fiber', phase: 'boundary' },
-      { label: 'Success: continue hydration', phase: 'recovery' },
-      { label: 'Failure: move to mismatch path', phase: 'error' },
-    ],
-    fiberTitle: 'Fiber (client)',
-    fiberLines: [
-      { label: 'HostRoot', kind: 'root' },
-      { label: 'Suspense Boundary', kind: 'boundary' },
-      { label: 'fallback={<... />}', kind: 'children' },
-      { label: '...children', kind: 'children' },
-    ],
-  },
-  forceClientRender: {
-    number: '6',
-    title: 'Hydration-time error and ForceClientRender flow',
-    steps: [
-      { title: 'Error during hydration', phase: 'error' },
-      { title: 'Find the nearest Suspense Boundary', phase: 'boundary' },
-      { title: 'Set ForceClientRender flag', phase: 'error', highlight: true },
-      { title: 'Boundary-based client recovery', phase: 'recovery' },
-      { title: 'Switch only that subtree to client render', phase: 'recovery' },
-    ],
-    note: 'The already-connected upper tree stays — only the failing subtree is re-rendered on the client.',
-  },
-  timeline: {
-    number: '7',
-    title: 'server fallback → client recovery timeline',
-    steps: [
-      {
-        title: 'Server render error',
-        caption: 'Use the nearest Suspense fallback',
-        phase: 'error',
-      },
-      {
-        title: 'Suspense fallback HTML streamed',
-        caption: 'Server streams the fallback markup',
-        phase: 'boundary',
-      },
-      {
-        title: 'Client hydration starts',
-        caption: 'hydrateRoot · per-boundary hydration',
-        phase: 'hydration',
-      },
-      {
-        title: 'Client render succeeds',
-        caption: 'Data ready · real UI can render',
-        phase: 'recovery',
-      },
-      {
-        title: 'Real UI restored',
-        caption: 'The Boundary subtree is swapped to the real UI',
-        phase: 'recovery',
-      },
-    ],
-  },
-  code: {
-    number: '8',
-    title: 'Source code preview',
-    cardALabel: 'A · claimNextHydratableSuspenseInstance',
-    cardAFile: 'ReactFiberHydrationContext.js',
-    cardACode: CLAIM_CODE,
-    cardBLabel: 'B · ForceClientRender and capture',
-    cardBFile: 'ReactFiberThrow.js',
-    cardBCode: FORCE_CODE,
-    relatedTitle: 'Related concepts',
-    related: [
-      { name: 'tryHydrateSuspense', description: 'Tries to match a Suspense marker with a Fiber' },
-      {
-        name: 'throwOnHydrationMismatch',
-        description: 'Turns a matching failure into a recoverable error',
-      },
-      { name: 'ForceClientRender', description: 'Re-renders the subtree on the client' },
-    ],
-    button: { label: 'View source on GitHub', href: HYDRATION_URL },
-  },
-  interactive: {
-    number: '9',
-    title: 'Interactive recovery timeline',
-    selectorTitle: 'Pick a scenario',
-    options: [
-      { key: 'serverSuspend', label: 'Server suspend', sublabel: 'suspend while waiting for data' },
-      { key: 'serverError', label: 'Server error', sublabel: 'error during server render' },
-      { key: 'hydrationError', label: 'Hydration error', sublabel: 'error during hydration' },
-    ],
-    timelineTitle: 'Scenario timeline',
-    noteTitle: 'Result',
-    badgesTitle: 'Status badges',
-    results: {
-      serverSuspend: {
-        steps: [
-          { title: 'Suspend during server render', phase: 'server' },
-          { title: 'Stream fallback HTML', phase: 'boundary' },
-          { title: 'Client hydration starts', phase: 'hydration' },
-          { title: 'Data ready · client render', phase: 'recovery' },
-          { title: 'Real UI restored', phase: 'recovery' },
-        ],
-        note: 'It starts with the server fallback and is restored to the real UI on the client.',
-        badges: [
-          { label: 'Server render', phase: 'server' },
-          { label: 'fallback/streaming', phase: 'boundary' },
-          { label: 'Client render', phase: 'hydration' },
-          { label: 'Restored', phase: 'recovery' },
-        ],
-      },
-      serverError: {
-        steps: [
-          { title: 'Server render error', phase: 'error' },
-          { title: 'Pick the nearest Suspense fallback', phase: 'boundary' },
-          { title: 'Send fallback HTML', phase: 'boundary' },
-          { title: 'Client hydration retry', phase: 'hydration' },
-          { title: 'Real UI restored on success', phase: 'recovery' },
-        ],
-        note: 'Even server errors can give users a temporary UI through the Suspense fallback.',
-        badges: [
-          { label: 'Server error', phase: 'error' },
-          { label: 'fallback/streaming', phase: 'boundary' },
-          { label: 'Client render', phase: 'hydration' },
-          { label: 'Restored', phase: 'recovery' },
-        ],
-      },
-      hydrationError: {
-        steps: [
-          { title: 'hydrateRoot per-boundary hydration', phase: 'hydration' },
-          { title: 'Try to match Suspense markers', phase: 'boundary' },
-          { title: 'Error / mismatch during hydration', phase: 'error' },
-          { title: 'Set ForceClientRender', phase: 'error', highlight: true },
-          { title: 'Boundary subtree client recovery', phase: 'recovery' },
-        ],
-        note: 'Only the failing region is moved to a client render to recover the failed connection.',
-        badges: [
-          { label: 'Client render', phase: 'hydration' },
-          { label: 'Error detected', phase: 'error' },
-          { label: 'ForceClientRender', phase: 'error' },
-          { label: 'Restored', phase: 'recovery' },
-        ],
-      },
-    },
-  },
-  followAlong: {
-    number: '10',
-    title: 'Walk it yourself',
-    items: [
-      {
-        title: 'Read the Suspense docs',
-        description: 'Server Rendering, Streaming, Suspense sections',
-      },
-      {
-        title: 'Find the Suspense hydration matchers',
-        description: 'claimNextHydratableSuspenseInstance · tryHydrateSuspense',
-      },
-      {
-        title: 'Inspect the ForceClientRender flow',
-        description: 'Find ForceClientRender usage in ReactFiberThrow.js',
-      },
-      {
-        title: "Recap Suspense's role",
-        description: 'It acts as a boundary for server, hydration, and client recovery',
-      },
-    ],
-  },
-  takeaways: {
-    number: '11',
-    title: 'Key recap',
-    cards: [
-      {
-        number: '1',
-        title: 'Suspense also acts as a server- and client-side recovery boundary.',
-        body: 'Server suspend/error, hydration, and client recovery all use the Suspense Boundary as the key edge.',
-        tone: 'blue',
-      },
-      {
-        number: '2',
-        title: 'Hydration can be recovered per Suspense boundary.',
-        body: 'On match failures or errors, it switches to a client render per boundary and limits the recovery scope.',
+        id: 'chunk',
+        label: 'Chunks arrive when ready',
+        caption: 'each resolved boundary follows behind',
         tone: 'teal',
       },
       {
-        number: '3',
-        title: 'A server fallback can flow into a real client UI.',
-        body: 'Streamed fallback → hydration → client render carries naturally into the real UI.',
-        tone: 'violet',
+        id: 'hydrate',
+        label: 'Hydrate per boundary',
+        caption: 'whatever arrived comes alive in turn',
+        tone: 'emerald',
       },
     ],
   },
+  roles: {
+    badge: '01',
+    eyebrow: 'four roles',
+    title: 'Four jobs one boundary holds',
+    description:
+      'On the client it looks purely like a loading boundary. Add SSR and three more jobs appear.',
+    items: [
+      {
+        id: 'boundary',
+        title: 'Loading boundary',
+        role: 'Client',
+        description:
+          'Defines the region that shows a fallback when a suspend happens — the role from earlier pages.',
+        tone: 'violet',
+      },
+      {
+        id: 'streaming',
+        title: 'HTML chunk unit',
+        role: 'SSR streaming',
+        description:
+          'The server splits HTML along this boundary, so slow parts do not block fast ones.',
+        tone: 'sky',
+      },
+      {
+        id: 'selective',
+        title: 'Hydration unit',
+        role: 'Selective hydration',
+        description:
+          'Each boundary hydrates independently, and a clicked region can even be prioritised.',
+        tone: 'cyan',
+      },
+      {
+        id: 'fallback',
+        title: 'Recovery scope',
+        role: 'Mismatch handling',
+        description:
+          'A mismatch rewinds to client rendering only up to this boundary — the blast radius from the previous page.',
+        tone: 'emerald',
+      },
+    ],
+    note: 'With four jobs in one component, where you place Suspense becomes a performance decision, not just a loading-UI one.',
+  },
+  streaming: {
+    badge: '02',
+    eyebrow: 'streaming',
+    title: 'Five stops for unfinished HTML',
+    description:
+      'The server does not hold the response waiting for data. It sends a placeholder first and fills the content in later.',
+    steps: [
+      {
+        id: 'shell',
+        num: '01',
+        title: 'Flush the shell first',
+        description: 'Everything finished outside a Suspense streams immediately.',
+        tone: 'sky',
+      },
+      {
+        id: 'comment',
+        num: '02',
+        title: 'Mark unfinished boundaries',
+        description: 'A comment node starting with <!--$?--> and a template slot are left behind.',
+        tone: 'violet',
+      },
+      {
+        id: 'resolve',
+        num: '03',
+        title: 'The data arrives',
+        description: 'On the server, that boundary data resolves and its render completes.',
+        tone: 'teal',
+      },
+      {
+        id: 'inject',
+        num: '04',
+        title: 'Send the chunk after',
+        description:
+          'The finished HTML and a tiny script follow, telling the browser to swap the placeholder for the real content.',
+        tone: 'indigo',
+      },
+      {
+        id: 'claim',
+        num: '05',
+        title: 'Hydrate just that boundary',
+        description: 'The client notices the arrival and starts hydrating that subtree.',
+        tone: 'emerald',
+      },
+    ],
+    note: 'The script in step 04 is plain DOM manipulation, not React — so the swap happens even before the bundle loads.',
+  },
+  placement: {
+    badge: '03',
+    eyebrow: 'placement',
+    title: 'What boundary placement changes',
+    description:
+      'On the same page, where Suspense sits changes both first-paint speed and recovery cost dramatically.',
+    headers: ['Placement', 'Effect on streaming', 'Effect on hydration'],
+    rows: [
+      {
+        placement: 'Tight around slow data',
+        streaming: 'The shell goes out at once and only the slow part follows.',
+        hydration: 'A mismatch redraws only that small region.',
+      },
+      {
+        placement: 'Wrapping the whole page',
+        streaming: 'Nothing can be sent until everything is ready.',
+        hydration: 'One mismatch sends the whole page to client rendering.',
+      },
+      {
+        placement: 'No boundary at all',
+        streaming: 'Streaming cannot happen in the first place.',
+        hydration: 'It climbs to the root and discards all the server HTML.',
+      },
+      {
+        placement: 'Split too finely',
+        streaming: 'Many chunks add protocol overhead.',
+        hydration: 'A fallback flickers per boundary, which reads as noise.',
+      },
+    ],
+    note: 'The test is whether the screen still makes sense if this part arrives late. That unit is the size of your boundary.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberBeginWork.js',
+    lookForLabel: 'Look for',
+    lookFor:
+      'updateDehydratedSuspenseComponent, isSuspenseInstancePending, retrySuspenseComponentWithoutHydrating',
+    whyLabel: 'Why',
+    why: 'Boundary state being distinguished purely by a comment data string ($, $?, $!) is the whole streaming protocol.',
+    code: DEHYDRATED_CODE_EN,
+    primaryCta: 'Read ReactFiberBeginWork.js',
+    primaryHref: SUSPENSE_COMPONENT_HREF,
+  },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Review the whole recovery model',
+    title: 'Nine pages into one model',
     description:
-      'Wrap up by reviewing how waiting, failing, and recovering form a single rendering model.',
+      'Waiting, failing and mismatching turned out to share a structure. The last page ties them together.',
     cta: 'Go to the next page',
     href: '/recovery-model-overview',
   },

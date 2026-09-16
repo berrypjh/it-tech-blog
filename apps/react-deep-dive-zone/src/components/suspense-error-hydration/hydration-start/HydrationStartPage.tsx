@@ -3,16 +3,11 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { CodePreviewSection } from './sections/CodePreviewSection';
-import { CreateVsHydrateSection } from './sections/CreateVsHydrateSection';
-import { DomFiberMatcherSection } from './sections/DomFiberMatcherSection';
-import { EnterFlowSection } from './sections/EnterFlowSection';
-import { FollowAlongSection } from './sections/FollowAlongSection';
-import { HeroSection } from './sections/HeroSection';
-import { HydrationStatesSection } from './sections/HydrationStatesSection';
-import { QuestionSection } from './sections/QuestionSection';
-import { ServerHtmlAndCallSection } from './sections/ServerHtmlAndCallSection';
-import { TakeawaysSection } from './sections/TakeawaysSection';
+import { HydrationStartCodeCheckpoint } from './sections/HydrationStartCodeCheckpoint';
+import { HydrationStartHero } from './sections/HydrationStartHero';
+import { HydrationStartSteps } from './sections/HydrationStartSteps';
+import { ModuleStateTable } from './sections/ModuleStateTable';
+import { RootCompare } from './sections/RootCompare';
 import { hydrationStartContent } from './content';
 
 type Props = { locale: Locale };
@@ -22,16 +17,11 @@ export const HydrationStartPage = ({ locale }: Props) => {
 
   return (
     <StartPageShell>
-      <HeroSection content={c.hero} />
-      <QuestionSection content={c.question} />
-      <CreateVsHydrateSection content={c.compare} />
-      <ServerHtmlAndCallSection serverHtml={c.serverHtml} hydrateCall={c.hydrateCall} />
-      <EnterFlowSection content={c.enterFlow} />
-      <HydrationStatesSection content={c.states} />
-      <CodePreviewSection content={c.code} />
-      <DomFiberMatcherSection content={c.matcher} />
-      <FollowAlongSection content={c.followAlong} />
-      <TakeawaysSection content={c.takeaways} />
+      <HydrationStartHero content={c.hero} />
+      <RootCompare content={c.compare} />
+      <HydrationStartSteps content={c.steps} />
+      <ModuleStateTable content={c.states} />
+      <HydrationStartCodeCheckpoint content={c.checkpoint} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

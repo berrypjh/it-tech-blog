@@ -1,2 +1,2 @@
-export { threePriorityAxesContent } from './content';
-export { ThreePriorityAxesPage } from './ThreePriorityAxesPage';
+export { priorityAxesContent } from './content';
+export { PriorityAxesPage } from './PriorityAxesPage';

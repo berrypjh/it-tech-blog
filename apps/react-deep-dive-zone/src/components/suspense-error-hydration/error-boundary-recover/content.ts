@@ -1,169 +1,89 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { Phase } from './tone';
+import type { ToneKey } from '../../shared/tones';
 
-export type HeroFlowStep = {
+export type StageId = 'throw' | 'climb' | 'capture' | 'fallback';
+
+export type Stage = {
+  id: StageId;
   label: string;
   caption: string;
-  icon: 'profile' | 'shield' | 'update' | 'alert';
-  phase: Phase;
+  tone: ToneKey;
 };
 
-export type ConceptCard = {
-  icon: 'shield' | 'target' | 'update' | 'alert';
-  question: string;
-  answer: string;
+export type HookId = 'derived-state' | 'did-catch' | 'no-function';
+
+export type BoundaryHook = {
+  id: HookId;
+  name: string;
+  role: string;
+  description: string;
+  tone: ToneKey;
 };
 
-export type ErrorPathStep = {
-  number: string;
-  title: string;
-  caption: string;
-  phase: Phase;
-};
+export type CaptureStepId = 'throw' | 'climb' | 'qualify' | 'enqueue' | 'rerender';
 
 export type CaptureStep = {
-  number: string;
+  id: CaptureStepId;
+  num: string;
   title: string;
-  caption: string;
-  phase: Phase;
+  description: string;
+  tone: ToneKey;
 };
 
-export type TreeNode = {
-  label: string;
-  marker?: string;
-  kind: 'app' | 'boundary' | 'card' | 'profile';
-};
-
-export type ChecklistItem = { title: string; description: string };
-
-export type TakeawayCard = {
-  number: string;
-  title: string;
-  body: string;
-  tone: 'blue' | 'teal' | 'rose';
-};
-
-export type SimulatorScenario = 'normal' | 'error';
-
-export type SimulatorResult = {
-  scenario: SimulatorScenario;
-  steps: { number: string; title: string; phase: Phase }[];
-  resultLabel: string;
-  result: string;
-  previewKind: 'profile' | 'fallback';
+export type CatchRow = {
+  place: string;
+  caught: string;
+  why: string;
 };
 
 export type ErrorBoundaryRecoverContent = {
   hero: {
     badge: string;
-    titleLines: [string, string, string];
+    title: { line1: string; line2: string };
     description: string;
-    code: {
-      label: string;
-      pill: string;
-      fileLabel: string;
-      content: string;
-    };
-    flow: {
-      title: string;
-      steps: HeroFlowStep[];
-    };
+    diagramBadge: string;
+    diagramCaption: string;
+    stages: Stage[];
   };
-  question: {
-    number: string;
+  hooks: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    question: string;
-    concepts: ConceptCard[];
-  };
-  userCode: {
-    number: string;
-    title: string;
-    code: {
-      fileLabel: string;
-      content: string;
-    };
-    fallback: {
-      title: string;
-      heading: string;
-      body: string;
-      button: string;
-    };
-    keypoint: {
-      title: string;
-      items: string[];
-    };
-  };
-  childThrow: {
-    number: string;
-    title: string;
-    code: {
-      fileLabel: string;
-      content: string;
-    };
-    middle: {
-      title: string;
-      body: string;
-    };
-    treeTitle: string;
-    tree: TreeNode[];
-  };
-  errorPath: {
-    number: string;
-    title: string;
-    steps: ErrorPathStep[];
-  };
-  search: {
-    number: string;
-    title: string;
-    tree: TreeNode[];
-    rulesTitle: string;
-    rules: string[];
+    description: string;
+    items: BoundaryHook[];
+    note: string;
   };
   capture: {
-    number: string;
+    badge: string;
+    eyebrow: string;
     title: string;
+    description: string;
     steps: CaptureStep[];
+    note: string;
   };
-  fallback: {
-    number: string;
+  coverage: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    before: { title: string; heading: string; body: string };
-    transition: {
-      title: string;
-      block1Title: string;
-      block1Body: string;
-      block2Title: string;
-      block2Body: string;
-    };
-    after: { title: string; heading: string; body: string };
+    description: string;
+    headers: [string, string, string];
+    rows: CatchRow[];
+    note: string;
   };
-  code: {
-    number: string;
+  checkpoint: {
+    badge: string;
+    eyebrow: string;
     title: string;
     fileLabel: string;
-    content: string;
-    explanationTitle: string;
-    explanation: { title: string; body: string }[];
-    button: { label: string; href: string };
-  };
-  simulator: {
-    number: string;
-    title: string;
-    selectorTitle: string;
-    options: { scenario: SimulatorScenario; label: string; sublabel: string }[];
-    timelineTitle: string;
-    results: Record<SimulatorScenario, SimulatorResult>;
-  };
-  followAlong: {
-    number: string;
-    title: string;
-    items: ChecklistItem[];
-  };
-  takeaways: {
-    number: string;
-    title: string;
-    cards: TakeawayCard[];
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -174,629 +94,435 @@ export type ErrorBoundaryRecoverContent = {
   };
 };
 
-const THROW_URL =
+const ERROR_CAPTURE_CODE = `// 1. 위로 올라가며 Error Boundary 자격을 확인한다
+let workInProgress = returnFiber;
+do {
+  switch (workInProgress.tag) {
+    case HostRoot: {
+      workInProgress.flags |= ShouldCapture;
+      const update = createRootErrorUpdate(root, wrapperError, lane);
+      enqueueCapturedUpdate(workInProgress, update);
+      return false;
+    }
+    case ClassComponent: {
+      const ctor = workInProgress.type;
+      const instance = workInProgress.stateNode;
+
+      if (
+        (workInProgress.flags & DidCapture) === NoFlags &&
+        (typeof ctor.getDerivedStateFromError === 'function' ||
+          (instance !== null &&
+            typeof instance.componentDidCatch === 'function'))
+      ) {
+        workInProgress.flags |= ShouldCapture;
+        const update = createClassErrorUpdate(lane);
+        enqueueCapturedUpdate(workInProgress, update);
+        return false;
+      }
+      break;
+    }
+  }
+  workInProgress = workInProgress.return;
+} while (workInProgress !== null);
+
+// 2. captured update가 실행되면 state가 바뀌어 fallback이 렌더된다
+function createClassErrorUpdate(lane) {
+  const update = createUpdate(lane);
+  update.tag = CaptureUpdate;
+  return update;
+}`;
+
+const REACT_FIBER_THROW_HREF =
   'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberThrow.js';
-
-const HERO_CODE = `<ErrorBoundary>
-  <Profile />
-</ErrorBoundary>`;
-
-const BOUNDARY_CODE = `class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    // 다음 렌더에서 fallback UI를 보여준다.
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    // 에러 로깅 등을 처리할 수 있다.
-    console.error(error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <Fallback />;
-    }
-
-    return this.props.children;
-  }
-}`;
-
-const BOUNDARY_CODE_EN = `class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    // Show the fallback UI on the next render.
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    // You can log the error here.
-    console.error(error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <Fallback />;
-    }
-
-    return this.props.children;
-  }
-}`;
-
-const PROFILE_CODE = `function Profile() {
-  // 렌더링 중 예외 발생
-  throw new Error("Profile failed");
-}`;
-
-const PROFILE_CODE_EN = `function Profile() {
-  // Exception during render
-  throw new Error("Profile failed");
-}`;
-
-const THROW_CODE = `if (
-  typeof ctor.getDerivedStateFromError === "function" ||
-  typeof instance.componentDidCatch === "function"
-) {
-  workInProgress.flags |= ShouldCapture;
-
-  const update = createClassErrorUpdate(lane);
-
-  initializeClassErrorUpdate(update, root, workInProgress, errorInfo);
-
-  enqueueCapturedUpdate(workInProgress, update);
-}`;
 
 const ko: ErrorBoundaryRecoverContent = {
   hero: {
     badge: 'Suspense/Error · 5/10단계',
-    titleLines: ['Error Boundary는', '렌더링 에러를 어떻게', '붙잡고 복구할까?'],
+    title: { line1: 'Error Boundary는 try/catch가 아니다', line2: '상태를 바꾸는 업데이트다' },
     description:
-      'React는 실패한 자식 트리를 버리고, 가장 가까운 복구 경계를 기준으로 fallback UI를 다시 렌더링합니다.',
-    code: {
-      label: 'ErrorBoundary 사용 예시',
-      pill: 'JSX',
-      fileLabel: 'App.jsx',
-      content: HERO_CODE,
-    },
-    flow: {
-      title: '한눈에 보는 흐름',
-      steps: [
-        { label: 'Profile', caption: '렌더링 중 에러 발생', icon: 'profile', phase: 'error' },
-        { label: 'Error Boundary', caption: '찾아 capture', icon: 'shield', phase: 'boundary' },
-        { label: 'captured update', caption: '등록', icon: 'update', phase: 'update' },
-        { label: 'fallback UI', caption: '다시 렌더링', icon: 'alert', phase: 'recover' },
-      ],
-    },
-  },
-  question: {
-    number: '1',
-    title: '오늘 해결할 질문',
-    question:
-      '자식 컴포넌트가 render 중 에러를 던지면 React는 어디까지 올라가 어떤 Boundary를 선택할까?',
-    concepts: [
-      { icon: 'shield', question: '어디까지 올라갈까?', answer: '가장 가까운 Boundary까지' },
-      { icon: 'target', question: '어떤 조건으로 선택?', answer: 'Error Boundary 여부' },
-      { icon: 'update', question: '어떤 업데이트를 남길까?', answer: 'captured update 등록' },
-      { icon: 'alert', question: '결과는 무엇일까?', answer: 'fallback UI 렌더링' },
-    ],
-  },
-  userCode: {
-    number: '2',
-    title: 'Error Boundary 사용자 코드',
-    code: { fileLabel: 'ErrorBoundary.jsx', content: BOUNDARY_CODE },
-    fallback: {
-      title: 'Fallback UI 예시',
-      heading: '문제가 발생했습니다',
-      body: '잠시 후 다시 시도해주세요.',
-      button: '새로고침',
-    },
-    keypoint: {
-      title: '핵심 포인트',
-      items: [
-        'getDerivedStateFromError → 렌더 단계에서 상태 전환',
-        'componentDidCatch → 커밋 단계에서 사이드이펙트',
-        'hasError가 true가 되면 fallback UI 렌더링',
-      ],
-    },
-  },
-  childThrow: {
-    number: '3',
-    title: '자식 컴포넌트에서 Error throw',
-    code: { fileLabel: 'Profile.jsx', content: PROFILE_CODE },
-    middle: {
-      title: 'render 중 throw 발생',
-      body: 'Profile 렌더링이 완료되지 못하고 throwException 흐름으로 이동합니다.',
-    },
-    treeTitle: '트리 위치 예시',
-    tree: [
-      { label: '<App />', kind: 'app' },
-      { label: '<ErrorBoundary />', kind: 'boundary' },
-      { label: '<Card />', kind: 'card' },
-      { label: '<Profile />', marker: '❌  예외 포착', kind: 'profile' },
-    ],
-  },
-  errorPath: {
-    number: '4',
-    title: 'Error path로 진입',
-    steps: [
-      { number: '1', title: 'Profile render 시작', caption: '컴포넌트 진입', phase: 'boundary' },
-      { number: '2', title: 'Error throw', caption: '예외 발생', phase: 'error' },
-      { number: '3', title: 'throwException 호출', caption: '에러 흐름 진입', phase: 'error' },
-      { number: '4', title: 'regular error path', caption: 'thenable 아님', phase: 'error' },
-      { number: '5', title: 'Boundary 탐색 시작', caption: '부모 경로 위로', phase: 'boundary' },
-    ],
-  },
-  search: {
-    number: '5',
-    title: '부모 경로에서 Boundary 탐색 (위로 이동)',
-    tree: [
-      { label: '<App />', marker: 'root 컴포넌트', kind: 'app' },
-      { label: '<ErrorBoundary />', marker: 'Error Boundary ✅', kind: 'boundary' },
-      { label: '<Card />', marker: '일반 컴포넌트', kind: 'card' },
-      { label: '<Profile />', marker: '에러 발생 위치 ❌', kind: 'profile' },
-    ],
-    rulesTitle: '탐색 규칙',
-    rules: [
-      '위로 올라가며 Error Boundary 여부를 검사',
-      'getDerivedStateFromError 또는 componentDidCatch가 있으면 Boundary로 선택',
-      '없으면 계속 위로 이동',
-    ],
-  },
-  capture: {
-    number: '6',
-    title: 'ShouldCapture와 captured update',
-    steps: [
+      '예외를 삼키는 것이 아니라, 경계 컴포넌트에 "에러 상태로 바뀌라"는 업데이트를 걸어 다시 렌더합니다.',
+    diagramBadge: 'error path',
+    diagramCaption: 'throw → climb → capture',
+    stages: [
       {
-        number: '1',
-        title: 'Error Boundary Fiber',
-        caption: '선택된 Boundary',
-        phase: 'boundary',
+        id: 'throw',
+        label: 'throw new Error()',
+        caption: '컴포넌트 렌더 도중 예외 발생',
+        tone: 'sky',
       },
       {
-        number: '2',
-        title: 'ShouldCapture flag 설정',
-        caption: '이 Boundary가 capture 대상임을 표시',
-        phase: 'boundary',
+        id: 'climb',
+        label: 'return 포인터로 상승',
+        caption: '자격 있는 경계를 찾을 때까지',
+        tone: 'indigo',
       },
       {
-        number: '3',
-        title: 'createClassErrorUpdate',
-        caption: '경계 상태 전환을 위한 update 생성',
-        phase: 'update',
+        id: 'capture',
+        label: 'captured update 등록',
+        caption: '경계의 state를 에러 상태로',
+        tone: 'amber',
       },
       {
-        number: '4',
-        title: 'enqueueCapturedUpdate',
-        caption: 'Boundary의 updateQueue에 등록',
-        phase: 'recover',
+        id: 'fallback',
+        label: 'fallback 렌더',
+        caption: '바뀐 state로 다시 렌더한 결과',
+        tone: 'emerald',
       },
     ],
   },
-  fallback: {
-    number: '7',
-    title: 'fallback 재렌더 (Before → After)',
-    before: {
-      title: 'Before · 에러 발생 전',
-      heading: 'Profile UI',
-      body: '정상적으로 렌더링 중...',
-    },
-    transition: {
-      title: 'Boundary state 갱신',
-      block1Title: 'getDerivedStateFromError',
-      block1Body: '→ { hasError: true }',
-      block2Title: 'update enqueue',
-      block2Body: '→ 다음 렌더에서 fallback 분기',
-    },
-    after: {
-      title: 'After · 에러 발생 후',
-      heading: 'Fallback UI',
-      body: 'ErrorBoundary가 대체 UI를 렌더링합니다.',
-    },
-  },
-  code: {
-    number: '8',
-    title: '실제 코드 미리보기 (ReactFiberThrow.js)',
-    fileLabel: 'ReactFiberThrow.js',
-    content: THROW_CODE,
-    explanationTitle: '코드 설명',
-    explanation: [
-      {
-        title: 'Error Boundary 조건 확인',
-        body: 'getDerivedStateFromError 또는 componentDidCatch 존재 여부',
-      },
-      {
-        title: 'ShouldCapture flag 설정',
-        body: '이 Boundary가 capture 대상임을 표시',
-      },
-      {
-        title: 'class error update 생성/초기화',
-        body: 'Boundary 상태를 fallback으로 전환할 update 생성',
-      },
-      {
-        title: 'captured update enqueue',
-        body: '이후 렌더에서 이 update가 처리되어 fallback UI가 렌더링됩니다.',
-      },
-    ],
-    button: { label: 'GitHub에서 코드 보기', href: THROW_URL },
-  },
-  simulator: {
-    number: '9',
-    title: 'Error Boundary 복구 시뮬레이터',
-    selectorTitle: '시나리오 선택',
-    options: [
-      { scenario: 'normal', label: '정상 렌더', sublabel: '예외 없음' },
-      { scenario: 'error', label: '자식 Error throw', sublabel: '에러 발생' },
-    ],
-    timelineTitle: '실행 결과 타임라인',
-    results: {
-      normal: {
-        scenario: 'normal',
-        steps: [
-          { number: '1', title: 'Render 시작', phase: 'boundary' },
-          { number: '2', title: '자식 렌더', phase: 'boundary' },
-          { number: '3', title: '에러 없음', phase: 'recover' },
-          { number: '4', title: '정상 UI 커밋', phase: 'recover' },
-        ],
-        resultLabel: '현재 결과',
-        result: 'Profile UI가 정상적으로 렌더링되었습니다.',
-        previewKind: 'profile',
-      },
-      error: {
-        scenario: 'error',
-        steps: [
-          { number: '1', title: 'Render 시작', phase: 'boundary' },
-          { number: '2', title: '자식 렌더', phase: 'boundary' },
-          { number: '3', title: '에러 발생', phase: 'error' },
-          { number: '4', title: 'Boundary capture', phase: 'boundary' },
-          { number: '5', title: 'fallback 렌더', phase: 'update' },
-          { number: '6', title: '복구 완료', phase: 'recover' },
-        ],
-        resultLabel: '현재 결과',
-        result: 'ErrorBoundary가 에러를 붙잡아 fallback UI를 렌더링했습니다.',
-        previewKind: 'fallback',
-      },
-    },
-  },
-  followAlong: {
-    number: '10',
-    title: '직접 코드에서 따라가 보기',
+  hooks: {
+    badge: '01',
+    eyebrow: 'what qualifies',
+    title: '무엇이 경계 자격을 만드는가',
+    description:
+      '컴포넌트 이름이나 prop이 아니라, 두 메서드 중 하나를 가지고 있느냐가 기준입니다. 그래서 클래스 컴포넌트여야 합니다.',
     items: [
       {
-        title: 'React 공식 문서 확인',
-        description: 'Error Boundary 사용법과 lifecycle을 먼저 확인합니다.',
+        id: 'derived-state',
+        name: 'getDerivedStateFromError',
+        role: '렌더 단계',
+        description:
+          '에러를 받아 새 state를 돌려줍니다. 이 state로 fallback을 그리므로 순수해야 합니다.',
+        tone: 'amber',
       },
       {
-        title: 'ReactFiberThrow.js 열기',
-        description: 'ClassComponent case에서 error path를 확인합니다.',
+        id: 'did-catch',
+        name: 'componentDidCatch',
+        role: '커밋 단계',
+        description: '에러와 스택 정보를 받습니다. 로깅 같은 부수 효과를 넣는 자리입니다.',
+        tone: 'violet',
       },
       {
-        title: 'ShouldCapture flag 확인',
-        description: 'ShouldCapture가 설정되는 지점을 코드에서 찾습니다.',
-      },
-      {
-        title: 'createClassErrorUpdate 흐름 확인',
-        description: 'update 생성/초기화/enqueue까지 연결해 봅니다.',
+        id: 'no-function',
+        name: '함수 컴포넌트는 불가',
+        role: '아직 없음',
+        description:
+          '대응하는 Hook이 없어 직접 만들 수 없습니다. 라이브러리도 내부는 클래스로 구현합니다.',
+        tone: 'sky',
       },
     ],
+    note: '둘 중 하나만 있어도 경계로 인정됩니다. 보통은 fallback을 그리는 getDerivedStateFromError를 씁니다.',
   },
-  takeaways: {
-    number: '11',
-    title: '핵심 정리',
-    cards: [
+  capture: {
+    badge: '02',
+    eyebrow: 'capture flow',
+    title: '예외가 fallback이 되기까지',
+    description:
+      'Suspense와 구조는 같습니다. 다만 경계에 거는 것이 fallback 전환 플래그가 아니라 state를 바꾸는 업데이트입니다.',
+    steps: [
       {
-        number: '1',
-        title: '일반 render error는 Error Boundary 경로로 간다.',
-        body: 'thenable이 아니면 regular error path를 따라 Boundary를 탐색합니다.',
-        tone: 'blue',
+        id: 'throw',
+        num: '01',
+        title: '렌더 도중 throw',
+        description: '컴포넌트 함수 실행 중 예외가 나서 beginWork가 중단됩니다.',
+        tone: 'sky',
       },
       {
-        number: '2',
-        title: 'React는 가장 가까운 Boundary를 찾아 captured update를 등록한다.',
-        body: 'ShouldCapture flag와 update enqueue를 통해 fallback 렌더를 준비합니다.',
-        tone: 'teal',
+        id: 'climb',
+        num: '02',
+        title: 'return으로 상승',
+        description: '실패한 Fiber의 부모부터 루트 방향으로 하나씩 올라갑니다.',
+        tone: 'indigo',
       },
       {
-        number: '3',
-        title: '그 결과 fallback UI가 다시 렌더링된다.',
-        body: 'Boundary state가 갱신되어 다음 렌더에서 fallback 분기가 실행됩니다.',
-        tone: 'rose',
+        id: 'qualify',
+        num: '03',
+        title: '자격 확인',
+        description:
+          'ClassComponent이면서 두 메서드 중 하나가 있고, 아직 DidCapture가 아닌 Fiber를 찾습니다.',
+        tone: 'cyan',
+      },
+      {
+        id: 'enqueue',
+        num: '04',
+        title: 'CaptureUpdate 등록',
+        description:
+          '그 경계의 updateQueue에 tag가 CaptureUpdate인 업데이트를 넣습니다. 일반 setState와 같은 통로입니다.',
+        tone: 'amber',
+      },
+      {
+        id: 'rerender',
+        num: '05',
+        title: '바뀐 state로 재렌더',
+        description: 'getDerivedStateFromError가 돌려준 state가 반영되어 fallback이 그려집니다.',
+        tone: 'emerald',
       },
     ],
+    note: '04가 핵심입니다. 별도 메커니즘이 아니라 평소 쓰던 update queue를 그대로 씁니다. 그래서 fallback도 그냥 렌더 결과입니다.',
+  },
+  coverage: {
+    badge: '03',
+    eyebrow: 'coverage',
+    title: '잡히는 에러와 잡히지 않는 에러',
+    description:
+      'Error Boundary는 렌더 트리를 타고 전파되는 예외만 잡습니다. 그 바깥에서 난 것은 그대로 브라우저로 갑니다.',
+    headers: ['어디서 난 에러인가', '잡히나', '왜 그런가'],
+    rows: [
+      {
+        place: '렌더 중 (컴포넌트 본문)',
+        caught: '잡힌다',
+        why: 'beginWork가 try로 감싸고 있어 던져진 값이 throwException으로 전달됩니다.',
+      },
+      {
+        place: 'useEffect 콜백 안',
+        caught: '잡힌다',
+        why: 'React가 effect 실행도 감싸고 있어 해당 Fiber 기준으로 경계를 찾습니다.',
+      },
+      {
+        place: '이벤트 핸들러 안',
+        caught: '잡히지 않는다',
+        why: '렌더 트리 바깥에서 실행됩니다. try/catch로 직접 처리해야 합니다.',
+      },
+      {
+        place: 'setTimeout 콜백',
+        caught: '잡히지 않는다',
+        why: '호출 스택이 React와 분리되어 어느 Fiber의 일인지 알 수 없습니다.',
+      },
+      {
+        place: '경계 자기 자신의 렌더',
+        caught: '잡히지 않는다',
+        why: '자기가 낸 에러는 자기가 못 잡습니다. 더 위의 경계로 올라갑니다.',
+      },
+    ],
+    note: '세 번째 줄이 가장 흔한 오해입니다. 이벤트 핸들러의 에러는 Error Boundary에 닿지 않습니다.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberThrow.js',
+    lookForLabel: '볼 것',
+    lookFor: 'createClassErrorUpdate, enqueueCapturedUpdate, CaptureUpdate, ShouldCapture',
+    whyLabel: '설명',
+    why: 'update.tag가 CaptureUpdate라는 점이, 에러 처리가 별도 시스템이 아니라 평범한 업데이트임을 보여 줍니다.',
+    code: ERROR_CAPTURE_CODE,
+    primaryCta: 'ReactFiberThrow.js 읽기',
+    primaryHref: REACT_FIBER_THROW_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'React 19의 Error Reporting',
-    description: 'React 19가 복구 가능한 에러를 root 레벨에서 어떻게 보고하는지 이어서 살펴봅니다.',
+    title: 'React 19가 바꾼 에러 보고',
+    description:
+      '잡힌 에러와 못 잡은 에러를 어디로 보낼지가 React 19에서 새 옵션으로 정리됐습니다.',
     cta: '다음 페이지로 이동',
     href: '/react-19-error-reporting',
   },
 };
 
+const ERROR_CAPTURE_CODE_EN = `// 1. climb upward checking for Error Boundary eligibility
+let workInProgress = returnFiber;
+do {
+  switch (workInProgress.tag) {
+    case HostRoot: {
+      workInProgress.flags |= ShouldCapture;
+      const update = createRootErrorUpdate(root, wrapperError, lane);
+      enqueueCapturedUpdate(workInProgress, update);
+      return false;
+    }
+    case ClassComponent: {
+      const ctor = workInProgress.type;
+      const instance = workInProgress.stateNode;
+
+      if (
+        (workInProgress.flags & DidCapture) === NoFlags &&
+        (typeof ctor.getDerivedStateFromError === 'function' ||
+          (instance !== null &&
+            typeof instance.componentDidCatch === 'function'))
+      ) {
+        workInProgress.flags |= ShouldCapture;
+        const update = createClassErrorUpdate(lane);
+        enqueueCapturedUpdate(workInProgress, update);
+        return false;
+      }
+      break;
+    }
+  }
+  workInProgress = workInProgress.return;
+} while (workInProgress !== null);
+
+// 2. once the captured update runs, state changes and the fallback renders
+function createClassErrorUpdate(lane) {
+  const update = createUpdate(lane);
+  update.tag = CaptureUpdate;
+  return update;
+}`;
+
 const en: ErrorBoundaryRecoverContent = {
   hero: {
-    badge: 'Suspense·Error · 5/10',
-    titleLines: ['How does an Error Boundary', 'catch and recover', 'render errors?'],
+    badge: 'Suspense/Error · 5/10',
+    title: { line1: 'An Error Boundary is not a try/catch', line2: 'it is a state update' },
     description:
-      'React drops the failed child tree and re-renders the fallback UI based on the nearest recovery boundary.',
-    code: {
-      label: 'ErrorBoundary usage',
-      pill: 'JSX',
-      fileLabel: 'App.jsx',
-      content: HERO_CODE,
-    },
-    flow: {
-      title: 'The flow at a glance',
-      steps: [
-        { label: 'Profile', caption: 'Error during render', icon: 'profile', phase: 'error' },
-        { label: 'Error Boundary', caption: 'Find and capture', icon: 'shield', phase: 'boundary' },
-        { label: 'captured update', caption: 'Enqueued', icon: 'update', phase: 'update' },
-        { label: 'fallback UI', caption: 'Re-rendered', icon: 'alert', phase: 'recover' },
-      ],
-    },
-  },
-  question: {
-    number: '1',
-    title: "Today's question",
-    question:
-      'When a child component throws during render, how far up does React walk and which Boundary does it pick?',
-    concepts: [
-      { icon: 'shield', question: 'How far up?', answer: 'Up to the nearest Boundary' },
-      { icon: 'target', question: 'How is it picked?', answer: 'By being an Error Boundary' },
-      { icon: 'update', question: 'What update is left?', answer: 'A captured update is enqueued' },
-      { icon: 'alert', question: 'What is the result?', answer: 'The fallback UI is rendered' },
-    ],
-  },
-  userCode: {
-    number: '2',
-    title: 'Error Boundary user code',
-    code: { fileLabel: 'ErrorBoundary.jsx', content: BOUNDARY_CODE_EN },
-    fallback: {
-      title: 'Fallback UI example',
-      heading: 'Something went wrong',
-      body: 'Please try again in a moment.',
-      button: 'Reload',
-    },
-    keypoint: {
-      title: 'Key points',
-      items: [
-        'getDerivedStateFromError → state transition during render',
-        'componentDidCatch → side effects during commit',
-        'When hasError is true, the fallback UI is rendered',
-      ],
-    },
-  },
-  childThrow: {
-    number: '3',
-    title: 'A child component throws',
-    code: { fileLabel: 'Profile.jsx', content: PROFILE_CODE_EN },
-    middle: {
-      title: 'Throw happens during render',
-      body: 'Profile cannot finish rendering and moves into the throwException flow.',
-    },
-    treeTitle: 'Tree position example',
-    tree: [
-      { label: '<App />', kind: 'app' },
-      { label: '<ErrorBoundary />', kind: 'boundary' },
-      { label: '<Card />', kind: 'card' },
-      { label: '<Profile />', marker: '❌  exception thrown', kind: 'profile' },
-    ],
-  },
-  errorPath: {
-    number: '4',
-    title: 'Entering the Error path',
-    steps: [
+      'Rather than swallowing the exception, React queues an update on the boundary telling it to enter its error state, then re-renders.',
+    diagramBadge: 'error path',
+    diagramCaption: 'throw → climb → capture',
+    stages: [
       {
-        number: '1',
-        title: 'Profile render starts',
-        caption: 'Component enters',
-        phase: 'boundary',
+        id: 'throw',
+        label: 'throw new Error()',
+        caption: 'an exception during component render',
+        tone: 'sky',
       },
-      { number: '2', title: 'Error throw', caption: 'Exception happens', phase: 'error' },
-      { number: '3', title: 'throwException called', caption: 'Error flow begins', phase: 'error' },
-      { number: '4', title: 'regular error path', caption: 'Not a thenable', phase: 'error' },
       {
-        number: '5',
-        title: 'Boundary search starts',
-        caption: 'Walk up the parent path',
-        phase: 'boundary',
+        id: 'climb',
+        label: 'Climb the return pointers',
+        caption: 'until a qualified boundary is found',
+        tone: 'indigo',
+      },
+      {
+        id: 'capture',
+        label: 'Queue a captured update',
+        caption: 'move the boundary into its error state',
+        tone: 'amber',
+      },
+      {
+        id: 'fallback',
+        label: 'Render the fallback',
+        caption: 'the result of re-rendering with new state',
+        tone: 'emerald',
       },
     ],
   },
-  search: {
-    number: '5',
-    title: 'Find a Boundary on the parent path (walk upward)',
-    tree: [
-      { label: '<App />', marker: 'root component', kind: 'app' },
-      { label: '<ErrorBoundary />', marker: 'Error Boundary ✅', kind: 'boundary' },
-      { label: '<Card />', marker: 'regular component', kind: 'card' },
-      { label: '<Profile />', marker: 'throw site ❌', kind: 'profile' },
-    ],
-    rulesTitle: 'Search rules',
-    rules: [
-      'Walk upward and check whether each ancestor is an Error Boundary',
-      'If getDerivedStateFromError or componentDidCatch exists, pick it as the Boundary',
-      'If not, keep walking upward',
-    ],
-  },
-  capture: {
-    number: '6',
-    title: 'ShouldCapture and captured update',
-    steps: [
-      {
-        number: '1',
-        title: 'Error Boundary Fiber',
-        caption: 'The selected Boundary',
-        phase: 'boundary',
-      },
-      {
-        number: '2',
-        title: 'Set ShouldCapture flag',
-        caption: 'Mark this boundary as a capture target',
-        phase: 'boundary',
-      },
-      {
-        number: '3',
-        title: 'createClassErrorUpdate',
-        caption: 'Create an update for the boundary state transition',
-        phase: 'update',
-      },
-      {
-        number: '4',
-        title: 'enqueueCapturedUpdate',
-        caption: "Register on the Boundary's updateQueue",
-        phase: 'recover',
-      },
-    ],
-  },
-  fallback: {
-    number: '7',
-    title: 'Fallback re-render (Before → After)',
-    before: {
-      title: 'Before · before the error',
-      heading: 'Profile UI',
-      body: 'Rendering normally...',
-    },
-    transition: {
-      title: 'Boundary state updates',
-      block1Title: 'getDerivedStateFromError',
-      block1Body: '→ { hasError: true }',
-      block2Title: 'update enqueue',
-      block2Body: '→ next render takes the fallback branch',
-    },
-    after: {
-      title: 'After · after the error',
-      heading: 'Fallback UI',
-      body: 'ErrorBoundary renders the replacement UI.',
-    },
-  },
-  code: {
-    number: '8',
-    title: 'Source code preview (ReactFiberThrow.js)',
-    fileLabel: 'ReactFiberThrow.js',
-    content: THROW_CODE,
-    explanationTitle: 'Code explanation',
-    explanation: [
-      {
-        title: 'Check Error Boundary condition',
-        body: 'Whether getDerivedStateFromError or componentDidCatch exists',
-      },
-      {
-        title: 'Set ShouldCapture flag',
-        body: 'Mark this boundary as a capture target',
-      },
-      {
-        title: 'Create / initialize class error update',
-        body: 'Build the update that switches the boundary state to fallback',
-      },
-      {
-        title: 'Enqueue captured update',
-        body: 'Later renders process this update and render the fallback UI.',
-      },
-    ],
-    button: { label: 'View source on GitHub', href: THROW_URL },
-  },
-  simulator: {
-    number: '9',
-    title: 'Error Boundary recovery simulator',
-    selectorTitle: 'Pick a scenario',
-    options: [
-      { scenario: 'normal', label: 'Normal render', sublabel: 'no exception' },
-      { scenario: 'error', label: 'Child error throw', sublabel: 'an error happens' },
-    ],
-    timelineTitle: 'Execution timeline',
-    results: {
-      normal: {
-        scenario: 'normal',
-        steps: [
-          { number: '1', title: 'Render starts', phase: 'boundary' },
-          { number: '2', title: 'Children render', phase: 'boundary' },
-          { number: '3', title: 'No error', phase: 'recover' },
-          { number: '4', title: 'Commit normal UI', phase: 'recover' },
-        ],
-        resultLabel: 'Current result',
-        result: 'Profile UI rendered normally.',
-        previewKind: 'profile',
-      },
-      error: {
-        scenario: 'error',
-        steps: [
-          { number: '1', title: 'Render starts', phase: 'boundary' },
-          { number: '2', title: 'Children render', phase: 'boundary' },
-          { number: '3', title: 'Error happens', phase: 'error' },
-          { number: '4', title: 'Boundary captures', phase: 'boundary' },
-          { number: '5', title: 'Fallback renders', phase: 'update' },
-          { number: '6', title: 'Recovery complete', phase: 'recover' },
-        ],
-        resultLabel: 'Current result',
-        result: 'ErrorBoundary caught the error and rendered the fallback UI.',
-        previewKind: 'fallback',
-      },
-    },
-  },
-  followAlong: {
-    number: '10',
-    title: 'Walk it in the source',
+  hooks: {
+    badge: '01',
+    eyebrow: 'what qualifies',
+    title: 'What makes a component a boundary',
+    description:
+      'Not a name or a prop, but whether it owns one of two methods — which is why it has to be a class component.',
     items: [
       {
-        title: 'Read the React docs',
-        description: 'Read the Error Boundary usage and lifecycle first.',
+        id: 'derived-state',
+        name: 'getDerivedStateFromError',
+        role: 'Render phase',
+        description:
+          'Receives the error and returns new state. The fallback renders from it, so it must be pure.',
+        tone: 'amber',
       },
       {
-        title: 'Open ReactFiberThrow.js',
-        description: 'Find the ClassComponent case in the error path.',
+        id: 'did-catch',
+        name: 'componentDidCatch',
+        role: 'Commit phase',
+        description:
+          'Receives the error and stack info. This is where logging side effects belong.',
+        tone: 'violet',
       },
       {
-        title: 'Find the ShouldCapture flag',
-        description: 'Locate where ShouldCapture is set in the source.',
-      },
-      {
-        title: 'Follow createClassErrorUpdate',
-        description: 'Trace create / initialize / enqueue end to end.',
+        id: 'no-function',
+        name: 'Function components cannot',
+        role: 'Not yet available',
+        description:
+          'There is no matching Hook, so you cannot write one. Libraries also implement it as a class inside.',
+        tone: 'sky',
       },
     ],
+    note: 'Either method alone qualifies. In practice getDerivedStateFromError is used, since it is what draws the fallback.',
   },
-  takeaways: {
-    number: '11',
-    title: 'Key recap',
-    cards: [
+  capture: {
+    badge: '02',
+    eyebrow: 'capture flow',
+    title: 'From exception to fallback',
+    description:
+      'The structure matches Suspense. The difference is what gets queued: a state-changing update rather than a fallback flag.',
+    steps: [
       {
-        number: '1',
-        title: 'Regular render errors flow down the Error Boundary path.',
-        body: 'If the value is not a thenable, the regular error path searches for a Boundary.',
-        tone: 'blue',
+        id: 'throw',
+        num: '01',
+        title: 'A throw during render',
+        description: 'An exception inside the component function aborts beginWork.',
+        tone: 'sky',
       },
       {
-        number: '2',
-        title: 'React finds the nearest Boundary and enqueues a captured update.',
-        body: 'ShouldCapture and update enqueue prepare the fallback render.',
-        tone: 'teal',
+        id: 'climb',
+        num: '02',
+        title: 'Climb through return',
+        description: 'Starting at the failed Fiber parent, move up one level at a time.',
+        tone: 'indigo',
       },
       {
-        number: '3',
-        title: 'As a result, the fallback UI is rendered again.',
-        body: 'The boundary state updates and the next render takes the fallback branch.',
-        tone: 'rose',
+        id: 'qualify',
+        num: '03',
+        title: 'Check eligibility',
+        description:
+          'Look for a ClassComponent with one of the two methods that is not already DidCapture.',
+        tone: 'cyan',
+      },
+      {
+        id: 'enqueue',
+        num: '04',
+        title: 'Queue a CaptureUpdate',
+        description:
+          'An update tagged CaptureUpdate goes into that boundary updateQueue — the same channel as setState.',
+        tone: 'amber',
+      },
+      {
+        id: 'rerender',
+        num: '05',
+        title: 'Re-render with new state',
+        description:
+          'The state returned by getDerivedStateFromError applies and the fallback draws.',
+        tone: 'emerald',
       },
     ],
+    note: 'Step 04 is the crux: no special mechanism, just the ordinary update queue — which is why the fallback is simply a render result.',
+  },
+  coverage: {
+    badge: '03',
+    eyebrow: 'coverage',
+    title: 'Errors it catches and errors it does not',
+    description:
+      'An Error Boundary only catches exceptions that propagate through the render tree. Anything outside goes straight to the browser.',
+    headers: ['Where the error happened', 'Caught', 'Why'],
+    rows: [
+      {
+        place: 'During render (component body)',
+        caught: 'Caught',
+        why: 'beginWork wraps it in a try, so the thrown value reaches throwException.',
+      },
+      {
+        place: 'Inside a useEffect callback',
+        caught: 'Caught',
+        why: 'React also wraps effect execution and looks for a boundary from that Fiber.',
+      },
+      {
+        place: 'Inside an event handler',
+        caught: 'Not caught',
+        why: 'It runs outside the render tree, so you have to handle it with try/catch yourself.',
+      },
+      {
+        place: 'Inside a setTimeout callback',
+        caught: 'Not caught',
+        why: 'The call stack is detached from React, so no Fiber can be attributed.',
+      },
+      {
+        place: 'The boundary own render',
+        caught: 'Not caught',
+        why: 'A boundary cannot catch itself; the search moves to a boundary further up.',
+      },
+    ],
+    note: 'The third row is the most common misconception: errors in event handlers never reach an Error Boundary.',
+  },
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberThrow.js',
+    lookForLabel: 'Look for',
+    lookFor: 'createClassErrorUpdate, enqueueCapturedUpdate, CaptureUpdate, ShouldCapture',
+    whyLabel: 'Why',
+    why: 'update.tag being CaptureUpdate shows error handling is not a separate system but an ordinary update.',
+    code: ERROR_CAPTURE_CODE_EN,
+    primaryCta: 'Read ReactFiberThrow.js',
+    primaryHref: REACT_FIBER_THROW_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: "Next: React 19's Error Reporting",
-    description: 'Continue with how React 19 reports recoverable errors at the root level.',
+    title: 'How React 19 changed error reporting',
+    description:
+      'Where caught and uncaught errors are sent was reorganised into new options in React 19.',
     cta: 'Go to the next page',
     href: '/react-19-error-reporting',
   },
 };
 
-export const errorBoundaryRecoverContent: Record<Locale, ErrorBoundaryRecoverContent> = {
-  ko,
-  en,
-};
+export const errorBoundaryRecoverContent: Record<Locale, ErrorBoundaryRecoverContent> = { ko, en };

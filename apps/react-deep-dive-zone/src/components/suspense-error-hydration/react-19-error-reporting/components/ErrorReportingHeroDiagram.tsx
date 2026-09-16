@@ -1,130 +1,77 @@
 import { cx } from '@berrypjh/react-ui';
-import { AlertTriangle, RefreshCcw, ShieldAlert, ShieldCheck } from 'lucide-react';
+import { AlertTriangle, type LucideIcon, RefreshCw, Shield, Sprout } from 'lucide-react';
 
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
+import { TerminalBadge } from '../../../shared/terminal';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { React19ErrorReportingContent, RootCallbackCard } from '../content';
-import type { CallbackKind } from '../tone';
+import { toneTokens } from '../../../shared/tones';
+import type { Callback, CallbackId, React19ErrorReportingContent } from '../content';
 
-type Props = { content: React19ErrorReportingContent['hero']; className?: string };
+type Props = { content: React19ErrorReportingContent['hero'] };
 
-const callbackIcon: Record<CallbackKind, React.ComponentType<{ className?: string }>> = {
-  caught: ShieldCheck,
-  uncaught: ShieldAlert,
-  recoverable: RefreshCcw,
+const callbackIcon: Record<CallbackId, LucideIcon> = {
+  uncaught: AlertTriangle,
+  caught: Shield,
+  recoverable: RefreshCw,
 };
 
-/** ToneKey에는 rose가 없어 가장 가까운 톤으로 매핑한다. */
-const callbackTone: Record<CallbackKind, ToneKey> = {
-  caught: 'blue',
-  uncaught: 'amber',
-  recoverable: 'teal',
-};
-
-/**
- * Hero 핵심 비주얼.
- * 하나의 에러 발생 지점 → 세 갈래 root error callback(caught / uncaught / recoverable)으로
- * 분류되는 흐름을 위에서 아래로 잇는 컴팩트 stepper.
- */
-export const ErrorReportingHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.titleLines.join(' ')}. ${content.description} ${content.callbacks
-    .map((c) => `${c.name}: ${c.summary} (${c.badge})`)
-    .join(' / ')}`;
+/** Hero 핵심 비주얼: root 하나가 심각도별 세 콜백으로 에러를 나눠 보내는 구조. */
+export const ErrorReportingHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.title.line1} ${content.title.line2} ${content.description}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
-        <SourceRow />
+        <div className="flex items-center justify-between">
+          <TerminalBadge dotClassName="bg-[var(--term-accent)]">
+            {content.diagramBadge}
+          </TerminalBadge>
+          <span className="font-mono text-[10px] text-[var(--term-muted)]">
+            {'//'} {content.diagramCaption}
+          </span>
+        </div>
+
+        <article className="flex items-center gap-sm rounded-xl border border-[var(--term-border)] bg-[var(--term-surface)] p-md shadow-[0_2px_0_var(--term-border)]">
+          <Sprout className="h-4 w-4 shrink-0 text-[var(--term-accent)]" aria-hidden="true" />
+          <code className="font-mono text-xsm font-bold text-[var(--term-fg)] break-all">
+            {content.rootLabel}
+          </code>
+        </article>
+
         <DownArrow />
+
         <ul className="flex flex-col gap-sm">
-          {content.callbacks.map((card) => (
-            <li key={card.kind}>
-              <CallbackRow card={card} />
+          {content.callbacks.map((callback) => (
+            <li key={callback.id}>
+              <CallbackRow callback={callback} />
             </li>
           ))}
         </ul>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
-const SourceRow = () => (
-  <div
-    className={cx(
-      'flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
-      'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-    )}
-  >
-    <ToneIconBox tone="violet" size="sm">
-      <AlertTriangle className="h-[18px] w-[18px]" aria-hidden="true" />
-    </ToneIconBox>
-    <span className="font-mono text-sm font-bold tracking-tight text-[var(--term-fg)]">
-      render error
-    </span>
-    <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-      createRoot · hydrateRoot
-    </span>
-  </div>
-);
-
-const CallbackRow = ({ card }: { card: RootCallbackCard }) => {
-  const tone = callbackTone[card.kind];
-  const t = toneTokens[tone];
-  const Icon = callbackIcon[card.kind];
-
+const CallbackRow = ({ callback }: { callback: Callback }) => {
+  const Icon = callbackIcon[callback.id];
+  const t = toneTokens[callback.tone];
   return (
     <article
       className={cx(
-        'flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
-        t.borderHover,
+        'flex items-center gap-sm rounded-xl border-2 bg-[var(--term-bg)] px-md py-2.5 shadow-[0_2px_0_var(--term-border)]',
+        t.border,
       )}
     >
-      <ToneIconBox tone={tone} size="sm">
-        <Icon className="h-[18px] w-[18px]" />
+      <ToneIconBox tone={callback.tone} size="sm" className="h-8 w-8">
+        <Icon className="h-4 w-4" />
       </ToneIconBox>
-      <div className="flex min-w-0 flex-col gap-1">
-        <span className="flex flex-wrap items-center gap-2">
-          <span className={cx('font-mono text-sm font-bold tracking-tight break-all', t.text)}>
-            {card.name}
-          </span>
-          <span
-            className={cx(
-              'inline-flex items-center gap-1 rounded-full border px-2 py-0.5',
-              'text-[10px] font-mono font-bold uppercase tracking-wider',
-              t.chip,
-            )}
-          >
-            <span className={cx('block h-1.5 w-1.5 rounded-full', t.dot)} />
-            {card.badge}
-          </span>
-        </span>
-        <span className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
-          {card.summary}
-        </span>
+      <div className="flex min-w-0 flex-col gap-0.5">
+        <code className={cx('font-mono text-[11px] font-bold break-all', t.text)}>
+          {callback.name}
+        </code>
+        <span className="text-[10px] text-[var(--term-muted)] break-keep">{callback.when}</span>
       </div>
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

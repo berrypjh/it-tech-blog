@@ -1,134 +1,90 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { Domain } from './tone';
+import type { ToneKey } from '../../shared/tones';
 
-export type FlowStep = { label: string; highlight?: boolean };
+export type StageId = 'html' | 'hydrate' | 'match' | 'attach';
 
-export type HydrationStateCard = {
-  name: string;
-  summary: string;
-  mini: { title: string; lines: string[] };
-  description: string;
-  domain: Domain;
-};
-
-export type MatchOption = {
-  key: 'root' | 'button' | 'next';
+export type Stage = {
+  id: StageId;
   label: string;
+  caption: string;
+  tone: ToneKey;
 };
 
-export type MatchResult = {
-  step: string;
-  description: string;
-  highlight: 'root' | 'button' | 'next';
-};
+export type SideId = 'create' | 'hydrate';
 
-export type ChecklistItem = { title: string; description: string };
-
-export type TakeawayCard = {
-  number: string;
+export type Side = {
+  id: SideId;
   title: string;
-  body: string;
-  tone: 'blue' | 'teal' | 'violet';
+  badge: string;
+  description: string;
+  bullets: string[];
+  tone: ToneKey;
+};
+
+export type StartStepId = 'call' | 'flag' | 'begin' | 'claim' | 'commit';
+
+export type StartStep = {
+  id: StartStepId;
+  num: string;
+  title: string;
+  description: string;
+  tone: ToneKey;
+};
+
+export type StateRow = {
+  name: string;
+  meaning: string;
+  effect: string;
 };
 
 export type HydrationStartContent = {
   hero: {
     badge: string;
-    titleLines: [string, string];
+    title: { line1: string; line2: string };
     description: string;
-    serverHtml: {
-      title: string;
-      fileLabel: string;
-      content: string;
-    };
-    matchLabel: string;
-    fiberTree: {
-      title: string;
-      lines: { label: string; kind: 'root' | 'component' }[];
-    };
-  };
-  question: {
-    number: string;
-    title: string;
-    question: string;
+    diagramBadge: string;
+    diagramCaption: string;
+    stages: Stage[];
   };
   compare: {
-    number: string;
+    badge: string;
+    eyebrow: string;
     title: string;
-    createRoot: {
-      name: string;
-      lead: string;
-      domLabel: string;
-      domCode: string;
-      domState: string;
-    };
-    hydrateRoot: {
-      name: string;
-      lead: string;
-      domLabel: string;
-      domCode: string;
-      domState: string;
-    };
+    description: string;
+    sides: [Side, Side];
+    bridge: { headline: string; sub: string };
   };
-  serverHtml: {
-    number: string;
+  steps: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    codeLabel: string;
-    code: string;
-    bullets: string[];
-  };
-  hydrateCall: {
-    number: string;
-    title: string;
-    code: { fileLabel: string; content: string };
-    statusTitle: string;
-    statusBody: string;
-    statusPill: string;
-  };
-  enterFlow: {
-    number: string;
-    title: string;
-    steps: FlowStep[];
+    description: string;
+    items: StartStep[];
+    note: string;
   };
   states: {
-    number: string;
+    badge: string;
+    eyebrow: string;
     title: string;
-    cards: HydrationStateCard[];
+    description: string;
+    headers: [string, string, string];
+    rows: StateRow[];
+    note: string;
   };
-  code: {
-    number: string;
+  checkpoint: {
+    badge: string;
+    eyebrow: string;
     title: string;
     fileLabel: string;
-    content: string;
-    sideTitle: string;
-    sideBody: string;
-    bullets: string[];
-    button: { label: string; href: string };
-  };
-  matcher: {
-    number: string;
-    title: string;
-    domTitle: string;
-    domTree: string[];
-    fiberTitle: string;
-    fiberTree: string[];
-    matchLabel: string;
-    checklist: string[];
-    options: MatchOption[];
-    results: Record<MatchOption['key'], MatchResult>;
-    stepLabel: string;
-    descriptionLabel: string;
-  };
-  followAlong: {
-    number: string;
-    title: string;
-    items: ChecklistItem[];
-  };
-  takeaways: {
-    number: string;
-    title: string;
-    cards: TakeawayCard[];
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -139,429 +95,415 @@ export type HydrationStartContent = {
   };
 };
 
-const HERO_HTML = `<div id="root">
-  <button>저장</button>
-</div>`;
+const HYDRATION_CONTEXT_CODE = `// hydration은 모듈 변수 세 개로 상태를 들고 간다
+let hydrationParentFiber: null | Fiber = null;
+let nextHydratableInstance: null | HydratableInstance = null;
+let isHydrating: boolean = false;
 
-const HYDRATE_CALL_CODE = `hydrateRoot(
-  document.getElementById("root"),
-  <App />,
-);`;
-
-const ENTER_HYDRATION_CODE = `function enterHydrationState(fiber) {
+function enterHydrationState(fiber: Fiber): boolean {
   const parentInstance = fiber.stateNode.containerInfo;
 
-  nextHydratableInstance =
-    getFirstHydratableChildWithinContainer(parentInstance);
-
+  // 컨테이너의 첫 자식부터 대조를 시작한다
+  nextHydratableInstance = getFirstHydratableChildWithinContainer(parentInstance);
   hydrationParentFiber = fiber;
   isHydrating = true;
-  hydrationErrors = null;
+  return true;
+}
+
+function tryToClaimNextHydratableInstance(fiber: Fiber): void {
+  if (!isHydrating) {
+    return;
+  }
+
+  const nextInstance = nextHydratableInstance;
+  if (!nextInstance) {
+    // 붙일 DOM이 없다: 이 자리부터는 클라이언트가 새로 만든다
+    throwOnHydrationMismatch(fiber);
+    return;
+  }
+
+  // 이 Fiber가 이 DOM 노드를 자기 것으로 가져간다
+  fiber.stateNode = nextInstance;
+  hydrationParentFiber = fiber;
+  nextHydratableInstance = getFirstHydratableChild(nextInstance);
 }`;
 
-const BROWSER_DOM = `<div id="root">
-  <button>저장</button>
-  <h1>안녕하세요</h1>
-  #text: "환영합니다."
-</div>`;
-
-const THROW_URL =
+const HYDRATION_CONTEXT_HREF =
   'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHydrationContext.js';
 
 const ko: HydrationStartContent = {
   hero: {
     badge: 'Suspense/Error · 7/10단계',
-    titleLines: ['Hydration은 DOM을 새로 만드는', '렌더링이 아니다'],
-    description: '이미 있는 서버 HTML을 React Fiber 트리와 연결해가는 과정입니다.',
-    serverHtml: {
-      title: '서버 HTML (브라우저에 이미 존재)',
-      fileLabel: 'index.html',
-      content: HERO_HTML,
-    },
-    matchLabel: 'match / hydrate',
-    fiberTree: {
-      title: 'React Fiber 트리',
-      lines: [
-        { label: 'HostRoot', kind: 'root' },
-        { label: 'HostComponent(button)', kind: 'component' },
-      ],
-    },
-  },
-  question: {
-    number: '1',
-    title: '오늘 해결할 질문',
-    question: '서버가 이미 만든 HTML을 React는 클라이언트에서 어떻게 다시 인수할까?',
-  },
-  compare: {
-    number: '2',
-    title: 'createRoot vs hydrateRoot',
-    createRoot: {
-      name: 'createRoot',
-      lead: '비어 있는 container에서 렌더 시작',
-      domLabel: 'DOM 상태',
-      domCode: '<div id="root"></div>',
-      domState: '(비어 있음)',
-    },
-    hydrateRoot: {
-      name: 'hydrateRoot',
-      lead: '서버 HTML이 이미 있는 container를 연결',
-      domLabel: 'DOM 상태',
-      domCode: HERO_HTML,
-      domState: '(서버 HTML 존재)',
-    },
-  },
-  serverHtml: {
-    number: '3',
-    title: '서버 HTML이 이미 존재하는 상태',
-    codeLabel: '브라우저 DOM',
-    code: BROWSER_DOM,
-    bullets: ['서버 렌더 결과가 브라우저 DOM에 이미 들어와 있다.', 'React는 이 DOM을 재사용한다.'],
-  },
-  hydrateCall: {
-    number: '4',
-    title: 'hydrateRoot 호출',
-    code: { fileLabel: 'main.tsx', content: HYDRATE_CALL_CODE },
-    statusTitle: '연결 시작 (Hydrating...)',
-    statusBody: '서버 DOM과 Fiber를 연결하는 중...',
-    statusPill: 'isHydrating = true',
-  },
-  enterFlow: {
-    number: '5',
-    title: 'enterHydrationState 흐름',
-    steps: [
-      { label: 'hydrateRoot' },
-      { label: 'root 생성' },
-      { label: 'enterHydrationState', highlight: true },
-      { label: '첫 hydratable DOM 찾기' },
-      { label: 'Fiber 매칭 시작' },
+    title: { line1: 'hydration은 화면을 다시 그리지 않는다', line2: '있는 DOM에 Fiber를 붙인다' },
+    description:
+      '서버가 만든 HTML은 이미 화면에 있습니다. 클라이언트가 할 일은 그 DOM 노드 하나하나를 Fiber와 짝지어 주는 것입니다.',
+    diagramBadge: 'hydration',
+    diagramCaption: 'match, do not create',
+    stages: [
+      {
+        id: 'html',
+        label: '서버 HTML',
+        caption: '이미 브라우저에 그려진 상태',
+        tone: 'sky',
+      },
+      {
+        id: 'hydrate',
+        label: 'hydrateRoot',
+        caption: 'isHydrating을 켜고 시작',
+        tone: 'cyan',
+      },
+      {
+        id: 'match',
+        label: 'DOM ↔ Fiber 대조',
+        caption: '트리를 내려가며 하나씩 짝짓기',
+        tone: 'indigo',
+      },
+      {
+        id: 'attach',
+        label: 'stateNode 연결',
+        caption: '이벤트와 상태가 붙어 살아난다',
+        tone: 'emerald',
+      },
     ],
   },
-  states: {
-    number: '6',
-    title: '주요 hydration state',
-    cards: [
+  compare: {
+    badge: '01',
+    eyebrow: 'two roots',
+    title: 'createRoot와 무엇이 다른가',
+    description:
+      '두 함수 모두 Fiber 트리를 만듭니다. 다른 것은 DOM을 만들 것인가, 이미 있는 것을 가져갈 것인가입니다.',
+    sides: [
       {
-        name: 'nextHydratableInstance',
-        summary: '다음에 매칭할 서버 DOM',
-        mini: { title: 'DOM', lines: ['root', '└─ button', '└─ ...'] },
-        description: '다음으로 매칭할 DOM 노드를 가리킨다.',
-        domain: 'dom',
+        id: 'create',
+        title: 'createRoot',
+        badge: 'DOM을 만든다',
+        description: '빈 컨테이너에 처음부터 DOM을 생성해 넣습니다.',
+        bullets: [
+          'completeWork에서 document.createElement를 부른다',
+          '컨테이너 안의 기존 내용은 무시된다',
+          '첫 페인트까지 자바스크립트를 기다려야 한다',
+          '불일치라는 개념 자체가 없다',
+        ],
+        tone: 'sky',
+      },
+      {
+        id: 'hydrate',
+        title: 'hydrateRoot',
+        badge: 'DOM을 가져간다',
+        description: '이미 있는 노드를 찾아 Fiber의 stateNode로 연결합니다.',
+        bullets: [
+          'createElement 대신 기존 노드를 claim한다',
+          '서버 HTML과 다르면 mismatch가 발생한다',
+          '내용은 이미 보이므로 첫 페인트가 빠르다',
+          '연결 전까지는 클릭해도 반응하지 않는다',
+        ],
+        tone: 'cyan',
+      },
+    ],
+    bridge: {
+      headline: '만들 것인가\n가져갈 것인가',
+      sub: '이 한 가지 차이가 mismatch라는 개념과 그 복구 경로를 통째로 만들어 냅니다.',
+    },
+  },
+  steps: {
+    badge: '02',
+    eyebrow: 'how it starts',
+    title: 'hydration이 켜지는 다섯 칸',
+    description:
+      'hydration은 별도 알고리즘이 아니라 평소 렌더에 스위치 하나가 더 붙은 것입니다. 그 스위치가 isHydrating입니다.',
+    items: [
+      {
+        id: 'call',
+        num: '01',
+        title: 'hydrateRoot 호출',
+        description: '컨테이너와 엘리먼트를 받아 root를 만들되 hydrate 플래그를 세웁니다.',
+        tone: 'sky',
+      },
+      {
+        id: 'flag',
+        num: '02',
+        title: 'root.hydrate = true',
+        description: 'FiberRoot에 표시가 남아 이후 렌더가 hydration 모드로 돕니다.',
+        tone: 'cyan',
+      },
+      {
+        id: 'begin',
+        num: '03',
+        title: 'enterHydrationState',
+        description: 'HostRoot의 beginWork에서 isHydrating을 켜고 첫 자식 노드를 잡습니다.',
+        tone: 'indigo',
+      },
+      {
+        id: 'claim',
+        num: '04',
+        title: 'Fiber마다 노드 claim',
+        description:
+          'HostComponent를 만날 때마다 nextHydratableInstance를 자기 stateNode로 가져갑니다.',
+        tone: 'violet',
+      },
+      {
+        id: 'commit',
+        num: '05',
+        title: '커밋에서 이벤트 연결',
+        description: 'DOM은 그대로 두고 props와 이벤트만 붙여 인터랙티브해집니다.',
+        tone: 'emerald',
+      },
+    ],
+    note: '04에서 가져갈 노드가 없거나 타입이 다르면 그 자리에서 mismatch가 됩니다. 다음 페이지의 주제입니다.',
+  },
+  states: {
+    badge: '03',
+    eyebrow: 'module state',
+    title: 'hydration이 들고 다니는 세 변수',
+    description:
+      '어디까지 짝을 맞췄는지는 인자가 아니라 모듈 변수에 남습니다. 디버깅할 때 이 셋을 보면 진행 상황이 보입니다.',
+    headers: ['변수', '무엇을 담나', '언제 바뀌나'],
+    rows: [
+      {
+        name: 'isHydrating',
+        meaning: '지금 hydration 모드인지',
+        effect: 'enterHydrationState에서 켜지고, mismatch나 완료 시 꺼집니다.',
       },
       {
         name: 'hydrationParentFiber',
-        summary: '현재 hydration 상위 Fiber',
-        mini: {
-          title: 'Fiber',
-          lines: ['HostRoot', '└─ HostComponent(button)'],
-        },
-        description: '현재 매칭을 진행 중인 상위 Fiber를 가리킨다.',
-        domain: 'fiber',
+        meaning: '지금 대조 중인 부모 Fiber',
+        effect: '자식으로 내려갈 때마다 갱신되며, 형제 탐색의 기준이 됩니다.',
       },
       {
-        name: 'isHydrating',
-        summary: 'hydration 진행 중 여부',
-        mini: { title: '값', lines: ['true', '(hydrating...)'] },
-        description: 'hydration이 진행 중인지 나타내는 플래그이다.',
-        domain: 'hydrating',
+        name: 'nextHydratableInstance',
+        meaning: '다음에 가져갈 DOM 노드',
+        effect: 'claim에 성공할 때마다 그 노드의 첫 자식이나 형제로 옮겨 갑니다.',
       },
     ],
+    note: 'isHydrating이 한 번 꺼지면 그 서브트리는 끝까지 클라이언트 렌더로 갑니다. 되돌아오지 않습니다.',
   },
-  code: {
-    number: '7',
-    title: '실제 코드 미리보기',
-    fileLabel: 'ReactFiberHydrationContext.js',
-    content: ENTER_HYDRATION_CODE,
-    sideTitle: 'GitHub에서 소스 보기',
-    sideBody: 'React 저장소에서 실제 구현을 확인하세요.',
-    bullets: [
-      'parentInstance는 root container DOM입니다.',
-      'nextHydratableInstance는 첫 hydratable child를 가리킵니다.',
-      'hydrationParentFiber는 현재 기준 Fiber입니다.',
-      'isHydrating을 true로 바꿔 hydration 모드로 진입합니다.',
-    ],
-    button: { label: 'GitHub에서 보기', href: THROW_URL },
-  },
-  matcher: {
-    number: '8',
-    title: 'DOM-Fiber 매칭 인터랙션',
-    domTitle: 'DOM (브라우저)',
-    domTree: ['root', '└─ button', '└─ ...'],
-    fiberTitle: 'Fiber (React 내부)',
-    fiberTree: ['HostRoot', '└─ HostComponent(button)', '└─ ...'],
-    matchLabel: 'match / hydrate',
-    checklist: ['노드 타입 일치', '순서 검증', '속성 비교 (나중 단계)'],
-    options: [
-      { key: 'root', label: '1. root 매칭' },
-      { key: 'button', label: '2. button 매칭' },
-      { key: 'next', label: '3. 다음 노드 대기' },
-    ],
-    results: {
-      root: {
-        step: 'root container 확인',
-        description:
-          'React는 root container 안에서 첫 hydratable DOM을 찾고, HostRoot Fiber를 hydrationParentFiber로 설정합니다.',
-        highlight: 'root',
-      },
-      button: {
-        step: 'button 노드 매칭',
-        description:
-          '다음 DOM 노드와 HostComponent(button) Fiber를 비교해 같은 타입의 노드인지 확인합니다.',
-        highlight: 'button',
-      },
-      next: {
-        step: '다음 hydratable DOM 대기',
-        description: '현재 노드가 매칭되면 nextHydratableInstance를 다음 DOM 후보로 이동합니다.',
-        highlight: 'next',
-      },
-    },
-    stepLabel: '현재 단계',
-    descriptionLabel: '설명',
-  },
-  followAlong: {
-    number: '9',
-    title: '직접 코드에서 따라가 보기',
-    items: [
-      { title: 'hydrateRoot 공식 문서 확인', description: 'docs/react.dev' },
-      {
-        title: 'ReactFiberHydrationContext.js 열기',
-        description: 'packages/react-reconciler/src',
-      },
-      { title: 'enterHydrationState 찾기', description: '함수 위치 확인' },
-      {
-        title: 'hydration이 DOM 재사용이라는 점 정리',
-        description: '핵심 개념 정리',
-      },
-    ],
-  },
-  takeaways: {
-    number: '10',
-    title: '핵심 정리',
-    cards: [
-      {
-        number: '1',
-        title: 'Hydration은 이미 존재하는 서버 HTML을 연결하는 과정이다.',
-        body: '새로 DOM을 만드는 렌더링이 아닙니다.',
-        tone: 'blue',
-      },
-      {
-        number: '2',
-        title: 'enterHydrationState가 hydration 진행 상태를 초기화한다.',
-        body: 'nextHydratableInstance · hydrationParentFiber · isHydrating을 세팅합니다.',
-        tone: 'teal',
-      },
-      {
-        number: '3',
-        title: '이후 React는 DOM과 Fiber를 순차적으로 매칭한다.',
-        body: '같은 타입과 순서를 확인하며 같은 트리로 연결합니다.',
-        tone: 'violet',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberHydrationContext.js',
+    lookForLabel: '볼 것',
+    lookFor: 'isHydrating, enterHydrationState, tryToClaimNextHydratableInstance',
+    whyLabel: '설명',
+    why: 'claim에 실패하면 곧바로 throwOnHydrationMismatch로 빠진다는 점이, 불일치가 예외 경로임을 보여 줍니다.',
+    code: HYDRATION_CONTEXT_CODE,
+    primaryCta: 'ReactFiberHydrationContext.js 읽기',
+    primaryHref: HYDRATION_CONTEXT_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'Hydration Mismatch는 어떻게 감지되고 복구되는가?',
-    description: 'Hydration 과정에서 문제가 발생했을 때의 감지와 복구 로직을 알아봅니다.',
+    title: '짝이 맞지 않으면 어떻게 되나',
+    description:
+      'claim에 실패하는 순간부터가 mismatch입니다. 감지와 복구가 어떻게 이어지는지 봅니다.',
     cta: '다음 페이지로 이동',
     href: '/mismatch-detect-recover',
   },
 };
 
+const HYDRATION_CONTEXT_CODE_EN = `// hydration carries its state in three module variables
+let hydrationParentFiber: null | Fiber = null;
+let nextHydratableInstance: null | HydratableInstance = null;
+let isHydrating: boolean = false;
+
+function enterHydrationState(fiber: Fiber): boolean {
+  const parentInstance = fiber.stateNode.containerInfo;
+
+  // start matching from the container first child
+  nextHydratableInstance = getFirstHydratableChildWithinContainer(parentInstance);
+  hydrationParentFiber = fiber;
+  isHydrating = true;
+  return true;
+}
+
+function tryToClaimNextHydratableInstance(fiber: Fiber): void {
+  if (!isHydrating) {
+    return;
+  }
+
+  const nextInstance = nextHydratableInstance;
+  if (!nextInstance) {
+    // nothing to attach to: the client builds from here on
+    throwOnHydrationMismatch(fiber);
+    return;
+  }
+
+  // this Fiber takes ownership of this DOM node
+  fiber.stateNode = nextInstance;
+  hydrationParentFiber = fiber;
+  nextHydratableInstance = getFirstHydratableChild(nextInstance);
+}`;
+
 const en: HydrationStartContent = {
   hero: {
-    badge: 'Suspense·Error · 7/10',
-    titleLines: ['Hydration is not a render', 'that creates new DOM'],
-    description: 'It connects existing server HTML with the React Fiber tree.',
-    serverHtml: {
-      title: 'Server HTML (already in the browser)',
-      fileLabel: 'index.html',
-      content: HERO_HTML,
+    badge: 'Suspense/Error · 7/10',
+    title: {
+      line1: 'Hydration does not redraw the screen',
+      line2: 'it attaches Fibers to existing DOM',
     },
-    matchLabel: 'match / hydrate',
-    fiberTree: {
-      title: 'React Fiber tree',
-      lines: [
-        { label: 'HostRoot', kind: 'root' },
-        { label: 'HostComponent(button)', kind: 'component' },
-      ],
-    },
-  },
-  question: {
-    number: '1',
-    title: "Today's question",
-    question:
-      'How does React take over the HTML that the server has already produced, on the client?',
-  },
-  compare: {
-    number: '2',
-    title: 'createRoot vs hydrateRoot',
-    createRoot: {
-      name: 'createRoot',
-      lead: 'Start rendering into an empty container',
-      domLabel: 'DOM state',
-      domCode: '<div id="root"></div>',
-      domState: '(empty)',
-    },
-    hydrateRoot: {
-      name: 'hydrateRoot',
-      lead: 'Connect a container that already has server HTML',
-      domLabel: 'DOM state',
-      domCode: HERO_HTML,
-      domState: '(server HTML present)',
-    },
-  },
-  serverHtml: {
-    number: '3',
-    title: 'Server HTML is already there',
-    codeLabel: 'Browser DOM',
-    code: BROWSER_DOM,
-    bullets: ['The server render is already in the browser DOM.', 'React reuses that DOM.'],
-  },
-  hydrateCall: {
-    number: '4',
-    title: 'Calling hydrateRoot',
-    code: { fileLabel: 'main.tsx', content: HYDRATE_CALL_CODE },
-    statusTitle: 'Connecting (Hydrating...)',
-    statusBody: 'Linking server DOM and Fiber together...',
-    statusPill: 'isHydrating = true',
-  },
-  enterFlow: {
-    number: '5',
-    title: 'enterHydrationState flow',
-    steps: [
-      { label: 'hydrateRoot' },
-      { label: 'root created' },
-      { label: 'enterHydrationState', highlight: true },
-      { label: 'find first hydratable DOM' },
-      { label: 'start Fiber matching' },
+    description:
+      'The HTML the server produced is already on screen. The client job is to pair each of those DOM nodes with a Fiber.',
+    diagramBadge: 'hydration',
+    diagramCaption: 'match, do not create',
+    stages: [
+      {
+        id: 'html',
+        label: 'Server HTML',
+        caption: 'already painted in the browser',
+        tone: 'sky',
+      },
+      {
+        id: 'hydrate',
+        label: 'hydrateRoot',
+        caption: 'turns isHydrating on and begins',
+        tone: 'cyan',
+      },
+      {
+        id: 'match',
+        label: 'Match DOM to Fiber',
+        caption: 'walk down the tree pairing one by one',
+        tone: 'indigo',
+      },
+      {
+        id: 'attach',
+        label: 'Assign stateNode',
+        caption: 'events and state attach and it comes alive',
+        tone: 'emerald',
+      },
     ],
   },
-  states: {
-    number: '6',
-    title: 'Key hydration state',
-    cards: [
+  compare: {
+    badge: '01',
+    eyebrow: 'two roots',
+    title: 'How it differs from createRoot',
+    description:
+      'Both build a Fiber tree. The difference is whether DOM gets created or claimed from what already exists.',
+    sides: [
       {
-        name: 'nextHydratableInstance',
-        summary: 'Next server DOM to match',
-        mini: { title: 'DOM', lines: ['root', '└─ button', '└─ ...'] },
-        description: 'Points to the next DOM node to match.',
-        domain: 'dom',
+        id: 'create',
+        title: 'createRoot',
+        badge: 'creates DOM',
+        description: 'Builds DOM from scratch into an empty container.',
+        bullets: [
+          'completeWork calls document.createElement',
+          'Existing content inside the container is ignored',
+          'The first paint waits for JavaScript',
+          'The concept of a mismatch does not exist',
+        ],
+        tone: 'sky',
+      },
+      {
+        id: 'hydrate',
+        title: 'hydrateRoot',
+        badge: 'claims DOM',
+        description: 'Finds existing nodes and links them as the Fiber stateNode.',
+        bullets: [
+          'Claims an existing node instead of calling createElement',
+          'Differing from the server HTML produces a mismatch',
+          'The content is already visible, so first paint is fast',
+          'Clicks do nothing until the wiring completes',
+        ],
+        tone: 'cyan',
+      },
+    ],
+    bridge: {
+      headline: 'Create it\nor claim it',
+      sub: 'That single difference is what creates the whole notion of a mismatch and its recovery path.',
+    },
+  },
+  steps: {
+    badge: '02',
+    eyebrow: 'how it starts',
+    title: 'Five stops to switch hydration on',
+    description:
+      'Hydration is not a separate algorithm but the ordinary render with one extra switch: isHydrating.',
+    items: [
+      {
+        id: 'call',
+        num: '01',
+        title: 'hydrateRoot is called',
+        description:
+          'It takes a container and an element and builds a root with the hydrate flag set.',
+        tone: 'sky',
+      },
+      {
+        id: 'flag',
+        num: '02',
+        title: 'root.hydrate = true',
+        description: 'The FiberRoot carries the mark so later renders run in hydration mode.',
+        tone: 'cyan',
+      },
+      {
+        id: 'begin',
+        num: '03',
+        title: 'enterHydrationState',
+        description:
+          'In the HostRoot beginWork, isHydrating turns on and the first child node is taken.',
+        tone: 'indigo',
+      },
+      {
+        id: 'claim',
+        num: '04',
+        title: 'Each Fiber claims a node',
+        description: 'Every HostComponent takes nextHydratableInstance as its own stateNode.',
+        tone: 'violet',
+      },
+      {
+        id: 'commit',
+        num: '05',
+        title: 'Attach events at commit',
+        description:
+          'The DOM is left alone while props and events attach and it becomes interactive.',
+        tone: 'emerald',
+      },
+    ],
+    note: 'When step 04 finds no node, or a node of the wrong type, that spot becomes a mismatch — the next page subject.',
+  },
+  states: {
+    badge: '03',
+    eyebrow: 'module state',
+    title: 'The three variables hydration carries',
+    description:
+      'How far matching has progressed lives in module variables rather than arguments. Inspect these three to see the progress.',
+    headers: ['Variable', 'What it holds', 'When it changes'],
+    rows: [
+      {
+        name: 'isHydrating',
+        meaning: 'Whether hydration mode is active',
+        effect: 'Turned on in enterHydrationState, turned off on a mismatch or on completion.',
       },
       {
         name: 'hydrationParentFiber',
-        summary: 'Current hydration parent Fiber',
-        mini: {
-          title: 'Fiber',
-          lines: ['HostRoot', '└─ HostComponent(button)'],
-        },
-        description: 'Points to the parent Fiber that the matching is happening on.',
-        domain: 'fiber',
+        meaning: 'The parent Fiber currently matching',
+        effect: 'Updated on every descent into children and used as the base for sibling search.',
       },
       {
-        name: 'isHydrating',
-        summary: 'Whether hydration is in progress',
-        mini: { title: 'Value', lines: ['true', '(hydrating...)'] },
-        description: 'A flag that indicates hydration is in progress.',
-        domain: 'hydrating',
+        name: 'nextHydratableInstance',
+        meaning: 'The next DOM node to claim',
+        effect: 'Moves to that node first child or sibling after every successful claim.',
       },
     ],
+    note: 'Once isHydrating turns off, that subtree stays on client rendering to the end. It never switches back.',
   },
-  code: {
-    number: '7',
-    title: 'Source code preview',
-    fileLabel: 'ReactFiberHydrationContext.js',
-    content: ENTER_HYDRATION_CODE,
-    sideTitle: 'View source on GitHub',
-    sideBody: 'Check the actual implementation in the React repo.',
-    bullets: [
-      'parentInstance is the root container DOM.',
-      'nextHydratableInstance points to the first hydratable child.',
-      'hydrationParentFiber is the current parent Fiber.',
-      'isHydrating becomes true to enter hydration mode.',
-    ],
-    button: { label: 'View on GitHub', href: THROW_URL },
-  },
-  matcher: {
-    number: '8',
-    title: 'DOM-Fiber matching interaction',
-    domTitle: 'DOM (browser)',
-    domTree: ['root', '└─ button', '└─ ...'],
-    fiberTitle: 'Fiber (React)',
-    fiberTree: ['HostRoot', '└─ HostComponent(button)', '└─ ...'],
-    matchLabel: 'match / hydrate',
-    checklist: ['Node type matches', 'Order verified', 'Attributes compared (later)'],
-    options: [
-      { key: 'root', label: '1. Match root' },
-      { key: 'button', label: '2. Match button' },
-      { key: 'next', label: '3. Wait for next node' },
-    ],
-    results: {
-      root: {
-        step: 'Confirm the root container',
-        description:
-          'React finds the first hydratable DOM inside the root container, and sets the HostRoot Fiber as hydrationParentFiber.',
-        highlight: 'root',
-      },
-      button: {
-        step: 'Match the button node',
-        description:
-          'Compare the next DOM node with the HostComponent(button) Fiber to check the node type matches.',
-        highlight: 'button',
-      },
-      next: {
-        step: 'Wait for the next hydratable DOM',
-        description:
-          'Once the current node matches, move nextHydratableInstance to the next DOM candidate.',
-        highlight: 'next',
-      },
-    },
-    stepLabel: 'Current step',
-    descriptionLabel: 'Description',
-  },
-  followAlong: {
-    number: '9',
-    title: 'Walk it yourself',
-    items: [
-      { title: 'Read the hydrateRoot docs', description: 'docs/react.dev' },
-      {
-        title: 'Open ReactFiberHydrationContext.js',
-        description: 'packages/react-reconciler/src',
-      },
-      { title: 'Find enterHydrationState', description: 'Locate the function' },
-      {
-        title: 'Internalize: hydration is DOM reuse',
-        description: 'Lock in the core idea',
-      },
-    ],
-  },
-  takeaways: {
-    number: '10',
-    title: 'Key recap',
-    cards: [
-      {
-        number: '1',
-        title: 'Hydration is connecting existing server HTML.',
-        body: 'It is not a render that creates new DOM.',
-        tone: 'blue',
-      },
-      {
-        number: '2',
-        title: 'enterHydrationState initializes the hydration progress.',
-        body: 'It sets nextHydratableInstance · hydrationParentFiber · isHydrating.',
-        tone: 'teal',
-      },
-      {
-        number: '3',
-        title: 'React then matches DOM and Fiber in order.',
-        body: 'Same type and order are verified to link the same tree.',
-        tone: 'violet',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberHydrationContext.js',
+    lookForLabel: 'Look for',
+    lookFor: 'isHydrating, enterHydrationState, tryToClaimNextHydratableInstance',
+    whyLabel: 'Why',
+    why: 'A failed claim dropping straight into throwOnHydrationMismatch shows that mismatch is an exception path.',
+    code: HYDRATION_CONTEXT_CODE_EN,
+    primaryCta: 'Read ReactFiberHydrationContext.js',
+    primaryHref: HYDRATION_CONTEXT_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'How are Hydration Mismatches detected and recovered?',
+    title: 'What happens when the pairing fails',
     description:
-      'Learn the detection and recovery logic when something goes wrong during hydration.',
+      'A failed claim is exactly where a mismatch begins. Next: how detection leads into recovery.',
     cta: 'Go to the next page',
     href: '/mismatch-detect-recover',
   },

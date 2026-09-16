@@ -1,99 +1,87 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type Tone = 'sky' | 'cyan' | 'teal' | 'emerald' | 'violet' | 'blue' | 'amber' | 'rose';
+import type { ToneKey } from '../../shared/tones';
 
-export type FlowStep = { title: string; description: string; tone: Tone };
+export type StageId = 'record' | 'prioritize' | 'schedule';
 
-export type ConceptCard = { title: string; description: string; tone: Tone };
+export type Stage = {
+  id: StageId;
+  label: string;
+  caption: string;
+  tone: ToneKey;
+};
 
-export type ScenarioCard = {
+export type SituationRow = {
+  situation: string;
+  example: string;
+  handling: string;
+  goal: string;
+};
+
+export type FlowStepId =
+  | 'interaction'
+  | 'set-state'
+  | 'request-lane'
+  | 'schedule'
+  | 'ensure-root'
+  | 'render';
+
+export type FlowStep = {
+  id: FlowStepId;
+  num: string;
   title: string;
   description: string;
-  mockup: 'search-input' | 'skeleton-list' | 'offscreen-placeholder';
-  note: string;
-  tone: Tone;
+  tone: ToneKey;
 };
-
-export type ComparisonRow = {
-  situation: string;
-  urgency: string;
-  example: string[];
-  processing: string[];
-  goal: string[];
-  mockup: 'search-input' | 'skeleton-list' | 'offscreen-placeholder';
-  tone: Tone;
-};
-
-export type MissionCard = { title: string; description: string; tone: Tone };
-
-export type TakeawayCard = { title: string; body: string; tone: Tone };
 
 export type WhyNotImmediateContent = {
   hero: {
     badge: string;
-    titleLines: [string, string];
-    subtitle: string;
-    codeCard: { fileLabel: string; code: string };
-    diagram: { title: string; steps: FlowStep[] };
-  };
-  question: {
-    eyebrow: string;
-    title: string;
-    question: string;
-    badges: ConceptCard[];
+    title: { line1: string; line2: string };
+    description: string;
+    diagramBadge: string;
+    diagramCaption: string;
+    stages: Stage[];
   };
   intuition: {
-    eyebrow: string;
-    title: string;
-    wrong: {
-      label: string;
-      title: string;
-      flow: string[];
-      warning: string;
-    };
-    real: {
-      label: string;
-      title: string;
-      flow: string[];
-      success: string;
-    };
-  };
-  scenarios: {
-    eyebrow: string;
-    title: string;
-    cases: ScenarioCard[];
-  };
-  flow: {
-    eyebrow: string;
-    title: string;
-    steps: FlowStep[];
-  };
-  comparison: {
-    eyebrow: string;
-    title: string;
-    headers: { situation: string; example: string; processing: string; goal: string };
-    rows: ComparisonRow[];
-  };
-  code: {
-    eyebrow: string;
-    title: string;
-    code: string;
-    fileLabel: string;
-    explanationLabel: string;
-    explanation: string[];
-    apiBadges: string[];
-    button: { label: string; href: string };
-  };
-  mission: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
-    items: MissionCard[];
+    wrong: { label: string; caption: string; steps: string[] };
+    real: { label: string; caption: string; steps: string[] };
+    note: string;
   };
-  takeaways: {
+  situations: {
+    badge: string;
     eyebrow: string;
     title: string;
-    cards: TakeawayCard[];
+    description: string;
+    headers: [string, string, string, string];
+    rows: SituationRow[];
+    note: string;
+  };
+  flow: {
+    badge: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    steps: FlowStep[];
+    note: string;
+  };
+  checkpoint: {
+    badge: string;
+    eyebrow: string;
+    title: string;
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -104,255 +92,178 @@ export type WhyNotImmediateContent = {
   };
 };
 
-const HERO_CODE = `function SearchBox() {
-  const [query, setQuery] = useState("");
+const SCHEDULE_CODE = `export function scheduleUpdateOnFiber(root, fiber, lane) {
+  // 1. root에 "이 lane에 할 일이 있다"고 표시한다
+  markRootUpdated(root, lane);
 
-  function onChange(e) {
-    const nextQuery = e.target.value;
-    setQuery(nextQuery);
+  if (
+    (executionContext & RenderContext) !== NoContext &&
+    root === workInProgressRoot
+  ) {
+    // 렌더 중에 들어온 업데이트는 따로 처리한다
+    warnAboutRenderPhaseUpdatesInDEV(fiber);
+  } else {
+    // 2. 지금 당장 렌더하지 않고, 이 root에 작업을 예약만 한다
+    ensureRootIsScheduled(root);
   }
-
-  // ...
 }`;
 
-const HERO_CODE_EN = HERO_CODE;
-
-const FLOW_CODE = `// setState / dispatch 내부에서 호출되는 흐름의 핵심
-
-const lane = requestUpdateLane(fiber);
-
-scheduleUpdateOnFiber(root, fiber, lane);`;
-
-const FLOW_CODE_EN = `// Core of what setState / dispatch invokes internally
-
-const lane = requestUpdateLane(fiber);
-
-scheduleUpdateOnFiber(root, fiber, lane);`;
-
-const REACT_FIBER_WORK_LOOP_URL =
+const REACT_FIBER_WORK_LOOP_HREF =
   'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.js';
 
 const ko: WhyNotImmediateContent = {
   hero: {
     badge: 'Scheduler · 1/10단계',
-    titleLines: ['React는 왜', '업데이트를 바로 실행하지 않을까?'],
-    subtitle: '상태가 바뀌었다고 React가 즉시 전체 렌더링을 밀어붙이지는 않습니다.',
-    codeCard: { fileLabel: 'SearchBox.jsx', code: HERO_CODE },
-    diagram: {
-      title: 'React가 업데이트를 다루는 높은 수준의 흐름',
-      steps: [
-        {
-          title: 'Update 생성',
-          description: '상태 변경 요청이 업데이트 객체로 기록',
-          tone: 'violet',
-        },
-        {
-          title: '우선순위 결정',
-          description: '어떤 긴급도로 처리할지 lane을 통해 분류',
-          tone: 'blue',
-        },
-        {
-          title: '렌더링 시점 조율',
-          description: '스케줄링을 거쳐 적절한 시점에 렌더링',
-          tone: 'teal',
-        },
-      ],
-    },
-  },
-  question: {
-    eyebrow: '오늘 해결할 질문',
-    title: '오늘 해결할 질문',
-    question:
-      '사용자가 클릭하거나 입력했을 때, React는 왜 어떤 업데이트는 먼저 처리하고 어떤 업데이트는 뒤로 미룰까?',
-    badges: [
+    title: { line1: 'setState는 렌더를 시작하지 않는다', line2: '할 일이 있다고 적어 둘 뿐이다' },
+    description:
+      'React는 상태가 바뀔 때마다 즉시 렌더하지 않습니다. 업데이트를 기록하고 우선순위를 매긴 뒤, 언제 실행할지는 따로 정합니다.',
+    diagramBadge: 'why schedule',
+    diagramCaption: 'record → rank → run later',
+    stages: [
       {
-        title: '입력 반응성',
-        description: '사용자 경험을 지키기 위해 빠르게 반영',
-        tone: 'blue',
+        id: 'record',
+        label: 'Update 기록',
+        caption: '무엇을 바꿀지 객체로 남긴다',
+        tone: 'cyan',
       },
       {
-        title: '렌더링 우선순위',
-        description: '작업의 중요도에 따라 순서를 조율',
+        id: 'prioritize',
+        label: 'Lane 부여',
+        caption: '얼마나 급한지 비트로 표시한다',
+        tone: 'amber',
+      },
+      {
+        id: 'schedule',
+        label: '실행 예약',
+        caption: '언제 렌더할지는 스케줄러가 정한다',
         tone: 'violet',
-      },
-      {
-        title: '작업 조율',
-        description: '여러 작업을 동시에 효율적으로 관리',
-        tone: 'teal',
       },
     ],
   },
   intuition: {
-    eyebrow: 'setState에 대한 흔한 직관',
-    title: 'setState에 대한 흔한 직관',
+    badge: '01',
+    eyebrow: 'intuition',
+    title: '직관과 실제 사이의 간격',
+    description:
+      'setState를 부르면 렌더가 시작된다고 생각하기 쉽습니다. 실제로는 두 단계가 더 끼어 있고, 그 사이에 순서가 바뀔 수 있습니다.',
     wrong: {
       label: '흔한 직관',
-      title: '흔한 직관, 실제로는 아님',
-      flow: ['setState 호출', '즉시 렌더링', '바로 DOM 반영'],
-      warning: '모든 업데이트를 즉시 처리하면 사용자 경험이 나빠질 수 있습니다.',
+      caption: '호출과 렌더가 한 줄로 이어져 있다고 가정합니다.',
+      steps: ['setState 호출', '곧바로 렌더링', 'DOM 반영'],
     },
     real: {
       label: '실제 흐름',
-      title: 'React의 실제 흐름',
-      flow: ['setState 호출', '업데이트 기록', '우선순위 분류', '스케줄링', '렌더링', '커밋'],
-      success: '필요한 작업을, 적절한 때에, 가장 효율적으로 처리합니다.',
+      caption: '기록과 실행 사이에 우선순위 판정과 예약이 들어갑니다.',
+      steps: [
+        'setState 호출',
+        'requestUpdateLane이 lane을 고른다',
+        'root에 pending 표시',
+        'ensureRootIsScheduled가 작업을 예약',
+        '스케줄러가 차례가 되면 렌더 시작',
+      ],
     },
+    note: '중간 단계가 있기 때문에 급한 업데이트가 덜 급한 업데이트를 앞지를 수 있습니다. 즉시 실행이면 불가능한 일입니다.',
   },
-  scenarios: {
-    eyebrow: '즉시 렌더링이 항상 좋은가?',
-    title: '즉시 렌더링이 항상 좋은가?',
-    cases: [
-      {
-        title: '검색창 입력',
-        description: '입력 반응은 즉각적이어야 한다.',
-        mockup: 'search-input',
-        note: '키 입력 지연은 사용자가 바로 체감합니다.',
-        tone: 'blue',
-      },
-      {
-        title: '무거운 검색 결과 리스트',
-        description: '조금 늦어져도 입력을 막으면 안 된다.',
-        mockup: 'skeleton-list',
-        note: '큰 리스트 렌더링이 입력을 블로킹하면 안 됩니다.',
-        tone: 'violet',
-      },
-      {
-        title: '화면 밖 또는 중요 낮은 업데이트',
-        description: '가장 늦게 처리되어도 괜찮다.',
-        mockup: 'offscreen-placeholder',
-        note: '당장 보이지 않는 UI는 뒤로 미뤄도 무방합니다.',
-        tone: 'teal',
-      },
-    ],
-  },
-  flow: {
-    eyebrow: 'React의 실제 처리 흐름',
-    title: 'React의 실제 처리 흐름',
-    steps: [
-      { title: '사용자 상호작용', description: '클릭, 입력, 스크롤 등 발생', tone: 'sky' },
-      { title: 'setState / dispatch', description: '업데이트 요청이 발생', tone: 'cyan' },
-      {
-        title: 'requestUpdateLane',
-        description: '업데이트에 맞는 lane 우선순위 선택',
-        tone: 'violet',
-      },
-      {
-        title: 'scheduleUpdateOnFiber',
-        description: '해당 fiber와 root에 업데이트 예약',
-        tone: 'blue',
-      },
-      { title: 'root scheduling', description: '스케줄러가 전체 작업 순서 조율', tone: 'teal' },
-      {
-        title: 'render work 시작',
-        description: '정해진 우선순위에 따라 렌더링 수행',
-        tone: 'emerald',
-      },
-    ],
-  },
-  comparison: {
-    eyebrow: '세 가지 업데이트 상황 비교',
-    title: '세 가지 업데이트 상황 비교',
-    headers: {
-      situation: '상황',
-      example: '예시',
-      processing: 'React가 원하는 처리 방식',
-      goal: '사용자 경험 목표',
-    },
+  situations: {
+    badge: '02',
+    eyebrow: 'why it matters',
+    title: '모두 즉시 처리하면 생기는 일',
+    description:
+      '업데이트마다 사용자가 기다려도 되는 시간이 다릅니다. 같은 급으로 처리하면 급한 것이 안 급한 것에 막힙니다.',
+    headers: ['상황', '예시', 'React가 원하는 처리', '지키려는 것'],
     rows: [
       {
         situation: '텍스트 입력',
-        urgency: '즉각 반응',
-        example: ['검색창에 키 입력', '매 키 입력마다 setState'],
-        processing: ['높은 우선순위', '빠르게 반영'],
-        goal: ['입력 지연 최소화', '즉각적인 피드백'],
-        mockup: 'search-input',
-        tone: 'blue',
+        example: '검색창에 한 글자씩 타이핑',
+        handling: '가장 높은 우선순위로 즉시 반영',
+        goal: '누른 글자가 바로 보이는 것',
       },
       {
-        situation: '큰 UI 전환',
-        urgency: '무거운 렌더링',
-        example: ['검색 결과 리스트 표시', '수천 개 아이템 렌더링'],
-        processing: ['중간 우선순위', '입력보다 뒤로'],
-        goal: ['입력은 막지 않고', '적절한 시점에 반영'],
-        mockup: 'skeleton-list',
-        tone: 'violet',
+        situation: '무거운 목록 렌더',
+        example: '검색 결과 수천 개를 그리기',
+        handling: '중간 우선순위. 입력보다는 뒤로',
+        goal: '목록을 그리느라 입력이 멈추지 않는 것',
       },
       {
-        situation: 'Deferred UI',
-        urgency: '중요도 낮음',
-        example: ['덜 비싼 캐싱 업데이트', '화면 밖 UI 업데이트'],
-        processing: ['낮은 우선순위', '가장 뒤로 미룸'],
-        goal: ['필요할 때 처리해도', '사용성에 영향 없음'],
-        mockup: 'offscreen-placeholder',
-        tone: 'teal',
+        situation: '화면 밖 업데이트',
+        example: '접힌 패널이나 프리페치된 데이터',
+        handling: '가장 낮은 우선순위. 여유가 있을 때',
+        goal: '보이지 않는 작업에 시간을 뺏기지 않는 것',
       },
     ],
+    note: '세 줄 모두 "언제 처리하는가"만 다릅니다. 무엇을 처리하는지는 똑같습니다. 그래서 순서를 정하는 장치가 필요합니다.',
   },
-  code: {
-    eyebrow: '실제 코드 흐름 예고',
-    title: '실제 코드 흐름 예고',
-    code: FLOW_CODE,
-    fileLabel: 'ReactFiberWorkLoop.js',
-    explanationLabel: '설명',
-    explanation: [
-      'requestUpdateLane은 어떤 우선순위, 현재 상황 등을 종합해 lane을 결정합니다.',
-      'scheduleUpdateOnFiber는 해당 lane을 가진 업데이트를 root의 pending lanes에 기록하고, 스케줄러가 작업을 수행하도록 연결합니다.',
-    ],
-    apiBadges: ['requestUpdateLane', 'scheduleUpdateOnFiber'],
-    button: { label: 'GitHub에서 전체 코드 보기', href: REACT_FIBER_WORK_LOOP_URL },
-  },
-  mission: {
-    eyebrow: '직접 코드에서 따라가 보기',
-    title: '직접 코드에서 따라가 보기',
-    description: '실제 React 소스를 열고 아래 흐름을 손으로 확인해 보세요.',
-    items: [
+  flow: {
+    badge: '03',
+    eyebrow: 'real flow',
+    title: '기록에서 렌더까지 여섯 칸',
+    description:
+      '이 챕터의 나머지 아홉 페이지가 이 여섯 칸을 하나씩 확대합니다. 지금은 순서와 이름만 잡아 두면 됩니다.',
+    steps: [
       {
-        title: 'ReactFiberWorkLoop.js를 연다',
-        description: '업데이트가 시작되는 위치를 찾기 위해 방문합니다.',
+        id: 'interaction',
+        num: '01',
+        title: '사용자 상호작용',
+        description: '클릭이나 입력이 이벤트 시스템을 거쳐 들어옵니다.',
         tone: 'sky',
       },
       {
-        title: 'requestUpdateLane을 찾는다',
-        description: '업데이트 우선순위가 결정되는 함수를 확인합니다.',
+        id: 'set-state',
+        num: '02',
+        title: 'setState / dispatch',
+        description: 'Update 객체를 만들어 Hook의 queue에 겁니다.',
+        tone: 'cyan',
+      },
+      {
+        id: 'request-lane',
+        num: '03',
+        title: 'requestUpdateLane',
+        description: '지금 실행 맥락을 보고 이 업데이트가 탈 lane을 고릅니다.',
+        tone: 'amber',
+      },
+      {
+        id: 'schedule',
+        num: '04',
+        title: 'scheduleUpdateOnFiber',
+        description: 'root까지 올라가며 이 lane에 할 일이 있다고 표시합니다.',
+        tone: 'indigo',
+      },
+      {
+        id: 'ensure-root',
+        num: '05',
+        title: 'ensureRootIsScheduled',
+        description: '이미 예약이 있으면 그대로 두고, 없으면 새로 잡습니다.',
         tone: 'violet',
       },
       {
-        title: 'scheduleUpdateOnFiber를 찾는다',
-        description: 'lane이 root 스케줄러로 전달되는 진입점을 확인합니다.',
-        tone: 'blue',
-      },
-      {
-        title: '두 함수가 업데이트 진입점임을 기억한다',
-        description: '업데이트 파이프라인의 시작이라는 관점을 갖습니다.',
-        tone: 'teal',
+        id: 'render',
+        num: '06',
+        title: 'render work 시작',
+        description: '차례가 되면 가장 급한 lane부터 골라 렌더를 시작합니다.',
+        tone: 'emerald',
       },
     ],
+    note: '05까지는 전부 기록과 예약입니다. 실제로 컴포넌트가 실행되는 것은 06 한 칸뿐입니다.',
   },
-  takeaways: {
-    eyebrow: '이번 페이지에서 반드시 기억할 것',
-    title: '이번 페이지에서 반드시 기억할 것',
-    cards: [
-      {
-        title: 'setState는 즉시 렌더링을 뜻하지 않는다.',
-        body: '업데이트는 기록되고, 적절한 시점에 처리됩니다.',
-        tone: 'blue',
-      },
-      {
-        title: 'React는 먼저 업데이트를 분류한다.',
-        body: 'lane으로 작업의 중요도를 구분합니다.',
-        tone: 'violet',
-      },
-      {
-        title: 'Scheduler 파트는 그 분류와 실행 순서를 다룬다.',
-        body: '어떤 작업을 언제, 어떻게 실행할지 조율합니다.',
-        tone: 'teal',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+    lookForLabel: '볼 것',
+    lookFor: 'scheduleUpdateOnFiber, markRootUpdated, ensureRootIsScheduled',
+    whyLabel: '설명',
+    why: '함수 이름이 scheduleUpdate이지 renderUpdate가 아니라는 점, 그리고 본문에 렌더 호출이 없다는 점이 전부입니다.',
+    code: SCHEDULE_CODE,
+    primaryCta: 'ReactFiberWorkLoop.js 읽기',
+    primaryHref: REACT_FIBER_WORK_LOOP_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: 'React 내부의 3가지 우선순위 축',
-    description: '다음 파트에서 Scheduler와 우선순위 시스템을 더 깊이 파헤쳐 봅니다.',
+    title: '우선순위는 몇 겹으로 되어 있는가',
+    description:
+      '급한 정도를 표현하는 축이 하나가 아닙니다. 서로 다른 세 축이 어떻게 겹치는지 다음 페이지에서 봅니다.',
     cta: '다음 페이지로 이동',
     href: '/priority-axes',
   },
@@ -361,223 +272,156 @@ const ko: WhyNotImmediateContent = {
 const en: WhyNotImmediateContent = {
   hero: {
     badge: 'Scheduler · 1/10',
-    titleLines: ['Why does React not', 'run updates immediately?'],
-    subtitle: "A state change doesn't push React into rendering everything right away.",
-    codeCard: { fileLabel: 'SearchBox.jsx', code: HERO_CODE_EN },
-    diagram: {
-      title: 'How React handles updates at a high level',
-      steps: [
-        {
-          title: 'Create an update',
-          description: 'The state change is recorded as an update object',
-          tone: 'violet',
-        },
-        {
-          title: 'Pick a priority',
-          description: 'A lane classifies how urgent this update is',
-          tone: 'blue',
-        },
-        {
-          title: 'Schedule the render',
-          description: 'The scheduler runs the work at the right time',
-          tone: 'teal',
-        },
-      ],
-    },
-  },
-  question: {
-    eyebrow: "Today's question",
-    title: "Today's question",
-    question:
-      'When a user clicks or types, why does React process some updates first and defer others?',
-    badges: [
-      { title: 'Input responsiveness', description: 'Reflect quickly to protect UX', tone: 'blue' },
-      { title: 'Render priority', description: 'Order work by importance', tone: 'violet' },
-      { title: 'Work coordination', description: 'Manage several tasks efficiently', tone: 'teal' },
+    title: { line1: 'setState does not start a render', line2: 'it files work to be done' },
+    description:
+      'React does not render on every state change. It records the update, ranks how urgent it is, and decides separately when to run it.',
+    diagramBadge: 'why schedule',
+    diagramCaption: 'record → rank → run later',
+    stages: [
+      {
+        id: 'record',
+        label: 'Record the Update',
+        caption: 'what to change, stored as an object',
+        tone: 'cyan',
+      },
+      {
+        id: 'prioritize',
+        label: 'Assign a Lane',
+        caption: 'how urgent it is, marked as a bit',
+        tone: 'amber',
+      },
+      {
+        id: 'schedule',
+        label: 'Schedule the work',
+        caption: 'when to render is the scheduler call',
+        tone: 'violet',
+      },
     ],
   },
   intuition: {
-    eyebrow: 'Common intuition about setState',
-    title: 'Common intuition about setState',
+    badge: '01',
+    eyebrow: 'intuition',
+    title: 'The gap between intuition and reality',
+    description:
+      'It is easy to assume setState starts a render. In fact two more stages sit in between, and order can change there.',
     wrong: {
-      label: 'Common intuition',
-      title: "Common intuition — that's not it",
-      flow: ['Call setState', 'Render immediately', 'Reflect to the DOM'],
-      warning: 'Processing every update immediately can hurt the user experience.',
+      label: 'The common assumption',
+      caption: 'The call and the render are imagined as one straight line.',
+      steps: ['setState is called', 'A render begins immediately', 'The DOM updates'],
     },
     real: {
-      label: 'Real flow',
-      title: "React's actual flow",
-      flow: [
-        'Call setState',
-        'Record the update',
-        'Classify priority',
-        'Schedule',
-        'Render',
-        'Commit',
+      label: 'What really happens',
+      caption: 'Ranking and scheduling sit between recording and running.',
+      steps: [
+        'setState is called',
+        'requestUpdateLane picks a lane',
+        'The root is marked pending',
+        'ensureRootIsScheduled books the work',
+        'The scheduler starts the render when its turn comes',
       ],
-      success: 'Run the needed work, at the right time, in the most efficient way.',
     },
+    note: 'Those middle stages are why an urgent update can overtake a less urgent one — impossible if execution were immediate.',
   },
-  scenarios: {
-    eyebrow: 'Is immediate rendering always good?',
-    title: 'Is immediate rendering always good?',
-    cases: [
-      {
-        title: 'Typing in a search box',
-        description: 'Input feedback must feel instantaneous.',
-        mockup: 'search-input',
-        note: 'Users feel even tiny keystroke delays immediately.',
-        tone: 'blue',
-      },
-      {
-        title: 'Heavy search result list',
-        description: 'It can lag a little, but must never block typing.',
-        mockup: 'skeleton-list',
-        note: 'Rendering a big list must not block input.',
-        tone: 'violet',
-      },
-      {
-        title: 'Offscreen or low-importance update',
-        description: 'Totally fine to run last.',
-        mockup: 'offscreen-placeholder',
-        note: 'UI that is not visible right now can wait.',
-        tone: 'teal',
-      },
-    ],
-  },
-  flow: {
-    eyebrow: "React's actual processing flow",
-    title: "React's actual processing flow",
-    steps: [
-      { title: 'User interaction', description: 'Click, type, scroll, etc.', tone: 'sky' },
-      { title: 'setState / dispatch', description: 'An update request is made', tone: 'cyan' },
-      {
-        title: 'requestUpdateLane',
-        description: 'Pick the lane that matches the update',
-        tone: 'violet',
-      },
-      {
-        title: 'scheduleUpdateOnFiber',
-        description: 'Mark the fiber and root with pending work',
-        tone: 'blue',
-      },
-      {
-        title: 'root scheduling',
-        description: 'Scheduler coordinates the work order',
-        tone: 'teal',
-      },
-      {
-        title: 'Render work begins',
-        description: 'Rendering runs at the chosen priority',
-        tone: 'emerald',
-      },
-    ],
-  },
-  comparison: {
-    eyebrow: 'Three update situations compared',
-    title: 'Three update situations compared',
-    headers: {
-      situation: 'Situation',
-      example: 'Example',
-      processing: 'How React wants to handle it',
-      goal: 'UX goal',
-    },
+  situations: {
+    badge: '02',
+    eyebrow: 'why it matters',
+    title: 'What happens if everything runs at once',
+    description:
+      'Different updates tolerate different waits. Treat them as equal and the urgent ones queue behind the ones that could have waited.',
+    headers: ['Situation', 'Example', 'How React wants to treat it', 'What it protects'],
     rows: [
       {
         situation: 'Text input',
-        urgency: 'Instant feedback',
-        example: ['Typing in the search box', 'setState on every keystroke'],
-        processing: ['High priority', 'Reflect immediately'],
-        goal: ['Minimize input lag', 'Instant feedback'],
-        mockup: 'search-input',
-        tone: 'blue',
+        example: 'Typing into a search box one key at a time',
+        handling: 'Highest priority, applied immediately',
+        goal: 'The character you typed appearing at once',
       },
       {
-        situation: 'Large UI transition',
-        urgency: 'Heavy rendering',
-        example: ['Show the search result list', 'Render thousands of items'],
-        processing: ['Medium priority', 'After input work'],
-        goal: ['Never block typing', 'Reflect at the right time'],
-        mockup: 'skeleton-list',
-        tone: 'violet',
+        situation: 'Heavy list render',
+        example: 'Drawing thousands of search results',
+        handling: 'Middle priority, behind input',
+        goal: 'Typing not stalling while the list is drawn',
       },
       {
-        situation: 'Deferred UI',
-        urgency: 'Low importance',
-        example: ['Cheap cache update', 'Offscreen UI update'],
-        processing: ['Low priority', 'Push to the end'],
-        goal: ['Run when needed without', 'hurting usability'],
-        mockup: 'offscreen-placeholder',
-        tone: 'teal',
+        situation: 'Offscreen update',
+        example: 'A collapsed panel or prefetched data',
+        handling: 'Lowest priority, whenever there is room',
+        goal: 'Not spending time on work nobody can see',
       },
     ],
+    note: 'All three rows differ only in when the work runs; what runs is identical. That is exactly why an ordering mechanism exists.',
   },
-  code: {
-    eyebrow: 'Source code preview',
-    title: 'Source code preview',
-    code: FLOW_CODE_EN,
-    fileLabel: 'ReactFiberWorkLoop.js',
-    explanationLabel: 'Explanation',
-    explanation: [
-      'requestUpdateLane decides the lane based on the current priority and context.',
-      'scheduleUpdateOnFiber records that lane in the root pending lanes and hands control to the scheduler.',
-    ],
-    apiBadges: ['requestUpdateLane', 'scheduleUpdateOnFiber'],
-    button: { label: 'See the full code on GitHub', href: REACT_FIBER_WORK_LOOP_URL },
-  },
-  mission: {
-    eyebrow: 'Walk it in the source',
-    title: 'Walk it in the source',
-    description: 'Open the real React source and verify the following by hand.',
-    items: [
+  flow: {
+    badge: '03',
+    eyebrow: 'real flow',
+    title: 'Six stops from record to render',
+    description:
+      'The other nine pages of this chapter each zoom into one of these stops. For now the order and the names are enough.',
+    steps: [
       {
-        title: 'Open ReactFiberWorkLoop.js',
-        description: 'Visit the file where updates start.',
+        id: 'interaction',
+        num: '01',
+        title: 'User interaction',
+        description: 'A click or keystroke arrives through the event system.',
         tone: 'sky',
       },
       {
-        title: 'Find requestUpdateLane',
-        description: 'See the function that picks the update priority.',
+        id: 'set-state',
+        num: '02',
+        title: 'setState / dispatch',
+        description: 'An Update object is created and queued on the Hook.',
+        tone: 'cyan',
+      },
+      {
+        id: 'request-lane',
+        num: '03',
+        title: 'requestUpdateLane',
+        description: 'The current execution context decides which lane this update rides.',
+        tone: 'amber',
+      },
+      {
+        id: 'schedule',
+        num: '04',
+        title: 'scheduleUpdateOnFiber',
+        description: 'Walk up to the root and mark that this lane has work waiting.',
+        tone: 'indigo',
+      },
+      {
+        id: 'ensure-root',
+        num: '05',
+        title: 'ensureRootIsScheduled',
+        description: 'Leave the existing booking alone, or make a new one if there is none.',
         tone: 'violet',
       },
       {
-        title: 'Find scheduleUpdateOnFiber',
-        description: 'See where the lane is handed off to the root scheduler.',
-        tone: 'blue',
-      },
-      {
-        title: 'Remember: both are entry points',
-        description: 'Treat them as the entrance of the update pipeline.',
-        tone: 'teal',
+        id: 'render',
+        num: '06',
+        title: 'Render work begins',
+        description: 'When its turn arrives, the most urgent lane is picked and rendering starts.',
+        tone: 'emerald',
       },
     ],
+    note: 'Everything through stop 05 is recording and booking. Components only actually run at stop 06.',
   },
-  takeaways: {
-    eyebrow: 'Must remember from this page',
-    title: 'Must remember from this page',
-    cards: [
-      {
-        title: 'setState does not mean immediate rendering.',
-        body: 'Updates are recorded and processed at the right time.',
-        tone: 'blue',
-      },
-      {
-        title: 'React classifies updates first.',
-        body: 'A lane carries the importance of the work.',
-        tone: 'violet',
-      },
-      {
-        title: 'The Scheduler chapter is about that classification and execution order.',
-        body: 'It coordinates what runs when and how.',
-        tone: 'teal',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+    lookForLabel: 'Look for',
+    lookFor: 'scheduleUpdateOnFiber, markRootUpdated, ensureRootIsScheduled',
+    whyLabel: 'Why',
+    why: 'The function is named scheduleUpdate rather than renderUpdate, and its body contains no render call. That is the whole point.',
+    code: SCHEDULE_CODE,
+    primaryCta: 'Read ReactFiberWorkLoop.js',
+    primaryHref: REACT_FIBER_WORK_LOOP_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: "Next: React's three priority axes",
-    description: "Next we'll dive deeper into the Scheduler and its priority system.",
+    title: 'How many layers of priority are there',
+    description:
+      'Urgency is not expressed on a single axis. The next page shows how three separate axes overlap.',
     cta: 'Go to the next page',
     href: '/priority-axes',
   },

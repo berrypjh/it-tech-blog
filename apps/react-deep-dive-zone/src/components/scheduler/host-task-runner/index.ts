@@ -1,2 +1,2 @@
-export { schedulerPackageContent } from './content';
-export { SchedulerPackageRolePage } from './SchedulerPackageRolePage';
+export { hostTaskRunnerContent } from './content';
+export { HostTaskRunnerPage } from './HostTaskRunnerPage';

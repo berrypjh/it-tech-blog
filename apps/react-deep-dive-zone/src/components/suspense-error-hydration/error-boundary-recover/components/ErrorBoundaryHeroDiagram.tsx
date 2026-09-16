@@ -1,121 +1,63 @@
 import { cx } from '@berrypjh/react-ui';
-import { RefreshCcw, ShieldAlert, ShieldCheck, User } from 'lucide-react';
+import { AlertTriangle, ArrowUp, CheckCircle2, ListPlus, type LucideIcon } from 'lucide-react';
 
-import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
+import { TerminalBadge } from '../../../shared/terminal';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { ErrorBoundaryRecoverContent, HeroFlowStep } from '../content';
-import type { Phase } from '../tone';
+import { toneTokens } from '../../../shared/tones';
+import type { ErrorBoundaryRecoverContent, Stage, StageId } from '../content';
 
-type Props = { content: ErrorBoundaryRecoverContent['hero']; className?: string };
+type Props = { content: ErrorBoundaryRecoverContent['hero'] };
 
-const stepIcon: Record<HeroFlowStep['icon'], React.ComponentType<{ className?: string }>> = {
-  profile: User,
-  shield: ShieldCheck,
-  update: RefreshCcw,
-  alert: ShieldAlert,
+const stageIcon: Record<StageId, LucideIcon> = {
+  throw: AlertTriangle,
+  climb: ArrowUp,
+  capture: ListPlus,
+  fallback: CheckCircle2,
 };
 
-/**
- * Hero 핵심 비주얼.
- * ErrorBoundary로 감싼 코드 → 자식 render 중 throw → 가장 가까운 Boundary capture →
- * captured update 등록 → fallback UI 재렌더로 이어지는 복구 흐름을 컴팩트 stepper로 보여준다.
- * (rose는 공유 ToneKey에 없어 에러 단계는 amber로 매핑한다.)
- */
-export const ErrorBoundaryHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.flow.title}: ${content.flow.steps
-    .map((s) => `${s.label} — ${s.caption}`)
-    .join(' → ')}`;
+/** Hero 핵심 비주얼: 예외가 던져진 뒤 경계까지 올라가 captured update가 되는 경로. */
+export const ErrorBoundaryHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.title.line1} ${content.title.line2} ${content.description}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
-      <div className="relative flex flex-col gap-sm">
-        <header className="flex items-center gap-sm" aria-hidden="true">
-          <ToneIconBox tone="violet" size="sm">
-            <ShieldCheck className="h-[18px] w-[18px]" aria-hidden="true" />
-          </ToneIconBox>
-          <span className="font-mono text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
-            {content.code.label}
+    <HeroDiagramShell a11yLabel={a11y}>
+      <div className="relative flex flex-col gap-sm" aria-hidden="true">
+        <div className="flex items-center justify-between">
+          <TerminalBadge dotClassName="bg-[var(--term-accent)]">
+            {content.diagramBadge}
+          </TerminalBadge>
+          <span className="font-mono text-[10px] text-[var(--term-muted)]">
+            {'//'} {content.diagramCaption}
           </span>
-          <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-            {content.code.pill}
-          </span>
-        </header>
+        </div>
 
-        <CodePreviewPanel
-          code={content.code.content}
-          header={content.code.fileLabel}
-          language="jsx"
-          size="md"
-        />
-
-        <DownArrow />
-
-        <ol className="flex flex-col gap-sm" aria-hidden="true">
-          {content.flow.steps.map((step, i) => (
-            <li key={step.label} className="flex flex-col gap-sm">
-              <FlowStepRow step={step} />
-              {i < content.flow.steps.length - 1 && <DownArrow />}
-            </li>
-          ))}
-        </ol>
+        {content.stages.map((stage, i) => (
+          <div key={stage.id} className="flex flex-col gap-sm">
+            <StageCard stage={stage} />
+            {i < content.stages.length - 1 && <DownArrow />}
+          </div>
+        ))}
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
-const phaseTone: Record<Phase, ToneKey> = {
-  error: 'amber',
-  boundary: 'teal',
-  update: 'violet',
-  recover: 'emerald',
-};
-
-const FlowStepRow = ({ step }: { step: HeroFlowStep }) => {
-  const tone = phaseTone[step.phase];
-  const t = toneTokens[tone];
-  const Icon = stepIcon[step.icon];
+const StageCard = ({ stage }: { stage: Stage }) => {
+  const Icon = stageIcon[stage.id];
+  const t = toneTokens[stage.tone];
   return (
-    <article
-      className={cx(
-        'group flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
-        t.borderHover,
-      )}
-    >
-      <ToneIconBox tone={tone} size="sm">
-        <Icon className="h-[18px] w-[18px]" />
+    <article className="flex items-center gap-sm rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]">
+      <ToneIconBox tone={stage.tone} size="sm">
+        <Icon className="h-4 w-4" />
       </ToneIconBox>
-      <div className="flex min-w-0 flex-col">
-        <span className={cx('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
-          {step.label}
-        </span>
-        <span className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">
-          {step.caption}
-        </span>
+      <div className="flex min-w-0 flex-col gap-0.5">
+        <code className={cx('font-mono text-xsm font-bold tracking-tight break-all', t.text)}>
+          {stage.label}
+        </code>
+        <span className="text-[11px] text-[var(--term-muted)] break-keep">{stage.caption}</span>
       </div>
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

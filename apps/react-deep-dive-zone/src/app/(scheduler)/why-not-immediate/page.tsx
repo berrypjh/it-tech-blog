@@ -2,7 +2,7 @@ import { getServerLocale } from '@it-tech-blog/preferences/server';
 
 import {
   whyNotImmediateContent,
-  WhyNotImmediateUpdatePage,
+  WhyNotImmediatePage,
 } from '@/components/scheduler/why-not-immediate';
 
 export const generateMetadata = async () => {
@@ -14,13 +14,13 @@ export const generateMetadata = async () => {
       locale === 'en'
         ? 'Why does React not run updates immediately? — React Lab'
         : 'React는 왜 업데이트를 바로 실행하지 않을까? — React Lab',
-    description: c.hero.subtitle,
+    description: c.hero.description,
   };
 };
 
 const Page = async () => {
   const locale = await getServerLocale();
-  return <WhyNotImmediateUpdatePage locale={locale} />;
+  return <WhyNotImmediatePage locale={locale} />;
 };
 
 export default Page;

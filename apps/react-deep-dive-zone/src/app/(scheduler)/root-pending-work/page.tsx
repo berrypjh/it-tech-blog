@@ -14,7 +14,7 @@ export const generateMetadata = async () => {
       locale === 'en'
         ? 'What happens when the root gets pending work? — React Lab'
         : 'root에 pending work가 생기면 무엇이 일어날까? — React Lab',
-    description: c.hero.subtitle,
+    description: c.hero.description,
   };
 };
 

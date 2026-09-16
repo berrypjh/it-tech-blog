@@ -14,11 +14,8 @@ type Props = { content: TransitionDeferredContent['hero'] };
 export const TransitionDeferredHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="react/transition-deferred.md"
-    gridColumns="lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
-    promptSuffix={
-      <span className="text-[var(--term-dim)]">{' // input -> instant - list -> deferred'}</span>
-    }
+    promptPath="packages/react-reconciler/src/ReactFiberWorkLoop.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -27,11 +24,11 @@ export const TransitionDeferredHero = ({ content }: Props) => (
       </TerminalBadge>
 
       <HeroTitle>
-        <span className="block">{content.titleLines[0]}</span>
-        <span className="block text-[var(--term-accent)]">{content.titleLines[1]}</span>
+        <span className="block">{content.title.line1}</span>
+        <span className="block text-[var(--term-accent)]">{content.title.line2}</span>
       </HeroTitle>
 
-      <HeroDescription>{content.subtitle}</HeroDescription>
+      <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
     <HeroVisualColumn id="hero-transition-deferred-split">

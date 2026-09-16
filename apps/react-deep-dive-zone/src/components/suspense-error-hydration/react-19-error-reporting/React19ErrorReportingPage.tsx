@@ -3,16 +3,11 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { CallbackTableSection } from './sections/CallbackTableSection';
-import { ErrorRouterSection } from './sections/ErrorRouterSection';
-import { FollowAlongSection } from './sections/FollowAlongSection';
-import { HeroSection } from './sections/HeroSection';
-import { LoggingScenariosSection } from './sections/LoggingScenariosSection';
-import { QuestionSection } from './sections/QuestionSection';
-import { RootExampleSection } from './sections/RootExampleSection';
-import { RoutingTableSection } from './sections/RoutingTableSection';
-import { TakeawaysSection } from './sections/TakeawaysSection';
-import { WhyNeededSection } from './sections/WhyNeededSection';
+import { CallbackCards } from './sections/CallbackCards';
+import { ErrorReportingCodeCheckpoint } from './sections/ErrorReportingCodeCheckpoint';
+import { ErrorReportingHero } from './sections/ErrorReportingHero';
+import { RoutingTable } from './sections/RoutingTable';
+import { WhatChanged } from './sections/WhatChanged';
 import { react19ErrorReportingContent } from './content';
 
 type Props = { locale: Locale };
@@ -22,17 +17,11 @@ export const React19ErrorReportingPage = ({ locale }: Props) => {
 
   return (
     <StartPageShell>
-      <HeroSection content={c.hero} />
-      <QuestionSection content={c.question} />
-      <WhyNeededSection content={c.why} />
-      <CallbackTableSection content={c.callbackTable} />
-      <RootExampleSection content={c.createRoot} />
-      <RootExampleSection content={c.hydrateRoot} note={c.hydrateRoot.note} />
-      <RoutingTableSection content={c.routing} />
-      <LoggingScenariosSection content={c.scenarios} />
-      <ErrorRouterSection content={c.router} />
-      <FollowAlongSection content={c.followAlong} />
-      <TakeawaysSection content={c.takeaways} />
+      <ErrorReportingHero content={c.hero} />
+      <WhatChanged content={c.change} />
+      <CallbackCards content={c.callbacks} />
+      <RoutingTable content={c.routing} />
+      <ErrorReportingCodeCheckpoint content={c.checkpoint} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

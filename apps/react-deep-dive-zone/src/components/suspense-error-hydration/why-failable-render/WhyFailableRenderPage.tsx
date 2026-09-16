@@ -3,16 +3,11 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { CodeEntryMap } from './sections/CodeEntryMap';
-import { FollowAlongSection } from './sections/FollowAlongSection';
-import { HeroSection } from './sections/HeroSection';
-import { NormalVsExtendedFlows } from './sections/NormalVsExtendedFlows';
-import { PartFlowMap } from './sections/PartFlowMap';
-import { QuestionAndNormalRender } from './sections/QuestionAndNormalRender';
-import { RecoveryPathSelector } from './sections/RecoveryPathSelector';
-import { RoleComparisonTable } from './sections/RoleComparisonTable';
-import { TakeawaysSection } from './sections/TakeawaysSection';
-import { ThreeBranchSection } from './sections/ThreeBranchSection';
+import { NormalVsExtendedPath } from './sections/NormalVsExtendedPath';
+import { RoleComparison } from './sections/RoleComparison';
+import { ThreeBranchCards } from './sections/ThreeBranchCards';
+import { WhyFailableRenderCodeCheckpoint } from './sections/WhyFailableRenderCodeCheckpoint';
+import { WhyFailableRenderHero } from './sections/WhyFailableRenderHero';
 import { whyFailableRenderContent } from './content';
 
 type Props = { locale: Locale };
@@ -22,16 +17,11 @@ export const WhyFailableRenderPage = ({ locale }: Props) => {
 
   return (
     <StartPageShell>
-      <HeroSection content={c.hero} />
-      <NormalVsExtendedFlows content={c.flows} />
-      <QuestionAndNormalRender question={c.question} normalRender={c.normalRender} />
-      <ThreeBranchSection content={c.threeBranches} />
-      <RoleComparisonTable content={c.comparison} />
-      <PartFlowMap content={c.flowMap} />
-      <CodeEntryMap content={c.codeEntry} />
-      <RecoveryPathSelector content={c.selector} />
-      <FollowAlongSection content={c.followAlong} />
-      <TakeawaysSection content={c.takeaways} />
+      <WhyFailableRenderHero content={c.hero} />
+      <NormalVsExtendedPath content={c.paths} />
+      <ThreeBranchCards content={c.branches} />
+      <RoleComparison content={c.compare} />
+      <WhyFailableRenderCodeCheckpoint content={c.checkpoint} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

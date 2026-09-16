@@ -1,2 +1,2 @@
-export { rootSchedulerContent } from './content';
-export { RootSchedulerPage } from './RootSchedulerPage';
+export { pickNextWorkContent } from './content';
+export { PickNextWorkPage } from './PickNextWorkPage';

@@ -14,13 +14,8 @@ type Props = { content: RootPendingWorkContent['hero'] };
 export const RootPendingWorkHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="react-reconciler/root-pending-work.md"
-    gridColumns="lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
-    promptSuffix={
-      <span className="text-[var(--term-dim)]">
-        {' // fiber -> root.pendingLanes -> scheduler'}
-      </span>
-    }
+    promptPath="packages/react-reconciler/src/ReactFiberWorkLoop.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -29,16 +24,11 @@ export const RootPendingWorkHero = ({ content }: Props) => (
       </TerminalBadge>
 
       <HeroTitle>
-        <span className="block">{content.titleLines[0]}</span>
-        <span className="block text-[var(--term-accent)]">{content.titleLines[1]}</span>
+        <span className="block">{content.title.line1}</span>
+        <span className="block text-[var(--term-accent)]">{content.title.line2}</span>
       </HeroTitle>
 
-      <HeroDescription>{content.subtitle}</HeroDescription>
-
-      <div className="hidden lg:flex items-center gap-2 text-[10px] font-mono uppercase tracking-wider text-[var(--term-dim)]">
-        <span className="inline-block h-px w-8 bg-[var(--term-border)]" />
-        <span>Fiber update / root.pendingLanes / Root Scheduler</span>
-      </div>
+      <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
     <HeroVisualColumn id="hero-root-pending-work">

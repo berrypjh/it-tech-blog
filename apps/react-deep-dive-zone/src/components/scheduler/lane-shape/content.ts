@@ -1,169 +1,91 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-export type LaneAccent =
-  | 'sync'
-  | 'inputContinuous'
-  | 'default'
-  | 'transition'
-  | 'retry'
-  | 'offscreen';
+import type { ToneKey } from '../../shared/tones';
 
-export type Tone = 'sky' | 'cyan' | 'teal' | 'emerald' | 'violet' | 'blue' | 'amber' | 'rose';
-
-/**
- * Bit ranges activated by a single Lane (left-most index = bit 0 in our visual model).
- * Used by BitCellRow to render which cells are "on" with the given accent.
- */
-export type LaneBitRange = { start: number; length: number; accent: LaneAccent };
-
-export type HeroLaneCard = {
+export type LaneBits = {
+  id: string;
   name: string;
   bits: string;
-  accent: LaneAccent;
+  tone: ToneKey;
 };
 
-export type ConceptCard = { title: string; description: string; accent: LaneAccent };
+export type SideId = 'number' | 'bitmask';
 
-export type LaneVsLanesCard = {
+export type Side = {
+  id: SideId;
   title: string;
-  description: string;
-  example: string;
-  bits: string;
-  activeIndexes: number[];
-  bottom: string;
-  accent: LaneAccent;
-};
-
-export type ComparePoint = string;
-
-export type RepresentativeLaneRow = {
-  name: string;
-  bits: string;
-  activeIndexes: number[];
-  meaning: string[];
-  accent: LaneAccent;
-};
-
-export type CombinationCard = {
-  title: string;
-  bits: string;
-  activeIndexes: number[];
-  description: string;
-  accent: LaneAccent;
-};
-
-export type MultiLaneCard = {
-  title: string;
-  description: string;
   badge: string;
-  accent: LaneAccent;
-};
-
-export type MissionItem = string;
-
-export type TakeawayCard = {
-  number: string;
-  title: string;
   description: string;
-  accent: LaneAccent;
+  bullets: string[];
+  tone: ToneKey;
 };
 
-export type InteractiveLane = {
-  key: 'sync' | 'inputContinuous' | 'default' | 'transition' | 'retry';
-  label: string;
-  bitIndex: number;
-  accent: LaneAccent;
+export type LaneRow = {
+  name: string;
+  bits: string;
+  meaning: string;
 };
 
-export type LaneBitmaskContent = {
+export type OpId = 'merge' | 'test' | 'pick';
+
+export type BitOp = {
+  id: OpId;
+  title: string;
+  expression: string;
+  description: string;
+  tone: ToneKey;
+};
+
+export type LaneShapeContent = {
   hero: {
     badge: string;
-    titleLines: [string, string, string];
-    highlight: string;
-    subtitle: string;
-    laneCards: HeroLaneCard[];
-    result: { title: string; bits: string; activeIndexes: number[] };
+    title: { line1: string; line2: string };
+    description: string;
+    diagramBadge: string;
+    diagramCaption: string;
+    operandLabel: string;
+    operands: LaneBits[];
+    resultLabel: string;
+    result: LaneBits;
   };
-  question: {
+  whyBits: {
+    badge: string;
     eyebrow: string;
-    question: string;
-    cards: ConceptCard[];
-  };
-  laneVsLanes: {
-    number: string;
     title: string;
-    lane: LaneVsLanesCard;
-    lanes: LaneVsLanesCard;
+    description: string;
+    sides: [Side, Side];
+    note: string;
   };
-  compare: {
-    number: string;
+  lanes: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    vsLabel: string;
-    leftTitle: string;
-    leftPoints: ComparePoint[];
-    rightTitle: string;
-    rightPoints: ComparePoint[];
+    description: string;
+    headers: [string, string, string];
+    rows: LaneRow[];
+    note: string;
   };
-  representative: {
-    number: string;
+  operations: {
+    badge: string;
+    eyebrow: string;
     title: string;
-    headers: { name: string; bitmask: string; bitZero: string; meaning: string };
-    rows: RepresentativeLaneRow[];
-    directionLeft: string;
-    directionRight: string;
+    description: string;
+    items: BitOp[];
+    note: string;
   };
-  combination: {
-    number: string;
-    title: string;
-    sync: CombinationCard;
-    def: CombinationCard;
-    result: CombinationCard;
-    corePoint: { title: string; body: string };
-  };
-  multi: {
-    number: string;
-    title: string;
-    cards: MultiLaneCard[];
-    root: {
-      top: string;
-      title: string;
-      bits: string;
-      activeIndexes: number[];
-      ranges: LaneBitRange[];
-      bottom: string;
-    };
-  };
-  code: {
-    number: string;
+  checkpoint: {
+    badge: string;
+    eyebrow: string;
     title: string;
     fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
     code: string;
-    explanationTitle: string;
-    explanation: string[];
-    button: { label: string; href: string };
-  };
-  interactive: {
-    number: string;
-    title: string;
-    helper: string;
-    tip: string;
-    lanes: InteractiveLane[];
-    resultTitle: string;
-    bitLength: number;
-    legendLabel: string;
-  };
-  mission: {
-    number: string;
-    title: string;
-    checklistTitle: string;
-    items: MissionItem[];
-    thinkTitle: string;
-    thinkBody: string;
-  };
-  takeaways: {
-    number: string;
-    title: string;
-    cards: TakeawayCard[];
+    primaryCta: string;
+    primaryHref: string;
   };
   nextStep: {
     eyebrow: string;
@@ -174,533 +96,336 @@ export type LaneBitmaskContent = {
   };
 };
 
-const REACT_FIBER_LANE_URL =
+const LANE_DEFINITION_CODE = `export const TotalLanes = 31;
+
+export const NoLanes: Lanes = 0b0000000000000000000000000000000;
+export const NoLane: Lane = 0b0000000000000000000000000000000;
+
+export const SyncLane: Lane = 0b0000000000000000000000000000010;
+export const InputContinuousLane: Lane = 0b0000000000000000000000000001000;
+export const DefaultLane: Lane = 0b0000000000000000000000000100000;
+
+const TransitionLanes: Lanes = 0b0000000011111111111111110000000;
+const TransitionLane1: Lane = 0b0000000000000000000000010000000;
+
+export const IdleLane: Lane = 0b0010000000000000000000000000000;
+
+// 가장 오른쪽에 켜진 비트 하나만 남긴다 = 가장 급한 lane
+export function getHighestPriorityLane(lanes: Lanes): Lane {
+  return lanes & -lanes;
+}
+
+export function includesSyncLane(lanes: Lanes): boolean {
+  return (lanes & SyncLane) !== NoLanes;
+}`;
+
+const REACT_FIBER_LANE_HREF =
   'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberLane.js';
 
-const CODE_KO =
-  'export const TotalLanes = 31;\n\n' +
-  'export const NoLanes = 0b0000000000000000000000000000000;\n\n' +
-  'export const SyncLane = 0b0000000000000000000000000000010;\n\n' +
-  'export const InputContinuousLane = 0b0000000000000000000000000001000;';
-
-const CODE_EN = CODE_KO;
-
-// 31-bit canonical lane positions (rightmost bit = highest priority bit-0).
-const LEN_31 = 31;
-
-// Helper to compute active bit visual indexes from a right-aligned bit string.
-const activeFromBits = (bits: string): number[] => {
-  const padded = bits.padStart(LEN_31, '0');
-  const out: number[] = [];
-  for (let i = 0; i < padded.length; i++) {
-    if (padded[i] === '1') out.push(i);
-  }
-  return out;
-};
-
-const ko: LaneBitmaskContent = {
+const ko: LaneShapeContent = {
   hero: {
     badge: 'Scheduler · 3/10단계',
-    titleLines: ['Lane은 단순한', '우선순위 숫자가 아니라', '작업 집합이다'],
-    highlight: '작업 집합이다',
-    subtitle: 'React는 여러 종류의 pending work를 비트마스크로 동시에 표현합니다.',
-    laneCards: [
-      { name: 'SyncLane', bits: '00000010', accent: 'sync' },
-      { name: 'DefaultLane', bits: '00100000', accent: 'default' },
-      { name: 'TransitionLane', bits: '111000000000', accent: 'transition' },
+    title: { line1: 'Lane은 우선순위 숫자가 아니라', line2: '켜진 비트 하나다' },
+    description:
+      '숫자 하나로는 "지금 급한 일과 안 급한 일이 동시에 있다"를 표현할 수 없습니다. 비트마스크는 그것을 한 값에 담습니다.',
+    diagramBadge: 'bitmask',
+    diagramCaption: 'lanes = lane | lane',
+    operandLabel: '개별 Lane',
+    operands: [
+      { id: 'sync', name: 'SyncLane', bits: '0000000000000000000000000000010', tone: 'emerald' },
+      {
+        id: 'default',
+        name: 'DefaultLane',
+        bits: '0000000000000000000000000100000',
+        tone: 'amber',
+      },
     ],
+    resultLabel: 'root.pendingLanes',
     result: {
-      title: 'Lane Bitmask (Lanes)',
-      bits: '1110000000100010',
-      activeIndexes: activeFromBits('1110000000100010'),
+      id: 'result',
+      name: 'SyncLane | DefaultLane',
+      bits: '0000000000000000000000000100010',
+      tone: 'violet',
     },
   },
-  question: {
-    eyebrow: '질문',
-    question: 'React는 왜 priority = 1, 2, 3 같은 단순 숫자 대신 Lane 비트마스크를 쓸까?',
-    cards: [
-      { title: '동시성 지원', description: '여러 작업을 함께 표현 가능', accent: 'sync' },
-      { title: '확장성', description: '31개까지 세분화 가능', accent: 'default' },
-      { title: '비교 & 병합', description: '비트 연산으로 빠른 처리', accent: 'transition' },
+  whyBits: {
+    badge: '01',
+    eyebrow: 'why bits',
+    title: '숫자였다면 못 했을 일',
+    description:
+      '우선순위를 1, 2, 3 같은 숫자로 뒀다면 한 번에 하나만 담을 수 있습니다. 동시에 여러 종류의 할 일을 들고 있으려면 다른 표현이 필요합니다.',
+    sides: [
+      {
+        id: 'number',
+        title: '숫자 우선순위',
+        badge: '하나만',
+        description: '값 하나에 등급 하나. 덮어쓰면 이전 값이 사라집니다.',
+        bullets: [
+          '가장 급한 것 하나만 기억할 수 있다',
+          '동시에 존재하는 여러 작업을 표현하지 못한다',
+          '합치려면 배열 같은 별도 구조가 또 필요하다',
+        ],
+        tone: 'sky',
+      },
+      {
+        id: 'bitmask',
+        title: '비트마스크',
+        badge: '31개까지',
+        description: '비트 자리마다 작업 종류 하나. 켜짐과 꺼짐만 있습니다.',
+        bullets: [
+          '여러 lane을 한 정수에 동시에 담는다',
+          'OR 하나로 합치고 AND 하나로 포함 여부를 본다',
+          '가장 급한 것 고르기도 연산 한 번이면 끝난다',
+        ],
+        tone: 'amber',
+      },
     ],
+    note: '31개인 이유는 JavaScript 비트 연산이 32비트 정수로 동작하고, 부호 비트 한 자리를 빼야 하기 때문입니다.',
   },
-  laneVsLanes: {
-    number: '2',
-    title: 'Lane과 Lanes 구분',
-    lane: {
-      title: 'Lane',
-      description: '하나의 작업 우선순위 비트',
-      example: '예: DefaultLane',
-      bits: '0000000000000001000000000000000',
-      activeIndexes: activeFromBits('0000000000000001000000000000000'),
-      bottom: '단일 비트가 켜진 값',
-      accent: 'default',
-    },
-    lanes: {
-      title: 'Lanes',
-      description: '여러 Lane을 함께 담은 비트 집합',
-      example: '예: SyncLane + DefaultLane',
-      bits: '0000000000000001000000000000010',
-      activeIndexes: activeFromBits('0000000000000001000000000000010'),
-      bottom: '여러 비트가 켜진 값 집합',
-      accent: 'sync',
-    },
-  },
-  compare: {
-    number: '3',
-    title: '숫자 우선순위 vs 비트마스크',
-    vsLabel: 'VS',
-    leftTitle: '단순 priority number',
-    leftPoints: [
-      '한 번에 가장 높은 우선순위 하나만 표현하기 쉬움',
-      '여러 pending work가 동시에 존재할 때 표현이 어려움',
-    ],
-    rightTitle: 'Lane Bitmask',
-    rightPoints: [
-      '여러 종류의 업데이트를 하나의 값으로 동시에 표현',
-      '비트 연산으로 병합, 비교, 검사 성능이 매우 좋음',
-    ],
-  },
-  representative: {
-    number: '4',
-    title: '대표 Lane 시각화',
-    headers: { name: 'Lane 이름', bitmask: 'Bitmask (32-bit)', bitZero: 'bit 0', meaning: '의미' },
+  lanes: {
+    badge: '02',
+    eyebrow: 'lane table',
+    title: '자주 만나는 Lane들',
+    description:
+      '오른쪽 비트일수록 급합니다. 값이 작을수록 우선순위가 높다는 뜻이라 비교가 그대로 성립합니다.',
+    headers: ['Lane', '비트 위치', '언제 쓰이나'],
     rows: [
       {
         name: 'SyncLane',
-        bits: '0000000000000000000000000000010',
-        activeIndexes: activeFromBits('0000000000000000000000000000010'),
-        meaning: ['동기 작업', '가장 높은 우선순위'],
-        accent: 'sync',
+        bits: '...0000010',
+        meaning: '동기 처리가 필요한 가장 급한 작업. legacy 모드나 discrete 입력이 여기 옵니다.',
       },
       {
         name: 'InputContinuousLane',
-        bits: '0000000000000000000000000001000',
-        activeIndexes: activeFromBits('0000000000000000000000000001000'),
-        meaning: ['연속 입력', '스크롤, 드래그 등'],
-        accent: 'inputContinuous',
+        bits: '...0001000',
+        meaning: '드래그나 스크롤처럼 연속으로 들어오는 입력이 만드는 업데이트입니다.',
       },
       {
         name: 'DefaultLane',
-        bits: '0000000000000000000000000100000',
-        activeIndexes: activeFromBits('0000000000000000000000000100000'),
-        meaning: ['일반 업데이트', '데이터 변경 등'],
-        accent: 'default',
+        bits: '...0100000',
+        meaning: '특별한 문맥 없이 일어난 보통의 업데이트. 데이터 도착 같은 경우입니다.',
       },
       {
-        name: 'TransitionLane (범위)',
-        bits: '0000000001111111111111100000000',
-        activeIndexes: activeFromBits('0000000001111111111111100000000'),
-        meaning: ['전환 작업', '여러 비트 범위'],
-        accent: 'transition',
+        name: 'TransitionLanes',
+        bits: '범위 14비트',
+        meaning: 'startTransition이 만드는 업데이트. 여러 전환을 구분하려고 자리를 여러 개 씁니다.',
+      },
+      {
+        name: 'IdleLane',
+        bits: '왼쪽 끝',
+        meaning: '정말 여유가 있을 때만 처리할 작업. 가장 뒤로 밀립니다.',
       },
     ],
-    directionLeft: '낮은 우선순위',
-    directionRight: '높은 우선순위',
+    note: 'TransitionLanes만 자리를 여러 개 차지합니다. 전환이 여러 개 겹칠 때 서로를 구분해야 하기 때문입니다.',
   },
-  combination: {
-    number: '5',
-    title: 'pendingLanes 조합',
-    sync: {
-      title: 'SyncLane',
-      bits: '00000010',
-      activeIndexes: [6],
-      description: '동기 작업',
-      accent: 'sync',
-    },
-    def: {
-      title: 'DefaultLane',
-      bits: '00100000',
-      activeIndexes: [2],
-      description: '일반 업데이트',
-      accent: 'default',
-    },
-    result: {
-      title: 'pendingLanes',
-      bits: '00100010',
-      activeIndexes: [2, 6],
-      description: '두 작업이 동시에 존재',
-      accent: 'transition',
-    },
-    corePoint: {
-      title: '핵심 포인트',
-      body: '비트는 겹치지 않고 그대로 합쳐집니다. 각 비트의 존재 여부가 곧 작업의 존재 여부를 의미합니다.',
-    },
-  },
-  multi: {
-    number: '6',
-    title: '왜 여러 Lane이 동시에 필요한가?',
-    cards: [
-      {
-        title: '클릭으로 생긴 업데이트',
-        description: '버튼 클릭으로 state 변경, 즉시 반영되어야 함',
-        badge: 'SyncLane',
-        accent: 'sync',
-      },
-      {
-        title: 'transition 렌더',
-        description: '화면 전환, 필터링 등 비동기적으로 처리',
-        badge: 'TransitionLane',
-        accent: 'transition',
-      },
-      {
-        title: 'retry 렌더',
-        description: 'Suspense 실패 후 재시도 렌더',
-        badge: 'RetryLane',
-        accent: 'retry',
-      },
-      {
-        title: 'offscreen work',
-        description: '보이지 않는 화면이나 프리렌더 작업',
-        badge: 'OffscreenLane',
-        accent: 'offscreen',
-      },
-    ],
-    root: {
-      top: '모든 작업이 동시에 존재할 수 있음',
-      title: 'root.pendingLanes',
-      bits: '1110001001000000000000000000000',
-      activeIndexes: activeFromBits('1110001001000000000000000000000'),
-      // For root box, color cells by lane group ranges (left-aligned indexes).
-      ranges: [
-        { start: 0, length: 3, accent: 'transition' }, // 111
-        { start: 6, length: 1, accent: 'retry' }, // bit at index 6
-        { start: 9, length: 1, accent: 'offscreen' }, // bit at index 9
-      ],
-      bottom: '하나의 값으로 여러 종류의 pending work를 표현',
-    },
-  },
-  code: {
-    number: '7',
-    title: '실제 코드 미리보기',
-    fileLabel: 'ReactFiberLane.js',
-    code: CODE_KO,
-    explanationTitle: '코드 설명',
-    explanation: [
-      'TotalLanes: 사용 가능한 전체 Lane 개수',
-      'NoLanes: 아무 작업도 없는 상태',
-      'SyncLane: 가장 높은 우선순위 비트',
-      'InputContinuousLane: 연속 입력 전용 비트',
-    ],
-    button: { label: 'GitHub에서 전체 코드 보기', href: REACT_FIBER_LANE_URL },
-  },
-  interactive: {
-    number: '8',
-    title: 'Lane 조합 인터랙션',
-    helper: '여러 Lane을 선택해 pendingLanes 결과를 확인해보세요.',
-    tip: '팁: 카드를 클릭하면 선택/해제됩니다.',
-    // bitIndex is from the right (bit 0 = rightmost).
-    lanes: [
-      { key: 'sync', label: 'Sync', bitIndex: 1, accent: 'sync' },
-      { key: 'inputContinuous', label: 'Input Continuous', bitIndex: 3, accent: 'inputContinuous' },
-      { key: 'default', label: 'Default', bitIndex: 5, accent: 'default' },
-      { key: 'transition', label: 'Transition', bitIndex: 8, accent: 'transition' },
-      { key: 'retry', label: 'Retry', bitIndex: 17, accent: 'retry' },
-    ],
-    resultTitle: 'pendingLanes',
-    bitLength: LEN_31,
-    legendLabel: 'Legend',
-  },
-  mission: {
-    number: '9',
-    title: '직접 코드에서 따라가 보기',
-    checklistTitle: '체크리스트',
+  operations: {
+    badge: '03',
+    eyebrow: 'bit ops',
+    title: '비트로 두니 쉬워지는 세 가지',
+    description:
+      'Lane을 다루는 코드는 대부분 이 세 연산 중 하나입니다. 세 줄만 읽으면 ReactFiberLane.js의 절반이 읽힙니다.',
     items: [
-      'ReactFiberLane.js를 연다',
-      'SyncLane과 DefaultLane 정의를 찾는다',
-      'TotalLanes 값을 확인한다',
-      'pendingLanes가 bitmask일 때 장점을 적는다',
+      {
+        id: 'merge',
+        title: '합치기',
+        expression: 'root.pendingLanes |= lane',
+        description:
+          '새 업데이트가 들어오면 OR로 비트를 켭니다. 이미 켜져 있으면 아무 일도 일어나지 않습니다.',
+        tone: 'indigo',
+      },
+      {
+        id: 'test',
+        title: '포함 확인',
+        expression: '(lanes & SyncLane) !== NoLanes',
+        description: '특정 lane이 들어 있는지 AND 한 번으로 봅니다. 배열 순회가 필요 없습니다.',
+        tone: 'sky',
+      },
+      {
+        id: 'pick',
+        title: '가장 급한 것 고르기',
+        expression: 'lanes & -lanes',
+        description:
+          '2의 보수 성질로 가장 오른쪽 켜진 비트만 남깁니다. 정렬 없이 최고 우선순위를 얻습니다.',
+        tone: 'emerald',
+      },
     ],
-    thinkTitle: '생각해 보기',
-    thinkBody:
-      '여러 작업이 동시에 존재할 때, 단순 숫자 방식과 비트마스크 방식의 차이점을 비교해보세요. 어떤 상황에서 더 유리할까요?',
+    note: '세 번째가 이 설계의 핵심입니다. 우선순위를 고르는 일이 비교 한 번으로 끝나기 때문에 렌더 시작이 항상 저렴합니다.',
   },
-  takeaways: {
-    number: '10',
-    title: '핵심 정리',
-    cards: [
-      {
-        number: '01',
-        title: 'Lane은 React 내부 작업 분류 단위다.',
-        description: '각 Lane은 특정 성격의 작업을 나타내는 단일 비트입니다.',
-        accent: 'sync',
-      },
-      {
-        number: '02',
-        title: 'Lanes는 여러 Lane을 함께 담는다.',
-        description: '여러 비트가 켜진 값으로, 여러 작업이 동시에 존재함을 표현합니다.',
-        accent: 'default',
-      },
-      {
-        number: '03',
-        title: '비트마스크는 동시에 존재하는 pending work를 표현하기 좋다.',
-        description: '비트 연산을 통해 병합, 비교, 검사까지 효율적으로 처리할 수 있습니다.',
-        accent: 'transition',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberLane.js',
+    lookForLabel: '볼 것',
+    lookFor: 'TotalLanes, SyncLane, TransitionLanes, getHighestPriorityLane',
+    whyLabel: '설명',
+    why: '상수들이 전부 0b 리터럴로 적혀 있고 비트가 한 칸씩 왼쪽으로 밀린다는 점이 우선순위 순서 그 자체입니다.',
+    code: LANE_DEFINITION_CODE,
+    primaryCta: 'ReactFiberLane.js 읽기',
+    primaryHref: REACT_FIBER_LANE_HREF,
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
-    title: '업데이트는 어떤 Lane을 받을까?',
-    description: 'Lane 개념을 이해했다면, 이제 업데이트가 어떤 Lane을 받는지 알아볼까요?',
+    title: '내 setState는 어느 lane을 받나',
+    description:
+      'lane의 모양을 알았으니, 실제 업데이트에 어떤 lane이 배정되는지 그 판정 로직을 봅니다.',
     cta: '다음 페이지로 이동',
     href: '/update-to-lane',
   },
 };
 
-const en: LaneBitmaskContent = {
+const en: LaneShapeContent = {
   hero: {
     badge: 'Scheduler · 3/10',
-    titleLines: ['A Lane is not just', 'a priority number —', 'it is a work set'],
-    highlight: 'it is a work set',
-    subtitle: 'React represents many kinds of pending work simultaneously as one bitmask.',
-    laneCards: [
-      { name: 'SyncLane', bits: '00000010', accent: 'sync' },
-      { name: 'DefaultLane', bits: '00100000', accent: 'default' },
-      { name: 'TransitionLane', bits: '111000000000', accent: 'transition' },
+    title: { line1: 'A Lane is not a priority number', line2: 'it is a single lit bit' },
+    description:
+      'One number cannot express "there is urgent work and non-urgent work at the same time". A bitmask holds both in one value.',
+    diagramBadge: 'bitmask',
+    diagramCaption: 'lanes = lane | lane',
+    operandLabel: 'Individual lanes',
+    operands: [
+      { id: 'sync', name: 'SyncLane', bits: '0000000000000000000000000000010', tone: 'emerald' },
+      {
+        id: 'default',
+        name: 'DefaultLane',
+        bits: '0000000000000000000000000100000',
+        tone: 'amber',
+      },
     ],
+    resultLabel: 'root.pendingLanes',
     result: {
-      title: 'Lane Bitmask (Lanes)',
-      bits: '1110000000100010',
-      activeIndexes: activeFromBits('1110000000100010'),
+      id: 'result',
+      name: 'SyncLane | DefaultLane',
+      bits: '0000000000000000000000000100010',
+      tone: 'violet',
     },
   },
-  question: {
-    eyebrow: 'Question',
-    question:
-      "Why doesn't React use plain priority = 1, 2, 3 and instead reach for a Lane bitmask?",
-    cards: [
-      { title: 'Concurrency', description: 'Represent multiple works at once', accent: 'sync' },
-      { title: 'Scalability', description: 'Up to 31 distinct lanes', accent: 'default' },
-      { title: 'Compare & merge', description: 'Fast bitwise operations', accent: 'transition' },
+  whyBits: {
+    badge: '01',
+    eyebrow: 'why bits',
+    title: 'What a number could not have done',
+    description:
+      'With priority stored as 1, 2, 3 only one grade fits at a time. Holding several kinds of pending work at once needs a different representation.',
+    sides: [
+      {
+        id: 'number',
+        title: 'A priority number',
+        badge: 'one at a time',
+        description: 'One value, one grade. Overwrite it and the previous value is gone.',
+        bullets: [
+          'Only the single most urgent item can be remembered',
+          'Several simultaneous pieces of work cannot be expressed',
+          'Combining them needs a separate structure such as an array',
+        ],
+        tone: 'sky',
+      },
+      {
+        id: 'bitmask',
+        title: 'A bitmask',
+        badge: 'up to 31',
+        description: 'One bit position per kind of work. Only on and off exist.',
+        bullets: [
+          'Many lanes fit inside one integer at once',
+          'One OR merges them, one AND tests membership',
+          'Picking the most urgent also takes a single operation',
+        ],
+        tone: 'amber',
+      },
     ],
+    note: 'It is 31 rather than 32 because JavaScript bitwise operations work on 32-bit integers and the sign bit has to be left out.',
   },
-  laneVsLanes: {
-    number: '2',
-    title: 'Lane vs Lanes',
-    lane: {
-      title: 'Lane',
-      description: 'A single priority bit',
-      example: 'e.g. DefaultLane',
-      bits: '0000000000000001000000000000000',
-      activeIndexes: activeFromBits('0000000000000001000000000000000'),
-      bottom: 'A value where one bit is on',
-      accent: 'default',
-    },
-    lanes: {
-      title: 'Lanes',
-      description: 'A set of bits — many Lanes carried together',
-      example: 'e.g. SyncLane + DefaultLane',
-      bits: '0000000000000001000000000000010',
-      activeIndexes: activeFromBits('0000000000000001000000000000010'),
-      bottom: 'A value where several bits are on',
-      accent: 'sync',
-    },
-  },
-  compare: {
-    number: '3',
-    title: 'Priority number vs Bitmask',
-    vsLabel: 'VS',
-    leftTitle: 'Plain priority number',
-    leftPoints: [
-      'Easy to express only one highest priority at a time',
-      'Hard to represent several pending works at once',
-    ],
-    rightTitle: 'Lane Bitmask',
-    rightPoints: [
-      'Express many kinds of updates as one value',
-      'Bitwise merge / compare / inspect is extremely fast',
-    ],
-  },
-  representative: {
-    number: '4',
-    title: 'Representative Lane visualization',
-    headers: {
-      name: 'Lane name',
-      bitmask: 'Bitmask (32-bit)',
-      bitZero: 'bit 0',
-      meaning: 'Meaning',
-    },
+  lanes: {
+    badge: '02',
+    eyebrow: 'lane table',
+    title: 'The lanes you meet most often',
+    description:
+      'The further right the bit, the more urgent it is. A smaller value means higher priority, so comparison works directly.',
+    headers: ['Lane', 'Bit position', 'When it is used'],
     rows: [
       {
         name: 'SyncLane',
-        bits: '0000000000000000000000000000010',
-        activeIndexes: activeFromBits('0000000000000000000000000000010'),
-        meaning: ['Synchronous work', 'Highest priority'],
-        accent: 'sync',
+        bits: '...0000010',
+        meaning: 'The most urgent, synchronous work. Legacy mode and discrete input land here.',
       },
       {
         name: 'InputContinuousLane',
-        bits: '0000000000000000000000000001000',
-        activeIndexes: activeFromBits('0000000000000000000000000001000'),
-        meaning: ['Continuous input', 'Scroll, drag, etc.'],
-        accent: 'inputContinuous',
+        bits: '...0001000',
+        meaning: 'Updates from continuous input such as dragging or scrolling.',
       },
       {
         name: 'DefaultLane',
-        bits: '0000000000000000000000000100000',
-        activeIndexes: activeFromBits('0000000000000000000000000100000'),
-        meaning: ['General updates', 'Data changes, etc.'],
-        accent: 'default',
+        bits: '...0100000',
+        meaning: 'Ordinary updates with no special context, such as data arriving.',
       },
       {
-        name: 'TransitionLane (range)',
-        bits: '0000000001111111111111100000000',
-        activeIndexes: activeFromBits('0000000001111111111111100000000'),
-        meaning: ['Transition work', 'Spans a range of bits'],
-        accent: 'transition',
+        name: 'TransitionLanes',
+        bits: '14-bit range',
+        meaning:
+          'Updates from startTransition. Several slots let separate transitions be told apart.',
+      },
+      {
+        name: 'IdleLane',
+        bits: 'far left',
+        meaning: 'Work to handle only when there is genuine slack. Pushed furthest back.',
       },
     ],
-    directionLeft: 'Lower priority',
-    directionRight: 'Higher priority',
+    note: 'Only TransitionLanes occupies multiple slots, because overlapping transitions have to be distinguished from one another.',
   },
-  combination: {
-    number: '5',
-    title: 'pendingLanes combination',
-    sync: {
-      title: 'SyncLane',
-      bits: '00000010',
-      activeIndexes: [6],
-      description: 'Synchronous work',
-      accent: 'sync',
-    },
-    def: {
-      title: 'DefaultLane',
-      bits: '00100000',
-      activeIndexes: [2],
-      description: 'General update',
-      accent: 'default',
-    },
-    result: {
-      title: 'pendingLanes',
-      bits: '00100010',
-      activeIndexes: [2, 6],
-      description: 'Both works coexist',
-      accent: 'transition',
-    },
-    corePoint: {
-      title: 'Key insight',
-      body: 'Bits do not overlap — they merge as-is. Each bit being on directly means that work exists.',
-    },
-  },
-  multi: {
-    number: '6',
-    title: 'Why do we need several Lanes at once?',
-    cards: [
-      {
-        title: 'Click-triggered update',
-        description: 'A click changes state — must be reflected instantly',
-        badge: 'SyncLane',
-        accent: 'sync',
-      },
-      {
-        title: 'transition render',
-        description: 'Screen transitions, filtering — processed asynchronously',
-        badge: 'TransitionLane',
-        accent: 'transition',
-      },
-      {
-        title: 'retry render',
-        description: 'A retry after a Suspense failure',
-        badge: 'RetryLane',
-        accent: 'retry',
-      },
-      {
-        title: 'offscreen work',
-        description: 'Hidden screens or pre-render work',
-        badge: 'OffscreenLane',
-        accent: 'offscreen',
-      },
-    ],
-    root: {
-      top: 'All of these works can coexist',
-      title: 'root.pendingLanes',
-      bits: '1110001001000000000000000000000',
-      activeIndexes: activeFromBits('1110001001000000000000000000000'),
-      ranges: [
-        { start: 0, length: 3, accent: 'transition' },
-        { start: 6, length: 1, accent: 'retry' },
-        { start: 9, length: 1, accent: 'offscreen' },
-      ],
-      bottom: 'One value can express many kinds of pending work',
-    },
-  },
-  code: {
-    number: '7',
-    title: 'Source code preview',
-    fileLabel: 'ReactFiberLane.js',
-    code: CODE_EN,
-    explanationTitle: 'Code explanation',
-    explanation: [
-      'TotalLanes: total number of available Lanes',
-      'NoLanes: a state with no work at all',
-      'SyncLane: the highest-priority bit',
-      'InputContinuousLane: dedicated bit for continuous input',
-    ],
-    button: { label: 'See the full code on GitHub', href: REACT_FIBER_LANE_URL },
-  },
-  interactive: {
-    number: '8',
-    title: 'Lane combination playground',
-    helper: 'Toggle several Lanes to see the pendingLanes result update.',
-    tip: 'Tip: click a card to select / deselect it.',
-    lanes: [
-      { key: 'sync', label: 'Sync', bitIndex: 1, accent: 'sync' },
-      { key: 'inputContinuous', label: 'Input Continuous', bitIndex: 3, accent: 'inputContinuous' },
-      { key: 'default', label: 'Default', bitIndex: 5, accent: 'default' },
-      { key: 'transition', label: 'Transition', bitIndex: 8, accent: 'transition' },
-      { key: 'retry', label: 'Retry', bitIndex: 17, accent: 'retry' },
-    ],
-    resultTitle: 'pendingLanes',
-    bitLength: LEN_31,
-    legendLabel: 'Legend',
-  },
-  mission: {
-    number: '9',
-    title: 'Walk it in the source',
-    checklistTitle: 'Checklist',
+  operations: {
+    badge: '03',
+    eyebrow: 'bit ops',
+    title: 'Three things bits make easy',
+    description:
+      'Most lane-handling code is one of these three operations. Read these three lines and half of ReactFiberLane.js reads itself.',
     items: [
-      'Open ReactFiberLane.js',
-      'Find the SyncLane and DefaultLane definitions',
-      'Check the TotalLanes value',
-      'Write down why pendingLanes as a bitmask is an advantage',
+      {
+        id: 'merge',
+        title: 'Merge',
+        expression: 'root.pendingLanes |= lane',
+        description: 'A new update ORs its bit on. If the bit was already set, nothing changes.',
+        tone: 'indigo',
+      },
+      {
+        id: 'test',
+        title: 'Test membership',
+        expression: '(lanes & SyncLane) !== NoLanes',
+        description: 'A single AND checks whether a lane is present. No iteration needed.',
+        tone: 'sky',
+      },
+      {
+        id: 'pick',
+        title: 'Pick the most urgent',
+        expression: 'lanes & -lanes',
+        description:
+          "Two's complement leaves only the rightmost set bit, giving the top priority without sorting.",
+        tone: 'emerald',
+      },
     ],
-    thinkTitle: 'Think it through',
-    thinkBody:
-      'When many works coexist, compare the plain-number vs bitmask approaches. In which situations does each one shine?',
+    note: 'The third one is the heart of the design. Choosing a priority costs a single comparison, so starting a render is always cheap.',
   },
-  takeaways: {
-    number: '10',
-    title: 'Key takeaways',
-    cards: [
-      {
-        number: '01',
-        title: 'A Lane is the internal classification unit for React work.',
-        description: 'Each Lane is a single bit representing a particular kind of work.',
-        accent: 'sync',
-      },
-      {
-        number: '02',
-        title: 'Lanes carry several Lane bits together.',
-        description: 'A value with several bits on expresses that many works coexist.',
-        accent: 'default',
-      },
-      {
-        number: '03',
-        title: 'Bitmasks are great for representing coexisting pending work.',
-        description: 'Bitwise ops give us efficient merge, compare, and inspect.',
-        accent: 'transition',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberLane.js',
+    lookForLabel: 'Look for',
+    lookFor: 'TotalLanes, SyncLane, TransitionLanes, getHighestPriorityLane',
+    whyLabel: 'Why',
+    why: 'Every constant is written as a 0b literal, and the bit shifting one place left each time is the priority order itself.',
+    code: LANE_DEFINITION_CODE,
+    primaryCta: 'Read ReactFiberLane.js',
+    primaryHref: REACT_FIBER_LANE_HREF,
   },
   nextStep: {
     eyebrow: 'The journey continues',
-    title: 'Which Lane does an update get?',
+    title: 'Which lane does my setState get',
     description:
-      "Now that you understand the Lane concept, let's see what Lane an update actually gets.",
+      'With the shape settled, next comes the logic that decides which lane an actual update is assigned.',
     cta: 'Go to the next page',
     href: '/update-to-lane',
   },
 };
 
-export const laneBitmaskContent: Record<Locale, LaneBitmaskContent> = { ko, en };
+export const laneShapeContent: Record<Locale, LaneShapeContent> = { ko, en };

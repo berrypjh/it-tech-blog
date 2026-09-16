@@ -1,123 +1,63 @@
 import { cx } from '@berrypjh/react-ui';
-import { Atom, Globe, Link2 } from 'lucide-react';
+import { Droplets, FileCode, Link2, type LucideIcon, Zap } from 'lucide-react';
 
-import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
+import { TerminalBadge } from '../../../shared/terminal';
 import { ToneIconBox } from '../../../shared/tone';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { HydrationStartContent } from '../content';
+import { toneTokens } from '../../../shared/tones';
+import type { HydrationStartContent, Stage, StageId } from '../content';
 
-type Props = { content: HydrationStartContent['hero']; className?: string };
+type Props = { content: HydrationStartContent['hero'] };
 
-/**
- * Hero 핵심 비주얼.
- * 서버가 이미 만든 HTML → React가 match/hydrate로 연결 → 같은 DOM을 재사용하는
- * Fiber 트리로 이어지는 hydration 시작 흐름을 위에서 아래로 잇는 컴팩트 stepper.
- */
-export const HydrationStartHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.serverHtml.title} → ${content.matchLabel} → ${content.fiberTree.title}: ${content.fiberTree.lines.map((l) => l.label).join(', ')}`;
+const stageIcon: Record<StageId, LucideIcon> = {
+  html: FileCode,
+  hydrate: Droplets,
+  match: Link2,
+  attach: Zap,
+};
+
+/** Hero 핵심 비주얼: 서버 HTML에서 시작해 Fiber가 붙기까지의 4단 경로. */
+export const HydrationStartHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.title.line1} ${content.title.line2} ${content.description}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
-        <StepHeader
-          tone="blue"
-          label={content.serverHtml.title}
-          icon={<Globe className="h-[18px] w-[18px]" aria-hidden="true" />}
-        />
-        <CodePreviewPanel
-          code={content.serverHtml.content}
-          header={content.serverHtml.fileLabel}
-          language="html"
-          size="md"
-        />
+        <div className="flex items-center justify-between">
+          <TerminalBadge dotClassName="bg-[var(--term-accent)]">
+            {content.diagramBadge}
+          </TerminalBadge>
+          <span className="font-mono text-[10px] text-[var(--term-muted)]">
+            {'//'} {content.diagramCaption}
+          </span>
+        </div>
 
-        <DownArrow />
-
-        <StepHeader
-          tone="sky"
-          label={content.matchLabel}
-          icon={<Link2 className="h-[18px] w-[18px]" aria-hidden="true" />}
-        />
-
-        <DownArrow />
-
-        <StepHeader
-          tone="teal"
-          label={content.fiberTree.title}
-          icon={<Atom className="h-[18px] w-[18px]" aria-hidden="true" />}
-        />
-        <ol className="flex flex-col gap-1.5">
-          {content.fiberTree.lines.map((line, i) => (
-            <li key={line.label} className="flex items-center gap-1.5">
-              {i > 0 && <span className="font-mono text-[10px] text-[var(--term-muted)]">└─</span>}
-              <FiberChip tone={line.kind === 'root' ? 'teal' : 'blue'} label={line.label} />
-            </li>
-          ))}
-        </ol>
+        {content.stages.map((stage, i) => (
+          <div key={stage.id} className="flex flex-col gap-sm">
+            <StageCard stage={stage} />
+            {i < content.stages.length - 1 && <DownArrow />}
+          </div>
+        ))}
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
-const StepHeader = ({
-  tone,
-  label,
-  icon,
-}: {
-  tone: ToneKey;
-  label: string;
-  icon: React.ReactNode;
-}) => {
-  const t = toneTokens[tone];
+const StageCard = ({ stage }: { stage: Stage }) => {
+  const Icon = stageIcon[stage.id];
+  const t = toneTokens[stage.tone];
   return (
-    <div className="flex items-center gap-sm">
-      <ToneIconBox tone={tone} size="sm">
-        {icon}
+    <article className="flex items-center gap-sm rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]">
+      <ToneIconBox tone={stage.tone} size="sm">
+        <Icon className="h-4 w-4" />
       </ToneIconBox>
-      <span className={cx('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
-        {label}
-      </span>
-      <span
-        aria-hidden="true"
-        className="flex-1 border-t border-dashed border-[var(--term-border)]"
-      />
-    </div>
+      <div className="flex min-w-0 flex-col gap-0.5">
+        <code className={cx('font-mono text-xsm font-bold tracking-tight break-all', t.text)}>
+          {stage.label}
+        </code>
+        <span className="text-[11px] text-[var(--term-muted)] break-keep">{stage.caption}</span>
+      </div>
+    </article>
   );
 };
-
-const FiberChip = ({ tone, label }: { tone: ToneKey; label: string }) => {
-  const t = toneTokens[tone];
-  return (
-    <span
-      className={cx(
-        'inline-flex items-center rounded-md border px-2 py-1 font-mono text-[11px] font-bold break-keep',
-        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
-        t.border,
-        t.text,
-      )}
-    >
-      {label}
-    </span>
-  );
-};
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);
