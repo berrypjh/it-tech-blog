@@ -1,7 +1,8 @@
 import { cx } from '@berrypjh/react-ui';
-import { FileCode, Flag, Lightbulb, Sparkles } from 'lucide-react';
+import { FileCode, Flag, Lightbulb } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionNote } from '../../../shared/note';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CommitPhaseIntroContent, FlagRow } from '../content';
@@ -14,8 +15,10 @@ export const CommitFlagsSection = ({ content }: Props) => (
     aria-labelledby="heading-commit-flags"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="commit-flags"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -30,12 +33,10 @@ export const CommitFlagsSection = ({ content }: Props) => (
       </div>
 
       {/* Right column: flag table */}
-      <FlagTableCard
-        title={content.flagTableTitle}
-        rows={content.flagRows}
-        bottomNote={content.bottomNote}
-      />
+      <FlagTableCard title={content.flagTableTitle} rows={content.flagRows} />
     </div>
+
+    <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
   </section>
 );
 
@@ -119,21 +120,10 @@ const LearningPointCard = ({ title, items }: { title: string; items: string[] })
   );
 };
 
-const FlagTableCard = ({
-  title,
-  rows,
-  bottomNote,
-}: {
-  title: string;
-  rows: FlagRow[];
-  bottomNote: string;
-}) => (
+const FlagTableCard = ({ title, rows }: { title: string; rows: FlagRow[] }) => (
   <article className="flex flex-col rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] overflow-hidden shadow-[0_2px_0_var(--term-border)]">
-    <header className="flex items-center justify-between gap-2 border-b border-[var(--term-border)] px-md py-sm bg-[var(--term-surface)]">
+    <header className="border-b border-[var(--term-border)] px-md py-sm bg-[var(--term-surface)]">
       <h3 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] font-mono">{title}</h3>
-      <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-        flags
-      </span>
     </header>
 
     <ul className="divide-y divide-[var(--term-border)]">
@@ -141,34 +131,13 @@ const FlagTableCard = ({
         <FlagRowItem key={row.name} row={row} />
       ))}
     </ul>
-
-    <footer
-      className={cx(
-        'flex items-start gap-2 border-t px-md py-sm',
-        toneTokens.amber.fill.border,
-        toneTokens.amber.fill.bg,
-      )}
-    >
-      <Sparkles
-        aria-hidden="true"
-        className={cx('mt-0.5 h-3.5 w-3.5 shrink-0', toneTokens.amber.text)}
-      />
-      <p
-        className={cx(
-          'text-[11px] sm:text-xsm leading-snug break-keep',
-          toneTokens.amber.fill.text,
-        )}
-      >
-        {bottomNote}
-      </p>
-    </footer>
   </article>
 );
 
 const FlagRowItem = ({ row }: { row: FlagRow }) => {
   const t = toneTokens[row.tone];
   return (
-    <li className="grid grid-cols-1 sm:grid-cols-[auto_minmax(0,_1fr)_minmax(0,_1.4fr)] items-center gap-2 px-md py-2.5 transition-colors hover:bg-[var(--term-surface)]">
+    <li className="grid grid-cols-1 sm:grid-cols-[auto_minmax(0,_1fr)_minmax(0,_1.4fr)] items-center gap-2 px-md py-2.5">
       <div className="flex items-center gap-2 min-w-0">
         <span
           aria-hidden="true"

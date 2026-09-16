@@ -2,12 +2,12 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type PreviousLeftoverIcon = 'cube' | 'refresh' | 'minus' | 'gitMerge';
+export type PreviousLeftoverId = 'cube' | 'refresh' | 'minus' | 'gitMerge';
 
 export type PreviousLeftover = {
   label: string;
   description: string;
-  iconName: PreviousLeftoverIcon;
+  id: PreviousLeftoverId;
   tone: ToneKey;
 };
 
@@ -18,13 +18,13 @@ export type ComparisonRow = {
   emphasis?: boolean;
 };
 
-export type WorkItemIcon = 'plusSquare' | 'pencil' | 'trash' | 'link' | 'monitor' | 'zap';
+export type WorkItemId = 'plusSquare' | 'pencil' | 'trash' | 'link' | 'monitor' | 'zap';
 
 export type WorkItem = {
   title: string;
   subtitle: string;
   description: string;
-  iconName: WorkItemIcon;
+  id: WorkItemId;
   tone: ToneKey;
 };
 
@@ -71,6 +71,7 @@ export type CommitPhaseIntroContent = {
     };
   };
   previous: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -85,6 +86,7 @@ export type CommitPhaseIntroContent = {
     };
   };
   comparison: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -92,12 +94,14 @@ export type CommitPhaseIntroContent = {
     rows: ComparisonRow[];
   };
   work: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     items: WorkItem[];
   };
   map: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -105,6 +109,7 @@ export type CommitPhaseIntroContent = {
     steps: TimelineStep[];
   };
   flags: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -114,22 +119,16 @@ export type CommitPhaseIntroContent = {
     learningItems: string[];
     flagTableTitle: string;
     flagRows: FlagRow[];
-    bottomNote: string;
+    note: string;
   };
   summary: {
+    badge: string;
     eyebrow: string;
     title: string;
     mainSentence: { line1: string; line2: string };
     description: string;
     flowTitle: string;
     flow: FlowStep[];
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    question: string;
-    answer: string;
-    explanation: string;
   };
   nextStep: {
     eyebrow: string;
@@ -144,25 +143,25 @@ const previousLeftoversKo: PreviousLeftover[] = [
   {
     label: 'Placement',
     description: '새 노드 삽입 표시',
-    iconName: 'cube',
+    id: 'cube',
     tone: 'teal',
   },
   {
     label: 'Update',
     description: '속성 / 텍스트 갱신 표시',
-    iconName: 'refresh',
+    id: 'refresh',
     tone: 'sky',
   },
   {
     label: 'ChildDeletion',
     description: '자식 노드 제거 표시',
-    iconName: 'minus',
+    id: 'minus',
     tone: 'indigo',
   },
   {
     label: 'finishedWork',
     description: '완성된 Fiber 트리',
-    iconName: 'gitMerge',
+    id: 'gitMerge',
     tone: 'violet',
   },
 ];
@@ -171,25 +170,25 @@ const previousLeftoversEn: PreviousLeftover[] = [
   {
     label: 'Placement',
     description: 'Mark new nodes to insert',
-    iconName: 'cube',
+    id: 'cube',
     tone: 'teal',
   },
   {
     label: 'Update',
     description: 'Mark props / text updates',
-    iconName: 'refresh',
+    id: 'refresh',
     tone: 'sky',
   },
   {
     label: 'ChildDeletion',
     description: 'Mark child nodes to remove',
-    iconName: 'minus',
+    id: 'minus',
     tone: 'indigo',
   },
   {
     label: 'finishedWork',
     description: 'The completed Fiber tree',
-    iconName: 'gitMerge',
+    id: 'gitMerge',
     tone: 'violet',
   },
 ];
@@ -199,42 +198,42 @@ const workItemsKo: WorkItem[] = [
     title: 'DOM 삽입',
     subtitle: 'Placement',
     description: '새로운 DOM 노드를 트리에 삽입합니다.',
-    iconName: 'plusSquare',
+    id: 'plusSquare',
     tone: 'teal',
   },
   {
     title: 'DOM 수정',
     subtitle: 'Update',
     description: '속성 / 스타일 / 텍스트 등의 변경을 반영합니다.',
-    iconName: 'pencil',
+    id: 'pencil',
     tone: 'sky',
   },
   {
     title: 'DOM 제거',
     subtitle: 'Deletion',
     description: '필요 없어진 DOM 노드를 트리에서 제거합니다.',
-    iconName: 'trash',
+    id: 'trash',
     tone: 'indigo',
   },
   {
     title: 'ref 분리 / 재연결',
     subtitle: 'detach / attach',
     description: '이전 ref 해제 후 새로운 ref 연결을 처리합니다.',
-    iconName: 'link',
+    id: 'link',
     tone: 'violet',
   },
   {
     title: 'layout effect 실행',
     subtitle: 'useLayoutEffect',
     description: 'DOM 갱신 직후, 화면이 그려지기 전에 동기적으로 실행됩니다.',
-    iconName: 'monitor',
+    id: 'monitor',
     tone: 'cyan',
   },
   {
     title: 'passive effect 후속 처리',
     subtitle: 'useEffect',
     description: '화면이 그려진 뒤, 비동기로 실행됩니다.',
-    iconName: 'zap',
+    id: 'zap',
     tone: 'amber',
   },
 ];
@@ -244,42 +243,42 @@ const workItemsEn: WorkItem[] = [
     title: 'DOM insert',
     subtitle: 'Placement',
     description: 'Insert new DOM nodes into the tree.',
-    iconName: 'plusSquare',
+    id: 'plusSquare',
     tone: 'teal',
   },
   {
     title: 'DOM update',
     subtitle: 'Update',
     description: 'Apply prop / style / text changes to existing nodes.',
-    iconName: 'pencil',
+    id: 'pencil',
     tone: 'sky',
   },
   {
     title: 'DOM remove',
     subtitle: 'Deletion',
     description: 'Remove DOM nodes that are no longer needed.',
-    iconName: 'trash',
+    id: 'trash',
     tone: 'indigo',
   },
   {
     title: 'ref detach / attach',
     subtitle: 'detach / attach',
     description: 'Release the old ref and connect the new one.',
-    iconName: 'link',
+    id: 'link',
     tone: 'violet',
   },
   {
     title: 'Run layout effects',
     subtitle: 'useLayoutEffect',
     description: 'Runs synchronously right after DOM updates, before paint.',
-    iconName: 'monitor',
+    id: 'monitor',
     tone: 'cyan',
   },
   {
     title: 'Process passive effects',
     subtitle: 'useEffect',
     description: 'Runs asynchronously after the browser paints.',
-    iconName: 'zap',
+    id: 'zap',
     tone: 'amber',
   },
 ];
@@ -477,7 +476,8 @@ const ko: CommitPhaseIntroContent = {
     },
   },
   previous: {
-    eyebrow: '01 · 앞 챕터',
+    badge: '01',
+    eyebrow: '앞 챕터',
     title: '앞 챕터에서 남긴 것',
     description:
       'Render Phase가 남긴 변경 표시(flags)와 완성된 Fiber 트리(finishedWork)가 Commit Phase로 넘어옵니다.',
@@ -492,7 +492,8 @@ const ko: CommitPhaseIntroContent = {
     },
   },
   comparison: {
-    eyebrow: '02 · render vs commit',
+    badge: '02',
+    eyebrow: 'render vs commit',
     title: 'Render Phase vs Commit Phase',
     description: '두 단계의 책임을 항목별로 비교합니다. DOM 변경 여부가 가장 큰 분기점입니다.',
     columns: {
@@ -535,14 +536,16 @@ const ko: CommitPhaseIntroContent = {
     ],
   },
   work: {
-    eyebrow: '03 · commit 작업 항목',
+    badge: '03',
+    eyebrow: 'commit 작업 항목',
     title: 'Commit Phase에서 실제로 처리되는 항목',
     description:
       'Render Phase가 남긴 flags를 따라 Commit Phase는 다음 6가지 작업을 차례로 수행합니다.',
     items: workItemsKo,
   },
   map: {
-    eyebrow: '04 · commit 단계 지도',
+    badge: '04',
+    eyebrow: 'commit 단계 지도',
     title: 'Commit Phase 전체 지도',
     description:
       'finishedWork 준비부터 Passive Effects까지, Commit Phase는 7단계 흐름으로 진행됩니다.',
@@ -550,7 +553,8 @@ const ko: CommitPhaseIntroContent = {
     steps: timelineStepsKo,
   },
   flags: {
-    eyebrow: '05 · Fiber flags',
+    badge: '05',
+    eyebrow: 'Fiber 플래그',
     title: '변경 표시는 flags에 기록됩니다',
     description:
       '각 Fiber에 설정된 flags를 Commit Phase가 읽어, 어떤 작업을 어떻게 수행할지 결정합니다.',
@@ -567,11 +571,11 @@ const ko: CommitPhaseIntroContent = {
     ],
     flagTableTitle: '주요 flags 예시 (ReactFiberFlags.js)',
     flagRows: flagRowsKo,
-    bottomNote:
-      '실제 코드는 더 많은 flags와 bit 필드를 포함하며, 플랫폼별/효과별 처리를 구분합니다.',
+    note: '실제 코드는 더 많은 flags와 bit 필드를 포함하며, 플랫폼별/효과별 처리를 구분합니다.',
   },
   summary: {
-    eyebrow: '06 · 핵심 요약',
+    badge: '06',
+    eyebrow: '핵심 요약',
     title: '핵심',
     mainSentence: {
       line1: '실제 DOM 변경은 Commit Phase 안의',
@@ -596,14 +600,6 @@ const ko: CommitPhaseIntroContent = {
         tone: 'amber',
       },
     ],
-  },
-  quiz: {
-    eyebrow: '07 · 미니 퀴즈',
-    title: '미니 퀴즈',
-    question: 'Render Phase에서 Placement flag가 생겼다면 이미 DOM 삽입이 끝난 것일까?',
-    answer: '아니다. 실제 삽입은 Commit Phase에서 실행된다.',
-    explanation:
-      'Placement flag는 "이 노드를 삽입해야 한다"라는 계획일 뿐, DOM에 실제로 붙이는 작업은 Commit Phase의 Mutation 단계에서 이루어집니다.',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -638,7 +634,8 @@ const en: CommitPhaseIntroContent = {
     },
   },
   previous: {
-    eyebrow: '01 · CHAPTER RECAP',
+    badge: '01',
+    eyebrow: 'CHAPTER RECAP',
     title: 'What the previous chapter left behind',
     description:
       'The change marks (flags) and the completed Fiber tree (finishedWork) from the Render Phase flow into the Commit Phase.',
@@ -653,7 +650,8 @@ const en: CommitPhaseIntroContent = {
     },
   },
   comparison: {
-    eyebrow: '02 · RENDER VS COMMIT',
+    badge: '02',
+    eyebrow: 'RENDER VS COMMIT',
     title: 'Render Phase vs Commit Phase',
     description:
       'Compare the responsibilities of the two phases row by row. Whether the DOM changes is the biggest fork.',
@@ -697,14 +695,16 @@ const en: CommitPhaseIntroContent = {
     ],
   },
   work: {
-    eyebrow: '03 · WORK ITEMS',
+    badge: '03',
+    eyebrow: 'WORK ITEMS',
     title: 'Work handled in the Commit Phase',
     description:
       'Driven by the flags left by the Render Phase, the Commit Phase carries out the following 6 jobs in order.',
     items: workItemsEn,
   },
   map: {
-    eyebrow: '04 · PHASE MAP',
+    badge: '04',
+    eyebrow: 'PHASE MAP',
     title: 'Commit Phase whole map',
     description:
       'From preparing finishedWork to passive effects, the Commit Phase moves through 7 steps.',
@@ -712,7 +712,8 @@ const en: CommitPhaseIntroContent = {
     steps: timelineStepsEn,
   },
   flags: {
-    eyebrow: '05 · FIBER FLAGS',
+    badge: '05',
+    eyebrow: 'FIBER FLAGS',
     title: 'Change marks live on flags',
     description:
       'The Commit Phase reads the flags set on each Fiber to decide what work to perform and how.',
@@ -729,11 +730,11 @@ const en: CommitPhaseIntroContent = {
     ],
     flagTableTitle: 'Sample flags (ReactFiberFlags.js)',
     flagRows: flagRowsEn,
-    bottomNote:
-      'Real source code includes many more flags and bit fields and splits behavior per platform / effect.',
+    note: 'Real source code includes many more flags and bit fields and splits behavior per platform / effect.',
   },
   summary: {
-    eyebrow: '06 · KEY SUMMARY',
+    badge: '06',
+    eyebrow: 'KEY SUMMARY',
     title: 'Key',
     mainSentence: {
       line1: 'Real DOM changes happen inside the',
@@ -758,15 +759,6 @@ const en: CommitPhaseIntroContent = {
         tone: 'amber',
       },
     ],
-  },
-  quiz: {
-    eyebrow: '07 · MINI QUIZ',
-    title: 'Mini quiz',
-    question:
-      'If a Placement flag was set during the Render Phase, has the DOM insertion already happened?',
-    answer: 'No. The real insert only runs in the Commit Phase.',
-    explanation:
-      'A Placement flag is only a plan that says "this node should be inserted". The actual DOM insertion is done during the Mutation step of the Commit Phase.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

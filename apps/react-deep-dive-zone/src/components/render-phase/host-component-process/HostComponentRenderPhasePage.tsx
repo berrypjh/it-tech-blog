@@ -6,7 +6,6 @@ import { StartPageShell } from '../../shared/shell';
 import { CompleteWorkPreview } from './sections/CompleteWorkPreview';
 import { HostComponentCodeCheckpoint } from './sections/HostComponentCodeCheckpoint';
 import { HostComponentHero } from './sections/HostComponentHero';
-import { HostComponentQuiz } from './sections/HostComponentQuiz';
 import { HostUserCodeExample } from './sections/HostUserCodeExample';
 import { TextVsNestedChildren } from './sections/TextVsNestedChildren';
 import { UpdateHostComponentFlow } from './sections/UpdateHostComponentFlow';
@@ -23,9 +22,8 @@ export const HostComponentRenderPhasePage = ({ locale }: Props) => {
       <HostUserCodeExample content={c.userCode} />
       <UpdateHostComponentFlow content={c.updateFlow} />
       <TextVsNestedChildren content={c.childCompare} />
-      <HostComponentCodeCheckpoint content={c.code} />
+      <HostComponentCodeCheckpoint content={c.checkpoint} />
       <CompleteWorkPreview content={c.completeWork} />
-      <HostComponentQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

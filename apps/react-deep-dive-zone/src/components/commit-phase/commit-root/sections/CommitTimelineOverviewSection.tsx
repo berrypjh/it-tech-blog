@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { ListChecks, Target, Zap } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CommitRootContent, TimelineStep } from '../content';
 
@@ -13,8 +13,10 @@ export const CommitTimelineOverviewSection = ({ content }: Props) => (
     aria-labelledby="heading-commit-timeline-overview"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="commit-timeline-overview"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -22,20 +24,6 @@ export const CommitTimelineOverviewSection = ({ content }: Props) => (
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-      <header className="mb-md flex flex-wrap items-center justify-between gap-2">
-        <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-          {'// commit phase: 5 step pipeline'}
-        </span>
-        <span
-          className={cx(
-            'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
-            toneTokens.teal.chip,
-          )}
-        >
-          timeline
-        </span>
-      </header>
-
       <ol className="flex flex-col">
         {content.steps.map((step, idx) => (
           <li key={step.number}>
@@ -106,7 +94,7 @@ const StepRow = ({
                 t.chip,
               )}
             >
-              <Target aria-hidden="true" className="h-3 w-3" />
+              <Target aria-hidden="true" className="h-3.5 w-3.5" />
               {mutationBadge}
             </span>
           )}
@@ -117,7 +105,7 @@ const StepRow = ({
                 t.chip,
               )}
             >
-              <Zap aria-hidden="true" className="h-3 w-3" />
+              <Zap aria-hidden="true" className="h-3.5 w-3.5" />
               {asyncBadge}
             </span>
           )}

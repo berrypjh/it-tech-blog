@@ -14,9 +14,8 @@ type Props = { content: FunctionComponentContent['hero'] };
 export const FunctionComponentHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="reconciler/function-component-process.md"
-    promptSuffix={<span className="text-[var(--term-dim)]"> {'// function component flow'}</span>}
-    gridColumns="lg:grid-cols-[minmax(0,_0.82fr)_minmax(0,_1.18fr)]"
+    promptPath="packages/react-reconciler/src/ReactFiberBeginWork.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -33,7 +32,7 @@ export const FunctionComponentHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-function-component" className="min-w-0">
+    <HeroVisualColumn id="hero-function-component-process">
       <FunctionComponentHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

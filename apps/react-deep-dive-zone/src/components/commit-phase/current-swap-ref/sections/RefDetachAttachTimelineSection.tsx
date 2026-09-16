@@ -8,16 +8,18 @@ import {
   Eye,
   Lightbulb,
   Link,
+  type LucideIcon,
   Replace,
   Unlink,
   Workflow,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionNote } from '../../../shared/note';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type {
-  RefTimelineIcon,
+  RefTimelineId,
   RefTimelineStep,
   RefValueStep,
   RootCurrentRefContent,
@@ -25,7 +27,7 @@ import type {
 
 type Props = { content: RootCurrentRefContent['refTimeline'] };
 
-const iconMap: Record<RefTimelineIcon, typeof Eye> = {
+const iconMap: Record<RefTimelineId, LucideIcon> = {
   eye: Eye,
   unlink: Unlink,
   replace: Replace,
@@ -39,8 +41,10 @@ export const RefDetachAttachTimelineSection = ({ content }: Props) => (
     aria-labelledby="heading-ref-detach-attach"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="ref-detach-attach"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -82,34 +86,15 @@ export const RefDetachAttachTimelineSection = ({ content }: Props) => (
       </ol>
 
       {/* Bottom: ref flow */}
-      <RefFlow steps={content.refFlow} />
-
-      {/* Insight */}
-      <aside
-        className={cx(
-          'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
-          toneTokens.sky.fill.border,
-          toneTokens.sky.fill.bg,
-        )}
-      >
-        <ToneIconBox tone="sky" size="sm" className="mt-0.5 shrink-0">
-          <Lightbulb className="h-4 w-4" aria-hidden="true" />
-        </ToneIconBox>
-        <p
-          className={cx(
-            'text-xsm sm:text-sm leading-relaxed break-keep font-bold',
-            toneTokens.sky.fill.text,
-          )}
-        >
-          {content.insight}
-        </p>
-      </aside>
+      <RefFlow label={content.refFlowLabel} steps={content.refFlow} />
     </article>
+
+    <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
   </section>
 );
 
 const StepCard = ({ step, index }: { step: RefTimelineStep; index: number }) => {
-  const Icon = iconMap[step.iconName];
+  const Icon = iconMap[step.id];
   const t = toneTokens[step.tone];
   return (
     <article
@@ -135,18 +120,18 @@ const StepCard = ({ step, index }: { step: RefTimelineStep; index: number }) => 
       <h3 className={cx('text-xsm sm:text-sm font-bold leading-tight break-keep', t.fill.text)}>
         {step.title}
       </h3>
-      <p className="text-[10.5px] sm:text-[11px] leading-snug text-[var(--term-muted)] break-keep">
+      <p className="text-[10px] sm:text-[11px] leading-snug text-[var(--term-muted)] break-keep">
         {step.description}
       </p>
     </article>
   );
 };
 
-const RefFlow = ({ steps }: { steps: RefValueStep[] }) => (
+const RefFlow = ({ label, steps }: { label: string; steps: RefValueStep[] }) => (
   <div className="mt-md pt-md border-t border-dashed border-[var(--term-border)]">
     <header className="mb-sm flex items-center justify-between">
       <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] font-bold">
-        ref.current value flow
+        {label}
       </span>
     </header>
     <ol className="flex flex-col md:flex-row md:items-center md:flex-wrap gap-2">
@@ -167,8 +152,8 @@ const RefFlow = ({ steps }: { steps: RefValueStep[] }) => (
               aria-hidden="true"
               className="flex md:items-center justify-center text-[var(--term-dim)]"
             >
-              <ArrowRight className="h-3 w-3 hidden md:inline-block" aria-hidden="true" />
-              <ArrowDown className="h-3 w-3 md:hidden" aria-hidden="true" />
+              <ArrowRight className="h-3.5 w-3.5 hidden md:inline-block" aria-hidden="true" />
+              <ArrowDown className="h-3.5 w-3.5 md:hidden" aria-hidden="true" />
             </li>
           )}
         </Fragment>

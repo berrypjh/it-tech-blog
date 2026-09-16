@@ -6,16 +6,16 @@ import {
   ArrowRight,
   Clock,
   FileText,
+  Lightbulb,
   type LucideIcon,
   MousePointerClick,
   Network,
   PlayCircle,
-  Sparkles,
   Workflow,
 } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type {
   PreviousChapterStep,
@@ -34,9 +34,15 @@ const previousIconByName: Record<PreviousChapterStepIcon, LucideIcon> = {
 type Props = { content: RenderPhaseIntroContent['previous'] };
 
 export const PreviousChapterFlow = ({ content }: Props) => (
-  <section id="previous-chapter" aria-labelledby="heading-previous-chapter" className="space-y-md">
-    <SectionHeader
+  <section
+    id="previous-chapter"
+    aria-labelledby="heading-previous-chapter"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="previous-chapter"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -44,15 +50,6 @@ export const PreviousChapterFlow = ({ content }: Props) => (
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-      <header className="mb-md flex flex-wrap items-center justify-between gap-2">
-        <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
-          {'// previous chapter → render phase entry'}
-        </span>
-        <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)] rounded-md border border-[var(--term-border)] px-2 py-0.5">
-          5 steps
-        </span>
-      </header>
-
       {/* Desktop: horizontal flow */}
       <div className="hidden md:flex items-stretch gap-2">
         {content.steps.map((step, idx) => (
@@ -89,8 +86,8 @@ export const PreviousChapterFlow = ({ content }: Props) => (
         ))}
       </ol>
 
-      <SectionNote icon={<Sparkles className="h-4 w-4" aria-hidden="true" />} className="mt-md">
-        {content.emphasis}
+      <SectionNote icon={<Lightbulb className="h-4 w-4" />} className="mt-md">
+        {content.note}
       </SectionNote>
     </article>
   </section>

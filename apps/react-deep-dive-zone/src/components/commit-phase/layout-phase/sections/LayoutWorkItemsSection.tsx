@@ -1,14 +1,14 @@
 import { cx } from '@berrypjh/react-ui';
-import { Component, Layers, Link, Zap } from 'lucide-react';
+import { Component, Layers, Link, type LucideIcon, Zap } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { LayoutPhaseContent, WorkItemIcon } from '../content';
+import type { LayoutPhaseContent, WorkItemId } from '../content';
 
 type Props = { content: LayoutPhaseContent['workItems'] };
 
-const iconMap: Record<WorkItemIcon, typeof Zap> = {
+const iconMap: Record<WorkItemId, LucideIcon> = {
   zap: Zap,
   component: Component,
   link: Link,
@@ -20,17 +20,19 @@ export const LayoutWorkItemsSection = ({ content }: Props) => (
     aria-labelledby="heading-layout-work-items"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="layout-work-items"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
       icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
-    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
+    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
       {content.items.map((item, idx) => {
-        const Icon = iconMap[item.iconName];
+        const Icon = iconMap[item.id];
         return (
           <ToneCardItem
             key={item.title}

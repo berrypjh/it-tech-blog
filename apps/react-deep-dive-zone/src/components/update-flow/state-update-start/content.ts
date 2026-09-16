@@ -51,11 +51,11 @@ export type StateUpdateStartContent = {
     };
   };
   visibleCode: {
+    badge: string;
     eyebrow: string;
     title: string;
     code: {
       fileName: string;
-      language: string;
       content: string;
     };
     explain: {
@@ -65,6 +65,7 @@ export type StateUpdateStartContent = {
     };
   };
   misconception: {
+    badge: string;
     eyebrow: string;
     title: string;
     headerWrong: string;
@@ -72,13 +73,15 @@ export type StateUpdateStartContent = {
     rows: MisconceptionRow[];
   };
   internalFlow: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: InternalFlowStep[];
-    bottomNote: string;
+    note: string;
   };
   snapshot: {
+    badge: string;
     eyebrow: string;
     title: string;
     topNote: string;
@@ -104,16 +107,8 @@ export type StateUpdateStartContent = {
       footnote: string;
     };
   };
-  question: {
-    eyebrow: string;
-    title: string;
-    questionLabel: string;
-    answerLabel: string;
-    question: string;
-    answerTitle: string;
-    answerBody: string;
-  };
   summary: {
+    badge: string;
     eyebrow: string;
     title: string;
     lines: string[];
@@ -191,11 +186,11 @@ const ko: StateUpdateStartContent = {
     },
   },
   visibleCode: {
-    eyebrow: '01 · 겉으로 보이는 코드',
+    badge: '01',
+    eyebrow: '겉으로 보이는 코드',
     title: '사용자에게 보이는 코드',
     code: {
       fileName: 'Counter.js',
-      language: 'JS',
       content: counterCode,
     },
     explain: {
@@ -205,7 +200,8 @@ const ko: StateUpdateStartContent = {
     },
   },
   misconception: {
-    eyebrow: '02 · 오해와 실제',
+    badge: '02',
+    eyebrow: '오해와 실제',
     title: '흔한 생각 vs 실제 React 흐름',
     headerWrong: '흔한 생각 (오해)',
     headerCorrect: '실제 React 흐름 (정확한 이해)',
@@ -233,7 +229,8 @@ const ko: StateUpdateStartContent = {
     ],
   },
   internalFlow: {
-    eyebrow: '03 · 내부 흐름 미리보기',
+    badge: '03',
+    eyebrow: '내부 흐름 미리보기',
     title: 'setState 이후 내부 흐름 미리보기',
     description:
       '이후 페이지에서 확대해서 볼 8단계를 한 번에 미리 봅니다. 각 단계는 별도의 페이지에서 코드로 다시 확인합니다.',
@@ -247,10 +244,11 @@ const ko: StateUpdateStartContent = {
       { number: '7', label: 'Root 스케줄링', tone: 'indigo', icon: 'calendar' },
       { number: '8', label: 'Render Phase 준비', tone: 'blue', icon: 'loader' },
     ],
-    bottomNote: '이 챕터 이후 페이지에서 각 단계를 하나씩 코드로 확인합니다.',
+    note: '이 챕터 이후 페이지에서 각 단계를 하나씩 코드로 확인합니다.',
   },
   snapshot: {
-    eyebrow: '04 · 렌더 스냅샷',
+    badge: '04',
+    eyebrow: '렌더 스냅샷',
     title: 'State는 현재 렌더의 스냅샷처럼 보인다',
     topNote: '이벤트 핸들러 안의 count 값은 그 렌더 시점의 count를 본다.',
     leftCard: {
@@ -275,18 +273,9 @@ const ko: StateUpdateStartContent = {
       footnote: '(Commit 이후)',
     },
   },
-  question: {
-    eyebrow: '05 · 학습 질문',
-    title: '학습 질문',
-    questionLabel: '질문',
-    answerLabel: '정답',
-    question: 'setState가 호출되는 순간 React가 가장 먼저 해야 할 일은 무엇일까?',
-    answerTitle: '어떤 Fiber에 업데이트가 생겼는지 기록할 준비를 하는 것이다.',
-    answerBody:
-      '업데이트 요청을 해당 Fiber와 연결하고, 우선순위(lane)를 정하고, queue에 등록하는 것이 가장 먼저 일어난다.',
-  },
   summary: {
-    eyebrow: '06 · 핵심 요약',
+    badge: '05',
+    eyebrow: '핵심 요약',
     title: '핵심 요약',
     lines: [
       'setState는 화면 반영 명령이 아니라, 업데이트 처리 흐름의 출발점이다.',
@@ -359,11 +348,11 @@ const en: StateUpdateStartContent = {
     },
   },
   visibleCode: {
-    eyebrow: '01 · VISIBLE CODE',
+    badge: '01',
+    eyebrow: 'VISIBLE CODE',
     title: 'The code the user actually writes',
     code: {
       fileName: 'Counter.js',
-      language: 'JS',
       content: counterCode,
     },
     explain: {
@@ -373,7 +362,8 @@ const en: StateUpdateStartContent = {
     },
   },
   misconception: {
-    eyebrow: '02 · MYTH VS REALITY',
+    badge: '02',
+    eyebrow: 'MYTH VS REALITY',
     title: 'Common belief vs the actual React flow',
     headerWrong: 'Common belief (myth)',
     headerCorrect: 'Actual React flow (correct)',
@@ -401,7 +391,8 @@ const en: StateUpdateStartContent = {
     ],
   },
   internalFlow: {
-    eyebrow: '03 · INTERNAL FLOW',
+    badge: '03',
+    eyebrow: 'INTERNAL FLOW',
     title: 'A preview of the internals after setState',
     description:
       'These are the eight stages that later pages will zoom into one by one with real source code.',
@@ -415,10 +406,11 @@ const en: StateUpdateStartContent = {
       { number: '7', label: 'Schedule on the root', tone: 'indigo', icon: 'calendar' },
       { number: '8', label: 'Prepare the render phase', tone: 'blue', icon: 'loader' },
     ],
-    bottomNote: 'Each stage gets its own page later in this chapter, with the matching code.',
+    note: 'Each stage gets its own page later in this chapter, with the matching code.',
   },
   snapshot: {
-    eyebrow: '04 · RENDER SNAPSHOT',
+    badge: '04',
+    eyebrow: 'RENDER SNAPSHOT',
     title: 'State looks like a snapshot of the current render',
     topNote: 'The count inside an event handler is the count from that render.',
     leftCard: {
@@ -443,18 +435,9 @@ const en: StateUpdateStartContent = {
       footnote: '(after Commit)',
     },
   },
-  question: {
-    eyebrow: '05 · LEARNING QUESTION',
-    title: 'Learning question',
-    questionLabel: 'Question',
-    answerLabel: 'Answer',
-    question: 'The instant setState is called, what is the very first thing React has to do?',
-    answerTitle: 'Get ready to record which Fiber the update belongs to.',
-    answerBody:
-      'Link the update request to that Fiber, choose its priority (lane), and enqueue it — that all happens first.',
-  },
   summary: {
-    eyebrow: '06 · KEY SUMMARY',
+    badge: '05',
+    eyebrow: 'KEY SUMMARY',
     title: 'Key summary',
     lines: [
       'setState is not a "paint the screen" command — it\'s where the update pipeline begins.',

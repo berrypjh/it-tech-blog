@@ -101,7 +101,7 @@ export const ResultCardView = ({ result }: { result: ResultCard }) => {
             t.chip,
           )}
         >
-          result
+          {result.label}
         </span>
         <span
           aria-hidden="true"

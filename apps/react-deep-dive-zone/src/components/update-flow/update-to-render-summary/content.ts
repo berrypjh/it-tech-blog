@@ -81,6 +81,7 @@ export type UpdateToRenderSummaryContent = {
     };
   };
   bigFlow: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -88,24 +89,28 @@ export type UpdateToRenderSummaryContent = {
     steps: FlowStep[];
   };
   roleTable: {
+    badge: string;
     eyebrow: string;
     title: string;
     columns: { order: string; fn: string; role: string; point: string };
     rows: RoleTableRow[];
   };
   sourcePath: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: SourcePathCard[];
   };
   misconceptions: {
+    badge: string;
     eyebrow: string;
     title: string;
     cards: MisconceptionCard[];
-    summary: string;
+    note: string;
   };
   nextChapter: {
+    badge: string;
     eyebrow: string;
     title: string;
     previewQuestion: string;
@@ -327,7 +332,8 @@ const ko: UpdateToRenderSummaryContent = {
     diagram: { title: '전체 흐름 요약', steps: flowStepsKo },
   },
   bigFlow: {
-    eyebrow: '01 · 대형 다이어그램',
+    badge: '01',
+    eyebrow: '대형 다이어그램',
     title: '전체 업데이트 흐름 대형 다이어그램',
     description:
       'Hero에서 본 흐름을 본문에서 한 번 더 큰 카드로 정리합니다. 각 단계의 의미를 설명에서 같이 확인하세요.',
@@ -335,7 +341,8 @@ const ko: UpdateToRenderSummaryContent = {
     steps: flowStepsKo,
   },
   roleTable: {
-    eyebrow: '02 · 단계별 역할',
+    badge: '02',
+    eyebrow: '단계별 역할',
     title: '단계별 역할 표',
     columns: { order: '순서', fn: '함수 / 단계', role: '역할', point: '핵심 포인트' },
     rows: [
@@ -427,7 +434,8 @@ const ko: UpdateToRenderSummaryContent = {
     ],
   },
   sourcePath: {
-    eyebrow: '03 · 소스코드 경로',
+    badge: '03',
+    eyebrow: '소스코드 경로',
     title: '한 줄씩 되짚는 소스코드 경로',
     description:
       '지금까지의 흐름이 실제로는 어떤 React 내부 파일들을 거쳐 갔는지 한 번 더 짚어봅니다.',
@@ -488,7 +496,8 @@ const ko: UpdateToRenderSummaryContent = {
     ],
   },
   misconceptions: {
-    eyebrow: '04 · 오해 정리',
+    badge: '04',
+    eyebrow: '오해 정리',
     title: '흔한 오해 정리',
     cards: [
       {
@@ -519,10 +528,11 @@ const ko: UpdateToRenderSummaryContent = {
         icon: 'zap',
       },
     ],
-    summary: '정확히는 업데이트 요청 등록 → 렌더 필요성 판단 → Root 스케줄링이 먼저다.',
+    note: '정확히는 업데이트 요청 등록 → 렌더 필요성 판단 → Root 스케줄링이 먼저다.',
   },
   nextChapter: {
-    eyebrow: '05 · 다음 챕터',
+    badge: '05',
+    eyebrow: '다음 챕터',
     title: '다음 챕터 예고',
     previewQuestion:
       '업데이트 요청이 Root까지 올라가고 스케줄에 등록되었다. 그렇다면 React는 이제 그 Root에서 어떤 방식으로 실제 렌더링 계산을 시작할까?',
@@ -578,7 +588,8 @@ const en: UpdateToRenderSummaryContent = {
     diagram: { title: 'Full flow summary', steps: flowStepsEn },
   },
   bigFlow: {
-    eyebrow: '01 · BIG DIAGRAM',
+    badge: '01',
+    eyebrow: 'BIG DIAGRAM',
     title: 'The full update flow at large',
     description:
       'The same flow as the hero — at body-section scale. Match each step with its short meaning.',
@@ -586,7 +597,8 @@ const en: UpdateToRenderSummaryContent = {
     steps: flowStepsEn,
   },
   roleTable: {
-    eyebrow: '02 · ROLE TABLE',
+    badge: '02',
+    eyebrow: 'ROLE TABLE',
     title: 'Function / step role table',
     columns: { order: '#', fn: 'function / step', role: 'role', point: 'key point' },
     rows: [
@@ -678,7 +690,8 @@ const en: UpdateToRenderSummaryContent = {
     ],
   },
   sourcePath: {
-    eyebrow: '03 · SOURCE PATH',
+    badge: '03',
+    eyebrow: 'SOURCE PATH',
     title: 'Retracing the path through source files',
     description: 'A second pass over which React internal files this whole flow actually visits.',
     cards: [
@@ -738,7 +751,8 @@ const en: UpdateToRenderSummaryContent = {
     ],
   },
   misconceptions: {
-    eyebrow: '04 · MYTHS DEBUNKED',
+    badge: '04',
+    eyebrow: 'MYTHS DEBUNKED',
     title: 'Common misconceptions',
     cards: [
       {
@@ -769,11 +783,11 @@ const en: UpdateToRenderSummaryContent = {
         icon: 'zap',
       },
     ],
-    summary:
-      'Strictly speaking: register the request → judge whether to render → schedule the Root — in that order.',
+    note: 'Strictly speaking: register the request → judge whether to render → schedule the Root — in that order.',
   },
   nextChapter: {
-    eyebrow: '05 · NEXT CHAPTER',
+    badge: '05',
+    eyebrow: 'NEXT CHAPTER',
     title: 'Next chapter preview',
     previewQuestion:
       'The update request climbed up to the Root and landed on the schedule. So how does React actually start computing the new render from that Root?',

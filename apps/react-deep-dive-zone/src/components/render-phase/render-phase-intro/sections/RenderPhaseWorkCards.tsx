@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Flag, GitBranch, Layers, type LucideIcon, RefreshCcw, Sparkles } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { RenderPhaseIntroContent, WorkCardIcon } from '../content';
@@ -16,9 +16,11 @@ const workIconByName: Record<WorkCardIcon, LucideIcon> = {
 type Props = { content: RenderPhaseIntroContent['work'] };
 
 export const RenderPhaseWorkCards = ({ content }: Props) => (
-  <section id="work-cards" aria-labelledby="heading-work-cards" className="space-y-md">
-    <SectionHeader
+  <section id="work-cards" aria-labelledby="heading-work-cards" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="work-cards"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -32,7 +34,7 @@ export const RenderPhaseWorkCards = ({ content }: Props) => (
           <ToneCardItem
             key={card.title}
             tone={card.tone}
-            icon={<Icon className={cx('h-5 w-5', toneTokens[card.tone].text)} />}
+            icon={<Icon className="h-5 w-5" />}
             topRight={idx + 1}
           >
             <h3

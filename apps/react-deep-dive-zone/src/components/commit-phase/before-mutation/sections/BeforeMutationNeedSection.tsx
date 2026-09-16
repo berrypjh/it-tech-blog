@@ -1,16 +1,16 @@
 import { Fragment } from 'react';
 
 import { cx } from '@berrypjh/react-ui';
-import { ArrowRight, HelpCircle, MapPin, Save, Target } from 'lucide-react';
+import { ArrowRight, HelpCircle, type LucideIcon, MapPin, Save, Target } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { BeforeMutationContent, MiniTimelineStep, WhyCardIcon } from '../content';
+import type { BeforeMutationContent, MiniTimelineStep, WhyCardId } from '../content';
 
 type Props = { content: BeforeMutationContent['why'] };
 
-const iconMap: Record<WhyCardIcon, typeof MapPin> = {
+const iconMap: Record<WhyCardId, LucideIcon> = {
   mapPin: MapPin,
   save: Save,
   target: Target,
@@ -22,17 +22,19 @@ export const BeforeMutationNeedSection = ({ content }: Props) => (
     aria-labelledby="heading-why-before-mutation"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="why-before-mutation"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
       icon={<HelpCircle className="h-5 w-5" aria-hidden="true" />}
     />
 
-    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
+    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
       {content.cards.map((card, idx) => {
-        const Icon = iconMap[card.iconName];
+        const Icon = iconMap[card.id];
         return (
           <ToneCardItem
             key={card.title}

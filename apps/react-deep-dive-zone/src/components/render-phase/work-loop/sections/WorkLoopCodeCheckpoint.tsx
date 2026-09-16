@@ -1,22 +1,17 @@
-import { cx } from '@berrypjh/react-ui';
-import { Code2, FileCode } from 'lucide-react';
+import { Eye, FileCode, Info } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
-import { CodePreviewPanel } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { CodeCallout, WorkLoopContent } from '../content';
+import { CodePreviewPanel, GithubButton } from '../../../shared/code';
+import { SectionBadgeHeader } from '../../../shared/section';
+import type { WorkLoopContent } from '../content';
 
-type Props = { content: WorkLoopContent['code'] };
+type Props = { content: WorkLoopContent['checkpoint'] };
 
 export const WorkLoopCodeCheckpoint = ({ content }: Props) => (
-  <section
-    id="source-checkpoint"
-    aria-labelledby="heading-source-checkpoint"
-    className="space-y-md"
-  >
-    <SectionHeader
-      id="source-checkpoint"
+  <section id="checkpoint" aria-labelledby="heading-checkpoint" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      id="checkpoint"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<FileCode className="h-5 w-5" aria-hidden="true" />}
@@ -27,83 +22,26 @@ export const WorkLoopCodeCheckpoint = ({ content }: Props) => (
         rows={[
           {
             label: content.fileLabel,
-            value: <code className="font-mono break-all">{content.fileName}</code>,
+            value: <code className="font-mono break-all">{content.filePath}</code>,
             icon: FileCode,
           },
           {
-            label: content.functionsLabel,
+            label: content.lookForLabel,
             value: (
-              <ul className="flex flex-col gap-1.5">
-                {content.functions.map((fn) => (
-                  <li key={fn}>
-                    <code className="inline-block max-w-full break-all rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-xsm font-mono text-[var(--term-fg)]">
-                      {fn}
-                    </code>
-                  </li>
-                ))}
-              </ul>
+              <code className="inline-block max-w-full break-all rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-xsm font-mono text-[var(--term-fg)]">
+                {content.lookFor}
+              </code>
             ),
-            icon: Code2,
+            icon: Eye,
           },
+          { label: content.whyLabel, value: content.why, icon: Info },
         ]}
-        question={content.learningQuestion}
       />
 
       <div className="flex flex-col gap-md min-w-0">
-        <CodePreviewPanel
-          header={content.codeHeader}
-          badge={content.codeBadge}
-          code={content.code}
-        />
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
-          <Callout callout={content.callouts.primary} />
-          <Callout callout={content.callouts.secondary} />
-        </div>
+        <CodePreviewPanel header={content.filePath} badge="main" code={content.code} />
+        <GithubButton href={content.primaryHref} label={content.primaryCta} />
       </div>
     </div>
   </section>
 );
-
-const Callout = ({ callout }: { callout: CodeCallout }) => {
-  const tone: ToneKey = callout.kind === 'sync' ? 'sky' : 'teal';
-  const t = toneTokens[tone];
-  return (
-    <article
-      className={cx(
-        'flex flex-col gap-2 rounded-lg border p-md shadow-[0_1px_0_var(--term-border)]',
-        t.border,
-      )}
-    >
-      <header className="flex items-center justify-between gap-2">
-        <span
-          className={cx(
-            'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
-            t.chip,
-          )}
-        >
-          {callout.conditionLabel}
-        </span>
-        <span
-          className={cx(
-            'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
-            t.chip,
-          )}
-        >
-          {callout.kind}
-        </span>
-      </header>
-      <p className={cx('text-xsm sm:text-sm leading-snug font-bold break-keep', t.text)}>
-        {callout.conditionBody}
-      </p>
-      <div className="my-1 h-px w-full bg-[var(--term-border)]" aria-hidden="true" />
-      <div className="flex items-baseline gap-2">
-        <span className={cx('text-xxsm font-mono uppercase tracking-wider', t.text)}>
-          {callout.meaningLabel}
-        </span>
-        <span className="flex-1 text-xsm sm:text-sm leading-snug text-[var(--term-muted)] break-keep">
-          {callout.meaningBody}
-        </span>
-      </div>
-    </article>
-  );
-};

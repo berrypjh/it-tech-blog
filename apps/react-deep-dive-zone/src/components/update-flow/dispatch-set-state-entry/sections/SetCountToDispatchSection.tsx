@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { ArrowLeftRight, Code2, FunctionSquare, Info } from 'lucide-react';
 
 import { CompareVs } from '../../../shared/compare';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DispatchSetStateEntryContent } from '../content';
@@ -12,9 +12,10 @@ type Props = { content: DispatchSetStateEntryContent['compare'] };
 const amber = toneTokens.amber;
 
 export const SetCountToDispatchSection = ({ content }: Props) => (
-  <section id="section-compare" aria-labelledby="heading-compare" className="space-y-md">
-    <SectionHeader
+  <section id="compare" aria-labelledby="heading-compare" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="compare"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<ArrowLeftRight className="h-5 w-5" aria-hidden="true" />}

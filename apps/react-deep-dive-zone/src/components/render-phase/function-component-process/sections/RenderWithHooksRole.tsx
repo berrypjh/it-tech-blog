@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { FunctionSquare, Lightbulb, Settings } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FunctionComponentContent } from '../content';
@@ -15,10 +15,11 @@ export const RenderWithHooksRole = ({ content }: Props) => {
     <section
       id="render-with-hooks"
       aria-labelledby="heading-render-with-hooks"
-      className="space-y-md"
+      className="space-y-md scroll-mt-xl"
     >
-      <SectionHeader
+      <SectionBadgeHeader
         id="render-with-hooks"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Settings className="h-5 w-5" aria-hidden="true" />}
@@ -30,11 +31,8 @@ export const RenderWithHooksRole = ({ content }: Props) => {
           <p className="text-sm sm:text-md leading-relaxed text-[var(--term-fg)] break-keep">
             {content.description}
           </p>
-          <SectionNote
-            icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}
-            className="mt-auto"
-          >
-            {content.noteCard}
+          <SectionNote icon={<Lightbulb className="h-4 w-4" />} className="mt-auto">
+            {content.note}
           </SectionNote>
         </article>
 

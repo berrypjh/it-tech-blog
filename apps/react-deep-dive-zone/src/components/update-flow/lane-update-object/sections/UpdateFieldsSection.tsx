@@ -1,26 +1,37 @@
 import { cx } from '@berrypjh/react-ui';
-import { Crosshair, Gauge, Link2, Package, Sparkles, Undo2, Zap } from 'lucide-react';
+import {
+  Crosshair,
+  Gauge,
+  Link2,
+  type LucideIcon,
+  Package,
+  Sparkles,
+  Undo2,
+  Zap,
+} from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { LaneUpdateObjectContent } from '../content';
+import type { LaneUpdateObjectContent, UpdateFieldIcon } from '../content';
 
-const updateFieldIconByName = {
+const updateFieldIconByName: Record<UpdateFieldIcon, LucideIcon> = {
   crosshair: Crosshair,
   zap: Zap,
   undo: Undo2,
   gauge: Gauge,
   sparkles: Sparkles,
   link: Link2,
-} as const;
+};
 
 type Props = { content: LaneUpdateObjectContent['fields'] };
 
 export const UpdateFieldsSection = ({ content }: Props) => (
-  <section id="section-fields" aria-labelledby="heading-fields" className="space-y-md">
-    <SectionHeader
+  <section id="fields" aria-labelledby="heading-fields" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="fields"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

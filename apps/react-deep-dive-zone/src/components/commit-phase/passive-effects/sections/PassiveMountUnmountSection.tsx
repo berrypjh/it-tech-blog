@@ -1,14 +1,15 @@
 import { cx } from '@berrypjh/react-ui';
-import { Leaf, Lightbulb, Repeat, Trash2, Workflow } from 'lucide-react';
+import { Leaf, Lightbulb, type LucideIcon, Repeat, Trash2, Workflow } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionNote } from '../../../shared/note';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { LifecycleCard, PassiveEffectsContent } from '../content';
 
 type Props = { content: PassiveEffectsContent['lifecycle'] };
 
-const iconMap: Record<LifecycleCard['iconName'], typeof Leaf> = {
+const iconMap: Record<LifecycleCard['id'], LucideIcon> = {
   leaf: Leaf,
   trash: Trash2,
 };
@@ -19,8 +20,10 @@ export const PassiveMountUnmountSection = ({ content }: Props) => (
     aria-labelledby="heading-passive-lifecycle"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="passive-lifecycle"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -33,27 +36,9 @@ export const PassiveMountUnmountSection = ({ content }: Props) => (
         <CenterSwap />
         <LifecycleCardView card={content.unmount} />
       </div>
-
-      <aside
-        className={cx(
-          'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
-          toneTokens.sky.fill.border,
-          toneTokens.sky.fill.bg,
-        )}
-      >
-        <ToneIconBox tone="sky" size="sm" className="mt-0.5 shrink-0">
-          <Lightbulb className="h-4 w-4" aria-hidden="true" />
-        </ToneIconBox>
-        <p
-          className={cx(
-            'text-xsm sm:text-sm leading-relaxed break-keep font-bold',
-            toneTokens.sky.fill.text,
-          )}
-        >
-          {content.insight}
-        </p>
-      </aside>
     </article>
+
+    <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
   </section>
 );
 
@@ -76,7 +61,7 @@ const CenterSwap = () => {
 };
 
 const LifecycleCardView = ({ card }: { card: LifecycleCard }) => {
-  const Icon = iconMap[card.iconName];
+  const Icon = iconMap[card.id];
   const t = toneTokens[card.tone];
   return (
     <article

@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Boxes, ExternalLink, Layers, type LucideIcon, Sparkles, Square } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ChildShapeCard, ReconcileChildrenContent } from '../content';
@@ -16,9 +16,15 @@ const childShapeIconByName: Record<ChildShapeCard['icon'], LucideIcon> = {
 type Props = { content: ReconcileChildrenContent['childShape'] };
 
 export const ChildShapePreview = ({ content }: Props) => (
-  <section id="child-shape" aria-labelledby="heading-child-shape" className="space-y-md">
-    <SectionHeader
+  <section
+    id="child-shape"
+    aria-labelledby="heading-child-shape"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="child-shape"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.subtitle}
@@ -36,11 +42,7 @@ export const ChildShapePreview = ({ content }: Props) => (
 const Card = ({ card }: { card: ChildShapeCard }) => {
   const Icon = childShapeIconByName[card.icon];
   return (
-    <ToneCardItem
-      tone={card.tone}
-      icon={<Icon className={cx('h-5 w-5', toneTokens[card.tone].text)} />}
-      topRight="shape"
-    >
+    <ToneCardItem tone={card.tone} icon={<Icon className="h-5 w-5" />}>
       <h3 className={cx('text-md font-bold tracking-tight break-keep', toneTokens[card.tone].text)}>
         {card.title}
       </h3>

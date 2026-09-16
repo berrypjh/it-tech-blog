@@ -3,11 +3,10 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { BeforeMutationCodeCheckpointSection } from './sections/BeforeMutationCodeCheckpointSection';
+import { BeforeMutationCodeCheckpoint } from './sections/BeforeMutationCodeCheckpoint';
 import { BeforeMutationHeroSection } from './sections/BeforeMutationHeroSection';
 import { BeforeMutationModernCorrectionSection } from './sections/BeforeMutationModernCorrectionSection';
 import { BeforeMutationNeedSection } from './sections/BeforeMutationNeedSection';
-import { BeforeMutationQuizSection } from './sections/BeforeMutationQuizSection';
 import { ClassSnapshotSection } from './sections/ClassSnapshotSection';
 import { RootBeforeMutationSection } from './sections/RootBeforeMutationSection';
 import { SnapshotConceptSection } from './sections/SnapshotConceptSection';
@@ -24,10 +23,9 @@ export const BeforeMutationPage = ({ locale }: Props) => {
       <BeforeMutationNeedSection content={c.why} />
       <SnapshotConceptSection content={c.snapshot} />
       <ClassSnapshotSection content={c.classSnapshot} />
-      <BeforeMutationCodeCheckpointSection content={c.checkpoint} />
+      <BeforeMutationCodeCheckpoint content={c.checkpoint} />
       <RootBeforeMutationSection content={c.rootPerspective} />
       <BeforeMutationModernCorrectionSection content={c.modern} />
-      <BeforeMutationQuizSection quiz={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

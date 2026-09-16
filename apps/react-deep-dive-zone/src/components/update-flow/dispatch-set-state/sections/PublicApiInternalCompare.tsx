@@ -1,8 +1,9 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowLeftRight, Braces, Code2, Sparkles } from 'lucide-react';
+import { ArrowLeftRight, Braces, Code2, Lightbulb } from 'lucide-react';
 
 import { CompareVs } from '../../../shared/compare';
-import { SectionHeader } from '../../../shared/section';
+import { SectionNote } from '../../../shared/note';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DispatchSetStateContent } from '../content';
@@ -10,9 +11,10 @@ import type { DispatchSetStateContent } from '../content';
 type Props = { content: DispatchSetStateContent['compare'] };
 
 export const PublicApiInternalCompare = ({ content }: Props) => (
-  <section id="section-compare" aria-labelledby="heading-compare" className="space-y-md">
-    <SectionHeader
+  <section id="compare" aria-labelledby="heading-compare" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="compare"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<ArrowLeftRight className="h-5 w-5" aria-hidden="true" />}
@@ -38,12 +40,7 @@ export const PublicApiInternalCompare = ({ content }: Props) => (
       />
     </div>
 
-    <div className="flex items-start gap-sm rounded-lg border border-[var(--term-border)] border-l-[3px] border-l-[var(--term-accent)] bg-[var(--term-surface)] p-md">
-      <Sparkles aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[var(--term-accent)]" />
-      <p className="text-xsm sm:text-sm font-semibold leading-relaxed text-[var(--term-fg)] break-keep">
-        {content.note}
-      </p>
-    </div>
+    <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
   </section>
 );
 

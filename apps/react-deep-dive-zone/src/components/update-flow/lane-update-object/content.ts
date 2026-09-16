@@ -64,6 +64,7 @@ export type LaneUpdateObjectContent = {
     summary: HeroSummaryPill[];
   };
   requestLane: {
+    badge: string;
     eyebrow: string;
     title: string;
     flow: { label: string; tone: ToneKey }[];
@@ -75,6 +76,7 @@ export type LaneUpdateObjectContent = {
     decisionSteps: LaneDecisionStep[];
   };
   structure: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -85,35 +87,36 @@ export type LaneUpdateObjectContent = {
     summaryItems: { key: string; body: string; tone: ToneKey }[];
   };
   fields: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: UpdateField[];
   };
   checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
     filePath: string;
-    functionLabel: string;
-    functionName: string;
-    learningQuestion: string;
-    codeHeader: string;
-    codeBadge: string;
+    lookForLabel: string;
+    lookFor: string;
     code: string;
-    primaryHref: string;
     primaryCta: string;
+    primaryHref: string;
   };
   action: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     leftCard: ActionCompareCard;
     rightCard: ActionCompareCard;
     connectorLabel: string;
-    bottomNote: string;
+    note: string;
   };
   summary: {
+    badge: string;
     eyebrow: string;
     title: string;
     lines: string[];
@@ -225,7 +228,8 @@ const ko: LaneUpdateObjectContent = {
     ],
   },
   requestLane: {
-    eyebrow: '01 · lane 결정',
+    badge: '01',
+    eyebrow: 'lane 결정',
     title: 'requestUpdateLane의 역할',
     flow: [
       { label: 'dispatchSetState', tone: 'sky' },
@@ -246,7 +250,8 @@ const ko: LaneUpdateObjectContent = {
     ],
   },
   structure: {
-    eyebrow: '02 · update 객체',
+    badge: '02',
+    eyebrow: 'update 객체',
     title: 'update 객체 전체 구조',
     description:
       'dispatchSetStateInternal이 처음 만드는 update 객체의 골격입니다. 이 형태는 이후 queue 연결과 eager bailout 판단의 출발점이 됩니다.',
@@ -263,7 +268,8 @@ const ko: LaneUpdateObjectContent = {
     ],
   },
   fields: {
-    eyebrow: '03 · 필드 해설',
+    badge: '03',
+    eyebrow: '필드 해설',
     title: '필드별 의미 해설',
     description:
       '각 필드가 무엇을 표현하는지 한 번에 정리합니다. 코드를 읽다가 막힐 때 이 카드들로 빠르게 돌아올 수 있습니다.',
@@ -313,21 +319,20 @@ const ko: LaneUpdateObjectContent = {
     ],
   },
   checkpoint: {
-    eyebrow: '04 · 코드 체크포인트',
+    badge: '04',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
-    functionLabel: '함수',
-    functionName: 'dispatchSetStateInternal',
-    learningQuestion: 'React는 setter에 전달한 값을 어디에 저장할까?',
-    codeHeader: 'ReactFiberHooks.js',
-    codeBadge: 'main',
+    lookForLabel: '볼 것',
+    lookFor: 'dispatchSetStateInternal, lane, action, eagerState, next',
     code: checkpointCodeKo,
+    primaryCta: 'ReactFiberHooks.js 읽기',
     primaryHref: githubHref,
-    primaryCta: 'GitHub에서 dispatchSetStateInternal 보기',
   },
   action: {
-    eyebrow: '05 · action의 두 모습',
+    badge: '05',
+    eyebrow: 'action의 두 모습',
     title: 'action 값이 왜 중요할까?',
     description:
       'setter에는 값과 updater 함수 모두 전달할 수 있습니다. 두 경우 모두 update.action에 그대로 보관됩니다.',
@@ -350,10 +355,11 @@ const ko: LaneUpdateObjectContent = {
       badge: 'function',
     },
     connectorLabel: 'action으로 저장',
-    bottomNote: 'React는 이후 reducer를 통해 action을 실제 다음 state 계산에 사용한다.',
+    note: 'React는 이후 reducer를 통해 action을 실제 다음 state 계산에 사용한다.',
   },
   summary: {
-    eyebrow: '06 · 핵심 요약',
+    badge: '06',
+    eyebrow: '핵심 요약',
     title: '핵심 요약',
     lines: [
       'setState의 결과는 단순 값이 아니라, lane과 action을 가진 update 객체입니다.',
@@ -428,7 +434,8 @@ const en: LaneUpdateObjectContent = {
     ],
   },
   requestLane: {
-    eyebrow: '01 · PICKING THE LANE',
+    badge: '01',
+    eyebrow: 'PICKING THE LANE',
     title: 'The role of requestUpdateLane',
     flow: [
       { label: 'dispatchSetState', tone: 'sky' },
@@ -449,14 +456,15 @@ const en: LaneUpdateObjectContent = {
     ],
   },
   structure: {
-    eyebrow: '02 · UPDATE OBJECT',
+    badge: '02',
+    eyebrow: 'UPDATE OBJECT',
     title: 'The shape of the update object',
     description:
       'This is the skeleton that dispatchSetStateInternal builds first. From here, queue linking and eager bailout decisions follow.',
     codeHeader: 'update-object.js',
     code: structureCode,
     summaryTitle: 'What does the update object carry?',
-    summaryBody: 'It captures "how to change state" *and* "when, at what priority, to process it".',
+    summaryBody: 'It captures "how to change state" and "when, at what priority, to process it".',
     summaryItems: [
       { key: 'lane', body: 'processing priority', tone: 'sky' },
       { key: 'action', body: 'value passed to the setter', tone: 'emerald' },
@@ -465,7 +473,8 @@ const en: LaneUpdateObjectContent = {
     ],
   },
   fields: {
-    eyebrow: '03 · FIELD REFERENCE',
+    badge: '03',
+    eyebrow: 'FIELD REFERENCE',
     title: 'Field-by-field meaning',
     description:
       'A quick reference for what each field stores. Come back here whenever the source gets dense.',
@@ -515,21 +524,20 @@ const en: LaneUpdateObjectContent = {
     ],
   },
   checkpoint: {
-    eyebrow: '04 · CODE CHECKPOINT',
-    title: 'Source checkpoint',
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
     fileLabel: 'File',
     filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
-    functionLabel: 'Function',
-    functionName: 'dispatchSetStateInternal',
-    learningQuestion: 'Where does React store the value passed to the setter?',
-    codeHeader: 'ReactFiberHooks.js',
-    codeBadge: 'main',
+    lookForLabel: 'Look for',
+    lookFor: 'dispatchSetStateInternal, lane, action, eagerState, next',
     code: checkpointCodeEn,
+    primaryCta: 'Read ReactFiberHooks.js',
     primaryHref: githubHref,
-    primaryCta: 'View dispatchSetStateInternal on GitHub',
   },
   action: {
-    eyebrow: '05 · TWO FACES',
+    badge: '05',
+    eyebrow: 'TWO FACES',
     title: 'Why action matters',
     description:
       'The setter accepts both a value and an updater function. Either way, the input is stored verbatim in update.action.',
@@ -552,10 +560,11 @@ const en: LaneUpdateObjectContent = {
       badge: 'function',
     },
     connectorLabel: 'stored as action',
-    bottomNote: 'React later runs the reducer over action to compute the next state.',
+    note: 'React later runs the reducer over action to compute the next state.',
   },
   summary: {
-    eyebrow: '06 · KEY SUMMARY',
+    badge: '06',
+    eyebrow: 'KEY SUMMARY',
     title: 'Key summary',
     lines: [
       "setState doesn't produce a plain value — it produces an update object with a lane and an action.",

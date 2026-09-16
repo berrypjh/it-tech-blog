@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, ChevronDown, Key, Link2Off, Zap } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { TypeKeyReuseContent } from '../content';
 import { facetFor } from '../facets';
@@ -21,9 +21,14 @@ export const DifferentKeyCase = ({ content }: Props) => {
   ];
 
   return (
-    <section id="different-key" aria-labelledby="heading-different-key" className="space-y-md">
-      <SectionHeader
+    <section
+      id="different-key"
+      aria-labelledby="heading-different-key"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
         id="different-key"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Key className="h-5 w-5" aria-hidden="true" />}

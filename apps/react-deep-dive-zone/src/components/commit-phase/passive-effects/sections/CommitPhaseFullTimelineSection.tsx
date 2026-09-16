@@ -1,14 +1,22 @@
 import { cx } from '@berrypjh/react-ui';
-import { CheckCircle2, Clock, Link, ListChecks, Sparkles, Star } from 'lucide-react';
+import {
+  CheckCircle2,
+  Clock,
+  Link,
+  ListChecks,
+  type LucideIcon,
+  Sparkles,
+  Star,
+} from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { PassiveEffectsContent, SummaryItem, TimelineStep } from '../content';
 
 type Props = { content: PassiveEffectsContent['fullTimeline'] };
 
-const summaryIconMap: Record<SummaryItem['iconName'], typeof CheckCircle2> = {
+const summaryIconMap: Record<SummaryItem['id'], LucideIcon> = {
   check: CheckCircle2,
   clock: Clock,
   link: Link,
@@ -21,8 +29,10 @@ export const CommitPhaseFullTimelineSection = ({ content }: Props) => (
     aria-labelledby="heading-full-timeline"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="full-timeline"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -128,7 +138,7 @@ const SummaryCard = ({ title, items }: { title: string; items: SummaryItem[] }) 
 
       <ul className="flex flex-col gap-2">
         {items.map((item) => {
-          const Icon = summaryIconMap[item.iconName];
+          const Icon = summaryIconMap[item.id];
           return (
             <li
               key={item.text}

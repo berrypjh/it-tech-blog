@@ -1,15 +1,21 @@
-import { Database, FunctionSquare, Network, Workflow } from 'lucide-react';
+import { cx } from '@berrypjh/react-ui';
+import { Database, FunctionSquare, type LucideIcon, Network, Workflow } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
-import type { EnqueueConcurrentHookUpdateContent, FunctionFlowStep } from '../content';
+import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
+import type {
+  EnqueueConcurrentHookUpdateContent,
+  FunctionFlowIcon,
+  FunctionFlowStep,
+} from '../content';
 
-const flowIconByName = {
+const flowIconByName: Record<FunctionFlowIcon, LucideIcon> = {
   function: FunctionSquare,
   workflow: Workflow,
   database: Database,
   network: Network,
-} as const;
+};
 
 type Props = { content: EnqueueConcurrentHookUpdateContent['flow'] };
 
@@ -21,14 +27,16 @@ const toFlowStep = (step: FunctionFlowStep, idx: number): FlowStepItem => {
     title: step.title,
     body: step.body,
     tone: step.tone,
-    icon: <Icon className="h-5 w-5" />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[step.tone].text)} aria-hidden="true" />,
   };
 };
 
 export const FullFunctionFlowSection = ({ content }: Props) => (
-  <section id="section-flow" aria-labelledby="heading-flow" className="space-y-md">
-    <SectionHeader
+  <section id="flow" aria-labelledby="heading-flow" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="flow"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

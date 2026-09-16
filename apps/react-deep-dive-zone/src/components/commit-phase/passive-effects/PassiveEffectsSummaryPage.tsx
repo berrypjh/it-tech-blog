@@ -5,7 +5,7 @@ import { StartPageShell } from '../../shared/shell';
 
 import { CommitPhaseFullTimelineSection } from './sections/CommitPhaseFullTimelineSection';
 import { EffectTimingCompareSection } from './sections/EffectTimingCompareSection';
-import { FinalChecklistSection } from './sections/FinalChecklistSection';
+import { NextChapterPreviewSection } from './sections/NextChapterPreviewSection';
 import { PassiveEffectExampleSection } from './sections/PassiveEffectExampleSection';
 import { PassiveEffectsHeroSection } from './sections/PassiveEffectsHeroSection';
 import { PassiveEffectsPositionSection } from './sections/PassiveEffectsPositionSection';
@@ -25,7 +25,7 @@ export const PassiveEffectsSummaryPage = ({ locale }: Props) => {
       <PassiveMountUnmountSection content={c.lifecycle} />
       <PassiveEffectExampleSection content={c.example} />
       <CommitPhaseFullTimelineSection content={c.fullTimeline} />
-      <FinalChecklistSection checklist={c.checklist} nextChapter={c.nextChapter} />
+      <NextChapterPreviewSection content={c.nextChapter} />
       <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );

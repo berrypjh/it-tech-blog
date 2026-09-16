@@ -1,18 +1,22 @@
-import { Fragment } from 'react';
-
 import { cx } from '@berrypjh/react-ui';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Flag, PauseCircle, Sparkles } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { TimelineCard, TimelineNode, WorkLoopContent } from '../content';
 
 type Props = { content: WorkLoopContent['timelines'] };
 
 export const SyncVsConcurrentTimeline = ({ content }: Props) => (
-  <section id="push-vs-yield" aria-labelledby="heading-push-vs-yield" className="space-y-md">
-    <SectionHeader
+  <section
+    id="push-vs-yield"
+    aria-labelledby="heading-push-vs-yield"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="push-vs-yield"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -36,24 +40,16 @@ const Timeline = ({ card }: { card: TimelineCard }) => {
         t.border,
       )}
     >
-      <header className="flex items-center justify-between gap-2">
+      <header>
         <h3 className={cx('text-md sm:text-lg font-bold leading-tight break-keep', t.text)}>
           {card.title}
         </h3>
-        <span
-          className={cx(
-            'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
-            t.chip,
-          )}
-        >
-          {card.kind === 'sync' ? 'push through' : 'yield-capable'}
-        </span>
       </header>
 
       <ol className="flex flex-wrap items-stretch gap-2">
         {card.flow.map((node, idx) => (
-          <Fragment key={`${node.label}-${idx}`}>
-            <li className="flex flex-col items-center min-w-0">
+          <li key={`${node.caption}-${idx}`} className="flex items-stretch gap-2 min-w-0">
+            <div className="flex flex-col items-center min-w-0">
               <TimelineNodeBox node={node} tone={tone} />
               <span
                 className={cx(
@@ -63,7 +59,7 @@ const Timeline = ({ card }: { card: TimelineCard }) => {
               >
                 {node.caption}
               </span>
-            </li>
+            </div>
             {idx < card.flow.length - 1 && (
               <span
                 aria-hidden="true"
@@ -72,7 +68,7 @@ const Timeline = ({ card }: { card: TimelineCard }) => {
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </span>
             )}
-          </Fragment>
+          </li>
         ))}
       </ol>
 
@@ -109,14 +105,11 @@ const TimelineNodeBox = ({ node, tone }: { node: TimelineNode; tone: ToneKey }) 
         t.fill.text,
       )}
     >
-      <span
-        className={cx(
-          node.yield || node.finish ? 'text-lg sm:text-xl' : 'text-md sm:text-lg font-bold',
-          'leading-none',
-        )}
-      >
-        {node.label}
-      </span>
+      {node.yield && <PauseCircle className="h-5 w-5" aria-hidden="true" />}
+      {node.finish && <Flag className="h-5 w-5" aria-hidden="true" />}
+      {node.label && (
+        <span className="text-md sm:text-lg font-bold leading-none">{node.label}</span>
+      )}
     </span>
   );
 };

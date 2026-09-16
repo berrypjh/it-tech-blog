@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Clock, Gauge, type LucideIcon, Shield, Sparkles, Target } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { MarkChangesContent, ReasonCard } from '../content';
@@ -16,9 +16,14 @@ const reasonIconByName: Record<ReasonCard['icon'], LucideIcon> = {
 type Props = { content: MarkChangesContent['whyTwoPhases'] };
 
 export const WhyTwoPhases = ({ content }: Props) => (
-  <section id="why-two-phases" aria-labelledby="heading-why-two-phases" className="space-y-md">
-    <SectionHeader
+  <section
+    id="why-two-phases"
+    aria-labelledby="heading-why-two-phases"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
       id="why-two-phases"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
@@ -31,7 +36,7 @@ export const WhyTwoPhases = ({ content }: Props) => (
           <ToneCardItem
             key={reason.title}
             tone={reason.tone}
-            icon={<Icon className={cx('h-5 w-5', toneTokens[reason.tone].text)} />}
+            icon={<Icon className="h-5 w-5" />}
             topRight={idx + 1}
           >
             <h3

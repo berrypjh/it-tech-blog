@@ -1,17 +1,25 @@
 import { cx } from '@berrypjh/react-ui';
-import { Boxes, CheckCircle2, CircleHelp, Layers, PenTool, Workflow } from 'lucide-react';
+import {
+  Boxes,
+  CheckCircle2,
+  CircleHelp,
+  Layers,
+  type LucideIcon,
+  PenTool,
+  Workflow,
+} from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { UpdateToRenderSummaryContent } from '../content';
+import type { NextChapterItem, UpdateToRenderSummaryContent } from '../content';
 
-const nextChapterIconByName = {
+const nextChapterIconByName: Record<NextChapterItem['icon'], LucideIcon> = {
   workflow: Workflow,
   penTool: PenTool,
   layers: Layers,
   checkCircle: CheckCircle2,
-} as const;
+};
 
 type Props = { content: UpdateToRenderSummaryContent['nextChapter'] };
 
@@ -19,9 +27,14 @@ const violet = toneTokens.violet;
 const sky = toneTokens.sky;
 
 export const NextChapterPreviewSection = ({ content }: Props) => (
-  <section id="section-next-chapter" aria-labelledby="heading-next-chapter" className="space-y-md">
-    <SectionHeader
+  <section
+    id="next-chapter"
+    aria-labelledby="heading-next-chapter"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
       id="next-chapter"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<CircleHelp className="h-5 w-5" aria-hidden="true" />}

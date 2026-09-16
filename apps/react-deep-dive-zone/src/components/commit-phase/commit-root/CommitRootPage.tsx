@@ -3,7 +3,7 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { CommitRootCodeCheckpointSection } from './sections/CommitRootCodeCheckpointSection';
+import { CommitRootCodeCheckpoint } from './sections/CommitRootCodeCheckpoint';
 import { CommitRootHeroSection } from './sections/CommitRootHeroSection';
 import { CommitRootModernCorrectionSection } from './sections/CommitRootModernCorrectionSection';
 import { CommitRootPositionSection } from './sections/CommitRootPositionSection';
@@ -25,7 +25,7 @@ export const CommitRootPage = ({ locale }: Props) => {
       <CommitRootPositionSection content={c.position} />
       <CommitRootPreparationSection content={c.preparation} />
       <CommitTimelineOverviewSection content={c.timeline} />
-      <CommitRootCodeCheckpointSection content={c.checkpoint} />
+      <CommitRootCodeCheckpoint content={c.checkpoint} />
       <RootCommitMeaningSection content={c.rootMeaning} />
       <CommitRootModernCorrectionSection content={c.modern} />
       <NextStepBanner content={c.nextStep} />

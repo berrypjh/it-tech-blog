@@ -1,15 +1,15 @@
 import { cx } from '@berrypjh/react-ui';
-import { Lightbulb, ListChecks, SprayCan, Trash2 } from 'lucide-react';
+import { Lightbulb, ListChecks, type LucideIcon, SprayCan, Trash2 } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CleanupVsRemoveRow, DeletionContent } from '../content';
 
 type Props = { content: DeletionContent['cleanupVsRemove'] };
 
-const iconMap: Record<CleanupVsRemoveRow['iconName'], typeof SprayCan> = {
+const iconMap: Record<CleanupVsRemoveRow['id'], LucideIcon> = {
   broom: SprayCan,
   trash: Trash2,
 };
@@ -20,8 +20,10 @@ export const CleanupVsHostRemoveSection = ({ content }: Props) => (
     aria-labelledby="heading-cleanup-vs-remove"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="cleanup-vs-remove"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -44,7 +46,7 @@ export const CleanupVsHostRemoveSection = ({ content }: Props) => (
 );
 
 const TaskLabel = ({ row }: { row: CleanupVsRemoveRow }) => {
-  const Icon = iconMap[row.iconName];
+  const Icon = iconMap[row.id];
   const t = toneTokens[row.tone];
   return (
     <div className="flex items-center gap-2">

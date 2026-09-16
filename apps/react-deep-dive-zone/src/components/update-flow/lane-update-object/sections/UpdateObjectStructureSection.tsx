@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { Braces, ListChecks } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { LaneUpdateObjectContent } from '../content';
@@ -10,9 +10,11 @@ import type { LaneUpdateObjectContent } from '../content';
 type Props = { content: LaneUpdateObjectContent['structure'] };
 
 export const UpdateObjectStructureSection = ({ content }: Props) => (
-  <section id="section-structure" aria-labelledby="heading-structure" className="space-y-md">
-    <SectionHeader
+  <section id="structure" aria-labelledby="heading-structure" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="structure"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -21,7 +23,7 @@ export const UpdateObjectStructureSection = ({ content }: Props) => (
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.2fr)_minmax(0,_1fr)] gap-md lg:gap-lg items-stretch">
       <div className="min-w-0">
-        <CodePreviewPanel header={content.codeHeader} badge="shape" code={content.code} />
+        <CodePreviewPanel header={content.codeHeader} code={content.code} />
       </div>
 
       <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">

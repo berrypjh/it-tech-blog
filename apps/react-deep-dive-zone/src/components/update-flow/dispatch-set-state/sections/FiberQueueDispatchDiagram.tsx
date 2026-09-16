@@ -7,34 +7,46 @@ import {
   Hand,
   Layers,
   Loader,
+  type LucideIcon,
   Network,
   Zap,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
-import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { DispatchSetStateContent, MemoryNode, RuntimeStep } from '../content';
+import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
+import type {
+  DispatchSetStateContent,
+  MemoryNode,
+  MemoryNodeIcon,
+  RuntimeStep,
+  RuntimeStepIcon,
+} from '../content';
 
-const memoryIconByName = {
+const memoryIconByName: Record<MemoryNodeIcon, LucideIcon> = {
   cuboid: Cuboid,
   layers: Layers,
   database: Database,
   functionSquare: FunctionSquare,
-} as const;
+};
 
-const runtimeIconByName = {
+const runtimeIconByName: Record<RuntimeStepIcon, LucideIcon> = {
   hand: Hand,
   zap: Zap,
   database: Database,
   loader: Loader,
-} as const;
+};
 
 type Props = { content: DispatchSetStateContent['relationship'] };
 
 export const FiberQueueDispatchDiagram = ({ content }: Props) => (
-  <section id="section-relationship" aria-labelledby="heading-relationship" className="space-y-md">
-    <SectionHeader
+  <section
+    id="relationship"
+    aria-labelledby="heading-relationship"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
       id="relationship"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Network className="h-5 w-5" aria-hidden="true" />}
@@ -42,12 +54,7 @@ export const FiberQueueDispatchDiagram = ({ content }: Props) => (
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.25fr)_minmax(0,_1fr)] gap-md lg:gap-lg items-stretch">
       {/* 메모리 구조 (좌) */}
-      <PanelShell
-        tone="emerald"
-        title={content.leftTitle}
-        subtitle={content.leftSubtitle}
-        badge="memory"
-      >
+      <PanelShell title={content.leftTitle} subtitle={content.leftSubtitle}>
         <ol className="flex flex-col">
           {content.nodes.map((node, idx) => (
             <li key={node.id} className="flex flex-col">
@@ -59,12 +66,7 @@ export const FiberQueueDispatchDiagram = ({ content }: Props) => (
       </PanelShell>
 
       {/* 실행 흐름 (우) */}
-      <PanelShell
-        tone="amber"
-        title={content.rightTitle}
-        subtitle={content.rightSubtitle}
-        badge="runtime"
-      >
+      <PanelShell title={content.rightTitle} subtitle={content.rightSubtitle}>
         <ol className="flex flex-col">
           {content.runtimeSteps.map((step, idx) => (
             <li key={step.number} className="flex flex-col">
@@ -86,43 +88,24 @@ export const FiberQueueDispatchDiagram = ({ content }: Props) => (
 );
 
 const PanelShell = ({
-  tone,
   title,
   subtitle,
-  badge,
   children,
 }: {
-  tone: ToneKey;
   title: string;
   subtitle: string;
-  badge: string;
   children: React.ReactNode;
-}) => {
-  const t = toneTokens[tone];
-  return (
-    <article className="flex flex-col gap-md rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-      <header className="flex items-center justify-between gap-sm">
-        <div className="flex flex-col min-w-0">
-          <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] leading-tight">
-            {title}
-          </h3>
-          <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
-            {subtitle}
-          </span>
-        </div>
-        <span
-          className={cx(
-            'shrink-0 rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
-            t.chip,
-          )}
-        >
-          {badge}
-        </span>
-      </header>
-      {children}
-    </article>
-  );
-};
+}) => (
+  <article className="flex flex-col gap-md rounded-xl border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
+    <header className="flex flex-col min-w-0">
+      <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] leading-tight">{title}</h3>
+      <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
+        {subtitle}
+      </span>
+    </header>
+    {children}
+  </article>
+);
 
 const MemoryNodeCard = ({ node }: { node: MemoryNode }) => {
   const Icon = memoryIconByName[node.icon];

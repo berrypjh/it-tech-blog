@@ -1,22 +1,24 @@
 import { cx } from '@berrypjh/react-ui';
-import { CalendarCheck, Clock, Layers } from 'lucide-react';
+import { CalendarCheck, Clock, Layers, type LucideIcon } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { EnsureRootScheduledContent } from '../content';
+import type { EnsureRootScheduledContent, RoleIcon } from '../content';
 
-const roleIconByName = {
+const roleIconByName: Record<RoleIcon, LucideIcon> = {
   calendarCheck: CalendarCheck,
   clock: Clock,
-} as const;
+};
 
 type Props = { content: EnsureRootScheduledContent['roles'] };
 
 export const TwoRolesSection = ({ content }: Props) => (
-  <section id="section-roles" aria-labelledby="heading-roles" className="space-y-md">
-    <SectionHeader
+  <section id="roles" aria-labelledby="heading-roles" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="roles"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

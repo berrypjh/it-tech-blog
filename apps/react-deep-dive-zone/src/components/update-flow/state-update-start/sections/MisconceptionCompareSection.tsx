@@ -1,19 +1,20 @@
 import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, ListChecks, XCircle } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { StateUpdateStartContent } from '../content';
 
 type Props = { content: StateUpdateStartContent['misconception'] };
 
 export const MisconceptionCompareSection = ({ content }: Props) => (
   <section
-    id="section-misconception"
+    id="misconception"
     aria-labelledby="heading-misconception"
-    className="space-y-md"
+    className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
       id="misconception"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}

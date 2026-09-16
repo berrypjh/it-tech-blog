@@ -1,10 +1,9 @@
-import { Fragment } from 'react';
-
 import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, PauseCircle, RotateCw } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FlowNode, WorkLoopContent } from '../content';
@@ -29,22 +28,14 @@ export const WorkLoopHeroDiagram = ({ content }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <div className="flex items-center gap-sm">
           <ToneIconBox tone="teal" size="sm">
-            <RotateCw
-              className="h-[18px] w-[18px] animate-[spin_8s_linear_infinite] motion-reduce:animate-none"
-              aria-hidden="true"
-            />
+            <RotateCw className="h-4 w-4 animate-[spin_8s_linear_infinite] motion-reduce:animate-none" />
           </ToneIconBox>
-          <h2 className="min-w-0 text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
+          <span className="min-w-0 text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {diagram.title}
-          </h2>
+          </span>
         </div>
 
-        <CodePreviewPanel
-          code={'while (workInProgress !== null) {\n  performUnitOfWork(workInProgress);\n}'}
-          showWindowDots
-          language="JS"
-          size="md"
-        />
+        <CodePreviewPanel code={diagram.code} showWindowDots language="JS" size="md" />
 
         <DownArrow />
 
@@ -85,7 +76,7 @@ const LoopTrack = ({ tone, label, sideText, nodes, yieldSubNote, resumeNote }: L
     <article
       className={cx(
         'flex flex-col gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-2.5',
-        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+        'shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
     >
@@ -102,8 +93,8 @@ const LoopTrack = ({ tone, label, sideText, nodes, yieldSubNote, resumeNote }: L
           const isLastReal = !isYield && idx === nodes.length - 1;
           const subNote = isYield ? yieldSubNote : isLastReal ? resumeNote : undefined;
           return (
-            <Fragment key={`${node.label}-${idx}`}>
-              <li className="flex min-w-0 max-w-[84px] flex-col items-center gap-1">
+            <li key={`${node.caption}-${idx}`} className="flex min-w-0 items-start gap-1.5">
+              <div className="flex min-w-0 max-w-[84px] flex-col items-center gap-1">
                 <LoopNode node={node} tone={tone} />
                 <span
                   className={cx(
@@ -116,23 +107,20 @@ const LoopTrack = ({ tone, label, sideText, nodes, yieldSubNote, resumeNote }: L
                 {subNote && (
                   <span
                     className={cx(
-                      'text-center text-[9px] font-mono uppercase tracking-wider break-keep',
+                      'text-center text-[10px] font-mono uppercase tracking-wider break-keep',
                       t.text,
                     )}
                   >
                     {subNote}
                   </span>
                 )}
-              </li>
+              </div>
               {idx < nodes.length - 1 && (
-                <span
-                  aria-hidden="true"
-                  className="flex shrink-0 items-center pt-2.5 text-[var(--term-accent)]"
-                >
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                <span className="flex shrink-0 items-center pt-2.5 text-[var(--term-accent)]">
+                  <ArrowRight className="h-4 w-4" />
                 </span>
               )}
-            </Fragment>
+            </li>
           );
         })}
       </ol>
@@ -149,19 +137,10 @@ const LoopNode = ({ node, tone }: { node: FlowNode; tone: ToneKey }) => {
       className={isYield ? 'border-dashed' : undefined}
     >
       {isYield ? (
-        <PauseCircle className="h-[18px] w-[18px]" aria-hidden="true" />
+        <PauseCircle className="h-4 w-4" />
       ) : (
         <span className="text-sm font-bold leading-none">{node.label}</span>
       )}
     </ToneIconBox>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

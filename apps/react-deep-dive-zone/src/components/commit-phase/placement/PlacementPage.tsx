@@ -4,9 +4,9 @@ import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
 import { HostParentSiblingSection } from './sections/HostParentSiblingSection';
-import { PlacementCodeCheckpointSection } from './sections/PlacementCodeCheckpointSection';
+import { PlacementCodeCheckpoint } from './sections/PlacementCodeCheckpoint';
 import { PlacementCommitFlowSection } from './sections/PlacementCommitFlowSection';
-import { PlacementExampleAndQuizSection } from './sections/PlacementExampleAndQuizSection';
+import { PlacementExampleSection } from './sections/PlacementExampleSection';
 import { PlacementFlagReviewSection } from './sections/PlacementFlagReviewSection';
 import { PlacementHeroSection } from './sections/PlacementHeroSection';
 import { placementContent } from './content';
@@ -22,8 +22,8 @@ export const PlacementPage = ({ locale }: Props) => {
       <PlacementFlagReviewSection content={c.review} />
       <PlacementCommitFlowSection content={c.commitFlow} />
       <HostParentSiblingSection content={c.hostParent} />
-      <PlacementCodeCheckpointSection content={c.checkpoint} />
-      <PlacementExampleAndQuizSection example={c.example} quiz={c.quiz} />
+      <PlacementCodeCheckpoint content={c.checkpoint} />
+      <PlacementExampleSection content={c.example} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

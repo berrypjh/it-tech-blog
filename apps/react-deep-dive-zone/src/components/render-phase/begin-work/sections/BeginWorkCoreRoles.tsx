@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { GitFork, ListChecks, type LucideIcon, Network, Sparkles } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { BeginWorkContent, RoleCard } from '../content';
 
@@ -22,14 +22,15 @@ const toFlowStep = (card: RoleCard): FlowStepItem => {
     title: card.title,
     body: card.description,
     tone: card.tone,
-    icon: <Icon className={cx('h-5 w-5', toneTokens[card.tone].text)} />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[card.tone].text)} aria-hidden="true" />,
   };
 };
 
 export const BeginWorkCoreRoles = ({ content }: Props) => (
-  <section id="core-roles" aria-labelledby="heading-core-roles" className="space-y-md">
-    <SectionHeader
+  <section id="core-roles" aria-labelledby="heading-core-roles" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="core-roles"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}

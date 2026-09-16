@@ -1,29 +1,17 @@
-import { cx } from '@berrypjh/react-ui';
-import { Code2, FileCode, Flag, type LucideIcon, Move, Pencil, Trash2, Zap } from 'lucide-react';
+import { Eye, FileCode, Info } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
-import { SectionHeader } from '../../../shared/section';
-import type { FlagCard, MarkChangesContent } from '../content';
-import { facetFor } from '../markFacet';
+import { CodePreviewPanel, GithubButton } from '../../../shared/code';
+import { SectionBadgeHeader } from '../../../shared/section';
+import type { MarkChangesContent } from '../content';
 
-const markIconByName: Record<FlagCard['icon'] | 'move', LucideIcon> = {
-  flag: Flag,
-  trash: Trash2,
-  pencil: Pencil,
-  zap: Zap,
-  move: Move,
-} as const;
-
-type Props = { content: MarkChangesContent['code'] };
+type Props = { content: MarkChangesContent['checkpoint'] };
 
 export const MarkChangesCodeCheckpoint = ({ content }: Props) => (
-  <section
-    id="source-checkpoint"
-    aria-labelledby="heading-source-checkpoint"
-    className="space-y-md"
-  >
-    <SectionHeader
-      id="source-checkpoint"
+  <section id="checkpoint" aria-labelledby="heading-checkpoint" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      id="checkpoint"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<FileCode className="h-5 w-5" aria-hidden="true" />}
@@ -34,89 +22,26 @@ export const MarkChangesCodeCheckpoint = ({ content }: Props) => (
         rows={[
           {
             label: content.fileLabel,
-            value: (
-              <ul className="flex flex-col gap-1">
-                {content.files.map((file) => (
-                  <li key={file}>
-                    <code className="font-mono break-all">{file}</code>
-                  </li>
-                ))}
-              </ul>
-            ),
+            value: <code className="font-mono break-all">{content.filePath}</code>,
             icon: FileCode,
           },
+          {
+            label: content.lookForLabel,
+            value: (
+              <code className="inline-block max-w-full break-all rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-xsm font-mono text-[var(--term-fg)]">
+                {content.lookFor}
+              </code>
+            ),
+            icon: Eye,
+          },
+          { label: content.whyLabel, value: content.why, icon: Info },
         ]}
-        question={content.learningQuestion}
       />
 
-      <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-        <header className="flex items-center justify-between gap-2 border-b border-[var(--term-border)] pb-2">
-          <code className="font-mono text-xsm sm:text-sm font-bold text-[var(--term-fg)] break-all">
-            {content.panelHeader}
-          </code>
-          <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
-            <Code2 className="inline h-3.5 w-3.5" aria-hidden="true" /> flags
-          </span>
-        </header>
-
-        <ol className="grid grid-cols-1 sm:grid-cols-2 gap-md">
-          {content.cards.map((card) => (
-            <li key={card.name} className="flex h-full">
-              <Card card={card} />
-            </li>
-          ))}
-        </ol>
-
-        <p className="text-xxsm sm:text-xsm leading-snug text-[var(--term-muted)] break-keep">
-          {content.bottomNote}
-        </p>
-      </article>
+      <div className="flex flex-col gap-md min-w-0">
+        <CodePreviewPanel header={content.filePath} badge="main" code={content.code} />
+        <GithubButton href={content.primaryHref} label={content.primaryCta} />
+      </div>
     </div>
   </section>
 );
-
-const Card = ({ card }: { card: FlagCard }) => {
-  const t = facetFor(card.tone);
-  const Icon = markIconByName[card.icon];
-  return (
-    <article
-      className={cx(
-        'flex w-full flex-col gap-2 rounded-lg border p-md',
-        'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
-        t.border,
-      )}
-    >
-      <header className="flex items-center justify-between gap-2">
-        <span
-          aria-hidden="true"
-          className={cx(
-            'inline-flex h-10 w-10 items-center justify-center rounded-md border',
-            t.chip,
-          )}
-        >
-          <Icon className="h-5 w-5" />
-        </span>
-        <span
-          className={cx(
-            'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
-            t.chip,
-          )}
-        >
-          flag
-        </span>
-      </header>
-      <code
-        className={cx(
-          'self-start inline-flex items-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 font-mono text-xsm sm:text-sm font-bold',
-          t.text,
-        )}
-      >
-        {card.name}
-      </code>
-      <p className={cx('text-xsm leading-snug font-bold break-keep', t.text)}>{card.description}</p>
-      <code className="font-mono text-xxsm sm:text-xsm text-[var(--term-muted)] break-all">
-        {card.bit}
-      </code>
-    </article>
-  );
-};

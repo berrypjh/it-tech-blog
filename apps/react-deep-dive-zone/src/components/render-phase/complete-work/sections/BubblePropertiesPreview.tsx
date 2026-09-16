@@ -1,19 +1,21 @@
 import { Fragment } from 'react';
 
 import { cx } from '@berrypjh/react-ui';
-import { ArrowRight, ArrowUp, CheckCircle2, ChevronDown } from 'lucide-react';
+import { ArrowRight, ArrowUp, ChevronDown, Lightbulb } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CompleteWorkContent } from '../content';
 
 type Props = { content: CompleteWorkContent['bubble'] };
 
 export const BubblePropertiesPreview = ({ content }: Props) => (
-  <section id="bubble" aria-labelledby="heading-bubble" className="space-y-md">
-    <SectionHeader
+  <section id="bubble" aria-labelledby="heading-bubble" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="bubble"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -60,8 +62,8 @@ export const BubblePropertiesPreview = ({ content }: Props) => (
         })}
       </div>
 
-      <SectionNote icon={<CheckCircle2 className="h-4 w-4" aria-hidden="true" />} className="mt-md">
-        {content.bottomNote}
+      <SectionNote icon={<Lightbulb className="h-4 w-4" />} className="mt-md">
+        {content.note}
       </SectionNote>
     </article>
   </section>

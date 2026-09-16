@@ -14,9 +14,8 @@ type Props = { content: DeletionContent['hero'] };
 export const DeletionHeroSection = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="reconciler/deletion.md"
-    promptSuffix={<span className="text-[var(--term-dim)]"> {'// cleanup pipeline'}</span>}
-    gridColumns="lg:grid-cols-[minmax(0,_0.62fr)_minmax(0,_1.38fr)]"
+    promptPath="packages/react-reconciler/src/ReactFiberCommitWork.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -30,10 +29,10 @@ export const DeletionHeroSection = ({ content }: Props) => (
         <span className="block">{content.title.line3}</span>
       </HeroTitle>
 
-      <HeroDescription>{content.description}</HeroDescription>
+      <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-deletion" className="min-w-0">
+    <HeroVisualColumn id="hero-deletion">
       <DeletionHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

@@ -14,9 +14,8 @@ type Props = { content: UpdatePhaseContent['hero'] };
 export const UpdateHeroSection = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="reconciler/update.md"
-    promptSuffix={<span className="text-[var(--term-dim)]"> {'// update flag → props/text'}</span>}
-    gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
+    promptPath="packages/react-reconciler/src/ReactFiberCommitHostEffects.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -30,10 +29,10 @@ export const UpdateHeroSection = ({ content }: Props) => (
         <span className="block">{content.title.line3}</span>
       </HeroTitle>
 
-      <HeroDescription>{content.description}</HeroDescription>
+      <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-update-phase" className="min-w-0">
+    <HeroVisualColumn id="hero-update-flag">
       <UpdateHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

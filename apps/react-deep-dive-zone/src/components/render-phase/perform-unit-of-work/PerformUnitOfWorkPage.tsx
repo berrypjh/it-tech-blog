@@ -9,7 +9,6 @@ import { DescendCompleteFlow } from './sections/DescendCompleteFlow';
 import { PerformUnitCodeCheckpoint } from './sections/PerformUnitCodeCheckpoint';
 import { PerformUnitFlow } from './sections/PerformUnitFlow';
 import { PerformUnitHero } from './sections/PerformUnitHero';
-import { PerformUnitMiniQuiz } from './sections/PerformUnitMiniQuiz';
 import { performUnitContent } from './content';
 
 type Props = { locale: Locale };
@@ -23,9 +22,8 @@ export const PerformUnitOfWorkPage = ({ locale }: Props) => {
       <PerformUnitFlow content={c.fullFlow} />
       <CurrentWorkInProgressCompare content={c.compare} />
       <BeginWorkReturnDecision content={c.returnDirection} />
-      <PerformUnitCodeCheckpoint content={c.code} />
+      <PerformUnitCodeCheckpoint content={c.checkpoint} />
       <DescendCompleteFlow content={c.descendComplete} />
-      <PerformUnitMiniQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, CheckCircle2, Flag, Network, Zap } from 'lucide-react';
 
 import { CompareVs } from '../../../shared/compare';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { RootStateField, ScheduleUpdateOnFiberContent } from '../content';
@@ -13,9 +13,10 @@ const sky = toneTokens.sky;
 const emerald = toneTokens.emerald;
 
 export const MarkRootUpdatedMeaningSection = ({ content }: Props) => (
-  <section id="section-markRoot" aria-labelledby="heading-markRoot" className="space-y-md">
-    <SectionHeader
-      id="markRoot"
+  <section id="mark-root" aria-labelledby="heading-mark-root" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      id="mark-root"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Flag className="h-5 w-5" aria-hidden="true" />}
@@ -67,19 +68,9 @@ export const MarkRootUpdatedMeaningSection = ({ content }: Props) => (
 
       {/* 우: 다이어그램 */}
       <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-        <header className="flex items-center justify-between gap-sm">
-          <h3 className="text-sm sm:text-md font-bold leading-tight text-[var(--term-fg)]">
-            {content.diagramTitle}
-          </h3>
-          <span
-            className={cx(
-              'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
-              emerald.chip,
-            )}
-          >
-            before → after
-          </span>
-        </header>
+        <h3 className="text-sm sm:text-md font-bold leading-tight text-[var(--term-fg)]">
+          {content.diagramTitle}
+        </h3>
 
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md lg:gap-sm items-stretch">
           <RootCard variant="before" title={content.beforeTitle} fields={content.beforeFields} />
@@ -138,7 +129,7 @@ const RootCard = ({ variant, title, badge, fields }: RootCardProps) => {
         {badge && (
           <span
             className={cx(
-              'inline-flex items-center gap-1 rounded-md border px-1.5 py-0.5 text-[9px] font-mono uppercase tracking-wider',
+              'inline-flex items-center gap-1 rounded-md border px-1.5 py-0.5 text-[10px] font-mono uppercase tracking-wider',
               emerald.chip,
             )}
           >

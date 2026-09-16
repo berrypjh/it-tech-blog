@@ -1,14 +1,14 @@
 import { cx } from '@berrypjh/react-ui';
-import { CheckCircle2, Clock, Layers, Lightbulb, Loader2 } from 'lucide-react';
+import { CheckCircle2, Clock, Layers, Lightbulb, Loader2, type LucideIcon } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FiberTreeNode, FiberTreeNodeStatus, LegendItem, WorkLoopContent } from '../content';
 
 type Props = { content: WorkLoopContent['fiberTree'] };
 
-type StatusStyle = { Icon: typeof CheckCircle2; text: string; chip: string; border: string };
+type StatusStyle = { Icon: LucideIcon; text: string; chip: string; border: string };
 
 const statusStyle = (status: FiberTreeNodeStatus): StatusStyle => {
   if (status === 'done') {
@@ -42,9 +42,15 @@ export const FiberProcessingTree = ({ content }: Props) => {
   >;
 
   return (
-    <section id="fiber-tree" aria-labelledby="heading-fiber-tree" className="space-y-md">
-      <SectionHeader
+    <section
+      id="fiber-tree"
+      aria-labelledby="heading-fiber-tree"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="fiber-tree"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
@@ -53,14 +59,6 @@ export const FiberProcessingTree = ({ content }: Props) => {
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.1fr)_minmax(0,_1fr)] gap-md lg:gap-lg">
         <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-          <header className="mb-md flex flex-wrap items-center justify-between gap-2">
-            <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
-              {'// example fiber tree'}
-            </span>
-            <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)] rounded-md border border-[var(--term-border)] px-2 py-0.5">
-              workInProgress
-            </span>
-          </header>
           <ul className="flex flex-col gap-2">
             {content.nodes.map((node) => (
               <li
@@ -92,9 +90,7 @@ export const FiberProcessingTree = ({ content }: Props) => {
             </ul>
           </article>
 
-          <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}>
-            {content.infoBox}
-          </SectionNote>
+          <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
         </div>
       </div>
     </section>

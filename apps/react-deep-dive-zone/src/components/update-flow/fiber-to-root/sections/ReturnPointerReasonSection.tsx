@@ -1,15 +1,24 @@
-import { Flag, MousePointerClick, MoveUp, PanelsTopLeft, Workflow } from 'lucide-react';
+import { cx } from '@berrypjh/react-ui';
+import {
+  Flag,
+  type LucideIcon,
+  MousePointerClick,
+  MoveUp,
+  PanelsTopLeft,
+  Workflow,
+} from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
-import type { FiberToRootContent, ReturnNode } from '../content';
+import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
+import type { FiberToRootContent, ReturnNode, ReturnNodeIcon } from '../content';
 
-const returnIconByName = {
+const returnIconByName: Record<ReturnNodeIcon, LucideIcon> = {
   mousePointer: MousePointerClick,
   workflow: Workflow,
   panels: PanelsTopLeft,
   flag: Flag,
-} as const;
+};
 
 type Props = { content: FiberToRootContent['returnPointer'] };
 
@@ -21,18 +30,20 @@ const toFlowStep = (node: ReturnNode, idx: number): FlowStepItem => {
     title: node.title,
     body: node.sub,
     tone: node.tone,
-    icon: <Icon className="h-5 w-5" />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[node.tone].text)} aria-hidden="true" />,
   };
 };
 
 export const ReturnPointerReasonSection = ({ content }: Props) => (
   <section
-    id="section-return-pointer"
+    id="return-pointer"
     aria-labelledby="heading-return-pointer"
-    className="space-y-md"
+    className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="return-pointer"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

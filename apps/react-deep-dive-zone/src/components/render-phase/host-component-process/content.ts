@@ -9,12 +9,6 @@ export type UpdateHostFlowStep = {
   icon: 'fiber' | 'props' | 'children' | 'reconcile' | 'child';
 };
 
-export type CodeCallout = {
-  number: number;
-  body: string;
-  tone: ToneKey;
-};
-
 export type ChildExampleCard = {
   cardTitle: string;
   code: string;
@@ -45,48 +39,46 @@ export type HostComponentContent = {
     };
   };
   userCode: {
+    badge: string;
     eyebrow: string;
     title: string;
+    fileTab: string;
     code: string;
     explanation: string;
   };
   updateFlow: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: UpdateHostFlowStep[];
   };
   childCompare: {
+    badge: string;
     eyebrow: string;
     title: string;
     cards: { left: ChildExampleCard; right: ChildExampleCard };
   };
-  code: {
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
-    fileName: string;
-    functionLabel: string;
-    functions: string[];
-    learningQuestion: string;
-    codeHeader: string;
-    codeBadge: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
     code: string;
-    callouts: CodeCallout[];
+    primaryCta: string;
+    primaryHref: string;
   };
   completeWork: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     flow: CompleteWorkFlowNode[];
     workCardTitle: string;
     workItems: string[];
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    question: string;
-    answer: string;
   };
   nextStep: {
     eyebrow: string;
@@ -141,13 +133,16 @@ const ko: HostComponentContent = {
     },
   },
   userCode: {
-    eyebrow: '01 · 사용자 코드',
+    badge: '01',
+    eyebrow: '사용자 코드',
     title: '사용자 코드 예시',
+    fileTab: 'Profile.jsx',
     code: USER_CODE,
     explanation: 'React는 이 요소의 props와 children을 기준으로 다음 자식 구조를 계산합니다.',
   },
   updateFlow: {
-    eyebrow: '02 · Host 갱신 흐름',
+    badge: '02',
+    eyebrow: 'Host 갱신 흐름',
     title: 'updateHostComponent 흐름',
     description: 'Host Component Fiber 하나가 처리되는 단계입니다.',
     steps: [
@@ -184,7 +179,8 @@ const ko: HostComponentContent = {
     ],
   },
   childCompare: {
-    eyebrow: '03 · 텍스트 vs 중첩',
+    badge: '03',
+    eyebrow: '텍스트 vs 중첩',
     title: 'text child와 nested child 감각 차이',
     cards: {
       left: {
@@ -205,27 +201,22 @@ const ko: HostComponentContent = {
       },
     },
   },
-  code: {
-    eyebrow: '04 · 코드 체크포인트',
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
-    fileName: 'ReactFiberBeginWork.js',
-    functionLabel: '함수',
-    functions: ['updateHostComponent', 'reconcileChildren'],
-    learningQuestion:
-      'Host Component는 Render Phase에서 어떤 데이터를 다음 reconciliation으로 넘길까?',
-    codeHeader: 'react-reconciler/src/ReactFiberBeginWork.js',
-    codeBadge: 'main',
+    filePath: 'packages/react-reconciler/src/ReactFiberBeginWork.js',
+    lookForLabel: '볼 것',
+    lookFor: 'updateHostComponent, reconcileChildren',
     code: UPDATE_HOST_CODE,
-    callouts: [
-      { number: 1, body: '이번 렌더의 props 읽기 (pendingProps)', tone: 'teal' },
-      { number: 2, body: 'children 추출 (props.children)', tone: 'violet' },
-      { number: 3, body: 'children을 바탕으로 다음 자식 Fiber 계산', tone: 'sky' },
-      { number: 4, body: '아래로 이동할 첫 자식 Fiber 반환', tone: 'indigo' },
-    ],
+    primaryCta: 'ReactFiberBeginWork.js 읽기',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberBeginWork.js',
   },
   completeWork: {
-    eyebrow: '05 · completeWork 예고',
+    badge: '05',
+    eyebrow: '완료 단계 예고',
     title: 'completeWork 예고',
     description:
       'Host Component의 실제 host 처리, 예를 들어 DOM 관련 준비는 completeWork에서 더 본격적으로 이어집니다.',
@@ -257,12 +248,6 @@ const ko: HostComponentContent = {
       'ref 연결 준비',
       'flags 설정',
     ],
-  },
-  quiz: {
-    eyebrow: '06 · 미니 퀴즈',
-    title: '미니 퀴즈',
-    question: 'Host Component의 beginWork가 즉시 DOM node를 만드는가?',
-    answer: '아니다. DOM을 만들지 않고 먼저 children 구조를 계산한다.',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -301,14 +286,17 @@ const en: HostComponentContent = {
     },
   },
   userCode: {
-    eyebrow: '01 · USER CODE',
+    badge: '01',
+    eyebrow: 'USER CODE',
     title: 'User code example',
+    fileTab: 'Profile.jsx',
     code: USER_CODE_EN,
     explanation:
       "React computes the next child structure based on this element's props and children.",
   },
   updateFlow: {
-    eyebrow: '02 · HOST FLOW',
+    badge: '02',
+    eyebrow: 'HOST FLOW',
     title: 'updateHostComponent flow',
     description: 'How a single Host Component Fiber is processed.',
     steps: [
@@ -345,7 +333,8 @@ const en: HostComponentContent = {
     ],
   },
   childCompare: {
-    eyebrow: '03 · TEXT VS NESTED',
+    badge: '03',
+    eyebrow: 'TEXT VS NESTED',
     title: 'text child vs nested child',
     cards: {
       left: {
@@ -366,26 +355,22 @@ const en: HostComponentContent = {
       },
     },
   },
-  code: {
-    eyebrow: '04 · CODE CHECKPOINT',
-    title: 'Source-code checkpoint',
-    fileLabel: 'file',
-    fileName: 'ReactFiberBeginWork.js',
-    functionLabel: 'functions',
-    functions: ['updateHostComponent', 'reconcileChildren'],
-    learningQuestion: 'What does a Host Component hand off to the next reconciliation?',
-    codeHeader: 'react-reconciler/src/ReactFiberBeginWork.js',
-    codeBadge: 'main',
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberBeginWork.js',
+    lookForLabel: 'Look for',
+    lookFor: 'updateHostComponent, reconcileChildren',
     code: UPDATE_HOST_CODE,
-    callouts: [
-      { number: 1, body: "Read this render's props (pendingProps)", tone: 'teal' },
-      { number: 2, body: 'Extract children (props.children)', tone: 'violet' },
-      { number: 3, body: 'Compute child Fibers from children', tone: 'sky' },
-      { number: 4, body: 'Return the first child Fiber to descend into', tone: 'indigo' },
-    ],
+    primaryCta: 'Read ReactFiberBeginWork.js',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberBeginWork.js',
   },
   completeWork: {
-    eyebrow: '05 · COMPLETEWORK PREVIEW',
+    badge: '05',
+    eyebrow: 'COMPLETE STEP PREVIEW',
     title: 'completeWork preview',
     description:
       "The Host Component's actual host work, like DOM preparation, continues more fully in completeWork.",
@@ -417,12 +402,6 @@ const en: HostComponentContent = {
       'Prepare ref attachment',
       'Set flags',
     ],
-  },
-  quiz: {
-    eyebrow: '06 · MINI QUIZ',
-    title: 'Mini Quiz',
-    question: "Does a Host Component's beginWork create the DOM node immediately?",
-    answer: 'No — it first computes the children structure, without creating any DOM.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

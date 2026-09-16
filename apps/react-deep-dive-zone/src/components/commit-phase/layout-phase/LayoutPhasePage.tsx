@@ -4,9 +4,8 @@ import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
 import { ClassLifecycleAndGuaranteeSection } from './sections/ClassLifecycleAndGuaranteeSection';
-import { LayoutCodeCheckpointSection } from './sections/LayoutCodeCheckpointSection';
+import { LayoutCodeCheckpoint } from './sections/LayoutCodeCheckpoint';
 import { LayoutHeroSection } from './sections/LayoutHeroSection';
-import { LayoutQuizSection } from './sections/LayoutQuizSection';
 import { LayoutWorkItemsSection } from './sections/LayoutWorkItemsSection';
 import { TooltipMeasurementExampleSection } from './sections/TooltipMeasurementExampleSection';
 import { UseLayoutEffectTimingSection } from './sections/UseLayoutEffectTimingSection';
@@ -27,8 +26,7 @@ export const LayoutPhasePage = ({ locale }: Props) => {
         classLifecycle={c.classLifecycle}
         guarantee={c.guarantee}
       />
-      <LayoutCodeCheckpointSection content={c.checkpoint} />
-      <LayoutQuizSection quiz={c.quiz} />
+      <LayoutCodeCheckpoint content={c.checkpoint} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

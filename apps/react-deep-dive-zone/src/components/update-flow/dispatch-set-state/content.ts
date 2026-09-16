@@ -72,6 +72,7 @@ export type DispatchSetStateContent = {
     bottomCallout: string;
   };
   compare: {
+    badge: string;
     eyebrow: string;
     title: string;
     left: {
@@ -87,32 +88,33 @@ export type DispatchSetStateContent = {
     note: string;
   };
   flow: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: MountStateStep[];
   };
   checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
     filePath: string;
-    functionLabel: string;
-    functionName: string;
-    learningQuestion: string;
-    codeHeader: string;
-    codeBadge: string;
+    lookForLabel: string;
+    lookFor: string;
     code: string;
-    primaryHref: string;
     primaryCta: string;
+    primaryHref: string;
   };
   bindReasons: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: BindReasonCard[];
   };
   relationship: {
+    badge: string;
     eyebrow: string;
     title: string;
     leftTitle: string;
@@ -122,16 +124,8 @@ export type DispatchSetStateContent = {
     rightSubtitle: string;
     runtimeSteps: RuntimeStep[];
   };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    questionLabel: string;
-    answerLabel: string;
-    question: string;
-    answerTitle: string;
-    answerBody: string;
-  };
   summary: {
+    badge: string;
     eyebrow: string;
     title: string;
     lines: string[];
@@ -214,7 +208,8 @@ const ko: DispatchSetStateContent = {
     bottomCallout: '이 두 정보를 기억한 상태로 나중에 호출된다.',
   },
   compare: {
-    eyebrow: '01 · 공개 API와 내부 구조',
+    badge: '01',
+    eyebrow: '공개 API와 내부 구조',
     title: '공개 API와 내부 구조 비교',
     left: {
       title: '사용자에게 보이는 코드',
@@ -234,7 +229,8 @@ const ko: DispatchSetStateContent = {
     note: '나중에 setCount(...)가 호출되어도, React는 이미 어느 Fiber와 어느 queue인지 알고 있다.',
   },
   flow: {
-    eyebrow: '02 · mountState 흐름',
+    badge: '02',
+    eyebrow: '마운트 흐름',
     title: 'mountState 내부 흐름 (한눈에 보기)',
     description:
       'useState가 처음 실행될 때 setter가 어떻게 만들어지고, 어디에 저장되어 나중까지 살아남는지 단계별로 따라갑니다.',
@@ -290,21 +286,20 @@ const ko: DispatchSetStateContent = {
     ],
   },
   checkpoint: {
-    eyebrow: '03 · 코드 체크포인트',
-    title: '코드 체크포인트',
+    badge: '03',
+    eyebrow: '코드 체크포인트',
+    title: '실제 코드 체크포인트',
     fileLabel: '파일',
     filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
-    functionLabel: '함수',
-    functionName: 'mountState',
-    learningQuestion: 'setter 함수는 언제 Fiber와 queue를 기억하게 될까?',
-    codeHeader: 'ReactFiberHooks.js',
-    codeBadge: 'main',
+    lookForLabel: '볼 것',
+    lookFor: 'mountState, dispatchSetState.bind, queue.dispatch',
     code: checkpointCodeKo,
+    primaryCta: 'ReactFiberHooks.js 읽기',
     primaryHref: githubHref,
-    primaryCta: 'GitHub에서 mountState 보기',
   },
   bindReasons: {
-    eyebrow: '04 · bind 필요성',
+    badge: '04',
+    eyebrow: 'bind 필요성',
     title: '왜 bind가 필요한가?',
     description:
       'bind는 단순한 문법이 아니라, 나중에 호출될 setCount가 필요한 내부 정보를 잃지 않게 묶어두는 장치다.',
@@ -336,7 +331,8 @@ const ko: DispatchSetStateContent = {
     ],
   },
   relationship: {
-    eyebrow: '05 · 관계도',
+    badge: '05',
+    eyebrow: '관계도',
     title: 'Fiber / Hook / queue / dispatch 관계도',
     leftTitle: '메모리 구조',
     leftSubtitle: '렌더 직후',
@@ -410,18 +406,9 @@ const ko: DispatchSetStateContent = {
       },
     ],
   },
-  quiz: {
-    eyebrow: '06 · 미니 퀴즈',
-    title: '미니 퀴즈',
-    questionLabel: '질문',
-    answerLabel: '핵심 정답',
-    question: '사용자가 호출하는 setCount는 어떤 정보를 이미 품고 있을까?',
-    answerTitle: '현재 컴포넌트 Fiber와 해당 Hook의 update queue.',
-    answerBody:
-      '그래서 나중에 호출되어도 React는 어느 Fiber의 어떤 queue에 업데이트를 넣어야 하는지 정확히 알고 있습니다.',
-  },
   summary: {
-    eyebrow: '07 · 핵심 요약',
+    badge: '06',
+    eyebrow: '핵심 요약',
     title: '핵심 요약',
     lines: [
       'setState(setCount)는 단순한 함수가 아니라, 특정 Fiber와 특정 queue를 기억한 dispatch 함수다.',
@@ -471,7 +458,8 @@ const en: DispatchSetStateContent = {
     bottomCallout: 'It carries both into every later call.',
   },
   compare: {
-    eyebrow: '01 · API VS INTERNALS',
+    badge: '01',
+    eyebrow: 'API VS INTERNALS',
     title: 'Public API vs the real internal shape',
     left: {
       title: 'What the user writes',
@@ -492,7 +480,8 @@ const en: DispatchSetStateContent = {
     note: 'When setCount(...) is called later, React already knows which Fiber and which queue it belongs to.',
   },
   flow: {
-    eyebrow: '02 · MOUNTSTATE FLOW',
+    badge: '02',
+    eyebrow: 'MOUNT FLOW',
     title: 'mountState flow at a glance',
     description:
       'Follow how the setter is built on first render, where it gets stored, and how it survives until later calls.',
@@ -548,21 +537,20 @@ const en: DispatchSetStateContent = {
     ],
   },
   checkpoint: {
-    eyebrow: '03 · CODE CHECKPOINT',
-    title: 'Source checkpoint',
+    badge: '03',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
     fileLabel: 'File',
     filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
-    functionLabel: 'Function',
-    functionName: 'mountState',
-    learningQuestion: 'When does the setter remember its Fiber and queue?',
-    codeHeader: 'ReactFiberHooks.js',
-    codeBadge: 'main',
+    lookForLabel: 'Look for',
+    lookFor: 'mountState, dispatchSetState.bind, queue.dispatch',
     code: checkpointCodeEn,
+    primaryCta: 'Read ReactFiberHooks.js',
     primaryHref: githubHref,
-    primaryCta: 'View mountState on GitHub',
   },
   bindReasons: {
-    eyebrow: '04 · WHY BIND',
+    badge: '04',
+    eyebrow: 'WHY BIND',
     title: 'Why bind is needed',
     description:
       'bind is not just syntax — it keeps the information the setter needs alive across later, async calls.',
@@ -594,7 +582,8 @@ const en: DispatchSetStateContent = {
     ],
   },
   relationship: {
-    eyebrow: '05 · RELATIONSHIP',
+    badge: '05',
+    eyebrow: 'RELATIONSHIP',
     title: 'Fiber / Hook / queue / dispatch relationship',
     leftTitle: 'Memory layout',
     leftSubtitle: 'right after render',
@@ -668,18 +657,9 @@ const en: DispatchSetStateContent = {
       },
     ],
   },
-  quiz: {
-    eyebrow: '06 · MINI QUIZ',
-    title: 'Mini quiz',
-    questionLabel: 'Question',
-    answerLabel: 'Core answer',
-    question: 'What information does the setCount you call already carry?',
-    answerTitle: "The current component's Fiber and that Hook's update queue.",
-    answerBody:
-      "Even when called later, React knows exactly which Fiber's queue the update belongs to.",
-  },
   summary: {
-    eyebrow: '07 · KEY SUMMARY',
+    badge: '06',
+    eyebrow: 'KEY SUMMARY',
     title: 'Key summary',
     lines: [
       "setState (setCount) is not a plain function — it's a dispatch that remembers a specific Fiber and a specific queue.",

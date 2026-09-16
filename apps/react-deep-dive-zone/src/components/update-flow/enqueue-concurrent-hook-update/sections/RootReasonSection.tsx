@@ -1,7 +1,8 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowRight, Database, Network, Sparkles } from 'lucide-react';
+import { ArrowRight, Database, Lightbulb, Network } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionNote } from '../../../shared/note';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneBadge, ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { EnqueueConcurrentHookUpdateContent } from '../content';
@@ -9,9 +10,15 @@ import type { EnqueueConcurrentHookUpdateContent } from '../content';
 type Props = { content: EnqueueConcurrentHookUpdateContent['rootReason'] };
 
 export const RootReasonSection = ({ content }: Props) => (
-  <section id="section-root-reason" aria-labelledby="heading-root-reason" className="space-y-md">
-    <SectionHeader
+  <section
+    id="root-reason"
+    aria-labelledby="heading-root-reason"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="root-reason"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -38,12 +45,7 @@ export const RootReasonSection = ({ content }: Props) => (
       />
     </div>
 
-    <div className="flex items-start gap-sm rounded-lg border border-[var(--term-border)] border-l-[3px] border-l-[var(--term-accent)] bg-[var(--term-surface)] p-md">
-      <Sparkles aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[var(--term-accent)]" />
-      <p className="text-xsm sm:text-sm font-semibold leading-relaxed text-[var(--term-fg)] break-keep">
-        {content.bottomMessage}
-      </p>
-    </div>
+    <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
   </section>
 );
 

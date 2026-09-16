@@ -1,16 +1,17 @@
 import { cx } from '@berrypjh/react-ui';
 import { ListChecks } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CompleteWorkContent, FlowItem } from '../content';
 
 type Props = { content: CompleteWorkContent['summary'] };
 
 export const RenderPhaseSummary = ({ content }: Props) => (
-  <section id="summary" aria-labelledby="heading-summary" className="space-y-md">
-    <SectionHeader
+  <section id="summary" aria-labelledby="heading-summary" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="summary"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}

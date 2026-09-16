@@ -1,15 +1,15 @@
 import { cx } from '@berrypjh/react-ui';
-import { ListChecks, Pencil, Plus, Trash2 } from 'lucide-react';
+import { ListChecks, type LucideIcon, Pencil, Plus, Trash2 } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { HeroFlagIcon, MutationPhaseContent, SummaryRow } from '../content';
+import type { HeroFlagId, MutationPhaseContent, SummaryRow } from '../content';
 
 type Props = { content: MutationPhaseContent['summary'] };
 
-const iconMap: Record<HeroFlagIcon, typeof Pencil> = {
+const iconMap: Record<HeroFlagId, LucideIcon> = {
   plus: Plus,
   pencil: Pencil,
   trash: Trash2,
@@ -21,8 +21,10 @@ export const MutationSummaryTableSection = ({ content }: Props) => (
     aria-labelledby="heading-summary-table"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="summary-table"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -42,7 +44,7 @@ export const MutationSummaryTableSection = ({ content }: Props) => (
 );
 
 const FlagLabel = ({ row }: { row: SummaryRow }) => {
-  const Icon = iconMap[row.iconName];
+  const Icon = iconMap[row.id];
   const t = toneTokens[row.tone];
   return (
     <div className="flex items-center gap-2">

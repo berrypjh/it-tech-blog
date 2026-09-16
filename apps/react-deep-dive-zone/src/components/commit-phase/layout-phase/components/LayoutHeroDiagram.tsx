@@ -1,14 +1,16 @@
 import { cx } from '@berrypjh/react-ui';
-import { Clock, Database, Monitor, Zap } from 'lucide-react';
+import { Clock, Database, type LucideIcon, Monitor, Zap } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { HeroPhase, HeroPhaseIcon, LayoutPhaseContent } from '../content';
+import type { HeroPhase, HeroPhaseId, LayoutPhaseContent } from '../content';
 
-type Props = { content: LayoutPhaseContent['hero']; className?: string };
+type Props = { content: LayoutPhaseContent['hero'] };
 
-const iconMap: Record<HeroPhaseIcon, typeof Zap> = {
+const iconMap: Record<HeroPhaseId, LucideIcon> = {
   database: Database,
   zap: Zap,
   monitor: Monitor,
@@ -21,70 +23,47 @@ const iconMap: Record<HeroPhaseIcon, typeof Zap> = {
  * Commit Phase 시간 흐름을 위에서 아래로 잇는 컴팩트 stepper.
  * Layout Phase 진입점은 commitLayoutEffects 호출 코드로 앵커링한다.
  */
-export const LayoutHeroDiagram = ({ content, className }: Props) => {
+export const LayoutHeroDiagram = ({ content }: Props) => {
   const { diagram } = content;
   const a11y = `${diagram.title}: ${diagram.phases
     .map((p) => `${p.title} (${p.subtitle}) — ${p.details.join(', ')}`)
     .join(' → ')}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
+    <HeroDiagramShell a11yLabel={a11y}>
+      <div className="relative flex flex-col gap-sm" aria-hidden="true">
+        <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)] break-keep">
+          {`// ${diagram.title}`}
+        </span>
 
-      <div className="relative flex flex-col gap-sm">
-        <header className="flex items-center gap-sm" aria-hidden="true">
-          <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)] break-keep">
-            {`// ${diagram.title}`}
-          </span>
-          <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-            commit timeline
-          </span>
-        </header>
-
-        <ol className="flex flex-col gap-sm" aria-hidden="true">
+        <ol className="flex flex-col gap-sm">
           {diagram.phases.map((phase, i) => (
             <li key={phase.key} className="flex flex-col gap-sm">
               <PhaseRow phase={phase} />
-              {phase.active && (
-                <CodePreviewPanel
-                  code="commitLayoutEffects(finishedWork, root, lanes);"
-                  language="JS"
-                  size="md"
-                />
-              )}
+              {phase.active && <CodePreviewPanel code={diagram.code} language="JS" size="md" />}
               {i < diagram.phases.length - 1 && <DownArrow />}
             </li>
           ))}
         </ol>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
 const PhaseRow = ({ phase }: { phase: HeroPhase }) => {
   const tone = phase.tone;
   const t = toneTokens[tone];
-  const Icon = iconMap[phase.iconName];
+  const Icon = iconMap[phase.id];
   return (
-    <article
+    <div
       className={cx(
-        'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
+        'flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         phase.active ? cx(t.chip, t.border) : 'border-[var(--term-border)]',
-        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+        'shadow-[0_2px_0_var(--term-border)]',
       )}
     >
       <ToneIconBox tone={tone} size="sm">
-        <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
+        <Icon className="h-4 w-4" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-1 flex-col gap-1">
         <div className="flex items-baseline gap-2">
@@ -105,7 +84,6 @@ const PhaseRow = ({ phase }: { phase: HeroPhase }) => {
               )}
             >
               <span
-                aria-hidden="true"
                 className={cx(
                   'inline-block h-1 w-1 shrink-0 rounded-full',
                   phase.active ? t.dot : 'bg-[var(--term-dim)]',
@@ -116,15 +94,6 @@ const PhaseRow = ({ phase }: { phase: HeroPhase }) => {
           ))}
         </ul>
       </div>
-    </article>
+    </div>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

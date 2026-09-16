@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Plus, Replace } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { MutationPhaseContent } from '../content';
 
@@ -13,8 +13,10 @@ export const MutationBeforeAfterSection = ({ content }: Props) => (
     aria-labelledby="heading-before-after"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="before-after"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -22,9 +24,19 @@ export const MutationBeforeAfterSection = ({ content }: Props) => (
     />
 
     <div className="grid grid-cols-1 md:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-3 items-stretch">
-      <DomCard variant="before" card={content.beforeCard} />
+      <DomCard
+        variant="before"
+        card={content.beforeCard}
+        previewLabel={content.previewLabel}
+        newLabel={content.newLabel}
+      />
       <CenterArrow centerLabel={content.centerLabel} />
-      <DomCard variant="after" card={content.afterCard} />
+      <DomCard
+        variant="after"
+        card={content.afterCard}
+        previewLabel={content.previewLabel}
+        newLabel={content.newLabel}
+      />
     </div>
   </section>
 );
@@ -77,9 +89,13 @@ const CenterArrow = ({
 const DomCard = ({
   variant,
   card,
+  previewLabel,
+  newLabel,
 }: {
   variant: 'before' | 'after';
   card: { title: string; code: string; preview: string[] };
+  previewLabel: string;
+  newLabel: string;
 }) => {
   const isBefore = variant === 'before';
   const t = toneTokens[isBefore ? 'sky' : 'teal'];
@@ -91,25 +107,11 @@ const DomCard = ({
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
-      <header className="flex items-center justify-between gap-2">
-        <h3
-          className={cx(
-            'text-xsm sm:text-sm font-bold uppercase tracking-wider break-keep',
-            t.text,
-          )}
-        >
-          {card.title}
-        </h3>
-        <span
-          aria-hidden="true"
-          className={cx(
-            'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
-            t.chip,
-          )}
-        >
-          {isBefore ? 'before' : 'after'}
-        </span>
-      </header>
+      <h3
+        className={cx('text-xsm sm:text-sm font-bold uppercase tracking-wider break-keep', t.text)}
+      >
+        {card.title}
+      </h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,_1.4fr)_minmax(0,_1fr)] gap-3">
         <pre
@@ -122,18 +124,33 @@ const DomCard = ({
           <code>{card.code}</code>
         </pre>
 
-        <ListPreview items={card.preview} variant={variant} />
+        <ListPreview
+          items={card.preview}
+          variant={variant}
+          label={previewLabel}
+          newLabel={newLabel}
+        />
       </div>
     </article>
   );
 };
 
-const ListPreview = ({ items, variant }: { items: string[]; variant: 'before' | 'after' }) => {
+const ListPreview = ({
+  items,
+  variant,
+  label,
+  newLabel,
+}: {
+  items: string[];
+  variant: 'before' | 'after';
+  label: string;
+  newLabel: string;
+}) => {
   const newTone = toneTokens.violet;
   return (
     <ul className="flex flex-col gap-1 rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] p-sm">
       <li className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] mb-1">
-        preview
+        {label}
       </li>
       {items.map((item, idx) => {
         const isNew = variant === 'after' && idx === items.length - 1;
@@ -158,11 +175,11 @@ const ListPreview = ({ items, variant }: { items: string[]; variant: 'before' | 
             {isNew && (
               <span
                 className={cx(
-                  'ml-auto text-[9px] font-mono uppercase tracking-wider',
+                  'ml-auto text-[10px] font-mono uppercase tracking-wider',
                   newTone.text,
                 )}
               >
-                new
+                {newLabel}
               </span>
             )}
           </li>

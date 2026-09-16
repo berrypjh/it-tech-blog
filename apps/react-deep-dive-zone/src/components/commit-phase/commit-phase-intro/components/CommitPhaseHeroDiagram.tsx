@@ -1,11 +1,13 @@
 import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Cpu, Layers } from 'lucide-react';
 
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CommitPhaseIntroContent } from '../content';
 
-type Props = { content: CommitPhaseIntroContent['hero']; className?: string };
+type Props = { content: CommitPhaseIntroContent['hero'] };
 
 type PhaseStep = {
   tone: ToneKey;
@@ -19,18 +21,18 @@ type PhaseStep = {
  * Render Phase(다음 화면 계산) → Commit Phase(실제 DOM 반영)로 이어지는
  * 커밋 단계 진입 흐름을 위에서 아래로 잇는 컴팩트 stepper.
  */
-export const CommitPhaseHeroDiagram = ({ content, className }: Props) => {
+export const CommitPhaseHeroDiagram = ({ content }: Props) => {
   const { diagram } = content;
   const steps: PhaseStep[] = [
     {
       tone: 'sky',
-      icon: <Cpu className="h-[18px] w-[18px]" aria-hidden="true" />,
+      icon: <Cpu className="h-4 w-4" />,
       title: diagram.renderCard.title,
       items: diagram.renderCard.items,
     },
     {
       tone: 'teal',
-      icon: <Layers className="h-[18px] w-[18px]" aria-hidden="true" />,
+      icon: <Layers className="h-4 w-4" />,
       title: diagram.commitCard.title,
       items: diagram.commitCard.items,
     },
@@ -41,30 +43,13 @@ export const CommitPhaseHeroDiagram = ({ content, className }: Props) => {
     .join(' → ')}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
+    <HeroDiagramShell a11yLabel={a11y}>
+      <div className="relative flex flex-col gap-sm" aria-hidden="true">
+        <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--term-muted)]">
+          {'//'} {diagram.eyebrow}
+        </span>
 
-      <div className="relative flex flex-col gap-sm">
-        <header className="flex items-center gap-sm" aria-hidden="true">
-          <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
-            {'// render → commit'}
-          </span>
-          <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-            {diagram.eyebrow}
-          </span>
-        </header>
-
-        <ol className="flex flex-col gap-sm" aria-hidden="true">
+        <ol className="flex flex-col gap-sm">
           {steps.map((step, i) => (
             <li key={step.title} className="flex flex-col gap-sm">
               <PhaseStepRow step={step} />
@@ -73,18 +58,17 @@ export const CommitPhaseHeroDiagram = ({ content, className }: Props) => {
           ))}
         </ol>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
 const PhaseStepRow = ({ step }: { step: PhaseStep }) => {
   const t = toneTokens[step.tone];
   return (
-    <article
+    <div
       className={cx(
-        'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
+        'flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
       )}
     >
       <ToneIconBox tone={step.tone} size="sm">
@@ -100,21 +84,12 @@ const PhaseStepRow = ({ step }: { step: PhaseStep }) => {
               key={item}
               className="flex items-center gap-1.5 text-xsm leading-snug text-[var(--term-muted)] break-keep"
             >
-              <CheckCircle2 aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
+              <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
               <span>{item}</span>
             </li>
           ))}
         </ul>
       </div>
-    </article>
+    </div>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

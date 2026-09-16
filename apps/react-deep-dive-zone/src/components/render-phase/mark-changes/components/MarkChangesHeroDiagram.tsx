@@ -1,23 +1,22 @@
 import { cx } from '@berrypjh/react-ui';
-import { Box, Flag, ListChecks, type LucideIcon, Move, Pencil, Trash2, Zap } from 'lucide-react';
+import { Box, Flag, ListChecks, type LucideIcon, Pencil, Trash2 } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { MarkChangesContent } from '../content';
 import { facetFor } from '../markFacet';
 
-const markIconByName: Record<'flag' | 'trash' | 'pencil' | 'zap' | 'move', LucideIcon> = {
+type HeroContent = MarkChangesContent['hero'];
+type FlagCard = HeroContent['diagram']['flagCards'][number];
+
+const markIconByName: Record<FlagCard['icon'], LucideIcon> = {
   flag: Flag,
   trash: Trash2,
   pencil: Pencil,
-  zap: Zap,
-  move: Move,
-} as const;
-
-type HeroContent = MarkChangesContent['hero'];
-type FlagCard = HeroContent['diagram']['flagCards'][number];
+};
 
 type Props = { content: HeroContent };
 
@@ -60,7 +59,7 @@ const FiberCard = ({ card }: { card: HeroContent['diagram']['fiberCard'] }) => (
   <article className="flex flex-col gap-sm rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]">
     <header className="flex items-center gap-sm">
       <ToneIconBox tone="violet" size="sm">
-        <Box className="h-[18px] w-[18px]" aria-hidden="true" />
+        <Box className="h-4 w-4" />
       </ToneIconBox>
       <span className={cx('font-mono text-sm font-bold tracking-tight', toneTokens.violet.text)}>
         {card.title}
@@ -83,7 +82,7 @@ const FlagRow = ({ card }: { card: FlagCard }) => {
     <article
       className={cx(
         'flex items-center gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-2.5',
-        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+        'shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
     >
@@ -93,7 +92,7 @@ const FlagRow = ({ card }: { card: FlagCard }) => {
           t.chip,
         )}
       >
-        <Icon className="h-[18px] w-[18px]" />
+        <Icon className="h-4 w-4" />
       </span>
       <div className="flex min-w-0 flex-col">
         <span className={cx('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
@@ -110,7 +109,7 @@ const FlagRow = ({ card }: { card: FlagCard }) => {
 const DeletionsCard = ({ card }: { card: HeroContent['diagram']['deletionsCard'] }) => (
   <article className="flex items-center gap-sm rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] px-md py-2.5 shadow-[0_2px_0_var(--term-border)]">
     <ToneIconBox tone="amber" size="sm">
-      <ListChecks className="h-[18px] w-[18px]" aria-hidden="true" />
+      <ListChecks className="h-4 w-4" />
     </ToneIconBox>
     <div className="flex min-w-0 flex-col">
       <span className="font-mono text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
@@ -121,13 +120,4 @@ const DeletionsCard = ({ card }: { card: HeroContent['diagram']['deletionsCard']
       </span>
     </div>
   </article>
-);
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
 );

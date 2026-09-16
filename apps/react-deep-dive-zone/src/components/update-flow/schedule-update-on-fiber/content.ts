@@ -58,6 +58,7 @@ export type ScheduleUpdateOnFiberContent = {
     };
   };
   flow: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -66,27 +67,26 @@ export type ScheduleUpdateOnFiberContent = {
     keyPointBody: string;
   };
   responsibilities: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: ResponsibilityCard[];
   };
   checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
     filePath: string;
-    functionLabel: string;
-    functionName: string;
-    learningQuestion: string;
-    codeHeader: string;
-    codeBadge: string;
+    lookForLabel: string;
+    lookFor: string;
     code: string;
-    primaryHref: string;
     primaryCta: string;
-    callout: { title: string; body: string; tone: ToneKey; linkedLine: number };
+    primaryHref: string;
   };
   contextCompare: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -94,6 +94,7 @@ export type ScheduleUpdateOnFiberContent = {
     rightCard: ContextCard;
   };
   markRoot: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: { title: string; body: string; bullets: string[] };
@@ -103,15 +104,6 @@ export type ScheduleUpdateOnFiberContent = {
     afterTitle: string;
     afterBadge: string;
     afterFields: RootStateField[];
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    questionLabel: string;
-    answerLabel: string;
-    question: string;
-    answerTitle: string;
-    answerBody: string;
   };
   nextStep: {
     eyebrow: string;
@@ -167,7 +159,8 @@ const ko: ScheduleUpdateOnFiberContent = {
     },
   },
   flow: {
-    eyebrow: '01 · 함수 위치',
+    badge: '01',
+    eyebrow: '함수 위치',
     title: '함수 위치 전체 흐름',
     description:
       'dispatchSetStateInternal에서 시작해 Root에 pending work를 등록하는 단계까지, 이 페이지가 그림 어느 지점인지 따라갑니다.',
@@ -205,7 +198,8 @@ const ko: ScheduleUpdateOnFiberContent = {
     keyPointBody: 'Fiber 단위 업데이트 → Root 단위 pending work 등록으로 전환되는 지점입니다.',
   },
   responsibilities: {
-    eyebrow: '02 · 함수의 책임',
+    badge: '02',
+    eyebrow: '함수의 책임',
     title: 'scheduleUpdateOnFiber가 하는 핵심 일',
     description:
       '이름과 달리 이 함수는 렌더링을 실행하지 않습니다. 다음 세 가지가 핵심 역할입니다.',
@@ -234,27 +228,20 @@ const ko: ScheduleUpdateOnFiberContent = {
     ],
   },
   checkpoint: {
-    eyebrow: '03 · 코드 체크포인트',
+    badge: '03',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
-    functionLabel: '함수',
-    functionName: 'scheduleUpdateOnFiber',
-    learningQuestion: '이 함수는 DOM을 바꾸는가, Root에 일이 생겼다고 표시하는가?',
-    codeHeader: 'ReactFiberWorkLoop.js',
-    codeBadge: 'main',
+    lookForLabel: '볼 것',
+    lookFor: 'scheduleUpdateOnFiber, markRootUpdated, ensureRootIsScheduled',
     code: checkpointCodeKo,
+    primaryCta: 'ReactFiberWorkLoop.js 읽기',
     primaryHref: githubHref,
-    primaryCta: 'GitHub에서 scheduleUpdateOnFiber 보기',
-    callout: {
-      title: 'markRootUpdated 호출',
-      body: '이 Root에 lane의 pending work가 생겼음을 기록',
-      tone: 'emerald',
-      linkedLine: 4,
-    },
   },
   contextCompare: {
-    eyebrow: '04 · 실행 맥락 구분',
+    badge: '04',
+    eyebrow: '실행 맥락 구분',
     title: 'render phase update와 normal update 비교',
     description:
       '같은 함수 안에서도 업데이트가 발생한 실행 맥락에 따라 처리가 갈립니다. 두 경로를 나란히 두고 차이를 봅니다.',
@@ -278,7 +265,8 @@ const ko: ScheduleUpdateOnFiberContent = {
     },
   },
   markRoot: {
-    eyebrow: '05 · markRootUpdated',
+    badge: '05',
+    eyebrow: 'Root 작업 표시',
     title: 'markRootUpdated의 의미',
     description: {
       title: 'markRootUpdated(root, lane)',
@@ -297,22 +285,13 @@ const ko: ScheduleUpdateOnFiberContent = {
       { key: 'pingedLanes', value: 'NoLanes' },
     ],
     afterTitle: '이후 Root',
-    afterBadge: 'PENDING WORK ⚡',
+    afterBadge: 'PENDING WORK',
     afterFields: [
       { key: 'pendingLanes', value: '|= lane', emphasized: true },
       { key: '(상태)', value: '작업 대기 중', emphasized: true },
       { key: 'suspendedLanes', value: '...' },
       { key: 'pingedLanes', value: '...' },
     ],
-  },
-  quiz: {
-    eyebrow: '06 · 미니 퀴즈',
-    title: '미니 퀴즈',
-    questionLabel: '질문',
-    answerLabel: '핵심 정답',
-    question: 'scheduleUpdateOnFiber는 DOM을 바로 바꿀까?',
-    answerTitle: '아니다.',
-    answerBody: 'Root에 작업이 있다는 사실을 표시하고 다음 스케줄링 단계로 넘긴다.',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -350,7 +329,8 @@ const en: ScheduleUpdateOnFiberContent = {
     },
   },
   flow: {
-    eyebrow: '01 · WHERE WE ARE',
+    badge: '01',
+    eyebrow: 'WHERE WE ARE',
     title: 'Where this function sits in the flow',
     description:
       'Trace from dispatchSetStateInternal through to the moment pending work is registered on the Root.',
@@ -388,7 +368,8 @@ const en: ScheduleUpdateOnFiberContent = {
     keyPointBody: 'This is the exact pivot from Fiber-level updates to Root-level pending work.',
   },
   responsibilities: {
-    eyebrow: '02 · RESPONSIBILITIES',
+    badge: '02',
+    eyebrow: 'RESPONSIBILITIES',
     title: 'What scheduleUpdateOnFiber actually does',
     description: 'Despite the name, this function never renders. Its real job has three parts.',
     cards: [
@@ -416,27 +397,20 @@ const en: ScheduleUpdateOnFiberContent = {
     ],
   },
   checkpoint: {
-    eyebrow: '03 · CODE CHECKPOINT',
-    title: 'Source checkpoint',
+    badge: '03',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
     fileLabel: 'File',
     filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
-    functionLabel: 'Function',
-    functionName: 'scheduleUpdateOnFiber',
-    learningQuestion: 'Does this function change the DOM, or just mark the Root as having work?',
-    codeHeader: 'ReactFiberWorkLoop.js',
-    codeBadge: 'main',
+    lookForLabel: 'Look for',
+    lookFor: 'scheduleUpdateOnFiber, markRootUpdated, ensureRootIsScheduled',
     code: checkpointCodeEn,
+    primaryCta: 'Read ReactFiberWorkLoop.js',
     primaryHref: githubHref,
-    primaryCta: 'View scheduleUpdateOnFiber on GitHub',
-    callout: {
-      title: 'markRootUpdated call',
-      body: 'Marks that the Root has pending work for this lane',
-      tone: 'emerald',
-      linkedLine: 4,
-    },
   },
   contextCompare: {
-    eyebrow: '04 · TWO CONTEXTS',
+    badge: '04',
+    eyebrow: 'TWO CONTEXTS',
     title: 'Render-phase update vs normal update',
     description:
       'Inside the same function, the handling splits based on the execution context that produced the update.',
@@ -464,7 +438,8 @@ const en: ScheduleUpdateOnFiberContent = {
     },
   },
   markRoot: {
-    eyebrow: '05 · MARKROOTUPDATED',
+    badge: '05',
+    eyebrow: 'MARKING THE ROOT',
     title: 'What markRootUpdated means',
     description: {
       title: 'markRootUpdated(root, lane)',
@@ -483,23 +458,13 @@ const en: ScheduleUpdateOnFiberContent = {
       { key: 'pingedLanes', value: 'NoLanes' },
     ],
     afterTitle: 'After',
-    afterBadge: 'PENDING WORK ⚡',
+    afterBadge: 'PENDING WORK',
     afterFields: [
       { key: 'pendingLanes', value: '|= lane', emphasized: true },
       { key: '(state)', value: 'work queued', emphasized: true },
       { key: 'suspendedLanes', value: '...' },
       { key: 'pingedLanes', value: '...' },
     ],
-  },
-  quiz: {
-    eyebrow: '06 · MINI QUIZ',
-    title: 'Mini quiz',
-    questionLabel: 'Question',
-    answerLabel: 'Core answer',
-    question: 'Does scheduleUpdateOnFiber change the DOM right away?',
-    answerTitle: 'No, it does not.',
-    answerBody:
-      'It only records that the Root has work, then passes control to the next scheduling step.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

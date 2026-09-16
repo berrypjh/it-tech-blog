@@ -1,14 +1,23 @@
 import { cx } from '@berrypjh/react-ui';
-import { Archive, ArrowDown, Box, FunctionSquare, GitBranch, Lightbulb } from 'lucide-react';
+import {
+  Archive,
+  ArrowDown,
+  Box,
+  FunctionSquare,
+  GitBranch,
+  Lightbulb,
+  type LucideIcon,
+} from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionNote } from '../../../shared/note';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { BeforeMutationContent, ClassSnapshotStep } from '../content';
 
 type Props = { content: BeforeMutationContent['classSnapshot'] };
 
-const iconMap: Record<ClassSnapshotStep['iconName'], typeof Box> = {
+const iconMap: Record<ClassSnapshotStep['id'], LucideIcon> = {
   box: Box,
   function: FunctionSquare,
   archive: Archive,
@@ -20,8 +29,9 @@ export const ClassSnapshotSection = ({ content }: Props) => (
     aria-labelledby="heading-class-snapshot"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
       id="class-snapshot"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}
@@ -40,39 +50,21 @@ export const ClassSnapshotSection = ({ content }: Props) => (
           </li>
         ))}
       </ol>
-
-      <aside
-        className={cx(
-          'mt-md flex items-start gap-sm rounded-lg border p-md',
-          toneTokens.violet.fill.border,
-          toneTokens.violet.fill.bg,
-        )}
-      >
-        <ToneIconBox tone="violet" size="sm">
-          <Lightbulb className="h-4 w-4" aria-hidden="true" />
-        </ToneIconBox>
-        <p
-          className={cx(
-            'text-xsm sm:text-sm leading-relaxed break-keep',
-            toneTokens.violet.fill.text,
-          )}
-        >
-          {content.description}
-        </p>
-      </aside>
     </article>
+
+    <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
   </section>
 );
 
 const StepCard = ({ step, index }: { step: ClassSnapshotStep; index: number }) => {
-  const Icon = iconMap[step.iconName];
+  const Icon = iconMap[step.id];
   const t = toneTokens[step.tone];
   return (
     <article
       className={cx(
         'group grid grid-cols-[auto_minmax(0,_1fr)_auto] items-center gap-md rounded-lg border bg-[var(--term-bg)] p-md',
         t.border,
-        'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
+        'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
     >
       <ToneIconBox tone={step.tone}>

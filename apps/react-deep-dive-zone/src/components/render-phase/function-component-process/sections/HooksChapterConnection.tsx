@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Link, PlayCircle } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FunctionComponentContent } from '../content';
@@ -9,9 +9,11 @@ import type { FunctionComponentContent } from '../content';
 type Props = { content: FunctionComponentContent['hooksLink'] };
 
 export const HooksChapterConnection = ({ content }: Props) => (
-  <section id="hooks-link" aria-labelledby="heading-hooks-link" className="space-y-md">
-    <SectionHeader
+  <section id="hooks-link" aria-labelledby="heading-hooks-link" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="hooks-link"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

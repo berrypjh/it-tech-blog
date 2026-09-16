@@ -1,27 +1,29 @@
 import { cx } from '@berrypjh/react-ui';
-import { Box, FunctionSquare, Target, Zap } from 'lucide-react';
+import { Box, FunctionSquare, type LucideIcon, Target, Zap } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { DispatchSetStateEntryContent } from '../content';
+import type { DispatchResponsibilityIcon, DispatchSetStateEntryContent } from '../content';
 
-const responsibilityIconByName = {
+const responsibilityIconByName: Record<DispatchResponsibilityIcon, LucideIcon> = {
   target: Target,
   box: Box,
   zap: Zap,
-} as const;
+};
 
 type Props = { content: DispatchSetStateEntryContent['responsibilities'] };
 
 export const DispatchResponsibilitiesSection = ({ content }: Props) => (
   <section
-    id="section-responsibilities"
+    id="responsibilities"
     aria-labelledby="heading-responsibilities"
-    className="space-y-md"
+    className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="responsibilities"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

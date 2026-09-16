@@ -44,6 +44,7 @@ export type DispatchSetStateEntryContent = {
     bottomCallout: string;
   };
   compare: {
+    badge: string;
     eyebrow: string;
     title: string;
     leftCard: { title: string; code: string };
@@ -51,32 +52,33 @@ export type DispatchSetStateEntryContent = {
     sideNote: { title: string; body: string; tags: string[] };
   };
   responsibilities: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: DispatchResponsibility[];
   };
   checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
     filePath: string;
-    functionLabel: string;
-    functionName: string;
-    learningQuestion: string;
-    codeHeader: string;
-    codeBadge: string;
+    lookForLabel: string;
+    lookFor: string;
     code: string;
-    primaryHref: string;
     primaryCta: string;
+    primaryHref: string;
   };
   laneReason: {
+    badge: string;
     eyebrow: string;
     title: string;
     intro: string;
     steps: LaneFlowStep[];
   };
   splitReason: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -144,7 +146,8 @@ const ko: DispatchSetStateEntryContent = {
     bottomCallout: '이 함수가 lane을 고르고, 실제 처리는 내부 함수로 위임합니다.',
   },
   compare: {
-    eyebrow: '01 · 진입 흐름',
+    badge: '01',
+    eyebrow: '진입 흐름',
     title: 'setCount → dispatchSetState',
     leftCard: {
       title: '사용자가 호출하는 코드',
@@ -161,7 +164,8 @@ const ko: DispatchSetStateEntryContent = {
     },
   },
   responsibilities: {
-    eyebrow: '02 · 진입점의 책임',
+    badge: '02',
+    eyebrow: '진입점의 책임',
     title: 'dispatchSetState가 하는 3가지',
     description:
       'dispatchSetState 본체는 짧지만, 세 가지 책임을 분명히 가지고 있다. 각 책임이 다음 단계로 어떻게 이어지는지 확인합니다.',
@@ -193,21 +197,20 @@ const ko: DispatchSetStateEntryContent = {
     ],
   },
   checkpoint: {
-    eyebrow: '03 · 코드 체크포인트',
+    badge: '03',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
-    functionLabel: '함수',
-    functionName: 'dispatchSetState',
-    learningQuestion: 'dispatchSetState는 직접 update queue까지 처리할까?',
-    codeHeader: 'ReactFiberHooks.js',
-    codeBadge: 'main',
+    lookForLabel: '볼 것',
+    lookFor: 'dispatchSetState, requestUpdateLane, dispatchSetStateInternal',
     code: checkpointCode,
+    primaryCta: 'ReactFiberHooks.js 읽기',
     primaryHref: githubHref,
-    primaryCta: 'GitHub에서 dispatchSetState 보기',
   },
   laneReason: {
-    eyebrow: '04 · lane 우선 이유',
+    badge: '04',
+    eyebrow: '우선순위 먼저인 이유',
     title: 'lane 선택이 먼저 등장하는 이유',
     intro:
       'React는 update를 만들기 전에 이 업데이트가 어떤 우선순위에 속하는지 먼저 정합니다. 모든 이후 단계는 이 lane을 기준으로 진행됩니다.',
@@ -243,7 +246,8 @@ const ko: DispatchSetStateEntryContent = {
     ],
   },
   splitReason: {
-    eyebrow: '05 · 역할 분리',
+    badge: '05',
+    eyebrow: '역할 분리',
     title: 'dispatchSetState와 dispatchSetStateInternal 분리 이유',
     description:
       '외부 진입점은 lane을 고르는 일에만 집중하고, 내부 함수는 실제 update 객체 생성과 queue 처리에 집중합니다.',
@@ -297,7 +301,8 @@ const en: DispatchSetStateEntryContent = {
     bottomCallout: 'It picks the lane; real work is delegated to the internal function.',
   },
   compare: {
-    eyebrow: '01 · ENTRY FLOW',
+    badge: '01',
+    eyebrow: 'ENTRY FLOW',
     title: 'setCount → dispatchSetState',
     leftCard: {
       title: 'What the user calls',
@@ -314,7 +319,8 @@ const en: DispatchSetStateEntryContent = {
     },
   },
   responsibilities: {
-    eyebrow: '02 · RESPONSIBILITIES',
+    badge: '02',
+    eyebrow: 'RESPONSIBILITIES',
     title: 'Three things dispatchSetState does',
     description:
       'The body of dispatchSetState is short but carries three clear responsibilities. Follow how each one feeds into the next stage.',
@@ -346,21 +352,20 @@ const en: DispatchSetStateEntryContent = {
     ],
   },
   checkpoint: {
-    eyebrow: '03 · CODE CHECKPOINT',
-    title: 'Source checkpoint',
+    badge: '03',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
     fileLabel: 'File',
     filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
-    functionLabel: 'Function',
-    functionName: 'dispatchSetState',
-    learningQuestion: 'Does dispatchSetState itself touch the update queue?',
-    codeHeader: 'ReactFiberHooks.js',
-    codeBadge: 'main',
+    lookForLabel: 'Look for',
+    lookFor: 'dispatchSetState, requestUpdateLane, dispatchSetStateInternal',
     code: checkpointCode,
+    primaryCta: 'Read ReactFiberHooks.js',
     primaryHref: githubHref,
-    primaryCta: 'View dispatchSetState on GitHub',
   },
   laneReason: {
-    eyebrow: '04 · WHY LANE FIRST',
+    badge: '04',
+    eyebrow: 'WHY LANE FIRST',
     title: 'Why lane selection comes first',
     intro:
       'Before creating any update, React decides which priority bucket the update belongs to. Every later stage uses that lane as its anchor.',
@@ -396,7 +401,8 @@ const en: DispatchSetStateEntryContent = {
     ],
   },
   splitReason: {
-    eyebrow: '05 · SPLIT OF DUTIES',
+    badge: '05',
+    eyebrow: 'SPLIT OF DUTIES',
     title: 'Why dispatchSetState and dispatchSetStateInternal are split',
     description:
       'The outer entry stays focused on picking a lane; the inner function focuses on building the update object and connecting the queue.',

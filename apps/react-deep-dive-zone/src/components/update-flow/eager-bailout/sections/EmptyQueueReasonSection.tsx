@@ -1,22 +1,28 @@
 import { cx } from '@berrypjh/react-ui';
-import { AlertTriangle, CheckCircle2, CircleDotDashed } from 'lucide-react';
+import { AlertTriangle, CheckCircle2, CircleDotDashed, type LucideIcon } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneBadge, ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
-import type { EagerBailoutContent, QueueCompareCard } from '../content';
+import type { EagerBailoutContent, QueueCompareCard, QueueCompareIcon } from '../content';
 
-const queueIconByName = {
+const queueIconByName: Record<QueueCompareIcon, LucideIcon> = {
   checkCircle: CheckCircle2,
   alertTriangle: AlertTriangle,
-} as const;
+};
 
 type Props = { content: EagerBailoutContent['queueReason'] };
 
 export const EmptyQueueReasonSection = ({ content }: Props) => (
-  <section id="section-queue-reason" aria-labelledby="heading-queue-reason" className="space-y-md">
-    <SectionHeader
+  <section
+    id="queue-reason"
+    aria-labelledby="heading-queue-reason"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="queue-reason"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -79,9 +85,6 @@ const QueueVisual = ({ variant, tone }: { variant: 'empty' | 'pending'; tone: To
             className={cx('block h-3 w-3 rounded-full border-2 border-dashed', t.border)}
           />
         ))}
-        <span className={cx('ml-1 text-[10px] font-mono uppercase tracking-wider', t.text)}>
-          empty
-        </span>
       </div>
     );
   }

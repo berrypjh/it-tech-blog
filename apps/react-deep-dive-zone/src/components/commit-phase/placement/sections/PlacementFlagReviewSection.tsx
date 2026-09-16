@@ -1,14 +1,15 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowDown, Eye, Flag, Sparkles, Workflow } from 'lucide-react';
+import { ArrowDown, Eye, Flag, Lightbulb, type LucideIcon, Workflow } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionNote } from '../../../shared/note';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { PlacementContent, ReviewStep, ReviewStepIcon } from '../content';
+import type { PlacementContent, ReviewStep, ReviewStepId } from '../content';
 
 type Props = { content: PlacementContent['review'] };
 
-const iconMap: Record<ReviewStepIcon, typeof Eye> = {
+const iconMap: Record<ReviewStepId, LucideIcon> = {
   eye: Eye,
   flag: Flag,
 };
@@ -19,8 +20,10 @@ export const PlacementFlagReviewSection = ({ content }: Props) => (
     aria-labelledby="heading-placement-flag-review"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="placement-flag-review"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -40,32 +43,14 @@ export const PlacementFlagReviewSection = ({ content }: Props) => (
           </li>
         ))}
       </ol>
-
-      <aside
-        className={cx(
-          'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
-          toneTokens.violet.fill.border,
-          toneTokens.violet.fill.bg,
-        )}
-      >
-        <ToneIconBox tone="violet" size="sm" className="mt-0.5 shrink-0">
-          <Sparkles className="h-4 w-4" aria-hidden="true" />
-        </ToneIconBox>
-        <p
-          className={cx(
-            'text-xsm sm:text-sm leading-relaxed break-keep font-bold',
-            toneTokens.violet.fill.text,
-          )}
-        >
-          {content.bottomNote}
-        </p>
-      </aside>
     </article>
+
+    <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
   </section>
 );
 
 const StepCard = ({ step, index }: { step: ReviewStep; index: number }) => {
-  const Icon = iconMap[step.iconName];
+  const Icon = iconMap[step.id];
   const t = toneTokens[step.tone];
   return (
     <article

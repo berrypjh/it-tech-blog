@@ -1,14 +1,16 @@
 import { cx } from '@berrypjh/react-ui';
-import { Cpu, DoorOpen, GitMerge, Layers } from 'lucide-react';
+import { Cpu, DoorOpen, GitMerge, Layers, type LucideIcon } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { CommitRootContent, HeroFlowCard, HeroFlowCardIcon } from '../content';
+import type { CommitRootContent, HeroFlowCard, HeroFlowCardId } from '../content';
 
-type Props = { content: CommitRootContent['hero']; className?: string };
+type Props = { content: CommitRootContent['hero'] };
 
-const iconMap: Record<HeroFlowCardIcon, typeof Cpu> = {
+const iconMap: Record<HeroFlowCardId, LucideIcon> = {
   cpu: Cpu,
   gitMerge: GitMerge,
   gate: DoorOpen,
@@ -20,28 +22,16 @@ const iconMap: Record<HeroFlowCardIcon, typeof Cpu> = {
  * Render Phase → finishedWork → commitRoot(관문) → Commit Phase로 이어지는
  * 흐름을 위에서 아래로 잇는 컴팩트 stepper. commitRoot가 입구임을 강조한다.
  */
-export const CommitRootHeroDiagram = ({ content, className }: Props) => {
+export const CommitRootHeroDiagram = ({ content }: Props) => {
   const { diagram } = content;
   const a11y = `${diagram.flowLabel}. ${diagram.cards
     .map((c) => `${c.title} — ${c.subtitle}`)
     .join(' → ')}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
-      <div className="relative flex flex-col gap-sm">
-        <header className="flex items-center gap-sm" aria-hidden="true">
+    <HeroDiagramShell a11yLabel={a11y}>
+      <div className="relative flex flex-col gap-sm" aria-hidden="true">
+        <header className="flex items-center gap-sm">
           <span className="min-w-0 truncate text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
             {`// ${diagram.flowLabel}`}
           </span>
@@ -50,7 +40,7 @@ export const CommitRootHeroDiagram = ({ content, className }: Props) => {
           </span>
         </header>
 
-        <ol className="flex flex-col gap-sm" aria-hidden="true">
+        <ol className="flex flex-col gap-sm">
           {diagram.cards.map((card, i) => (
             <li key={card.title} className="flex flex-col gap-sm">
               <FlowCardRow card={card} />
@@ -59,31 +49,26 @@ export const CommitRootHeroDiagram = ({ content, className }: Props) => {
           ))}
         </ol>
 
-        <CodePreviewPanel
-          code="commitRoot(root, finishedWork, lanes);"
-          showWindowDots
-          language="JS"
-          size="md"
-        />
+        <CodePreviewPanel code={diagram.code} showWindowDots language="JS" size="md" />
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
 const FlowCardRow = ({ card }: { card: HeroFlowCard }) => {
   const tone = card.tone;
   const t = toneTokens[tone];
-  const Icon = iconMap[card.iconName];
+  const Icon = iconMap[card.id];
   return (
-    <article
+    <div
       className={cx(
-        'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
-        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+        'flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
+        'shadow-[0_2px_0_var(--term-border)]',
         card.isGate ? cx('border-2', t.fill.border, t.fill.bg) : 'border-[var(--term-border)]',
       )}
     >
       <ToneIconBox tone={tone} size="sm">
-        <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
+        <Icon className="h-4 w-4" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-0.5">
         <span className={cx('text-sm font-bold font-mono tracking-tight break-keep', t.text)}>
@@ -114,15 +99,6 @@ const FlowCardRow = ({ card }: { card: HeroFlowCard }) => {
           </ul>
         )}
       </div>
-    </article>
+    </div>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

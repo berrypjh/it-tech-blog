@@ -1,8 +1,8 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowDown, ArrowRight, Lock, SquareEqual } from 'lucide-react';
+import { ArrowDown, ArrowRight, Lightbulb, Lock } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
-import { ToneIconBox } from '../../../shared/tone';
+import { SectionNote } from '../../../shared/note';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { UpdatePhaseContent } from '../content';
 
@@ -14,8 +14,10 @@ export const PropsChangeExampleSection = ({ content }: Props) => (
     aria-labelledby="heading-props-example"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="props-example"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -28,24 +30,9 @@ export const PropsChangeExampleSection = ({ content }: Props) => (
         <Arrow />
         <CodeCard title={content.afterTitle} code={content.afterCode} variant="after" />
       </div>
-
-      <aside
-        className={cx(
-          'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
-          toneTokens.sky.fill.border,
-          toneTokens.sky.fill.bg,
-        )}
-      >
-        <ToneIconBox tone="sky" size="sm" className="mt-0.5 shrink-0">
-          <SquareEqual className="h-4 w-4" aria-hidden="true" />
-        </ToneIconBox>
-        <p
-          className={cx('text-xsm sm:text-sm leading-relaxed break-keep', toneTokens.sky.fill.text)}
-        >
-          {content.bottomNote}
-        </p>
-      </aside>
     </article>
+
+    <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
   </section>
 );
 
@@ -87,26 +74,14 @@ const CodeCard = ({
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
-      <header className="flex items-center justify-between gap-2">
-        <h3
-          className={cx(
-            'text-xsm sm:text-sm font-bold uppercase tracking-wider break-keep',
-            isAfter ? t.text : 'text-[var(--term-fg)]',
-          )}
-        >
-          {title}
-        </h3>
-        <span
-          className={cx(
-            'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
-            isAfter
-              ? t.chip
-              : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
-          )}
-        >
-          jsx
-        </span>
-      </header>
+      <h3
+        className={cx(
+          'text-xsm sm:text-sm font-bold uppercase tracking-wider break-keep',
+          isAfter ? t.text : 'text-[var(--term-fg)]',
+        )}
+      >
+        {title}
+      </h3>
       <pre
         className={cx(
           'overflow-x-auto rounded-md border p-sm text-[11px] sm:text-xsm leading-snug font-mono',

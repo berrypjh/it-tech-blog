@@ -1,10 +1,17 @@
 import { Fragment } from 'react';
 
 import { cx } from '@berrypjh/react-ui';
-import { ArrowDown, ArrowRight, CheckCircle2, Component, ListChecks, Star } from 'lucide-react';
+import {
+  ArrowDown,
+  ArrowRight,
+  CheckCircle2,
+  Component,
+  Lightbulb,
+  ListChecks,
+} from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
-import { ToneIconBox } from '../../../shared/tone';
+import { SectionNote } from '../../../shared/note';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { LayoutPhaseContent } from '../content';
 
@@ -14,22 +21,22 @@ type Props = {
 };
 
 export const ClassLifecycleAndGuaranteeSection = ({ classLifecycle, guarantee }: Props) => (
-  <section id="class-and-guarantee" className="space-y-md scroll-mt-xl">
-    <h2 id="heading-class-and-guarantee" className="sr-only">
-      class lifecycle and layout guarantees
-    </h2>
-
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 items-stretch">
-      <ClassLifecycleCard content={classLifecycle} />
-      <GuaranteeCard content={guarantee} />
-    </div>
-  </section>
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 items-stretch">
+    <ClassLifecycleCard content={classLifecycle} />
+    <GuaranteeCard content={guarantee} />
+  </div>
 );
 
 const ClassLifecycleCard = ({ content }: { content: LayoutPhaseContent['classLifecycle'] }) => (
-  <div className="space-y-md flex flex-col h-full">
-    <SectionHeader
+  <section
+    id="class-lifecycle"
+    aria-labelledby="heading-class-lifecycle"
+    className="space-y-md scroll-mt-xl flex flex-col h-full"
+  >
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="class-lifecycle"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -71,7 +78,7 @@ const ClassLifecycleCard = ({ content }: { content: LayoutPhaseContent['classLif
             toneTokens.violet.text,
           )}
         >
-          lifecycle 이름
+          {content.lifecycleLabel}
         </span>
         {content.lifecycleNames.map((name) => (
           <code
@@ -85,29 +92,10 @@ const ClassLifecycleCard = ({ content }: { content: LayoutPhaseContent['classLif
           </code>
         ))}
       </div>
-
-      {/* Note */}
-      <aside
-        className={cx(
-          'mt-auto flex items-start gap-sm rounded-lg border-2 p-md',
-          toneTokens.amber.fill.border,
-          toneTokens.amber.fill.bg,
-        )}
-      >
-        <ToneIconBox tone="amber" size="sm" className="mt-0.5 shrink-0">
-          <Star className="h-4 w-4" aria-hidden="true" />
-        </ToneIconBox>
-        <p
-          className={cx(
-            'text-xsm sm:text-sm leading-relaxed break-keep',
-            toneTokens.amber.fill.text,
-          )}
-        >
-          {content.note}
-        </p>
-      </aside>
     </article>
-  </div>
+
+    <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
+  </section>
 );
 
 const FlowPill = ({ label, tone }: { label: string; tone: ToneKey }) => {
@@ -130,9 +118,15 @@ const FlowPill = ({ label, tone }: { label: string; tone: ToneKey }) => {
 const GuaranteeCard = ({ content }: { content: LayoutPhaseContent['guarantee'] }) => {
   const t = toneTokens.teal;
   return (
-    <div className="space-y-md flex flex-col h-full">
-      <SectionHeader
+    <section
+      id="layout-guarantee"
+      aria-labelledby="heading-layout-guarantee"
+      className="space-y-md scroll-mt-xl flex flex-col h-full"
+    >
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="layout-guarantee"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
@@ -172,6 +166,6 @@ const GuaranteeCard = ({ content }: { content: LayoutPhaseContent['guarantee'] }
           ))}
         </ul>
       </article>
-    </div>
+    </section>
   );
 };

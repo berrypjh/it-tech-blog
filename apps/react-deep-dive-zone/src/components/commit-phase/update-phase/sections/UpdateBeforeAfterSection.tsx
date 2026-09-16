@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, CheckCircle2, Lock, Pencil, Replace } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { UpdatePhaseContent, WhatChangedItem } from '../content';
@@ -14,8 +14,10 @@ export const UpdateBeforeAfterSection = ({ content }: Props) => (
     aria-labelledby="heading-before-after"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="before-after"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -27,6 +29,8 @@ export const UpdateBeforeAfterSection = ({ content }: Props) => (
         title={content.beforeTitle}
         dom={content.beforeDom}
         screen={content.beforeScreen}
+        domLabel={content.domLabel}
+        screenLabel={content.screenLabel}
         variant="before"
       />
       <MiddleFlow middle={content.middle} />
@@ -34,6 +38,8 @@ export const UpdateBeforeAfterSection = ({ content }: Props) => (
         title={content.afterTitle}
         dom={content.afterDom}
         screen={content.afterScreen}
+        domLabel={content.domLabel}
+        screenLabel={content.screenLabel}
         variant="after"
       />
       <WhatChangedCard title={content.whatChangedTitle} items={content.whatChangedItems} />
@@ -45,11 +51,15 @@ const BeforeAfterCard = ({
   title,
   dom,
   screen,
+  domLabel,
+  screenLabel,
   variant,
 }: {
   title: string;
   dom: string;
   screen: string;
+  domLabel: string;
+  screenLabel: string;
   variant: 'before' | 'after';
 }) => {
   const isAfter = variant === 'after';
@@ -62,30 +72,18 @@ const BeforeAfterCard = ({
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
-      <header className="flex items-center justify-between gap-2">
-        <h3
-          className={cx(
-            'text-xsm sm:text-sm font-bold uppercase tracking-wider break-keep',
-            isAfter ? t.text : 'text-[var(--term-fg)]',
-          )}
-        >
-          {title}
-        </h3>
-        <span
-          className={cx(
-            'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
-            isAfter
-              ? t.chip
-              : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]',
-          )}
-        >
-          {isAfter ? 'after' : 'before'}
-        </span>
-      </header>
+      <h3
+        className={cx(
+          'text-xsm sm:text-sm font-bold uppercase tracking-wider break-keep',
+          isAfter ? t.text : 'text-[var(--term-fg)]',
+        )}
+      >
+        {title}
+      </h3>
 
       <div className="flex flex-col gap-1.5">
         <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-          DOM
+          {domLabel}
         </span>
         <pre
           className={cx(
@@ -101,7 +99,7 @@ const BeforeAfterCard = ({
 
       <div className="flex flex-col gap-1.5 mt-1">
         <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-          화면 / screen
+          {screenLabel}
         </span>
         <div
           className={cx(
@@ -207,7 +205,7 @@ const WhatChangedCard = ({ title, items }: { title: string; items: WhatChangedIt
                   t.chip,
                 )}
               >
-                <CheckCircle2 className="h-3 w-3" aria-hidden="true" />
+                <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
               <span className="text-xsm leading-snug text-[var(--term-fg)] break-keep">
                 {item.text}

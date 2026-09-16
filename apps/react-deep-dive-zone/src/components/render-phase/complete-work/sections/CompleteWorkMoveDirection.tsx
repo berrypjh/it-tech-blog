@@ -1,16 +1,17 @@
 import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, ArrowUp, ChevronDown, HelpCircle, Workflow } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CompleteWorkContent } from '../content';
 
 type Props = { content: CompleteWorkContent['direction'] };
 
 export const CompleteWorkMoveDirection = ({ content }: Props) => (
-  <section id="direction" aria-labelledby="heading-direction" className="space-y-md">
-    <SectionHeader
+  <section id="direction" aria-labelledby="heading-direction" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="direction"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Workflow className="h-5 w-5" aria-hidden="true" />}

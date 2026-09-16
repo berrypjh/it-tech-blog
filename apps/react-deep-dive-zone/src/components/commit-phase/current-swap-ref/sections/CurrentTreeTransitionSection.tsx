@@ -4,19 +4,20 @@ import {
   ArrowLeftRight,
   CheckCircle2,
   History,
+  type LucideIcon,
   Rocket,
   Wand2,
   Workflow,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { RootCurrentRefContent, TransitionStep } from '../content';
 
 type Props = { content: RootCurrentRefContent['transition'] };
 
-const iconMap: Record<TransitionStep['iconName'], typeof History> = {
+const iconMap: Record<TransitionStep['id'], LucideIcon> = {
   history: History,
   check: CheckCircle2,
   wand: Wand2,
@@ -29,8 +30,10 @@ export const CurrentTreeTransitionSection = ({ content }: Props) => (
     aria-labelledby="heading-current-tree-transition"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="current-tree-transition"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -58,13 +61,17 @@ export const CurrentTreeTransitionSection = ({ content }: Props) => (
       </article>
 
       {/* Right: formula callout */}
-      <FormulaCallout formula={content.formula} note={content.formulaCallout} />
+      <FormulaCallout
+        label={content.formulaLabel}
+        formula={content.formula}
+        note={content.formulaCallout}
+      />
     </div>
   </section>
 );
 
 const StepCard = ({ step, index }: { step: TransitionStep; index: number }) => {
-  const Icon = iconMap[step.iconName];
+  const Icon = iconMap[step.id];
   const t = toneTokens[step.tone];
   return (
     <article
@@ -100,7 +107,15 @@ const StepCard = ({ step, index }: { step: TransitionStep; index: number }) => {
   );
 };
 
-const FormulaCallout = ({ formula, note }: { formula: string; note: string }) => {
+const FormulaCallout = ({
+  label,
+  formula,
+  note,
+}: {
+  label: string;
+  formula: string;
+  note: string;
+}) => {
   const t = toneTokens.blue;
   return (
     <article
@@ -116,7 +131,7 @@ const FormulaCallout = ({ formula, note }: { formula: string; note: string }) =>
           <ArrowLeftRight className="h-5 w-5" aria-hidden="true" />
         </ToneIconBox>
         <h3 className={cx('text-[10px] font-mono uppercase tracking-wider font-bold', t.fill.text)}>
-          the swap
+          {label}
         </h3>
       </header>
 

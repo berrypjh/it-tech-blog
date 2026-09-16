@@ -12,7 +12,7 @@ import {
   TimerReset,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardGrid, ToneCardItem, ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { BeginWorkContent, FiberTagItem } from '../content';
@@ -30,9 +30,15 @@ const fiberTagIconByName: Record<FiberTagItem['icon'], LucideIcon> = {
 type Props = { content: BeginWorkContent['tagBranch'] };
 
 export const FiberTagBranchMap = ({ content }: Props) => (
-  <section id="tag-branches" aria-labelledby="heading-tag-branches" className="space-y-md">
-    <SectionHeader
+  <section
+    id="tag-branches"
+    aria-labelledby="heading-tag-branches"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="tag-branches"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -67,11 +73,7 @@ export const FiberTagBranchMap = ({ content }: Props) => (
       {content.branches.map((branch) => {
         const Icon = fiberTagIconByName[branch.icon];
         return (
-          <ToneCardItem
-            key={branch.id}
-            tone={branch.tone}
-            icon={<Icon className={cx('h-5 w-5', toneTokens[branch.tone].text)} />}
-          >
+          <ToneCardItem key={branch.id} tone={branch.tone} icon={<Icon className="h-5 w-5" />}>
             <div className="flex flex-col gap-1 min-w-0">
               <h3
                 className={cx(

@@ -2,8 +2,8 @@ import { cx } from '@berrypjh/react-ui';
 import { GitCompareArrows, Lightbulb } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
-import { ToneIconBox } from '../../../shared/tone';
+import { SectionNote } from '../../../shared/note';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CompareRow, PassiveEffectsContent } from '../content';
 
@@ -15,8 +15,10 @@ export const EffectTimingCompareSection = ({ content }: Props) => (
     aria-labelledby="heading-effect-compare"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="effect-compare"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -33,20 +35,7 @@ export const EffectTimingCompareSection = ({ content }: Props) => (
       }))}
     />
 
-    <aside
-      className={cx(
-        'flex items-start gap-sm rounded-lg border-2 p-md',
-        toneTokens.sky.fill.border,
-        toneTokens.sky.fill.bg,
-      )}
-    >
-      <ToneIconBox tone="sky" size="sm" className="mt-0.5 shrink-0">
-        <Lightbulb className="h-4 w-4" aria-hidden="true" />
-      </ToneIconBox>
-      <p className={cx('text-xsm sm:text-sm leading-relaxed break-keep', toneTokens.sky.fill.text)}>
-        {content.note}
-      </p>
-    </aside>
+    <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
   </section>
 );
 

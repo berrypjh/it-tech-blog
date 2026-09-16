@@ -1,16 +1,22 @@
 import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, RotateCw, Workflow } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CommonFlowStep, WorkLoopContent } from '../content';
 
 type Props = { content: WorkLoopContent['common'] };
 
 export const PerformUnitRepeatFlow = ({ content }: Props) => (
-  <section id="common-loop" aria-labelledby="heading-common-loop" className="space-y-md">
-    <SectionHeader
+  <section
+    id="common-loop"
+    aria-labelledby="heading-common-loop"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="common-loop"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -18,15 +24,6 @@ export const PerformUnitRepeatFlow = ({ content }: Props) => (
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-      <header className="mb-md flex flex-wrap items-center justify-between gap-2">
-        <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
-          {'// while / do-while → performUnitOfWork → next fiber'}
-        </span>
-        <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)] rounded-md border border-[var(--term-border)] px-2 py-0.5">
-          shared structure
-        </span>
-      </header>
-
       <ol className="mx-auto flex w-full max-w-[640px] flex-col items-stretch">
         {content.steps.map((step, idx) => (
           <li key={step.title} className="flex flex-col">

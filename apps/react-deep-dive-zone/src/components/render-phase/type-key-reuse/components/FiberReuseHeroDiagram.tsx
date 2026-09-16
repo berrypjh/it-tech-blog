@@ -2,6 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { Box, CheckCircle2, XCircle } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import type { Tone, TypeKeyReuseContent } from '../content';
 import { facetFor, type SemanticFacet } from '../facets';
 
@@ -21,9 +22,9 @@ export const FiberReuseHeroDiagram = ({ content }: Props) => {
   return (
     <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
-        <h2 className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
+        <span className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
           {diagram.title}
-        </h2>
+        </span>
 
         <div className="grid grid-cols-1 gap-sm @sm:grid-cols-2">
           <BranchPanel branch={diagram.reuse} tone="teal" kind="reuse" />
@@ -65,7 +66,7 @@ const BranchPanel = ({
     >
       <header className="flex items-center gap-sm">
         <ChipBox t={t}>
-          <Icon className="h-[18px] w-[18px]" />
+          <Icon className="h-4 w-4" />
         </ChipBox>
         <div className="flex min-w-0 flex-col">
           <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)] break-keep">
@@ -97,7 +98,7 @@ const FiberBox = ({
 }) => (
   <div className="flex items-center gap-sm rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2.5 py-2">
     <ChipBox t={t}>
-      <Box className="h-4 w-4" aria-hidden="true" />
+      <Box className="h-4 w-4" />
     </ChipBox>
     <div className="flex min-w-0 flex-col gap-0.5">
       <span className="text-xsm font-bold tracking-tight text-[var(--term-fg)] break-keep">
@@ -110,13 +111,4 @@ const FiberBox = ({
       ))}
     </div>
   </div>
-);
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
 );

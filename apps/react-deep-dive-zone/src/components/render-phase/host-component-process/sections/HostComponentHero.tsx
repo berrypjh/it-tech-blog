@@ -14,9 +14,8 @@ type Props = { content: HostComponentContent['hero'] };
 export const HostComponentHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="reconciler/host-component-process.md"
-    promptSuffix={<span className="text-[var(--term-dim)]"> {'// host component flow'}</span>}
-    gridColumns="lg:grid-cols-[minmax(0,_0.82fr)_minmax(0,_1.18fr)]"
+    promptPath="packages/react-reconciler/src/ReactFiberBeginWork.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -33,7 +32,7 @@ export const HostComponentHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-host-component-process" className="min-w-0">
+    <HeroVisualColumn id="hero-host-component-process">
       <HostComponentHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

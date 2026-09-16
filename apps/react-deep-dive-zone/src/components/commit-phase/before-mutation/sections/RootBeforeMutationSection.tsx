@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Camera, GitBranch, Layers, Target } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { BeforeMutationContent } from '../content';
@@ -14,8 +14,9 @@ export const RootBeforeMutationSection = ({ content }: Props) => (
     aria-labelledby="heading-root-perspective"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
       id="root-perspective"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Target className="h-5 w-5" aria-hidden="true" />}
@@ -133,12 +134,7 @@ const CenterCard = ({ title, label }: { title: string; label: string }) => {
 const FiberTreeSvg = ({ variant }: { variant: 'left' | 'right' }) => {
   const treeTone = variant === 'left' ? toneTokens.sky : toneTokens.amber;
   return (
-    <svg
-      role="img"
-      aria-label={variant === 'left' ? 'fiber tree before' : 'fiber tree after'}
-      viewBox="0 0 160 80"
-      className="w-full h-16"
-    >
+    <svg aria-hidden="true" viewBox="0 0 160 80" className="w-full h-16">
       <g className={treeTone.stroke} stroke="currentColor" strokeWidth={1.5} fill="none">
         <line x1={80} y1={16} x2={40} y2={48} />
         <line x1={80} y1={16} x2={120} y2={48} />

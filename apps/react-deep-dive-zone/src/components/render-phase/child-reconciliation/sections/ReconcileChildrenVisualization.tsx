@@ -1,19 +1,24 @@
 import { Fragment } from 'react';
 
 import { cx } from '@berrypjh/react-ui';
-import { ArrowRight, ChevronDown, Plus, Star, Workflow } from 'lucide-react';
+import { ArrowRight, ChevronDown, Lightbulb, Plus, Workflow } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ReconcileChildrenContent, VisualNode } from '../content';
 
 type Props = { content: ReconcileChildrenContent['visualization'] };
 
 export const ReconcileChildrenVisualization = ({ content }: Props) => (
-  <section id="visualization" aria-labelledby="heading-visualization" className="space-y-md">
-    <SectionHeader
+  <section
+    id="visualization"
+    aria-labelledby="heading-visualization"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
       id="visualization"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
@@ -49,8 +54,8 @@ export const ReconcileChildrenVisualization = ({ content }: Props) => (
         })}
       </div>
 
-      <SectionNote icon={<Star className="h-4 w-4" aria-hidden="true" />} className="mt-md">
-        {content.bottomEmphasis}
+      <SectionNote icon={<Lightbulb className="h-4 w-4" />} className="mt-md">
+        {content.note}
       </SectionNote>
     </article>
   </section>

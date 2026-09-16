@@ -1,17 +1,28 @@
-import { Box, CornerDownRight, Database, FileCode, Flame, GitBranch, Save } from 'lucide-react';
+import { cx } from '@berrypjh/react-ui';
+import {
+  Box,
+  CornerDownRight,
+  Database,
+  FileCode,
+  Flame,
+  GitBranch,
+  type LucideIcon,
+  Save,
+} from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
-import type { DispatchSetStateContent, MountStateStep } from '../content';
+import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
+import type { DispatchSetStateContent, MountStateStep, MountStepIcon } from '../content';
 
-const flowIconByName = {
+const flowIconByName: Record<MountStepIcon, LucideIcon> = {
   fileCode: FileCode,
   flame: Flame,
   database: Database,
   box: Box,
   save: Save,
   cornerDownRight: CornerDownRight,
-} as const;
+};
 
 type Props = { content: DispatchSetStateContent['flow'] };
 
@@ -23,14 +34,16 @@ const toFlowStep = (step: MountStateStep): FlowStepItem => {
     title: step.title,
     body: step.description,
     tone: step.tone,
-    icon: <Icon className="h-5 w-5" />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[step.tone].text)} aria-hidden="true" />,
   };
 };
 
 export const MountStateFlowSection = ({ content }: Props) => (
-  <section id="section-flow" aria-labelledby="heading-flow" className="space-y-md">
-    <SectionHeader
+  <section id="flow" aria-labelledby="heading-flow" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="flow"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

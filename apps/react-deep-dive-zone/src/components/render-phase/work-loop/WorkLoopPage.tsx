@@ -9,7 +9,6 @@ import { SyncVsConcurrentTimeline } from './sections/SyncVsConcurrentTimeline';
 import { WorkLoopCodeCheckpoint } from './sections/WorkLoopCodeCheckpoint';
 import { WorkLoopComparison } from './sections/WorkLoopComparison';
 import { WorkLoopHero } from './sections/WorkLoopHero';
-import { WorkLoopMiniQuiz } from './sections/WorkLoopMiniQuiz';
 import { workLoopContent } from './content';
 
 type Props = { locale: Locale };
@@ -23,9 +22,8 @@ export const WorkLoopPage = ({ locale }: Props) => {
       <WorkLoopComparison content={c.comparison} />
       <PerformUnitRepeatFlow content={c.common} />
       <SyncVsConcurrentTimeline content={c.timelines} />
-      <WorkLoopCodeCheckpoint content={c.code} />
+      <WorkLoopCodeCheckpoint content={c.checkpoint} />
       <FiberProcessingTree content={c.fiberTree} />
-      <WorkLoopMiniQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

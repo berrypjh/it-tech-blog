@@ -6,7 +6,6 @@ import { StartPageShell } from '../../shared/shell';
 import { BindReasonCards } from './sections/BindReasonCards';
 import { FiberQueueDispatchDiagram } from './sections/FiberQueueDispatchDiagram';
 import { KeySummaryBanner } from './sections/KeySummaryBanner';
-import { MiniQuizSection } from './sections/MiniQuizSection';
 import { MountStateCodeCheckpoint } from './sections/MountStateCodeCheckpoint';
 import { MountStateFlowSection } from './sections/MountStateFlowSection';
 import { PublicApiInternalCompare } from './sections/PublicApiInternalCompare';
@@ -26,7 +25,6 @@ export const DispatchSetStatePage = ({ locale }: Props) => {
       <MountStateCodeCheckpoint content={c.checkpoint} />
       <BindReasonCards content={c.bindReasons} />
       <FiberQueueDispatchDiagram content={c.relationship} />
-      <MiniQuizSection content={c.quiz} />
       <KeySummaryBanner content={c.summary} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>

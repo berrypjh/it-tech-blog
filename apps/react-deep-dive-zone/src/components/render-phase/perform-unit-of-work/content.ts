@@ -1,8 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 
-import type { ToneKey } from '../../shared/tones';
-
 export type HeroFlow = {
+  code: string;
   step1: { title: string };
   step2: { title: string };
   decision: { title: string };
@@ -22,6 +21,7 @@ export type CompareCard = {
   subtitle: string;
   description: string;
   items: string[];
+  statusLabel: string;
   kind: 'current' | 'wip';
 };
 
@@ -30,13 +30,6 @@ export type ReturnDirectionCard = {
   subtitle: string;
   items: string[];
   direction: 'down' | 'up';
-};
-
-export type CodeCallout = {
-  number: number;
-  title: string;
-  description: string;
-  tone: ToneKey;
 };
 
 export type DescendCompleteFlow = {
@@ -48,6 +41,7 @@ export type DescendCompleteFlow = {
 
 export type DescendCompleteExplanation = {
   title: string;
+  stepLabel: string;
   items: { icon: 'arrowDown' | 'arrowUp' | 'rotate'; text: string }[];
 };
 
@@ -59,12 +53,14 @@ export type PerformUnitContent = {
     diagram: HeroFlow;
   };
   fullFlow: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     flow: FullFlow;
   };
   compare: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -72,35 +68,30 @@ export type PerformUnitContent = {
     relationLabel: string;
   };
   returnDirection: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: { left: ReturnDirectionCard; right: ReturnDirectionCard };
   };
-  code: {
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
-    fileName: string;
-    functionsLabel: string;
-    functions: string[];
-    learningQuestion: string;
-    codeHeader: string;
-    codeBadge: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
     code: string;
-    callouts: CodeCallout[];
+    primaryCta: string;
+    primaryHref: string;
   };
   descendComplete: {
+    badge: string;
     eyebrow: string;
     title: string;
     flow: DescendCompleteFlow;
     explanation: DescendCompleteExplanation;
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    question: string;
-    answer: string;
   };
   nextStep: {
     eyebrow: string;
@@ -125,6 +116,8 @@ const CODE_LINES = `function performUnitOfWork(unitOfWork) {
   }
 }`;
 
+const heroCode = 'performUnitOfWork(unitOfWork);';
+
 const ko: PerformUnitContent = {
   hero: {
     badge: 'Render Phase · 3/10단계',
@@ -136,6 +129,7 @@ const ko: PerformUnitContent = {
     description:
       'React는 현재 Fiber 하나를 집어 들고 beginWork를 실행한 뒤, 더 내려갈 자식이 있으면 아래로 이동하고, 없으면 complete 단계로 전환합니다.',
     diagram: {
+      code: heroCode,
       step1: { title: 'Fiber 처리' },
       step2: { title: 'beginWork' },
       decision: { title: '자식 있음?' },
@@ -152,7 +146,8 @@ const ko: PerformUnitContent = {
     },
   },
   fullFlow: {
-    eyebrow: '01 · 전체 흐름',
+    badge: '01',
+    eyebrow: '전체 흐름',
     title: 'performUnitOfWork 전체 흐름',
     description: '코드 한 줄씩의 의미를 큰 분기 플로우로 펼친 모습입니다.',
     flow: {
@@ -175,7 +170,8 @@ const ko: PerformUnitContent = {
     },
   },
   compare: {
-    eyebrow: '02 · 두 Fiber',
+    badge: '02',
+    eyebrow: '두 Fiber',
     title: 'current와 workInProgress 연결',
     description: '두 Fiber는 alternate로 연결된 같은 노드의 두 버전입니다.',
     relationLabel: 'alternate',
@@ -185,6 +181,7 @@ const ko: PerformUnitContent = {
         subtitle: '이전 트리의 Fiber',
         description: '현재 화면을 만든 트리',
         items: ['alternate로 연결됨', '비교 기준 역할'],
+        statusLabel: '이전',
         kind: 'current',
       },
       right: {
@@ -192,12 +189,14 @@ const ko: PerformUnitContent = {
         subtitle: '= workInProgress',
         description: '지금 처리 중인 workInProgress Fiber',
         items: ['beginWork를 실행할 대상', '결과에 따라 다음 방향 결정'],
+        statusLabel: '진행 중',
         kind: 'wip',
       },
     },
   },
   returnDirection: {
-    eyebrow: '03 · 반환 방향',
+    badge: '03',
+    eyebrow: '반환 방향',
     title: 'beginWork 반환값으로 다음 방향 결정',
     description: 'beginWork의 반환값이 곧 다음 work loop의 이동 방향을 정합니다.',
     cards: {
@@ -225,76 +224,46 @@ const ko: PerformUnitContent = {
       },
     },
   },
-  code: {
-    eyebrow: '04 · 코드 체크포인트',
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
-    fileName: 'ReactFiberWorkLoop.js',
-    functionsLabel: '함수',
-    functions: ['performUnitOfWork', 'beginWork', 'completeUnitOfWork'],
-    learningQuestion:
-      'React는 Fiber 하나를 처리한 뒤 언제 아래로 내려가고 언제 위로 올라가기 시작할까?',
-    codeHeader: 'react-reconciler/src/ReactFiberWorkLoop.js',
-    codeBadge: 'main',
+    filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+    lookForLabel: '볼 것',
+    lookFor: 'performUnitOfWork, beginWork, completeUnitOfWork',
     code: CODE_LINES,
-    callouts: [
-      {
-        number: 1,
-        title: '다음 비교 대상 current 설정',
-        description: '이전 트리의 alternate',
-        tone: 'teal',
-      },
-      {
-        number: 2,
-        title: '현재 Fiber 처리 시작',
-        description: 'beginWork의 반환값이 핵심',
-        tone: 'sky',
-      },
-      {
-        number: 3,
-        title: '더 내려갈 곳이 없으면',
-        description: '완료 단계로 전환 · 위로 이동',
-        tone: 'violet',
-      },
-      {
-        number: 4,
-        title: '자식이 있으면 아래로 이동',
-        description: 'workInProgress = next',
-        tone: 'indigo',
-      },
-    ],
+    primaryCta: 'ReactFiberWorkLoop.js 읽기',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.js',
   },
   descendComplete: {
-    eyebrow: '05 · 하강 vs 완료',
+    badge: '05',
+    eyebrow: '하강 vs 완료',
     title: '내려가기 vs 완료로 전환 (핵심 반복 구조)',
     flow: {
       topSteps: ['Fiber 처리 시작 (performUnitOfWork)', 'beginWork 실행'],
       decision: '자식 계산 가능?',
       yes: {
-        label: ['Yes', 'next !== null'],
+        label: ['예', 'next !== null'],
         title: 'child Fiber로 이동',
         description: '더 깊은 자식으로 내려감',
       },
       no: {
-        label: ['No', 'next === null'],
+        label: ['아니오', 'next === null'],
         title: 'completeUnitOfWork',
         description: '완료 단계로 전환 · 위로 이동',
       },
     },
     explanation: {
       title: '이 과정을 work loop가 반복합니다.',
+      stepLabel: '단계',
       items: [
         { icon: 'arrowDown', text: '아래로 내려가며 최대한 탐색' },
         { icon: 'arrowUp', text: '더 이상 내려갈 곳이 없으면 완료하며 위로 올라감' },
         { icon: 'rotate', text: '모든 Fiber를 처리할 때까지 반복' },
       ],
     },
-  },
-  quiz: {
-    eyebrow: '06 · 미니 퀴즈',
-    title: '미니 퀴즈',
-    question: 'performUnitOfWork가 completeUnitOfWork를 호출하는 조건은?',
-    answer: 'beginWork가 더 내려갈 다음 Fiber를 반환하지 않을 때.',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -317,6 +286,7 @@ const en: PerformUnitContent = {
     description:
       'React picks up the current Fiber, runs beginWork, then either descends into a child if one exists, or transitions into the complete step.',
     diagram: {
+      code: heroCode,
       step1: { title: 'process a Fiber' },
       step2: { title: 'beginWork' },
       decision: { title: 'has child?' },
@@ -333,7 +303,8 @@ const en: PerformUnitContent = {
     },
   },
   fullFlow: {
-    eyebrow: '01 · FULL FLOW',
+    badge: '01',
+    eyebrow: 'FULL FLOW',
     title: 'Full performUnitOfWork flow',
     description: 'The function unfolded as a branching flow.',
     flow: {
@@ -356,7 +327,8 @@ const en: PerformUnitContent = {
     },
   },
   compare: {
-    eyebrow: '02 · CURRENT VS WIP',
+    badge: '02',
+    eyebrow: 'CURRENT VS WIP',
     title: 'current and workInProgress',
     description: 'These two Fibers are linked via alternate — two versions of the same node.',
     relationLabel: 'alternate',
@@ -366,6 +338,7 @@ const en: PerformUnitContent = {
         subtitle: 'Fiber on the previous tree',
         description: 'the tree that produced the current screen',
         items: ['linked via alternate', 'serves as a comparison baseline'],
+        statusLabel: 'previous',
         kind: 'current',
       },
       right: {
@@ -373,12 +346,14 @@ const en: PerformUnitContent = {
         subtitle: '= workInProgress',
         description: 'the workInProgress Fiber being processed now',
         items: ['target of beginWork', 'its return value picks the next direction'],
+        statusLabel: 'in progress',
         kind: 'wip',
       },
     },
   },
   returnDirection: {
-    eyebrow: '03 · RETURN DECIDES',
+    badge: '03',
+    eyebrow: 'RETURN DECIDES',
     title: 'beginWork return value picks the next direction',
     description: "beginWork's return value decides which way the work loop moves.",
     cards: {
@@ -406,47 +381,22 @@ const en: PerformUnitContent = {
       },
     },
   },
-  code: {
-    eyebrow: '04 · CODE CHECKPOINT',
-    title: 'Source-code checkpoint',
-    fileLabel: 'file',
-    fileName: 'ReactFiberWorkLoop.js',
-    functionsLabel: 'functions',
-    functions: ['performUnitOfWork', 'beginWork', 'completeUnitOfWork'],
-    learningQuestion:
-      'After processing one Fiber, when does React descend, and when does it start ascending?',
-    codeHeader: 'react-reconciler/src/ReactFiberWorkLoop.js',
-    codeBadge: 'main',
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+    lookForLabel: 'Look for',
+    lookFor: 'performUnitOfWork, beginWork, completeUnitOfWork',
     code: CODE_LINES,
-    callouts: [
-      {
-        number: 1,
-        title: 'Set up the comparison baseline (current)',
-        description: 'the alternate from the previous tree',
-        tone: 'teal',
-      },
-      {
-        number: 2,
-        title: 'Start processing the current Fiber',
-        description: "beginWork's return value is the key",
-        tone: 'sky',
-      },
-      {
-        number: 3,
-        title: 'Nowhere deeper to go',
-        description: 'transition to complete · ascend',
-        tone: 'violet',
-      },
-      {
-        number: 4,
-        title: 'A child exists — descend',
-        description: 'workInProgress = next',
-        tone: 'indigo',
-      },
-    ],
+    primaryCta: 'Read ReactFiberWorkLoop.js',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.js',
   },
   descendComplete: {
-    eyebrow: '05 · DESCEND OR COMPLETE',
+    badge: '05',
+    eyebrow: 'DESCEND OR COMPLETE',
     title: 'Descend vs transition to complete (the core loop)',
     flow: {
       topSteps: ['Start processing (performUnitOfWork)', 'Run beginWork'],
@@ -464,18 +414,13 @@ const en: PerformUnitContent = {
     },
     explanation: {
       title: 'The work loop repeats this process.',
+      stepLabel: 'step',
       items: [
         { icon: 'arrowDown', text: 'descend as far as possible' },
         { icon: 'arrowUp', text: 'when nothing deeper remains, complete and ascend' },
         { icon: 'rotate', text: 'repeat until every Fiber is processed' },
       ],
     },
-  },
-  quiz: {
-    eyebrow: '06 · MINI QUIZ',
-    title: 'Mini Quiz',
-    question: 'When does performUnitOfWork call completeUnitOfWork?',
-    answer: 'When beginWork returns no next Fiber to descend into.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

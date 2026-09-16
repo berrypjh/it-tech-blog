@@ -1,22 +1,17 @@
-import { cx } from '@berrypjh/react-ui';
-import { Code2, FileCode } from 'lucide-react';
+import { Eye, FileCode } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
-import { CodePreviewPanel } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
-import { toneTokens } from '../../../shared/tones';
-import type { CodeCallout, CompleteWorkContent } from '../content';
+import { CodePreviewPanel, GithubButton } from '../../../shared/code';
+import { SectionBadgeHeader } from '../../../shared/section';
+import type { CompleteWorkContent } from '../content';
 
-type Props = { content: CompleteWorkContent['code'] };
+type Props = { content: CompleteWorkContent['checkpoint'] };
 
 export const CompleteWorkCodeCheckpoint = ({ content }: Props) => (
-  <section
-    id="source-checkpoint"
-    aria-labelledby="heading-source-checkpoint"
-    className="space-y-md"
-  >
-    <SectionHeader
-      id="source-checkpoint"
+  <section id="checkpoint" aria-labelledby="heading-checkpoint" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      id="checkpoint"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<FileCode className="h-5 w-5" aria-hidden="true" />}
@@ -28,10 +23,10 @@ export const CompleteWorkCodeCheckpoint = ({ content }: Props) => (
           {
             label: content.fileLabel,
             value: (
-              <ul className="flex flex-col gap-1">
-                {content.files.map((file) => (
-                  <li key={file}>
-                    <code className="font-mono break-all">{file}</code>
+              <ul className="flex flex-col gap-0.5">
+                {content.filePaths.map((filePath) => (
+                  <li key={filePath} className="font-mono break-all">
+                    {filePath}
                   </li>
                 ))}
               </ul>
@@ -39,64 +34,25 @@ export const CompleteWorkCodeCheckpoint = ({ content }: Props) => (
             icon: FileCode,
           },
           {
-            label: content.pointsLabel,
+            label: content.lookForLabel,
             value: (
-              <ul className="flex flex-col gap-1.5">
-                {content.points.map((p) => (
-                  <li key={p}>
-                    <code className="inline-block max-w-full break-all rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-xsm font-mono text-[var(--term-fg)]">
-                      {p}
-                    </code>
-                  </li>
-                ))}
-              </ul>
+              <code className="inline-block max-w-full break-all rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-xsm font-mono text-[var(--term-fg)]">
+                {content.lookFor}
+              </code>
             ),
-            icon: Code2,
+            icon: Eye,
           },
         ]}
-        question={content.learningQuestion}
       />
 
       <div className="flex flex-col gap-md min-w-0">
-        <CodePreviewPanel
-          header={content.codeHeader}
-          badge={content.codeBadge}
-          code={content.code}
-        />
-        <ol className="grid grid-cols-1 sm:grid-cols-2 gap-md">
-          {content.callouts.map((callout) => (
-            <li key={callout.number} className="flex h-full">
-              <Callout callout={callout} />
-            </li>
-          ))}
-        </ol>
+        {content.blocks.map((block) => (
+          <div key={block.filePath} className="flex flex-col gap-md min-w-0">
+            <CodePreviewPanel header={block.filePath} badge="main" code={block.code} />
+            <GithubButton href={block.primaryHref} label={block.primaryCta} />
+          </div>
+        ))}
       </div>
     </div>
   </section>
 );
-
-const Callout = ({ callout }: { callout: CodeCallout }) => {
-  const t = toneTokens[callout.tone];
-  return (
-    <article
-      className={cx(
-        'flex w-full items-start gap-3 rounded-lg border p-md',
-        'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
-        t.border,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className={cx(
-          'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border font-mono font-bold text-xsm tabular-nums',
-          t.chip,
-        )}
-      >
-        {callout.number}
-      </span>
-      <p className={cx('text-xsm sm:text-sm leading-snug font-bold break-keep', t.text)}>
-        {callout.body}
-      </p>
-    </article>
-  );
-};

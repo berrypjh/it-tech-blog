@@ -1,14 +1,14 @@
 import { cx } from '@berrypjh/react-ui';
-import { Flag, Inbox, Settings2, Workflow, Zap } from 'lucide-react';
+import { Flag, Inbox, type LucideIcon, Settings2, Workflow, Zap } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
-import { ToneCardItem } from '../../../shared/tone';
+import { SectionBadgeHeader } from '../../../shared/section';
+import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { CommitRootContent, PreparationCardIcon } from '../content';
+import type { CommitRootContent, PreparationCardId } from '../content';
 
 type Props = { content: CommitRootContent['preparation'] };
 
-const iconMap: Record<PreparationCardIcon, typeof Inbox> = {
+const iconMap: Record<PreparationCardId, LucideIcon> = {
   inbox: Inbox,
   flag: Flag,
   workflow: Workflow,
@@ -21,17 +21,19 @@ export const CommitRootPreparationSection = ({ content }: Props) => (
     aria-labelledby="heading-commit-root-preparation"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="commit-root-preparation"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
       icon={<Settings2 className="h-5 w-5" aria-hidden="true" />}
     />
 
-    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-md">
+    <ToneCardGrid>
       {content.cards.map((card, idx) => {
-        const Icon = iconMap[card.iconName];
+        const Icon = iconMap[card.id];
         return (
           <ToneCardItem
             key={card.title}
@@ -54,6 +56,6 @@ export const CommitRootPreparationSection = ({ content }: Props) => (
           </ToneCardItem>
         );
       })}
-    </ul>
+    </ToneCardGrid>
   </section>
 );

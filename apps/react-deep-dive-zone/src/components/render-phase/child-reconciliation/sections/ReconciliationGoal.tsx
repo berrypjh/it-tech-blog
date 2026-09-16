@@ -1,16 +1,17 @@
 import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, ListChecks } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ReconcileChildrenContent } from '../content';
 
 type Props = { content: ReconcileChildrenContent['goal'] };
 
 export const ReconciliationGoal = ({ content }: Props) => (
-  <section id="goal" aria-labelledby="heading-goal" className="space-y-md">
-    <SectionHeader
+  <section id="goal" aria-labelledby="heading-goal" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="goal"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
@@ -46,7 +47,7 @@ export const ReconciliationGoal = ({ content }: Props) => (
               <span
                 className={cx('text-xxsm font-mono uppercase tracking-wider', toneTokens.sky.text)}
               >
-                goal {idx + 1}
+                {content.itemLabel} {idx + 1}
               </span>
               <p className="text-xsm sm:text-sm leading-snug text-[var(--term-fg)] font-bold break-keep">
                 {item}

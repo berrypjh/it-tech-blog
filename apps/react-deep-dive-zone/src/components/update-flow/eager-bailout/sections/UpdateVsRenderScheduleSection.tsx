@@ -1,7 +1,8 @@
-import { Sparkles, Table } from 'lucide-react';
+import { Lightbulb, Table } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionNote } from '../../../shared/note';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { EagerBailoutContent } from '../content';
 
 type Props = { content: EagerBailoutContent['scheduleTable'] };
@@ -14,9 +15,10 @@ const toCell = (value: string, mono?: boolean) =>
   );
 
 export const UpdateVsRenderScheduleSection = ({ content }: Props) => (
-  <section id="section-schedule" aria-labelledby="heading-schedule" className="space-y-md">
-    <SectionHeader
+  <section id="schedule" aria-labelledby="heading-schedule" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="schedule"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Table className="h-5 w-5" aria-hidden="true" />}
@@ -32,11 +34,6 @@ export const UpdateVsRenderScheduleSection = ({ content }: Props) => (
       }))}
     />
 
-    <div className="flex items-start gap-sm rounded-lg border border-[var(--term-border)] border-l-[3px] border-l-[var(--term-accent)] bg-[var(--term-surface)] p-md">
-      <Sparkles aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[var(--term-accent)]" />
-      <p className="text-xsm sm:text-sm font-semibold leading-relaxed text-[var(--term-fg)] break-keep">
-        {content.bottomNote}
-      </p>
-    </div>
+    <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
   </section>
 );

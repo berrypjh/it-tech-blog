@@ -9,7 +9,7 @@ import {
   Workflow,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DescendCompleteExplanation, PerformUnitContent } from '../content';
@@ -29,9 +29,14 @@ const explainTone: Record<DescendCompleteExplanation['items'][number]['icon'], T
 };
 
 export const DescendCompleteFlow = ({ content }: Props) => (
-  <section id="descend-complete" aria-labelledby="heading-descend-complete" className="space-y-md">
-    <SectionHeader
+  <section
+    id="descend-complete"
+    aria-labelledby="heading-descend-complete"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
       id="descend-complete"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
@@ -146,7 +151,7 @@ export const DescendCompleteFlow = ({ content }: Props) => (
                 </span>
                 <div className="flex flex-col gap-0.5 min-w-0">
                   <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
-                    step {idx + 1}
+                    {content.explanation.stepLabel} {idx + 1}
                   </span>
                   <span className="text-xsm sm:text-sm leading-snug text-[var(--term-fg)] break-keep">
                     {item.text}

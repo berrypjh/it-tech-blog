@@ -1,24 +1,22 @@
 import { cx } from '@berrypjh/react-ui';
-import { FunctionSquare, Network, Target, Workflow } from 'lucide-react';
+import { FunctionSquare, type LucideIcon, Network, Target, Workflow } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { FunctionFlowStep, ScheduleUpdateOnFiberContent } from '../content';
+import type { FunctionFlowIcon, FunctionFlowStep, ScheduleUpdateOnFiberContent } from '../content';
 
-const flowIconByName = {
+const flowIconByName: Record<FunctionFlowIcon, LucideIcon> = {
   function: FunctionSquare,
   workflow: Workflow,
   network: Network,
   target: Target,
-} as const;
+};
 
 type Props = { content: ScheduleUpdateOnFiberContent['flow'] };
 
 const amber = toneTokens.amber;
-const violet = toneTokens.violet;
-const sky = toneTokens.sky;
 
 const toFlowStep = (step: FunctionFlowStep, idx: number): FlowStepItem => {
   const Icon = flowIconByName[step.icon];
@@ -28,14 +26,16 @@ const toFlowStep = (step: FunctionFlowStep, idx: number): FlowStepItem => {
     title: step.title,
     body: step.body,
     tone: step.tone,
-    icon: <Icon className="h-5 w-5" />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[step.tone].text)} aria-hidden="true" />,
   };
 };
 
 export const FunctionPositionFlowSection = ({ content }: Props) => (
-  <section id="section-flow" aria-labelledby="heading-flow" className="space-y-md">
-    <SectionHeader
+  <section id="flow" aria-labelledby="heading-flow" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="flow"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -63,15 +63,6 @@ export const FunctionPositionFlowSection = ({ content }: Props) => (
       <p className="text-sm sm:text-md font-bold leading-snug text-[var(--term-fg)] break-keep">
         {content.keyPointBody}
       </p>
-      <ul className="flex flex-wrap items-center gap-1.5">
-        <li className={cx('rounded-md border px-2 py-0.5 text-[10px] font-mono', violet.chip)}>
-          Fiber-level
-        </li>
-        <li className="text-[10px] font-mono text-[var(--term-muted)]">→</li>
-        <li className={cx('rounded-md border px-2 py-0.5 text-[10px] font-mono', sky.chip)}>
-          Root pending
-        </li>
-      </ul>
     </div>
   </section>
 );

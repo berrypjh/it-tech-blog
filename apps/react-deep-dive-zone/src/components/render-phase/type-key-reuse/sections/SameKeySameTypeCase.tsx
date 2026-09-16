@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 import { ArrowRight, ChevronDown, Recycle } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { TypeKeyReuseContent } from '../content';
 
 import { NextCard, PreviousCard, ResultCardView } from './case-cards';
@@ -16,9 +16,14 @@ export const SameKeySameTypeCase = ({ content }: Props) => {
     <ResultCardView key="result" result={content.result} />,
   ];
   return (
-    <section id="same-key-type" aria-labelledby="heading-same-key-type" className="space-y-md">
-      <SectionHeader
+    <section
+      id="same-key-type"
+      aria-labelledby="heading-same-key-type"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
         id="same-key-type"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Recycle className="h-5 w-5" aria-hidden="true" />}

@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowUp, ChevronDown, Lightbulb, Sparkles, Workflow } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { CompleteWorkFlowNode, HostComponentContent } from '../content';
@@ -18,10 +18,11 @@ export const CompleteWorkPreview = ({ content }: Props) => (
   <section
     id="complete-work-preview"
     aria-labelledby="heading-complete-work-preview"
-    className="space-y-md"
+    className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
       id="complete-work-preview"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
@@ -51,14 +52,6 @@ export const CompleteWorkPreview = ({ content }: Props) => (
 
       {/* Center: flow */}
       <article className="flex flex-col gap-2 rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-        <header className="flex items-center justify-between gap-2">
-          <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
-            {'// down → ... → up'}
-          </span>
-          <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)] rounded-md border border-[var(--term-border)] px-2 py-0.5">
-            two-way work
-          </span>
-        </header>
         <ol className="flex flex-col gap-1.5">
           {content.flow.map((node, idx) => (
             <li key={node.title} className="flex flex-col items-stretch">

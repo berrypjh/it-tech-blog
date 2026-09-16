@@ -1,14 +1,23 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowDown, Calendar, CheckCircle2, Cpu, DoorOpen, List, Map } from 'lucide-react';
+import {
+  ArrowDown,
+  Calendar,
+  CheckCircle2,
+  Cpu,
+  DoorOpen,
+  List,
+  type LucideIcon,
+  Map as MapIcon,
+} from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { CommitRootContent, PositionStep, PositionStepIcon } from '../content';
+import type { CommitRootContent, PositionStep, PositionStepId } from '../content';
 
 type Props = { content: CommitRootContent['position'] };
 
-const iconMap: Record<PositionStepIcon, typeof CheckCircle2> = {
+const iconMap: Record<PositionStepId, LucideIcon> = {
   calendar: Calendar,
   cpu: Cpu,
   check: CheckCircle2,
@@ -22,33 +31,21 @@ export const CommitRootPositionSection = ({ content }: Props) => (
     aria-labelledby="heading-commit-root-position"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="commit-root-position"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
-      icon={<Map className="h-5 w-5" aria-hidden="true" />}
+      icon={<MapIcon className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-      <header className="mb-md flex flex-wrap items-center justify-between gap-2">
-        <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-          {'// update → render → commit-root → commit sub-phases'}
-        </span>
-        <span
-          className={cx(
-            'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
-            toneTokens.teal.chip,
-          )}
-        >
-          5 steps
-        </span>
-      </header>
-
       <ol className="flex flex-col">
         {content.steps.map((step, idx) => (
           <li key={step.title} className="flex flex-col">
-            <PositionRow step={step} index={idx + 1} />
+            <PositionRow step={step} index={idx + 1} entryBadge={content.entryBadge} />
             {idx < content.steps.length - 1 && (
               <span aria-hidden="true" className="my-2 flex justify-center text-[var(--term-dim)]">
                 <ArrowDown className="h-4 w-4" aria-hidden="true" />
@@ -61,8 +58,16 @@ export const CommitRootPositionSection = ({ content }: Props) => (
   </section>
 );
 
-const PositionRow = ({ step, index }: { step: PositionStep; index: number }) => {
-  const Icon = iconMap[step.iconName];
+const PositionRow = ({
+  step,
+  index,
+  entryBadge,
+}: {
+  step: PositionStep;
+  index: number;
+  entryBadge: string;
+}) => {
+  const Icon = iconMap[step.id];
   const t = toneTokens[step.tone];
   return (
     <article
@@ -90,7 +95,7 @@ const PositionRow = ({ step, index }: { step: PositionStep; index: number }) => 
                 t.chip,
               )}
             >
-              entry point
+              {entryBadge}
             </span>
           )}
         </div>

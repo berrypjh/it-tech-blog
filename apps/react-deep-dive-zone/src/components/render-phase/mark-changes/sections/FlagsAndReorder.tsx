@@ -3,29 +3,25 @@ import {
   ArrowRight,
   ChevronDown,
   Flag,
+  Lightbulb,
   ListChecks,
   type LucideIcon,
   Move,
-  Pencil,
-  Star,
   Trash2,
   Workflow,
-  Zap,
 } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
-import type { FlagCard, FlagsAndReorderContent, ReorderResultItem } from '../content';
+import type { FlagsAndReorderContent, ReorderResultItem } from '../content';
 import { facetFor } from '../markFacet';
 
-const markIconByName: Record<FlagCard['icon'] | 'move', LucideIcon> = {
+const markIconByName: Record<ReorderResultItem['icon'], LucideIcon> = {
   flag: Flag,
   trash: Trash2,
-  pencil: Pencil,
-  zap: Zap,
   move: Move,
-} as const;
+};
 
 type Props = { content: FlagsAndReorderContent };
 
@@ -37,9 +33,14 @@ export const FlagsAndReorder = ({ content }: Props) => (
 );
 
 const FlagsConnectionSection = ({ content }: { content: FlagsAndReorderContent['flags'] }) => (
-  <section id="flags-connection" aria-labelledby="heading-flags-connection" className="space-y-md">
-    <SectionHeader
+  <section
+    id="flags-connection"
+    aria-labelledby="heading-flags-connection"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
       id="flags-connection"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
@@ -92,9 +93,14 @@ const FlagsConnectionSection = ({ content }: { content: FlagsAndReorderContent['
 );
 
 const ListReorderSection = ({ content }: { content: FlagsAndReorderContent['reorder'] }) => (
-  <section id="list-reorder" aria-labelledby="heading-list-reorder" className="space-y-md">
-    <SectionHeader
+  <section
+    id="list-reorder"
+    aria-labelledby="heading-list-reorder"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
       id="list-reorder"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
@@ -109,8 +115,8 @@ const ListReorderSection = ({ content }: { content: FlagsAndReorderContent['reor
         <ResultColumn title={content.resultTitle} items={content.resultItems} />
       </div>
 
-      <SectionNote icon={<Star className="h-4 w-4" aria-hidden="true" />} className="mt-md">
-        {content.bottomNote}
+      <SectionNote icon={<Lightbulb className="h-4 w-4" />} className="mt-md">
+        {content.note}
       </SectionNote>
     </article>
   </section>

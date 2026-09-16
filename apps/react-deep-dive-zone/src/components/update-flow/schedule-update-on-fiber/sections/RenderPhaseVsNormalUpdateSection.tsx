@@ -1,78 +1,48 @@
-import { cx } from '@berrypjh/react-ui';
-import { CheckCircle2, MousePointerClick, RefreshCw, Split } from 'lucide-react';
+import { type LucideIcon, MousePointerClick, RefreshCw, Split } from 'lucide-react';
 
 import { CompareVs } from '../../../shared/compare';
-import { SectionHeader } from '../../../shared/section';
-import { ToneBadge, ToneIconBox } from '../../../shared/tone';
-import { toneTokens } from '../../../shared/tones';
-import type { ContextCard, ScheduleUpdateOnFiberContent } from '../content';
+import { ToneDetailCard } from '../../../shared/detail';
+import { SectionBadgeHeader } from '../../../shared/section';
+import type { ContextCard, ContextCardIcon, ScheduleUpdateOnFiberContent } from '../content';
 
-const contextIconByName = {
+const contextIconByName: Record<ContextCardIcon, LucideIcon> = {
   refresh: RefreshCw,
   mousePointer: MousePointerClick,
-} as const;
+};
 
 type Props = { content: ScheduleUpdateOnFiberContent['contextCompare'] };
 
+const CompareCard = ({ card }: { card: ContextCard }) => (
+  <ToneDetailCard
+    tone={card.tone}
+    icon={contextIconByName[card.icon]}
+    title={card.title}
+    badge={card.badge}
+    bullets={card.bullets}
+    className="h-full"
+  />
+);
+
 export const RenderPhaseVsNormalUpdateSection = ({ content }: Props) => (
   <section
-    id="section-context-compare"
+    id="context-compare"
     aria-labelledby="heading-context-compare"
-    className="space-y-md"
+    className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="context-compare"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
       icon={<Split className="h-5 w-5" aria-hidden="true" />}
     />
 
-    <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md lg:gap-lg items-stretch">
+    <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md items-stretch">
       <CompareCard card={content.leftCard} />
       <CompareVs />
       <CompareCard card={content.rightCard} />
     </div>
   </section>
 );
-
-const CompareCard = ({ card }: { card: ContextCard }) => {
-  const Icon = contextIconByName[card.icon];
-  const t = toneTokens[card.tone];
-  return (
-    <article
-      className={cx(
-        'flex flex-col gap-md rounded-lg border bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]',
-        t.border,
-      )}
-    >
-      <header className="flex items-center justify-between gap-2">
-        <ToneIconBox tone={card.tone} size="md">
-          <Icon className="h-5 w-5" />
-        </ToneIconBox>
-        <ToneBadge tone={card.tone}>{card.badge}</ToneBadge>
-      </header>
-
-      <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.text)}>
-        {card.title}
-      </h3>
-
-      <ul className="flex flex-col gap-2">
-        {card.bullets.map((b) => (
-          <li
-            key={b}
-            className={cx(
-              'flex items-start gap-2 rounded-md border bg-[var(--term-surface)] px-3 py-2',
-              t.border,
-            )}
-          >
-            <CheckCircle2 aria-hidden="true" className={cx('mt-0.5 h-4 w-4 shrink-0', t.text)} />
-            <span className="text-xsm sm:text-sm leading-snug text-[var(--term-fg)] break-keep">
-              {b}
-            </span>
-          </li>
-        ))}
-      </ul>
-    </article>
-  );
-};

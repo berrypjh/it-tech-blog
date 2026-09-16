@@ -1,26 +1,31 @@
 import { cx } from '@berrypjh/react-ui';
-import { Braces, Crosshair, Database, Hand, Link2, Route } from 'lucide-react';
+import { Braces, Crosshair, Database, Hand, Link2, type LucideIcon, Route } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { HeroFlowStep, LaneUpdateObjectContent } from '../content';
+import type {
+  HeroFlowIcon,
+  HeroFlowStep,
+  HeroSummaryPill,
+  LaneUpdateObjectContent,
+} from '../content';
 
-const heroFlowIconByName = {
+const heroFlowIconByName: Record<HeroFlowIcon, LucideIcon> = {
   hand: Hand,
   route: Route,
   crosshair: Crosshair,
   braces: Braces,
-} as const;
+};
 
-const heroSummaryIconByName = {
+const heroSummaryIconByName: Record<HeroSummaryPill['icon'], LucideIcon> = {
   crosshair: Crosshair,
   database: Database,
   link: Link2,
-} as const;
+};
 
-type Props = { content: LaneUpdateObjectContent['hero']; className?: string };
+type Props = { content: LaneUpdateObjectContent['hero'] };
 
 /**
  * Hero 핵심 비주얼.
@@ -28,40 +33,42 @@ type Props = { content: LaneUpdateObjectContent['hero']; className?: string };
  * 흐름을 위에서 아래로 잇는 컴팩트 stepper. 마지막 단계는 update 객체 카드로,
  * 필드 골격을 CodePreviewPanel로 보여준다.
  */
-export const LaneUpdateHeroDiagram = ({ content, className }: Props) => {
+export const LaneUpdateHeroDiagram = ({ content }: Props) => {
   const a11y = `${content.flow.heading}: ${content.flow.steps.map((s) => s.label).join(' → ')}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
-      <ol className="relative flex flex-col gap-sm" aria-hidden="true">
-        {content.flow.steps.map((step, idx) => (
-          <li key={step.id} className="flex flex-col gap-sm">
-            {step.kind === 'object' ? <UpdateObjectCard step={step} /> : <FlowStep step={step} />}
-            {idx < content.flow.steps.length - 1 && (
-              <DownArrow label={content.flow.steps[idx].connectorLabel} />
-            )}
-          </li>
-        ))}
-      </ol>
-
-      <ul className="relative mt-md grid grid-cols-1 gap-2 @sm:grid-cols-3" aria-hidden="true">
-        {content.summary.map((pill) => {
-          const Icon = heroSummaryIconByName[pill.icon];
-          return (
-            <li
-              key={pill.label}
-              className="flex items-center gap-2 rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] px-sm py-2 min-w-0"
-            >
-              <ToneIconBox tone="teal" size="sm" className="h-7 w-7">
-                <Icon className="h-3.5 w-3.5" aria-hidden="true" />
-              </ToneIconBox>
-              <span className="min-w-0 truncate font-mono text-[11px] text-[var(--term-fg)]">
-                {pill.label}
-              </span>
+    <HeroDiagramShell a11yLabel={a11y}>
+      <div className="relative" aria-hidden="true">
+        <ol className="flex flex-col gap-sm">
+          {content.flow.steps.map((step, idx) => (
+            <li key={step.id} className="flex flex-col gap-sm">
+              {step.kind === 'object' ? <UpdateObjectCard step={step} /> : <FlowStep step={step} />}
+              {idx < content.flow.steps.length - 1 && (
+                <DownArrow label={content.flow.steps[idx].connectorLabel} />
+              )}
             </li>
-          );
-        })}
-      </ul>
+          ))}
+        </ol>
+
+        <ul className="mt-md grid grid-cols-1 gap-2 @sm:grid-cols-3">
+          {content.summary.map((pill) => {
+            const Icon = heroSummaryIconByName[pill.icon];
+            return (
+              <li
+                key={pill.label}
+                className="flex items-center gap-2 rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] px-sm py-2 min-w-0"
+              >
+                <ToneIconBox tone="teal" size="sm" className="h-7 w-7">
+                  <Icon className="h-3.5 w-3.5" />
+                </ToneIconBox>
+                <span className="min-w-0 truncate font-mono text-[11px] text-[var(--term-fg)]">
+                  {pill.label}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </HeroDiagramShell>
   );
 };
@@ -70,20 +77,19 @@ const FlowStep = ({ step }: { step: HeroFlowStep }) => {
   const t = toneTokens[step.tone];
   const Icon = heroFlowIconByName[step.icon];
   return (
-    <article
+    <div
       className={cx(
         'flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
       )}
     >
       <ToneIconBox tone={step.tone} size="md">
-        <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
+        <Icon className="h-4 w-4" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-1">
-        <h3 className={cx('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
+        <span className={cx('font-mono text-sm font-bold tracking-tight break-keep', t.text)}>
           {step.label}
-        </h3>
+        </span>
         {step.code && (
           <code className="inline-flex w-fit items-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 font-mono text-[11px] text-[var(--term-fg)]">
             {step.code}
@@ -95,7 +101,7 @@ const FlowStep = ({ step }: { step: HeroFlowStep }) => {
           </p>
         )}
       </div>
-    </article>
+    </div>
   );
 };
 
@@ -109,18 +115,10 @@ const UpdateObjectCard = ({ step }: { step: HeroFlowStep }) => {
     <article className="flex flex-col gap-sm">
       <div className="flex items-center gap-sm">
         <ToneIconBox tone={step.tone} size="sm">
-          <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
+          <Icon className="h-4 w-4" />
         </ToneIconBox>
         <span className={cx('font-mono text-sm font-bold tracking-tight', t.text)}>
           {step.label}
-        </span>
-        <span
-          className={cx(
-            'ml-auto shrink-0 inline-flex items-center rounded-full border px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider',
-            t.chip,
-          )}
-        >
-          object
         </span>
       </div>
       <CodePreviewPanel code={code} language="JS" showWindowDots={false} size="md" />
@@ -130,10 +128,7 @@ const UpdateObjectCard = ({ step }: { step: HeroFlowStep }) => {
 
 const DownArrow = ({ label }: { label?: string }) => (
   <div className="flex flex-col items-center gap-0.5">
-    <span
-      aria-hidden="true"
-      className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-    >
+    <span className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none">
       ↓
     </span>
     {label && (

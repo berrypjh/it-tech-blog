@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, GitBranch, Layers, PackageOpen, Target } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CommitRootContent } from '../content';
@@ -14,8 +14,9 @@ export const RootCommitMeaningSection = ({ content }: Props) => (
     aria-labelledby="heading-root-commit"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
       id="root-commit"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Target className="h-5 w-5" aria-hidden="true" />}
@@ -166,12 +167,7 @@ const FiberTreeDiagram = ({ variant }: { variant: 'left' | 'right' }) => {
   const treeTone = variant === 'left' ? toneTokens.sky : toneTokens.violet;
   const isDashed = variant === 'left';
   return (
-    <svg
-      role="img"
-      aria-label={variant === 'left' ? 'fiber-by-fiber tree' : 'committed tree'}
-      viewBox="0 0 160 80"
-      className="w-full h-16"
-    >
+    <svg aria-hidden="true" viewBox="0 0 160 80" className="w-full h-16">
       <g
         className={treeTone.stroke}
         stroke="currentColor"

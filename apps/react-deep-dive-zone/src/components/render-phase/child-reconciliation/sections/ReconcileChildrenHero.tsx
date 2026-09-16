@@ -14,9 +14,8 @@ type Props = { content: ReconcileChildrenContent['hero'] };
 export const ReconcileChildrenHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="reconciler/child-reconciliation.md"
-    promptSuffix={<span className="text-[var(--term-dim)]"> {'// reconciler entry'}</span>}
-    gridColumns="lg:grid-cols-[minmax(0,_0.82fr)_minmax(0,_1.18fr)]"
+    promptPath="packages/react-reconciler/src/ReactFiberBeginWork.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -33,7 +32,7 @@ export const ReconcileChildrenHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-child-reconciliation" className="min-w-0">
+    <HeroVisualColumn id="hero-child-reconciliation">
       <ReconcileChildrenHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

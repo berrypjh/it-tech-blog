@@ -1,16 +1,17 @@
-import { FileCode, FunctionSquare } from 'lucide-react';
+import { Eye, FileCode } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
 import { CodePreviewPanel, GithubButton } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { DispatchSetStateContent } from '../content';
 
 type Props = { content: DispatchSetStateContent['checkpoint'] };
 
 export const MountStateCodeCheckpoint = ({ content }: Props) => (
-  <section id="section-checkpoint" aria-labelledby="heading-checkpoint" className="space-y-md">
-    <SectionHeader
+  <section id="checkpoint" aria-labelledby="heading-checkpoint" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="checkpoint"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<FileCode className="h-5 w-5" aria-hidden="true" />}
@@ -25,25 +26,19 @@ export const MountStateCodeCheckpoint = ({ content }: Props) => (
             icon: FileCode,
           },
           {
-            label: content.functionLabel,
+            label: content.lookForLabel,
             value: (
               <code className="inline-block max-w-full break-all rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-xsm font-mono text-[var(--term-fg)]">
-                {content.functionName}
+                {content.lookFor}
               </code>
             ),
-            icon: FunctionSquare,
+            icon: Eye,
           },
         ]}
-        question={content.learningQuestion}
       />
 
       <div className="flex flex-col gap-md min-w-0">
-        <CodePreviewPanel
-          header={content.codeHeader}
-          badge={content.codeBadge}
-          code={content.code}
-        />
-
+        <CodePreviewPanel header={content.filePath} badge="main" code={content.code} />
         <GithubButton href={content.primaryHref} label={content.primaryCta} />
       </div>
     </div>

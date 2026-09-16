@@ -1,18 +1,18 @@
 import { cx } from '@berrypjh/react-ui';
-import { Crosshair, Database, Lightbulb, PenTool, Server } from 'lucide-react';
+import { Crosshair, Database, Lightbulb, type LucideIcon, PenTool, Server } from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { DispatchSetStateEntryContent, LaneFlowStep } from '../content';
+import type { DispatchSetStateEntryContent, LaneFlowIcon, LaneFlowStep } from '../content';
 
-const laneFlowIconByName = {
+const laneFlowIconByName: Record<LaneFlowIcon, LucideIcon> = {
   crosshair: Crosshair,
   database: Database,
   server: Server,
   penTool: PenTool,
-} as const;
+};
 
 type Props = { content: DispatchSetStateEntryContent['laneReason'] };
 
@@ -26,14 +26,19 @@ const toFlowStep = (step: LaneFlowStep): FlowStepItem => {
     title: step.title,
     body: step.body,
     tone: step.tone,
-    icon: <Icon className="h-5 w-5" />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[step.tone].text)} aria-hidden="true" />,
   };
 };
 
 export const LaneFirstReasonSection = ({ content }: Props) => (
-  <section id="section-lane-reason" aria-labelledby="heading-lane-reason" className="space-y-md">
-    <SectionHeader
+  <section
+    id="lane-reason"
+    aria-labelledby="heading-lane-reason"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
       id="lane-reason"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Crosshair className="h-5 w-5" aria-hidden="true" />}

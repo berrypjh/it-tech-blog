@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, ListChecks, Network, Workflow } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { EnsureRootScheduledContent } from '../content';
 
@@ -11,12 +11,14 @@ const sky = toneTokens.sky;
 
 export const RootScheduleVisualizationSection = ({ content }: Props) => (
   <section
-    id="section-visualization"
+    id="visualization"
     aria-labelledby="heading-visualization"
-    className="space-y-md"
+    className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="visualization"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -85,23 +87,18 @@ export const RootScheduleVisualizationSection = ({ content }: Props) => (
           sky.border,
         )}
       >
-        <header className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <span
-              aria-hidden="true"
-              className={cx(
-                'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
-                sky.chip,
-              )}
-            >
-              <ListChecks className="h-4 w-4" aria-hidden="true" />
-            </span>
-            <span className={cx('text-xsm sm:text-sm font-bold', sky.text)}>
-              {content.rightTitle}
-            </span>
-          </div>
-          <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-            FIFO
+        <header className="flex items-center gap-2">
+          <span
+            aria-hidden="true"
+            className={cx(
+              'inline-flex h-9 w-9 items-center justify-center rounded-xl border',
+              sky.chip,
+            )}
+          >
+            <ListChecks className="h-4 w-4" aria-hidden="true" />
+          </span>
+          <span className={cx('text-xsm sm:text-sm font-bold', sky.text)}>
+            {content.rightTitle}
           </span>
         </header>
         <code

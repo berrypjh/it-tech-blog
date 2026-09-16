@@ -3,6 +3,7 @@ import { ArrowDown, ArrowUp, CircleDashed, type LucideIcon } from 'lucide-react'
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CompleteWorkContent, LegendItem } from '../content';
@@ -11,14 +12,9 @@ const legendIconByName: Record<LegendItem['icon'], LucideIcon> = {
   arrowDown: ArrowDown,
   arrowUp: ArrowUp,
   dashed: CircleDashed,
-} as const;
+};
 
 type Props = { content: CompleteWorkContent['hero'] };
-
-const HERO_CODE = `completeUnitOfWork(unitOfWork) {
-  completeWork(...);     // 현재 Fiber 마무리
-  bubbleProperties(...); // flags를 부모로 버블업
-}`;
 
 /** 단계별 강조 tone — 하강/완료/형제/부모/커밋 흐름에 맞춰 부여. */
 const stepTones: ToneKey[] = ['teal', 'violet', 'indigo', 'violet', 'sky'];
@@ -41,11 +37,11 @@ export const CompleteWorkHeroDiagram = ({ content }: Props) => {
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <Legend title={diagram.legendTitle} items={diagram.legend} />
 
-        <CodePreviewPanel code={HERO_CODE} showWindowDots language="JS" size="md" />
+        <CodePreviewPanel code={diagram.code} showWindowDots language="JS" size="md" />
 
         <DownArrow />
 
-        <section className="flex flex-col gap-sm">
+        <div className="flex flex-col gap-sm">
           <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
             {diagram.stepsTitle}
           </span>
@@ -62,14 +58,14 @@ export const CompleteWorkHeroDiagram = ({ content }: Props) => {
               </li>
             ))}
           </ol>
-        </section>
+        </div>
       </div>
     </HeroDiagramShell>
   );
 };
 
 const Legend = ({ title, items }: { title: string; items: LegendItem[] }) => (
-  <section className="flex flex-col gap-sm rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]">
+  <div className="flex flex-col gap-sm rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]">
     <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
       {title}
     </span>
@@ -79,7 +75,7 @@ const Legend = ({ title, items }: { title: string; items: LegendItem[] }) => (
         return (
           <li key={item.label} className="flex items-center gap-sm">
             <ToneIconBox tone={item.tone} size="sm">
-              <Icon className="h-[18px] w-[18px]" />
+              <Icon className="h-4 w-4" />
             </ToneIconBox>
             <div className="flex min-w-0 flex-col">
               <span
@@ -98,7 +94,7 @@ const Legend = ({ title, items }: { title: string; items: LegendItem[] }) => (
         );
       })}
     </ul>
-  </section>
+  </div>
 );
 
 const StepRow = ({
@@ -117,7 +113,7 @@ const StepRow = ({
     <article
       className={cx(
         'flex items-center gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-2.5',
-        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+        'shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
     >
@@ -133,12 +129,3 @@ const StepRow = ({
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

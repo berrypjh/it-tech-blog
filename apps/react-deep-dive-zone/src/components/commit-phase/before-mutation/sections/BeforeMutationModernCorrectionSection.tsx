@@ -1,10 +1,10 @@
 import { Fragment } from 'react';
 
 import { cx } from '@berrypjh/react-ui';
-import { ArrowDown, ArrowRight, Sparkles, Target } from 'lucide-react';
+import { ArrowDown, ArrowRight, Lightbulb, Sparkles } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
-import { ToneIconBox } from '../../../shared/tone';
+import { SectionNote } from '../../../shared/note';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { BeforeMutationContent, ModernStep } from '../content';
 
@@ -16,8 +16,10 @@ export const BeforeMutationModernCorrectionSection = ({ content }: Props) => (
     aria-labelledby="heading-modern-correction"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="modern-correction"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -26,27 +28,9 @@ export const BeforeMutationModernCorrectionSection = ({ content }: Props) => (
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
       <StepRail steps={content.steps} />
-
-      <aside
-        className={cx(
-          'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
-          toneTokens.teal.fill.border,
-          toneTokens.teal.fill.bg,
-        )}
-      >
-        <ToneIconBox tone="teal" size="sm">
-          <Target className="h-4 w-4" aria-hidden="true" />
-        </ToneIconBox>
-        <p
-          className={cx(
-            'text-xsm sm:text-sm leading-relaxed break-keep font-bold',
-            toneTokens.teal.fill.text,
-          )}
-        >
-          {content.coreCallout}
-        </p>
-      </aside>
     </article>
+
+    <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
   </section>
 );
 

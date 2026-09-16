@@ -1,16 +1,21 @@
 import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, CheckCircle2, ChevronDown, Workflow } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { MarkChangesContent, RenderCommitCard } from '../content';
 
 type Props = { content: MarkChangesContent['renderCommit'] };
 
 export const RenderVsCommit = ({ content }: Props) => (
-  <section id="render-vs-commit" aria-labelledby="heading-render-vs-commit" className="space-y-md">
-    <SectionHeader
+  <section
+    id="render-vs-commit"
+    aria-labelledby="heading-render-vs-commit"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
       id="render-vs-commit"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Workflow className="h-5 w-5" aria-hidden="true" />}

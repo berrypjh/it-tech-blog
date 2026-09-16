@@ -1,22 +1,24 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowUp, Database, GitBranch, Network } from 'lucide-react';
+import { ArrowUp, Database, GitBranch, type LucideIcon, Network } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneBadge, ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { FiberToRootContent, LaneCard } from '../content';
+import type { FiberToRootContent, LaneCard, LaneCardIcon } from '../content';
 
-const laneCardIconByName = {
+const laneCardIconByName: Record<LaneCardIcon, LucideIcon> = {
   database: Database,
   network: Network,
-} as const;
+};
 
 type Props = { content: FiberToRootContent['laneRoles'] };
 
 export const LaneRoleCompareSection = ({ content }: Props) => (
-  <section id="section-lane-roles" aria-labelledby="heading-lane-roles" className="space-y-md">
-    <SectionHeader
+  <section id="lane-roles" aria-labelledby="heading-lane-roles" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="lane-roles"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -24,14 +26,14 @@ export const LaneRoleCompareSection = ({ content }: Props) => (
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md lg:gap-lg items-stretch">
-      <Card card={content.leftCard} variant="source" />
+      <Card card={content.leftCard} />
       <MiddleConnector label={content.middleLabel} />
-      <Card card={content.rightCard} variant="parent" />
+      <Card card={content.rightCard} />
     </div>
   </section>
 );
 
-const Card = ({ card, variant }: { card: LaneCard; variant: 'source' | 'parent' }) => {
+const Card = ({ card }: { card: LaneCard }) => {
   const Icon = laneCardIconByName[card.icon];
   const t = toneTokens[card.tone];
   return (
@@ -45,7 +47,7 @@ const Card = ({ card, variant }: { card: LaneCard; variant: 'source' | 'parent' 
         <ToneIconBox tone={card.tone} size="md">
           <Icon className="h-5 w-5" />
         </ToneIconBox>
-        <ToneBadge tone={card.tone}>{variant === 'source' ? 'self' : 'subtree'}</ToneBadge>
+        <ToneBadge tone={card.tone}>{card.badge}</ToneBadge>
       </header>
 
       <code

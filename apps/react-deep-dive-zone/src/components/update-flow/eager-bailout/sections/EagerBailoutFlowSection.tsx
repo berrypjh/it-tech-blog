@@ -1,16 +1,26 @@
-import { Ban, CheckCircle2, CircleDotDashed, Scale, Settings, Zap } from 'lucide-react';
+import { cx } from '@berrypjh/react-ui';
+import {
+  Ban,
+  CheckCircle2,
+  CircleDotDashed,
+  type LucideIcon,
+  Scale,
+  Settings,
+  Zap,
+} from 'lucide-react';
 
 import { type FlowStepItem, FlowStepsGrid } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
-import type { BailoutStep, EagerBailoutContent } from '../content';
+import { SectionBadgeHeader } from '../../../shared/section';
+import { toneTokens } from '../../../shared/tones';
+import type { BailoutStep, BailoutStepIcon, EagerBailoutContent } from '../content';
 
-const bailoutStepIconByName = {
+const bailoutStepIconByName: Record<BailoutStepIcon, LucideIcon> = {
   circleDotDashed: CircleDotDashed,
   settings: Settings,
   scale: Scale,
   checkCircle: CheckCircle2,
   ban: Ban,
-} as const;
+};
 
 type Props = { content: EagerBailoutContent['flow'] };
 
@@ -22,14 +32,16 @@ const toFlowStep = (step: BailoutStep): FlowStepItem => {
     title: step.title,
     body: step.detail,
     tone: step.tone,
-    icon: <Icon className="h-5 w-5" />,
+    icon: <Icon className={cx('h-5 w-5', toneTokens[step.tone].text)} aria-hidden="true" />,
   };
 };
 
 export const EagerBailoutFlowSection = ({ content }: Props) => (
-  <section id="section-flow" aria-labelledby="heading-flow" className="space-y-md">
-    <SectionHeader
+  <section id="flow" aria-labelledby="heading-flow" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="flow"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

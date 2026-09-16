@@ -1,7 +1,7 @@
 import { Box, Braces, CornerDownRight, FileText, type LucideIcon, Workflow } from 'lucide-react';
 
 import { NumberedStepList, type StepRow } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { HostComponentContent, UpdateHostFlowStep } from '../content';
 
 const updateFlowIconByName: Record<UpdateHostFlowStep['icon'], LucideIcon> = {
@@ -20,16 +20,22 @@ const toRow = (step: UpdateHostFlowStep, idx: number): StepRow => {
     id: step.title,
     num: String(idx + 1),
     tone: step.tone,
-    icon: <Icon className="h-[1.125rem] w-[1.125rem]" />,
+    icon: <Icon className="h-[18px] w-[18px]" />,
     title: step.title,
     description: step.description,
   };
 };
 
 export const UpdateHostComponentFlow = ({ content }: Props) => (
-  <section id="update-host-flow" aria-labelledby="heading-update-host-flow" className="space-y-md">
-    <SectionHeader
+  <section
+    id="update-host-flow"
+    aria-labelledby="heading-update-host-flow"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="update-host-flow"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

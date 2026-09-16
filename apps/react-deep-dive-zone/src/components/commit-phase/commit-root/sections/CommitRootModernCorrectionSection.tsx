@@ -1,10 +1,10 @@
 import { Fragment } from 'react';
 
 import { cx } from '@berrypjh/react-ui';
-import { ArrowDown, ArrowRight, FileCode, Sparkles } from 'lucide-react';
+import { ArrowDown, ArrowRight, FileCode, Lightbulb, Sparkles } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
-import { ToneIconBox } from '../../../shared/tone';
+import { SectionNote } from '../../../shared/note';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CommitRootContent, ModernStep } from '../content';
 
@@ -16,8 +16,10 @@ export const CommitRootModernCorrectionSection = ({ content }: Props) => (
     aria-labelledby="heading-modern-correction"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="modern-correction"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -27,30 +29,15 @@ export const CommitRootModernCorrectionSection = ({ content }: Props) => (
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
       <StepRail steps={content.steps} />
 
-      <aside
-        className={cx(
-          'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
-          toneTokens.sky.fill.border,
-          toneTokens.sky.fill.bg,
-        )}
-      >
-        <ToneIconBox tone="sky" size="sm" className="mt-0.5 shrink-0">
-          <Sparkles className="h-4 w-4" aria-hidden="true" />
-        </ToneIconBox>
-        <p
-          className={cx('text-xsm sm:text-sm leading-relaxed break-keep', toneTokens.sky.fill.text)}
-        >
-          {content.bottomNote}
-        </p>
-      </aside>
-
-      <footer className="mt-3 flex items-center gap-2 rounded-lg border border-dashed border-[var(--term-border)] bg-[var(--term-surface)] px-md py-sm">
+      <footer className="mt-md flex items-center gap-2 rounded-lg border border-dashed border-[var(--term-border)] bg-[var(--term-surface)] px-md py-sm">
         <FileCode aria-hidden="true" className="h-4 w-4 shrink-0 text-[var(--term-muted)]" />
         <code className="text-[11px] sm:text-xsm font-mono text-[var(--term-muted)] break-all">
           {content.relatedFileNote}
         </code>
       </footer>
     </article>
+
+    <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
   </section>
 );
 

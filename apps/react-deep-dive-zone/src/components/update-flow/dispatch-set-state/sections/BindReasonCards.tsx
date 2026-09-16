@@ -1,23 +1,29 @@
 import { cx } from '@berrypjh/react-ui';
-import { Box, Link2, ShieldCheck } from 'lucide-react';
+import { Box, Link2, type LucideIcon, ShieldCheck } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { DispatchSetStateContent } from '../content';
+import type { BindReasonIcon, DispatchSetStateContent } from '../content';
 
-const bindReasonIconByName = {
+const bindReasonIconByName: Record<BindReasonIcon, LucideIcon> = {
   box: Box,
   link: Link2,
   shield: ShieldCheck,
-} as const;
+};
 
 type Props = { content: DispatchSetStateContent['bindReasons'] };
 
 export const BindReasonCards = ({ content }: Props) => (
-  <section id="section-bind-reasons" aria-labelledby="heading-bind-reasons" className="space-y-md">
-    <SectionHeader
+  <section
+    id="bind-reasons"
+    aria-labelledby="heading-bind-reasons"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="bind-reasons"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

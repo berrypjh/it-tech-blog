@@ -1,9 +1,9 @@
 import { cx } from '@berrypjh/react-ui';
-import { ChevronDown, FastForward, GitFork, Sparkles } from 'lucide-react';
+import { ChevronDown, FastForward, GitFork, Lightbulb } from 'lucide-react';
 
 import { ComparePanel } from '../../../shared/compare';
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { BeginWorkContent } from '../content';
 
@@ -19,9 +19,11 @@ const panelTone = (tone: ToneKey) => {
 };
 
 export const BeginWorkBailoutSection = ({ content }: Props) => (
-  <section id="bailout" aria-labelledby="heading-bailout" className="space-y-md">
-    <SectionHeader
+  <section id="bailout" aria-labelledby="heading-bailout" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="bailout"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.intro}
@@ -54,9 +56,7 @@ export const BeginWorkBailoutSection = ({ content }: Props) => (
       </ComparePanel>
     </div>
 
-    <SectionNote icon={<Sparkles className="h-4 w-4" aria-hidden="true" />}>
-      {content.emphasis}
-    </SectionNote>
+    <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
   </section>
 );
 

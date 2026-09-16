@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Database, Lightbulb, MonitorCheck, MousePointer } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { StateUpdateStartContent } from '../content';
@@ -11,9 +11,10 @@ type Props = { content: StateUpdateStartContent['snapshot'] };
 const sky = toneTokens.sky;
 
 export const StateSnapshotSection = ({ content }: Props) => (
-  <section id="section-snapshot" aria-labelledby="heading-snapshot" className="space-y-md">
-    <SectionHeader
+  <section id="snapshot" aria-labelledby="heading-snapshot" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="snapshot"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Database className="h-5 w-5" aria-hidden="true" />}

@@ -1,14 +1,14 @@
 import { cx } from '@berrypjh/react-ui';
-import { Layers, Pencil, Plus, Trash2 } from 'lucide-react';
+import { Layers, type LucideIcon, Pencil, Plus, Trash2 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { EffectCard, HeroFlagIcon, MutationPhaseContent } from '../content';
+import type { EffectCard, HeroFlagId, MutationPhaseContent } from '../content';
 
 type Props = { content: MutationPhaseContent['effects'] };
 
-const iconMap: Record<HeroFlagIcon, typeof Pencil> = {
+const iconMap: Record<HeroFlagId, LucideIcon> = {
   plus: Plus,
   pencil: Pencil,
   trash: Trash2,
@@ -20,15 +20,17 @@ export const MutationEffectsSection = ({ content }: Props) => (
     aria-labelledby="heading-mutation-effects"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="mutation-effects"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
       icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
-    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
+    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
       {content.cards.map((card, idx) => (
         <Card key={card.title} card={card} index={idx + 1} examplesLabel={content.examplesLabel} />
       ))}
@@ -45,7 +47,7 @@ const Card = ({
   index: number;
   examplesLabel: string;
 }) => {
-  const Icon = iconMap[card.iconName];
+  const Icon = iconMap[card.id];
   const t = toneTokens[card.tone];
   return (
     <ToneCardItem tone={card.tone} icon={<Icon className="h-5 w-5" />} topRight={index}>

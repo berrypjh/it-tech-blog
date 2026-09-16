@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, ListChecks, X } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CommitPhaseIntroContent } from '../content';
 
@@ -14,8 +14,10 @@ export const PhaseComparisonTableSection = ({ content }: Props) => (
     aria-labelledby="heading-phase-comparison"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="phase-comparison"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

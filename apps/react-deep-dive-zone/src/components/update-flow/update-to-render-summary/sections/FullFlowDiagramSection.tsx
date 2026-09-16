@@ -7,6 +7,7 @@ import {
   Flag,
   GitBranch,
   Hourglass,
+  type LucideIcon,
   MousePointerClick,
   PanelsTopLeft,
   Search,
@@ -16,11 +17,11 @@ import {
 } from 'lucide-react';
 
 import { NumberedStepList, type StepRow } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneBadge } from '../../../shared/tone';
-import type { UpdateToRenderSummaryContent } from '../content';
+import type { FlowStepIcon, UpdateToRenderSummaryContent } from '../content';
 
-const flowIconByName = {
+const flowIconByName: Record<FlowStepIcon, LucideIcon> = {
   mousePointer: MousePointerClick,
   code: Code2,
   workflow: Workflow,
@@ -35,7 +36,7 @@ const flowIconByName = {
   checkCircle: CheckCircle2,
   clock: Clock,
   hourglass: Hourglass,
-} as const;
+};
 
 type Props = { content: UpdateToRenderSummaryContent['bigFlow'] };
 
@@ -46,7 +47,7 @@ export const FullFlowDiagramSection = ({ content }: Props) => {
       id: step.number,
       num: step.number,
       tone: step.tone,
-      icon: <Icon className="h-[1.125rem] w-[1.125rem]" />,
+      icon: <Icon className="h-[18px] w-[18px]" />,
       title: step.title,
       description: step.description,
       extra: step.final ? (
@@ -58,9 +59,11 @@ export const FullFlowDiagramSection = ({ content }: Props) => {
   });
 
   return (
-    <section id="section-big-flow" aria-labelledby="heading-big-flow" className="space-y-md">
-      <SectionHeader
+    <section id="big-flow" aria-labelledby="heading-big-flow" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="big-flow"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

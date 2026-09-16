@@ -2,48 +2,29 @@ import { cx } from '@berrypjh/react-ui';
 import { Camera, Eye } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { BeforeMutationContent, PhaseTimelineStep } from '../content';
 
-type Props = { content: BeforeMutationContent['hero']; className?: string };
+type Props = { content: BeforeMutationContent['hero'] };
 
 /**
  * Hero 핵심 비주얼.
  * 변경 전 DOM → snapshot 캡처 → 변경 후 DOM으로 이어지는 before-mutation 흐름을
  * 위에서 아래로 잇고, 그 아래 commit phase 4단계 stepper로 위치를 보여준다.
  */
-export const BeforeMutationHeroDiagram = ({ content, className }: Props) => {
+export const BeforeMutationHeroDiagram = ({ content }: Props) => {
   const { diagram } = content;
   const a11y = `${diagram.title}: ${diagram.leftTitle} → ${diagram.centerLabel} → ${diagram.rightTitle}. ${diagram.phaseTimeline.map((s) => s.title).join(' → ')}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
-      <div className="relative flex flex-col gap-sm">
-        <header className="flex items-center gap-sm" aria-hidden="true">
-          <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
-            {'// current DOM → snapshot → next DOM'}
-          </span>
-          <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-            snapshot
-          </span>
-        </header>
-
-        <h2 className="text-center text-xsm sm:text-sm font-bold text-[var(--term-fg)] break-keep">
+    <HeroDiagramShell a11yLabel={a11y}>
+      <div className="relative flex flex-col gap-sm" aria-hidden="true">
+        <span className="text-center text-xsm sm:text-sm font-bold text-[var(--term-fg)] break-keep">
           {diagram.title}
-        </h2>
+        </span>
 
         <DomStep tone="teal" label={diagram.leftTitle} code={diagram.leftCode} />
 
@@ -55,10 +36,7 @@ export const BeforeMutationHeroDiagram = ({ content, className }: Props) => {
 
         <DomStep tone="sky" label={diagram.rightTitle} code={diagram.rightCode} />
 
-        <ol
-          className="mt-sm pt-md border-t border-dashed border-[var(--term-border)] grid grid-cols-2 @xl:grid-cols-4 gap-2"
-          aria-hidden="true"
-        >
+        <ol className="mt-sm pt-md border-t border-dashed border-[var(--term-border)] grid grid-cols-2 @xl:grid-cols-4 gap-2">
           {diagram.phaseTimeline.map((step) => (
             <li key={step.key} className="min-w-0">
               <PhaseStep step={step} />
@@ -66,7 +44,7 @@ export const BeforeMutationHeroDiagram = ({ content, className }: Props) => {
           ))}
         </ol>
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -74,7 +52,7 @@ const DomStep = ({ tone, label, code }: { tone: ToneKey; label: string; code: st
   const t = toneTokens[tone];
   return (
     <div className="flex flex-col gap-sm">
-      <div className="flex items-center gap-sm" aria-hidden="true">
+      <div className="flex items-center gap-sm">
         <span className={cx('text-xsm font-bold tracking-tight break-keep', t.text)}>{label}</span>
         <span className="flex-1 border-t border-dashed border-[var(--term-border)]" />
       </div>
@@ -84,21 +62,19 @@ const DomStep = ({ tone, label, code }: { tone: ToneKey; label: string; code: st
 };
 
 const SnapshotStep = ({ label }: { label: string }) => (
-  <article
+  <div
     className={cx(
       'flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-      'transition-all hover:-translate-y-0.5',
     )}
-    aria-hidden="true"
   >
     <ToneIconBox tone="teal" size="sm">
-      <Camera className="h-[18px] w-[18px]" aria-hidden="true" />
+      <Camera className="h-4 w-4" />
     </ToneIconBox>
     <span className={cx('text-sm font-bold tracking-tight break-keep', toneTokens.teal.text)}>
       {label}
     </span>
-  </article>
+  </div>
 );
 
 const PhaseStep = ({ step }: { step: PhaseTimelineStep }) => {
@@ -114,9 +90,9 @@ const PhaseStep = ({ step }: { step: PhaseTimelineStep }) => {
     >
       <ToneIconBox tone={tone} size="sm">
         {step.active ? (
-          <Eye className="h-[18px] w-[18px]" aria-hidden="true" />
+          <Eye className="h-4 w-4" />
         ) : (
-          <span className={cx('block h-1.5 w-1.5 rounded-full', t.dot)} aria-hidden="true" />
+          <span className={cx('block h-1.5 w-1.5 rounded-full', t.dot)} />
         )}
       </ToneIconBox>
       <div className="flex min-w-0 flex-col">
@@ -135,12 +111,3 @@ const PhaseStep = ({ step }: { step: PhaseTimelineStep }) => {
     </div>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

@@ -5,31 +5,36 @@ import {
   FileText,
   Flag,
   Lightbulb,
+  type LucideIcon,
   Settings,
   SquareDashed,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { EnqueueConcurrentHookUpdateContent, EnqueueMeaningStep } from '../content';
+import type {
+  EnqueueConcurrentHookUpdateContent,
+  EnqueueMeaningIcon,
+  EnqueueMeaningStep,
+} from '../content';
 
-const elementIconByName = {
+const elementIconByName: Record<EnqueueMeaningIcon, LucideIcon> = {
   squareDashed: SquareDashed,
   database: Database,
   fileText: FileText,
   flag: Flag,
-  settings: Settings,
-} as const;
+};
 
 type Props = { content: EnqueueConcurrentHookUpdateContent['meaning'] };
 
 const emerald = toneTokens.emerald;
 
 export const EnqueueUpdateMeaningSection = ({ content }: Props) => (
-  <section id="section-meaning" aria-labelledby="heading-meaning" className="space-y-md">
-    <SectionHeader
+  <section id="meaning" aria-labelledby="heading-meaning" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="meaning"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Settings className="h-5 w-5" aria-hidden="true" />}
@@ -38,14 +43,9 @@ export const EnqueueUpdateMeaningSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1.35fr)] gap-md lg:gap-lg items-stretch">
       {/* 좌: 설명 */}
       <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-        <header className="flex items-center gap-sm">
-          <ToneIconBox tone="amber" size="sm">
-            <Lightbulb className="h-[18px] w-[18px]" aria-hidden="true" />
-          </ToneIconBox>
-          <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
-            common chokepoint
-          </span>
-        </header>
+        <ToneIconBox tone="amber" size="sm">
+          <Lightbulb className="h-[18px] w-[18px]" aria-hidden="true" />
+        </ToneIconBox>
         <h3 className="text-md sm:text-lg font-bold leading-snug text-[var(--term-fg)] break-keep">
           {content.descriptionTitle}
         </h3>
@@ -69,20 +69,6 @@ export const EnqueueUpdateMeaningSection = ({ content }: Props) => (
 
       {/* 우: 가로 흐름 */}
       <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-        <header className="flex items-center justify-between gap-sm">
-          <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-            {'// fiber → queue → update → lane → handler'}
-          </span>
-          <span
-            className={cx(
-              'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
-              emerald.chip,
-            )}
-          >
-            concurrent path
-          </span>
-        </header>
-
         <ol className="flex flex-wrap items-center justify-center gap-2 sm:gap-1.5">
           {content.flow.map((step, idx) => (
             <li key={step.label} className="flex items-center gap-2 sm:gap-1.5">

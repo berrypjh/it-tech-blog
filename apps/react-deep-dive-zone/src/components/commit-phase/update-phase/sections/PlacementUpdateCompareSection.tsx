@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, GitCompareArrows } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { SummaryItem, UpdatePhaseContent } from '../content';
@@ -11,8 +11,10 @@ type Props = { content: UpdatePhaseContent['compare'] };
 
 export const PlacementUpdateCompareSection = ({ content }: Props) => (
   <section id="compare" aria-labelledby="heading-compare" className="space-y-md scroll-mt-xl">
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="compare"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

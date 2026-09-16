@@ -1,16 +1,22 @@
 import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowUp, GitBranch } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { PerformUnitContent, ReturnDirectionCard } from '../content';
 
 type Props = { content: PerformUnitContent['returnDirection'] };
 
 export const BeginWorkReturnDecision = ({ content }: Props) => (
-  <section id="return-direction" aria-labelledby="heading-return-direction" className="space-y-md">
-    <SectionHeader
+  <section
+    id="return-direction"
+    aria-labelledby="heading-return-direction"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="return-direction"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

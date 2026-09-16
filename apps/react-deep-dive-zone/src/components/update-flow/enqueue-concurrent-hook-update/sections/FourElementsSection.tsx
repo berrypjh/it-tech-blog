@@ -1,32 +1,33 @@
 import { cx } from '@berrypjh/react-ui';
-import { Database, FileText, Flag, Layers, Settings, SquareDashed } from 'lucide-react';
+import { Database, FileText, Flag, Layers, type LucideIcon, SquareDashed } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
-import { ToneCardItem } from '../../../shared/tone';
+import { SectionBadgeHeader } from '../../../shared/section';
+import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { EnqueueConcurrentHookUpdateContent } from '../content';
+import type { EnqueueConcurrentHookUpdateContent, FourElementIcon } from '../content';
 
-const elementIconByName = {
+const elementIconByName: Record<FourElementIcon, LucideIcon> = {
   squareDashed: SquareDashed,
   database: Database,
   fileText: FileText,
   flag: Flag,
-  settings: Settings,
-} as const;
+};
 
 type Props = { content: EnqueueConcurrentHookUpdateContent['elements'] };
 
 export const FourElementsSection = ({ content }: Props) => (
-  <section id="section-elements" aria-labelledby="heading-elements" className="space-y-md">
-    <SectionHeader
+  <section id="elements" aria-labelledby="heading-elements" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="elements"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
       icon={<Layers className="h-5 w-5" aria-hidden="true" />}
     />
 
-    <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md">
+    <ToneCardGrid>
       {content.cards.map((card) => {
         const Icon = elementIconByName[card.icon];
         const t = toneTokens[card.tone];
@@ -52,6 +53,6 @@ export const FourElementsSection = ({ content }: Props) => (
           </ToneCardItem>
         );
       })}
-    </ul>
+    </ToneCardGrid>
   </section>
 );

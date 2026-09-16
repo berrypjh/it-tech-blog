@@ -3,14 +3,14 @@ import type { Locale } from '@it-tech-blog/preferences';
 import type { FinaleBannerContent } from '../../shared/banner';
 import type { ToneKey } from '../../shared/tones';
 
-export type HeroPhaseIcon = 'eye' | 'pencil' | 'zap' | 'clock';
+export type HeroPhaseId = 'eye' | 'pencil' | 'zap' | 'clock';
 
 export type HeroPhase = {
   key: string;
   title: string;
   subtitle?: string;
   body: string[];
-  iconName: HeroPhaseIcon;
+  id: HeroPhaseId;
   tone: ToneKey;
   active?: boolean;
   zone: 'sync' | 'async';
@@ -36,19 +36,9 @@ export type LifecycleCard = {
   subtitle?: string;
   pill: string;
   items: LifecycleListItem[];
-  iconName: 'leaf' | 'trash';
+  id: 'leaf' | 'trash';
   tone: ToneKey;
 };
-
-export type TimelineBadge =
-  | '준비'
-  | '진입'
-  | '동기'
-  | '비동기'
-  | 'prep'
-  | 'enter'
-  | 'sync'
-  | 'async';
 
 export type TimelineStep = {
   number: string;
@@ -61,10 +51,8 @@ export type TimelineStep = {
 
 export type SummaryItem = {
   text: string;
-  iconName: 'check' | 'clock' | 'link' | 'star';
+  id: 'check' | 'clock' | 'link' | 'star';
 };
-
-export type ChecklistItem = string;
 
 export type NextChapterCard = {
   title: string;
@@ -81,9 +69,12 @@ export type PassiveEffectsContent = {
       phases: HeroPhase[];
       syncLabel: { title: string; subtitle: string };
       asyncLabel: { title: string; subtitle: string };
+      code: string;
+      codeCaption: string;
     };
   };
   position: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -91,6 +82,7 @@ export type PassiveEffectsContent = {
     callout: { line1: string; line2: string };
   };
   compare: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -99,21 +91,26 @@ export type PassiveEffectsContent = {
     note: string;
   };
   lifecycle: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     mount: LifecycleCard;
     unmount: LifecycleCard;
-    insight: string;
+    note: string;
   };
   example: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
+    codeTitle: string;
     code: string;
+    flowLabel: string;
     flowSteps: { label: string; tone: ToneKey }[];
   };
   fullTimeline: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -121,14 +118,8 @@ export type PassiveEffectsContent = {
     summaryTitle: string;
     summaryItems: SummaryItem[];
   };
-  checklist: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    items: ChecklistItem[];
-    trophy: string;
-  };
   nextChapter: {
+    badge: string;
     eyebrow: string;
     title: string;
     intro: string;
@@ -143,7 +134,7 @@ const heroPhasesKo: HeroPhase[] = [
     key: 'before-mutation',
     title: 'Before Mutation',
     body: ['snapshot 읽기 / 준비'],
-    iconName: 'eye',
+    id: 'eye',
     tone: 'violet',
     zone: 'sync',
   },
@@ -151,7 +142,7 @@ const heroPhasesKo: HeroPhase[] = [
     key: 'mutation',
     title: 'Mutation',
     body: ['DOM 변경', '삽입 / 수정 / 삭제'],
-    iconName: 'pencil',
+    id: 'pencil',
     tone: 'sky',
     zone: 'sync',
   },
@@ -159,7 +150,7 @@ const heroPhasesKo: HeroPhase[] = [
     key: 'layout',
     title: 'Layout',
     body: ['ref attach', 'useLayoutEffect'],
-    iconName: 'zap',
+    id: 'zap',
     tone: 'blue',
     zone: 'sync',
   },
@@ -168,7 +159,7 @@ const heroPhasesKo: HeroPhase[] = [
     title: 'Passive Effects',
     subtitle: '후속 처리',
     body: ['useEffect 실행 / 정리', '비동기'],
-    iconName: 'clock',
+    id: 'clock',
     tone: 'teal',
     active: true,
     zone: 'async',
@@ -180,7 +171,7 @@ const heroPhasesEn: HeroPhase[] = [
     key: 'before-mutation',
     title: 'Before Mutation',
     body: ['snapshot read / prep'],
-    iconName: 'eye',
+    id: 'eye',
     tone: 'violet',
     zone: 'sync',
   },
@@ -188,7 +179,7 @@ const heroPhasesEn: HeroPhase[] = [
     key: 'mutation',
     title: 'Mutation',
     body: ['DOM changes', 'insert / update / delete'],
-    iconName: 'pencil',
+    id: 'pencil',
     tone: 'sky',
     zone: 'sync',
   },
@@ -196,7 +187,7 @@ const heroPhasesEn: HeroPhase[] = [
     key: 'layout',
     title: 'Layout',
     body: ['ref attach', 'useLayoutEffect'],
-    iconName: 'zap',
+    id: 'zap',
     tone: 'blue',
     zone: 'sync',
   },
@@ -205,7 +196,7 @@ const heroPhasesEn: HeroPhase[] = [
     title: 'Passive Effects',
     subtitle: 'follow-up',
     body: ['useEffect setup / cleanup', 'async'],
-    iconName: 'clock',
+    id: 'clock',
     tone: 'teal',
     active: true,
     zone: 'async',
@@ -369,46 +360,20 @@ const fullTimelineStepsEn: TimelineStep[] = [
 ];
 
 const summaryItemsKo: SummaryItem[] = [
-  { text: '앞쪽은 동기적 Commit Phase (paint 전)', iconName: 'clock' },
-  { text: 'Passive Effects는 비동기 후속 처리', iconName: 'check' },
-  { text: 'DOM 변경 이후, ref와 effect가 순서대로 갱신', iconName: 'link' },
-  { text: '이 순서가 React의 안정적인 업데이트를 보장', iconName: 'star' },
+  { text: '앞쪽은 동기적 Commit Phase (paint 전)', id: 'clock' },
+  { text: 'Passive Effects는 비동기 후속 처리', id: 'check' },
+  { text: 'DOM 변경 이후, ref와 effect가 순서대로 갱신', id: 'link' },
+  { text: '이 순서가 React의 안정적인 업데이트를 보장', id: 'star' },
 ];
 
 const summaryItemsEn: SummaryItem[] = [
-  { text: 'The earlier part is the synchronous Commit Phase (before paint)', iconName: 'clock' },
-  { text: 'Passive Effects is the asynchronous follow-up', iconName: 'check' },
+  { text: 'The earlier part is the synchronous Commit Phase (before paint)', id: 'clock' },
+  { text: 'Passive Effects is the asynchronous follow-up', id: 'check' },
   {
     text: 'After DOM changes, refs and effects are updated in order',
-    iconName: 'link',
+    id: 'link',
   },
-  { text: 'This order guarantees stable React updates', iconName: 'star' },
-];
-
-const checklistItemsKo: ChecklistItem[] = [
-  'Render와 Commit의 차이를 설명할 수 있다.',
-  'commitRoot의 역할을 설명할 수 있다.',
-  'Before Mutation이 필요한 이유를 설명할 수 있다.',
-  'Mutation Phase가 실제 DOM을 바꾸는 이유를 설명할 수 있다.',
-  'Placement가 실제 삽입으로 이어지는 흐름을 설명할 수 있다.',
-  'Update가 props/text 갱신으로 이어지는 흐름을 설명할 수 있다.',
-  'Deletion이 cleanup까지 포함하는 이유를 설명할 수 있다.',
-  'current tree가 언제 전환되는지 설명할 수 있다.',
-  'refs가 언제 detach / attach 되는지 설명할 수 있다.',
-  'useLayoutEffect와 useEffect의 시점 차이를 설명할 수 있다.',
-];
-
-const checklistItemsEn: ChecklistItem[] = [
-  'I can explain the difference between Render and Commit.',
-  'I can explain the role of commitRoot.',
-  'I can explain why Before Mutation is needed.',
-  'I can explain why the Mutation Phase changes the real DOM.',
-  'I can explain how Placement leads to the actual insert.',
-  'I can explain how Update leads to props/text updates.',
-  'I can explain why Deletion includes cleanup.',
-  'I can explain when the current tree is swapped.',
-  'I can explain when refs detach / attach.',
-  'I can explain the timing difference between useLayoutEffect and useEffect.',
+  { text: 'This order guarantees stable React updates', id: 'star' },
 ];
 
 const nextChapterCardsKo: NextChapterCard[] = [
@@ -425,7 +390,9 @@ const nextChapterCardsEn: NextChapterCard[] = [
   { title: 'effect list', subtitle: 'collect and run' },
 ];
 
-const exampleCodeKo = `function Example({ id }) {
+const heroCode = 'useEffect(() => {\n  // setup\n  return cleanup;\n}, [deps]);';
+
+const exampleCode = `function Example({ id }) {
   useEffect(() => {
     const sub = api.subscribe(id); // setup
 
@@ -434,8 +401,6 @@ const exampleCodeKo = `function Example({ id }) {
     };
   }, [id]);
 }`;
-
-const exampleCodeEn = exampleCodeKo;
 
 const ko: PassiveEffectsContent = {
   hero: {
@@ -452,17 +417,21 @@ const ko: PassiveEffectsContent = {
       phases: heroPhasesKo,
       syncLabel: { title: '동기적 Commit Phase', subtitle: '브라우저 paint 전까지' },
       asyncLabel: { title: '비동기 후속 단계', subtitle: '브라우저 paint 이후' },
+      code: heroCode,
+      codeCaption: 'passive effect — paint 이후 비동기로 flush',
     },
   },
   position: {
-    eyebrow: '01 · passive 위치',
+    badge: '01',
+    eyebrow: 'passive 위치',
     title: 'Passive Effects의 위치',
     description: 'Commit Phase의 마지막 단계로, paint 이후 후속 흐름에서 실행됩니다.',
     steps: positionStepsKo,
     callout: { line1: 'paint 이후,', line2: '비동기 처리' },
   },
   compare: {
-    eyebrow: '02 · 이펙트 비교',
+    badge: '02',
+    eyebrow: '이펙트 비교',
     title: 'useLayoutEffect vs useEffect 비교',
     description: '두 Hook은 비슷해 보이지만 실행 시점이 다릅니다.',
     headers: { hook: 'Hook', feel: '실행 감각', timing: '실행 시점' },
@@ -470,7 +439,8 @@ const ko: PassiveEffectsContent = {
     note: '화면에 영향을 주는 측정/보정은 useLayoutEffect, 데이터 구독/네트워크 요청 등은 useEffect가 일반적입니다.',
   },
   lifecycle: {
-    eyebrow: '03 · passive 생명주기',
+    badge: '03',
+    eyebrow: 'passive 생명주기',
     title: 'passive mount / unmount 흐름',
     description: 'setup과 cleanup이 한 쌍을 이루며, cleanup이 먼저 실행됩니다.',
     mount: {
@@ -478,23 +448,26 @@ const ko: PassiveEffectsContent = {
       subtitle: '컴포넌트 추가',
       pill: 'passive effect setup',
       items: ['useEffect 콜백 실행', '구독 시작 / 요청 시작', 'cleanup 함수 반환'],
-      iconName: 'leaf',
+      id: 'leaf',
       tone: 'teal',
     },
     unmount: {
       title: 'unmount / deps change',
       pill: 'passive cleanup',
       items: ['이전 effect의 cleanup 실행', '구독 해제 / 요청 취소', '메모리 / 리소스 정리'],
-      iconName: 'trash',
+      id: 'trash',
       tone: 'indigo',
     },
-    insight: 'React는 cleanup → setup 순서를 보장합니다.',
+    note: 'React는 cleanup → setup 순서를 보장합니다.',
   },
   example: {
-    eyebrow: '04 · passive 예시',
+    badge: '04',
+    eyebrow: 'passive 예시',
     title: 'passive effect 실행 예시',
     description: '실제 useEffect 코드에서 setup과 cleanup이 어떻게 나타나는지 봅니다.',
-    code: exampleCodeKo,
+    codeTitle: 'useEffect 예시',
+    code: exampleCode,
+    flowLabel: '실행 흐름',
     flowSteps: [
       { label: 'Commit 완료', tone: 'sky' },
       { label: '브라우저 paint', tone: 'violet' },
@@ -502,22 +475,17 @@ const ko: PassiveEffectsContent = {
     ],
   },
   fullTimeline: {
-    eyebrow: '05 · 전체 타임라인',
+    badge: '05',
+    eyebrow: '전체 타임라인',
     title: 'Commit Phase 전체 타임라인 (한눈에 정리)',
     description: 'Commit Phase 챕터에서 다룬 모든 단계를 7-step으로 정리합니다.',
     steps: fullTimelineStepsKo,
     summaryTitle: '핵심 요약',
     summaryItems: summaryItemsKo,
   },
-  checklist: {
-    eyebrow: '06 · 핵심 체크리스트',
-    title: '최종 체크리스트 — 나는 설명할 수 있는가?',
-    description: 'Commit Phase 챕터에서 익힌 내용을 스스로 점검해봅니다.',
-    items: checklistItemsKo,
-    trophy: '모든 항목을 체크했다면 Commit Phase 마스터에 가까워지고 있습니다.',
-  },
   nextChapter: {
-    eyebrow: '07 · 다음 챕터',
+    badge: '06',
+    eyebrow: '다음 챕터',
     title: '다음 챕터 예고',
     intro:
       'Commit Phase까지 이해했다면, 이제 함수 컴포넌트 내부에서 상태와 effect가 어떤 Hook 자료구조로 관리되는지 살펴볼 준비가 되었습니다.',
@@ -551,17 +519,21 @@ const en: PassiveEffectsContent = {
       phases: heroPhasesEn,
       syncLabel: { title: 'Synchronous Commit Phase', subtitle: 'before browser paint' },
       asyncLabel: { title: 'Async follow-up step', subtitle: 'after browser paint' },
+      code: heroCode,
+      codeCaption: 'passive effect — flushed async after paint',
     },
   },
   position: {
-    eyebrow: '01 · PASSIVE POSITION',
+    badge: '01',
+    eyebrow: 'PASSIVE POSITION',
     title: 'Where Passive Effects sit',
     description: 'The last step of the Commit Phase — runs as a follow-up after paint.',
     steps: positionStepsEn,
     callout: { line1: 'after paint,', line2: 'async work' },
   },
   compare: {
-    eyebrow: '02 · EFFECT COMPARE',
+    badge: '02',
+    eyebrow: 'EFFECT COMPARE',
     title: 'useLayoutEffect vs useEffect',
     description: 'They look similar but run at different times.',
     headers: { hook: 'Hook', feel: 'how it feels', timing: 'when it runs' },
@@ -569,7 +541,8 @@ const en: PassiveEffectsContent = {
     note: 'Measurement / fix-ups that affect the screen → useLayoutEffect; data subscriptions / network requests → useEffect.',
   },
   lifecycle: {
-    eyebrow: '03 · PASSIVE LIFECYCLE',
+    badge: '03',
+    eyebrow: 'PASSIVE LIFECYCLE',
     title: 'passive mount / unmount flow',
     description: 'Setup and cleanup are paired, and cleanup runs first.',
     mount: {
@@ -581,7 +554,7 @@ const en: PassiveEffectsContent = {
         'Start subscriptions / requests',
         'Return the cleanup function',
       ],
-      iconName: 'leaf',
+      id: 'leaf',
       tone: 'teal',
     },
     unmount: {
@@ -592,16 +565,19 @@ const en: PassiveEffectsContent = {
         'Unsubscribe / cancel requests',
         'Release memory / resources',
       ],
-      iconName: 'trash',
+      id: 'trash',
       tone: 'indigo',
     },
-    insight: 'React guarantees cleanup → setup order.',
+    note: 'React guarantees cleanup → setup order.',
   },
   example: {
-    eyebrow: '04 · PASSIVE EXAMPLE',
+    badge: '04',
+    eyebrow: 'PASSIVE EXAMPLE',
     title: 'passive effect execution example',
     description: 'See how setup and cleanup appear in actual useEffect code.',
-    code: exampleCodeEn,
+    codeTitle: 'useEffect example',
+    code: exampleCode,
+    flowLabel: 'Execution flow',
     flowSteps: [
       { label: 'Commit done', tone: 'sky' },
       { label: 'Browser paint', tone: 'violet' },
@@ -609,22 +585,17 @@ const en: PassiveEffectsContent = {
     ],
   },
   fullTimeline: {
-    eyebrow: '05 · FULL TIMELINE',
+    badge: '05',
+    eyebrow: 'FULL TIMELINE',
     title: 'Commit Phase full timeline (one summary)',
     description: 'A 7-step recap of every step covered in this Commit Phase chapter.',
     steps: fullTimelineStepsEn,
     summaryTitle: 'Key summary',
     summaryItems: summaryItemsEn,
   },
-  checklist: {
-    eyebrow: '06 · CORE CHECKLIST',
-    title: 'Final checklist — Can I explain this?',
-    description: 'Quickly self-check everything you learned in this chapter.',
-    items: checklistItemsEn,
-    trophy: "If you've checked all items, you're closing in on Commit Phase mastery.",
-  },
   nextChapter: {
-    eyebrow: '07 · NEXT CHAPTER',
+    badge: '06',
+    eyebrow: 'NEXT CHAPTER',
     title: 'Next chapter preview',
     intro:
       'Now that the Commit Phase is clear, you are ready to see how state and effects are managed inside function components as Hook data structures.',

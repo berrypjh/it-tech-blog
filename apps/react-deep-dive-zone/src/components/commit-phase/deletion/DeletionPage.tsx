@@ -5,10 +5,9 @@ import { StartPageShell } from '../../shared/shell';
 
 import { CleanupVsHostRemoveSection } from './sections/CleanupVsHostRemoveSection';
 import { DeletionCleanupItemsSection } from './sections/DeletionCleanupItemsSection';
-import { DeletionCodeCheckpointSection } from './sections/DeletionCodeCheckpointSection';
+import { DeletionCodeCheckpoint } from './sections/DeletionCodeCheckpoint';
 import { DeletionHeroSection } from './sections/DeletionHeroSection';
 import { DeletionPipelineSection } from './sections/DeletionPipelineSection';
-import { DeletionQuizSection } from './sections/DeletionQuizSection';
 import { ModalDeletionExampleSection } from './sections/ModalDeletionExampleSection';
 import { deletionContent } from './content';
 
@@ -23,9 +22,8 @@ export const DeletionPage = ({ locale }: Props) => {
       <DeletionPipelineSection content={c.pipeline} />
       <DeletionCleanupItemsSection content={c.cleanup} />
       <ModalDeletionExampleSection content={c.modal} />
-      <DeletionCodeCheckpointSection content={c.checkpoint} />
+      <DeletionCodeCheckpoint content={c.checkpoint} />
       <CleanupVsHostRemoveSection content={c.cleanupVsRemove} />
-      <DeletionQuizSection quiz={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

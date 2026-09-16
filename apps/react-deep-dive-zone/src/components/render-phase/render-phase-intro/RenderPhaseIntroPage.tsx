@@ -8,7 +8,6 @@ import { PhaseComparisonTable } from './sections/PhaseComparisonTable';
 import { PreviousChapterFlow } from './sections/PreviousChapterFlow';
 import { RenderPhaseFlowPreview } from './sections/RenderPhaseFlowPreview';
 import { RenderPhaseHero } from './sections/RenderPhaseHero';
-import { RenderPhaseMiniQuiz } from './sections/RenderPhaseMiniQuiz';
 import { RenderPhaseWorkCards } from './sections/RenderPhaseWorkCards';
 import { renderPhaseIntroContent } from './content';
 
@@ -25,7 +24,6 @@ export const RenderPhaseIntroPage = ({ locale }: Props) => {
       <RenderPhaseWorkCards content={c.work} />
       <RenderPhaseFlowPreview content={c.flowPreview} />
       <DomNotChangedWarning content={c.warning} />
-      <RenderPhaseMiniQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

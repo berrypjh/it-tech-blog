@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Clock, Lightbulb, Sparkles, TimerReset } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { EnsureRootScheduledContent } from '../content';
@@ -11,9 +11,10 @@ type Props = { content: EnsureRootScheduledContent['microtask'] };
 const emerald = toneTokens.emerald;
 
 export const MicrotaskConceptSection = ({ content }: Props) => (
-  <section id="section-microtask" aria-labelledby="heading-microtask" className="space-y-md">
-    <SectionHeader
+  <section id="microtask" aria-labelledby="heading-microtask" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="microtask"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Clock className="h-5 w-5" aria-hidden="true" />}
@@ -22,14 +23,9 @@ export const MicrotaskConceptSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1.2fr)] gap-md lg:gap-lg items-stretch">
       {/* 좌: 설명 */}
       <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-        <header className="flex items-center gap-sm">
-          <ToneIconBox tone="amber" size="sm">
-            <TimerReset className="h-[18px] w-[18px]" aria-hidden="true" />
-          </ToneIconBox>
-          <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
-            schedule later, not now
-          </span>
-        </header>
+        <ToneIconBox tone="amber" size="sm">
+          <TimerReset className="h-[18px] w-[18px]" aria-hidden="true" />
+        </ToneIconBox>
 
         <p className="text-sm sm:text-md leading-relaxed text-[var(--term-fg)] break-keep">
           {content.description}
@@ -61,19 +57,9 @@ export const MicrotaskConceptSection = ({ content }: Props) => (
           emerald.border,
         )}
       >
-        <header className="flex items-center justify-between gap-sm">
-          <h3 className={cx('text-sm sm:text-md font-bold leading-tight', emerald.text)}>
-            {content.diagramTitle}
-          </h3>
-          <span
-            className={cx(
-              'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
-              emerald.chip,
-            )}
-          >
-            microtask
-          </span>
-        </header>
+        <h3 className={cx('text-sm sm:text-md font-bold leading-tight', emerald.text)}>
+          {content.diagramTitle}
+        </h3>
 
         <div className="rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-md py-4">
           <div className="flex items-center justify-center gap-1.5 sm:gap-3 flex-wrap">

@@ -13,14 +13,8 @@ type Props = { content: FiberToRootContent['hero'] };
 
 export const FiberToRootHero = ({ content }: Props) => (
   <HeroSection
-    promptCommand="grep -n"
-    promptPath="markUpdateLaneFromFiberToRoot"
-    promptSuffix={
-      <span className="text-[var(--term-dim)]">
-        {' '}
-        packages/react-reconciler/src/ReactFiberConcurrentUpdates.js
-      </span>
-    }
+    promptCommand="cat"
+    promptPath="packages/react-reconciler/src/ReactFiberConcurrentUpdates.js"
     gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
     align="center"
   >
@@ -35,10 +29,10 @@ export const FiberToRootHero = ({ content }: Props) => (
         <span className="block text-[var(--term-accent)]">{content.title.line3}</span>
       </HeroTitle>
 
-      <HeroDescription maxWidth="max-w-[58ch]">{content.description}</HeroDescription>
+      <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-fiber-to-root" className="min-w-0">
+    <HeroVisualColumn id="hero-fiber-to-root">
       <FiberToRootHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

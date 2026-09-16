@@ -1,8 +1,8 @@
 import { cx } from '@berrypjh/react-ui';
-import { CheckCircle2, Clock, Workflow } from 'lucide-react';
+import { CheckCircle2, Lightbulb, Workflow } from 'lucide-react';
 
 import { SectionNote } from '../../../shared/note';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FlowPreviewStep, RenderPhaseIntroContent } from '../content';
@@ -10,9 +10,15 @@ import type { FlowPreviewStep, RenderPhaseIntroContent } from '../content';
 type Props = { content: RenderPhaseIntroContent['flowPreview'] };
 
 export const RenderPhaseFlowPreview = ({ content }: Props) => (
-  <section id="flow-preview" aria-labelledby="heading-flow-preview" className="space-y-md">
-    <SectionHeader
+  <section
+    id="flow-preview"
+    aria-labelledby="heading-flow-preview"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="flow-preview"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -20,15 +26,6 @@ export const RenderPhaseFlowPreview = ({ content }: Props) => (
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-      <header className="mb-md flex flex-wrap items-center justify-between gap-2">
-        <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
-          {'// render phase: 7 steps map'}
-        </span>
-        <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)] rounded-md border border-[var(--term-border)] px-2 py-0.5">
-          chapter map
-        </span>
-      </header>
-
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.45fr)_minmax(0,_1fr)] gap-md">
         <ol className="flex flex-col gap-2">
           {content.steps.map((step, idx) => (
@@ -73,9 +70,7 @@ export const RenderPhaseFlowPreview = ({ content }: Props) => (
             </ul>
           </article>
 
-          <SectionNote icon={<Clock className="h-4 w-4" aria-hidden="true" />}>
-            {content.importantNote}
-          </SectionNote>
+          <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
         </div>
       </div>
     </article>

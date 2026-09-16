@@ -1,16 +1,25 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowDown, Crosshair, Hand, Lightbulb, Route, Split, Workflow } from 'lucide-react';
+import {
+  ArrowDown,
+  Crosshair,
+  Hand,
+  Lightbulb,
+  type LucideIcon,
+  Route,
+  Split,
+  Workflow,
+} from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
-import type { LaneDecisionStep, LaneUpdateObjectContent } from '../content';
+import type { LaneDecisionIcon, LaneDecisionStep, LaneUpdateObjectContent } from '../content';
 
-const laneDecisionIconByName = {
+const laneDecisionIconByName: Record<LaneDecisionIcon, LucideIcon> = {
   hand: Hand,
   workflow: Workflow,
   split: Split,
   crosshair: Crosshair,
-} as const;
+};
 
 type Props = { content: LaneUpdateObjectContent['requestLane'] };
 
@@ -18,9 +27,14 @@ const sky = toneTokens.sky;
 const amber = toneTokens.amber;
 
 export const RequestUpdateLaneSection = ({ content }: Props) => (
-  <section id="section-requestlane" aria-labelledby="heading-requestlane" className="space-y-md">
-    <SectionHeader
+  <section
+    id="requestlane"
+    aria-labelledby="heading-requestlane"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
       id="requestlane"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Route className="h-5 w-5" aria-hidden="true" />}
@@ -72,22 +86,12 @@ export const RequestUpdateLaneSection = ({ content }: Props) => (
 
       {/* 우: 결정 다이어그램 */}
       <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-        <header className="flex items-center justify-between gap-sm">
-          <div className="flex flex-col min-w-0">
-            <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] leading-tight">
-              {content.decisionTitle}
-            </h3>
-            <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
-              {content.decisionSubtitle}
-            </span>
-          </div>
-          <span
-            className={cx(
-              'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
-              amber.chip,
-            )}
-          >
-            inputs
+        <header className="flex flex-col min-w-0">
+          <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] leading-tight">
+            {content.decisionTitle}
+          </h3>
+          <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
+            {content.decisionSubtitle}
           </span>
         </header>
 
@@ -142,16 +146,6 @@ const DecisionStep = ({ step }: { step: LaneDecisionStep }) => {
           {step.number}
         </span>
         <span className={cx('text-xsm sm:text-sm font-bold break-keep', t.text)}>{step.title}</span>
-        {step.emphasized && (
-          <span
-            className={cx(
-              'ml-auto inline-flex items-center rounded border px-1.5 py-0.5 text-[9px] font-mono uppercase tracking-wider',
-              amber.chip,
-            )}
-          >
-            result
-          </span>
-        )}
       </div>
     </div>
   );

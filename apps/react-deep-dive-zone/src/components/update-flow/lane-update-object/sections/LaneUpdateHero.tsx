@@ -13,14 +13,8 @@ type Props = { content: LaneUpdateObjectContent['hero'] };
 
 export const LaneUpdateHero = ({ content }: Props) => (
   <HeroSection
-    promptCommand="grep -n"
-    promptPath="dispatchSetStateInternal"
-    promptSuffix={
-      <span className="text-[var(--term-dim)]">
-        {' '}
-        packages/react-reconciler/src/ReactFiberHooks.js
-      </span>
-    }
+    promptCommand="cat"
+    promptPath="packages/react-reconciler/src/ReactFiberHooks.js"
     gridColumns="lg:grid-cols-[minmax(0,_0.92fr)_minmax(0,_1.08fr)]"
     align="center"
   >
@@ -37,7 +31,7 @@ export const LaneUpdateHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-lane-update" className="min-w-0">
+    <HeroVisualColumn id="hero-lane-selection">
       <LaneUpdateHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

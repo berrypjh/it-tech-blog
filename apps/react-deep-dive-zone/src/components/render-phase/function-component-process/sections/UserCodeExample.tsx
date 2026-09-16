@@ -2,16 +2,17 @@ import { cx } from '@berrypjh/react-ui';
 import { FileCode } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { FunctionComponentContent } from '../content';
 
 type Props = { content: FunctionComponentContent['userCode'] };
 
 export const UserCodeExample = ({ content }: Props) => (
-  <section id="user-code" aria-labelledby="heading-user-code" className="space-y-md">
-    <SectionHeader
+  <section id="user-code" aria-labelledby="heading-user-code" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="user-code"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<FileCode className="h-5 w-5" aria-hidden="true" />}

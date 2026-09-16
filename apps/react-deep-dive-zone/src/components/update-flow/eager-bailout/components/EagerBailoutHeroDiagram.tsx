@@ -2,23 +2,24 @@ import { cx } from '@berrypjh/react-ui';
 import { Ban, CheckCircle2, Equal, GitCompare } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { EagerBailoutContent } from '../content';
 
-type Props = { content: EagerBailoutContent['hero']; className?: string };
+type Props = { content: EagerBailoutContent['hero'] };
 
 /**
  * Hero 핵심 비주얼.
  * 현재 state와 미리 계산한 eagerState를 비교(==)하고, 같으면 bailout(렌더 예약 생략),
  * 다르면 렌더 예약으로 분기하는 결정 흐름을 위에서 아래로 잇는 컴팩트 stepper.
  */
-export const EagerBailoutHeroDiagram = ({ content, className }: Props) => {
+export const EagerBailoutHeroDiagram = ({ content }: Props) => {
   const d = content.diagram;
   const a11y = `${d.currentTitle} ${d.currentValue} ${d.compareSymbol} ${d.eagerTitle} ${d.eagerValue} — ${d.question} ${d.leftBranch}: ${d.leftResultTitle}, ${d.rightBranch}: ${d.rightResultTitle}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <div className="grid grid-cols-1 @sm:grid-cols-2 gap-sm">
           <CompareCard tone="cyan" title={d.currentTitle} value={d.currentValue} />
@@ -42,14 +43,14 @@ export const EagerBailoutHeroDiagram = ({ content, className }: Props) => {
             branch={d.leftBranch}
             title={d.leftResultTitle}
             body={d.leftResultBody}
-            icon={<CheckCircle2 className="h-[18px] w-[18px]" aria-hidden="true" />}
+            icon={<CheckCircle2 className="h-4 w-4" />}
           />
           <ResultCard
             tone="violet"
             branch={d.rightBranch}
             title={d.rightResultTitle}
             body={d.rightResultBody}
-            icon={<Ban className="h-[18px] w-[18px] rotate-12" aria-hidden="true" />}
+            icon={<Ban className="h-4 w-4 rotate-12" />}
           />
         </div>
       </div>
@@ -74,7 +75,6 @@ const CompareCard = ({
       className={cx(
         'flex flex-col gap-1.5 rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
       )}
     >
       <div className="flex flex-col">
@@ -101,10 +101,10 @@ const CompareCard = ({
 const DecisionChip = ({ symbol, question }: { symbol: string; question: string }) => (
   <div className="flex items-center justify-center gap-sm">
     <ToneIconBox tone="sky" size="sm">
-      <Equal className="h-[18px] w-[18px]" aria-hidden="true" />
+      <Equal className="h-4 w-4" />
     </ToneIconBox>
     <span className="inline-flex items-center gap-2 rounded-full border border-[var(--term-border)] bg-[var(--term-bg)] px-3 py-1 font-mono text-xsm font-bold text-[var(--term-fg)]">
-      <GitCompare aria-hidden="true" className="h-3.5 w-3.5 text-[var(--term-accent)]" />
+      <GitCompare className="h-3.5 w-3.5 text-[var(--term-accent)]" />
       <span className="text-[var(--term-muted)]">{symbol}</span>
       {question}
     </span>
@@ -130,7 +130,6 @@ const ResultCard = ({
       className={cx(
         'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] p-md',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
       )}
     >
       <header className="flex items-center justify-between gap-2">
@@ -146,19 +145,10 @@ const ResultCard = ({
           {icon}
         </ToneIconBox>
       </header>
-      <h3 className={cx('text-sm font-bold leading-tight tracking-tight break-keep', t.text)}>
+      <span className={cx('text-sm font-bold leading-tight tracking-tight break-keep', t.text)}>
         {title}
-      </h3>
+      </span>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{body}</p>
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

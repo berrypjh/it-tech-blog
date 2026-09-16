@@ -1,8 +1,8 @@
 import { cx } from '@berrypjh/react-ui';
 import { Camera, Eye } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
-import { toneTokens } from '../../../shared/tones';
+import { SectionBadgeHeader } from '../../../shared/section';
+import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { BeforeMutationContent, SnapshotFlowStep } from '../content';
 
 type Props = { content: BeforeMutationContent['snapshot'] };
@@ -13,8 +13,10 @@ export const SnapshotConceptSection = ({ content }: Props) => (
     aria-labelledby="heading-snapshot-concept"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="snapshot-concept"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -22,17 +24,9 @@ export const SnapshotConceptSection = ({ content }: Props) => (
     />
 
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.1fr)_minmax(0,_0.9fr)_minmax(0,_1.1fr)] gap-3 items-stretch">
-      <DomStateCard
-        title={content.beforeCard.title}
-        items={content.beforeCard.items}
-        variant="before"
-      />
+      <DomStateCard title={content.beforeCard.title} items={content.beforeCard.items} tone="teal" />
       <MiddleFlow steps={content.flowSteps} />
-      <DomStateCard
-        title={content.afterCard.title}
-        items={content.afterCard.items}
-        variant="after"
-      />
+      <DomStateCard title={content.afterCard.title} items={content.afterCard.items} tone="amber" />
     </div>
   </section>
 );
@@ -40,14 +34,13 @@ export const SnapshotConceptSection = ({ content }: Props) => (
 const DomStateCard = ({
   title,
   items,
-  variant,
+  tone,
 }: {
   title: string;
   items: { label: string; value: string }[];
-  variant: 'before' | 'after';
+  tone: ToneKey;
 }) => {
-  const isBefore = variant === 'before';
-  const t = isBefore ? toneTokens.teal : toneTokens.amber;
+  const t = toneTokens[tone];
   return (
     <article
       className={cx(
@@ -56,20 +49,9 @@ const DomStateCard = ({
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
-      <header className="flex items-center justify-between gap-2">
-        <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
-          {title}
-        </h3>
-        <span
-          aria-hidden="true"
-          className={cx(
-            'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
-            t.chip,
-          )}
-        >
-          {isBefore ? 'snapshot src' : 'after mutation'}
-        </span>
-      </header>
+      <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
+        {title}
+      </h3>
 
       <ul className="flex flex-col gap-2">
         {items.map((item) => (
@@ -98,9 +80,6 @@ const MiddleFlow = ({ steps }: { steps: SnapshotFlowStep[] }) => (
       'shadow-[0_1px_0_var(--term-border)]',
     )}
   >
-    <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] text-center">
-      {'// snapshot lifecycle'}
-    </span>
     <ol className="flex flex-col">
       {steps.map((step, idx) => (
         <li key={step.title} className="flex flex-col">

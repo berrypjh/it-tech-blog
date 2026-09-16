@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Lightbulb, Lock, Sparkles, Type } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { DiffRow, UpdatePhaseContent } from '../content';
@@ -14,8 +14,10 @@ export const PropsVsTextUpdateSection = ({ content }: Props) => (
     aria-labelledby="heading-props-vs-text"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="props-vs-text"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -61,7 +63,7 @@ const DiffCard = ({
       className={cx(
         'flex h-full flex-col gap-md rounded-lg border-2 bg-[var(--term-bg)] p-md sm:p-lg',
         t.fill.border,
-        'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
+        'shadow-[0_1px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
       )}
     >
       <header className="flex items-center gap-2">

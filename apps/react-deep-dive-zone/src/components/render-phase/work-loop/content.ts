@@ -3,8 +3,8 @@ import type { Locale } from '@it-tech-blog/preferences';
 import type { ToneKey } from '../../shared/tones';
 
 export type FlowNode = {
-  /** A/B/C/D 등 큰 글자 라벨 (yield 노드는 비워두고 yield: true) */
-  label: string;
+  /** A/B/C/D 등 큰 글자 라벨 (yield 노드는 생략하고 yield: true) */
+  label?: string;
   /** 노드 아래 작은 설명 */
   caption: string;
   /** yield 노드 여부 (점선 border + 별도 색상) */
@@ -25,7 +25,8 @@ export type CommonFlowStep = {
 };
 
 export type TimelineNode = {
-  label: string;
+  /** 노드 글자. yield/finish 노드는 아이콘으로 그리므로 생략 */
+  label?: string;
   caption: string;
   yield?: boolean;
   finish?: boolean;
@@ -36,14 +37,6 @@ export type TimelineCard = {
   flow: TimelineNode[];
   footer: string;
   kind: 'sync' | 'concurrent';
-};
-
-export type CodeCallout = {
-  kind: 'sync' | 'concurrent';
-  conditionLabel: string;
-  conditionBody: string;
-  meaningLabel: string;
-  meaningBody: string;
 };
 
 export type FiberTreeNodeStatus = 'done' | 'current' | 'pending';
@@ -67,6 +60,7 @@ export type WorkLoopContent = {
     description: string;
     diagram: {
       title: string;
+      code: string;
       sync: {
         label: string;
         sideText: string;
@@ -82,50 +76,49 @@ export type WorkLoopContent = {
     };
   };
   comparison: {
+    badge: string;
     eyebrow: string;
     title: string;
     vsLabel: string;
     cards: { left: ComparisonCard; right: ComparisonCard };
   };
   common: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: CommonFlowStep[];
   };
   timelines: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: { left: TimelineCard; right: TimelineCard };
   };
-  code: {
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
-    fileName: string;
-    functionsLabel: string;
-    functions: string[];
-    learningQuestion: string;
-    codeHeader: string;
-    codeBadge: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
     code: string;
-    callouts: { primary: CodeCallout; secondary: CodeCallout };
+    primaryCta: string;
+    primaryHref: string;
   };
   fiberTree: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     nodes: FiberTreeNode[];
     legendTitle: string;
     legend: LegendItem[];
-    infoBox: string;
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    question: string;
-    answer: string;
+    note: string;
   };
   nextStep: {
     eyebrow: string;
@@ -135,6 +128,10 @@ export type WorkLoopContent = {
     href: string;
   };
 };
+
+const heroLoopCode = `while (workInProgress !== null) {
+  performUnitOfWork(workInProgress);
+}`;
 
 const CODE_LINES = `function workLoopSync() {
   while (workInProgress !== null) {
@@ -167,6 +164,7 @@ const ko: WorkLoopContent = {
       '동기 렌더링에서는 끝까지 밀고 나가고, 동시성 렌더링에서는 필요할 때 잠시 양보할 수 있습니다.',
     diagram: {
       title: 'Fiber를 하나씩 처리하는 흐름 예시',
+      code: heroLoopCode,
       sync: {
         label: 'workLoopSync (동기)',
         sideText: '끝까지 밀고 나감',
@@ -184,7 +182,7 @@ const ko: WorkLoopContent = {
           { label: 'A', caption: 'A 처리' },
           { label: 'B', caption: 'B 처리' },
           { label: 'C', caption: 'C 처리' },
-          { label: '⏸', caption: '잠시 양보', yield: true },
+          { caption: '잠시 양보', yield: true },
           { label: 'D', caption: 'D 처리' },
         ],
         yieldSubNote: '다른 작업에 양보',
@@ -193,7 +191,8 @@ const ko: WorkLoopContent = {
     },
   },
   comparison: {
-    eyebrow: '01 · 두 루프',
+    badge: '01',
+    eyebrow: '두 루프',
     title: '두 work loop 비교',
     vsLabel: 'VS',
     cards: {
@@ -212,7 +211,8 @@ const ko: WorkLoopContent = {
     },
   },
   common: {
-    eyebrow: '02 · 공통 루프',
+    badge: '02',
+    eyebrow: '공통 루프',
     title: '공통점: performUnitOfWork 반복',
     description: '두 work loop 모두 같은 반복 구조를 가집니다. 차이는 반복 조건에 있을 뿐입니다.',
     steps: [
@@ -230,7 +230,8 @@ const ko: WorkLoopContent = {
     ],
   },
   timelines: {
-    eyebrow: '03 · 진행 방식',
+    badge: '03',
+    eyebrow: '진행 방식',
     title: '끝까지 밀기 vs 양보 가능',
     description: '같은 A → B → C → D 작업도 두 루프가 처리하는 방식은 다릅니다.',
     cards: {
@@ -242,7 +243,7 @@ const ko: WorkLoopContent = {
           { label: 'B', caption: 'B 처리' },
           { label: 'C', caption: 'C 처리' },
           { label: 'D', caption: 'D 처리' },
-          { label: '🏁', caption: '완료', finish: true },
+          { caption: '완료', finish: true },
         ],
         footer: '끝까지 진행 후 Render Phase 완료',
       },
@@ -253,44 +254,32 @@ const ko: WorkLoopContent = {
           { label: 'A', caption: 'A 처리' },
           { label: 'B', caption: 'B 처리' },
           { label: 'C', caption: 'C 처리' },
-          { label: '⏸', caption: '잠시 양보 (다른 작업)', yield: true },
+          { caption: '잠시 양보 (다른 작업)', yield: true },
           { label: 'D', caption: '이후 이어서 재개' },
-          { label: '🏁', caption: '완료', finish: true },
+          { caption: '완료', finish: true },
         ],
         footer: '필요할 때 양보하고, 이후 이어서 계속 진행',
       },
     },
   },
-  code: {
-    eyebrow: '04 · 코드 체크포인트',
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
-    fileName: 'ReactFiberWorkLoop.js',
-    functionsLabel: '볼 함수',
-    functions: ['workLoopSync', 'workLoopConcurrent'],
-    learningQuestion: '두 함수의 반복 조건이 어떻게 다른가요?',
-    codeHeader: 'react-reconciler/src/ReactFiberWorkLoop.js',
-    codeBadge: 'main',
+    filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+    lookForLabel: '볼 것',
+    lookFor: 'workLoopSync, workLoopConcurrent',
+    whyLabel: '설명',
+    why: 'workLoopConcurrent만 남은 시간(now() < yieldAfter)을 반복 조건에 넣어 중간에 멈출 수 있습니다.',
     code: CODE_LINES,
-    callouts: {
-      primary: {
-        kind: 'sync',
-        conditionLabel: '조건',
-        conditionBody: 'workInProgress가 null이 될 때까지 계속',
-        meaningLabel: '의미',
-        meaningBody: '중간에 멈추지 않음',
-      },
-      secondary: {
-        kind: 'concurrent',
-        conditionLabel: '조건',
-        conditionBody: 'workInProgress가 남아있고, 시간이 남아있을 때까지',
-        meaningLabel: '의미',
-        meaningBody: '필요 시 중간에 멈출 수 있음',
-      },
-    },
+    primaryCta: 'ReactFiberWorkLoop.js 읽기',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.js',
   },
   fiberTree: {
-    eyebrow: '05 · 트리 순회',
+    badge: '05',
+    eyebrow: '트리 순회',
     title: 'Fiber 처리 현황 시각화 (예시 트리)',
     description: 'work loop가 트리를 따라 이동하며 현재 Fiber 하나만 활성화한다는 감각을 잡습니다.',
     nodes: [
@@ -318,13 +307,7 @@ const ko: WorkLoopContent = {
         description: '아직 처리되지 않은 나머지 Fiber',
       },
     ],
-    infoBox: 'work loop는 현재 Fiber 하나를 처리하고, 다음 Fiber를 결정하는 과정을 반복합니다.',
-  },
-  quiz: {
-    eyebrow: '06 · 미니 퀴즈',
-    title: '미니 퀴즈',
-    question: 'workLoopSync와 workLoopConcurrent의 가장 큰 차이는?',
-    answer: '중간에 작업을 양보할 수 있는지 여부다.',
+    note: 'work loop는 현재 Fiber 하나를 처리하고, 다음 Fiber를 결정하는 과정을 반복합니다.',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -348,6 +331,7 @@ const en: WorkLoopContent = {
       'Sync rendering pushes through to the end. Concurrent rendering can yield briefly when needed.',
     diagram: {
       title: 'How a work loop processes Fibers',
+      code: heroLoopCode,
       sync: {
         label: 'workLoopSync (sync)',
         sideText: 'pushes through to the end',
@@ -365,7 +349,7 @@ const en: WorkLoopContent = {
           { label: 'A', caption: 'process A' },
           { label: 'B', caption: 'process B' },
           { label: 'C', caption: 'process C' },
-          { label: '⏸', caption: 'yield', yield: true },
+          { caption: 'yield', yield: true },
           { label: 'D', caption: 'process D' },
         ],
         yieldSubNote: 'yield to other work',
@@ -374,7 +358,8 @@ const en: WorkLoopContent = {
     },
   },
   comparison: {
-    eyebrow: '01 · TWO LOOPS',
+    badge: '01',
+    eyebrow: 'TWO LOOPS',
     title: 'Compare the two work loops',
     vsLabel: 'VS',
     cards: {
@@ -396,7 +381,8 @@ const en: WorkLoopContent = {
     },
   },
   common: {
-    eyebrow: '02 · COMMON LOOP',
+    badge: '02',
+    eyebrow: 'COMMON LOOP',
     title: 'In common: repeat performUnitOfWork',
     description: 'Both work loops share the same shape. Only the loop condition differs.',
     steps: [
@@ -414,7 +400,8 @@ const en: WorkLoopContent = {
     ],
   },
   timelines: {
-    eyebrow: '03 · PUSH VS YIELD',
+    badge: '03',
+    eyebrow: 'PUSH VS YIELD',
     title: 'Push through vs yield',
     description: 'Same A → B → C → D work, two different loop shapes.',
     cards: {
@@ -426,7 +413,7 @@ const en: WorkLoopContent = {
           { label: 'B', caption: 'process B' },
           { label: 'C', caption: 'process C' },
           { label: 'D', caption: 'process D' },
-          { label: '🏁', caption: 'done', finish: true },
+          { caption: 'done', finish: true },
         ],
         footer: 'Push through to the end, then the Render Phase finishes.',
       },
@@ -437,44 +424,32 @@ const en: WorkLoopContent = {
           { label: 'A', caption: 'process A' },
           { label: 'B', caption: 'process B' },
           { label: 'C', caption: 'process C' },
-          { label: '⏸', caption: 'yield (other work)', yield: true },
+          { caption: 'yield (other work)', yield: true },
           { label: 'D', caption: 'resume afterwards' },
-          { label: '🏁', caption: 'done', finish: true },
+          { caption: 'done', finish: true },
         ],
         footer: 'Yield when needed, then keep going where it left off.',
       },
     },
   },
-  code: {
-    eyebrow: '04 · CODE CHECKPOINT',
-    title: 'Source-code checkpoint',
-    fileLabel: 'file',
-    fileName: 'ReactFiberWorkLoop.js',
-    functionsLabel: 'functions to read',
-    functions: ['workLoopSync', 'workLoopConcurrent'],
-    learningQuestion: 'How do their loop conditions differ?',
-    codeHeader: 'react-reconciler/src/ReactFiberWorkLoop.js',
-    codeBadge: 'main',
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+    lookForLabel: 'Look for',
+    lookFor: 'workLoopSync, workLoopConcurrent',
+    whyLabel: 'Why',
+    why: 'Only workLoopConcurrent adds remaining time (now() < yieldAfter) to its loop condition, so it can pause mid-loop.',
     code: CODE_LINES,
-    callouts: {
-      primary: {
-        kind: 'sync',
-        conditionLabel: 'condition',
-        conditionBody: 'keep going until workInProgress is null',
-        meaningLabel: 'meaning',
-        meaningBody: 'never pauses mid-loop',
-      },
-      secondary: {
-        kind: 'concurrent',
-        conditionLabel: 'condition',
-        conditionBody: 'workInProgress remains AND time remains',
-        meaningLabel: 'meaning',
-        meaningBody: 'can pause mid-loop when needed',
-      },
-    },
+    primaryCta: 'Read ReactFiberWorkLoop.js',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.js',
   },
   fiberTree: {
-    eyebrow: '05 · TREE WALK',
+    badge: '05',
+    eyebrow: 'TREE WALK',
     title: 'Fiber processing state (sample tree)',
     description: 'See how the work loop walks the tree, keeping only one Fiber active at a time.',
     nodes: [
@@ -502,13 +477,7 @@ const en: WorkLoopContent = {
         description: 'a Fiber that has not been processed yet',
       },
     ],
-    infoBox: 'The work loop processes one Fiber, picks the next, and repeats the cycle.',
-  },
-  quiz: {
-    eyebrow: '06 · MINI QUIZ',
-    title: 'Mini Quiz',
-    question: 'What is the biggest difference between workLoopSync and workLoopConcurrent?',
-    answer: 'Whether the loop can yield mid-work.',
+    note: 'The work loop processes one Fiber, picks the next, and repeats the cycle.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

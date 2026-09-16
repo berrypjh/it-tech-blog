@@ -1,15 +1,16 @@
 import { ListChecks } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { UpdateToRenderSummaryContent } from '../content';
 
 type Props = { content: UpdateToRenderSummaryContent['roleTable'] };
 
 export const StepRoleTableSection = ({ content }: Props) => (
-  <section id="section-role-table" aria-labelledby="heading-role-table" className="space-y-md">
-    <SectionHeader
+  <section id="role-table" aria-labelledby="heading-role-table" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="role-table"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}

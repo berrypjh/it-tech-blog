@@ -5,12 +5,12 @@ import { StartPageShell } from '../../shared/shell';
 
 import { CurrentTreeTransitionSection } from './sections/CurrentTreeTransitionSection';
 import { InputRefExampleSection } from './sections/InputRefExampleSection';
-import { RefCodeCheckpointSection } from './sections/RefCodeCheckpointSection';
+import { RefCodeCheckpoint } from './sections/RefCodeCheckpoint';
 import { RefDetachAttachTimelineSection } from './sections/RefDetachAttachTimelineSection';
-import { RefLifecycleAndMeaningSection } from './sections/RefLifecycleAndMeaningSection';
+import { RefLifecycleSection } from './sections/RefLifecycleSection';
 import { RenderRefRiskSection } from './sections/RenderRefRiskSection';
 import { RootCurrentHeroSection } from './sections/RootCurrentHeroSection';
-import { RootCurrentRefQuizSection } from './sections/RootCurrentRefQuizSection';
+import { RootCurrentMeaningSection } from './sections/RootCurrentMeaningSection';
 import { rootCurrentRefContent } from './content';
 
 type Props = { locale: Locale };
@@ -24,10 +24,10 @@ export const RootCurrentRefPage = ({ locale }: Props) => {
       <CurrentTreeTransitionSection content={c.transition} />
       <RefDetachAttachTimelineSection content={c.refTimeline} />
       <InputRefExampleSection content={c.inputRef} />
-      <RefCodeCheckpointSection content={c.checkpoint} />
+      <RefCodeCheckpoint content={c.checkpoint} />
       <RenderRefRiskSection content={c.risk} />
-      <RefLifecycleAndMeaningSection lifecycle={c.lifecycle} meaning={c.meaning} />
-      <RootCurrentRefQuizSection quiz={c.quiz} />
+      <RefLifecycleSection content={c.lifecycle} />
+      <RootCurrentMeaningSection content={c.meaning} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

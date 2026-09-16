@@ -14,9 +14,8 @@ type Props = { content: TypeKeyReuseContent['hero'] };
 export const FiberReuseHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="reconciler/type-key-reuse.md"
-    promptSuffix={<span className="text-[var(--term-dim)]"> {'// fiber reuse decision'}</span>}
-    gridColumns="lg:grid-cols-[minmax(0,_0.82fr)_minmax(0,_1.18fr)]"
+    promptPath="packages/react-reconciler/src/ReactChildFiber.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -33,7 +32,7 @@ export const FiberReuseHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-type-key-reuse" className="min-w-0">
+    <HeroVisualColumn id="hero-type-key-reuse">
       <FiberReuseHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

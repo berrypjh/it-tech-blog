@@ -43,11 +43,13 @@ export type BeginWorkContent = {
     };
   };
   roles: {
+    badge: string;
     eyebrow: string;
     title: string;
     cards: RoleCard[];
   };
   tagBranch: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -56,6 +58,7 @@ export type BeginWorkContent = {
     branches: FiberTagItem[];
   };
   bailout: {
+    badge: string;
     eyebrow: string;
     title: string;
     intro: string;
@@ -69,40 +72,40 @@ export type BeginWorkContent = {
       items: string[];
       description: string;
     };
-    emphasis: string;
+    note: string;
   };
   reconcile: {
+    badge: string;
     eyebrow: string;
     title: string;
     steps: ReconcileStep[];
   };
-  code: {
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
-    fileName: string;
-    functionsLabel: string;
-    functions: string[];
-    learningQuestion: string;
-    codeHeader: string;
-    codeBadge: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
     code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   summary: {
+    badge: string;
     eyebrow: string;
     title: string;
     start: string;
     decision: string;
     bailout: { title: string; description: string; afterTitle: string };
     normalPath: { title: string; description?: string }[];
+    yesLabel: string;
+    noLabel: string;
+    bailoutPathLabel: string;
+    normalPathLabel: string;
   };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    question: string;
-    answer: string;
-  };
-  cta: {
+  nextStep: {
     eyebrow: string;
     title: string;
     description: string;
@@ -429,12 +432,14 @@ const ko: BeginWorkContent = {
     },
   },
   roles: {
-    eyebrow: '01 · 핵심 역할',
+    badge: '01',
+    eyebrow: '핵심 역할',
     title: 'beginWork의 핵심 역할 3가지',
     cards: rolesKo,
   },
   tagBranch: {
-    eyebrow: '02 · tag 분기',
+    badge: '02',
+    eyebrow: 'tag 분기',
     title: 'Fiber tag별 분기 개요',
     description: 'Fiber.tag에 따라 호출되는 update 함수가 다릅니다.',
     rootTitle: 'beginWork',
@@ -442,7 +447,8 @@ const ko: BeginWorkContent = {
     branches: branchesKo,
   },
   bailout: {
-    eyebrow: '03 · 하강 여부',
+    badge: '03',
+    eyebrow: '하강 여부',
     title: '항상 아래로 내려가는 것은 아니다',
     intro: '조건이 맞으면 React는 이 Fiber 아래의 작업을 건너뛰고 bailout할 수도 있습니다.',
     normal: {
@@ -455,27 +461,30 @@ const ko: BeginWorkContent = {
       items: ['현재 Fiber', '하위 트리 건너뜀', '위로 이동'],
       description: '이미 처리할 변경이 없다면 아래 트리 전체를 다시 계산하지 않을 수 있습니다.',
     },
-    emphasis: 'bailout이 가능하면 성능을 크게 절약할 수 있습니다.',
+    note: 'bailout이 가능하면 성능을 크게 절약할 수 있습니다.',
   },
   reconcile: {
-    eyebrow: '04 · reconcile 진입',
+    badge: '04',
+    eyebrow: 'reconcile 진입',
     title: 'reconcileChildren으로 이어지는 흐름',
     steps: reconcileStepsKo,
   },
-  code: {
-    eyebrow: '05 · 코드 체크포인트',
+  checkpoint: {
+    badge: '05',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
-    fileName: 'ReactFiberBeginWork.js',
-    functionsLabel: '볼 함수',
-    functions: ['beginWork', 'updateFunctionComponent', 'updateHostComponent'],
-    learningQuestion: 'beginWork는 단일 자식 Fiber를 어떻게 계산하고 어떤 값을 반환할까?',
-    codeHeader: 'react-reconciler/src/ReactFiberBeginWork.js',
-    codeBadge: 'main',
+    filePath: 'packages/react-reconciler/src/ReactFiberBeginWork.js',
+    lookForLabel: '볼 것',
+    lookFor: 'beginWork, updateFunctionComponent, updateHostComponent',
     code: CODE_LINES,
+    primaryCta: 'ReactFiberBeginWork.js 읽기',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberBeginWork.js',
   },
   summary: {
-    eyebrow: '06 · 전체 흐름',
+    badge: '06',
+    eyebrow: '전체 흐름',
     title: 'beginWork 흐름 한눈에 보기',
     start: '현재 Fiber 처리 시작',
     decision: 'bailout 가능?',
@@ -490,19 +499,17 @@ const ko: BeginWorkContent = {
       { title: 'reconcileChildren(...)' },
       { title: 'workInProgress.child 반환', description: '자식으로 하강' },
     ],
+    yesLabel: '예',
+    noLabel: '아니오',
+    bailoutPathLabel: 'bailout 경로',
+    normalPathLabel: '일반 경로',
   },
-  quiz: {
-    eyebrow: '07 · 미니 퀴즈',
-    title: '미니 퀴즈',
-    question: 'beginWork가 자주 반환하는 값은?',
-    answer: '다음에 처리할 자식 Fiber.',
-  },
-  cta: {
-    eyebrow: '다음 단계',
+  nextStep: {
+    eyebrow: '다음 학습으로 이어집니다',
     title: '함수 컴포넌트는 Render Phase에서 어떻게 처리되는가?',
     description:
       'beginWork가 다음 자식 계산을 시작하는 함수라는 점을 이해했다면, 이제 가장 익숙한 경우인 함수 컴포넌트 처리 흐름을 실제로 봅니다.',
-    cta: '다음 페이지',
+    cta: '다음 페이지로 이동',
     href: '/function-component-process',
   },
 };
@@ -523,12 +530,14 @@ const en: BeginWorkContent = {
     },
   },
   roles: {
-    eyebrow: '01 · CORE ROLES',
+    badge: '01',
+    eyebrow: 'CORE ROLES',
     title: 'Three core roles of beginWork',
     cards: rolesEn,
   },
   tagBranch: {
-    eyebrow: '02 · TAG BRANCHES',
+    badge: '02',
+    eyebrow: 'TAG BRANCHES',
     title: 'Branches by Fiber tag',
     description: 'Fiber.tag picks which update function runs.',
     rootTitle: 'beginWork',
@@ -536,7 +545,8 @@ const en: BeginWorkContent = {
     branches: branchesEn,
   },
   bailout: {
-    eyebrow: '03 · DESCEND OR NOT',
+    badge: '03',
+    eyebrow: 'DESCEND OR NOT',
     title: 'Not always descending',
     intro: 'When conditions allow, React can skip the work below this Fiber and bail out.',
     normal: {
@@ -549,27 +559,30 @@ const en: BeginWorkContent = {
       items: ['current Fiber', 'skip the subtree', 'move upwards'],
       description: 'If no changes are pending, the whole subtree may not be recomputed.',
     },
-    emphasis: 'Bailing out when possible saves a lot of work.',
+    note: 'Bailing out when possible saves a lot of work.',
   },
   reconcile: {
-    eyebrow: '04 · INTO RECONCILE',
+    badge: '04',
+    eyebrow: 'INTO RECONCILE',
     title: 'Flow into reconcileChildren',
     steps: reconcileStepsEn,
   },
-  code: {
-    eyebrow: '05 · CODE CHECKPOINT',
-    title: 'Source-code checkpoint',
-    fileLabel: 'file',
-    fileName: 'ReactFiberBeginWork.js',
-    functionsLabel: 'functions',
-    functions: ['beginWork', 'updateFunctionComponent', 'updateHostComponent'],
-    learningQuestion: 'How does beginWork compute a single child Fiber, and what does it return?',
-    codeHeader: 'react-reconciler/src/ReactFiberBeginWork.js',
-    codeBadge: 'main',
+  checkpoint: {
+    badge: '05',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberBeginWork.js',
+    lookForLabel: 'Look for',
+    lookFor: 'beginWork, updateFunctionComponent, updateHostComponent',
     code: CODE_LINES_EN,
+    primaryCta: 'Read ReactFiberBeginWork.js',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberBeginWork.js',
   },
   summary: {
-    eyebrow: '06 · WHOLE FLOW',
+    badge: '06',
+    eyebrow: 'WHOLE FLOW',
     title: 'beginWork at a glance',
     start: 'start processing the Fiber',
     decision: 'can bail out?',
@@ -584,19 +597,17 @@ const en: BeginWorkContent = {
       { title: 'reconcileChildren(...)' },
       { title: 'return workInProgress.child', description: 'descend into the child' },
     ],
+    yesLabel: 'yes',
+    noLabel: 'no',
+    bailoutPathLabel: 'bailout path',
+    normalPathLabel: 'normal path',
   },
-  quiz: {
-    eyebrow: '07 · MINI QUIZ',
-    title: 'Mini Quiz',
-    question: 'What does beginWork most often return?',
-    answer: 'The next child Fiber to process.',
-  },
-  cta: {
-    eyebrow: 'Next step',
+  nextStep: {
+    eyebrow: 'The journey continues',
     title: 'How are function components processed in the Render Phase?',
     description:
       'Now that you understand beginWork starts the next child computation, follow the most common case: how a function component is processed.',
-    cta: 'Next page',
+    cta: 'Go to the next page',
     href: '/function-component-process',
   },
 };

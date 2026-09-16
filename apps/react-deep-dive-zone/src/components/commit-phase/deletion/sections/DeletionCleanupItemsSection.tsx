@@ -1,14 +1,14 @@
 import { cx } from '@berrypjh/react-ui';
-import { Clock, Monitor, Sparkles, Trash2, Unlink } from 'lucide-react';
+import { Clock, type LucideIcon, Monitor, Sparkles, Trash2, Unlink } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
-import { ToneCardItem } from '../../../shared/tone';
+import { SectionBadgeHeader } from '../../../shared/section';
+import { ToneCardGrid, ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { CleanupCardIcon, DeletionContent } from '../content';
+import type { CleanupCardId, DeletionContent } from '../content';
 
 type Props = { content: DeletionContent['cleanup'] };
 
-const iconMap: Record<CleanupCardIcon, typeof Unlink> = {
+const iconMap: Record<CleanupCardId, LucideIcon> = {
   brokenLink: Unlink,
   monitor: Monitor,
   clock: Clock,
@@ -21,17 +21,19 @@ export const DeletionCleanupItemsSection = ({ content }: Props) => (
     aria-labelledby="heading-cleanup-items"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="cleanup-items"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
       icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
-    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-md">
+    <ToneCardGrid>
       {content.cards.map((card, idx) => {
-        const Icon = iconMap[card.iconName];
+        const Icon = iconMap[card.id];
         return (
           <ToneCardItem
             key={card.title}
@@ -54,6 +56,6 @@ export const DeletionCleanupItemsSection = ({ content }: Props) => (
           </ToneCardItem>
         );
       })}
-    </ul>
+    </ToneCardGrid>
   </section>
 );

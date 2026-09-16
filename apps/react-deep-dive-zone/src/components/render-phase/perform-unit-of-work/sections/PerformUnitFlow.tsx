@@ -1,16 +1,18 @@
 import { cx } from '@berrypjh/react-ui';
 import { ChevronDown, HelpCircle, Workflow } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { PerformUnitContent } from '../content';
 
 type Props = { content: PerformUnitContent['fullFlow'] };
 
 export const PerformUnitFlow = ({ content }: Props) => (
-  <section id="full-flow" aria-labelledby="heading-full-flow" className="space-y-md">
-    <SectionHeader
+  <section id="full-flow" aria-labelledby="heading-full-flow" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="full-flow"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -18,15 +20,6 @@ export const PerformUnitFlow = ({ content }: Props) => (
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-      <header className="mb-md flex flex-wrap items-center justify-between gap-2">
-        <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
-          {'// performUnitOfWork() — branching flow'}
-        </span>
-        <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)] rounded-md border border-[var(--term-border)] px-2 py-0.5">
-          full flow
-        </span>
-      </header>
-
       <div className="mx-auto flex w-full max-w-[760px] flex-col items-center gap-2">
         {content.flow.steps.map((step, idx) => (
           <div key={step.title} className="flex w-full flex-col items-center">

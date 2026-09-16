@@ -7,20 +7,21 @@ import {
   Droplet,
   Flag,
   LogOut,
+  type LucideIcon,
   Search,
   Trash2,
   Unlink,
   Workflow,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { DeletionContent, PipelineIcon, PipelineStep } from '../content';
+import type { DeletionContent, PipelineId, PipelineStep } from '../content';
 
 type Props = { content: DeletionContent['pipeline'] };
 
-const iconMap: Record<PipelineIcon, typeof Flag> = {
+const iconMap: Record<PipelineId, LucideIcon> = {
   flag: Flag,
   search: Search,
   unlink: Unlink,
@@ -35,8 +36,10 @@ export const DeletionPipelineSection = ({ content }: Props) => (
     aria-labelledby="heading-deletion-pipeline"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="deletion-pipeline"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -81,7 +84,7 @@ export const DeletionPipelineSection = ({ content }: Props) => (
 );
 
 const PipelineCard = ({ step }: { step: PipelineStep }) => {
-  const Icon = iconMap[step.iconName];
+  const Icon = iconMap[step.id];
   const t = toneTokens[step.tone];
   return (
     <article

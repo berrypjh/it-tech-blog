@@ -3,23 +3,24 @@ import { Network, Zap } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ScheduleUpdateOnFiberContent } from '../content';
 
-type Props = { content: ScheduleUpdateOnFiberContent['hero']; className?: string };
+type Props = { content: ScheduleUpdateOnFiberContent['hero'] };
 
 /**
  * Hero 핵심 비주얼.
  * Root의 pendingLanes 상태가 scheduleUpdateOnFiber 호출을 거쳐
  * "작업 없음 → 작업 대기 중"으로 바뀌는 흐름을 위에서 아래로 잇는 컴팩트 stepper.
  */
-export const ScheduleUpdateHeroDiagram = ({ content, className }: Props) => {
+export const ScheduleUpdateHeroDiagram = ({ content }: Props) => {
   const { diagram } = content;
-  const a11y = `${diagram.title}: ${diagram.beforeTitle}는 ${diagram.beforeState} 상태에서 ${diagram.functionLabel} 호출 이후 ${diagram.afterState} 상태로 바뀝니다.`;
+  const a11y = `${diagram.title}: ${diagram.beforeLabel} ${diagram.beforeState} → ${diagram.functionLabel} → ${diagram.afterLabel} ${diagram.afterState}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <ol className="relative flex flex-col gap-sm" aria-hidden="true">
         <li className="flex flex-col gap-sm">
           <StateCard
@@ -29,15 +30,13 @@ export const ScheduleUpdateHeroDiagram = ({ content, className }: Props) => {
             state={diagram.beforeState}
             body={diagram.beforeBody}
           />
+          <DownArrow />
         </li>
 
-        <DownArrow />
-
-        <li>
+        <li className="flex flex-col gap-sm">
           <CodePreviewPanel code={diagram.functionLabel} showWindowDots size="md" />
+          <DownArrow />
         </li>
-
-        <DownArrow />
 
         <li className="flex flex-col gap-sm">
           <StateCard
@@ -68,16 +67,16 @@ type StateCardProps = {
 const StateCard = ({ tone, label, title, badge, state, body, emphasized }: StateCardProps) => {
   const t = toneTokens[tone];
   return (
-    <article
+    <div
       className={cx(
         'flex flex-col gap-sm rounded-xl border px-md py-2.5',
-        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+        'bg-[var(--term-bg)] shadow-[0_2px_0_var(--term-border)]',
         emphasized ? cx(t.chip, t.border) : 'border-[var(--term-border)]',
       )}
     >
       <div className="flex items-center gap-sm">
         <ToneIconBox tone={tone} size="sm">
-          <Network className="h-4 w-4" aria-hidden="true" />
+          <Network className="h-4 w-4" />
         </ToneIconBox>
         <span className={cx('min-w-0 truncate font-mono text-sm font-bold tracking-tight', t.text)}>
           {title}
@@ -89,7 +88,7 @@ const StateCard = ({ tone, label, title, badge, state, body, emphasized }: State
               t.chip,
             )}
           >
-            <Zap aria-hidden="true" className="h-3 w-3" />
+            <Zap className="h-3 w-3" />
             {badge}
           </span>
         ) : (
@@ -109,15 +108,6 @@ const StateCard = ({ tone, label, title, badge, state, body, emphasized }: State
       </code>
 
       <p className="text-xxsm leading-snug text-[var(--term-muted)] break-keep">{body}</p>
-    </article>
+    </div>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

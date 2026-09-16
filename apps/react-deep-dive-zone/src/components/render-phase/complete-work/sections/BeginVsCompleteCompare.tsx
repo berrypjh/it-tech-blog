@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowUp, GitBranch, type LucideIcon } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CompareRow, CompleteWorkContent } from '../content';
 
@@ -16,9 +16,10 @@ type Props = { content: CompleteWorkContent['compare'] };
 export const BeginVsCompleteCompare = ({ content }: Props) => {
   const { columns } = content;
   return (
-    <section id="compare" aria-labelledby="heading-compare" className="space-y-md">
-      <SectionHeader
+    <section id="compare" aria-labelledby="heading-compare" className="space-y-md scroll-mt-xl">
+      <SectionBadgeHeader
         id="compare"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<GitBranch className="h-5 w-5" aria-hidden="true" />}

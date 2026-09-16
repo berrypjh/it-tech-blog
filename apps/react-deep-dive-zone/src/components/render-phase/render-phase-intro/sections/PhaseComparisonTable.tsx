@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, ListChecks, X } from 'lucide-react';
 
 import { ComparisonTable } from '../../../shared/grid';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { ComparisonRow, RenderPhaseIntroContent } from '../content';
 
@@ -14,10 +14,12 @@ export const PhaseComparisonTable = ({ content }: Props) => {
     <section
       id="phase-comparison"
       aria-labelledby="heading-phase-comparison"
-      className="space-y-md"
+      className="space-y-md scroll-mt-xl"
     >
-      <SectionHeader
+      <SectionBadgeHeader
+        descriptionFullWidth
         id="phase-comparison"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}

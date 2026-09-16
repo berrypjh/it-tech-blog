@@ -2,46 +2,46 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type HeroFlowCardIcon = 'cpu' | 'gitMerge' | 'gate' | 'layers';
+export type HeroFlowCardId = 'cpu' | 'gitMerge' | 'gate' | 'layers';
 
 export type HeroFlowCard = {
   title: string;
   subtitle: string;
   description?: string;
   items?: string[];
-  iconName: HeroFlowCardIcon;
+  id: HeroFlowCardId;
   tone: ToneKey;
   isGate?: boolean;
 };
 
-export type RenderToCommitStepIcon = 'checkCircle' | 'gitMerge' | 'gate' | 'rocket';
+export type RenderToCommitStepId = 'checkCircle' | 'gitMerge' | 'gate' | 'rocket';
 
 export type RenderToCommitStep = {
   title: string;
   description: string;
-  iconName: RenderToCommitStepIcon;
+  id: RenderToCommitStepId;
   tone: ToneKey;
   emphasis?: boolean;
 };
 
-export type PositionStepIcon = 'calendar' | 'cpu' | 'check' | 'gate' | 'list';
+export type PositionStepId = 'calendar' | 'cpu' | 'check' | 'gate' | 'list';
 
 export type PositionStep = {
   title: string;
   description: string;
-  iconName: PositionStepIcon;
+  id: PositionStepId;
   tone: ToneKey;
   emphasis?: boolean;
   subItems?: string[];
 };
 
-export type PreparationCardIcon = 'inbox' | 'flag' | 'workflow' | 'zap';
+export type PreparationCardId = 'inbox' | 'flag' | 'workflow' | 'zap';
 
 export type PreparationCard = {
   title: string;
   keyword: string;
   description: string;
-  iconName: PreparationCardIcon;
+  id: PreparationCardId;
   tone: ToneKey;
 };
 
@@ -52,12 +52,6 @@ export type TimelineStep = {
   tone: ToneKey;
   isMutation?: boolean;
   isAsync?: boolean;
-};
-
-export type PipelineFunction = {
-  name: string;
-  description: string;
-  tone: ToneKey;
 };
 
 export type ModernStep = {
@@ -74,27 +68,34 @@ export type CommitRootContent = {
       eyebrow: string;
       flowLabel: string;
       cards: HeroFlowCard[];
+      code: string;
     };
   };
   renderToCommit: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
+    gateBadge: string;
     steps: RenderToCommitStep[];
   };
   position: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
+    entryBadge: string;
     steps: PositionStep[];
   };
   preparation: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: PreparationCard[];
   };
   timeline: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -103,23 +104,19 @@ export type CommitRootContent = {
     steps: TimelineStep[];
   };
   checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
-    info: {
-      fileLabel: string;
-      filePath: string;
-      watchLabel: string;
-      watchValue: string;
-      question: string;
-    };
-    code: {
-      title: string;
-      code: string;
-    };
-    pipelineTitle: string;
-    pipeline: PipelineFunction[];
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   rootMeaning: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: { line1: string; line2: string; line3: string };
@@ -132,11 +129,12 @@ export type CommitRootContent = {
     flowLabel: { left: string; center: string; right: string };
   };
   modern: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: ModernStep[];
-    bottomNote: string;
+    note: string;
     relatedFileNote: string;
   };
   nextStep: {
@@ -153,21 +151,21 @@ const heroCardsKo: HeroFlowCard[] = [
     title: 'Render Phase',
     subtitle: '계산',
     description: '새 화면을 계산하고 Fiber tree를 완성',
-    iconName: 'cpu',
+    id: 'cpu',
     tone: 'sky',
   },
   {
     title: 'finishedWork',
     subtitle: '새로 계산된 Fiber 트리',
     description: 'Commit Phase로 넘겨질 완성 결과',
-    iconName: 'gitMerge',
+    id: 'gitMerge',
     tone: 'blue',
   },
   {
     title: 'commitRoot',
     subtitle: '파이프라인 입구',
     description: '완성된 트리를 실제 반영 단계로 전달',
-    iconName: 'gate',
+    id: 'gate',
     tone: 'teal',
     isGate: true,
   },
@@ -175,7 +173,7 @@ const heroCardsKo: HeroFlowCard[] = [
     title: 'Commit Phase',
     subtitle: '실제 반영',
     items: ['Before Mutation', 'Mutation', 'Layout', 'Passive Effects'],
-    iconName: 'layers',
+    id: 'layers',
     tone: 'violet',
   },
 ];
@@ -185,21 +183,21 @@ const heroCardsEn: HeroFlowCard[] = [
     title: 'Render Phase',
     subtitle: 'compute',
     description: 'Computes the next screen and builds the Fiber tree',
-    iconName: 'cpu',
+    id: 'cpu',
     tone: 'sky',
   },
   {
     title: 'finishedWork',
     subtitle: 'the new Fiber tree',
     description: 'The completed result handed off to the Commit Phase',
-    iconName: 'gitMerge',
+    id: 'gitMerge',
     tone: 'blue',
   },
   {
     title: 'commitRoot',
     subtitle: 'pipeline entry',
     description: 'Hands the finished tree into the real apply pipeline',
-    iconName: 'gate',
+    id: 'gate',
     tone: 'teal',
     isGate: true,
   },
@@ -207,7 +205,7 @@ const heroCardsEn: HeroFlowCard[] = [
     title: 'Commit Phase',
     subtitle: 'apply for real',
     items: ['Before Mutation', 'Mutation', 'Layout', 'Passive Effects'],
-    iconName: 'layers',
+    id: 'layers',
     tone: 'violet',
   },
 ];
@@ -216,26 +214,26 @@ const renderToCommitStepsKo: RenderToCommitStep[] = [
   {
     title: 'Render Phase 완료',
     description: '모든 작업을 계산하고 트리를 완성',
-    iconName: 'checkCircle',
+    id: 'checkCircle',
     tone: 'sky',
   },
   {
     title: 'finishedWork 확보',
     description: '새로운 Fiber 트리, 완성된 결과 확보',
-    iconName: 'gitMerge',
+    id: 'gitMerge',
     tone: 'blue',
   },
   {
     title: 'commitRoot(...)',
     description: '완성된 결과를 실제 반영 파이프라인으로 전달',
-    iconName: 'gate',
+    id: 'gate',
     tone: 'teal',
     emphasis: true,
   },
   {
     title: 'Commit Phase 시작',
     description: '실제 DOM, refs, effects 동기 반영',
-    iconName: 'rocket',
+    id: 'rocket',
     tone: 'violet',
   },
 ];
@@ -244,26 +242,26 @@ const renderToCommitStepsEn: RenderToCommitStep[] = [
   {
     title: 'Render Phase done',
     description: 'All work is computed and the tree is built',
-    iconName: 'checkCircle',
+    id: 'checkCircle',
     tone: 'sky',
   },
   {
     title: 'finishedWork ready',
     description: 'A new Fiber tree — the completed result',
-    iconName: 'gitMerge',
+    id: 'gitMerge',
     tone: 'blue',
   },
   {
     title: 'commitRoot(...)',
     description: 'Hands the completed result to the real apply pipeline',
-    iconName: 'gate',
+    id: 'gate',
     tone: 'teal',
     emphasis: true,
   },
   {
     title: 'Commit Phase begins',
     description: 'Synchronously applies DOM, refs, effects',
-    iconName: 'rocket',
+    id: 'rocket',
     tone: 'violet',
   },
 ];
@@ -272,32 +270,32 @@ const positionStepsKo: PositionStep[] = [
   {
     title: '업데이트 스케줄링',
     description: 'setState, props 변경, 이벤트 등으로 업데이트 요청',
-    iconName: 'calendar',
+    id: 'calendar',
     tone: 'sky',
   },
   {
     title: 'Render Phase (Reconciler)',
     description: 'Fiber 트리를 순회하며 변경 사항 계산',
-    iconName: 'cpu',
+    id: 'cpu',
     tone: 'blue',
   },
   {
     title: 'finishedWork 생성',
     description: '새로운 트리 완성, Root.current와 분리',
-    iconName: 'check',
+    id: 'check',
     tone: 'indigo',
   },
   {
     title: 'commitRoot',
     description: '완성된 트리를 기준으로 Commit Phase 시작',
-    iconName: 'gate',
+    id: 'gate',
     tone: 'teal',
     emphasis: true,
   },
   {
     title: 'Commit sub-phases',
     description: '순차적으로 실행되는 commit 내부 단계',
-    iconName: 'list',
+    id: 'list',
     tone: 'violet',
     subItems: ['Before Mutation', 'Mutation', 'Layout', 'Passive Effects'],
   },
@@ -307,32 +305,32 @@ const positionStepsEn: PositionStep[] = [
   {
     title: 'Update scheduling',
     description: 'Update requests from setState, prop changes, events, ...',
-    iconName: 'calendar',
+    id: 'calendar',
     tone: 'sky',
   },
   {
     title: 'Render Phase (Reconciler)',
     description: 'Walks the Fiber tree and computes the diff',
-    iconName: 'cpu',
+    id: 'cpu',
     tone: 'blue',
   },
   {
     title: 'Build finishedWork',
     description: 'New tree is complete and split from Root.current',
-    iconName: 'check',
+    id: 'check',
     tone: 'indigo',
   },
   {
     title: 'commitRoot',
     description: 'Kicks off the Commit Phase from the finished tree',
-    iconName: 'gate',
+    id: 'gate',
     tone: 'teal',
     emphasis: true,
   },
   {
     title: 'Commit sub-phases',
     description: 'Inner commit steps that run in sequence',
-    iconName: 'list',
+    id: 'list',
     tone: 'violet',
     subItems: ['Before Mutation', 'Mutation', 'Layout', 'Passive Effects'],
   },
@@ -343,28 +341,28 @@ const preparationCardsKo: PreparationCard[] = [
     title: '완료된 트리 인수로 수신',
     keyword: 'finishedWork',
     description: '새로 계산된 Fiber 트리인 완성본을 인수로 받습니다.',
-    iconName: 'inbox',
+    id: 'inbox',
     tone: 'teal',
   },
   {
     title: '어떤 lane의 결과인지 확인',
     keyword: 'lanes',
     description: '우선순위와 어떤 업데이트 결과인지 파악합니다.',
-    iconName: 'flag',
+    id: 'flag',
     tone: 'violet',
   },
   {
     title: 'mutation / layout 단계 진입 준비',
     keyword: 'pending effects state',
     description: '호스트 DOM, ref, flags 등을 기반으로 각 단계 진입을 준비합니다.',
-    iconName: 'workflow',
+    id: 'workflow',
     tone: 'amber',
   },
   {
     title: 'passive effects 예약 가능성 검토',
     keyword: 'passive effects',
     description: '후속 passive effect 실행 여부를 결정하고 예약을 준비합니다.',
-    iconName: 'zap',
+    id: 'zap',
     tone: 'indigo',
   },
 ];
@@ -374,28 +372,28 @@ const preparationCardsEn: PreparationCard[] = [
     title: 'Receive the finished tree as an argument',
     keyword: 'finishedWork',
     description: 'Takes the newly built Fiber tree as input.',
-    iconName: 'inbox',
+    id: 'inbox',
     tone: 'teal',
   },
   {
     title: 'Check which lane the work belongs to',
     keyword: 'lanes',
     description: 'Reads the priority and the kind of update being committed.',
-    iconName: 'flag',
+    id: 'flag',
     tone: 'violet',
   },
   {
     title: 'Prepare to enter mutation / layout',
     keyword: 'pending effects state',
     description: 'Sets up entry into each sub-phase from host DOM, refs, flags.',
-    iconName: 'workflow',
+    id: 'workflow',
     tone: 'amber',
   },
   {
     title: 'Decide whether passive effects must be scheduled',
     keyword: 'passive effects',
     description: 'Decides whether follow-up passive effects need scheduling.',
-    iconName: 'zap',
+    id: 'zap',
     tone: 'indigo',
   },
 ];
@@ -470,6 +468,8 @@ const timelineStepsEn: TimelineStep[] = [
   },
 ];
 
+const heroCode = 'commitRoot(root, finishedWork, lanes);';
+
 const codeKo = `function commitRoot(
   root: FiberRoot,
   finishedWork: null | Fiber,
@@ -478,10 +478,12 @@ const codeKo = `function commitRoot(
 ): void {
   // 단계별 준비 작업 후 각 단계로 진입합니다.
 
-  commitBeforeMutationEffects(root, finishedWork);
+  commitBeforeMutationEffects(root, finishedWork, lanes);
   commitMutationEffects(root, finishedWork, lanes);
   commitLayoutEffects(finishedWork, root, lanes);
-  schedulePassiveEffects(root, lanes);
+  scheduleCallback(NormalSchedulerPriority, () => {
+    flushPassiveEffects();
+  });
 }`;
 
 const codeEn = `function commitRoot(
@@ -492,27 +494,13 @@ const codeEn = `function commitRoot(
 ): void {
   // Prepare per step, then enter each sub-phase.
 
-  commitBeforeMutationEffects(root, finishedWork);
+  commitBeforeMutationEffects(root, finishedWork, lanes);
   commitMutationEffects(root, finishedWork, lanes);
   commitLayoutEffects(finishedWork, root, lanes);
-  schedulePassiveEffects(root, lanes);
+  scheduleCallback(NormalSchedulerPriority, () => {
+    flushPassiveEffects();
+  });
 }`;
-
-const pipelineKo: PipelineFunction[] = [
-  { name: 'commitBeforeMutationEffects', description: 'DOM 변경 전 준비', tone: 'sky' },
-  { name: 'commitMutationEffects', description: '실제 DOM 변경', tone: 'teal' },
-  { name: 'commitLayoutEffects', description: 'layout / ref attach', tone: 'violet' },
-  { name: 'commitPassiveMountEffects', description: '비동기 passive 실행', tone: 'amber' },
-  { name: 'commitPassiveUnmountEffects', description: '이전 passive 정리', tone: 'indigo' },
-];
-
-const pipelineEn: PipelineFunction[] = [
-  { name: 'commitBeforeMutationEffects', description: 'Prepare before DOM changes', tone: 'sky' },
-  { name: 'commitMutationEffects', description: 'Real DOM mutations', tone: 'teal' },
-  { name: 'commitLayoutEffects', description: 'Layout / ref attach', tone: 'violet' },
-  { name: 'commitPassiveMountEffects', description: 'Run passive effects async', tone: 'amber' },
-  { name: 'commitPassiveUnmountEffects', description: 'Tear down old passives', tone: 'indigo' },
-];
 
 const modernStepsKo: ModernStep[] = [
   { label: 'Before Mutation', tone: 'sky' },
@@ -544,30 +532,37 @@ const ko: CommitRootContent = {
       eyebrow: 'render → commit',
       flowLabel: 'Render Phase → finishedWork → commitRoot → Commit Phase',
       cards: heroCardsKo,
+      code: heroCode,
     },
   },
   renderToCommit: {
-    eyebrow: '01 · commit 진입',
+    badge: '01',
+    eyebrow: 'commit 진입',
     title: 'Render 종료 → Commit 시작',
     description:
       'Render Phase가 끝나는 순간 finishedWork가 확보되고, commitRoot가 그 결과를 Commit Phase로 넘깁니다.',
+    gateBadge: '관문',
     steps: renderToCommitStepsKo,
   },
   position: {
-    eyebrow: '02 · commitRoot 위치',
+    badge: '02',
+    eyebrow: '진입점 위치',
     title: 'commitRoot의 위치 (전체 업데이트 흐름)',
     description:
       '업데이트 스케줄링부터 Commit sub-phases까지, commitRoot는 Render와 Commit 사이의 입구에 위치합니다.',
+    entryBadge: '진입점',
     steps: positionStepsKo,
   },
   preparation: {
-    eyebrow: '03 · commitRoot 준비',
+    badge: '03',
+    eyebrow: '커밋 준비',
     title: 'commitRoot가 준비하는 것',
     description: 'commitRoot는 단순한 진입점이 아니라 다음 4가지 준비 작업을 수행합니다.',
     cards: preparationCardsKo,
   },
   timeline: {
-    eyebrow: '04 · commit 타임라인',
+    badge: '04',
+    eyebrow: 'commit 타임라인',
     title: 'Commit Phase 타임라인 개요',
     description:
       'commitRoot가 여는 파이프라인의 큰 흐름입니다. Before Mutation부터 Passive Effects까지 5단계로 이어집니다.',
@@ -576,24 +571,21 @@ const ko: CommitRootContent = {
     steps: timelineStepsKo,
   },
   checkpoint: {
-    eyebrow: '05 · 코드 체크포인트',
+    badge: '05',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
-    info: {
-      fileLabel: '파일',
-      filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
-      watchLabel: '볼 것',
-      watchValue: 'commitRoot(...)',
-      question: 'Render Phase의 finishedWork는 어디에서 Commit Phase로 넘어갈까?',
-    },
-    code: {
-      title: 'commitRoot의 시그니처 (React main 기준)',
-      code: codeKo,
-    },
-    pipelineTitle: 'commit pipeline 함수',
-    pipeline: pipelineKo,
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+    lookForLabel: '볼 것',
+    lookFor: 'commitRoot, commitBeforeMutationEffects, commitMutationEffects, commitLayoutEffects',
+    code: codeKo,
+    primaryCta: 'ReactFiberWorkLoop.js 읽기',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.js',
   },
   rootMeaning: {
-    eyebrow: '06 · root commit',
+    badge: '06',
+    eyebrow: 'root commit',
     title: 'Root 단위 Commit의 의미',
     description: {
       line1: 'Render Phase는 Fiber를 하나씩 계산하지만,',
@@ -609,12 +601,12 @@ const ko: CommitRootContent = {
     flowLabel: { left: 'fiber-by-fiber', center: 'one shot', right: 'committed tree' },
   },
   modern: {
-    eyebrow: '07 · 현대 정정',
+    badge: '07',
+    eyebrow: '현대 정정',
     title: '최신 코드 보정',
     description: '현재 React main에서는 commit 파이프라인이 더 세분화되어 있습니다.',
     steps: modernStepsKo,
-    bottomNote:
-      '학습을 위해 기본 3~5단계의 큰 흐름을 먼저 이해하고, 더 세부적인 분리는 이 보정 카드로 확인하세요.',
+    note: '학습을 위해 기본 3~5단계의 큰 흐름을 먼저 이해하고, 더 세부적인 분리는 이 보정 카드로 확인하세요.',
     relatedFileNote: '관련 파일: ReactFiberWorkLoop.js, ReactFiberCommitWork.js',
   },
   nextStep: {
@@ -641,30 +633,37 @@ const en: CommitRootContent = {
       eyebrow: 'RENDER → COMMIT',
       flowLabel: 'Render Phase → finishedWork → commitRoot → Commit Phase',
       cards: heroCardsEn,
+      code: heroCode,
     },
   },
   renderToCommit: {
-    eyebrow: '01 · INTO COMMIT',
+    badge: '01',
+    eyebrow: 'INTO COMMIT',
     title: 'Render done → Commit begins',
     description:
       'The moment the Render Phase ends, finishedWork is ready and commitRoot hands it to the Commit Phase.',
+    gateBadge: 'gate',
     steps: renderToCommitStepsEn,
   },
   position: {
-    eyebrow: '02 · COMMITROOT POSITION',
+    badge: '02',
+    eyebrow: 'ENTRY POINT',
     title: 'Where commitRoot sits (whole update flow)',
     description:
       'From update scheduling to commit sub-phases, commitRoot lives right at the entry between Render and Commit.',
+    entryBadge: 'entry point',
     steps: positionStepsEn,
   },
   preparation: {
-    eyebrow: '03 · PREPARATION',
+    badge: '03',
+    eyebrow: 'PREPARATION',
     title: 'What commitRoot prepares',
     description: 'commitRoot is more than an entry point — it does these 4 preparation jobs.',
     cards: preparationCardsEn,
   },
   timeline: {
-    eyebrow: '04 · TIMELINE',
+    badge: '04',
+    eyebrow: 'TIMELINE',
     title: 'Commit Phase timeline overview',
     description:
       'The high-level flow of the pipeline commitRoot opens — from Before Mutation through Passive Effects.',
@@ -673,25 +672,21 @@ const en: CommitRootContent = {
     steps: timelineStepsEn,
   },
   checkpoint: {
-    eyebrow: '05 · CODE CHECKPOINT',
+    badge: '05',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
-    info: {
-      fileLabel: 'File',
-      filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
-      watchLabel: 'What to read',
-      watchValue: 'commitRoot(...)',
-      question:
-        'Where does the finishedWork from the Render Phase cross over into the Commit Phase?',
-    },
-    code: {
-      title: 'commitRoot signature (React main)',
-      code: codeEn,
-    },
-    pipelineTitle: 'commit pipeline functions',
-    pipeline: pipelineEn,
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+    lookForLabel: 'Look for',
+    lookFor: 'commitRoot, commitBeforeMutationEffects, commitMutationEffects, commitLayoutEffects',
+    code: codeEn,
+    primaryCta: 'Read ReactFiberWorkLoop.js',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.js',
   },
   rootMeaning: {
-    eyebrow: '06 · ROOT COMMIT',
+    badge: '06',
+    eyebrow: 'ROOT COMMIT',
     title: 'What Root-level commit means',
     description: {
       line1: 'The Render Phase computes Fibers one at a time,',
@@ -707,12 +702,12 @@ const en: CommitRootContent = {
     flowLabel: { left: 'fiber-by-fiber', center: 'one shot', right: 'committed tree' },
   },
   modern: {
-    eyebrow: '07 · MODERN UPDATE',
+    badge: '07',
+    eyebrow: 'MODERN UPDATE',
     title: 'Modern code correction',
     description: 'The current React main splits the commit pipeline into more steps.',
     steps: modernStepsEn,
-    bottomNote:
-      'First grasp the broad 3~5 step flow for learning, then look at this correction card for the more granular split.',
+    note: 'First grasp the broad 3~5 step flow for learning, then look at this correction card for the more granular split.',
     relatedFileNote: 'Related files: ReactFiberWorkLoop.js, ReactFiberCommitWork.js',
   },
   nextStep: {

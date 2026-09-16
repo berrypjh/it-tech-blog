@@ -14,9 +14,8 @@ type Props = { content: BeforeMutationContent['hero'] };
 export const BeforeMutationHeroSection = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="reconciler/before-mutation.md"
-    promptSuffix={<span className="text-[var(--term-dim)]"> {'// read before mutate'}</span>}
-    gridColumns="lg:grid-cols-[minmax(0,_0.82fr)_minmax(0,_1.18fr)]"
+    promptPath="packages/react-reconciler/src/ReactFiberCommitWork.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -30,10 +29,10 @@ export const BeforeMutationHeroSection = ({ content }: Props) => (
         <span className="block text-[var(--term-accent)]">{content.title.line3}</span>
       </HeroTitle>
 
-      <HeroDescription>{content.description}</HeroDescription>
+      <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-before-mutation" className="min-w-0">
+    <HeroVisualColumn id="hero-before-mutation">
       <BeforeMutationHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

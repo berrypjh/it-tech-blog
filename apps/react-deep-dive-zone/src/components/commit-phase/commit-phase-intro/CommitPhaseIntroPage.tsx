@@ -5,7 +5,6 @@ import { StartPageShell } from '../../shared/shell';
 
 import { CommitFlagsSection } from './sections/CommitFlagsSection';
 import { CommitKeySummarySection } from './sections/CommitKeySummarySection';
-import { CommitMiniQuizSection } from './sections/CommitMiniQuizSection';
 import { CommitPhaseHero } from './sections/CommitPhaseHero';
 import { CommitPhaseMapSection } from './sections/CommitPhaseMapSection';
 import { CommitWorkItemsSection } from './sections/CommitWorkItemsSection';
@@ -27,7 +26,6 @@ export const CommitPhaseIntroPage = ({ locale }: Props) => {
       <CommitPhaseMapSection content={c.map} />
       <CommitFlagsSection content={c.flags} />
       <CommitKeySummarySection content={c.summary} />
-      <CommitMiniQuizSection content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

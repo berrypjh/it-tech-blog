@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { FileCode, FileText, GitBranch, Sparkles } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { SourcePathCard, UpdateToRenderSummaryContent } from '../content';
@@ -9,9 +9,15 @@ import type { SourcePathCard, UpdateToRenderSummaryContent } from '../content';
 type Props = { content: UpdateToRenderSummaryContent['sourcePath'] };
 
 export const SourcePathSection = ({ content }: Props) => (
-  <section id="section-source-path" aria-labelledby="heading-source-path" className="space-y-md">
-    <SectionHeader
+  <section
+    id="source-path"
+    aria-labelledby="heading-source-path"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="source-path"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

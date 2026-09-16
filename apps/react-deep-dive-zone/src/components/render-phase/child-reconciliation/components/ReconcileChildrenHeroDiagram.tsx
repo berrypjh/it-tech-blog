@@ -3,6 +3,7 @@ import { FileText, Hexagon, Layers, Network } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ReconcileChildrenContent } from '../content';
@@ -22,15 +23,15 @@ export const ReconcileChildrenHeroDiagram = ({ content }: Props) => {
     <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
-          <h2 className="min-w-0 text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
+          <span className="min-w-0 text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {diagram.title}
-          </h2>
+          </span>
           <span className="flex-1 border-t border-dashed border-[var(--term-border)]" />
         </header>
 
         <FlowCard
           tone="sky"
-          icon={<Network className="h-[18px] w-[18px]" aria-hidden="true" />}
+          icon={<Network className="h-4 w-4" />}
           title={diagram.currentCard.title}
           mono={diagram.currentCard.subtitle}
           body={diagram.currentCard.description}
@@ -38,7 +39,7 @@ export const ReconcileChildrenHeroDiagram = ({ content }: Props) => {
 
         <FlowCard
           tone="violet"
-          icon={<FileText className="h-[18px] w-[18px]" aria-hidden="true" />}
+          icon={<FileText className="h-4 w-4" />}
           title={diagram.inputCard.title}
           body={diagram.inputCard.description}
         />
@@ -55,7 +56,7 @@ export const ReconcileChildrenHeroDiagram = ({ content }: Props) => {
         >
           <div className="flex items-center gap-sm">
             <ToneIconBox tone="teal" size="sm">
-              <Hexagon className="h-[18px] w-[18px]" aria-hidden="true" />
+              <Hexagon className="h-4 w-4" />
             </ToneIconBox>
             <span
               className={cx(
@@ -81,7 +82,7 @@ export const ReconcileChildrenHeroDiagram = ({ content }: Props) => {
 
         <FlowCard
           tone="indigo"
-          icon={<Layers className="h-[18px] w-[18px]" aria-hidden="true" />}
+          icon={<Layers className="h-4 w-4" />}
           title={diagram.newCard.title}
           mono={diagram.newCard.subtitle}
           body={diagram.newCard.description}
@@ -109,7 +110,7 @@ const FlowCard = ({
     <article
       className={cx(
         'flex items-start gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-2.5',
-        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
+        'shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
     >
@@ -128,12 +129,3 @@ const FlowCard = ({
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

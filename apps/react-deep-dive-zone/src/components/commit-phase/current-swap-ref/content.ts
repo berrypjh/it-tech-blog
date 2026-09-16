@@ -13,17 +13,17 @@ export type CommitTimelineItem = {
 export type TransitionStep = {
   title: string;
   description: string;
-  iconName: 'history' | 'check' | 'wand' | 'rocket';
+  id: 'history' | 'check' | 'wand' | 'rocket';
   tone: ToneKey;
   emphasis?: boolean;
 };
 
-export type RefTimelineIcon = 'eye' | 'unlink' | 'replace' | 'link' | 'check';
+export type RefTimelineId = 'eye' | 'unlink' | 'replace' | 'link' | 'check';
 
 export type RefTimelineStep = {
   title: string;
   description: string;
-  iconName: RefTimelineIcon;
+  id: RefTimelineId;
   tone: ToneKey;
 };
 
@@ -32,11 +32,11 @@ export type RefValueStep = {
   tone: ToneKey;
 };
 
-export type CodeBlock = {
-  title: string;
-  phase: string;
+export type CheckpointBlock = {
+  filePath: string;
   code: string;
-  tone: ToneKey;
+  primaryCta: string;
+  primaryHref: string;
 };
 
 export type RiskItem = {
@@ -66,22 +66,27 @@ export type RootCurrentRefContent = {
     };
   };
   transition: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: TransitionStep[];
     formula: string;
+    formulaLabel: string;
     formulaCallout: string;
   };
   refTimeline: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: RefTimelineStep[];
+    refFlowLabel: string;
     refFlow: RefValueStep[];
-    insight: string;
+    note: string;
   };
   inputRef: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -94,19 +99,19 @@ export type RootCurrentRefContent = {
     domLabel: string;
   };
   checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
-    info: {
-      fileLabel: string;
-      filePaths: string[];
-      watchLabel: string;
-      watchItems: string[];
-      question: string;
-    };
-    panelTitle: string;
-    blocks: CodeBlock[];
+    fileLabel: string;
+    filePaths: string[];
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    blocks: CheckpointBlock[];
   };
   risk: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -124,12 +129,14 @@ export type RootCurrentRefContent = {
     };
   };
   lifecycle: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: LifecycleStep[];
   };
   meaning: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -139,13 +146,6 @@ export type RootCurrentRefContent = {
     afterTitle: string;
     afterSubtitle: string;
     note: string;
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    question: string;
-    answer: string;
-    tip: string;
   };
   nextStep: {
     eyebrow: string;
@@ -188,25 +188,25 @@ const transitionStepsKo: TransitionStep[] = [
   {
     title: '기존 current tree',
     description: '화면을 대표하던 이전 Fiber 트리',
-    iconName: 'history',
+    id: 'history',
     tone: 'violet',
   },
   {
     title: 'finishedWork 계산 완료',
     description: 'Render Phase가 끝나고 새 트리가 완성됨',
-    iconName: 'check',
+    id: 'check',
     tone: 'sky',
   },
   {
     title: 'Mutation Phase 실행',
     description: 'DOM 삽입 / 수정 / 삭제가 모두 완료됨',
-    iconName: 'wand',
+    id: 'wand',
     tone: 'cyan',
   },
   {
     title: '새 tree가 current로 전환',
     description: '이제 이 트리가 새로운 화면의 기준이 됨',
-    iconName: 'rocket',
+    id: 'rocket',
     tone: 'teal',
     emphasis: true,
   },
@@ -216,44 +216,44 @@ const transitionStepsEn: TransitionStep[] = [
   {
     title: 'Existing current tree',
     description: 'The previous Fiber tree that represented the screen',
-    iconName: 'history',
+    id: 'history',
     tone: 'violet',
   },
   {
     title: 'finishedWork ready',
     description: 'Render Phase finished — new tree is complete',
-    iconName: 'check',
+    id: 'check',
     tone: 'sky',
   },
   {
     title: 'Run Mutation Phase',
     description: 'DOM insert / update / delete all done',
-    iconName: 'wand',
+    id: 'wand',
     tone: 'cyan',
   },
   {
     title: 'New tree becomes current',
     description: 'This tree is now the basis for the screen',
-    iconName: 'rocket',
+    id: 'rocket',
     tone: 'teal',
     emphasis: true,
   },
 ];
 
 const refTimelineKo: RefTimelineStep[] = [
-  { title: '변경 전', description: '이전 트리 기준', iconName: 'eye', tone: 'violet' },
-  { title: 'ref detach', description: 'null로 분리', iconName: 'unlink', tone: 'violet' },
-  { title: 'DOM mutation', description: 'Mutation Phase', iconName: 'replace', tone: 'sky' },
-  { title: 'ref attach', description: '새 DOM 연결', iconName: 'link', tone: 'teal' },
-  { title: '변경 후', description: '새 트리 기준', iconName: 'check', tone: 'teal' },
+  { title: '변경 전', description: '이전 트리 기준', id: 'eye', tone: 'violet' },
+  { title: 'ref detach', description: 'null로 분리', id: 'unlink', tone: 'violet' },
+  { title: 'DOM mutation', description: 'Mutation Phase', id: 'replace', tone: 'sky' },
+  { title: 'ref attach', description: '새 DOM 연결', id: 'link', tone: 'teal' },
+  { title: '변경 후', description: '새 트리 기준', id: 'check', tone: 'teal' },
 ];
 
 const refTimelineEn: RefTimelineStep[] = [
-  { title: 'Before', description: 'previous tree basis', iconName: 'eye', tone: 'violet' },
-  { title: 'ref detach', description: 'set to null', iconName: 'unlink', tone: 'violet' },
-  { title: 'DOM mutation', description: 'Mutation Phase', iconName: 'replace', tone: 'sky' },
-  { title: 'ref attach', description: 'bind to new DOM', iconName: 'link', tone: 'teal' },
-  { title: 'After', description: 'new tree basis', iconName: 'check', tone: 'teal' },
+  { title: 'Before', description: 'previous tree basis', id: 'eye', tone: 'violet' },
+  { title: 'ref detach', description: 'set to null', id: 'unlink', tone: 'violet' },
+  { title: 'DOM mutation', description: 'Mutation Phase', id: 'replace', tone: 'sky' },
+  { title: 'ref attach', description: 'bind to new DOM', id: 'link', tone: 'teal' },
+  { title: 'After', description: 'new tree basis', id: 'check', tone: 'teal' },
 ];
 
 const refFlowKo: RefValueStep[] = [
@@ -276,85 +276,44 @@ const formCode = `function Form() {
   return <input ref={inputRef} />;
 }`;
 
-const checkpointBlocksKo: CodeBlock[] = [
-  {
-    title: 'ref detach 흐름',
-    phase: 'Before Mutation',
-    tone: 'violet',
-    code: `commitBeforeMutationEffects(root, ...) {
-  // 이전 트리 ref 분리
-  commitDetachRefEffects(root, ...);
-}
+const detachCode = `function commitMutationEffectsOnFiber(finishedWork, root, lanes) {
+  const current = finishedWork.alternate;
+  const flags = finishedWork.flags;
+  switch (finishedWork.tag) {
+    case HostComponent: {
+      recursivelyTraverseMutationEffects(root, finishedWork, lanes);
+      commitReconciliationEffects(finishedWork, lanes);
+      if (flags & Ref) {
+        if (current !== null) {
+          safelyDetachRef(current, current.return);
+        }
+      }
+      // ...
+    }
+  }
+}`;
 
-commitDetachRefEffects(...) {
-  // ref.current = null 설정
-  safelyDetachRef(finishedWork, nearestMountedAncestor);
-}`,
-  },
-  {
-    title: 'DOM mutation',
-    phase: 'Mutation Phase',
-    tone: 'sky',
-    code: `commitMutationEffects(root, ...) {
-  // 실제 DOM 삽입 / 수정 / 삭제
-  // host mutation 수행
-}`,
-  },
-  {
-    title: 'ref attach 흐름',
-    phase: 'After Mutation / Layout 전',
-    tone: 'teal',
-    code: `commitLayoutEffects(root, ...) {
-  // 새 트리 ref 연결
-  commitAttachRefEffects(root, ...);
-}
+const swapCode = `commitMutationEffects(root, finishedWork, lanes);
+// ...
+// The work-in-progress tree is now the current tree. This must come after
+// the mutation phase, so that the previous tree is still current during
+// componentWillUnmount, but before the layout phase, so that the finished
+// work is current during componentDidMount/Update.
+root.current = finishedWork;
+// ...
+commitLayoutEffects(finishedWork, root, lanes);`;
 
-commitAttachRefEffects(...) {
-  // ref.current = instance 설정
-  safelyAttachRef(finishedWork, nearestMountedAncestor);
-}`,
-  },
-];
-
-const checkpointBlocksEn: CodeBlock[] = [
-  {
-    title: 'ref detach flow',
-    phase: 'Before Mutation',
-    tone: 'violet',
-    code: `commitBeforeMutationEffects(root, ...) {
-  // Detach previous-tree refs
-  commitDetachRefEffects(root, ...);
-}
-
-commitDetachRefEffects(...) {
-  // Set ref.current = null
-  safelyDetachRef(finishedWork, nearestMountedAncestor);
-}`,
-  },
-  {
-    title: 'DOM mutation',
-    phase: 'Mutation Phase',
-    tone: 'sky',
-    code: `commitMutationEffects(root, ...) {
-  // Real DOM insert / update / delete
-  // host mutation
-}`,
-  },
-  {
-    title: 'ref attach flow',
-    phase: 'After Mutation / pre-Layout',
-    tone: 'teal',
-    code: `commitLayoutEffects(root, ...) {
-  // Attach refs on the new tree
-  commitAttachRefEffects(root, ...);
-}
-
-commitAttachRefEffects(...) {
-  // Set ref.current = instance
-  safelyAttachRef(finishedWork, nearestMountedAncestor);
-}`,
-  },
-];
+const attachCode = `function commitAttachRef(finishedWork) {
+  const ref = finishedWork.ref;
+  if (ref !== null) {
+    const instanceToUse = getPublicInstance(finishedWork.stateNode);
+    if (typeof ref === 'function') {
+      finishedWork.refCleanup = ref(instanceToUse);
+    } else {
+      ref.current = instanceToUse;
+    }
+  }
+}`;
 
 const riskItemsKo: RiskItem[] = [
   { text: 'DOM mutation이 아직 끝나지 않았을 수 있음', tone: 'violet' },
@@ -417,26 +376,30 @@ const ko: RootCurrentRefContent = {
     },
   },
   transition: {
-    eyebrow: '01 · current 트리 전환',
+    badge: '01',
+    eyebrow: 'current 트리 전환',
     title: 'current tree 전환',
     description:
       'finishedWork가 완성되고 Mutation Phase가 끝나면, React는 root.current를 새 tree로 바꿉니다.',
     steps: transitionStepsKo,
     formula: 'root.current = finishedWork;',
+    formulaLabel: '전환 한 줄',
     formulaCallout: '이 한 줄이 새 트리를 현재 화면의 기준으로 만듭니다.',
   },
   refTimeline: {
-    eyebrow: '02 · ref 분리와 연결',
+    badge: '02',
+    eyebrow: 'ref 분리와 연결',
     title: 'refs는 언제 detach / attach 되는가?',
     description:
       'ref detach는 mutation 이전에, ref attach는 mutation 이후에 일어납니다. 그 사이에는 ref.current가 잠깐 null이 됩니다.',
     steps: refTimelineKo,
+    refFlowLabel: 'ref.current 값 변화',
     refFlow: refFlowKo,
-    insight:
-      'ref detach는 mutation 이전에 발생하고, ref attach는 mutation 이후, After Mutation 단계에서 발생합니다.',
+    note: 'ref detach는 mutation 이전에 발생하고, ref attach는 mutation 이후, After Mutation 단계에서 발생합니다.',
   },
   inputRef: {
-    eyebrow: '03 · input ref 예시',
+    badge: '03',
+    eyebrow: 'input ref 예시',
     title: 'input ref 예시',
     description:
       'useRef로 만든 ref가 새 host instance와 어떻게 연결되는지를 단순한 input 예시로 봅니다.',
@@ -449,20 +412,46 @@ const ko: RootCurrentRefContent = {
     domLabel: 'inputRef.current',
   },
   checkpoint: {
-    eyebrow: '04 · 코드 체크포인트',
+    badge: '04',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
-    info: {
-      fileLabel: '파일',
-      filePaths: ['ReactFiberCommitEffects.js', 'ReactFiberCommitWork.js'],
-      watchLabel: '볼 것',
-      watchItems: ['ref detach 흐름', 'ref attach 흐름'],
-      question: 'ref.current는 Render Phase 결과를 즉시 반영할까?',
-    },
-    panelTitle: 'ref detach → mutation → ref attach 흐름',
-    blocks: checkpointBlocksKo,
+    fileLabel: '파일',
+    filePaths: [
+      'packages/react-reconciler/src/ReactFiberCommitWork.js',
+      'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+      'packages/react-reconciler/src/ReactFiberCommitEffects.js',
+    ],
+    lookForLabel: '볼 것',
+    lookFor: 'safelyDetachRef, root.current, commitAttachRef',
+    whyLabel: '설명',
+    why: 'ref는 Mutation 중에 분리되고, root.current 전환 뒤 Layout 중에 다시 연결됩니다.',
+    blocks: [
+      {
+        filePath: 'packages/react-reconciler/src/ReactFiberCommitWork.js',
+        code: detachCode,
+        primaryCta: 'ReactFiberCommitWork.js 읽기',
+        primaryHref:
+          'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitWork.js',
+      },
+      {
+        filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+        code: swapCode,
+        primaryCta: 'ReactFiberWorkLoop.js 읽기',
+        primaryHref:
+          'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.js',
+      },
+      {
+        filePath: 'packages/react-reconciler/src/ReactFiberCommitEffects.js',
+        code: attachCode,
+        primaryCta: 'ReactFiberCommitEffects.js 읽기',
+        primaryHref:
+          'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitEffects.js',
+      },
+    ],
   },
   risk: {
-    eyebrow: '05 · render 중 ref 위험',
+    badge: '05',
+    eyebrow: 'render 중 ref 위험',
     title: 'Render 중 ref 읽기가 위험한 이유',
     description:
       '같은 ref라도 언제 읽느냐에 따라 가리키는 값이 다릅니다. Render Phase와 Commit 이후는 안전성이 다릅니다.',
@@ -480,13 +469,15 @@ const ko: RootCurrentRefContent = {
     },
   },
   lifecycle: {
-    eyebrow: '06 · ref 생명주기',
+    badge: '06',
+    eyebrow: 'ref 생명주기',
     title: 'refs lifecycle 정리',
     description: '단계별로 ref.current 값이 어떻게 바뀌는지 한눈에 정리합니다.',
     steps: lifecycleStepsKo,
   },
   meaning: {
-    eyebrow: '07 · root.current 의미',
+    badge: '07',
+    eyebrow: '전환의 의미',
     title: 'root.current 전환의 의미',
     description: '단순한 변수 대입처럼 보이지만, 이 한 줄이 "현재 화면의 기준"을 바꿉니다.',
     beforeTitle: '전환 전',
@@ -495,13 +486,6 @@ const ko: RootCurrentRefContent = {
     afterTitle: '전환 후',
     afterSubtitle: '새 트리가 화면 기준',
     note: '다음 업데이트는 이 새 트리를 기준으로 시작됩니다.',
-  },
-  quiz: {
-    eyebrow: '08 · 미니 퀴즈',
-    title: '미니 퀴즈',
-    question: 'ref.current는 Render Phase 계산 결과를 즉시 반영할까?',
-    answer: '아니다. commit 이후에 detach / attach가 끝난 최신 DOM과 맞춰진다.',
-    tip: 'ref는 컴포넌트 생명주기와 연결된 값입니다. Render 중에는 사용하지 말고, commit 이후 Layout 이후 시점에서 사용하는 것이 안전합니다.',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -534,26 +518,30 @@ const en: RootCurrentRefContent = {
     },
   },
   transition: {
-    eyebrow: '01 · CURRENT SWAP',
+    badge: '01',
+    eyebrow: 'CURRENT SWAP',
     title: 'current tree transition',
     description:
       'After finishedWork is built and the Mutation Phase ends, React swaps root.current to the new tree.',
     steps: transitionStepsEn,
     formula: 'root.current = finishedWork;',
+    formulaLabel: 'The swap',
     formulaCallout: 'This one line makes the new tree the basis of the current screen.',
   },
   refTimeline: {
-    eyebrow: '02 · DETACH & ATTACH',
+    badge: '02',
+    eyebrow: 'DETACH & ATTACH',
     title: 'When do refs detach / attach?',
     description:
       'Ref detach happens before mutation; ref attach happens after. Between them, ref.current is briefly null.',
     steps: refTimelineEn,
+    refFlowLabel: 'ref.current value flow',
     refFlow: refFlowEn,
-    insight:
-      'Ref detach happens before mutation, and ref attach happens after — in the After Mutation step.',
+    note: 'Ref detach happens before mutation, and ref attach happens after — in the After Mutation step.',
   },
   inputRef: {
-    eyebrow: '03 · INPUT REF',
+    badge: '03',
+    eyebrow: 'INPUT REF',
     title: 'input ref example',
     description: 'A simple input example showing how a useRef ref connects to a new host instance.',
     codeTitle: 'Code',
@@ -566,20 +554,46 @@ const en: RootCurrentRefContent = {
     domLabel: 'inputRef.current',
   },
   checkpoint: {
-    eyebrow: '04 · CODE CHECKPOINT',
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
-    info: {
-      fileLabel: 'Files',
-      filePaths: ['ReactFiberCommitEffects.js', 'ReactFiberCommitWork.js'],
-      watchLabel: 'Watch',
-      watchItems: ['ref detach flow', 'ref attach flow'],
-      question: 'Does ref.current immediately reflect the Render Phase result?',
-    },
-    panelTitle: 'ref detach → mutation → ref attach flow',
-    blocks: checkpointBlocksEn,
+    fileLabel: 'File',
+    filePaths: [
+      'packages/react-reconciler/src/ReactFiberCommitWork.js',
+      'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+      'packages/react-reconciler/src/ReactFiberCommitEffects.js',
+    ],
+    lookForLabel: 'Look for',
+    lookFor: 'safelyDetachRef, root.current, commitAttachRef',
+    whyLabel: 'Why',
+    why: 'Refs are detached during Mutation and attached again during Layout, after the root.current swap.',
+    blocks: [
+      {
+        filePath: 'packages/react-reconciler/src/ReactFiberCommitWork.js',
+        code: detachCode,
+        primaryCta: 'Read ReactFiberCommitWork.js',
+        primaryHref:
+          'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitWork.js',
+      },
+      {
+        filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+        code: swapCode,
+        primaryCta: 'Read ReactFiberWorkLoop.js',
+        primaryHref:
+          'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.js',
+      },
+      {
+        filePath: 'packages/react-reconciler/src/ReactFiberCommitEffects.js',
+        code: attachCode,
+        primaryCta: 'Read ReactFiberCommitEffects.js',
+        primaryHref:
+          'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitEffects.js',
+      },
+    ],
   },
   risk: {
-    eyebrow: '05 · REF RISK',
+    badge: '05',
+    eyebrow: 'REF RISK',
     title: 'Why reading refs during Render is risky',
     description:
       'The same ref can point to different values depending on when you read it. Render Phase and post-Commit are different safety zones.',
@@ -597,13 +611,15 @@ const en: RootCurrentRefContent = {
     },
   },
   lifecycle: {
-    eyebrow: '06 · REF LIFECYCLE',
+    badge: '06',
+    eyebrow: 'REF LIFECYCLE',
     title: 'refs lifecycle summary',
     description: 'How ref.current changes through each step, at a glance.',
     steps: lifecycleStepsEn,
   },
   meaning: {
-    eyebrow: '07 · ROOT.CURRENT',
+    badge: '07',
+    eyebrow: 'SWAP MEANING',
     title: 'What the root.current swap means',
     description:
       'It looks like a simple assignment, but this line changes the "basis of the screen".',
@@ -613,14 +629,6 @@ const en: RootCurrentRefContent = {
     afterTitle: 'After swap',
     afterSubtitle: 'new tree is the screen basis',
     note: 'The next update starts from this new tree.',
-  },
-  quiz: {
-    eyebrow: '08 · MINI QUIZ',
-    title: 'mini quiz',
-    question: 'Does ref.current immediately reflect the Render Phase result?',
-    answer:
-      'No. After the commit, it is aligned with the latest DOM that has gone through detach / attach.',
-    tip: 'Refs are tied to component lifecycle. Avoid using them during Render — read them after the commit, after Layout.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

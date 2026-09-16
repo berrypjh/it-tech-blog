@@ -14,9 +14,8 @@ type Props = { content: PlacementContent['hero'] };
 export const PlacementHeroSection = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="reconciler/placement.md"
-    promptSuffix={<span className="text-[var(--term-dim)]"> {'// new fiber → DOM'}</span>}
-    gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
+    promptPath="packages/react-reconciler/src/ReactFiberCommitHostEffects.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -30,10 +29,10 @@ export const PlacementHeroSection = ({ content }: Props) => (
         <span className="block">{content.title.line3}</span>
       </HeroTitle>
 
-      <HeroDescription>{content.description}</HeroDescription>
+      <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-placement" className="min-w-0">
+    <HeroVisualColumn id="hero-placement">
       <PlacementHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

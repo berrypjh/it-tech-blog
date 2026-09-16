@@ -12,6 +12,7 @@ export type CompareSide = {
 };
 
 export type ResultCard = {
+  label: string;
   title: string;
   descriptions: string[];
   kind: 'reuse' | 'replace';
@@ -30,18 +31,13 @@ export type KeyTypeRole = {
   tone: ToneKey;
 };
 
-export type CodeCallout = {
-  number: number;
-  body: string;
-  tone: Tone;
-};
-
 export type StatePreserveSide = {
   header: string;
   subtitle: string;
   previous: { code: string; count: string };
   next: { code: string; count: string; note: string };
   bottom: string;
+  resultLabel: string;
   kind: 'reuse' | 'replace';
 };
 
@@ -69,6 +65,7 @@ export type TypeKeyReuseContent = {
     };
   };
   sameKeyType: {
+    badge: string;
     eyebrow: string;
     title: string;
     previous: CompareSide;
@@ -76,6 +73,7 @@ export type TypeKeyReuseContent = {
     result: ResultCard;
   };
   differentKey: {
+    badge: string;
     eyebrow: string;
     title: string;
     previous: CompareSide;
@@ -84,6 +82,7 @@ export type TypeKeyReuseContent = {
     stateBreak: StateBreakCard;
   };
   differentType: {
+    badge: string;
     eyebrow: string;
     title: string;
     previous: CompareSide;
@@ -95,31 +94,27 @@ export type TypeKeyReuseContent = {
       type: KeyTypeRole;
     };
   };
-  code: {
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
-    fileName: string;
-    pointsLabel: string;
-    points: string[];
-    learningQuestion: string;
-    codeHeader: string;
-    codeBadge: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
     code: string;
-    callouts: CodeCallout[];
+    primaryCta: string;
+    primaryHref: string;
   };
   statePreserve: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
+    previousLabel: string;
+    nextLabel: string;
     reuse: StatePreserveSide;
     replace: StatePreserveSide;
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    question: string;
-    answer: string;
   };
   nextStep: {
     eyebrow: string;
@@ -147,6 +142,24 @@ if (newChild.key === key) {
 }
 
 // key가 다르면 두 번째 단계에서 key 기반 비교로 이동 ...`;
+
+const CODE_EN = `// Part of the internal logic comparing newChild with existing children
+
+if (newChild.key === key) {
+  // Same key: check type to decide whether to take the reuse path
+  if (newChild.type === elementType) {
+    // Same type → reuse the existing Fiber
+    const existing = useFiber(oldFiber, pendingProps);
+    existing.return = returnFiber;
+    return existing;
+  }
+
+  // Different type: cannot reuse → replace path
+  deleteRemainingChildren(returnFiber, oldFiber);
+  break;
+}
+
+// Different key: move on to key-based matching in the second pass ...`;
 
 const ko: TypeKeyReuseContent = {
   hero: {
@@ -177,7 +190,8 @@ const ko: TypeKeyReuseContent = {
     },
   },
   sameKeyType: {
-    eyebrow: '01 · 같은 key/type',
+    badge: '01',
+    eyebrow: '같은 key/type',
     title: '같은 key / 같은 type 사례',
     previous: {
       label: '이전 (current)',
@@ -190,13 +204,15 @@ const ko: TypeKeyReuseContent = {
       detail: '새 Element',
     },
     result: {
+      label: '결과',
       title: '재사용 가능성 높음',
       descriptions: ['같은 Fiber로 이어서 사용', '상태 보존 가능성 높음'],
       kind: 'reuse',
     },
   },
   differentKey: {
-    eyebrow: '02 · 다른 key',
+    badge: '02',
+    eyebrow: '다른 key',
     title: 'key가 다를 때',
     previous: {
       label: '이전 (current)',
@@ -209,6 +225,7 @@ const ko: TypeKeyReuseContent = {
       detail: '새 Element',
     },
     result: {
+      label: '결과',
       title: '다른 대상으로 판단',
       descriptions: ['새 Fiber 생성 또는', '기존 Fiber 삭제 표시'],
       kind: 'replace',
@@ -220,7 +237,8 @@ const ko: TypeKeyReuseContent = {
     },
   },
   differentType: {
-    eyebrow: '03 · 다른 type',
+    badge: '03',
+    eyebrow: '다른 type',
     title: 'type이 다를 때 (key는 같아도)',
     previous: {
       label: '이전 (current)',
@@ -233,6 +251,7 @@ const ko: TypeKeyReuseContent = {
       detail: 'type: AnotherItem',
     },
     result: {
+      label: '결과',
       title: '같은 key지만 type이 다름',
       descriptions: ['동일한 Fiber로 이어가기 어려움', '새 Fiber 생성 또는 기존 Fiber 삭제 표시'],
       kind: 'replace',
@@ -252,37 +271,33 @@ const ko: TypeKeyReuseContent = {
       },
     },
   },
-  code: {
-    eyebrow: '04 · 코드 체크포인트',
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
-    fileName: 'ReactChildFiber.js',
-    pointsLabel: '관련 포인트',
-    points: ['key 비교', 'type 비교', '기존 Fiber 재사용 분기'],
-    learningQuestion: 'key와 type이 모두 맞을 때만 기존 Fiber를 이어서 사용할까?',
-    codeHeader: 'react-reconciler/src/ReactChildFiber.js',
-    codeBadge: 'main',
+    filePath: 'packages/react-reconciler/src/ReactChildFiber.js',
+    lookForLabel: '볼 것',
+    lookFor: 'key, type, useFiber, deleteRemainingChildren',
     code: CODE,
-    callouts: [
-      { number: 1, body: 'key 비교 · 같으면 다음 단계로', tone: 'teal' },
-      { number: 2, body: 'type 비교 · 같으면 기존 Fiber 재사용 (useFiber)', tone: 'violet' },
-      {
-        number: 3,
-        body: '다르면 재사용 불가 · 기존 Fiber 삭제 표시 후 새로 생성',
-        tone: 'rose',
-      },
-    ],
+    primaryCta: 'ReactChildFiber.js 읽기',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactChildFiber.js',
   },
   statePreserve: {
-    eyebrow: '05 · 상태 보존',
+    badge: '05',
+    eyebrow: '상태 보존',
     title: '상태 보존과 연결',
     description: '기존 Fiber를 재사용한다는 것은 그 위치의 상태를 이어갈 가능성과 연결됩니다.',
+    previousLabel: '이전 렌더',
+    nextLabel: '다음 렌더',
     reuse: {
       header: '같은 key + 같은 type',
       subtitle: '상태 보존 가능성',
       previous: { code: '<Item key="a" />', count: 'count: 3' },
       next: { code: '<Item key="a" />', count: 'count: 3', note: '상태 유지' },
       bottom: '같은 Fiber를 이어서 사용',
+      resultLabel: '재사용',
       kind: 'reuse',
     },
     replace: {
@@ -291,14 +306,9 @@ const ko: TypeKeyReuseContent = {
       previous: { code: '<Item key="a" />', count: 'count: 3' },
       next: { code: '<Item key="b" />', count: 'count: 0', note: '새로 시작' },
       bottom: '새로운 Fiber로 시작',
+      resultLabel: '교체',
       kind: 'replace',
     },
-  },
-  quiz: {
-    eyebrow: '06 · 미니 퀴즈',
-    title: '미니 퀴즈',
-    question: 'key는 같지만 type이 다르면 그대로 재사용될까?',
-    answer: '보통은 아니다. React는 key와 type을 함께 비교해 같을 때만 기존 Fiber를 재사용한다.',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -339,7 +349,8 @@ const en: TypeKeyReuseContent = {
     },
   },
   sameKeyType: {
-    eyebrow: '01 · SAME KEY & TYPE',
+    badge: '01',
+    eyebrow: 'SAME KEY & TYPE',
     title: 'Same key / same type case',
     previous: {
       label: 'previous (current)',
@@ -352,13 +363,15 @@ const en: TypeKeyReuseContent = {
       detail: 'new Element',
     },
     result: {
+      label: 'result',
       title: 'High likelihood of reuse',
       descriptions: ['Continue using the same Fiber', 'Likely state preserved'],
       kind: 'reuse',
     },
   },
   differentKey: {
-    eyebrow: '02 · DIFFERENT KEY',
+    badge: '02',
+    eyebrow: 'DIFFERENT KEY',
     title: 'When key differs',
     previous: {
       label: 'previous (current)',
@@ -371,6 +384,7 @@ const en: TypeKeyReuseContent = {
       detail: 'new Element',
     },
     result: {
+      label: 'result',
       title: 'Treated as different targets',
       descriptions: ['Create new Fiber or', 'mark existing Fiber for deletion'],
       kind: 'replace',
@@ -382,7 +396,8 @@ const en: TypeKeyReuseContent = {
     },
   },
   differentType: {
-    eyebrow: '03 · DIFFERENT TYPE',
+    badge: '03',
+    eyebrow: 'DIFFERENT TYPE',
     title: 'When type differs (even with same key)',
     previous: {
       label: 'previous (current)',
@@ -395,6 +410,7 @@ const en: TypeKeyReuseContent = {
       detail: 'type: AnotherItem',
     },
     result: {
+      label: 'result',
       title: 'Same key but different type',
       descriptions: [
         'Cannot continue with the same Fiber',
@@ -417,43 +433,34 @@ const en: TypeKeyReuseContent = {
       },
     },
   },
-  code: {
-    eyebrow: '04 · CODE CHECKPOINT',
-    title: 'Source-code checkpoint',
-    fileLabel: 'file',
-    fileName: 'ReactChildFiber.js',
-    pointsLabel: 'related points',
-    points: ['key comparison', 'type comparison', 'fiber reuse branching'],
-    learningQuestion:
-      'Does React continue using the existing Fiber only when both key and type match?',
-    codeHeader: 'react-reconciler/src/ReactChildFiber.js',
-    codeBadge: 'main',
-    code: CODE,
-    callouts: [
-      { number: 1, body: 'key check · if equal, proceed to the next step', tone: 'teal' },
-      {
-        number: 2,
-        body: 'type check · if equal, reuse the existing Fiber via useFiber',
-        tone: 'violet',
-      },
-      {
-        number: 3,
-        body: 'If different: not reusable — mark for deletion and create a new Fiber',
-        tone: 'rose',
-      },
-    ],
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactChildFiber.js',
+    lookForLabel: 'Look for',
+    lookFor: 'key, type, useFiber, deleteRemainingChildren',
+    code: CODE_EN,
+    primaryCta: 'Read ReactChildFiber.js',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactChildFiber.js',
   },
   statePreserve: {
-    eyebrow: '05 · STATE PRESERVATION',
+    badge: '05',
+    eyebrow: 'STATE PRESERVATION',
     title: 'Connection to state preservation',
     description:
       "Reusing an existing Fiber is connected to the possibility of carrying over that position's state.",
+    previousLabel: 'previous render',
+    nextLabel: 'next render',
     reuse: {
       header: 'same key + same type',
       subtitle: 'state preservation likely',
       previous: { code: '<Item key="a" />', count: 'count: 3' },
       next: { code: '<Item key="a" />', count: 'count: 3', note: 'state preserved' },
       bottom: 'Continue with the same Fiber',
+      resultLabel: 'reuse',
       kind: 'reuse',
     },
     replace: {
@@ -462,15 +469,9 @@ const en: TypeKeyReuseContent = {
       previous: { code: '<Item key="a" />', count: 'count: 3' },
       next: { code: '<Item key="b" />', count: 'count: 0', note: 'starts fresh' },
       bottom: 'Start with a new Fiber',
+      resultLabel: 'replace',
       kind: 'replace',
     },
-  },
-  quiz: {
-    eyebrow: '06 · MINI QUIZ',
-    title: 'Mini Quiz',
-    question: 'If key matches but type differs, will the Fiber still be reused?',
-    answer:
-      'Usually not. React compares both key and type, and only reuses the existing Fiber when both match.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

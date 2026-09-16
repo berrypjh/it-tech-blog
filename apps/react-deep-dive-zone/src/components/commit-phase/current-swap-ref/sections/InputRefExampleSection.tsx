@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Box, Lightbulb, Link } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { RootCurrentRefContent } from '../content';
 
@@ -14,8 +14,10 @@ export const InputRefExampleSection = ({ content }: Props) => (
     aria-labelledby="heading-input-ref-example"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="input-ref-example"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -32,14 +34,9 @@ export const InputRefExampleSection = ({ content }: Props) => (
 
 const CodeCard = ({ title, code }: { title: string; code: string }) => (
   <article className="flex h-full flex-col gap-2 rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_1px_0_var(--term-border)]">
-    <header className="flex items-center justify-between gap-2">
-      <h3 className="text-xsm sm:text-sm font-bold uppercase tracking-wider text-[var(--term-fg)]">
-        {title}
-      </h3>
-      <span className="inline-flex items-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-        tsx
-      </span>
-    </header>
+    <h3 className="text-xsm sm:text-sm font-bold uppercase tracking-wider text-[var(--term-fg)]">
+      {title}
+    </h3>
     <div className="min-w-0">
       <CodePreviewPanel code={code} language="tsx" />
     </div>
@@ -88,19 +85,9 @@ const DomCard = ({ title, code, label }: { title: string; code: string; label: s
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
-      <header className="flex items-center justify-between gap-2">
-        <h3 className={cx('text-xsm sm:text-sm font-bold uppercase tracking-wider', t.text)}>
-          {title}
-        </h3>
-        <span
-          className={cx(
-            'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
-            t.chip,
-          )}
-        >
-          host
-        </span>
-      </header>
+      <h3 className={cx('text-xsm sm:text-sm font-bold uppercase tracking-wider', t.text)}>
+        {title}
+      </h3>
       <pre
         className={cx(
           'overflow-x-auto rounded-md border bg-[var(--term-surface)] p-sm text-xsm leading-snug font-mono',

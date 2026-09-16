@@ -3,6 +3,7 @@ import { Box, FileText, Layers } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { HostComponentContent } from '../content';
@@ -25,16 +26,16 @@ export const HostComponentHeroDiagram = ({ content }: Props) => {
           <span className="text-xxsm uppercase tracking-wider font-mono text-[var(--term-muted)]">
             {diagram.jsxStep.title}
           </span>
-          <h2 className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
+          <span className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
             {diagram.title}
-          </h2>
+          </span>
         </header>
 
         <CodePreviewPanel code={diagram.jsxStep.code} showWindowDots language="JSX" size="md" />
 
         <DownArrow />
 
-        <FlowRow tone="teal" icon={<Box className="h-[18px] w-[18px]" aria-hidden="true" />}>
+        <FlowRow tone="teal" icon={<Box className="h-4 w-4" />}>
           <span
             className={cx(
               'font-mono text-sm font-bold tracking-tight break-keep',
@@ -50,7 +51,7 @@ export const HostComponentHeroDiagram = ({ content }: Props) => {
 
         <DownArrow />
 
-        <FlowRow tone="violet" icon={<FileText className="h-[18px] w-[18px]" aria-hidden="true" />}>
+        <FlowRow tone="violet" icon={<FileText className="h-4 w-4" />}>
           <span
             className={cx('text-sm font-bold tracking-tight break-keep', toneTokens.violet.text)}
           >
@@ -76,7 +77,7 @@ export const HostComponentHeroDiagram = ({ content }: Props) => {
 
         <DownArrow />
 
-        <FlowRow tone="sky" icon={<Layers className="h-[18px] w-[18px]" aria-hidden="true" />}>
+        <FlowRow tone="sky" icon={<Layers className="h-4 w-4" />}>
           <code
             className={cx(
               'font-mono text-sm font-bold tracking-tight break-all',
@@ -108,7 +109,7 @@ const FlowRow = ({
     <article
       className={cx(
         'flex items-start gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-2.5',
-        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+        'shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
     >
@@ -119,12 +120,3 @@ const FlowRow = ({
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

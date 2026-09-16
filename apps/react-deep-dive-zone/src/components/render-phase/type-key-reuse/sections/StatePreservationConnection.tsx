@@ -9,7 +9,7 @@ import {
   Trash2,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { StatePreserveSide, TypeKeyReuseContent } from '../content';
@@ -21,10 +21,11 @@ export const StatePreservationConnection = ({ content }: Props) => (
   <section
     id="state-preservation"
     aria-labelledby="heading-state-preservation"
-    className="space-y-md"
+    className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
       id="state-preservation"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Link className="h-5 w-5" aria-hidden="true" />}
@@ -41,14 +42,30 @@ export const StatePreservationConnection = ({ content }: Props) => (
       </article>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
-        <SideCard side={content.reuse} />
-        <SideCard side={content.replace} />
+        <SideCard
+          side={content.reuse}
+          previousLabel={content.previousLabel}
+          nextLabel={content.nextLabel}
+        />
+        <SideCard
+          side={content.replace}
+          previousLabel={content.previousLabel}
+          nextLabel={content.nextLabel}
+        />
       </div>
     </div>
   </section>
 );
 
-const SideCard = ({ side }: { side: StatePreserveSide }) => {
+const SideCard = ({
+  side,
+  previousLabel,
+  nextLabel,
+}: {
+  side: StatePreserveSide;
+  previousLabel: string;
+  nextLabel: string;
+}) => {
   const isReuse = side.kind === 'reuse';
   const t = facetFor(isReuse ? 'teal' : 'rose');
   return (
@@ -84,7 +101,7 @@ const SideCard = ({ side }: { side: StatePreserveSide }) => {
       </header>
 
       <RenderCard
-        label="이전 렌더"
+        label={previousLabel}
         code={side.previous.code}
         count={side.previous.count}
         t={toneTokens.sky}
@@ -103,14 +120,14 @@ const SideCard = ({ side }: { side: StatePreserveSide }) => {
           ) : (
             <Link2Off className="h-4 w-4" aria-hidden="true" />
           )}
-          {isReuse ? '재사용' : '교체'}
+          {side.resultLabel}
           <ChevronDown className="md:hidden h-4 w-4" aria-hidden="true" />
           <ArrowRight className="hidden md:block h-4 w-4 rotate-90" aria-hidden="true" />
         </span>
       </div>
 
       <RenderCard
-        label="다음 렌더"
+        label={nextLabel}
         code={side.next.code}
         count={side.next.count}
         note={side.next.note}

@@ -14,9 +14,8 @@ type Props = { content: PerformUnitContent['hero'] };
 export const PerformUnitHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="reconciler/perform-unit-of-work.md"
-    promptSuffix={<span className="text-[var(--term-dim)]"> {'// fiber-by-fiber'}</span>}
-    gridColumns="lg:grid-cols-[minmax(0,_0.84fr)_minmax(0,_1.16fr)]"
+    promptPath="packages/react-reconciler/src/ReactFiberWorkLoop.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -33,7 +32,7 @@ export const PerformUnitHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-perform-unit" className="min-w-0">
+    <HeroVisualColumn id="hero-perform-unit-of-work">
       <PerformUnitHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

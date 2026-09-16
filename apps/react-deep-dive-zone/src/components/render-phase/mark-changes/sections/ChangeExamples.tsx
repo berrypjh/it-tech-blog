@@ -1,34 +1,24 @@
 import { cx } from '@berrypjh/react-ui';
-import {
-  ArrowDown,
-  Flag,
-  type LucideIcon,
-  Move,
-  Pencil,
-  Sparkles,
-  Trash2,
-  Zap,
-} from 'lucide-react';
+import { ArrowDown, Flag, type LucideIcon, Move, Sparkles, Trash2 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
-import type { ExampleCard, FlagCard, MarkChangesContent } from '../content';
+import type { ExampleCard, MarkChangesContent } from '../content';
 import { facetFor } from '../markFacet';
 
-const markIconByName: Record<FlagCard['icon'] | 'move', LucideIcon> = {
+const markIconByName: Record<ExampleCard['icon'], LucideIcon> = {
   flag: Flag,
   trash: Trash2,
-  pencil: Pencil,
-  zap: Zap,
   move: Move,
-} as const;
+};
 
 type Props = { content: MarkChangesContent['examples'] };
 
 export const ChangeExamples = ({ content }: Props) => (
-  <section id="examples" aria-labelledby="heading-examples" className="space-y-md">
-    <SectionHeader
+  <section id="examples" aria-labelledby="heading-examples" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="examples"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
@@ -37,14 +27,16 @@ export const ChangeExamples = ({ content }: Props) => (
     <ol className="grid grid-cols-1 lg:grid-cols-3 gap-md">
       {content.cards.map((card) => (
         <li key={card.title} className="flex h-full">
-          <Card card={card} />
+          <Card card={card} beforeLabel={content.beforeLabel} afterLabel={content.afterLabel} />
         </li>
       ))}
     </ol>
   </section>
 );
 
-const Card = ({ card }: { card: ExampleCard }) => {
+type CardProps = { card: ExampleCard; beforeLabel: string; afterLabel: string };
+
+const Card = ({ card, beforeLabel, afterLabel }: CardProps) => {
   const t = facetFor(card.tone);
   const Icon = markIconByName[card.icon];
   const beforeTokens = card.before.split(' ').filter(Boolean);
@@ -81,9 +73,9 @@ const Card = ({ card }: { card: ExampleCard }) => {
       <h3 className={cx('text-md font-bold tracking-tight break-keep', t.text)}>{card.title}</h3>
 
       <div className="flex flex-col gap-2">
-        <TokenRow label="before" tokens={beforeTokens} mark={null} tone={card.tone} />
+        <TokenRow label={beforeLabel} tokens={beforeTokens} mark={null} tone={card.tone} />
         <ArrowDown aria-hidden="true" className="mx-auto h-5 w-5 text-[var(--term-accent)]" />
-        <TokenRow label="after" tokens={afterTokens} mark={mark} tone={card.tone} />
+        <TokenRow label={afterLabel} tokens={afterTokens} mark={mark} tone={card.tone} />
       </div>
 
       <p className="mt-auto text-xsm leading-relaxed text-[var(--term-muted)] break-keep">

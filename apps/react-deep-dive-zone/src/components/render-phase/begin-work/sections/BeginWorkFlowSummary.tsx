@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { ChevronDown, FastForward, HelpCircle, Workflow } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { BeginWorkContent } from '../content';
 
@@ -10,24 +10,20 @@ type Props = { content: BeginWorkContent['summary'] };
 const isMono = (text: string) => text.includes('(') || text.includes('workInProgress');
 
 export const BeginWorkFlowSummary = ({ content }: Props) => (
-  <section id="flow-summary" aria-labelledby="heading-flow-summary" className="space-y-md">
-    <SectionHeader
+  <section
+    id="flow-summary"
+    aria-labelledby="heading-flow-summary"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
       id="flow-summary"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Workflow className="h-5 w-5" aria-hidden="true" />}
     />
 
     <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-      <header className="mb-md flex flex-wrap items-center justify-between gap-2">
-        <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
-          {'// bailout? → tag dispatch → reconcile'}
-        </span>
-        <span className="text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)] rounded-md border border-[var(--term-border)] px-2 py-0.5">
-          whole flow
-        </span>
-      </header>
-
       <div className="flex flex-col items-center gap-2">
         {/* Start */}
         <article
@@ -91,7 +87,7 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
                 )}
               >
                 <FastForward className="h-3 w-3" aria-hidden="true" />
-                yes
+                {content.yesLabel}
               </span>
               <span
                 className={cx(
@@ -99,7 +95,7 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
                   toneTokens.violet.text,
                 )}
               >
-                bailout path
+                {content.bailoutPathLabel}
               </span>
             </header>
             <PathBox tone="violet" mono>
@@ -128,12 +124,12 @@ export const BeginWorkFlowSummary = ({ content }: Props) => (
                   toneTokens.sky.chip,
                 )}
               >
-                no
+                {content.noLabel}
               </span>
               <span
                 className={cx('text-xxsm font-mono uppercase tracking-wider', toneTokens.sky.text)}
               >
-                normal path
+                {content.normalPathLabel}
               </span>
             </header>
             <ol className="flex flex-col gap-1.5">

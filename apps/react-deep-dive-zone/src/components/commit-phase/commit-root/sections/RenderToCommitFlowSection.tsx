@@ -1,14 +1,22 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowDown, CheckCircle2, DoorOpen, GitMerge, Rocket, Workflow } from 'lucide-react';
+import {
+  ArrowDown,
+  CheckCircle2,
+  DoorOpen,
+  GitMerge,
+  type LucideIcon,
+  Rocket,
+  Workflow,
+} from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { CommitRootContent, RenderToCommitStep, RenderToCommitStepIcon } from '../content';
+import type { CommitRootContent, RenderToCommitStep, RenderToCommitStepId } from '../content';
 
 type Props = { content: CommitRootContent['renderToCommit'] };
 
-const iconMap: Record<RenderToCommitStepIcon, typeof CheckCircle2> = {
+const iconMap: Record<RenderToCommitStepId, LucideIcon> = {
   checkCircle: CheckCircle2,
   gitMerge: GitMerge,
   gate: DoorOpen,
@@ -21,8 +29,10 @@ export const RenderToCommitFlowSection = ({ content }: Props) => (
     aria-labelledby="heading-render-to-commit"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="render-to-commit"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -33,7 +43,7 @@ export const RenderToCommitFlowSection = ({ content }: Props) => (
       <ol className="flex flex-col">
         {content.steps.map((step, idx) => (
           <li key={step.title} className="flex flex-col">
-            <StepCard step={step} index={idx + 1} />
+            <StepCard step={step} index={idx + 1} gateBadge={content.gateBadge} />
             {idx < content.steps.length - 1 && (
               <span aria-hidden="true" className="my-2 flex justify-center text-[var(--term-dim)]">
                 <ArrowDown className="h-4 w-4" aria-hidden="true" />
@@ -46,8 +56,16 @@ export const RenderToCommitFlowSection = ({ content }: Props) => (
   </section>
 );
 
-const StepCard = ({ step, index }: { step: RenderToCommitStep; index: number }) => {
-  const Icon = iconMap[step.iconName];
+const StepCard = ({
+  step,
+  index,
+  gateBadge,
+}: {
+  step: RenderToCommitStep;
+  index: number;
+  gateBadge: string;
+}) => {
+  const Icon = iconMap[step.id];
   const t = toneTokens[step.tone];
   return (
     <article
@@ -74,7 +92,7 @@ const StepCard = ({ step, index }: { step: RenderToCommitStep; index: number }) 
                 t.chip,
               )}
             >
-              gate
+              {gateBadge}
             </span>
           )}
         </div>

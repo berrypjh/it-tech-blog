@@ -1,16 +1,24 @@
 import { Fragment } from 'react';
 
 import { cx } from '@berrypjh/react-ui';
-import { ArrowDown, ArrowRight, Flag, ListTree, SprayCan, Trash2 } from 'lucide-react';
+import {
+  ArrowDown,
+  ArrowRight,
+  Flag,
+  ListTree,
+  type LucideIcon,
+  SprayCan,
+  Trash2,
+} from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DeletionContent, ModalFlowStep } from '../content';
 
 type Props = { content: DeletionContent['modal'] };
 
-const flowIconMap: Record<ModalFlowStep['iconName'], typeof Flag> = {
+const flowIconMap: Record<ModalFlowStep['id'], LucideIcon> = {
   tree: ListTree,
   flag: Flag,
   broom: SprayCan,
@@ -23,8 +31,10 @@ export const ModalDeletionExampleSection = ({ content }: Props) => (
     aria-labelledby="heading-modal-deletion-example"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="modal-deletion-example"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -73,14 +83,9 @@ export const ModalDeletionExampleSection = ({ content }: Props) => (
 
 const CodeTopCard = ({ title, value }: { title: string; value: string }) => (
   <article className="flex h-full flex-col gap-2 rounded-lg border-2 border-[var(--term-border)] bg-[var(--term-bg)] p-md shadow-[0_1px_0_var(--term-border)]">
-    <header className="flex items-center justify-between gap-2">
-      <h3 className="text-xsm sm:text-sm font-bold uppercase tracking-wider text-[var(--term-fg)] break-keep">
-        {title}
-      </h3>
-      <span className="inline-flex items-center rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-        jsx
-      </span>
-    </header>
+    <h3 className="text-xsm sm:text-sm font-bold uppercase tracking-wider text-[var(--term-fg)] break-keep">
+      {title}
+    </h3>
     <pre className="overflow-x-auto rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] p-sm text-xsm leading-snug font-mono text-[var(--term-fg)]">
       <code>{value}</code>
     </pre>
@@ -97,24 +102,11 @@ const StateTopCard = ({ title, value }: { title: string; value: string }) => {
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
-      <header className="flex items-center justify-between gap-2">
-        <h3
-          className={cx(
-            'text-xsm sm:text-sm font-bold uppercase tracking-wider break-keep',
-            t.text,
-          )}
-        >
-          {title}
-        </h3>
-        <span
-          className={cx(
-            'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
-            t.chip,
-          )}
-        >
-          state
-        </span>
-      </header>
+      <h3
+        className={cx('text-xsm sm:text-sm font-bold uppercase tracking-wider break-keep', t.text)}
+      >
+        {title}
+      </h3>
       <StateChange value={value} />
     </article>
   );
@@ -156,7 +148,7 @@ const StateBadge = ({ label, tone, muted }: { label: string; tone?: 'teal'; mute
   );
 
 const FlowCard = ({ step }: { step: ModalFlowStep }) => {
-  const Icon = flowIconMap[step.iconName];
+  const Icon = flowIconMap[step.id];
   const t = toneTokens[step.tone];
   return (
     <article
@@ -223,29 +215,18 @@ const BrowserMock = ({
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
-      <header className="flex items-center justify-between gap-2">
-        <h3
-          className={cx(
-            'text-xsm sm:text-sm font-bold uppercase tracking-wider break-keep',
-            isBefore ? 'text-[var(--term-fg)]' : t.text,
-          )}
-        >
-          {title}
-        </h3>
-        <span
-          className={cx(
-            'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
-            isBefore
-              ? 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-muted)]'
-              : t.chip,
-          )}
-        >
-          {isBefore ? 'mock' : 'cleaned'}
-        </span>
-      </header>
+      <h3
+        className={cx(
+          'text-xsm sm:text-sm font-bold uppercase tracking-wider break-keep',
+          isBefore ? 'text-[var(--term-fg)]' : t.text,
+        )}
+      >
+        {title}
+      </h3>
 
       {/* Browser UI mockup (intentional UI mimicry) */}
       <div
+        aria-hidden="true"
         className={cx(
           'rounded-lg border bg-white dark:bg-slate-950 overflow-hidden',
           isBefore
@@ -285,11 +266,11 @@ const ModalMockBody = () => (
           ×
         </span>
       </div>
-      <p className="text-[9px] leading-tight text-slate-600 dark:text-slate-400">
+      <p className="text-[10px] leading-tight text-slate-600 dark:text-slate-400">
         modal content...
       </p>
       <div className="mt-auto flex justify-end">
-        <span className="inline-flex items-center rounded-md border border-violet-300 bg-violet-100 px-2 py-0.5 text-[9px] font-bold text-violet-800 dark:border-violet-700 dark:bg-violet-950/60 dark:text-violet-100">
+        <span className="inline-flex items-center rounded-md border border-violet-300 bg-violet-100 px-2 py-0.5 text-[10px] font-bold text-violet-800 dark:border-violet-700 dark:bg-violet-950/60 dark:text-violet-100">
           close
         </span>
       </div>

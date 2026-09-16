@@ -1,15 +1,23 @@
-import { AlertCircle, Database, PanelsTopLeft, Sparkles, Zap } from 'lucide-react';
+import {
+  AlertCircle,
+  Database,
+  Lightbulb,
+  type LucideIcon,
+  PanelsTopLeft,
+  Zap,
+} from 'lucide-react';
 
 import { MisconceptionCardGrid, type MisconceptionItem } from '../../../shared/misconception';
-import { SectionHeader } from '../../../shared/section';
+import { SectionNote } from '../../../shared/note';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
-import type { UpdateToRenderSummaryContent } from '../content';
+import type { MisconceptionIcon, UpdateToRenderSummaryContent } from '../content';
 
-const misconceptionIconByName = {
+const misconceptionIconByName: Record<MisconceptionIcon, LucideIcon> = {
   panels: PanelsTopLeft,
   database: Database,
   zap: Zap,
-} as const;
+};
 
 type Props = { content: UpdateToRenderSummaryContent['misconceptions'] };
 
@@ -26,12 +34,13 @@ export const MisconceptionsSection = ({ content }: Props) => {
 
   return (
     <section
-      id="section-misconceptions"
+      id="misconceptions"
       aria-labelledby="heading-misconceptions"
-      className="space-y-md"
+      className="space-y-md scroll-mt-xl"
     >
-      <SectionHeader
+      <SectionBadgeHeader
         id="misconceptions"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<AlertCircle className="h-5 w-5" aria-hidden="true" />}
@@ -39,15 +48,7 @@ export const MisconceptionsSection = ({ content }: Props) => {
 
       <MisconceptionCardGrid items={items} />
 
-      <div className="flex items-start gap-sm rounded-lg border border-[var(--term-border)] border-l-[3px] border-l-[var(--term-accent)] bg-[var(--term-surface)] p-md">
-        <Sparkles
-          aria-hidden="true"
-          className="mt-0.5 h-4 w-4 shrink-0 text-[var(--term-accent)]"
-        />
-        <p className="text-xsm sm:text-sm font-semibold leading-snug text-[var(--term-fg)] break-keep">
-          {content.summary}
-        </p>
-      </div>
+      <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
     </section>
   );
 };

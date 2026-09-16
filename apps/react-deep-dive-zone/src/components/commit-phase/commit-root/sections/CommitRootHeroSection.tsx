@@ -14,9 +14,8 @@ type Props = { content: CommitRootContent['hero'] };
 export const CommitRootHeroSection = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="reconciler/commit-root.md"
-    promptSuffix={<span className="text-[var(--term-dim)]"> {'// finishedWork → commitRoot'}</span>}
-    gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
+    promptPath="packages/react-reconciler/src/ReactFiberWorkLoop.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -30,10 +29,10 @@ export const CommitRootHeroSection = ({ content }: Props) => (
         <span className="block">{content.title.line3}</span>
       </HeroTitle>
 
-      <HeroDescription>{content.description}</HeroDescription>
+      <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-commit-root" className="min-w-0">
+    <HeroVisualColumn id="hero-commit-root">
       <CommitRootHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

@@ -1,27 +1,29 @@
 import { cx } from '@berrypjh/react-ui';
-import { Flag, Layers, Repeat2, User } from 'lucide-react';
+import { Flag, Layers, type LucideIcon, Repeat2, User } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { ScheduleUpdateOnFiberContent } from '../content';
+import type { ResponsibilityIcon, ScheduleUpdateOnFiberContent } from '../content';
 
-const responsibilityIconByName = {
+const responsibilityIconByName: Record<ResponsibilityIcon, LucideIcon> = {
   flag: Flag,
   user: User,
   repeat: Repeat2,
-} as const;
+};
 
 type Props = { content: ScheduleUpdateOnFiberContent['responsibilities'] };
 
 export const CoreResponsibilitiesSection = ({ content }: Props) => (
   <section
-    id="section-responsibilities"
+    id="responsibilities"
     aria-labelledby="heading-responsibilities"
-    className="space-y-md"
+    className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="responsibilities"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

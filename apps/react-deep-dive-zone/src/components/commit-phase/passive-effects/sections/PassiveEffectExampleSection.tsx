@@ -4,7 +4,7 @@ import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Code2 } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { PassiveEffectsContent } from '../content';
 
@@ -16,8 +16,10 @@ export const PassiveEffectExampleSection = ({ content }: Props) => (
     aria-labelledby="heading-passive-example"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="passive-example"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -25,48 +27,34 @@ export const PassiveEffectExampleSection = ({ content }: Props) => (
     />
 
     <div className="flex flex-col gap-3 min-w-0">
-      <CodeArea code={content.code} />
-      <ExecutionFlow steps={content.flowSteps} />
+      <CodeArea title={content.codeTitle} code={content.code} />
+      <ExecutionFlow label={content.flowLabel} steps={content.flowSteps} />
     </div>
   </section>
 );
 
-const CodeArea = ({ code }: { code: string }) => (
+const CodeArea = ({ title, code }: { title: string; code: string }) => (
   <div className="flex flex-col gap-2 min-w-0">
-    <header className="flex items-center justify-between gap-2 px-1">
-      <h3 className="text-xsm sm:text-sm font-bold text-[var(--term-fg)] font-mono break-keep">
-        useEffect example
-      </h3>
-      <span
-        className={cx(
-          'inline-flex items-center gap-1 text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
-          toneTokens.teal.chip,
-        )}
-      >
-        tsx
-      </span>
-    </header>
+    <h3 className="px-1 text-xsm sm:text-sm font-bold text-[var(--term-fg)] font-mono break-keep">
+      {title}
+    </h3>
     <div className="min-w-0">
       <CodePreviewPanel code={code} language="tsx" />
     </div>
   </div>
 );
 
-const ExecutionFlow = ({ steps }: { steps: PassiveEffectsContent['example']['flowSteps'] }) => (
+const ExecutionFlow = ({
+  label,
+  steps,
+}: {
+  label: string;
+  steps: PassiveEffectsContent['example']['flowSteps'];
+}) => (
   <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] p-md shadow-[0_1px_0_var(--term-border)]">
-    <header className="mb-sm flex flex-wrap items-center justify-between gap-2">
-      <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] font-bold">
-        execution flow
-      </span>
-      <span
-        className={cx(
-          'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
-          toneTokens.teal.chip,
-        )}
-      >
-        commit → paint → flush
-      </span>
-    </header>
+    <span className="mb-sm block text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] font-bold">
+      {label}
+    </span>
     <ol className="flex flex-col md:flex-row md:items-stretch gap-2">
       {steps.map((step, idx) => (
         <Fragment key={step.label}>

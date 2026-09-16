@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { Code2, User } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { StateUpdateStartContent } from '../content';
@@ -12,9 +12,14 @@ type Props = { content: StateUpdateStartContent['visibleCode'] };
 const sky = toneTokens.sky;
 
 export const VisibleCodeSection = ({ content }: Props) => (
-  <section id="section-visible-code" aria-labelledby="heading-visible-code" className="space-y-md">
-    <SectionHeader
+  <section
+    id="visible-code"
+    aria-labelledby="heading-visible-code"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
       id="visible-code"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Code2 className="h-5 w-5" aria-hidden="true" />}

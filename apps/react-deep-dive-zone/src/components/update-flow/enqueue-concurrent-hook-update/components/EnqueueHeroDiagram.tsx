@@ -1,21 +1,21 @@
 import { cx } from '@berrypjh/react-ui';
-import { Database, FileText, Flag, Settings, SquareDashed } from 'lucide-react';
+import { Database, FileText, Flag, type LucideIcon, SquareDashed } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { EnqueueConcurrentHookUpdateContent, FourElement } from '../content';
+import type { EnqueueConcurrentHookUpdateContent, FourElement, FourElementIcon } from '../content';
 
-const elementIconByName = {
+const elementIconByName: Record<FourElementIcon, LucideIcon> = {
   squareDashed: SquareDashed,
   database: Database,
   fileText: FileText,
   flag: Flag,
-  settings: Settings,
-} as const;
+};
 
-type Props = { content: EnqueueConcurrentHookUpdateContent['hero']; className?: string };
+type Props = { content: EnqueueConcurrentHookUpdateContent['hero'] };
 
 /**
  * Hero 핵심 비주얼.
@@ -23,13 +23,11 @@ type Props = { content: EnqueueConcurrentHookUpdateContent['hero']; className?: 
  * enqueueConcurrentHookUpdate(...) 큐 처리 경로로 등록되는 흐름을
  * 위에서 아래로 잇는 컴팩트 stepper.
  */
-export const EnqueueHeroDiagram = ({ content, className }: Props) => {
-  const a11y = `${content.elements
-    .map((el) => el.title)
-    .join(', ')} 네 요소가 enqueueConcurrentHookUpdate 호출로 묶여 queue 처리 경로로 등록됩니다.`;
+export const EnqueueHeroDiagram = ({ content }: Props) => {
+  const a11y = `${content.title.line1} ${content.title.line2} ${content.title.line3} ${content.description} ${content.functionCard.code} ${content.functionCard.caption}`;
 
   return (
-    <HeroDiagramShell a11yLabel={a11y} className={className}>
+    <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <ul className="grid grid-cols-2 gap-2">
           {content.elements.map((el) => (
@@ -58,11 +56,11 @@ const ElementCard = ({ element }: { element: FourElement }) => {
     <article
       className={cx(
         'flex w-full min-w-0 items-start gap-2 rounded-xl border bg-[var(--term-bg)] p-sm',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
       )}
     >
       <ToneIconBox tone={element.tone} size="sm">
-        <Icon className="h-4 w-4" aria-hidden="true" />
+        <Icon className="h-4 w-4" />
       </ToneIconBox>
       <span className="flex min-w-0 flex-col gap-0.5">
         <span className={cx('truncate font-mono text-sm font-bold tracking-tight', t.text)}>
@@ -75,12 +73,3 @@ const ElementCard = ({ element }: { element: FourElement }) => {
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

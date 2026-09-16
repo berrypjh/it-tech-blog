@@ -5,7 +5,6 @@ import { StartPageShell } from '../../shared/shell';
 
 import { FunctionComponentCodeCheckpoint } from './sections/FunctionComponentCodeCheckpoint';
 import { FunctionComponentHero } from './sections/FunctionComponentHero';
-import { FunctionComponentQuiz } from './sections/FunctionComponentQuiz';
 import { HooksChapterConnection } from './sections/HooksChapterConnection';
 import { InternalProcessingFlow } from './sections/InternalProcessingFlow';
 import { NextChildrenExplanation } from './sections/NextChildrenExplanation';
@@ -25,9 +24,8 @@ export const FunctionComponentRenderPhasePage = ({ locale }: Props) => {
       <InternalProcessingFlow content={c.internalFlow} />
       <RenderWithHooksRole content={c.renderWithHooks} />
       <NextChildrenExplanation content={c.nextChildren} />
-      <FunctionComponentCodeCheckpoint content={c.code} />
+      <FunctionComponentCodeCheckpoint content={c.checkpoint} />
       <HooksChapterConnection content={c.hooksLink} />
-      <FunctionComponentQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

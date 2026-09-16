@@ -5,13 +5,15 @@ import {
   ArrowRight,
   Crosshair,
   Eraser,
+  Lightbulb,
+  type LucideIcon,
   Repeat,
   Rocket,
-  Sparkles,
   Target,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionNote } from '../../../shared/note';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ExtraPoint, MutationPhaseContent } from '../content';
@@ -21,7 +23,7 @@ type Props = {
   extra: MutationPhaseContent['extra'];
 };
 
-const extraIconMap: Record<ExtraPoint['iconName'], typeof Repeat> = {
+const extraIconMap: Record<ExtraPoint['id'], LucideIcon> = {
   sync: Repeat,
   crosshair: Crosshair,
   split: ArrowLeftRight,
@@ -29,26 +31,21 @@ const extraIconMap: Record<ExtraPoint['iconName'], typeof Repeat> = {
 };
 
 export const MutationNextConceptSection = ({ rootCurrent, extra }: Props) => (
-  <section
-    id="next-concept"
-    aria-labelledby="heading-next-concept"
-    className="space-y-md scroll-mt-xl"
-  >
-    <h2 id="heading-next-concept" className="sr-only">
-      root.current preview and extra points
-    </h2>
-
-    <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.1fr)_minmax(0,_0.9fr)] gap-3 items-start">
-      <RootCurrentPreviewCard content={rootCurrent} />
-      <ExtraPointsCard content={extra} />
-    </div>
-  </section>
+  <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1.1fr)_minmax(0,_0.9fr)] gap-3 items-start">
+    <RootCurrentPreviewCard content={rootCurrent} />
+    <ExtraPointsCard content={extra} />
+  </div>
 );
 
 const RootCurrentPreviewCard = ({ content }: { content: MutationPhaseContent['rootCurrent'] }) => (
-  <div className="space-y-md">
-    <SectionHeader
+  <section
+    id="root-current-preview"
+    aria-labelledby="heading-root-current-preview"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
       id="root-current-preview"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Rocket className="h-5 w-5" aria-hidden="true" />}
@@ -64,25 +61,10 @@ const RootCurrentPreviewCard = ({ content }: { content: MutationPhaseContent['ro
         <Arrow />
         <FlowCard title={content.rightTitle} subtitle={content.rightSubtitle} tone="teal" />
       </div>
-
-      <aside
-        className={cx(
-          'mt-md flex items-start gap-sm rounded-lg border-2 p-md',
-          toneTokens.sky.fill.border,
-          toneTokens.sky.fill.bg,
-        )}
-      >
-        <ToneIconBox tone="sky" size="sm" className="mt-0.5 shrink-0">
-          <Sparkles className="h-4 w-4" aria-hidden="true" />
-        </ToneIconBox>
-        <p
-          className={cx('text-xsm sm:text-sm leading-relaxed break-keep', toneTokens.sky.fill.text)}
-        >
-          {content.bottomNote}
-        </p>
-      </aside>
     </article>
-  </div>
+
+    <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
+  </section>
 );
 
 const Arrow = () => (
@@ -123,9 +105,14 @@ const FlowCard = ({
 };
 
 const ExtraPointsCard = ({ content }: { content: MutationPhaseContent['extra'] }) => (
-  <div className="space-y-md">
-    <SectionHeader
+  <section
+    id="extra-points"
+    aria-labelledby="heading-extra-points"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
       id="extra-points"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Target className="h-5 w-5" aria-hidden="true" />}
@@ -138,11 +125,11 @@ const ExtraPointsCard = ({ content }: { content: MutationPhaseContent['extra'] }
         </li>
       ))}
     </ul>
-  </div>
+  </section>
 );
 
 const PointCard = ({ point }: { point: ExtraPoint }) => {
-  const Icon = extraIconMap[point.iconName];
+  const Icon = extraIconMap[point.id];
   const t = toneTokens[point.tone];
   return (
     <article

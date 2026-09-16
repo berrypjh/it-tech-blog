@@ -8,7 +8,6 @@ import { BubblePropertiesPreview } from './sections/BubblePropertiesPreview';
 import { CompleteWorkCodeCheckpoint } from './sections/CompleteWorkCodeCheckpoint';
 import { CompleteWorkHero } from './sections/CompleteWorkHero';
 import { CompleteWorkMoveDirection } from './sections/CompleteWorkMoveDirection';
-import { FinalChecklist } from './sections/FinalChecklist';
 import { RenderPhaseSummary } from './sections/RenderPhaseSummary';
 import { SiblingParentTreeWalk } from './sections/SiblingParentTreeWalk';
 import { completeWorkContent } from './content';
@@ -25,9 +24,8 @@ export const CompleteWorkPage = ({ locale }: Props) => {
       <CompleteWorkMoveDirection content={c.direction} />
       <SiblingParentTreeWalk content={c.treeWalk} />
       <BubblePropertiesPreview content={c.bubble} />
-      <CompleteWorkCodeCheckpoint content={c.code} />
+      <CompleteWorkCodeCheckpoint content={c.checkpoint} />
       <RenderPhaseSummary content={c.summary} />
-      <FinalChecklist content={c.checklist} />
       <FinalLaunchBanner content={c.finale} />
     </StartPageShell>
   );

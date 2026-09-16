@@ -1,24 +1,32 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowRight, Crosshair, FunctionSquare, Lightbulb, Zap } from 'lucide-react';
+import {
+  ArrowRight,
+  Crosshair,
+  FunctionSquare,
+  Lightbulb,
+  type LucideIcon,
+  Zap,
+} from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionNote } from '../../../shared/note';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneBadge, ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ActionCompareCard, LaneUpdateObjectContent } from '../content';
 
-const actionIconByName = {
+const actionIconByName: Record<ActionCompareCard['icon'], LucideIcon> = {
   crosshair: Crosshair,
   functionSquare: FunctionSquare,
-} as const;
+};
 
 type Props = { content: LaneUpdateObjectContent['action'] };
 
-const amber = toneTokens.amber;
-
 export const ActionMeaningSection = ({ content }: Props) => (
-  <section id="section-action" aria-labelledby="heading-action" className="space-y-md">
-    <SectionHeader
+  <section id="action" aria-labelledby="heading-action" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="action"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -31,19 +39,7 @@ export const ActionMeaningSection = ({ content }: Props) => (
       <CompareCard card={content.rightCard} />
     </div>
 
-    <div
-      className={cx(
-        'flex items-start gap-sm rounded-lg border bg-[var(--term-bg)] p-md shadow-[0_2px_0_var(--term-border)]',
-        amber.border,
-      )}
-    >
-      <ToneIconBox tone="amber" size="sm">
-        <Lightbulb className="h-3.5 w-3.5" aria-hidden="true" />
-      </ToneIconBox>
-      <p className="text-xsm sm:text-sm font-semibold leading-snug text-[var(--term-fg)] break-keep">
-        {content.bottomNote}
-      </p>
-    </div>
+    <SectionNote icon={<Lightbulb className="h-4 w-4" />}>{content.note}</SectionNote>
   </section>
 );
 

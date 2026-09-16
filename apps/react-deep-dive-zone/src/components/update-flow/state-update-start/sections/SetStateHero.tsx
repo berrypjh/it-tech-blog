@@ -15,7 +15,6 @@ export const SetStateHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
     promptPath="packages/react-reconciler/src/ReactFiberHooks.js"
-    promptSuffix={<span className="text-[var(--term-dim)]"> {'// dispatchSetState'}</span>}
     gridColumns="lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1fr)]"
     align="center"
   >
@@ -32,7 +31,7 @@ export const SetStateHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-state-update-start" className="min-w-0">
+    <HeroVisualColumn id="hero-state-update-start">
       <SetStateHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

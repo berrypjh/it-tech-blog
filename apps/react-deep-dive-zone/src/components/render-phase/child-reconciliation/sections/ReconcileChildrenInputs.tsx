@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Box, FileText, ListChecks, type LucideIcon, Network } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { InputCard, ReconcileChildrenContent } from '../content';
@@ -15,9 +15,10 @@ const inputIconByName: Record<InputCard['icon'], LucideIcon> = {
 type Props = { content: ReconcileChildrenContent['inputs'] };
 
 export const ReconcileChildrenInputs = ({ content }: Props) => (
-  <section id="inputs" aria-labelledby="heading-inputs" className="space-y-md">
-    <SectionHeader
+  <section id="inputs" aria-labelledby="heading-inputs" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="inputs"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<ListChecks className="h-5 w-5" aria-hidden="true" />}
@@ -34,11 +35,7 @@ export const ReconcileChildrenInputs = ({ content }: Props) => (
 const Card = ({ card, index }: { card: InputCard; index: number }) => {
   const Icon = inputIconByName[card.icon];
   return (
-    <ToneCardItem
-      tone={card.tone}
-      icon={<Icon className={cx('h-5 w-5', toneTokens[card.tone].text)} />}
-      topRight={index}
-    >
+    <ToneCardItem tone={card.tone} icon={<Icon className="h-5 w-5" />} topRight={index}>
       <h3
         className={cx(
           'font-mono text-md font-bold tracking-tight break-keep',

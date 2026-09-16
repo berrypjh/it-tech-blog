@@ -14,8 +14,7 @@ type Props = { content: CompleteWorkContent['hero'] };
 export const CompleteWorkHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="reconciler/complete-work.md"
-    promptSuffix={<span className="text-[var(--term-dim)]"> {'// descend & ascend'}</span>}
+    promptPath="packages/react-reconciler/src/ReactFiberWorkLoop.js"
     gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
     align="center"
   >
@@ -33,7 +32,7 @@ export const CompleteWorkHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-complete-work" className="min-w-0">
+    <HeroVisualColumn id="hero-complete-work">
       <CompleteWorkHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

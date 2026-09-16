@@ -8,7 +8,6 @@ import { MountVsUpdateBranch } from './sections/MountVsUpdateBranch';
 import { ReconcileChildrenCodeCheckpoint } from './sections/ReconcileChildrenCodeCheckpoint';
 import { ReconcileChildrenHero } from './sections/ReconcileChildrenHero';
 import { ReconcileChildrenInputs } from './sections/ReconcileChildrenInputs';
-import { ReconcileChildrenQuiz } from './sections/ReconcileChildrenQuiz';
 import { ReconcileChildrenVisualization } from './sections/ReconcileChildrenVisualization';
 import { ReconciliationGoal } from './sections/ReconciliationGoal';
 import { reconcileChildrenContent } from './content';
@@ -24,10 +23,9 @@ export const ReconcileChildrenPage = ({ locale }: Props) => {
       <ReconcileChildrenInputs content={c.inputs} />
       <MountVsUpdateBranch content={c.mountVsUpdate} />
       <ChildShapePreview content={c.childShape} />
-      <ReconcileChildrenCodeCheckpoint content={c.code} />
+      <ReconcileChildrenCodeCheckpoint content={c.checkpoint} />
       <ReconcileChildrenVisualization content={c.visualization} />
       <ReconciliationGoal content={c.goal} />
-      <ReconcileChildrenQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

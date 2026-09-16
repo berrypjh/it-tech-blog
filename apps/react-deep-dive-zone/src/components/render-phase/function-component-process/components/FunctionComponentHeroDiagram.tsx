@@ -3,6 +3,7 @@ import { Code2, FunctionSquare, Settings, Workflow } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FunctionComponentContent } from '../content';
@@ -24,7 +25,7 @@ export const FunctionComponentHeroDiagram = ({ content }: Props) => {
         <StepHeader
           tone="sky"
           label={diagram.codeStep.title}
-          icon={<FunctionSquare className="h-[18px] w-[18px]" aria-hidden="true" />}
+          icon={<FunctionSquare className="h-4 w-4" />}
         />
         <CodePreviewPanel code={diagram.codeStep.code} showWindowDots size="md" />
 
@@ -34,7 +35,7 @@ export const FunctionComponentHeroDiagram = ({ content }: Props) => {
           tone="teal"
           title={diagram.hooksStep.title}
           description={diagram.hooksStep.description}
-          icon={<Settings className="h-[18px] w-[18px]" aria-hidden="true" />}
+          icon={<Settings className="h-4 w-4" />}
           mono
         />
 
@@ -43,7 +44,7 @@ export const FunctionComponentHeroDiagram = ({ content }: Props) => {
         <StepHeader
           tone="violet"
           label={diagram.nextChildrenStep.title}
-          icon={<Code2 className="h-[18px] w-[18px]" aria-hidden="true" />}
+          icon={<Code2 className="h-4 w-4" />}
         />
         <CodePreviewPanel
           code={diagram.nextChildrenStep.code}
@@ -57,7 +58,7 @@ export const FunctionComponentHeroDiagram = ({ content }: Props) => {
           tone="indigo"
           title={diagram.reconcileStep.title}
           description={diagram.reconcileStep.description}
-          icon={<Workflow className="h-[18px] w-[18px]" aria-hidden="true" />}
+          icon={<Workflow className="h-4 w-4" />}
           mono
         />
       </div>
@@ -104,7 +105,7 @@ const StepRow = ({
     <article
       className={cx(
         'flex items-center gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-2.5',
-        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+        'shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
     >
@@ -124,12 +125,3 @@ const StepRow = ({
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

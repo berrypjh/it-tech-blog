@@ -14,8 +14,7 @@ type Props = { content: BeginWorkContent['hero'] };
 export const BeginWorkHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="reconciler/begin-work.md"
-    promptSuffix={<span className="text-[var(--term-dim)]"> {'// descending function'}</span>}
+    promptPath="packages/react-reconciler/src/ReactFiberBeginWork.js"
     gridColumns="lg:grid-cols-[minmax(0,_0.78fr)_minmax(0,_1.22fr)]"
     align="center"
   >
@@ -33,7 +32,7 @@ export const BeginWorkHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-begin-work" className="min-w-0">
+    <HeroVisualColumn id="hero-begin-work">
       <BeginWorkHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

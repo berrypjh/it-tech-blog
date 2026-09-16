@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Target } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CommitPhaseIntroContent, FlowStep } from '../content';
 
@@ -17,8 +17,9 @@ export const CommitKeySummarySection = ({ content }: Props) => {
       aria-labelledby="heading-key-summary"
       className="space-y-md scroll-mt-xl"
     >
-      <SectionHeader
+      <SectionBadgeHeader
         id="key-summary"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Target className="h-5 w-5" aria-hidden="true" />}

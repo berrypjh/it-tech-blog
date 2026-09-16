@@ -1,14 +1,16 @@
 import { cx } from '@berrypjh/react-ui';
-import { Box, PackageOpen, Plus } from 'lucide-react';
+import { Box, type LucideIcon, PackageOpen, Plus } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { HeroStep, PlacementContent } from '../content';
 
-type Props = { content: PlacementContent['hero']; className?: string };
+type Props = { content: PlacementContent['hero'] };
 
-const stepIcon: Record<HeroStep['kind'], typeof Box> = {
+const stepIcon: Record<HeroStep['kind'], LucideIcon> = {
   fiber: Box,
   parent: PackageOpen,
   insert: Plus,
@@ -19,43 +21,20 @@ const stepIcon: Record<HeroStep['kind'], typeof Box> = {
  * 새 Fiber → host parent 탐색 → 실제 DOM 삽입(Commit)으로 이어지는
  * Placement 흐름을 위에서 아래로 잇는 컴팩트 stepper.
  */
-export const PlacementHeroDiagram = ({ content, className }: Props) => {
+export const PlacementHeroDiagram = ({ content }: Props) => {
   const { diagram } = content;
   const a11y = `${diagram.title}: ${diagram.steps
     .map((s) => `${s.title} (${s.caption})`)
     .join(' → ')}. ${diagram.bottomLabel}`;
 
-  const insertStep = diagram.steps[diagram.steps.length - 1];
-
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
-      <div className="relative flex flex-col gap-sm">
-        <header className="flex items-center gap-sm" aria-hidden="true">
-          <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
-            {'// new fiber → host parent → DOM'}
-          </span>
-          <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-            placement flow
-          </span>
-        </header>
-
-        <h2 className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
+    <HeroDiagramShell a11yLabel={a11y}>
+      <div className="relative flex flex-col gap-sm" aria-hidden="true">
+        <span className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
           {diagram.title}
-        </h2>
+        </span>
 
-        <ol className="flex flex-col gap-sm" aria-hidden="true">
+        <ol className="flex flex-col gap-sm">
           {diagram.steps.map((step, i) => (
             <li key={step.kind} className="flex flex-col gap-sm">
               <FlowStepRow step={step} />
@@ -67,13 +46,13 @@ export const PlacementHeroDiagram = ({ content, className }: Props) => {
         <DownArrow />
 
         <CodePreviewPanel
-          code={`<ul>\n  <li>A</li>\n  <li>B</li>\n  ${insertStep.caption}\n</ul>`}
+          code={diagram.code}
           caption={diagram.bottomLabel}
           language="HTML"
           size="sm"
         />
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
@@ -82,15 +61,14 @@ const FlowStepRow = ({ step }: { step: HeroStep }) => {
   const t = toneTokens[tone];
   const Icon = stepIcon[step.kind];
   return (
-    <article
+    <div
       className={cx(
-        'group flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
+        'flex items-center gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
       )}
     >
       <ToneIconBox tone={tone} size="sm">
-        <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
+        <Icon className="h-4 w-4" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col">
         <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>
@@ -100,15 +78,6 @@ const FlowStepRow = ({ step }: { step: HeroStep }) => {
           {step.caption}
         </span>
       </div>
-    </article>
+    </div>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

@@ -69,13 +69,15 @@ export type RenderPhaseIntroContent = {
     };
   };
   previous: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: PreviousChapterStep[];
-    emphasis: string;
+    note: string;
   };
   comparison: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -83,31 +85,27 @@ export type RenderPhaseIntroContent = {
     rows: ComparisonRow[];
   };
   work: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: WorkCard[];
   };
   flowPreview: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: FlowPreviewStep[];
     resultTitle: string;
     resultItems: string[];
-    importantNote: string;
+    note: string;
   };
   warning: {
     eyebrow: string;
     title: { line1: string; line2: string };
     description: string;
     steps: WarningStep[];
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    question: string;
-    answer: string;
   };
   nextStep: {
     eyebrow: string;
@@ -344,15 +342,17 @@ const ko: RenderPhaseIntroContent = {
     },
   },
   previous: {
-    eyebrow: '01 · 챕터 연결',
+    badge: '01',
+    eyebrow: '챕터 연결',
     title: '앞 챕터와 연결',
     description:
       '이전 챕터에서 setState 호출이 Root 스케줄링까지 이어졌습니다. 이제 React가 실제로 다음 Fiber 트리를 계산하기 시작합니다.',
     steps: previousStepsKo,
-    emphasis: '이제 React는 실제로 다음 Fiber 트리를 계산하기 시작합니다.',
+    note: '이제 React는 실제로 다음 Fiber 트리를 계산하기 시작합니다.',
   },
   comparison: {
-    eyebrow: '02 · 단계 비교',
+    badge: '02',
+    eyebrow: '단계 비교',
     title: 'Render Phase vs Commit Phase 비교',
     description: '두 단계의 책임을 항목별로 비교합니다. DOM 변경 여부가 가장 큰 분기점입니다.',
     columns: {
@@ -396,13 +396,15 @@ const ko: RenderPhaseIntroContent = {
     ],
   },
   work: {
-    eyebrow: '03 · 내부 작업',
+    badge: '03',
+    eyebrow: '내부 작업',
     title: 'Render Phase에서 실제로 일어나는 일',
     description: 'Render Phase가 하는 핵심 작업 4가지를 카드로 정리합니다.',
     cards: workCardsKo,
   },
   flowPreview: {
-    eyebrow: '04 · 흐름 지도',
+    badge: '04',
+    eyebrow: '흐름 지도',
     title: 'Render Phase 전체 흐름 미리보기',
     description: '이 챕터에서 반복해서 마주칠 Render Phase 흐름 지도입니다.',
     steps: flowPreviewStepsKo,
@@ -412,23 +414,16 @@ const ko: RenderPhaseIntroContent = {
       '변경해야 할 내용이 flags로 정리된다.',
       '아직 화면은 그대로 유지된다.',
     ],
-    importantNote: '중요: Commit Phase가 실행되기 전까지 브라우저 화면은 절대 바뀌지 않습니다.',
+    note: '중요: Commit Phase가 실행되기 전까지 브라우저 화면은 절대 바뀌지 않습니다.',
   },
   warning: {
-    eyebrow: '05 · DOM 미변경',
+    eyebrow: 'DOM 미변경',
     title: {
       line1: '중요: Render Phase에서는',
       line2: '브라우저 화면이 아직 바뀌지 않습니다.',
     },
     description: 'React는 먼저 어떤 변화가 필요한지 계산만 합니다.',
     steps: warningStepsKo,
-  },
-  quiz: {
-    eyebrow: '06 · 미니 퀴즈',
-    title: '미니 퀴즈',
-    question:
-      'Render Phase에서 새로운 div가 필요하다고 판단되면 즉시 DOM에 appendChild가 실행될까?',
-    answer: '아니다. 실제 DOM 반영은 Commit Phase에서 일어난다.',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -463,15 +458,17 @@ const en: RenderPhaseIntroContent = {
     },
   },
   previous: {
-    eyebrow: '01 · CHAPTER BRIDGE',
+    badge: '01',
+    eyebrow: 'CHAPTER BRIDGE',
     title: 'Bridge from the previous chapter',
     description:
       'The previous chapter took setState all the way to scheduling the Root. Now React actually starts computing the next Fiber tree.',
     steps: previousStepsEn,
-    emphasis: 'Now React actually starts computing the next Fiber tree.',
+    note: 'Now React actually starts computing the next Fiber tree.',
   },
   comparison: {
-    eyebrow: '02 · RENDER VS COMMIT',
+    badge: '02',
+    eyebrow: 'RENDER VS COMMIT',
     title: 'Render Phase vs Commit Phase',
     description:
       'Compare the responsibilities of the two phases row by row. The biggest fork is whether the DOM changes.',
@@ -520,13 +517,15 @@ const en: RenderPhaseIntroContent = {
     ],
   },
   work: {
-    eyebrow: '03 · INSIDE RENDER',
+    badge: '03',
+    eyebrow: 'INSIDE RENDER',
     title: 'What actually happens during the Render Phase',
     description: 'Four core jobs done by the Render Phase, summarized as cards.',
     cards: workCardsEn,
   },
   flowPreview: {
-    eyebrow: '04 · FLOW MAP',
+    badge: '04',
+    eyebrow: 'FLOW MAP',
     title: 'Render Phase flow preview',
     description: 'The Render Phase flow map you will revisit throughout this chapter.',
     steps: flowPreviewStepsEn,
@@ -536,23 +535,16 @@ const en: RenderPhaseIntroContent = {
       'Pending changes are summarized as flags.',
       'The screen still stays the same.',
     ],
-    importantNote: 'Important: until the Commit Phase runs, the browser screen never changes.',
+    note: 'Important: until the Commit Phase runs, the browser screen never changes.',
   },
   warning: {
-    eyebrow: '05 · DOM UNCHANGED',
+    eyebrow: 'DOM UNCHANGED',
     title: {
       line1: 'Important: during the Render Phase,',
       line2: 'the browser screen has not changed yet.',
     },
     description: 'React first only computes what needs to change.',
     steps: warningStepsEn,
-  },
-  quiz: {
-    eyebrow: '06 · MINI QUIZ',
-    title: 'Mini Quiz',
-    question:
-      'If the Render Phase decides a new div is needed, will appendChild fire on the DOM immediately?',
-    answer: 'No. Real DOM updates only happen in the Commit Phase.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

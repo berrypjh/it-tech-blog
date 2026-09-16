@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Clock, Target } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { PassiveEffectsContent, PositionStep } from '../content';
 
@@ -13,8 +13,10 @@ export const PassiveEffectsPositionSection = ({ content }: Props) => (
     aria-labelledby="heading-passive-position"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="passive-position"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -73,9 +75,6 @@ const Callout = ({ callout }: { callout: PassiveEffectsContent['position']['call
         <span className="block">{callout.line1}</span>
         <span className="block">{callout.line2}</span>
       </p>
-      <span className={cx('text-[10px] font-mono uppercase tracking-wider', t.text)}>
-        after paint
-      </span>
     </article>
   );
 };
@@ -102,21 +101,9 @@ const StepCard = ({ step, index }: { step: PositionStep; index: number }) => {
         {index}
       </span>
       <div className="flex flex-col gap-0.5 min-w-0">
-        <div className="flex flex-wrap items-center gap-2">
-          <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
-            {step.title}
-          </h3>
-          {step.active && (
-            <span
-              className={cx(
-                'inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider font-bold',
-                t.chip,
-              )}
-            >
-              active
-            </span>
-          )}
-        </div>
+        <h3 className={cx('text-sm sm:text-md font-bold leading-tight break-keep', t.fill.text)}>
+          {step.title}
+        </h3>
         <p className="text-xsm leading-snug text-[var(--term-muted)] break-keep">{step.body}</p>
       </div>
       <span

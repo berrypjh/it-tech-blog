@@ -2,31 +2,31 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import type { ToneKey } from '../../shared/tones';
 
-export type PipelineIcon = 'flag' | 'search' | 'unlink' | 'droplet' | 'logOut' | 'trash';
+export type PipelineId = 'flag' | 'search' | 'unlink' | 'droplet' | 'logOut' | 'trash';
 
 export type PipelineStep = {
   number: string;
   title: string;
   description: string;
-  iconName: PipelineIcon;
+  id: PipelineId;
   tone: ToneKey;
 };
 
 export type HeroStepItem = {
   title: string;
   body: string;
-  iconName: 'unlink' | 'droplet' | 'logOut' | 'trash';
+  id: 'unlink' | 'droplet' | 'logOut' | 'trash';
   tone: ToneKey;
   examples: string[];
 };
 
-export type CleanupCardIcon = 'brokenLink' | 'monitor' | 'clock' | 'trash';
+export type CleanupCardId = 'brokenLink' | 'monitor' | 'clock' | 'trash';
 
 export type CleanupCard = {
   title: string;
   description: string;
   codePill: string;
-  iconName: CleanupCardIcon;
+  id: CleanupCardId;
   tone: ToneKey;
 };
 
@@ -34,15 +34,22 @@ export type ModalFlowStep = {
   title: string;
   description?: string;
   treeItems?: string[];
-  iconName: 'tree' | 'flag' | 'broom' | 'trash';
+  id: 'tree' | 'flag' | 'broom' | 'trash';
   tone: ToneKey;
 };
 
 export type CleanupVsRemoveRow = {
   task: string;
   meaning: string[];
-  iconName: 'broom' | 'trash';
+  id: 'broom' | 'trash';
   tone: ToneKey;
+};
+
+export type CheckpointBlock = {
+  filePath: string;
+  code: string;
+  primaryCta: string;
+  primaryHref: string;
 };
 
 export type DeletionContent = {
@@ -59,18 +66,21 @@ export type DeletionContent = {
     };
   };
   pipeline: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: PipelineStep[];
   };
   cleanup: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     cards: CleanupCard[];
   };
   modal: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -85,23 +95,17 @@ export type DeletionContent = {
     afterContent: string;
   };
   checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
-    info: {
-      fileLabel: string;
-      filePaths: string[];
-      watchLabel: string;
-      watchItems: string[];
-      question: string;
-    };
-    code: {
-      title: string;
-      code: string;
-    };
-    fileLabelsTitle: string;
-    fileLabels: { name: string; tone: ToneKey }[];
+    fileLabel: string;
+    filePaths: string[];
+    lookForLabel: string;
+    lookFor: string;
+    blocks: CheckpointBlock[];
   };
   cleanupVsRemove: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -109,12 +113,6 @@ export type DeletionContent = {
     rows: CleanupVsRemoveRow[];
     pointTitle: string;
     pointText: string;
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    question: string;
-    answer: string;
   };
   nextStep: {
     eyebrow: string;
@@ -129,28 +127,28 @@ const heroStepsKo: HeroStepItem[] = [
   {
     title: 'ref detach',
     body: 'ref 연결 해제',
-    iconName: 'unlink',
+    id: 'unlink',
     tone: 'violet',
     examples: ['ref A ×', 'ref B ×', 'ref C ×'],
   },
   {
     title: 'effect cleanup',
     body: 'layout / passive cleanup 실행',
-    iconName: 'droplet',
+    id: 'droplet',
     tone: 'sky',
     examples: ['useLayoutEffect cleanup', 'useEffect cleanup'],
   },
   {
     title: 'unmount 처리',
     body: '컴포넌트 unmount 및 내부 리소스 정리',
-    iconName: 'logOut',
+    id: 'logOut',
     tone: 'blue',
     examples: ['componentWillUnmount', 'cleanup logic'],
   },
   {
     title: 'host remove',
     body: 'host node 제거',
-    iconName: 'trash',
+    id: 'trash',
     tone: 'teal',
     examples: ['<div class="modal">…</div>'],
   },
@@ -160,28 +158,28 @@ const heroStepsEn: HeroStepItem[] = [
   {
     title: 'ref detach',
     body: 'release ref bindings',
-    iconName: 'unlink',
+    id: 'unlink',
     tone: 'violet',
     examples: ['ref A ×', 'ref B ×', 'ref C ×'],
   },
   {
     title: 'effect cleanup',
     body: 'run layout / passive cleanup',
-    iconName: 'droplet',
+    id: 'droplet',
     tone: 'sky',
     examples: ['useLayoutEffect cleanup', 'useEffect cleanup'],
   },
   {
     title: 'unmount',
     body: 'component unmount and internal cleanup',
-    iconName: 'logOut',
+    id: 'logOut',
     tone: 'blue',
     examples: ['componentWillUnmount', 'cleanup logic'],
   },
   {
     title: 'host remove',
     body: 'remove the host node',
-    iconName: 'trash',
+    id: 'trash',
     tone: 'teal',
     examples: ['<div class="modal">…</div>'],
   },
@@ -192,42 +190,42 @@ const pipelineStepsKo: PipelineStep[] = [
     number: '1',
     title: 'ChildDeletion',
     description: '삭제 플래그 확인 및 ChildDeletion 처리 시작',
-    iconName: 'flag',
+    id: 'flag',
     tone: 'violet',
   },
   {
     number: '2',
     title: '삭제 대상 subtree 탐색',
     description: '삭제될 subtree를 깊이 우선 순회하며 탐색',
-    iconName: 'search',
+    id: 'search',
     tone: 'violet',
   },
   {
     number: '3',
     title: 'ref detach',
     description: '모든 ref 연결을 안전하게 해제',
-    iconName: 'unlink',
+    id: 'unlink',
     tone: 'sky',
   },
   {
     number: '4',
     title: 'layout / passive cleanup',
     description: 'useLayoutEffect, useEffect cleanup 실행',
-    iconName: 'droplet',
+    id: 'droplet',
     tone: 'cyan',
   },
   {
     number: '5',
     title: 'unmount 처리',
     description: '컴포넌트 unmount 및 내부 리소스 정리',
-    iconName: 'logOut',
+    id: 'logOut',
     tone: 'blue',
   },
   {
     number: '6',
     title: 'host remove',
     description: '실제 DOM node를 부모에서 제거',
-    iconName: 'trash',
+    id: 'trash',
     tone: 'teal',
   },
 ];
@@ -237,42 +235,42 @@ const pipelineStepsEn: PipelineStep[] = [
     number: '1',
     title: 'ChildDeletion',
     description: 'Check delete flag and start ChildDeletion handling',
-    iconName: 'flag',
+    id: 'flag',
     tone: 'violet',
   },
   {
     number: '2',
     title: 'Walk the doomed subtree',
     description: 'Depth-first walk the subtree marked for deletion',
-    iconName: 'search',
+    id: 'search',
     tone: 'violet',
   },
   {
     number: '3',
     title: 'ref detach',
     description: 'Safely release all ref bindings',
-    iconName: 'unlink',
+    id: 'unlink',
     tone: 'sky',
   },
   {
     number: '4',
     title: 'layout / passive cleanup',
     description: 'Run useLayoutEffect and useEffect cleanups',
-    iconName: 'droplet',
+    id: 'droplet',
     tone: 'cyan',
   },
   {
     number: '5',
     title: 'unmount',
     description: 'Component unmount and internal cleanup',
-    iconName: 'logOut',
+    id: 'logOut',
     tone: 'blue',
   },
   {
     number: '6',
     title: 'host remove',
     description: 'Remove the real DOM node from its parent',
-    iconName: 'trash',
+    id: 'trash',
     tone: 'teal',
   },
 ];
@@ -282,7 +280,7 @@ const cleanupCardsKo: CleanupCard[] = [
     title: 'refs 분리',
     description: '모든 ref의 current를 null로 만들고, ref 객체와의 연결을 해제합니다.',
     codePill: 'ref.current = null;',
-    iconName: 'brokenLink',
+    id: 'brokenLink',
     tone: 'violet',
   },
   {
@@ -290,7 +288,7 @@ const cleanupCardsKo: CleanupCard[] = [
     description:
       'useLayoutEffect의 cleanup 함수를 동기적으로 실행하여 레이아웃 관련 구독과 리소스를 정리합니다.',
     codePill: 'useLayoutEffect cleanup()',
-    iconName: 'monitor',
+    id: 'monitor',
     tone: 'cyan',
   },
   {
@@ -298,14 +296,14 @@ const cleanupCardsKo: CleanupCard[] = [
     description:
       'useEffect의 cleanup 함수를 비동기적으로 실행하여 이벤트 리스너, 타이머, 구독 등을 정리합니다.',
     codePill: 'useEffect cleanup()',
-    iconName: 'clock',
+    id: 'clock',
     tone: 'sky',
   },
   {
     title: 'host node 제거',
     description: '정리 작업이 끝난 뒤, 실제 DOM node를 부모 노드에서 제거합니다.',
     codePill: 'removeChild(node);',
-    iconName: 'trash',
+    id: 'trash',
     tone: 'teal',
   },
 ];
@@ -315,7 +313,7 @@ const cleanupCardsEn: CleanupCard[] = [
     title: 'refs detach',
     description: 'Set every ref.current to null and release the ref bindings.',
     codePill: 'ref.current = null;',
-    iconName: 'brokenLink',
+    id: 'brokenLink',
     tone: 'violet',
   },
   {
@@ -323,7 +321,7 @@ const cleanupCardsEn: CleanupCard[] = [
     description:
       'Run useLayoutEffect cleanups synchronously to release layout-related subscriptions and resources.',
     codePill: 'useLayoutEffect cleanup()',
-    iconName: 'monitor',
+    id: 'monitor',
     tone: 'cyan',
   },
   {
@@ -331,14 +329,14 @@ const cleanupCardsEn: CleanupCard[] = [
     description:
       'Run useEffect cleanups asynchronously to tear down listeners, timers, and subscriptions.',
     codePill: 'useEffect cleanup()',
-    iconName: 'clock',
+    id: 'clock',
     tone: 'sky',
   },
   {
     title: 'host node remove',
     description: 'After cleanup, remove the real DOM node from its parent.',
     codePill: 'removeChild(node);',
-    iconName: 'trash',
+    id: 'trash',
     tone: 'teal',
   },
 ];
@@ -347,25 +345,25 @@ const modalFlowKo: ModalFlowStep[] = [
   {
     title: 'Modal Fiber subtree',
     treeItems: ['Modal', 'Backdrop', 'Dialog', 'CloseBtn'],
-    iconName: 'tree',
+    id: 'tree',
     tone: 'violet',
   },
   {
     title: 'deletion 처리',
     description: 'ChildDeletion 플래그로 삭제 처리 시작',
-    iconName: 'flag',
+    id: 'flag',
     tone: 'violet',
   },
   {
     title: 'cleanup',
     description: 'ref detach + effect cleanup + unmount 처리',
-    iconName: 'broom',
+    id: 'broom',
     tone: 'cyan',
   },
   {
     title: 'DOM 제거',
     description: 'host node를 부모에서 제거 (removeChild)',
-    iconName: 'trash',
+    id: 'trash',
     tone: 'teal',
   },
 ];
@@ -374,67 +372,83 @@ const modalFlowEn: ModalFlowStep[] = [
   {
     title: 'Modal Fiber subtree',
     treeItems: ['Modal', 'Backdrop', 'Dialog', 'CloseBtn'],
-    iconName: 'tree',
+    id: 'tree',
     tone: 'violet',
   },
   {
     title: 'deletion handling',
     description: 'Start delete handling on the ChildDeletion flag',
-    iconName: 'flag',
+    id: 'flag',
     tone: 'violet',
   },
   {
     title: 'cleanup',
     description: 'ref detach + effect cleanup + unmount',
-    iconName: 'broom',
+    id: 'broom',
     tone: 'cyan',
   },
   {
     title: 'DOM remove',
     description: 'Remove the host node from its parent (removeChild)',
-    iconName: 'trash',
+    id: 'trash',
     tone: 'teal',
   },
 ];
 
-const codeKo = `// deletion 관련 commit 흐름
-function commitDeletion(finishedWork) {
-  commitBeforeMutationEffects_deletion(finishedWork);
-  commitMutationEffects_deletion(finishedWork);
-  commitLayoutEffects_deletion(finishedWork);
+const commitWorkCode = `function commitDeletionEffects(root, returnFiber, deletedFiber) {
+  // ... find the nearest host parent
+  commitDeletionEffectsOnFiber(root, returnFiber, deletedFiber);
+  hostParent = null;
+  hostParentIsContainer = false;
+  detachFiberMutation(deletedFiber);
 }
 
-// ref detach
-function commitDetachRef(finishedWork) {
-  const ref = finishedWork.ref;
-  if (ref !== null) {
-    detachRef(ref);
+function commitDeletionEffectsOnFiber(finishedRoot, nearestMountedAncestor, deletedFiber) {
+  switch (deletedFiber.tag) {
+    case HostComponent: {
+      safelyDetachRef(deletedFiber, nearestMountedAncestor);
+      // fallthrough
+    }
+    case HostText: {
+      const prevHostParent = hostParent;
+      hostParent = null;
+      recursivelyTraverseDeletionEffects(finishedRoot, nearestMountedAncestor, deletedFiber);
+      hostParent = prevHostParent;
+      if (hostParent !== null) {
+        commitHostRemoveChild(deletedFiber, nearestMountedAncestor, hostParent, deletedFiber.stateNode);
+      }
+      return;
+    }
+    case FunctionComponent: {
+      commitHookLayoutUnmountEffects(deletedFiber, nearestMountedAncestor, HookLayout);
+      recursivelyTraverseDeletionEffects(finishedRoot, nearestMountedAncestor, deletedFiber);
+      return;
+    }
+    // ...
   }
-}
-
-// host remove
-function commitHostRemoveChild(parentInstance, child) {
-  removeChild(parentInstance, child);
 }`;
 
-const codeEn = `// deletion-related commit flow
-function commitDeletion(finishedWork) {
-  commitBeforeMutationEffects_deletion(finishedWork);
-  commitMutationEffects_deletion(finishedWork);
-  commitLayoutEffects_deletion(finishedWork);
-}
-
-// ref detach
-function commitDetachRef(finishedWork) {
-  const ref = finishedWork.ref;
+const commitEffectsCode = `export function safelyDetachRef(current, nearestMountedAncestor) {
+  const ref = current.ref;
+  const refCleanup = current.refCleanup;
   if (ref !== null) {
-    detachRef(ref);
+    if (typeof refCleanup === 'function') {
+      refCleanup();
+      current.refCleanup = null;
+    } else if (typeof ref === 'function') {
+      ref(null);
+    } else {
+      ref.current = null;
+    }
   }
-}
+}`;
 
-// host remove
-function commitHostRemoveChild(parentInstance, child) {
-  removeChild(parentInstance, child);
+const hostEffectsCode = `export function commitHostRemoveChild(deletedFiber, nearestMountedAncestor, parent, hostInstance) {
+  try {
+    removeChild(parent, hostInstance);
+  } catch (error) {
+    captureCommitPhaseError(deletedFiber, nearestMountedAncestor, error);
+  }
 }`;
 
 const cleanupVsRemoveRowsKo: CleanupVsRemoveRow[] = [
@@ -445,13 +459,13 @@ const cleanupVsRemoveRowsKo: CleanupVsRemoveRow[] = [
       'ref detach, layout/passive cleanup, unmount 등',
       '연결된 리소스 해제와 내부 상태 정리가 목적입니다.',
     ],
-    iconName: 'broom',
+    id: 'broom',
     tone: 'cyan',
   },
   {
     task: 'Host Remove',
     meaning: ['실제 DOM node 제거', '부모 노드에서 removeChild를 호출해 화면에서 사라지게 합니다.'],
-    iconName: 'trash',
+    id: 'trash',
     tone: 'teal',
   },
 ];
@@ -464,7 +478,7 @@ const cleanupVsRemoveRowsEn: CleanupVsRemoveRow[] = [
       'ref detach, layout/passive cleanup, unmount, etc.',
       'The goal is to release related resources and tidy internal state.',
     ],
-    iconName: 'broom',
+    id: 'broom',
     tone: 'cyan',
   },
   {
@@ -473,7 +487,7 @@ const cleanupVsRemoveRowsEn: CleanupVsRemoveRow[] = [
       'Remove the real DOM node',
       'Call removeChild on the parent so it disappears from the screen.',
     ],
-    iconName: 'trash',
+    id: 'trash',
     tone: 'teal',
   },
 ];
@@ -497,20 +511,23 @@ const ko: DeletionContent = {
     },
   },
   pipeline: {
-    eyebrow: '01 · 삭제 파이프라인',
+    badge: '01',
+    eyebrow: '삭제 파이프라인',
     title: '삭제 흐름 전체 지도 (Cleanup Pipeline)',
     description:
       'Render Phase의 ChildDeletion 표시에서 host remove까지 — 삭제는 6단계 cleanup 파이프라인으로 진행됩니다.',
     steps: pipelineStepsKo,
   },
   cleanup: {
-    eyebrow: '02 · 정리 항목',
+    badge: '02',
+    eyebrow: '정리 항목',
     title: '삭제 subtree에서 정리되는 것들',
     description: '삭제 대상 subtree를 순회하면서 React가 처리하는 4가지 정리 작업입니다.',
     cards: cleanupCardsKo,
   },
   modal: {
-    eyebrow: '03 · 모달 삭제 예시',
+    badge: '03',
+    eyebrow: '모달 삭제 예시',
     title: '실제 UI 예시: Modal 제거',
     description:
       'Modal이 사라지는 그 순간에도 내부에서는 ref detach부터 host remove까지 진행됩니다.',
@@ -525,44 +542,51 @@ const ko: DeletionContent = {
     afterContent: 'Modal이 사라진 빈 화면',
   },
   checkpoint: {
-    eyebrow: '04 · 코드 체크포인트',
+    badge: '04',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
-    info: {
-      fileLabel: '파일',
-      filePaths: [
-        'ReactFiberCommitWork.js',
-        'ReactFiberCommitEffects.js',
-        'ReactFiberCommitHostEffects.js',
-      ],
-      watchLabel: '볼 것',
-      watchItems: ['deletion 관련 commit 흐름', 'ref detach', 'host remove'],
-      question: '삭제 작업은 왜 여러 파일과 책임으로 분리되어 있을까?',
-    },
-    code: {
-      title: '관련 코드 미리보기 (핵심 함수들)',
-      code: codeKo,
-    },
-    fileLabelsTitle: '관련 파일',
-    fileLabels: [
-      { name: 'ReactFiberCommitWork.js', tone: 'violet' },
-      { name: 'ReactFiberCommitEffects.js', tone: 'sky' },
-      { name: 'ReactFiberCommitHostEffects.js', tone: 'teal' },
+    fileLabel: '파일',
+    filePaths: [
+      'packages/react-reconciler/src/ReactFiberCommitWork.js',
+      'packages/react-reconciler/src/ReactFiberCommitEffects.js',
+      'packages/react-reconciler/src/ReactFiberCommitHostEffects.js',
+    ],
+    lookForLabel: '볼 것',
+    lookFor:
+      'commitDeletionEffects, commitDeletionEffectsOnFiber, safelyDetachRef, commitHostRemoveChild, detachFiberMutation',
+    blocks: [
+      {
+        filePath: 'packages/react-reconciler/src/ReactFiberCommitWork.js',
+        code: commitWorkCode,
+        primaryCta: 'ReactFiberCommitWork.js 읽기',
+        primaryHref:
+          'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitWork.js',
+      },
+      {
+        filePath: 'packages/react-reconciler/src/ReactFiberCommitEffects.js',
+        code: commitEffectsCode,
+        primaryCta: 'ReactFiberCommitEffects.js 읽기',
+        primaryHref:
+          'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitEffects.js',
+      },
+      {
+        filePath: 'packages/react-reconciler/src/ReactFiberCommitHostEffects.js',
+        code: hostEffectsCode,
+        primaryCta: 'ReactFiberCommitHostEffects.js 읽기',
+        primaryHref:
+          'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitHostEffects.js',
+      },
     ],
   },
   cleanupVsRemove: {
-    eyebrow: '05 · 정리 vs 제거',
+    badge: '05',
+    eyebrow: '정리 vs 제거',
     title: 'DOM remove와 cleanup 구분',
     description: '같은 "삭제"라도 책임은 둘로 명확히 나뉩니다.',
     columns: { task: '작업', meaning: '의미' },
     rows: cleanupVsRemoveRowsKo,
     pointTitle: '포인트',
     pointText: '삭제는 화면에서 지우는 것만 아니라, 연결된 리소스를 정리하는 과정입니다.',
-  },
-  quiz: {
-    eyebrow: '06 · 미니 퀴즈',
-    title: '미니 퀴즈',
-    question: '삭제 시 React는 DOM node만 제거할까?',
-    answer: '아니다. 삭제 subtree의 ref와 effects까지 정리한다.',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -593,20 +617,23 @@ const en: DeletionContent = {
     },
   },
   pipeline: {
-    eyebrow: '01 · DELETION PIPELINE',
+    badge: '01',
+    eyebrow: 'DELETION PIPELINE',
     title: 'Deletion flow map (Cleanup Pipeline)',
     description:
       'From the ChildDeletion mark in the Render Phase to host remove — deletion runs through this 6-step cleanup pipeline.',
     steps: pipelineStepsEn,
   },
   cleanup: {
-    eyebrow: '02 · CLEANUP ITEMS',
+    badge: '02',
+    eyebrow: 'CLEANUP ITEMS',
     title: 'What gets cleaned up in the deleted subtree',
     description: 'Four cleanup jobs React performs while walking the doomed subtree.',
     cards: cleanupCardsEn,
   },
   modal: {
-    eyebrow: '03 · MODAL EXAMPLE',
+    badge: '03',
+    eyebrow: 'MODAL EXAMPLE',
     title: 'Real UI example: removing a Modal',
     description:
       'Even at the moment the Modal disappears, the internals go through ref detach, cleanup and host remove.',
@@ -621,32 +648,45 @@ const en: DeletionContent = {
     afterContent: 'Empty screen — the Modal is gone',
   },
   checkpoint: {
-    eyebrow: '04 · CODE CHECKPOINT',
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
-    info: {
-      fileLabel: 'Files',
-      filePaths: [
-        'ReactFiberCommitWork.js',
-        'ReactFiberCommitEffects.js',
-        'ReactFiberCommitHostEffects.js',
-      ],
-      watchLabel: 'Watch',
-      watchItems: ['deletion commit flow', 'ref detach', 'host remove'],
-      question: 'Why is deletion split across multiple files and responsibilities?',
-    },
-    code: {
-      title: 'related code preview (core functions)',
-      code: codeEn,
-    },
-    fileLabelsTitle: 'related files',
-    fileLabels: [
-      { name: 'ReactFiberCommitWork.js', tone: 'violet' },
-      { name: 'ReactFiberCommitEffects.js', tone: 'sky' },
-      { name: 'ReactFiberCommitHostEffects.js', tone: 'teal' },
+    fileLabel: 'File',
+    filePaths: [
+      'packages/react-reconciler/src/ReactFiberCommitWork.js',
+      'packages/react-reconciler/src/ReactFiberCommitEffects.js',
+      'packages/react-reconciler/src/ReactFiberCommitHostEffects.js',
+    ],
+    lookForLabel: 'Look for',
+    lookFor:
+      'commitDeletionEffects, commitDeletionEffectsOnFiber, safelyDetachRef, commitHostRemoveChild, detachFiberMutation',
+    blocks: [
+      {
+        filePath: 'packages/react-reconciler/src/ReactFiberCommitWork.js',
+        code: commitWorkCode,
+        primaryCta: 'Read ReactFiberCommitWork.js',
+        primaryHref:
+          'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitWork.js',
+      },
+      {
+        filePath: 'packages/react-reconciler/src/ReactFiberCommitEffects.js',
+        code: commitEffectsCode,
+        primaryCta: 'Read ReactFiberCommitEffects.js',
+        primaryHref:
+          'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitEffects.js',
+      },
+      {
+        filePath: 'packages/react-reconciler/src/ReactFiberCommitHostEffects.js',
+        code: hostEffectsCode,
+        primaryCta: 'Read ReactFiberCommitHostEffects.js',
+        primaryHref:
+          'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitHostEffects.js',
+      },
     ],
   },
   cleanupVsRemove: {
-    eyebrow: '05 · CLEANUP VS REMOVE',
+    badge: '05',
+    eyebrow: 'CLEANUP VS REMOVE',
     title: 'Cleanup vs Host Remove',
     description: 'Even for the same "deletion", the responsibility splits clearly into two.',
     columns: { task: 'Task', meaning: 'Meaning' },
@@ -654,12 +694,6 @@ const en: DeletionContent = {
     pointTitle: 'point',
     pointText:
       'Deletion is not only erasing from the screen — it is also tearing down related resources.',
-  },
-  quiz: {
-    eyebrow: '06 · MINI QUIZ',
-    title: 'mini quiz',
-    question: 'When deleting, does React only remove the DOM node?',
-    answer: 'No. It also cleans up refs and effects in the deleted subtree.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

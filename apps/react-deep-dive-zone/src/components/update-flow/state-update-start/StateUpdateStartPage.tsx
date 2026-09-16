@@ -5,7 +5,6 @@ import { StartPageShell } from '../../shared/shell';
 
 import { InternalFlowPreviewSection } from './sections/InternalFlowPreviewSection';
 import { KeySummaryBanner } from './sections/KeySummaryBanner';
-import { LearningQuestionSection } from './sections/LearningQuestionSection';
 import { MisconceptionCompareSection } from './sections/MisconceptionCompareSection';
 import { SetStateHero } from './sections/SetStateHero';
 import { StateSnapshotSection } from './sections/StateSnapshotSection';
@@ -24,7 +23,6 @@ export const StateUpdateStartPage = ({ locale }: Props) => {
       <MisconceptionCompareSection content={c.misconception} />
       <InternalFlowPreviewSection content={c.internalFlow} />
       <StateSnapshotSection content={c.snapshot} />
-      <LearningQuestionSection content={c.question} />
       <KeySummaryBanner content={c.summary} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>

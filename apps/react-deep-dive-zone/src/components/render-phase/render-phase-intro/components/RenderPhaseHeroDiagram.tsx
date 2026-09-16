@@ -2,6 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { CheckCircle2, Cpu } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { RenderPhaseIntroContent } from '../content';
@@ -26,14 +27,14 @@ export const RenderPhaseHeroDiagram = ({ content }: Props) => {
   const steps: PhaseStep[] = [
     {
       tone: 'sky',
-      icon: <Cpu className="h-[18px] w-[18px]" aria-hidden="true" />,
+      icon: <Cpu className="h-4 w-4" />,
       title: diagram.renderCard.title,
       description: diagram.renderCard.description,
       subDescription: diagram.renderCard.subDescription,
     },
     {
       tone: 'teal',
-      icon: <CheckCircle2 className="h-[18px] w-[18px]" aria-hidden="true" />,
+      icon: <CheckCircle2 className="h-4 w-4" />,
       title: diagram.commitCard.title,
       description: diagram.commitCard.description,
       subDescription: diagram.commitCard.subDescription,
@@ -46,9 +47,6 @@ export const RenderPhaseHeroDiagram = ({ content }: Props) => {
     <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
         <header className="flex items-center gap-sm">
-          <span className="text-xxsm uppercase tracking-wider font-mono text-[var(--term-muted)]">
-            {'// render → commit'}
-          </span>
           <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
             {diagram.eyebrow}
           </span>
@@ -73,7 +71,7 @@ const PhaseStepRow = ({ step }: { step: PhaseStep }) => {
     <article
       className={cx(
         'flex items-start gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-2.5',
-        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+        'shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
     >
@@ -94,12 +92,3 @@ const PhaseStepRow = ({ step }: { step: PhaseStep }) => {
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

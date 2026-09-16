@@ -17,9 +17,8 @@ type Props = { content: RenderPhaseIntroContent['hero'] };
 export const RenderPhaseHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="reconciler/render-phase.md"
-    promptSuffix={<span className="text-[var(--term-dim)]"> {'// what is the render phase?'}</span>}
-    gridColumns="lg:grid-cols-[minmax(0,_0.88fr)_minmax(0,_1.12fr)]"
+    promptPath="packages/react-reconciler/src/ReactFiberWorkLoop.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -33,14 +32,14 @@ export const RenderPhaseHero = ({ content }: Props) => (
         <span className="block">{content.title.line3}</span>
       </HeroTitle>
 
-      <HeroDescription maxWidth="max-w-[58ch]">{content.description}</HeroDescription>
+      <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
 
       <SectionNote icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />} className="mt-sm">
         {content.callout}
       </SectionNote>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-render-phase-intro" className="min-w-0">
+    <HeroVisualColumn id="hero-render-phase">
       <RenderPhaseHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

@@ -3,6 +3,7 @@ import { ArrowDown, ArrowUp, Box, HelpCircle, Settings } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
 import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { PerformUnitContent } from '../content';
@@ -21,28 +22,15 @@ export const PerformUnitHeroDiagram = ({ content }: Props) => {
   return (
     <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
-        <CodePreviewPanel
-          code="performUnitOfWork(unitOfWork);"
-          showWindowDots
-          language="JS"
-          size="md"
-        />
+        <CodePreviewPanel code={diagram.code} showWindowDots language="JS" size="md" />
 
         <DownArrow />
 
-        <StepRow
-          tone="sky"
-          icon={<Box className="h-[18px] w-[18px]" aria-hidden="true" />}
-          title={diagram.step1.title}
-        />
+        <StepRow tone="sky" icon={<Box className="h-4 w-4" />} title={diagram.step1.title} />
 
         <DownArrow />
 
-        <StepRow
-          tone="sky"
-          icon={<Settings className="h-[18px] w-[18px]" aria-hidden="true" />}
-          title={diagram.step2.title}
-        />
+        <StepRow tone="sky" icon={<Settings className="h-4 w-4" />} title={diagram.step2.title} />
 
         <DownArrow />
 
@@ -53,14 +41,14 @@ export const PerformUnitHeroDiagram = ({ content }: Props) => {
         <div className="grid grid-cols-1 gap-sm @sm:grid-cols-2">
           <BranchCard
             tone="teal"
-            icon={<ArrowDown className="h-[18px] w-[18px]" aria-hidden="true" />}
+            icon={<ArrowDown className="h-4 w-4" />}
             label={diagram.yes.label}
             title={diagram.yes.title}
             description={diagram.yes.description}
           />
           <BranchCard
             tone="violet"
-            icon={<ArrowUp className="h-[18px] w-[18px]" aria-hidden="true" />}
+            icon={<ArrowUp className="h-4 w-4" />}
             label={diagram.no.label}
             title={diagram.no.title}
             description={diagram.no.description}
@@ -85,7 +73,7 @@ const StepRow = ({
     <article
       className={cx(
         'flex items-center gap-sm rounded-lg border bg-[var(--term-bg)] px-md py-2.5',
-        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+        'shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
     >
@@ -108,7 +96,7 @@ const DecisionRow = ({ title }: { title: string }) => (
     )}
   >
     <ToneIconBox tone="indigo" size="sm">
-      <HelpCircle className="h-[18px] w-[18px]" aria-hidden="true" />
+      <HelpCircle className="h-4 w-4" />
     </ToneIconBox>
     <span className={cx('text-sm font-bold tracking-tight break-keep', toneTokens.indigo.text)}>
       {title}
@@ -134,7 +122,7 @@ const BranchCard = ({
     <article
       className={cx(
         'flex min-w-0 flex-col gap-1 rounded-lg border bg-[var(--term-bg)] p-md',
-        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5',
+        'shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
     >
@@ -151,17 +139,10 @@ const BranchCard = ({
           {label}
         </span>
       </span>
-      <h3 className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">{title}</h3>
+      <span className="text-sm font-bold tracking-tight text-[var(--term-fg)] break-keep">
+        {title}
+      </span>
       <p className="text-xsm leading-relaxed text-[var(--term-muted)] break-keep">{description}</p>
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

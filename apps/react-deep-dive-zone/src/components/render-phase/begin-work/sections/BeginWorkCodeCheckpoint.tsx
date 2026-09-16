@@ -1,20 +1,17 @@
-import { Code2, FileCode } from 'lucide-react';
+import { Eye, FileCode } from 'lucide-react';
 
 import { CheckpointInfoCard } from '../../../shared/checkpoint';
-import { CodePreviewPanel } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { CodePreviewPanel, GithubButton } from '../../../shared/code';
+import { SectionBadgeHeader } from '../../../shared/section';
 import type { BeginWorkContent } from '../content';
 
-type Props = { content: BeginWorkContent['code'] };
+type Props = { content: BeginWorkContent['checkpoint'] };
 
 export const BeginWorkCodeCheckpoint = ({ content }: Props) => (
-  <section
-    id="source-checkpoint"
-    aria-labelledby="heading-source-checkpoint"
-    className="space-y-md"
-  >
-    <SectionHeader
-      id="source-checkpoint"
+  <section id="checkpoint" aria-labelledby="heading-checkpoint" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      id="checkpoint"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<FileCode className="h-5 w-5" aria-hidden="true" />}
@@ -25,34 +22,24 @@ export const BeginWorkCodeCheckpoint = ({ content }: Props) => (
         rows={[
           {
             label: content.fileLabel,
-            value: <code className="font-mono break-all">{content.fileName}</code>,
+            value: <code className="font-mono break-all">{content.filePath}</code>,
             icon: FileCode,
           },
           {
-            label: content.functionsLabel,
+            label: content.lookForLabel,
             value: (
-              <ul className="flex flex-col gap-1.5">
-                {content.functions.map((fn) => (
-                  <li key={fn}>
-                    <code className="inline-block max-w-full break-all rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-xsm font-mono text-[var(--term-fg)]">
-                      {fn}
-                    </code>
-                  </li>
-                ))}
-              </ul>
+              <code className="inline-block max-w-full break-all rounded-md border border-[var(--term-border)] bg-[var(--term-surface)] px-2 py-0.5 text-xsm font-mono text-[var(--term-fg)]">
+                {content.lookFor}
+              </code>
             ),
-            icon: Code2,
+            icon: Eye,
           },
         ]}
-        question={content.learningQuestion}
       />
 
-      <div className="min-w-0">
-        <CodePreviewPanel
-          header={content.codeHeader}
-          badge={content.codeBadge}
-          code={content.code}
-        />
+      <div className="flex flex-col gap-md min-w-0">
+        <CodePreviewPanel header={content.filePath} badge="main" code={content.code} />
+        <GithubButton href={content.primaryHref} label={content.primaryCta} />
       </div>
     </div>
   </section>

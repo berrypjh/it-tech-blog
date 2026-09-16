@@ -3,7 +3,7 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { NextStepBanner } from '../../shared/banner';
 import { StartPageShell } from '../../shared/shell';
 
-import { CodeCheckpointSection } from './sections/CodeCheckpointSection';
+import { EnqueueCodeCheckpoint } from './sections/EnqueueCodeCheckpoint';
 import { EnqueueHero } from './sections/EnqueueHero';
 import { EnqueueUpdateMeaningSection } from './sections/EnqueueUpdateMeaningSection';
 import { FourElementsSection } from './sections/FourElementsSection';
@@ -21,7 +21,7 @@ export const EnqueueConcurrentHookUpdatePage = ({ locale }: Props) => {
       <EnqueueHero content={c.hero} />
       <FullFunctionFlowSection content={c.flow} />
       <FourElementsSection content={c.elements} />
-      <CodeCheckpointSection content={c.checkpoint} />
+      <EnqueueCodeCheckpoint content={c.checkpoint} />
       <EnqueueUpdateMeaningSection content={c.meaning} />
       <RootReasonSection content={c.rootReason} />
       <NextStepBanner content={c.nextStep} />

@@ -1,23 +1,18 @@
 import { cx } from '@berrypjh/react-ui';
 import { ArrowLeftRight, Network, RefreshCw } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
-import { ToneBadge, ToneIconBox } from '../../../shared/tone';
+import { SectionBadgeHeader } from '../../../shared/section';
+import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { FiberToRootContent } from '../content';
 
 type Props = { content: FiberToRootContent['alternate'] };
 
-const tags: { label: string; tone: ToneKey }[] = [
-  { label: 'current', tone: 'sky' },
-  { label: 'work-in-progress', tone: 'violet' },
-  { label: 'alternate ↔', tone: 'emerald' },
-];
-
 export const AlternateUpdateReasonSection = ({ content }: Props) => (
-  <section id="section-alternate" aria-labelledby="heading-alternate" className="space-y-md">
-    <SectionHeader
+  <section id="alternate" aria-labelledby="heading-alternate" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="alternate"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<RefreshCw className="h-5 w-5" aria-hidden="true" />}
@@ -26,62 +21,28 @@ export const AlternateUpdateReasonSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1.2fr)] gap-md lg:gap-lg items-stretch">
       {/* 좌: 설명 */}
       <article className="flex flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-        <header className="flex items-center gap-sm">
-          <ToneIconBox tone="sky" size="sm">
-            <RefreshCw className="h-[18px] w-[18px]" aria-hidden="true" />
-          </ToneIconBox>
-          <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
-            mirror across alternate
-          </span>
-        </header>
+        <ToneIconBox tone="sky" size="sm">
+          <RefreshCw className="h-[18px] w-[18px]" aria-hidden="true" />
+        </ToneIconBox>
 
         <p className="text-xsm sm:text-sm leading-relaxed text-[var(--term-fg)] break-keep whitespace-pre-line">
           {content.description}
         </p>
-
-        <ul className="mt-auto flex flex-wrap gap-1.5">
-          {tags.map((tag) => (
-            <li
-              key={tag.label}
-              className={cx(
-                'rounded-md border px-2 py-0.5 text-[10px] font-mono',
-                toneTokens[tag.tone].chip,
-              )}
-            >
-              {tag.label}
-            </li>
-          ))}
-        </ul>
       </article>
 
       {/* 우: current ↔ work-in-progress */}
       <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-md lg:gap-sm items-stretch">
-          <TreeCard
-            tone="sky"
-            title={content.currentTitle}
-            body={content.currentBody}
-            badge="current"
-          />
+          <TreeCard tone="sky" title={content.currentTitle} body={content.currentBody} />
           <MiddleConnector label={content.middleLabel} />
-          <TreeCard tone="violet" title={content.wipTitle} body={content.wipBody} badge="WIP" />
+          <TreeCard tone="violet" title={content.wipTitle} body={content.wipBody} />
         </div>
       </article>
     </div>
   </section>
 );
 
-const TreeCard = ({
-  tone,
-  title,
-  body,
-  badge,
-}: {
-  tone: ToneKey;
-  title: string;
-  body: string;
-  badge: string;
-}) => {
+const TreeCard = ({ tone, title, body }: { tone: ToneKey; title: string; body: string }) => {
   const t = toneTokens[tone];
   return (
     <article
@@ -90,12 +51,9 @@ const TreeCard = ({
         t.border,
       )}
     >
-      <header className="flex items-center justify-between gap-2">
-        <ToneIconBox tone={tone} size="md">
-          <Network className="h-5 w-5" aria-hidden="true" />
-        </ToneIconBox>
-        <ToneBadge tone={tone}>{badge}</ToneBadge>
-      </header>
+      <ToneIconBox tone={tone} size="md">
+        <Network className="h-5 w-5" aria-hidden="true" />
+      </ToneIconBox>
       <h3 className={cx('text-sm sm:text-md font-bold font-mono leading-tight break-keep', t.text)}>
         {title}
       </h3>

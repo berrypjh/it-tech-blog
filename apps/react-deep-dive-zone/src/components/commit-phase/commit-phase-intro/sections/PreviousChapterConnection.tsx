@@ -5,19 +5,20 @@ import {
   Box,
   GitMerge,
   HelpCircle,
+  type LucideIcon,
   Minus,
   RefreshCcw,
   Workflow,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { CommitPhaseIntroContent, PreviousLeftover, PreviousLeftoverIcon } from '../content';
+import type { CommitPhaseIntroContent, PreviousLeftover, PreviousLeftoverId } from '../content';
 
 type Props = { content: CommitPhaseIntroContent['previous'] };
 
-const iconMap: Record<PreviousLeftoverIcon, typeof Box> = {
+const iconMap: Record<PreviousLeftoverId, LucideIcon> = {
   cube: Box,
   refresh: RefreshCcw,
   minus: Minus,
@@ -30,8 +31,10 @@ export const PreviousChapterConnection = ({ content }: Props) => (
     aria-labelledby="heading-previous-chapter"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="previous-chapter"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -62,14 +65,7 @@ export const PreviousChapterConnection = ({ content }: Props) => (
 
 const LeftCard = ({ card }: { card: CommitPhaseIntroContent['previous']['leftCard'] }) => (
   <article className="flex h-full flex-col gap-md rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-    <header className="flex items-center justify-between gap-2">
-      <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">
-        {card.title}
-      </h3>
-      <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)] rounded-md border border-[var(--term-border)] px-2 py-0.5">
-        render output
-      </span>
-    </header>
+    <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)] break-keep">{card.title}</h3>
 
     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
       {card.items.map((item) => (
@@ -86,7 +82,7 @@ const LeftCard = ({ card }: { card: CommitPhaseIntroContent['previous']['leftCar
 );
 
 const LeftoverItem = ({ item }: { item: PreviousLeftover }) => {
-  const Icon = iconMap[item.iconName];
+  const Icon = iconMap[item.id];
   const t = toneTokens[item.tone];
   return (
     <div
@@ -94,7 +90,7 @@ const LeftoverItem = ({ item }: { item: PreviousLeftover }) => {
         'flex items-center gap-sm rounded-lg border p-sm',
         t.border,
         'bg-[var(--term-surface)]',
-        'transition-transform hover:-translate-y-0.5 motion-reduce:transform-none',
+        'transition-all hover:-translate-y-0.5',
       )}
     >
       <ToneIconBox tone={item.tone} size="sm">

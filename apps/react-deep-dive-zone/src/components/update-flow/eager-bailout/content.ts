@@ -60,33 +60,35 @@ export type EagerBailoutContent = {
     };
   };
   sameStateExamples: {
+    badge: string;
     eyebrow: string;
     title: string;
     examples: SameStateExample[];
     explanation: { title: string; body: string };
   };
   flow: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: BailoutStep[];
   };
   checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
     filePath: string;
-    focusLabel: string;
-    focusText: string;
-    learningQuestion: string;
-    codeHeader: string;
-    codeBadge: string;
-    codeCaption: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
     code: string;
-    primaryHref: string;
     primaryCta: string;
+    primaryHref: string;
   };
   queueReason: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -94,11 +96,12 @@ export type EagerBailoutContent = {
     rightCard: QueueCompareCard;
   };
   scheduleTable: {
+    badge: string;
     eyebrow: string;
     title: string;
     headers: { label: string; update: string; schedule: string };
     rows: ScheduleRow[];
-    bottomNote: string;
+    note: string;
   };
   nextStep: {
     eyebrow: string;
@@ -165,7 +168,8 @@ const ko: EagerBailoutContent = {
     },
   },
   sameStateExamples: {
-    eyebrow: '01 · 같은 상태 예시',
+    badge: '01',
+    eyebrow: '같은 상태 예시',
     title: '같은 상태 업데이트 예시',
     examples: [
       {
@@ -185,7 +189,8 @@ const ko: EagerBailoutContent = {
     },
   },
   flow: {
-    eyebrow: '02 · 전체 흐름',
+    badge: '02',
+    eyebrow: '전체 흐름',
     title: 'eager bailout 전체 흐름',
     description:
       'eager bailout이 동작하려면 다음 5단계가 차례로 만족되어야 합니다. 어느 단계든 조건을 벗어나면 일반적인 렌더 예약 경로로 돌아갑니다.',
@@ -228,22 +233,23 @@ const ko: EagerBailoutContent = {
     ],
   },
   checkpoint: {
-    eyebrow: '03 · 코드 체크포인트',
+    badge: '03',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
-    focusLabel: '볼 것',
-    focusText: 'dispatchSetStateInternal 내부의 eagerState 계산',
-    learningQuestion: 'React는 어떤 조건에서 렌더 예약을 생략할 수 있을까?',
-    codeHeader: 'ReactFiberHooks.js',
-    codeBadge: 'main',
-    codeCaption: 'is: Object.is — 비교 조건이 핵심',
+    lookForLabel: '볼 것',
+    lookFor:
+      'dispatchSetStateInternal, eagerState, is, enqueueConcurrentHookUpdateAndEagerlyBailout',
+    whyLabel: '설명',
+    why: 'is는 Object.is이며, 이 비교 결과가 렌더 예약 생략 여부를 가릅니다.',
     code: checkpointCodeKo,
+    primaryCta: 'ReactFiberHooks.js 읽기',
     primaryHref: githubHref,
-    primaryCta: 'GitHub에서 dispatchSetStateInternal 보기',
   },
   queueReason: {
-    eyebrow: '04 · 전제 조건',
+    badge: '04',
+    eyebrow: '전제 조건',
     title: 'queue가 비어 있어야 하는 이유',
     description:
       'eager bailout이 안전하게 동작하려면 큐가 비어 있어야 합니다. 대기 중인 update가 있으면 그 결과까지 합쳐야 정확한 다음 상태가 나오기 때문입니다.',
@@ -267,7 +273,8 @@ const ko: EagerBailoutContent = {
     },
   },
   scheduleTable: {
-    eyebrow: '05 · 두 개념 분리',
+    badge: '05',
+    eyebrow: '두 개념 분리',
     title: 'update 객체 생성과 렌더 예약은 다르다',
     headers: { label: '구분', update: 'update 객체 생성', schedule: '렌더 예약' },
     rows: [
@@ -293,7 +300,7 @@ const ko: EagerBailoutContent = {
         mono: true,
       },
     ],
-    bottomNote: 'update가 만들어졌다고 해서 항상 렌더가 예약되는 것은 아니다.',
+    note: 'update가 만들어졌다고 해서 항상 렌더가 예약되는 것은 아니다.',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -331,7 +338,8 @@ const en: EagerBailoutContent = {
     },
   },
   sameStateExamples: {
-    eyebrow: '01 · SAME-STATE EXAMPLES',
+    badge: '01',
+    eyebrow: 'SAME-STATE EXAMPLES',
     title: 'Same-state update examples',
     examples: [
       {
@@ -351,7 +359,8 @@ const en: EagerBailoutContent = {
     },
   },
   flow: {
-    eyebrow: '02 · FULL FLOW',
+    badge: '02',
+    eyebrow: 'FULL FLOW',
     title: 'eager bailout — the full flow',
     description:
       'All five conditions below must hold in order for an eager bailout. Failing any of them means React falls back to the regular render-scheduling path.',
@@ -394,22 +403,23 @@ const en: EagerBailoutContent = {
     ],
   },
   checkpoint: {
-    eyebrow: '03 · CODE CHECKPOINT',
-    title: 'Source checkpoint',
+    badge: '03',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
     fileLabel: 'File',
     filePath: 'packages/react-reconciler/src/ReactFiberHooks.js',
-    focusLabel: 'Focus',
-    focusText: 'eagerState computation inside dispatchSetStateInternal',
-    learningQuestion: 'When can React skip scheduling a render?',
-    codeHeader: 'ReactFiberHooks.js',
-    codeBadge: 'main',
-    codeCaption: 'is: Object.is — the comparison is the key',
+    lookForLabel: 'Look for',
+    lookFor:
+      'dispatchSetStateInternal, eagerState, is, enqueueConcurrentHookUpdateAndEagerlyBailout',
+    whyLabel: 'Why',
+    why: 'is is Object.is, and this comparison decides whether scheduling a render is skipped.',
     code: checkpointCodeEn,
+    primaryCta: 'Read ReactFiberHooks.js',
     primaryHref: githubHref,
-    primaryCta: 'View dispatchSetStateInternal on GitHub',
   },
   queueReason: {
-    eyebrow: '04 · PRE-CONDITION',
+    badge: '04',
+    eyebrow: 'PRE-CONDITION',
     title: 'Why the queue must be empty',
     description:
       'For the bailout to be safe, the queue must be empty. With pending updates, the next state depends on their results too.',
@@ -433,7 +443,8 @@ const en: EagerBailoutContent = {
     },
   },
   scheduleTable: {
-    eyebrow: '05 · TWO STEPS',
+    badge: '05',
+    eyebrow: 'TWO STEPS',
     title: 'Creating an update ≠ scheduling a render',
     headers: { label: 'Topic', update: 'update object created', schedule: 'render scheduled' },
     rows: [
@@ -459,7 +470,7 @@ const en: EagerBailoutContent = {
         mono: true,
       },
     ],
-    bottomNote: 'Building an update does not always schedule a render.',
+    note: 'Building an update does not always schedule a render.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

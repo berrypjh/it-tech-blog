@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { GitFork } from 'lucide-react';
 
 import { ComparePanel } from '../../../shared/compare';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ReconcileChildrenContent } from '../content';
 
@@ -20,9 +20,14 @@ const panelTone = (tone: ToneKey) => {
 };
 
 export const MountVsUpdateBranch = ({ content }: Props) => (
-  <section id="mount-vs-update" aria-labelledby="heading-mount-vs-update" className="space-y-md">
-    <SectionHeader
+  <section
+    id="mount-vs-update"
+    aria-labelledby="heading-mount-vs-update"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
       id="mount-vs-update"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<GitFork className="h-5 w-5" aria-hidden="true" />}

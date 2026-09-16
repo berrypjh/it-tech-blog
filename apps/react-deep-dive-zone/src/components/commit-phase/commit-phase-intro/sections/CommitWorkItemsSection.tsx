@@ -1,14 +1,23 @@
 import { cx } from '@berrypjh/react-ui';
-import { Link, Monitor, Pencil, PlusSquare, Sparkles, Trash2, Zap } from 'lucide-react';
+import {
+  Link,
+  type LucideIcon,
+  Monitor,
+  Pencil,
+  PlusSquare,
+  Sparkles,
+  Trash2,
+  Zap,
+} from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneCardItem } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { CommitPhaseIntroContent, WorkItemIcon } from '../content';
+import type { CommitPhaseIntroContent, WorkItemId } from '../content';
 
 type Props = { content: CommitPhaseIntroContent['work'] };
 
-const iconMap: Record<WorkItemIcon, typeof Pencil> = {
+const iconMap: Record<WorkItemId, LucideIcon> = {
   plusSquare: PlusSquare,
   pencil: Pencil,
   trash: Trash2,
@@ -23,17 +32,19 @@ export const CommitWorkItemsSection = ({ content }: Props) => (
     aria-labelledby="heading-commit-work-items"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="commit-work-items"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
       icon={<Sparkles className="h-5 w-5" aria-hidden="true" />}
     />
 
-    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
+    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
       {content.items.map((item, idx) => {
-        const Icon = iconMap[item.iconName];
+        const Icon = iconMap[item.id];
         return (
           <ToneCardItem
             key={item.title}

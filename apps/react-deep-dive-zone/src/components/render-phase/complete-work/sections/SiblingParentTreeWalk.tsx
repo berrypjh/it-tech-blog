@@ -3,16 +3,18 @@ import { Fragment } from 'react';
 import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Box, CheckCircle2, ChevronDown, RefreshCw, Workflow } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { CompleteWorkContent, TreePanel, TreePanelState } from '../content';
 
 type Props = { content: CompleteWorkContent['treeWalk'] };
 
 export const SiblingParentTreeWalk = ({ content }: Props) => (
-  <section id="tree-walk" aria-labelledby="heading-tree-walk" className="space-y-md">
-    <SectionHeader
+  <section id="tree-walk" aria-labelledby="heading-tree-walk" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="tree-walk"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.subtitle}

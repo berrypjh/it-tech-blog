@@ -8,7 +8,7 @@ import {
   XCircle,
 } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { RiskItem, RootCurrentRefContent } from '../content';
@@ -21,8 +21,10 @@ export const RenderRefRiskSection = ({ content }: Props) => (
     aria-labelledby="heading-render-ref-risk"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="render-ref-risk"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}

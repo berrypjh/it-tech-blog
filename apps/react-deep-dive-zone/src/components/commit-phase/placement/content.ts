@@ -11,20 +11,20 @@ export type HeroStep = {
   tone: ToneKey;
 };
 
-export type ReviewStepIcon = 'eye' | 'flag';
+export type ReviewStepId = 'eye' | 'flag';
 
 export type ReviewStep = {
   title: string;
-  iconName: ReviewStepIcon;
+  id: ReviewStepId;
   tone: ToneKey;
 };
 
-export type FlowStepIcon = 'flag' | 'target' | 'crosshair' | 'plus';
+export type FlowStepId = 'flag' | 'target' | 'crosshair' | 'plus';
 
 export type FlowStep = {
   title: string;
   description?: string;
-  iconName: FlowStepIcon;
+  id: FlowStepId;
   tone: ToneKey;
 };
 
@@ -50,50 +50,56 @@ export type PlacementContent = {
       title: string;
       bottomLabel: string;
       steps: HeroStep[];
+      code: string;
     };
   };
   review: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: ReviewStep[];
-    bottomNote: string;
+    note: string;
   };
   commitFlow: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
+    stepsTitle: string;
     steps: FlowStep[];
     domStagesTitle: string;
     domStages: DomStage[];
   };
   hostParent: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
+    newLabel: string;
+    treeA11y: string[];
     parentLabel: { tag: string; value: string };
     siblingLabel: { tag: string; value: string };
+    explanationTitle: string;
     explanation: { line1: string; line2: string; line3: string; line4: string };
     bullets: HostBullet[];
   };
   checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
-    info: {
-      fileLabel: string;
-      filePath: string;
-      watchLabel: string;
-      watchValue: string;
-      question: string;
-    };
-    code: {
-      title: string;
-      code: string;
-    };
-    rightCommentsTitle: string;
-    rightComments: string[];
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   example: {
+    badge: string;
     eyebrow: string;
     title: string;
     beforeTitle: string;
@@ -103,13 +109,8 @@ export type PlacementContent = {
     afterTitle: string;
     afterCode: string;
     afterPreview: string[];
+    previewLabel: string;
     newBadge: string;
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    question: string;
-    answer: string;
   };
   nextStep: {
     eyebrow: string;
@@ -155,57 +156,57 @@ const heroStepsEn: HeroStep[] = [
 const reviewStepsKo: ReviewStep[] = [
   {
     title: 'Render Phase에서 새 child가 필요하다고 판단',
-    iconName: 'eye',
+    id: 'eye',
     tone: 'sky',
   },
-  { title: 'Placement flag 기록', iconName: 'flag', tone: 'violet' },
+  { title: 'Placement flag 기록', id: 'flag', tone: 'violet' },
 ];
 
 const reviewStepsEn: ReviewStep[] = [
-  { title: 'Render Phase decides a new child is needed', iconName: 'eye', tone: 'sky' },
-  { title: 'Placement flag recorded', iconName: 'flag', tone: 'violet' },
+  { title: 'Render Phase decides a new child is needed', id: 'eye', tone: 'sky' },
+  { title: 'Placement flag recorded', id: 'flag', tone: 'violet' },
 ];
 
 const flowStepsKo: FlowStep[] = [
-  { title: 'Placement flag 발견', iconName: 'flag', tone: 'violet' },
+  { title: 'Placement flag 발견', id: 'flag', tone: 'violet' },
   {
     title: 'host parent 탐색',
     description: '어느 DOM 부모 아래에 들어갈까?',
-    iconName: 'target',
+    id: 'target',
     tone: 'sky',
   },
   {
     title: 'host sibling 탐색',
     description: '어떤 형제 앞 / 뒤에 들어갈까?',
-    iconName: 'crosshair',
+    id: 'crosshair',
     tone: 'teal',
   },
   {
     title: 'insertBefore 또는 appendChild',
     description: '실제 DOM 삽입 수행',
-    iconName: 'plus',
+    id: 'plus',
     tone: 'teal',
   },
 ];
 
 const flowStepsEn: FlowStep[] = [
-  { title: 'Find the Placement flag', iconName: 'flag', tone: 'violet' },
+  { title: 'Find the Placement flag', id: 'flag', tone: 'violet' },
   {
     title: 'Look up host parent',
     description: 'Under which DOM parent?',
-    iconName: 'target',
+    id: 'target',
     tone: 'sky',
   },
   {
     title: 'Look up host sibling',
     description: 'Before / after which sibling?',
-    iconName: 'crosshair',
+    id: 'crosshair',
     tone: 'teal',
   },
   {
     title: 'insertBefore or appendChild',
     description: 'Run the real DOM insert',
-    iconName: 'plus',
+    id: 'plus',
     tone: 'teal',
   },
 ];
@@ -245,19 +246,40 @@ const hostBulletsEn: HostBullet[] = [
   { label: 'result', value: 'insert <li>C</li> after <li>B</li>', tone: 'violet' },
 ];
 
-const codeKo = `function commitHostPlacement(finishedWork) {
+const heroCode = '<ul>\n  <li>A</li>\n  <li>B</li>\n  <li>C</li> NEW\n</ul>';
+
+const placementCode = `function commitPlacement(finishedWork) {
   const parentFiber = getHostParentFiber(finishedWork);
-  const parent = getHostParent(parentFiber);
-  const before = getHostSibling(finishedWork);
-
-  if (before) {
-    insertBefore(parent, getHostInstance(finishedWork), before);
-  } else {
-    appendChild(parent, getHostInstance(finishedWork));
+  switch (parentFiber.tag) {
+    case HostComponent: {
+      const parent = parentFiber.stateNode;
+      const before = getHostSibling(finishedWork);
+      insertOrAppendPlacementNode(finishedWork, before, parent);
+      break;
+    }
+    case HostRoot: {
+      const parent = parentFiber.stateNode.containerInfo;
+      const before = getHostSibling(finishedWork);
+      insertOrAppendPlacementNodeIntoContainer(finishedWork, before, parent);
+      break;
+    }
+    // ...
   }
-}`;
+}
 
-const codeEn = codeKo;
+function insertOrAppendPlacementNode(node, before, parent) {
+  const tag = node.tag;
+  const isHost = tag === HostComponent || tag === HostText;
+  if (isHost) {
+    const stateNode = node.stateNode;
+    if (before) {
+      insertBefore(parent, stateNode, before);
+    } else {
+      appendChild(parent, stateNode);
+    }
+  }
+  // ...
+}`;
 
 const ko: PlacementContent = {
   hero: {
@@ -273,31 +295,44 @@ const ko: PlacementContent = {
       title: '새 Fiber가 실제 DOM에 삽입되는 과정',
       bottomLabel: '정확한 위치에 삽입',
       steps: heroStepsKo,
+      code: heroCode,
     },
   },
   review: {
-    eyebrow: '01 · Placement flag 복습',
+    badge: '01',
+    eyebrow: '플래그 복습',
     title: 'Placement flag가 생기는 순간 복습',
     description:
       'Render Phase에서 새 child가 생기는 그 순간을 다시 짚어봅니다. 이 단계의 결과물은 flag일 뿐, 실제 DOM 변경은 아직 일어나지 않았습니다.',
     steps: reviewStepsKo,
-    bottomNote: '표시는 Render에서, 실제 삽입은 Commit에서.',
+    note: '표시는 Render에서, 실제 삽입은 Commit에서.',
   },
   commitFlow: {
-    eyebrow: '02 · 삽입 흐름',
+    badge: '02',
+    eyebrow: '삽입 흐름',
     title: 'Commit 단계의 삽입 흐름',
     description:
       'Mutation 단계에서 Placement flag를 만난 React는 부모와 위치를 차례로 찾고, 실제 host operation을 실행합니다.',
+    stepsTitle: 'Commit 삽입 흐름',
     steps: flowStepsKo,
     domStagesTitle: 'DOM 변화 흐름',
     domStages: domStagesKo,
   },
   hostParent: {
-    eyebrow: '03 · host 부모와 형제',
+    badge: '03',
+    eyebrow: 'host 부모와 형제',
     title: 'host parent / host sibling 탐색',
     description: 'Fiber tree를 따라 가장 가까운 host parent와 host sibling을 찾습니다.',
+    newLabel: '새로 삽입',
+    treeA11y: [
+      'Main Fiber → List Fiber',
+      'List Fiber → Item A, Item B, Item C (새로 삽입)',
+      'host parent: <ul> DOM',
+      'host sibling: <li>B</li>',
+    ],
     parentLabel: { tag: 'host parent', value: '<ul> DOM' },
     siblingLabel: { tag: 'host sibling', value: '<li>B</li>' },
+    explanationTitle: '위치 결정',
     explanation: {
       line1: 'React는 새 node를',
       line2: '어느 DOM 부모 아래,',
@@ -307,29 +342,23 @@ const ko: PlacementContent = {
     bullets: hostBulletsKo,
   },
   checkpoint: {
-    eyebrow: '04 · 코드 체크포인트',
+    badge: '04',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
-    info: {
-      fileLabel: '파일',
-      filePath: 'ReactFiberCommitHostEffects.js',
-      watchLabel: '볼 것',
-      watchValue: 'placement 관련 host mutation 로직',
-      question: '새 host node는 어느 부모 아래 어느 위치에 들어갈까?',
-    },
-    code: {
-      title: 'ReactFiberCommitHostEffects.js (간략화)',
-      code: codeKo,
-    },
-    rightCommentsTitle: '실행 순서',
-    rightComments: [
-      'host parent 탐색',
-      'host parent DOM',
-      'host sibling 탐색',
-      '정확한 위치에 삽입',
-    ],
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberCommitHostEffects.js',
+    lookForLabel: '볼 것',
+    lookFor: 'commitPlacement, getHostParentFiber, getHostSibling, insertOrAppendPlacementNode',
+    whyLabel: '설명',
+    why: 'getHostParentFiber로 부모를, getHostSibling으로 기준 형제를 찾은 뒤 insertBefore 또는 appendChild를 호출합니다.',
+    code: placementCode,
+    primaryCta: 'ReactFiberCommitHostEffects.js 읽기',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitHostEffects.js',
   },
   example: {
-    eyebrow: '05 · 쉬운 예시',
+    badge: '05',
+    eyebrow: '쉬운 예시',
     title: '쉬운 리스트 추가 예시',
     beforeTitle: '이전 렌더 결과 (DOM)',
     beforeCode: beforeDomCode,
@@ -338,13 +367,8 @@ const ko: PlacementContent = {
     afterTitle: '다음 렌더 결과 (DOM)',
     afterCode: afterDomCode,
     afterPreview: ['A', 'B', 'C'],
+    previewLabel: '미리보기',
     newBadge: 'NEW',
-  },
-  quiz: {
-    eyebrow: '06 · 미니 퀴즈',
-    title: '미니 퀴즈',
-    question: 'Placement flag가 표시된 순간 사용자가 이미 화면에서 새 노드를 볼 수 있을까?',
-    answer: '아니다. Commit Phase의 host placement가 끝나야 보인다.',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -370,31 +394,44 @@ const en: PlacementContent = {
       title: 'How a new Fiber becomes a real DOM node',
       bottomLabel: 'inserted at the exact spot',
       steps: heroStepsEn,
+      code: heroCode,
     },
   },
   review: {
-    eyebrow: '01 · PLACEMENT FLAG',
+    badge: '01',
+    eyebrow: 'FLAG RECAP',
     title: 'Recap: when the Placement flag is set',
     description:
       'Recap the moment a new child appears in the Render Phase. The output here is only a flag — no DOM change has happened yet.',
     steps: reviewStepsEn,
-    bottomNote: 'Marks come from Render. The real insert happens in Commit.',
+    note: 'Marks come from Render. The real insert happens in Commit.',
   },
   commitFlow: {
-    eyebrow: '02 · INSERTION FLOW',
+    badge: '02',
+    eyebrow: 'INSERTION FLOW',
     title: 'Commit-phase insertion flow',
     description:
       'When the Mutation step finds a Placement flag, React looks up the parent and position, then runs the real host operation.',
+    stepsTitle: 'Commit insert flow',
     steps: flowStepsEn,
     domStagesTitle: 'DOM state along the way',
     domStages: domStagesEn,
   },
   hostParent: {
-    eyebrow: '03 · PARENT & SIBLING',
+    badge: '03',
+    eyebrow: 'PARENT & SIBLING',
     title: 'Finding host parent / host sibling',
     description: 'React walks the Fiber tree to find the nearest host parent and host sibling.',
+    newLabel: 'new',
+    treeA11y: [
+      'Main Fiber → List Fiber',
+      'List Fiber → Item A, Item B, Item C (new)',
+      'host parent: <ul> DOM',
+      'host sibling: <li>B</li>',
+    ],
     parentLabel: { tag: 'host parent', value: '<ul> DOM' },
     siblingLabel: { tag: 'host sibling', value: '<li>B</li>' },
+    explanationTitle: 'Decision',
     explanation: {
       line1: 'React decides',
       line2: 'under which DOM parent',
@@ -404,29 +441,23 @@ const en: PlacementContent = {
     bullets: hostBulletsEn,
   },
   checkpoint: {
-    eyebrow: '04 · CODE CHECKPOINT',
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
-    info: {
-      fileLabel: 'File',
-      filePath: 'ReactFiberCommitHostEffects.js',
-      watchLabel: 'Watch',
-      watchValue: 'host mutation logic for placement',
-      question: 'Under which parent and at which position does the new host node go?',
-    },
-    code: {
-      title: 'ReactFiberCommitHostEffects.js (simplified)',
-      code: codeEn,
-    },
-    rightCommentsTitle: 'execution order',
-    rightComments: [
-      'find host parent',
-      'host parent DOM',
-      'find host sibling',
-      'insert at the exact spot',
-    ],
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberCommitHostEffects.js',
+    lookForLabel: 'Look for',
+    lookFor: 'commitPlacement, getHostParentFiber, getHostSibling, insertOrAppendPlacementNode',
+    whyLabel: 'Why',
+    why: 'It finds the parent with getHostParentFiber and the anchor sibling with getHostSibling, then calls insertBefore or appendChild.',
+    code: placementCode,
+    primaryCta: 'Read ReactFiberCommitHostEffects.js',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitHostEffects.js',
   },
   example: {
-    eyebrow: '05 · EASY EXAMPLE',
+    badge: '05',
+    eyebrow: 'EASY EXAMPLE',
     title: 'Easy list-add example',
     beforeTitle: 'previous render (DOM)',
     beforeCode: beforeDomCode,
@@ -435,13 +466,8 @@ const en: PlacementContent = {
     afterTitle: 'next render (DOM)',
     afterCode: afterDomCode,
     afterPreview: ['A', 'B', 'C'],
+    previewLabel: 'preview',
     newBadge: 'NEW',
-  },
-  quiz: {
-    eyebrow: '06 · MINI QUIZ',
-    title: 'Mini quiz',
-    question: 'The moment a Placement flag appears, can the user already see the new node?',
-    answer: 'No. It only appears after the Commit Phase host placement finishes.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

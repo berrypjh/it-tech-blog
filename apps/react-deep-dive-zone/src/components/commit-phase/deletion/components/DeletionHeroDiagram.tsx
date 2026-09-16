@@ -1,13 +1,15 @@
 import { cx } from '@berrypjh/react-ui';
-import { Droplet, LogOut, Repeat, Trash2, Unlink } from 'lucide-react';
+import { Droplet, LogOut, type LucideIcon, Repeat, Trash2, Unlink } from 'lucide-react';
 
+import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { DeletionContent, HeroStepItem } from '../content';
 
-type Props = { content: DeletionContent['hero']; className?: string };
+type Props = { content: DeletionContent['hero'] };
 
-const stepIconMap: Record<HeroStepItem['iconName'], typeof Unlink> = {
+const stepIconMap: Record<HeroStepItem['id'], LucideIcon> = {
   unlink: Unlink,
   droplet: Droplet,
   logOut: LogOut,
@@ -19,41 +21,24 @@ const stepIconMap: Record<HeroStepItem['iconName'], typeof Unlink> = {
  * 삭제 대상 subtree → ref detach → effect cleanup → unmount → host remove로
  * 이어지는 commitDeletionEffects cleanup 파이프라인을 위에서 아래로 잇는 컴팩트 stepper.
  */
-export const DeletionHeroDiagram = ({ content, className }: Props) => {
+export const DeletionHeroDiagram = ({ content }: Props) => {
   const { diagram } = content;
   const a11y = `${diagram.title}: ${diagram.subtreeTitle} → ${diagram.steps
     .map((s) => `${s.title} — ${s.body}`)
     .join(' → ')}. ${diagram.bottomLabel}`;
 
   return (
-    <div
-      className={cx(
-        '@container relative w-full overflow-hidden rounded-2xl border bg-[var(--term-bg)]',
-        'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)] p-md sm:p-lg',
-        className,
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.12),transparent_55%)]"
-      />
-      <p className="sr-only">{a11y}</p>
-
-      <div className="relative flex flex-col gap-sm">
-        <header className="flex items-center gap-sm" aria-hidden="true">
-          <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
-            {`// ${diagram.title}`}
-          </span>
-          <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[var(--term-muted)]">
-            cleanup pipeline
-          </span>
-        </header>
+    <HeroDiagramShell a11yLabel={a11y}>
+      <div className="relative flex flex-col gap-sm" aria-hidden="true">
+        <span className="text-[10px] uppercase tracking-wider font-mono text-[var(--term-muted)]">
+          {`// ${diagram.title}`}
+        </span>
 
         <SubtreePanel title={diagram.subtreeTitle} nodes={diagram.subtreeNodes} />
 
         <DownArrow />
 
-        <ol className="flex flex-col gap-sm" aria-hidden="true">
+        <ol className="flex flex-col gap-sm">
           {diagram.steps.map((step, i) => (
             <li key={step.title} className="flex flex-col gap-sm">
               <StepRow step={step} />
@@ -64,17 +49,16 @@ export const DeletionHeroDiagram = ({ content, className }: Props) => {
 
         <BottomLabel label={diagram.bottomLabel} />
       </div>
-    </div>
+    </HeroDiagramShell>
   );
 };
 
 const SubtreePanel = ({ title, nodes }: { title: string; nodes: string[] }) => (
-  <article
+  <div
     className={cx(
       'flex flex-col gap-2 rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
       'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
     )}
-    aria-hidden="true"
   >
     <span className={cx('font-mono text-sm font-bold tracking-tight', toneTokens.violet.text)}>
       {title}
@@ -88,31 +72,27 @@ const SubtreePanel = ({ title, nodes }: { title: string; nodes: string[] }) => (
             toneTokens.violet.chip,
           )}
         >
-          <span
-            aria-hidden="true"
-            className={cx('inline-block h-1.5 w-1.5 rounded-full', toneTokens.violet.dot)}
-          />
+          <span className={cx('inline-block h-1.5 w-1.5 rounded-full', toneTokens.violet.dot)} />
           {node}
         </li>
       ))}
     </ul>
-  </article>
+  </div>
 );
 
 const StepRow = ({ step }: { step: HeroStepItem }) => {
   const tone = step.tone;
   const t = toneTokens[tone];
-  const Icon = stepIconMap[step.iconName];
+  const Icon = stepIconMap[step.id];
   return (
-    <article
+    <div
       className={cx(
-        'group flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
+        'flex items-start gap-sm rounded-xl border bg-[var(--term-bg)] px-md py-2.5',
         'border-[var(--term-border)] shadow-[0_2px_0_var(--term-border)]',
-        'transition-all hover:-translate-y-0.5',
       )}
     >
       <ToneIconBox tone={tone} size="sm">
-        <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
+        <Icon className="h-4 w-4" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col gap-1">
         <span className={cx('text-sm font-bold tracking-tight break-keep', t.text)}>
@@ -135,12 +115,12 @@ const StepRow = ({ step }: { step: HeroStepItem }) => {
           ))}
         </ul>
       </div>
-    </article>
+    </div>
   );
 };
 
 const BottomLabel = ({ label }: { label: string }) => (
-  <div className="flex items-center gap-2" aria-hidden="true">
+  <div className="flex items-center gap-2">
     <span className="flex-1 border-t border-dashed border-[var(--term-border)]" />
     <span
       className={cx(
@@ -148,18 +128,9 @@ const BottomLabel = ({ label }: { label: string }) => (
         toneTokens.teal.chip,
       )}
     >
-      <Repeat className="h-3 w-3" aria-hidden="true" />
+      <Repeat className="h-3.5 w-3.5" />
       {label}
     </span>
     <span className="flex-1 border-t border-dashed border-[var(--term-border)]" />
   </div>
-);
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
 );

@@ -27,6 +27,7 @@ export type LaneCardIcon = 'database' | 'network';
 
 export type LaneCard = {
   title: string;
+  badge: string;
   body: string;
   bullet: string;
   icon: LaneCardIcon;
@@ -42,14 +43,6 @@ export type ReturnNode = {
   icon: ReturnNodeIcon;
 };
 
-export type CheckpointCallout = {
-  number: string;
-  title: string;
-  body: string;
-  tone: ToneKey;
-  linkedLine: number;
-};
-
 export type FiberToRootContent = {
   hero: {
     badge: string;
@@ -60,6 +53,7 @@ export type FiberToRootContent = {
     sideBody: string;
   };
   laneRoles: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -68,29 +62,30 @@ export type FiberToRootContent = {
     rightCard: LaneCard;
   };
   fiberPath: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     nodes: FiberPathNode[];
+    sourceBadge: string;
     bottomLabel: string;
   };
   checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
     filePath: string;
-    functionLabel: string;
-    functionName: string;
-    learningQuestion: string;
-    codeHeader: string;
-    codeBadge: string;
-    codeCaption: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
     code: string;
-    primaryHref: string;
     primaryCta: string;
-    callouts: CheckpointCallout[];
+    primaryHref: string;
   };
   alternate: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -101,20 +96,12 @@ export type FiberToRootContent = {
     wipBody: string;
   };
   returnPointer: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     flowLabel: string;
     nodes: ReturnNode[];
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    questionLabel: string;
-    answerLabel: string;
-    question: string;
-    answerTitle: string;
-    answerBody: string;
   };
   nextStep: {
     eyebrow: string;
@@ -133,15 +120,17 @@ const checkpointCodeKo = `export function markUpdateLaneFromFiberToRoot(
   sourceFiber.lanes = mergeLanes(sourceFiber.lanes, lane);
 
   // 2. return 경로를 따라 부모의 childLanes 갱신
-  let parent = sourceFiber.return;
+  let node = sourceFiber;
+  let parent = node.return;
   while (parent !== null) {
     parent.childLanes = mergeLanes(parent.childLanes, lane);
-    parent = parent.return;
+    node = parent;
+    parent = node.return;
   }
 
-  // 3. 마지막으로 Root 반환
-  return parent.tag === HostRoot
-    ? parent.stateNode
+  // 3. 맨 위 node가 HostRoot면 FiberRoot 반환
+  return node.tag === HostRoot
+    ? node.stateNode
     : null;
 }`;
 
@@ -153,15 +142,17 @@ const checkpointCodeEn = `export function markUpdateLaneFromFiberToRoot(
   sourceFiber.lanes = mergeLanes(sourceFiber.lanes, lane);
 
   // 2. walk return pointers, update parent childLanes
-  let parent = sourceFiber.return;
+  let node = sourceFiber;
+  let parent = node.return;
   while (parent !== null) {
     parent.childLanes = mergeLanes(parent.childLanes, lane);
-    parent = parent.return;
+    node = parent;
+    parent = node.return;
   }
 
-  // 3. finally return the Root
-  return parent.tag === HostRoot
-    ? parent.stateNode
+  // 3. if the top node is HostRoot, return its FiberRoot
+  return node.tag === HostRoot
+    ? node.stateNode
     : null;
 }`;
 
@@ -216,12 +207,14 @@ const ko: FiberToRootContent = {
     sideBody: 'Root까지 도달할 때까지 업데이트 흔적이 위로 전파됩니다.',
   },
   laneRoles: {
-    eyebrow: '01 · 두 lane 필드',
+    badge: '01',
+    eyebrow: '두 lane 필드',
     title: 'sourceFiber.lanes / parent.childLanes 역할 구분',
     description:
       '두 필드 모두 lane을 담지만 의미가 다릅니다. 한쪽은 "내 작업", 다른 쪽은 "하위 트리에 작업"을 표현합니다.',
     leftCard: {
       title: 'sourceFiber.lanes',
+      badge: '자기 자신',
       body: '업데이트가 직접 발생한 Fiber의 lane',
       bullet: '이 Fiber 자신에 "내 작업"이 있음을 표시',
       icon: 'database',
@@ -230,6 +223,7 @@ const ko: FiberToRootContent = {
     middleLabel: '위로 전파',
     rightCard: {
       title: 'parent.childLanes',
+      badge: '하위 트리',
       body: '자식 트리 어딘가에 같은 lane의 작업이 있음을 표시',
       bullet: '"내 아래 트리에 작업이 있다"를 알림',
       icon: 'network',
@@ -237,7 +231,8 @@ const ko: FiberToRootContent = {
     },
   },
   fiberPath: {
-    eyebrow: '02 · 경로 시각화',
+    badge: '02',
+    eyebrow: '경로 시각화',
     title: 'Button → Main → Page → Root 시각화',
     description: '실제 부모 경로를 따라 lane 흔적이 어떻게 위로 올라가는지 카드별로 따라갑니다.',
     nodes: [
@@ -275,48 +270,26 @@ const ko: FiberToRootContent = {
         icon: 'flag',
       },
     ],
+    sourceBadge: '업데이트 발생',
     bottomLabel: 'lane이 위로 전파되는 흐름',
   },
   checkpoint: {
-    eyebrow: '03 · 코드 체크포인트',
+    badge: '03',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
     filePath: 'packages/react-reconciler/src/ReactFiberConcurrentUpdates.js',
-    functionLabel: '함수',
-    functionName: 'markUpdateLaneFromFiberToRoot',
-    learningQuestion: '업데이트 lane을 부모 경로에 어떻게 퍼뜨릴까?',
-    codeHeader: 'ReactFiberConcurrentUpdates.js',
-    codeBadge: 'main',
-    codeCaption: '학습용 축약 코드',
+    lookForLabel: '볼 것',
+    lookFor: 'markUpdateLaneFromFiberToRoot, getRootForUpdatedFiber, childLanes',
+    whyLabel: '설명',
+    why: '학습용 축약 코드로, 실제 소스는 lane 표시와 Root 탐색을 markUpdateLaneFromFiberToRoot와 getRootForUpdatedFiber로 나눠 둡니다.',
     code: checkpointCodeKo,
+    primaryCta: 'ReactFiberConcurrentUpdates.js 읽기',
     primaryHref: githubHref,
-    primaryCta: 'GitHub에서 markUpdateLaneFromFiberToRoot 보기',
-    callouts: [
-      {
-        number: '1',
-        title: 'sourceFiber.lanes 갱신',
-        body: 'sourceFiber.lanes에 현재 update의 lane 반영',
-        tone: 'violet',
-        linkedLine: 6,
-      },
-      {
-        number: '2',
-        title: 'childLanes 갱신',
-        body: '부모 경로를 따라 childLanes에 같은 lane을 합쳐서 표시',
-        tone: 'sky',
-        linkedLine: 11,
-      },
-      {
-        number: '3',
-        title: 'Root 반환',
-        body: 'Root를 찾아 반환',
-        tone: 'emerald',
-        linkedLine: 16,
-      },
-    ],
   },
   alternate: {
-    eyebrow: '04 · 양쪽 트리 갱신',
+    badge: '04',
+    eyebrow: '양쪽 트리 갱신',
     title: 'alternate도 함께 갱신되는 이유',
     description:
       '현재 트리와 work-in-progress 트리는 alternate로 연결되어 있습니다. 업데이트 흔적이 한쪽 구조에만 남으면 이후 계산 기준이 어긋날 수 있으므로, alternate 쪽 lane 정보도 함께 반영합니다.',
@@ -327,7 +300,8 @@ const ko: FiberToRootContent = {
     wipBody: 'lanes / childLanes 갱신',
   },
   returnPointer: {
-    eyebrow: '05 · return 탐색 이유',
+    badge: '05',
+    eyebrow: '부모 경로 탐색 이유',
     title: 'Root를 return 포인터로 찾는 이유',
     description:
       'update queue는 Root를 직접 가리키는 backpointer를 갖고 있지 않습니다. 그래서 React는 return 경로를 따라 위로 올라가 Root까지 도달합니다.',
@@ -338,16 +312,6 @@ const ko: FiberToRootContent = {
       { title: '... (중간 부모들)', sub: '(return)', tone: 'teal', icon: 'panels' },
       { title: 'Root Fiber', sub: '(HostRoot)', tone: 'emerald', icon: 'flag' },
     ],
-  },
-  quiz: {
-    eyebrow: '06 · 미니 퀴즈',
-    title: '미니 퀴즈',
-    questionLabel: '질문',
-    answerLabel: '핵심 정답',
-    question: '왜 parent.childLanes까지 갱신해야 할까?',
-    answerTitle: '부모 관점에서도 하위 트리에 처리할 일이 있음을 빠르게 감지해야 하기 때문이다.',
-    answerBody:
-      'childLanes가 없다면 React는 매 렌더마다 모든 자식을 다시 훑어야 합니다. childLanes에 lane이 한 번 표시되면 부모는 "이 서브트리에 작업이 있다"는 사실만 보고도 빠르게 분기할 수 있습니다.',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -407,12 +371,14 @@ const en: FiberToRootContent = {
     sideBody: 'The trace travels upward until it reaches the Root.',
   },
   laneRoles: {
-    eyebrow: '01 · TWO LANE FIELDS',
+    badge: '01',
+    eyebrow: 'TWO LANE FIELDS',
     title: 'sourceFiber.lanes vs parent.childLanes',
     description:
       'Both fields hold lanes, but they mean different things. One says "I have work", the other says "my subtree has work".',
     leftCard: {
       title: 'sourceFiber.lanes',
+      badge: 'self',
       body: 'The lane on the Fiber where the update was issued',
       bullet: 'Marks "I have work" on this Fiber',
       icon: 'database',
@@ -421,6 +387,7 @@ const en: FiberToRootContent = {
     middleLabel: 'propagated up',
     rightCard: {
       title: 'parent.childLanes',
+      badge: 'subtree',
       body: 'Marks that the same lane has work somewhere in the child subtree',
       bullet: 'Tells the parent "there is work below me"',
       icon: 'network',
@@ -428,7 +395,8 @@ const en: FiberToRootContent = {
     },
   },
   fiberPath: {
-    eyebrow: '02 · PATH VISUALIZATION',
+    badge: '02',
+    eyebrow: 'PATH VISUALIZATION',
     title: 'Button → Main → Page → Root',
     description: 'Follow how the lane mark moves up the actual parent path, one card at a time.',
     nodes: [
@@ -466,48 +434,26 @@ const en: FiberToRootContent = {
         icon: 'flag',
       },
     ],
+    sourceBadge: 'source',
     bottomLabel: 'the lane mark flows upward',
   },
   checkpoint: {
-    eyebrow: '03 · CODE CHECKPOINT',
-    title: 'Source checkpoint',
+    badge: '03',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
     fileLabel: 'File',
     filePath: 'packages/react-reconciler/src/ReactFiberConcurrentUpdates.js',
-    functionLabel: 'Function',
-    functionName: 'markUpdateLaneFromFiberToRoot',
-    learningQuestion: 'How is the update lane spread up the parent path?',
-    codeHeader: 'ReactFiberConcurrentUpdates.js',
-    codeBadge: 'main',
-    codeCaption: 'simplified for learning',
+    lookForLabel: 'Look for',
+    lookFor: 'markUpdateLaneFromFiberToRoot, getRootForUpdatedFiber, childLanes',
+    whyLabel: 'Why',
+    why: 'This is simplified for learning; the real source splits lane marking and Root lookup into markUpdateLaneFromFiberToRoot and getRootForUpdatedFiber.',
     code: checkpointCodeEn,
+    primaryCta: 'Read ReactFiberConcurrentUpdates.js',
     primaryHref: githubHref,
-    primaryCta: 'View markUpdateLaneFromFiberToRoot on GitHub',
-    callouts: [
-      {
-        number: '1',
-        title: 'sourceFiber.lanes update',
-        body: 'Merges the current update lane into sourceFiber.lanes',
-        tone: 'violet',
-        linkedLine: 6,
-      },
-      {
-        number: '2',
-        title: 'childLanes update',
-        body: 'Walks return pointers and merges the same lane into childLanes',
-        tone: 'sky',
-        linkedLine: 11,
-      },
-      {
-        number: '3',
-        title: 'Return the Root',
-        body: 'Returns the FiberRoot at the top',
-        tone: 'emerald',
-        linkedLine: 16,
-      },
-    ],
   },
   alternate: {
-    eyebrow: '04 · BOTH TREES',
+    badge: '04',
+    eyebrow: 'BOTH TREES',
     title: 'Why alternate is updated too',
     description:
       'The current tree and the work-in-progress tree are linked via alternate. If the mark only lives on one side, later calculations will be off — so the lane mark is mirrored to the alternate side.',
@@ -518,7 +464,8 @@ const en: FiberToRootContent = {
     wipBody: 'lanes / childLanes updated',
   },
   returnPointer: {
-    eyebrow: '05 · WHY RETURN',
+    badge: '05',
+    eyebrow: 'WHY WALK UP',
     title: 'Why React walks up via return',
     description:
       'The update queue does not have a direct backpointer to the Root. React walks up the return chain instead until it reaches the Root.',
@@ -529,16 +476,6 @@ const en: FiberToRootContent = {
       { title: '... (mid parents)', sub: '(return)', tone: 'teal', icon: 'panels' },
       { title: 'Root Fiber', sub: '(HostRoot)', tone: 'emerald', icon: 'flag' },
     ],
-  },
-  quiz: {
-    eyebrow: '06 · MINI QUIZ',
-    title: 'Mini quiz',
-    questionLabel: 'Question',
-    answerLabel: 'Core answer',
-    question: 'Why does React also need to update parent.childLanes?',
-    answerTitle: 'So parents can quickly detect that some subtree has work.',
-    answerBody:
-      'Without childLanes, React would have to re-scan every child each render. With childLanes set once, a parent can skip subtrees that have no work and dive into only the ones that do.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

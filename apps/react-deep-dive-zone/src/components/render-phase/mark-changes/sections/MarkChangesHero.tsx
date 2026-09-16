@@ -14,9 +14,8 @@ type Props = { content: MarkChangesContent['hero'] };
 export const MarkChangesHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="reconciler/mark-changes.md"
-    promptSuffix={<span className="text-[var(--term-dim)]"> {'// flags only'}</span>}
-    gridColumns="lg:grid-cols-[minmax(0,_0.82fr)_minmax(0,_1.18fr)]"
+    promptPath="packages/react-reconciler/src/ReactFiberFlags.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -33,7 +32,7 @@ export const MarkChangesHero = ({ content }: Props) => (
       <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-mark-changes" className="min-w-0">
+    <HeroVisualColumn id="hero-mark-changes">
       <MarkChangesHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, ArrowRight, Flag, Workflow, Zap } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { ConnectionCard, MutationPhaseContent } from '../content';
@@ -14,8 +14,10 @@ export const RenderFlagsToMutationSection = ({ content }: Props) => (
     aria-labelledby="heading-render-to-mutation"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="render-to-mutation"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -64,19 +66,9 @@ const ConnCard = ({ card }: { card: ConnectionCard }) => {
         'shadow-[0_1px_0_var(--term-border)]',
       )}
     >
-      <header className="flex items-center justify-between gap-2">
-        <ToneIconBox tone={card.tone}>
-          <Icon className="h-5 w-5" />
-        </ToneIconBox>
-        <span
-          className={cx(
-            'inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider',
-            t.chip,
-          )}
-        >
-          {isRender ? 'plan' : 'execute'}
-        </span>
-      </header>
+      <ToneIconBox tone={card.tone}>
+        <Icon className="h-5 w-5" />
+      </ToneIconBox>
       <h3 className={cx('text-md sm:text-lg font-bold leading-tight break-keep', t.fill.text)}>
         {card.title}
       </h3>

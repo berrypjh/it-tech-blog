@@ -10,13 +10,13 @@ export type PhaseTimelineStep = {
   active?: boolean;
 };
 
-export type WhyCardIcon = 'mapPin' | 'save' | 'target';
+export type WhyCardId = 'mapPin' | 'save' | 'target';
 
 export type WhyCard = {
   title: string;
   subtitle: string;
   description: string;
-  iconName: WhyCardIcon;
+  id: WhyCardId;
   tone: ToneKey;
 };
 
@@ -37,15 +37,15 @@ export type SnapshotFlowStep = {
 export type ClassSnapshotStep = {
   title: string;
   description?: string;
-  iconName: 'box' | 'function' | 'archive';
+  id: 'box' | 'function' | 'archive';
   tone: ToneKey;
 };
 
-export type PipelineFunction = {
-  name: string;
-  description: string;
-  tone: ToneKey;
-  active?: boolean;
+export type CheckpointBlock = {
+  filePath: string;
+  code: string;
+  primaryCta: string;
+  primaryHref: string;
 };
 
 export type ModernStep = {
@@ -70,6 +70,7 @@ export type BeforeMutationContent = {
     };
   };
   why: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -77,6 +78,7 @@ export type BeforeMutationContent = {
     miniTimeline: MiniTimelineStep[];
   };
   snapshot: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -91,33 +93,26 @@ export type BeforeMutationContent = {
     };
   };
   classSnapshot: {
+    badge: string;
     eyebrow: string;
     title: string;
     steps: ClassSnapshotStep[];
-    description: string;
+    note: string;
   };
   checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
-    info: {
-      fileLabel: string;
-      filePaths: string[];
-      watchLabel: string;
-      watchItems: string[];
-      question: string;
-    };
-    code: {
-      title: string;
-      code: string;
-    };
-    snapshotCallout: {
-      title: string;
-      items: string[];
-    };
-    pipelineTitle: string;
-    pipeline: PipelineFunction[];
+    fileLabel: string;
+    filePaths: string[];
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    blocks: CheckpointBlock[];
   };
   rootPerspective: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: { line1: string; line2: string };
@@ -129,18 +124,12 @@ export type BeforeMutationContent = {
     rightCardLabel: string;
   };
   modern: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
     steps: ModernStep[];
-    coreCallout: string;
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    question: string;
-    answer: string;
-    tip: string;
+    note: string;
   };
   nextStep: {
     eyebrow: string;
@@ -151,7 +140,7 @@ export type BeforeMutationContent = {
   };
 };
 
-const heroLeftCodeKo = `<div id="root">
+const heroLeftCode = `<div id="root">
   <header>Title</header>
   <ul>
     <li>A</li>
@@ -160,7 +149,7 @@ const heroLeftCodeKo = `<div id="root">
   </ul>
 </div>`;
 
-const heroRightCodeKo = `<div id="root">
+const heroRightCode = `<div id="root">
   <header>Title</header>
   <ul>
     <li>B</li>
@@ -201,7 +190,7 @@ const whyCardsKo: WhyCard[] = [
     subtitle: '스크롤 / 레이아웃',
     description:
       'DOM이 바뀌면 스크롤 위치, 요소 위치가 즉시 달라질 수 있습니다. 변경 전에 읽어두어야 합니다.',
-    iconName: 'mapPin',
+    id: 'mapPin',
     tone: 'teal',
   },
   {
@@ -209,14 +198,14 @@ const whyCardsKo: WhyCard[] = [
     subtitle: 'snapshot',
     description:
       '이전 props/state에 기반한 로직이나 애니메이션에 쓸 값 등을 필요한 값만 안전하게 보존합니다.',
-    iconName: 'save',
+    id: 'save',
     tone: 'sky',
   },
   {
     title: 'mutation 이후 처리에 필요한 기준 확보',
     subtitle: 'layout 단계 기준',
     description: 'Layout 단계나 effect 실행 시 정확한 비교와 계산을 위한 기준을 미리 확보합니다.',
-    iconName: 'target',
+    id: 'target',
     tone: 'violet',
   },
 ];
@@ -227,7 +216,7 @@ const whyCardsEn: WhyCard[] = [
     subtitle: 'scroll / layout',
     description:
       'DOM mutations can immediately move scroll and element positions. They must be read beforehand.',
-    iconName: 'mapPin',
+    id: 'mapPin',
     tone: 'teal',
   },
   {
@@ -235,7 +224,7 @@ const whyCardsEn: WhyCard[] = [
     subtitle: 'snapshot',
     description:
       'Safely keep values tied to the previous props/state — for logic or animation that still needs them.',
-    iconName: 'save',
+    id: 'save',
     tone: 'sky',
   },
   {
@@ -243,7 +232,7 @@ const whyCardsEn: WhyCard[] = [
     subtitle: 'layout baseline',
     description:
       'Capture the baseline needed for accurate comparison and calculation in Layout effects.',
-    iconName: 'target',
+    id: 'target',
     tone: 'violet',
   },
 ];
@@ -291,24 +280,33 @@ const snapshotFlowStepsEn: SnapshotFlowStep[] = [
 ];
 
 const classSnapshotStepsKo: ClassSnapshotStep[] = [
-  { title: 'Class Component', iconName: 'box', tone: 'sky' },
+  { title: 'Class Component', id: 'box', tone: 'sky' },
   {
     title: 'getSnapshotBeforeUpdate(prevProps, prevState)',
-    iconName: 'function',
+    id: 'function',
     tone: 'violet',
   },
-  { title: 'mutation 직전의 값 보존', iconName: 'archive', tone: 'teal' },
+  { title: 'mutation 직전의 값 보존', id: 'archive', tone: 'teal' },
 ];
 
 const classSnapshotStepsEn: ClassSnapshotStep[] = [
-  { title: 'Class Component', iconName: 'box', tone: 'sky' },
+  { title: 'Class Component', id: 'box', tone: 'sky' },
   {
     title: 'getSnapshotBeforeUpdate(prevProps, prevState)',
-    iconName: 'function',
+    id: 'function',
     tone: 'violet',
   },
-  { title: 'Preserve values right before mutation', iconName: 'archive', tone: 'teal' },
+  { title: 'Preserve values right before mutation', id: 'archive', tone: 'teal' },
 ];
+
+const workLoopCode = `function commitRoot(root, finishedWork, lanes /* ... */) {
+  // ...
+  // The first phase a "before mutation" phase. We use this phase to read the
+  // state of the host tree right before we mutate it. This is where
+  // getSnapshotBeforeUpdate is called.
+  commitBeforeMutationEffects(root, finishedWork, lanes);
+  // ...
+}`;
 
 const codeKo = `function commitBeforeMutationEffects(root: FiberRoot, firstChild: Fiber): void {
   // 변경 직전: Snapshot flag가 있는 컴포넌트를 찾아 처리
@@ -354,32 +352,6 @@ const codeEn = `function commitBeforeMutationEffects(root: FiberRoot, firstChild
   }
 }`;
 
-const pipelineKo: PipelineFunction[] = [
-  {
-    name: 'commitBeforeMutationEffects',
-    description: '읽기 / snapshot',
-    tone: 'teal',
-    active: true,
-  },
-  { name: 'commitMutationEffects', description: 'DOM 변경', tone: 'sky' },
-  { name: 'commitLayoutEffects', description: 'ref / layout effect', tone: 'violet' },
-  { name: 'commitPassiveMountEffects', description: 'passive effect 실행', tone: 'amber' },
-  { name: 'commitPassiveUnmountEffects', description: 'passive cleanup 실행', tone: 'indigo' },
-];
-
-const pipelineEn: PipelineFunction[] = [
-  {
-    name: 'commitBeforeMutationEffects',
-    description: 'read / snapshot',
-    tone: 'teal',
-    active: true,
-  },
-  { name: 'commitMutationEffects', description: 'DOM mutations', tone: 'sky' },
-  { name: 'commitLayoutEffects', description: 'ref / layout effect', tone: 'violet' },
-  { name: 'commitPassiveMountEffects', description: 'run passive effect', tone: 'amber' },
-  { name: 'commitPassiveUnmountEffects', description: 'run passive cleanup', tone: 'indigo' },
-];
-
 const modernStepsKo: ModernStep[] = [
   { label: 'Snapshot 처리', subLabel: 'Class 컴포넌트 등', tone: 'teal' },
   { label: 'Host config 보정 / 준비', tone: 'sky' },
@@ -407,15 +379,16 @@ const ko: BeforeMutationContent = {
     diagram: {
       title: '현재 DOM 상태를 snapshot으로 캡처',
       leftTitle: '현재 DOM (변경 전)',
-      leftCode: heroLeftCodeKo,
+      leftCode: heroLeftCode,
       centerLabel: 'snapshot 캡처',
       rightTitle: '변경 후 DOM (mutation 이후)',
-      rightCode: heroRightCodeKo,
+      rightCode: heroRightCode,
       phaseTimeline: phaseTimelineKo,
     },
   },
   why: {
-    eyebrow: '01 · 이 단계의 이유',
+    badge: '01',
+    eyebrow: '이 단계의 이유',
     title: '왜 Before Mutation이 필요한가?',
     description:
       'DOM이 바뀌고 나면 더 이상 정확히 알 수 없는 값이 있습니다. 그래서 React는 mutation 전에 미리 읽어둡니다.',
@@ -423,7 +396,8 @@ const ko: BeforeMutationContent = {
     miniTimeline: miniTimelineKo,
   },
   snapshot: {
-    eyebrow: '02 · snapshot 개념',
+    badge: '02',
+    eyebrow: 'snapshot 개념',
     title: 'snapshot 개념을 직관화',
     description: 'Before와 After 사이에 snapshot이 끼어들어, 변경 전의 기준값을 확보합니다.',
     beforeCard: {
@@ -445,35 +419,45 @@ const ko: BeforeMutationContent = {
     },
   },
   classSnapshot: {
-    eyebrow: '03 · 클래스 snapshot',
+    badge: '03',
+    eyebrow: '클래스 snapshot',
     title: 'class component와 getSnapshotBeforeUpdate',
     steps: classSnapshotStepsKo,
-    description:
-      '함수 컴포넌트 중심으로 학습해도, commit phase 이해를 위해 class snapshot 흐름은 알아두면 좋습니다.',
+    note: '함수 컴포넌트 중심으로 학습해도, commit phase 이해를 위해 class snapshot 흐름은 알아두면 좋습니다.',
   },
   checkpoint: {
-    eyebrow: '04 · 코드 체크포인트',
+    badge: '04',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
-    info: {
-      fileLabel: '파일',
-      filePaths: ['ReactFiberWorkLoop.js', 'ReactFiberCommitWork.js'],
-      watchLabel: '볼 것',
-      watchItems: ['commitBeforeMutationEffects', 'Snapshot flag'],
-      question: 'DOM이 바뀌기 직전 React는 어떤 값을 읽어둘까?',
-    },
-    code: {
-      title: 'commitBeforeMutationEffects 관련 흐름 (React main 기준)',
-      code: codeKo,
-    },
-    snapshotCallout: {
-      title: 'Snapshot flag가 설정되는 경우',
-      items: ['ClassComponent', 'getSnapshotBeforeUpdate를 구현한 경우', 'flags & Snapshot !== 0'],
-    },
-    pipelineTitle: 'commit pipeline 함수',
-    pipeline: pipelineKo,
+    fileLabel: '파일',
+    filePaths: [
+      'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+      'packages/react-reconciler/src/ReactFiberCommitWork.js',
+    ],
+    lookForLabel: '볼 것',
+    lookFor: 'commitBeforeMutationEffects, Snapshot, getSnapshotBeforeUpdate',
+    whyLabel: '설명',
+    why: 'Snapshot flag는 getSnapshotBeforeUpdate를 구현한 ClassComponent가 업데이트될 때 붙습니다.',
+    blocks: [
+      {
+        filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+        code: workLoopCode,
+        primaryCta: 'ReactFiberWorkLoop.js 읽기',
+        primaryHref:
+          'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.js',
+      },
+      {
+        filePath: 'packages/react-reconciler/src/ReactFiberCommitWork.js',
+        code: codeKo,
+        primaryCta: 'ReactFiberCommitWork.js 읽기',
+        primaryHref:
+          'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitWork.js',
+      },
+    ],
   },
   rootPerspective: {
-    eyebrow: '05 · root 관점',
+    badge: '05',
+    eyebrow: 'root 관점',
     title: 'Root 단위 관점에서의 Before Mutation',
     description: {
       line1: 'React는 전체 트리의 각 Fiber를 순회하며 필요한 snapshot을 읽습니다.',
@@ -487,19 +471,13 @@ const ko: BeforeMutationContent = {
     rightCardLabel: 'mutation 진입 직전',
   },
   modern: {
-    eyebrow: '06 · 현대 정정',
+    badge: '06',
+    eyebrow: '현대 정정',
     title: '최신 코드 보정',
     description:
       '현재 React main에서는 before mutation 흐름이 기존 snapshot 처리뿐 아니라 여러 최신 commit 보정 로직과도 연결됩니다.',
     steps: modernStepsKo,
-    coreCallout: '핵심: DOM이 바뀌기 직전 읽는 단계라는 점은 동일합니다.',
-  },
-  quiz: {
-    eyebrow: '07 · 미니 퀴즈',
-    title: '미니 퀴즈',
-    question: 'getSnapshotBeforeUpdate는 DOM이 변경된 뒤 실행될까?',
-    answer: '아니다. 변경 직전에 실행된다.',
-    tip: '값을 읽을 "마지막 기회"가 Mutation 직전이라는 점을 기억하세요.',
+    note: '핵심: DOM이 바뀌기 직전 읽는 단계라는 점은 동일합니다.',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -524,15 +502,16 @@ const en: BeforeMutationContent = {
     diagram: {
       title: 'Capture the current DOM state as a snapshot',
       leftTitle: 'Current DOM (before change)',
-      leftCode: heroLeftCodeKo,
+      leftCode: heroLeftCode,
       centerLabel: 'snapshot capture',
       rightTitle: 'DOM after change (post-mutation)',
-      rightCode: heroRightCodeKo,
+      rightCode: heroRightCode,
       phaseTimeline: phaseTimelineEn,
     },
   },
   why: {
-    eyebrow: '01 · WHY THIS PHASE',
+    badge: '01',
+    eyebrow: 'WHY THIS PHASE',
     title: 'Why is Before Mutation needed?',
     description:
       'Some values cannot be accurately known once the DOM changes. React reads them up-front.',
@@ -540,7 +519,8 @@ const en: BeforeMutationContent = {
     miniTimeline: miniTimelineEn,
   },
   snapshot: {
-    eyebrow: '02 · SNAPSHOT CONCEPT',
+    badge: '02',
+    eyebrow: 'SNAPSHOT CONCEPT',
     title: 'Visualizing the snapshot concept',
     description:
       'A snapshot slips in between Before and After to lock in the baseline values from before the change.',
@@ -563,39 +543,45 @@ const en: BeforeMutationContent = {
     },
   },
   classSnapshot: {
-    eyebrow: '03 · CLASS SNAPSHOT',
+    badge: '03',
+    eyebrow: 'CLASS SNAPSHOT',
     title: 'Class components and getSnapshotBeforeUpdate',
     steps: classSnapshotStepsEn,
-    description:
-      'Even when you focus on function components, knowing the class snapshot flow helps understand the commit phase.',
+    note: 'Even when you focus on function components, knowing the class snapshot flow helps understand the commit phase.',
   },
   checkpoint: {
-    eyebrow: '04 · CODE CHECKPOINT',
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
-    info: {
-      fileLabel: 'Files',
-      filePaths: ['ReactFiberWorkLoop.js', 'ReactFiberCommitWork.js'],
-      watchLabel: 'Watch',
-      watchItems: ['commitBeforeMutationEffects', 'Snapshot flag'],
-      question: 'What does React read right before the DOM changes?',
-    },
-    code: {
-      title: 'commitBeforeMutationEffects flow (React main)',
-      code: codeEn,
-    },
-    snapshotCallout: {
-      title: 'When the Snapshot flag is set',
-      items: [
-        'ClassComponent',
-        'A getSnapshotBeforeUpdate is implemented',
-        'flags & Snapshot !== 0',
-      ],
-    },
-    pipelineTitle: 'commit pipeline functions',
-    pipeline: pipelineEn,
+    fileLabel: 'File',
+    filePaths: [
+      'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+      'packages/react-reconciler/src/ReactFiberCommitWork.js',
+    ],
+    lookForLabel: 'Look for',
+    lookFor: 'commitBeforeMutationEffects, Snapshot, getSnapshotBeforeUpdate',
+    whyLabel: 'Why',
+    why: 'The Snapshot flag is set when a ClassComponent that implements getSnapshotBeforeUpdate updates.',
+    blocks: [
+      {
+        filePath: 'packages/react-reconciler/src/ReactFiberWorkLoop.js',
+        code: workLoopCode,
+        primaryCta: 'Read ReactFiberWorkLoop.js',
+        primaryHref:
+          'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.js',
+      },
+      {
+        filePath: 'packages/react-reconciler/src/ReactFiberCommitWork.js',
+        code: codeEn,
+        primaryCta: 'Read ReactFiberCommitWork.js',
+        primaryHref:
+          'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitWork.js',
+      },
+    ],
   },
   rootPerspective: {
-    eyebrow: '05 · ROOT PERSPECTIVE',
+    badge: '05',
+    eyebrow: 'ROOT PERSPECTIVE',
     title: 'Before Mutation from a Root-level view',
     description: {
       line1: 'React walks the whole tree and reads the snapshots each Fiber needs.',
@@ -609,19 +595,13 @@ const en: BeforeMutationContent = {
     rightCardLabel: 'right before mutation',
   },
   modern: {
-    eyebrow: '06 · MODERN UPDATE',
+    badge: '06',
+    eyebrow: 'MODERN UPDATE',
     title: 'Modern code correction',
     description:
       'In current React main, the before-mutation flow connects with broader recent commit fix-up logic, not just snapshot handling.',
     steps: modernStepsEn,
-    coreCallout: 'Key: it is still the step where React reads right before the DOM changes.',
-  },
-  quiz: {
-    eyebrow: '07 · MINI QUIZ',
-    title: 'Mini quiz',
-    question: 'Does getSnapshotBeforeUpdate run after the DOM changes?',
-    answer: 'No. It runs right before the change.',
-    tip: 'Remember — the "last chance" to read values is right before Mutation.',
+    note: 'Key: it is still the step where React reads right before the DOM changes.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

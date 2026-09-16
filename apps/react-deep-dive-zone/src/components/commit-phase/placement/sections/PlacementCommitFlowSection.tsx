@@ -1,14 +1,14 @@
 import { cx } from '@berrypjh/react-ui';
-import { ArrowDown, Crosshair, Flag, Layers, Plus, Target } from 'lucide-react';
+import { ArrowDown, Crosshair, Flag, Layers, type LucideIcon, Plus, Target } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
-import type { DomStage, FlowStep, FlowStepIcon, PlacementContent } from '../content';
+import type { DomStage, FlowStep, FlowStepId, PlacementContent } from '../content';
 
 type Props = { content: PlacementContent['commitFlow'] };
 
-const iconMap: Record<FlowStepIcon, typeof Flag> = {
+const iconMap: Record<FlowStepId, LucideIcon> = {
   flag: Flag,
   target: Target,
   crosshair: Crosshair,
@@ -21,8 +21,10 @@ export const PlacementCommitFlowSection = ({ content }: Props) => (
     aria-labelledby="heading-commit-insertion-flow"
     className="space-y-md scroll-mt-xl"
   >
-    <SectionHeader
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="commit-insertion-flow"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -32,17 +34,9 @@ export const PlacementCommitFlowSection = ({ content }: Props) => (
     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_1fr)] gap-3">
       {/* Left: 4 step flow */}
       <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-bg)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-        <header className="mb-md flex items-center justify-between gap-2">
-          <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)]">commit insert flow</h3>
-          <span
-            className={cx(
-              'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
-              toneTokens.violet.chip,
-            )}
-          >
-            4 steps
-          </span>
-        </header>
+        <h3 className="mb-md text-sm sm:text-md font-bold text-[var(--term-fg)]">
+          {content.stepsTitle}
+        </h3>
         <ol className="flex flex-col">
           {content.steps.map((step, idx) => (
             <li key={step.title} className="flex flex-col">
@@ -62,19 +56,9 @@ export const PlacementCommitFlowSection = ({ content }: Props) => (
 
       {/* Right: DOM stage flow */}
       <article className="rounded-lg border border-[var(--term-border)] bg-[var(--term-surface)] p-md sm:p-lg shadow-[0_2px_0_var(--term-border)]">
-        <header className="mb-md flex items-center justify-between gap-2">
-          <h3 className="text-sm sm:text-md font-bold text-[var(--term-fg)]">
-            {content.domStagesTitle}
-          </h3>
-          <span
-            className={cx(
-              'text-[10px] font-mono uppercase tracking-wider rounded-md border px-2 py-0.5',
-              toneTokens.teal.chip,
-            )}
-          >
-            dom stages
-          </span>
-        </header>
+        <h3 className="mb-md text-sm sm:text-md font-bold text-[var(--term-fg)]">
+          {content.domStagesTitle}
+        </h3>
         <ol className="flex flex-col">
           {content.domStages.map((stage, idx) => (
             <li key={stage.label} className="flex flex-col">
@@ -96,7 +80,7 @@ export const PlacementCommitFlowSection = ({ content }: Props) => (
 );
 
 const FlowCard = ({ step, index }: { step: FlowStep; index: number }) => {
-  const Icon = iconMap[step.iconName];
+  const Icon = iconMap[step.id];
   const t = toneTokens[step.tone];
   return (
     <article
@@ -167,7 +151,7 @@ const DomStageCard = ({ stage, index }: { stage: DomStage; index: number }) => {
       </header>
       <pre
         className={cx(
-          'overflow-x-auto rounded-md border p-sm text-[10.5px] sm:text-[11px] leading-snug font-mono',
+          'overflow-x-auto rounded-md border p-sm text-[10px] sm:text-[11px] leading-snug font-mono',
           stage.highlightNew
             ? cx(t.fill.border, t.fill.bg, t.fill.text)
             : 'border-[var(--term-border)] bg-[var(--term-surface)] text-[var(--term-fg)]',

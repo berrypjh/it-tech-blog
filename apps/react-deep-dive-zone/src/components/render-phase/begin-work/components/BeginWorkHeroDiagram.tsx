@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 
 import { HeroDiagramShell } from '../../../shared/hero';
+import { DownArrow } from '../../../shared/icon';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { BeginWorkContent, FiberTagItem } from '../content';
@@ -40,15 +41,6 @@ export const BeginWorkHeroDiagram = ({ content }: Props) => {
   return (
     <HeroDiagramShell a11yLabel={a11y}>
       <div className="relative flex flex-col gap-sm" aria-hidden="true">
-        <header className="flex items-center gap-sm">
-          <span className="min-w-0 truncate text-xxsm uppercase tracking-wider font-mono text-[var(--term-muted)]">
-            {'// beginWork → Fiber.tag dispatch'}
-          </span>
-          <span className="ml-auto shrink-0 rounded-md border border-[var(--term-border)] px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider text-[var(--term-muted)]">
-            branch map
-          </span>
-        </header>
-
         <CenterNode title={center.title} subtitle={center.subtitle} />
 
         <DownArrow />
@@ -77,7 +69,7 @@ const CenterNode = ({ title, subtitle }: { title: string; subtitle: string }) =>
       )}
     >
       <ToneIconBox tone="sky" size="md">
-        <Settings className="h-[18px] w-[18px]" aria-hidden="true" />
+        <Settings className="h-4 w-4" />
       </ToneIconBox>
       <div className="flex min-w-0 flex-col">
         <span className={cx('text-sm font-bold font-mono tracking-tight break-keep', t.fill.text)}>
@@ -98,7 +90,7 @@ const BranchChip = ({ branch }: { branch: FiberTagItem }) => {
     <article
       className={cx(
         'flex h-full flex-col gap-1 rounded-lg border bg-[var(--term-bg)] p-sm',
-        'shadow-[0_2px_0_var(--term-border)] transition-all hover:-translate-y-0.5 motion-reduce:transform-none',
+        'shadow-[0_2px_0_var(--term-border)]',
         t.border,
       )}
     >
@@ -111,9 +103,11 @@ const BranchChip = ({ branch }: { branch: FiberTagItem }) => {
         >
           <Icon className="h-3.5 w-3.5" />
         </span>
-        <h3 className={cx('min-w-0 truncate text-xsm font-bold leading-tight break-keep', t.text)}>
+        <span
+          className={cx('min-w-0 truncate text-xsm font-bold leading-tight break-keep', t.text)}
+        >
           {branch.title}
-        </h3>
+        </span>
       </header>
       <p className="text-xxsm leading-snug text-[var(--term-muted)] break-keep">
         {branch.description}
@@ -121,12 +115,3 @@ const BranchChip = ({ branch }: { branch: FiberTagItem }) => {
     </article>
   );
 };
-
-const DownArrow = () => (
-  <span
-    aria-hidden="true"
-    className="inline-flex items-center justify-center text-[var(--term-accent)] text-lg leading-none"
-  >
-    ↓
-  </span>
-);

@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, Braces, CheckCircle2, Code2 } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { toneTokens } from '../../../shared/tones';
 import type { FunctionComponentContent } from '../content';
@@ -12,9 +12,14 @@ type Props = { content: FunctionComponentContent['nextChildren'] };
 export const NextChildrenExplanation = ({ content }: Props) => {
   const t = toneTokens.violet;
   return (
-    <section id="next-children" aria-labelledby="heading-next-children" className="space-y-md">
-      <SectionHeader
+    <section
+      id="next-children"
+      aria-labelledby="heading-next-children"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
         id="next-children"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Braces className="h-5 w-5" aria-hidden="true" />}
@@ -26,7 +31,12 @@ export const NextChildrenExplanation = ({ content }: Props) => {
           <span className="text-xsm font-bold text-[var(--term-fg)] break-keep">
             {content.leftTitle}
           </span>
-          <CodePreviewPanel header="JSX" badge="jsx" language="jsx" code={content.leftCode} />
+          <CodePreviewPanel
+            header={content.leftHeader}
+            badge="jsx"
+            language="jsx"
+            code={content.leftCode}
+          />
         </div>
 
         {/* Center arrow */}

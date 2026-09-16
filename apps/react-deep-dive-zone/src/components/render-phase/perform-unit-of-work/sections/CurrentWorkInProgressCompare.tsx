@@ -1,7 +1,7 @@
 import { cx } from '@berrypjh/react-ui';
 import { Database, GitBranch, Monitor } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { CompareCard, PerformUnitContent } from '../content';
@@ -9,9 +9,15 @@ import type { CompareCard, PerformUnitContent } from '../content';
 type Props = { content: PerformUnitContent['compare'] };
 
 export const CurrentWorkInProgressCompare = ({ content }: Props) => (
-  <section id="current-wip" aria-labelledby="heading-current-wip" className="space-y-md">
-    <SectionHeader
+  <section
+    id="current-wip"
+    aria-labelledby="heading-current-wip"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
+      descriptionFullWidth
       id="current-wip"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       description={content.description}
@@ -63,7 +69,7 @@ const Card = ({ card }: { card: CompareCard }) => {
             t.chip,
           )}
         >
-          {isCurrent ? 'previous' : 'in progress'}
+          {card.statusLabel}
         </span>
       </header>
 

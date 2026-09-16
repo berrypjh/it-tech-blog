@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { cx } from '@berrypjh/react-ui';
 import { ArrowRight, ChevronDown, Component, Key } from 'lucide-react';
 
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { toneTokens } from '../../../shared/tones';
 import type { TypeKeyReuseContent } from '../content';
 
@@ -20,9 +20,14 @@ export const DifferentTypeCase = ({ content }: Props) => {
   ];
 
   return (
-    <section id="different-type" aria-labelledby="heading-different-type" className="space-y-md">
-      <SectionHeader
+    <section
+      id="different-type"
+      aria-labelledby="heading-different-type"
+      className="space-y-md scroll-mt-xl"
+    >
+      <SectionBadgeHeader
         id="different-type"
+        number={content.badge}
         eyebrow={content.eyebrow}
         title={content.title}
         icon={<Component className="h-5 w-5" aria-hidden="true" />}

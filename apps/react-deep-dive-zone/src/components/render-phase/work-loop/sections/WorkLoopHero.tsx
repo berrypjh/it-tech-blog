@@ -14,9 +14,8 @@ type Props = { content: WorkLoopContent['hero'] };
 export const WorkLoopHero = ({ content }: Props) => (
   <HeroSection
     promptCommand="cat"
-    promptPath="reconciler/work-loop.md"
-    promptSuffix={<span className="text-[var(--term-dim)]"> {'// sync vs concurrent'}</span>}
-    gridColumns="lg:grid-cols-[minmax(0,_0.82fr)_minmax(0,_1.18fr)]"
+    promptPath="packages/react-reconciler/src/ReactFiberWorkLoop.js"
+    gridColumns="lg:grid-cols-[minmax(0,_0.85fr)_minmax(0,_1.15fr)]"
     align="center"
   >
     <HeroTextColumn>
@@ -30,10 +29,10 @@ export const WorkLoopHero = ({ content }: Props) => (
         <span className="block">{content.title.line3}</span>
       </HeroTitle>
 
-      <HeroDescription maxWidth="max-w-[58ch]">{content.description}</HeroDescription>
+      <HeroDescription maxWidth="max-w-[60ch]">{content.description}</HeroDescription>
     </HeroTextColumn>
 
-    <HeroVisualColumn id="hero-work-loop" className="min-w-0">
+    <HeroVisualColumn id="hero-work-loop">
       <WorkLoopHeroDiagram content={content} />
     </HeroVisualColumn>
   </HeroSection>

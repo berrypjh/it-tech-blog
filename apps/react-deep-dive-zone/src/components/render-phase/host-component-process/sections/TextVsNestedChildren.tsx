@@ -2,7 +2,7 @@ import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, Layers } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { type ToneKey, toneTokens } from '../../../shared/tones';
 import type { ChildExampleCard, HostComponentContent } from '../content';
 
@@ -14,9 +14,14 @@ const toneByKind: Record<ChildExampleCard['kind'], ToneKey> = {
 };
 
 export const TextVsNestedChildren = ({ content }: Props) => (
-  <section id="text-vs-nested" aria-labelledby="heading-text-vs-nested" className="space-y-md">
-    <SectionHeader
+  <section
+    id="text-vs-nested"
+    aria-labelledby="heading-text-vs-nested"
+    className="space-y-md scroll-mt-xl"
+  >
+    <SectionBadgeHeader
       id="text-vs-nested"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Layers className="h-5 w-5" aria-hidden="true" />}
@@ -39,18 +44,10 @@ const Card = ({ card }: { card: ChildExampleCard }) => {
         t.border,
       )}
     >
-      <header className="flex items-center justify-between gap-2">
+      <header>
         <h3 className={cx('text-md sm:text-lg font-bold leading-tight break-keep', t.text)}>
           {card.cardTitle}
         </h3>
-        <span
-          className={cx(
-            'inline-flex items-center rounded-full border px-2 py-0.5 text-xxsm font-mono uppercase tracking-wider',
-            t.chip,
-          )}
-        >
-          {card.kind}
-        </span>
       </header>
 
       <CodePreviewPanel code={card.code} language="jsx" showWindowDots={false} />

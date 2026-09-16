@@ -7,7 +7,6 @@ import { DifferentKeyCase } from './sections/DifferentKeyCase';
 import { DifferentTypeCase } from './sections/DifferentTypeCase';
 import { FiberReuseCodeCheckpoint } from './sections/FiberReuseCodeCheckpoint';
 import { FiberReuseHero } from './sections/FiberReuseHero';
-import { FiberReuseQuiz } from './sections/FiberReuseQuiz';
 import { SameKeySameTypeCase } from './sections/SameKeySameTypeCase';
 import { StatePreservationConnection } from './sections/StatePreservationConnection';
 import { typeKeyReuseContent } from './content';
@@ -23,9 +22,8 @@ export const FiberReuseTypeKeyPage = ({ locale }: Props) => {
       <SameKeySameTypeCase content={c.sameKeyType} />
       <DifferentKeyCase content={c.differentKey} />
       <DifferentTypeCase content={c.differentType} />
-      <FiberReuseCodeCheckpoint content={c.code} />
+      <FiberReuseCodeCheckpoint content={c.checkpoint} />
       <StatePreservationConnection content={c.statePreserve} />
-      <FiberReuseQuiz content={c.quiz} />
       <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );

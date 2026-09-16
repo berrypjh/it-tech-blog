@@ -40,11 +40,13 @@ export type ReconcileChildrenContent = {
     };
   };
   inputs: {
+    badge: string;
     eyebrow: string;
     title: string;
     cards: InputCard[];
   };
   mountVsUpdate: {
+    badge: string;
     eyebrow: string;
     title: string;
     mount: {
@@ -63,39 +65,37 @@ export type ReconcileChildrenContent = {
     };
   };
   childShape: {
+    badge: string;
     eyebrow: string;
     title: string;
     subtitle: string;
     cards: ChildShapeCard[];
   };
-  code: {
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
-    fileName: string;
-    functionLabel: string;
-    functions: string[];
-    learningQuestion: string;
-    codeHeader: string;
-    codeBadge: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
     code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   visualization: {
+    badge: string;
     eyebrow: string;
     title: string;
     nodes: VisualNode[];
-    bottomEmphasis: string;
+    note: string;
   };
   goal: {
+    badge: string;
     eyebrow: string;
     title: string;
+    itemLabel: string;
     items: string[];
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    question: string;
-    answer: string;
   };
   nextStep: {
     eyebrow: string;
@@ -153,7 +153,8 @@ const ko: ReconcileChildrenContent = {
     },
   },
   inputs: {
-    eyebrow: '01 · 세 입력',
+    badge: '01',
+    eyebrow: '세 입력',
     title: 'reconcileChildren의 입력 3개',
     cards: [
       {
@@ -180,7 +181,8 @@ const ko: ReconcileChildrenContent = {
     ],
   },
   mountVsUpdate: {
-    eyebrow: '02 · mount vs update',
+    badge: '02',
+    eyebrow: 'mount vs update',
     title: 'mount vs update 분기',
     mount: {
       condition: 'current === null',
@@ -198,7 +200,8 @@ const ko: ReconcileChildrenContent = {
     },
   },
   childShape: {
-    eyebrow: '03 · child 형태',
+    badge: '03',
+    eyebrow: 'child 형태',
     title: 'child 형태별 처리 예고',
     subtitle: 'nextChildren의 형태에 따라 다른 로직으로 분기된다.',
     cards: [
@@ -232,20 +235,22 @@ const ko: ReconcileChildrenContent = {
       },
     ],
   },
-  code: {
-    eyebrow: '04 · 코드 체크포인트',
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
-    fileName: 'ReactFiberBeginWork.js',
-    functionLabel: '함수',
-    functions: ['reconcileChildren', 'mountChildFibers', 'reconcileChildFibers'],
-    learningQuestion: 'reconcileChildren은 mount와 update를 무엇으로 구분할까?',
-    codeHeader: 'react-reconciler/src/ReactFiberBeginWork.js',
-    codeBadge: 'main',
+    filePath: 'packages/react-reconciler/src/ReactFiberBeginWork.js',
+    lookForLabel: '볼 것',
+    lookFor: 'reconcileChildren, mountChildFibers, reconcileChildFibers',
     code: CODE,
+    primaryCta: 'ReactFiberBeginWork.js 읽기',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberBeginWork.js',
   },
   visualization: {
-    eyebrow: '05 · 재조정 시각화',
+    badge: '05',
+    eyebrow: '재조정 시각화',
     title: 'current / workInProgress / nextChildren 시각화',
     nodes: [
       {
@@ -273,25 +278,19 @@ const ko: ReconcileChildrenContent = {
         tone: 'violet',
       },
     ],
-    bottomEmphasis:
-      '비교 결과에 따라 재사용 / 이동 / 삭제 / 추가가 결정되고, 다음 자식 Fiber 구조가 만들어집니다.',
+    note: '비교 결과에 따라 재사용 / 이동 / 삭제 / 추가가 결정되고, 다음 자식 Fiber 구조가 만들어집니다.',
   },
   goal: {
-    eyebrow: '06 · 재조정 목표',
+    badge: '06',
+    eyebrow: '재조정 목표',
     title: 'reconciliation의 목표',
+    itemLabel: '목표',
     items: [
       '기존 Fiber를 최대한 재사용한다.',
       '필요한 경우에만 새 Fiber를 만든다.',
       '삭제된 것은 삭제 표시(Deletion)를 남긴다.',
       '결과적으로 workInProgress.child가 다음에 처리할 첫 번째 자식 Fiber가 된다.',
     ],
-  },
-  quiz: {
-    eyebrow: '07 · 미니 퀴즈',
-    title: '미니 퀴즈',
-    question: 'reconcileChildren은 새 DOM을 바로 만드는가?',
-    answer:
-      '아니다. 다음 child Fiber 구조를 계산할 뿐, 실제 DOM 변경은 Commit Phase에서 이루어진다.',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -337,7 +336,8 @@ const en: ReconcileChildrenContent = {
     },
   },
   inputs: {
-    eyebrow: '01 · THREE INPUTS',
+    badge: '01',
+    eyebrow: 'THREE INPUTS',
     title: 'The three inputs of reconcileChildren',
     cards: [
       {
@@ -364,7 +364,8 @@ const en: ReconcileChildrenContent = {
     ],
   },
   mountVsUpdate: {
-    eyebrow: '02 · MOUNT VS UPDATE',
+    badge: '02',
+    eyebrow: 'MOUNT VS UPDATE',
     title: 'mount vs update branch',
     mount: {
       condition: 'current === null',
@@ -382,7 +383,8 @@ const en: ReconcileChildrenContent = {
     },
   },
   childShape: {
-    eyebrow: '03 · CHILD SHAPE',
+    badge: '03',
+    eyebrow: 'CHILD SHAPE',
     title: 'Child shape handling — preview',
     subtitle: 'Different logic kicks in based on the shape of nextChildren.',
     cards: [
@@ -416,20 +418,22 @@ const en: ReconcileChildrenContent = {
       },
     ],
   },
-  code: {
-    eyebrow: '04 · CODE CHECKPOINT',
-    title: 'Source-code checkpoint',
-    fileLabel: 'file',
-    fileName: 'ReactFiberBeginWork.js',
-    functionLabel: 'functions',
-    functions: ['reconcileChildren', 'mountChildFibers', 'reconcileChildFibers'],
-    learningQuestion: 'How does reconcileChildren tell mount and update apart?',
-    codeHeader: 'react-reconciler/src/ReactFiberBeginWork.js',
-    codeBadge: 'main',
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberBeginWork.js',
+    lookForLabel: 'Look for',
+    lookFor: 'reconcileChildren, mountChildFibers, reconcileChildFibers',
     code: CODE,
+    primaryCta: 'Read ReactFiberBeginWork.js',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberBeginWork.js',
   },
   visualization: {
-    eyebrow: '05 · RECONCILE VIZ',
+    badge: '05',
+    eyebrow: 'RECONCILE VIZ',
     title: 'Visualize current / workInProgress / nextChildren',
     nodes: [
       {
@@ -457,25 +461,19 @@ const en: ReconcileChildrenContent = {
         tone: 'violet',
       },
     ],
-    bottomEmphasis:
-      'The comparison decides reuse / move / delete / add — and the next child Fiber structure is built.',
+    note: 'The comparison decides reuse / move / delete / add — and the next child Fiber structure is built.',
   },
   goal: {
-    eyebrow: '06 · RECONCILE GOAL',
+    badge: '06',
+    eyebrow: 'RECONCILE GOAL',
     title: 'Goals of reconciliation',
+    itemLabel: 'goal',
     items: [
       'Reuse existing Fibers as much as possible.',
       'Create new Fibers only when necessary.',
       'Mark removed items with a Deletion flag.',
       'In the end, workInProgress.child is the next child Fiber to process.',
     ],
-  },
-  quiz: {
-    eyebrow: '07 · MINI QUIZ',
-    title: 'Mini Quiz',
-    question: 'Does reconcileChildren create new DOM immediately?',
-    answer:
-      'No — it only computes the next child Fiber structure; real DOM changes happen in the Commit Phase.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

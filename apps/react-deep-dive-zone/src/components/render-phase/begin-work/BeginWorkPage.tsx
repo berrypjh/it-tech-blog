@@ -8,7 +8,6 @@ import { BeginWorkCodeCheckpoint } from './sections/BeginWorkCodeCheckpoint';
 import { BeginWorkCoreRoles } from './sections/BeginWorkCoreRoles';
 import { BeginWorkFlowSummary } from './sections/BeginWorkFlowSummary';
 import { BeginWorkHero } from './sections/BeginWorkHero';
-import { BeginWorkQuiz } from './sections/BeginWorkQuiz';
 import { FiberTagBranchMap } from './sections/FiberTagBranchMap';
 import { ReconcileChildrenFlow } from './sections/ReconcileChildrenFlow';
 import { beginWorkContent } from './content';
@@ -25,10 +24,9 @@ export const BeginWorkPage = ({ locale }: Props) => {
       <FiberTagBranchMap content={c.tagBranch} />
       <BeginWorkBailoutSection content={c.bailout} />
       <ReconcileChildrenFlow content={c.reconcile} />
-      <BeginWorkCodeCheckpoint content={c.code} />
+      <BeginWorkCodeCheckpoint content={c.checkpoint} />
       <BeginWorkFlowSummary content={c.summary} />
-      <BeginWorkQuiz content={c.quiz} />
-      <NextStepBanner content={c.cta} />
+      <NextStepBanner content={c.nextStep} />
     </StartPageShell>
   );
 };

@@ -46,6 +46,7 @@ export type UpdatePhaseContent = {
     };
   };
   propsExample: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -53,9 +54,10 @@ export type UpdatePhaseContent = {
     beforeCode: string;
     afterTitle: string;
     afterCode: string;
-    bottomNote: string;
+    note: string;
   };
   textExample: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -64,9 +66,11 @@ export type UpdatePhaseContent = {
     stateTitle: string;
     stateFrom: string;
     stateTo: string;
-    bottomNote: string;
+    stateName: string;
+    note: string;
   };
   compare: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -76,26 +80,26 @@ export type UpdatePhaseContent = {
     quickSummary: SummaryItem[];
   };
   checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
-    info: {
-      fileLabel: string;
-      filePath: string;
-      watchLabel: string;
-      watchItems: string[];
-      question: string;
-    };
-    functionsTitle: string;
-    functions: { name: string; description: string; tone: ToneKey }[];
-    code: {
-      title: string;
-      code: string;
-    };
+    fileLabel: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   beforeAfter: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
+    domLabel: string;
+    screenLabel: string;
     beforeTitle: string;
     beforeDom: string;
     beforeScreen: string;
@@ -107,6 +111,7 @@ export type UpdatePhaseContent = {
     whatChangedItems: WhatChangedItem[];
   };
   propsVsText: {
+    badge: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -122,13 +127,6 @@ export type UpdatePhaseContent = {
     };
     pointTitle: string;
     pointText: string;
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    question: string;
-    answer: string;
-    tip: string;
   };
   nextStep: {
     eyebrow: string;
@@ -203,21 +201,19 @@ const whatChangedEn: WhatChangedItem[] = [
   { text: 'Attributes update without DOM replacement', tone: 'violet' },
 ];
 
-const codeKo = `// Update flag가 있는 Fiber 처리 예시
-if (flags & Update) {
-  if (isHostText) {
-    commitHostTextUpdate(finishedWork);
-  } else {
-    commitHostUpdate(finishedWork, oldProps, newProps);
+const hostEffectsCode = `export function commitHostTextUpdate(finishedWork, newText, oldText) {
+  try {
+    commitTextUpdate(finishedWork.stateNode, oldText, newText);
+  } catch (error) {
+    captureCommitPhaseError(finishedWork, finishedWork.return, error);
   }
-}`;
+}
 
-const codeEn = `// Handling a Fiber that has the Update flag
-if (flags & Update) {
-  if (isHostText) {
-    commitHostTextUpdate(finishedWork);
-  } else {
-    commitHostUpdate(finishedWork, oldProps, newProps);
+export function commitHostUpdate(finishedWork, newProps, oldProps) {
+  try {
+    commitUpdate(finishedWork.stateNode, finishedWork.type, oldProps, newProps, finishedWork);
+  } catch (error) {
+    captureCommitPhaseError(finishedWork, finishedWork.return, error);
   }
 }`;
 
@@ -247,7 +243,8 @@ const ko: UpdatePhaseContent = {
     },
   },
   propsExample: {
-    eyebrow: '01 · props 변경 예시',
+    badge: '01',
+    eyebrow: 'props 변경 예시',
     title: 'props 변경 예시',
     description:
       'disabled 속성 하나가 바뀌었을 때, 새 버튼 노드가 만들어지지 않고 기존 노드의 속성만 갱신됩니다.',
@@ -255,10 +252,11 @@ const ko: UpdatePhaseContent = {
     beforeCode: '<button disabled={false}>저장</button>',
     afterTitle: 'After',
     afterCode: '<button disabled={true}>저장</button>',
-    bottomNote: '같은 버튼 노드를 유지하면서 disabled 속성만 갱신합니다.',
+    note: '같은 버튼 노드를 유지하면서 disabled 속성만 갱신합니다.',
   },
   textExample: {
-    eyebrow: '02 · 텍스트 변경 예시',
+    badge: '02',
+    eyebrow: '텍스트 변경 예시',
     title: 'text 변경 예시',
     description:
       'state가 바뀌면 텍스트 노드 자체를 새로 만드는 게 아니라, 기존 텍스트 노드의 값만 갱신합니다.',
@@ -267,10 +265,12 @@ const ko: UpdatePhaseContent = {
     stateTitle: '상태 변화',
     stateFrom: '1',
     stateTo: '2',
-    bottomNote: '텍스트 노드는 기존 host text를 새 값으로 갱신합니다.',
+    stateName: 'count',
+    note: '텍스트 노드는 기존 host text를 새 값으로 갱신합니다.',
   },
   compare: {
-    eyebrow: '03 · Placement vs Update',
+    badge: '03',
+    eyebrow: 'Placement vs Update',
     title: 'Placement와 Update 비교',
     description:
       'Placement는 새 host node를 삽입하는 작업이고, Update는 기존 host node를 수정하는 작업입니다.',
@@ -280,37 +280,27 @@ const ko: UpdatePhaseContent = {
     quickSummary: quickSummaryKo,
   },
   checkpoint: {
-    eyebrow: '04 · 코드 체크포인트',
+    badge: '04',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
-    info: {
-      fileLabel: '파일',
-      filePath: 'ReactFiberCommitHostEffects.js',
-      watchLabel: '볼 것',
-      watchItems: ['host update', 'text update'],
-      question: 'props update와 text update는 같은 방식으로 처리될까, 분리될까?',
-    },
-    functionsTitle: '핵심 함수',
-    functions: [
-      {
-        name: 'commitHostUpdate(...)',
-        description: 'DOM element의 props / 속성 / 스타일 등을 갱신',
-        tone: 'sky',
-      },
-      {
-        name: 'commitHostTextUpdate(...)',
-        description: 'HostText node의 텍스트 내용을 갱신',
-        tone: 'teal',
-      },
-    ],
-    code: {
-      title: '간단한 코드 예시 (흐름 이해용)',
-      code: codeKo,
-    },
+    fileLabel: '파일',
+    filePath: 'packages/react-reconciler/src/ReactFiberCommitHostEffects.js',
+    lookForLabel: '볼 것',
+    lookFor: 'commitHostUpdate, commitHostTextUpdate, commitUpdate, commitTextUpdate',
+    whyLabel: '설명',
+    why: 'element는 commitHostUpdate가 props를, HostText는 commitHostTextUpdate가 텍스트를 갱신합니다.',
+    code: hostEffectsCode,
+    primaryCta: 'ReactFiberCommitHostEffects.js 읽기',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitHostEffects.js',
   },
   beforeAfter: {
-    eyebrow: '05 · before와 after 시각화',
+    badge: '05',
+    eyebrow: 'before와 after 시각화',
     title: '시각적 before / after 비교',
     description: 'Update flag가 host props 갱신으로 이어지는 순간을 비교합니다.',
+    domLabel: 'DOM',
+    screenLabel: '화면',
     beforeTitle: 'Before',
     beforeDom: '<button>저장</button>',
     beforeScreen: '저장',
@@ -322,12 +312,13 @@ const ko: UpdatePhaseContent = {
     },
     afterTitle: 'After',
     afterDom: '<button disabled>저장</button>',
-    afterScreen: '저장 🔒',
+    afterScreen: '저장',
     whatChangedTitle: '무엇이 바뀌었나?',
     whatChangedItems: whatChangedKo,
   },
   propsVsText: {
-    eyebrow: '06 · props vs 텍스트',
+    badge: '06',
+    eyebrow: 'props vs 텍스트',
     title: 'props vs text update 차이',
     description: '같은 Update flag지만 element node와 text node는 다른 API로 갱신됩니다.',
     propsCard: {
@@ -354,13 +345,6 @@ const ko: UpdatePhaseContent = {
     },
     pointTitle: '포인트',
     pointText: '실제 DOM을 교체하지 않고, 필요한 부분만 최소 비용으로 갱신합니다.',
-  },
-  quiz: {
-    eyebrow: '07 · 미니 퀴즈',
-    title: '미니 퀴즈',
-    question: '기존 텍스트 노드의 내용이 바뀌면 Placement일까, Update일까?',
-    answer: 'Update. 텍스트 노드는 기존 node를 유지하고 내용만 새 값으로 갱신합니다.',
-    tip: 'type과 key가 같이 Fiber가 재사용된 경우에만 Update로 처리됩니다. 다른 type / key라면 삭제 및 작성이 필요할 수 있습니다.',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -398,7 +382,8 @@ const en: UpdatePhaseContent = {
     },
   },
   propsExample: {
-    eyebrow: '01 · PROPS CHANGE',
+    badge: '01',
+    eyebrow: 'PROPS CHANGE',
     title: 'props change example',
     description:
       'When one disabled prop changes, no new button node is built — only the existing node’s attribute is updated.',
@@ -406,10 +391,11 @@ const en: UpdatePhaseContent = {
     beforeCode: '<button disabled={false}>Save</button>',
     afterTitle: 'After',
     afterCode: '<button disabled={true}>Save</button>',
-    bottomNote: 'Keep the same button node, only update its disabled attribute.',
+    note: 'Keep the same button node, only update its disabled attribute.',
   },
   textExample: {
-    eyebrow: '02 · TEXT CHANGE',
+    badge: '02',
+    eyebrow: 'TEXT CHANGE',
     title: 'text change example',
     description:
       'When state changes, React does not build a new text node — it just updates the value of the existing text node.',
@@ -418,10 +404,12 @@ const en: UpdatePhaseContent = {
     stateTitle: 'state change',
     stateFrom: '1',
     stateTo: '2',
-    bottomNote: 'Text nodes are updated by writing the new value into the existing host text.',
+    stateName: 'count',
+    note: 'Text nodes are updated by writing the new value into the existing host text.',
   },
   compare: {
-    eyebrow: '03 · PLACEMENT VS UPDATE',
+    badge: '03',
+    eyebrow: 'PLACEMENT VS UPDATE',
     title: 'Placement vs Update',
     description: 'Placement inserts a new host node; Update mutates the existing one.',
     columns: { label: 'Aspect', placement: 'Placement', update: 'Update' },
@@ -430,37 +418,27 @@ const en: UpdatePhaseContent = {
     quickSummary: quickSummaryEn,
   },
   checkpoint: {
-    eyebrow: '04 · CODE CHECKPOINT',
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
     title: 'Source code checkpoint',
-    info: {
-      fileLabel: 'File',
-      filePath: 'ReactFiberCommitHostEffects.js',
-      watchLabel: 'Watch',
-      watchItems: ['host update', 'text update'],
-      question: 'Are props update and text update handled the same way, or split?',
-    },
-    functionsTitle: 'Core functions',
-    functions: [
-      {
-        name: 'commitHostUpdate(...)',
-        description: 'Update props / attributes / style of a DOM element',
-        tone: 'sky',
-      },
-      {
-        name: 'commitHostTextUpdate(...)',
-        description: 'Update the string content of a HostText node',
-        tone: 'teal',
-      },
-    ],
-    code: {
-      title: 'simple code example (for understanding the flow)',
-      code: codeEn,
-    },
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberCommitHostEffects.js',
+    lookForLabel: 'Look for',
+    lookFor: 'commitHostUpdate, commitHostTextUpdate, commitUpdate, commitTextUpdate',
+    whyLabel: 'Why',
+    why: 'commitHostUpdate updates element props, and commitHostTextUpdate updates HostText content.',
+    code: hostEffectsCode,
+    primaryCta: 'Read ReactFiberCommitHostEffects.js',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitHostEffects.js',
   },
   beforeAfter: {
-    eyebrow: '05 · BEFORE & AFTER',
+    badge: '05',
+    eyebrow: 'BEFORE & AFTER',
     title: 'before / after visual',
     description: 'Watch the Update flag turn into a host props mutation.',
+    domLabel: 'DOM',
+    screenLabel: 'Screen',
     beforeTitle: 'Before',
     beforeDom: '<button>Save</button>',
     beforeScreen: 'Save',
@@ -472,12 +450,13 @@ const en: UpdatePhaseContent = {
     },
     afterTitle: 'After',
     afterDom: '<button disabled>Save</button>',
-    afterScreen: 'Save 🔒',
+    afterScreen: 'Save',
     whatChangedTitle: 'what changed?',
     whatChangedItems: whatChangedEn,
   },
   propsVsText: {
-    eyebrow: '06 · PROPS VS TEXT',
+    badge: '06',
+    eyebrow: 'PROPS VS TEXT',
     title: 'props vs text update',
     description: 'Both carry the Update flag, but element and text nodes use different APIs.',
     propsCard: {
@@ -504,13 +483,6 @@ const en: UpdatePhaseContent = {
     },
     pointTitle: 'point',
     pointText: 'No DOM replacement — only the necessary part is updated, at minimal cost.',
-  },
-  quiz: {
-    eyebrow: '07 · MINI QUIZ',
-    title: 'mini quiz',
-    question: 'When an existing text node’s content changes, is that Placement or Update?',
-    answer: 'Update. The text node is kept and only its value is updated.',
-    tip: 'Update applies when the same Fiber is reused with the same type / key. Different type / key may require delete + insert instead.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

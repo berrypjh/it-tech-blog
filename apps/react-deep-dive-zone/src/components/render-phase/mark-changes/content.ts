@@ -5,14 +5,6 @@ import type { ToneKey } from '../../shared/tones';
 /** 카테고리색은 ToneKey. 'rose'는 삭제(Deletion)를 뜻하는 의미색이라 toneTokens 밖에서 직접 쓴다. */
 export type Tone = ToneKey | 'rose';
 
-export type FlagCard = {
-  name: string;
-  description: string;
-  bit: string;
-  tone: Tone;
-  icon: 'flag' | 'trash' | 'pencil' | 'zap';
-};
-
 export type ExampleCard = {
   title: string;
   before: string;
@@ -46,6 +38,7 @@ export type RenderCommitCard = {
 
 export type FlagsAndReorderContent = {
   flags: {
+    badge: string;
     eyebrow: string;
     title: string;
     steps: {
@@ -55,6 +48,7 @@ export type FlagsAndReorderContent = {
     }[];
   };
   reorder: {
+    badge: string;
     eyebrow: string;
     title: string;
     beforeLabel: string;
@@ -63,7 +57,7 @@ export type FlagsAndReorderContent = {
     afterValue: string;
     resultTitle: string;
     resultItems: ReorderResultItem[];
-    bottomNote: string;
+    note: string;
   };
 };
 
@@ -88,37 +82,40 @@ export type MarkChangesContent = {
     };
   };
   examples: {
+    badge: string;
     eyebrow: string;
     title: string;
+    beforeLabel: string;
+    afterLabel: string;
     cards: ExampleCard[];
   };
   flagsAndReorder: FlagsAndReorderContent;
-  code: {
+  checkpoint: {
+    badge: string;
     eyebrow: string;
     title: string;
     fileLabel: string;
-    files: string[];
-    learningQuestion: string;
-    panelHeader: string;
-    cards: FlagCard[];
-    bottomNote: string;
+    filePath: string;
+    lookForLabel: string;
+    lookFor: string;
+    whyLabel: string;
+    why: string;
+    code: string;
+    primaryCta: string;
+    primaryHref: string;
   };
   renderCommit: {
+    badge: string;
     eyebrow: string;
     title: string;
     render: RenderCommitCard;
     commit: RenderCommitCard;
   };
   whyTwoPhases: {
+    badge: string;
     eyebrow: string;
     title: string;
     reasons: ReasonCard[];
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    question: string;
-    answer: string;
   };
   nextStep: {
     eyebrow: string;
@@ -128,6 +125,12 @@ export type MarkChangesContent = {
     href: string;
   };
 };
+
+const flagsCode = `export const NoFlags = 0b0000000000000000000000000000000;
+export const Placement = 0b0000000000000000000000000000010;
+export const Update = 0b0000000000000000000000000000100;
+export const ChildDeletion = 0b0000000000000000000000000010000;
+// ...`;
 
 const ko: MarkChangesContent = {
   hero: {
@@ -179,8 +182,11 @@ const ko: MarkChangesContent = {
     },
   },
   examples: {
-    eyebrow: '01 · 변경 예시',
+    badge: '01',
+    eyebrow: '변경 예시',
     title: '삽입 / 삭제 / 이동 예시',
+    beforeLabel: '이전',
+    afterLabel: '이후',
     cards: [
       {
         title: '새 child 추가 → Placement',
@@ -213,7 +219,8 @@ const ko: MarkChangesContent = {
   },
   flagsAndReorder: {
     flags: {
-      eyebrow: '02 · flags 연결',
+      badge: '02',
+      eyebrow: 'flags 연결',
       title: 'flags와의 연결',
       steps: [
         {
@@ -234,7 +241,8 @@ const ko: MarkChangesContent = {
       ],
     },
     reorder: {
-      eyebrow: '03 · 리스트 재정렬',
+      badge: '03',
+      eyebrow: '리스트 재정렬',
       title: '리스트 재정렬 시각화',
       beforeLabel: '이전 (before)',
       beforeValue: 'A B C',
@@ -246,50 +254,27 @@ const ko: MarkChangesContent = {
         { text: 'C → 삭제 (ChildDeletion)', tone: 'rose', icon: 'trash' },
         { text: 'D → 삽입 (Placement)', tone: 'teal', icon: 'flag' },
       ],
-      bottomNote: 'React는 최소한의 변경으로 목표 상태에 도달하도록 표시만 남깁니다.',
+      note: 'React는 최소한의 변경으로 목표 상태에 도달하도록 표시만 남깁니다.',
     },
   },
-  code: {
-    eyebrow: '04 · 코드 체크포인트',
+  checkpoint: {
+    badge: '04',
+    eyebrow: '코드 체크포인트',
     title: '실제 코드 체크포인트',
     fileLabel: '파일',
-    files: ['ReactChildFiber.js', 'ReactFiberFlags.js'],
-    learningQuestion: 'Render Phase에서는 어떤 종류의 변경 흔적이 남을까?',
-    panelHeader: '주요 변경 플래그 (ReactFiberFlags.js)',
-    cards: [
-      {
-        name: 'Placement',
-        description: '새로운 Fiber를 삽입해야 함',
-        bit: '0b0000000000000010',
-        tone: 'teal',
-        icon: 'flag',
-      },
-      {
-        name: 'ChildDeletion',
-        description: '삭제할 자식이 있음 · 부모의 deletions에 기록',
-        bit: '0b0000000000000100',
-        tone: 'rose',
-        icon: 'trash',
-      },
-      {
-        name: 'Update',
-        description: '기존 Fiber의 내용 업데이트',
-        bit: '0b0000000000001000',
-        tone: 'sky',
-        icon: 'pencil',
-      },
-      {
-        name: 'Placement | Update',
-        description: '이동 또는 업데이트가 필요한 경우 함께 표시될 수 있음',
-        bit: '0b0000000000001010',
-        tone: 'violet',
-        icon: 'zap',
-      },
-    ],
-    bottomNote: '외에도 Ref, Snapshot, Passive 등 다양한 플래그가 존재합니다.',
+    filePath: 'packages/react-reconciler/src/ReactFiberFlags.js',
+    lookForLabel: '볼 것',
+    lookFor: 'Placement, Update, ChildDeletion',
+    whyLabel: '설명',
+    why: '플래그는 비트 값이라 Placement | Update처럼 한 Fiber에 여러 개가 함께 기록될 수 있습니다.',
+    code: flagsCode,
+    primaryCta: 'ReactFiberFlags.js 읽기',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberFlags.js',
   },
   renderCommit: {
-    eyebrow: '05 · 단계 비교',
+    badge: '05',
+    eyebrow: '단계 비교',
     title: 'Render와 Commit의 역할 연결',
     render: {
       title: 'Render Phase',
@@ -317,7 +302,8 @@ const ko: MarkChangesContent = {
     },
   },
   whyTwoPhases: {
-    eyebrow: '06 · 두 단계 이유',
+    badge: '06',
+    eyebrow: '두 단계 이유',
     title: '왜 이렇게 두 단계로 나눌까?',
     reasons: [
       {
@@ -345,12 +331,6 @@ const ko: MarkChangesContent = {
         icon: 'gauge',
       },
     ],
-  },
-  quiz: {
-    eyebrow: '07 · 미니 퀴즈',
-    title: '미니 퀴즈',
-    question: 'Placement가 표시되었다는 것은 DOM 삽입이 이미 끝났다는 뜻일까?',
-    answer: '아니다. 실제 DOM 삽입은 Commit Phase에서 일어난다.',
   },
   nextStep: {
     eyebrow: '다음 학습으로 이어집니다',
@@ -412,8 +392,11 @@ const en: MarkChangesContent = {
     },
   },
   examples: {
-    eyebrow: '01 · CHANGE EXAMPLES',
+    badge: '01',
+    eyebrow: 'CHANGE EXAMPLES',
     title: 'Insert / Delete / Move examples',
+    beforeLabel: 'before',
+    afterLabel: 'after',
     cards: [
       {
         title: 'New child added → Placement',
@@ -446,7 +429,8 @@ const en: MarkChangesContent = {
   },
   flagsAndReorder: {
     flags: {
-      eyebrow: '02 · FLAGS LINK',
+      badge: '02',
+      eyebrow: 'FLAGS LINK',
       title: 'Connecting to flags',
       steps: [
         { title: 'Render Phase', description: 'Compute and diff the Fiber tree', tone: 'sky' },
@@ -463,7 +447,8 @@ const en: MarkChangesContent = {
       ],
     },
     reorder: {
-      eyebrow: '03 · LIST REORDER',
+      badge: '03',
+      eyebrow: 'LIST REORDER',
       title: 'List reorder visualization',
       beforeLabel: 'before',
       beforeValue: 'A B C',
@@ -475,51 +460,27 @@ const en: MarkChangesContent = {
         { text: 'C → delete (ChildDeletion)', tone: 'rose', icon: 'trash' },
         { text: 'D → insert (Placement)', tone: 'teal', icon: 'flag' },
       ],
-      bottomNote:
-        'React leaves marks only — aiming for the minimum changes to reach the target state.',
+      note: 'React leaves marks only — aiming for the minimum changes to reach the target state.',
     },
   },
-  code: {
-    eyebrow: '04 · CODE CHECKPOINT',
-    title: 'Source-code checkpoint',
-    fileLabel: 'files',
-    files: ['ReactChildFiber.js', 'ReactFiberFlags.js'],
-    learningQuestion: 'What kinds of change marks does the Render Phase leave?',
-    panelHeader: 'Main change flags (ReactFiberFlags.js)',
-    cards: [
-      {
-        name: 'Placement',
-        description: 'a new Fiber needs to be inserted',
-        bit: '0b0000000000000010',
-        tone: 'teal',
-        icon: 'flag',
-      },
-      {
-        name: 'ChildDeletion',
-        description: 'a child to delete — recorded on the parent deletions',
-        bit: '0b0000000000000100',
-        tone: 'rose',
-        icon: 'trash',
-      },
-      {
-        name: 'Update',
-        description: 'existing Fiber content needs update',
-        bit: '0b0000000000001000',
-        tone: 'sky',
-        icon: 'pencil',
-      },
-      {
-        name: 'Placement | Update',
-        description: 'a move or update may be marked together',
-        bit: '0b0000000000001010',
-        tone: 'violet',
-        icon: 'zap',
-      },
-    ],
-    bottomNote: 'Other flags also exist — Ref, Snapshot, Passive, and more.',
+  checkpoint: {
+    badge: '04',
+    eyebrow: 'CODE CHECKPOINT',
+    title: 'Source code checkpoint',
+    fileLabel: 'File',
+    filePath: 'packages/react-reconciler/src/ReactFiberFlags.js',
+    lookForLabel: 'Look for',
+    lookFor: 'Placement, Update, ChildDeletion',
+    whyLabel: 'Why',
+    why: 'Flags are bits, so one Fiber can carry several at once, like Placement | Update.',
+    code: flagsCode,
+    primaryCta: 'Read ReactFiberFlags.js',
+    primaryHref:
+      'https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberFlags.js',
   },
   renderCommit: {
-    eyebrow: '05 · RENDER VS COMMIT',
+    badge: '05',
+    eyebrow: 'RENDER VS COMMIT',
     title: 'Connecting Render and Commit roles',
     render: {
       title: 'Render Phase',
@@ -547,7 +508,8 @@ const en: MarkChangesContent = {
     },
   },
   whyTwoPhases: {
-    eyebrow: '06 · WHY TWO PHASES',
+    badge: '06',
+    eyebrow: 'WHY TWO PHASES',
     title: 'Why split into two phases?',
     reasons: [
       {
@@ -575,12 +537,6 @@ const en: MarkChangesContent = {
         icon: 'gauge',
       },
     ],
-  },
-  quiz: {
-    eyebrow: '07 · MINI QUIZ',
-    title: 'Mini Quiz',
-    question: 'Does a Placement mark mean the DOM insertion has already happened?',
-    answer: 'No — actual DOM insertion happens in the Commit Phase.',
   },
   nextStep: {
     eyebrow: 'The journey continues',

@@ -1,16 +1,17 @@
 import { Code2, Lightbulb } from 'lucide-react';
 
 import { CodePreviewPanel } from '../../../shared/code';
-import { SectionHeader } from '../../../shared/section';
+import { SectionBadgeHeader } from '../../../shared/section';
 import { ToneIconBox } from '../../../shared/tone';
 import type { EagerBailoutContent } from '../content';
 
 type Props = { content: EagerBailoutContent['sameStateExamples'] };
 
 export const SameStateExamplesSection = ({ content }: Props) => (
-  <section id="section-examples" aria-labelledby="heading-examples" className="space-y-md">
-    <SectionHeader
+  <section id="examples" aria-labelledby="heading-examples" className="space-y-md scroll-mt-xl">
+    <SectionBadgeHeader
       id="examples"
+      number={content.badge}
       eyebrow={content.eyebrow}
       title={content.title}
       icon={<Code2 className="h-5 w-5" aria-hidden="true" />}
@@ -21,7 +22,6 @@ export const SameStateExamplesSection = ({ content }: Props) => (
         <div key={example.fileName} className="min-w-0">
           <CodePreviewPanel
             header={example.fileName}
-            badge="same"
             code={`${example.code}\n${example.comment}`}
           />
         </div>
