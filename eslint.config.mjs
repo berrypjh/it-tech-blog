@@ -15,7 +15,11 @@ const isInteractiveOpening = (opening) => {
 
 const hasInteractiveAncestor = (node) => {
   for (let cur = node.parent; cur; cur = cur.parent) {
-    if (cur.type === 'JSXElement' && cur.openingElement && isInteractiveOpening(cur.openingElement)) {
+    if (
+      cur.type === 'JSXElement' &&
+      cur.openingElement &&
+      isInteractiveOpening(cur.openingElement)
+    ) {
       return true;
     }
   }
@@ -92,9 +96,20 @@ export default [
       ],
     },
   },
-  // hover 규칙: getting-started + repo-structure에만 적용(그 외 챕터는 미수렴).
+  // hover 규칙: 규약(docs/page-conventions.md)에 수렴한 챕터에만 적용.
   {
-    files: ['**/components/getting-started/**/*.tsx', '**/components/repo-structure/**/*.tsx'],
+    files: [
+      '**/components/getting-started/**/*.tsx',
+      '**/components/repo-structure/**/*.tsx',
+      '**/components/update-flow/**/*.tsx',
+      '**/components/render-phase/**/*.tsx',
+      '**/components/commit-phase/**/*.tsx',
+      '**/components/hooks-internals/**/*.tsx',
+      '**/components/events-internals/**/*.tsx',
+      '**/components/scheduler/**/*.tsx',
+      '**/components/suspense-error-hydration/**/*.tsx',
+      '**/components/react-19-changes/**/*.tsx',
+    ],
     plugins: { 'rdd-hover': hoverPlugin },
     rules: {
       'rdd-hover/no-content-card-border-hover': 'error',
