@@ -15,9 +15,7 @@ app/
 ├── page.tsx            # redirect('/intro')
 ├── not-found.tsx       # URL 미매칭 404
 ├── global-error.tsx    # root layout 에러 — inline style만 사용
-├── intro/
-├── contrast/
-└── keyboard/
+└── (start)/intro/    # 시작하기
 ```
 
 모든 페이지가 동일한 AppShell(사이드바 + 메인 영역) 레이아웃을 공유하므로 root `layout.tsx`에서 일괄 래핑한다. `global-error.tsx`는 root layout 자체가 깨졌을 때 fallback이라 AppShell을 거치지 않는다.

@@ -1,1 +1,0 @@
-export { AssistiveTechnologyPage } from './AssistiveTechnologyPage';
