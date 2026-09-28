@@ -45,13 +45,6 @@ export default defineConfig({
       cwd: workspaceRoot,
       timeout: 120_000,
     },
-    {
-      command: 'pnpm exec nx run @it-tech-blog/next-deep-dive-zone:dev',
-      url: 'http://localhost:4003/next',
-      reuseExistingServer: true,
-      cwd: workspaceRoot,
-      timeout: 120_000,
-    },
   ],
   projects: [
     {
