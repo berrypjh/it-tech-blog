@@ -29,12 +29,6 @@
     },
     {
       "path": "./packages/ui"
-    },
-    {
-      "path": "./apps/next-deep-dive-zone-e2e"
-    },
-    {
-      "path": "./apps/next-deep-dive-zone"
     }
   ]
 }
