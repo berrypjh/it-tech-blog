@@ -8,7 +8,6 @@ import {
   LighthouseIcon,
   LlmIcon,
   NetworkIcon,
-  RocketIcon,
   ShieldIcon,
   SmartphoneIcon,
 } from '@it-tech-blog/ui';
@@ -28,7 +27,6 @@ export type Topic = {
 const ZONE_BY_HREF: Record<string, string> = {
   '/accessibility': 'accessibility',
   '/react': 'react',
-  '/next': 'next',
 };
 
 /**
@@ -88,14 +86,6 @@ export const TOPICS: Topic[] = [
     delay: 0.3,
     style: { top: '16rem', left: '10rem' },
     href: '/',
-  },
-  {
-    icon: <RocketIcon />,
-    label: { ko: 'Next 심층 탐구', en: 'Next Deep Dive' },
-    size: 'lg',
-    delay: 0.35,
-    style: { top: '9rem', right: '22%', transform: 'translateX(-50%)' },
-    href: '/next',
   },
   {
     icon: <DesignPatternIcon />,
