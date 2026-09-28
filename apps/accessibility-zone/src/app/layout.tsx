@@ -13,6 +13,9 @@ import { AppShell } from '@/components/shell';
 import '@berrypjh/react-ui/styles.css';
 import './global.css';
 
+/** 라이트/다크 설정에 대응하는 react-ui 테마. 둘 다 cyan·slate 계열로 짝을 이룬다. */
+const uiThemes = { light: 'frost', dark: 'midnight' } as const;
+
 export const generateMetadata = async () => {
   const locale = await getServerLocale();
   return locale === 'en'
@@ -55,7 +58,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
           motion={motion}
           fontFamily={fontFamily}
         >
-          <UIThemeBridge>
+          <UIThemeBridge themes={uiThemes}>
             <AppShell>{children}</AppShell>
           </UIThemeBridge>
         </PreferencesProviders>
