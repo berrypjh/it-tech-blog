@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { withTerminalTheme } from '../theme';
+
 import { ExternalLink } from './ExternalLink';
 
 const meta: Meta<typeof ExternalLink> = {
   title: 'React Deep Dive/ExternalLink',
+  decorators: [withTerminalTheme],
   component: ExternalLink,
   parameters: {
     layout: 'padded',

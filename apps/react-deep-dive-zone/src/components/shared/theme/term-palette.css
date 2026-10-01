@@ -1,0 +1,11 @@
+/* 존 별칭 → 라이브러리 토큰. --ds-* 는 ThemeProvider 루트에서 테마별로 정의되므로 같은 요소에서 매핑한다 */
+.ui-theme-root {
+  --term-bg: var(--ds-background-surface);
+  --term-surface: var(--ds-background-default);
+  --term-fg: var(--ds-text-default);
+  --term-muted: var(--ds-text-light);
+  --term-dim: var(--ds-background-grey);
+  --term-border: var(--ds-stroke-light);
+  --term-accent: var(--ds-text-primary);
+  --term-accent-soft: var(--ds-background-selected);
+}

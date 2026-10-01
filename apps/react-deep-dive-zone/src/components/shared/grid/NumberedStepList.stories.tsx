@@ -2,10 +2,13 @@ import { cx } from '@berrypjh/react-ui';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Boxes, Code2, Network } from 'lucide-react';
 
+import { withTerminalTheme } from '../theme';
+
 import { NumberedStepList, stepChip, type StepRow } from './NumberedStepList';
 
 const meta: Meta<typeof NumberedStepList> = {
   title: 'React Deep Dive/NumberedStepList',
+  decorators: [withTerminalTheme],
   component: NumberedStepList,
   parameters: {
     layout: 'padded',

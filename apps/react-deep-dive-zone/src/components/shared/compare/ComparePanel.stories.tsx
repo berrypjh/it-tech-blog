@@ -1,10 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Check } from 'lucide-react';
 
+import { withTerminalTheme } from '../theme';
+
 import { ComparePanel } from './ComparePanel';
 
 const meta: Meta<typeof ComparePanel> = {
   title: 'React Deep Dive/ComparePanel',
+  decorators: [withTerminalTheme],
   component: ComparePanel,
   parameters: {
     layout: 'padded',

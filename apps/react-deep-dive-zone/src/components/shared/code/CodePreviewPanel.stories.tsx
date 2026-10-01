@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { withTerminalTheme } from '../theme';
+
 import { CodePreviewPanel } from './CodePreviewPanel';
 
 const sampleCode = `export function jsx(type, config, maybeKey) {
@@ -11,6 +13,7 @@ const sampleCode = `export function jsx(type, config, maybeKey) {
 
 const meta: Meta<typeof CodePreviewPanel> = {
   title: 'React Deep Dive/CodePreviewPanel',
+  decorators: [withTerminalTheme],
   component: CodePreviewPanel,
   parameters: {
     layout: 'padded',

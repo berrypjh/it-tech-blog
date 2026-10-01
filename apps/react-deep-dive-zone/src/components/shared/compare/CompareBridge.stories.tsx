@@ -1,10 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { RefreshCw } from 'lucide-react';
 
+import { withTerminalTheme } from '../theme';
+
 import { CompareBridge } from './CompareBridge';
 
 const meta: Meta<typeof CompareBridge> = {
   title: 'React Deep Dive/CompareBridge',
+  decorators: [withTerminalTheme],
   component: CompareBridge,
   parameters: {
     layout: 'padded',

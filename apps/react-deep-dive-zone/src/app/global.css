@@ -2,6 +2,7 @@
 @import url('https://cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-subset.css');
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
 @import 'tailwindcss';
+@import '../components/shared/theme/term-palette.css';
 @config '../../tailwind.config.mjs';
 
 html[data-font-size='sm'] {
@@ -22,79 +23,26 @@ html[data-motion='reduce'] *::after {
 }
 
 /*
- * 터미널 팔레트 오버라이드.
- * - 액센트: amber (vintage 터미널 phosphor 느낌이지만 green 클리셰 회피)
- * - 베이스: 라이트는 종이톤 #fafaf7, 다크는 진짜 검정 #0a0a0a
- * - text-primary는 디자인 시스템 default 토큰(emerald)을 amber로 치환
+ * 터미널 팔레트는 react-ui 테마 amber(라이트) · ember(다크)가 소유한다(layout.tsx uiThemes).
+ * body는 ThemeProvider 밖이라 --ds-* 를 못 쓴다. 1440px 초과 캔버스만 두 테마의 background.default 값을 적는다.
  */
 :root {
-  --ds-background-primary: #b45309;
-  --ds-background-primary-rgb: 180 83 9;
-  --ds-stroke-primary: #b45309;
-  --ds-stroke-primary-rgb: 180 83 9;
-  --ds-border-primary-color: #b45309;
-  --ds-border-primary-color-rgb: 180 83 9;
-  --ds-text-primary: #b45309;
-  --ds-text-primary-rgb: 180 83 9;
-  --ds-background-surface: #fafaf7;
-  --ds-background-surface-rgb: 250 250 247;
-  --ds-stroke-default: #d4d4d0;
-  --ds-stroke-default-rgb: 212 212 208;
-  --ds-stroke-light: #e7e7e3;
-  --ds-stroke-light-rgb: 231 231 227;
-  --ds-text-default: #0a0a0a;
-  --ds-text-default-rgb: 10 10 10;
-  --ds-text-light: #6b6b65;
-  --ds-text-light-rgb: 107 107 101;
-  --ds-text-contrast-text: #fafaf7;
-  --ds-text-contrast-text-rgb: 250 250 247;
-
-  --term-bg: #fafaf7;
-  --term-surface: #f3f3ef;
-  --term-fg: #0a0a0a;
-  --term-muted: #6b6b65;
-  --term-dim: #a8a8a2;
-  --term-border: #d4d4d0;
-  --term-accent: #b45309;
-  --term-accent-soft: #fde68a;
-
-  --color-canvas: #ededea;
+  --color-canvas: #f3f3ef;
   color-scheme: light;
 }
 
 .dark {
-  --ds-background-primary: #fbbf24;
-  --ds-background-primary-rgb: 251 191 36;
-  --ds-stroke-primary: #fbbf24;
-  --ds-stroke-primary-rgb: 251 191 36;
-  --ds-border-primary-color: #fbbf24;
-  --ds-border-primary-color-rgb: 251 191 36;
-  --ds-text-primary: #fbbf24;
-  --ds-text-primary-rgb: 251 191 36;
-  --ds-background-surface: #0a0a0a;
-  --ds-background-surface-rgb: 10 10 10;
-  --ds-stroke-default: #2a2a2a;
-  --ds-stroke-default-rgb: 42 42 42;
-  --ds-stroke-light: #1a1a1a;
-  --ds-stroke-light-rgb: 26 26 26;
-  --ds-text-default: #e6e6e6;
-  --ds-text-default-rgb: 230 230 230;
-  --ds-text-light: #8a8a85;
-  --ds-text-light-rgb: 138 138 133;
-  --ds-text-contrast-text: #0a0a0a;
-  --ds-text-contrast-text-rgb: 10 10 10;
-
-  --term-bg: #0a0a0a;
-  --term-surface: #131313;
-  --term-fg: #e6e6e6;
-  --term-muted: #8a8a85;
-  --term-dim: #4a4a47;
-  --term-border: #2a2a2a;
-  --term-accent: #fbbf24;
-  --term-accent-soft: #3a2a08;
-
-  --color-canvas: #000000;
+  --color-canvas: #0a0a0a;
   color-scheme: dark;
+}
+
+.ui-theme-root {
+  --shell-bg: var(--term-bg);
+  --shell-fg: var(--term-fg);
+  --shell-border: var(--term-border);
+  --shell-accent: var(--term-accent);
+  --shell-sidebar-w: 300px;
+  --shell-header-h: 48px;
 }
 
 :focus-visible {
@@ -135,19 +83,6 @@ body {
   font-feature-settings:
     'liga' 0,
     'calt' 0;
-}
-
-/* app-shell 토큰 매핑 — 터미널 팔레트 기반 */
-:root {
-  --shell-bg: var(--term-bg);
-  --shell-fg: var(--term-fg);
-  --shell-border: var(--term-border);
-  --shell-overlay: rgba(0, 0, 0, 0.6);
-  --shell-accent: var(--term-accent);
-  --shell-sidebar-w: 300px;
-  --shell-header-h: 48px;
-  --ui-skip-link-bg: var(--term-accent);
-  --ui-skip-link-fg: var(--term-bg);
 }
 
 /* 깜빡이는 커서 — 헤더 프롬프트용 */

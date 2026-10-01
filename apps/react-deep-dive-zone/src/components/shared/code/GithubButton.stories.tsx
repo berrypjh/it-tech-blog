@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { withTerminalTheme } from '../theme';
+
 import { GithubButton } from './GithubButton';
 
 const meta: Meta<typeof GithubButton> = {
   title: 'React Deep Dive/GithubButton',
+  decorators: [withTerminalTheme],
   component: GithubButton,
   parameters: {
     layout: 'padded',

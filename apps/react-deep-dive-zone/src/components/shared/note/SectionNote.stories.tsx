@@ -1,10 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Info, Lightbulb, Sparkles, Star } from 'lucide-react';
 
+import { withTerminalTheme } from '../theme';
+
 import { SectionNote } from './SectionNote';
 
 const meta: Meta<typeof SectionNote> = {
   title: 'React Deep Dive/SectionNote',
+  decorators: [withTerminalTheme],
   component: SectionNote,
   parameters: {
     layout: 'padded',

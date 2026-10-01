@@ -819,12 +819,10 @@ export const sidebarStrings = {
     ...commonSidebarStrings.ko,
     title: 'React Lab',
     subtitle: 'React 내부를 파고드는 학습 공간',
-    progressStep: '시작하기 진행 중',
   },
   en: {
     ...commonSidebarStrings.en,
     title: 'React Lab',
     subtitle: 'A deep-dive into React internals',
-    progressStep: 'Getting Started in progress',
   },
 };

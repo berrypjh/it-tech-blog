@@ -1,11 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { CheckCircle2, Sparkles, XCircle } from 'lucide-react';
 
+import { withTerminalTheme } from '../theme';
+
 import { ContrastCard } from './ContrastCard';
 import { StatusPill } from './StatusPill';
 
 const meta: Meta<typeof ContrastCard> = {
   title: 'React Deep Dive/ContrastCard',
+  decorators: [withTerminalTheme],
   component: ContrastCard,
   parameters: {
     layout: 'padded',

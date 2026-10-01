@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Box, CircleCheck, Database, FunctionSquare, History, MousePointer2 } from 'lucide-react';
 
+import { withTerminalTheme } from '../theme';
+
 import { type FlowStepItem, FlowStepsGrid } from './FlowStepsGrid';
 
 const steps: FlowStepItem[] = [
@@ -56,6 +58,7 @@ const steps: FlowStepItem[] = [
 
 const meta: Meta<typeof FlowStepsGrid> = {
   title: 'React Deep Dive/FlowStepsGrid',
+  decorators: [withTerminalTheme],
   component: FlowStepsGrid,
   parameters: {
     layout: 'padded',

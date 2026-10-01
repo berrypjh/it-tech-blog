@@ -1,10 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FlaskConical, MapPinned } from 'lucide-react';
 
+import { withTerminalTheme } from '../theme';
+
 import { ToneChoiceCard } from './ToneChoiceCard';
 
 const meta: Meta<typeof ToneChoiceCard> = {
   title: 'React Deep Dive/ToneChoiceCard',
+  decorators: [withTerminalTheme],
   component: ToneChoiceCard,
   parameters: {
     layout: 'padded',

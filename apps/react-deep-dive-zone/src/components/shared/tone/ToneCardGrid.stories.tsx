@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { BarChart3, Eye, HelpCircle, KeyRound, Search, Zap } from 'lucide-react';
 
+import { withTerminalTheme } from '../theme';
 import type { ToneKey } from '../tones';
 
 import { ToneCardGrid, ToneCardItem } from './ToneCardGrid';
@@ -75,6 +76,7 @@ const benefits: {
 
 const meta: Meta<typeof ToneCardGrid> = {
   title: 'React Deep Dive/ToneCardGrid',
+  decorators: [withTerminalTheme],
   component: ToneCardGrid,
   parameters: {
     layout: 'padded',

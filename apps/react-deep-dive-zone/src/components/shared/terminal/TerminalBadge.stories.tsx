@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { withTerminalTheme } from '../theme';
+
 import { TerminalBadge } from './TerminalBadge';
 
 const meta: Meta<typeof TerminalBadge> = {
   title: 'React Deep Dive/TerminalBadge',
+  decorators: [withTerminalTheme],
   component: TerminalBadge,
   parameters: {
     layout: 'padded',

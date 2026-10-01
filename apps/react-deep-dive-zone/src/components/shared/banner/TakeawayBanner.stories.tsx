@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { withTerminalTheme } from '../theme';
+
 import { TakeawayBanner } from './TakeawayBanner';
 
 const meta: Meta<typeof TakeawayBanner> = {
   title: 'React Deep Dive/TakeawayBanner',
+  decorators: [withTerminalTheme],
   component: TakeawayBanner,
   parameters: {
     layout: 'padded',

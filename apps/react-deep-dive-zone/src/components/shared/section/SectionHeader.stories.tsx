@@ -1,10 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ListChecks } from 'lucide-react';
 
+import { withTerminalTheme } from '../theme';
+
 import { SectionHeader } from './SectionHeader';
 
 const meta: Meta<typeof SectionHeader> = {
   title: 'React Deep Dive/SectionHeader',
+  decorators: [withTerminalTheme],
   component: SectionHeader,
   parameters: {
     layout: 'padded',

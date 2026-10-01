@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { withTerminalTheme } from '../theme';
+
 import { StepNumberBadge } from './StepNumberBadge';
 
 const meta: Meta<typeof StepNumberBadge> = {
   title: 'React Deep Dive/StepNumberBadge',
+  decorators: [withTerminalTheme],
   component: StepNumberBadge,
   parameters: {
     layout: 'padded',

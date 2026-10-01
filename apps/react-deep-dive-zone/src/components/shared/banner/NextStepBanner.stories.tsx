@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { withTerminalTheme } from '../theme';
+
 import { NextStepBanner } from './NextStepBanner';
 
 const meta: Meta<typeof NextStepBanner> = {
   title: 'React Deep Dive/NextStepBanner',
+  decorators: [withTerminalTheme],
   component: NextStepBanner,
   parameters: {
     layout: 'padded',

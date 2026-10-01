@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { withTerminalTheme } from '../theme';
+
 import { FinalLaunchBanner } from './FinalLaunchBanner';
 
 const meta: Meta<typeof FinalLaunchBanner> = {
   title: 'React Deep Dive/FinalLaunchBanner',
+  decorators: [withTerminalTheme],
   component: FinalLaunchBanner,
   parameters: {
     layout: 'padded',

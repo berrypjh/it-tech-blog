@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { withTerminalTheme } from '../theme';
+
 import { HeroDescription } from './HeroDescription';
 import { HeroDiagramShell } from './HeroDiagramShell';
 import { HeroSection } from './HeroSection';
@@ -15,6 +17,7 @@ const DiagramPlaceholder = () => (
 
 const meta: Meta<typeof HeroSection> = {
   title: 'React Deep Dive/HeroSection',
+  decorators: [withTerminalTheme],
   component: HeroSection,
   parameters: {
     layout: 'padded',

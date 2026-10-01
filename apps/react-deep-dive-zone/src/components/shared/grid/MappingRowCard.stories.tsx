@@ -1,10 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ArrowDown, ArrowLeftRight, ArrowRight } from 'lucide-react';
 
+import { withTerminalTheme } from '../theme';
+
 import { MappingRowCard } from './MappingRowCard';
 
 const meta: Meta<typeof MappingRowCard> = {
   title: 'React Deep Dive/MappingRowCard',
+  decorators: [withTerminalTheme],
   component: MappingRowCard,
   parameters: {
     layout: 'padded',

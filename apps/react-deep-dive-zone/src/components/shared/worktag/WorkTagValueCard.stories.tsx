@@ -1,10 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Group, SquareFunction } from 'lucide-react';
 
+import { withTerminalTheme } from '../theme';
+
 import { WorkTagValueCard } from './WorkTagValueCard';
 
 const meta: Meta<typeof WorkTagValueCard> = {
   title: 'React Deep Dive/WorkTagValueCard',
+  decorators: [withTerminalTheme],
   component: WorkTagValueCard,
   parameters: {
     layout: 'padded',

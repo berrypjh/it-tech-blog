@@ -1,10 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Boxes } from 'lucide-react';
 
+import { withTerminalTheme } from '../theme';
+
 import { ToneDetailCard } from './ToneDetailCard';
 
 const meta: Meta<typeof ToneDetailCard> = {
   title: 'React Deep Dive/ToneDetailCard',
+  decorators: [withTerminalTheme],
   component: ToneDetailCard,
   parameters: {
     layout: 'padded',

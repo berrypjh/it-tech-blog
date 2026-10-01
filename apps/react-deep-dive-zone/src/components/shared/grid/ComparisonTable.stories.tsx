@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { withTerminalTheme } from '../theme';
+
 import { ComparisonTable } from './ComparisonTable';
 
 const meta: Meta<typeof ComparisonTable> = {
   title: 'React Deep Dive/ComparisonTable',
+  decorators: [withTerminalTheme],
   component: ComparisonTable,
   parameters: {
     layout: 'padded',

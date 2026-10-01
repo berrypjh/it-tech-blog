@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Folder, Info } from 'lucide-react';
 
 import { SectionNote } from '../note';
+import { withTerminalTheme } from '../theme';
 
 import { RepoBrowserShell } from './RepoBrowserShell';
 import { RepoBrowserTree, type RepoBrowserTreeNode } from './RepoBrowserTree';
@@ -69,6 +70,7 @@ const Demo = () => {
 
 const meta: Meta<typeof RepoBrowserShell> = {
   title: 'React Deep Dive/RepoBrowserShell',
+  decorators: [withTerminalTheme],
   component: RepoBrowserShell,
   parameters: {
     layout: 'padded',

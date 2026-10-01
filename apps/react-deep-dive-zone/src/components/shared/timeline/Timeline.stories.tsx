@@ -2,12 +2,14 @@ import { cx } from '@berrypjh/react-ui';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { GitPullRequest, Search, Tag } from 'lucide-react';
 
+import { withTerminalTheme } from '../theme';
 import { toneTokens } from '../tones';
 
 import { Timeline } from './Timeline';
 
 const meta: Meta<typeof Timeline> = {
   title: 'React Deep Dive/Timeline',
+  decorators: [withTerminalTheme],
   component: Timeline,
   parameters: {
     layout: 'padded',

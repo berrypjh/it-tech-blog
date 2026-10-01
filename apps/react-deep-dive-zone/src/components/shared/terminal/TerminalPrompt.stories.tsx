@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { withTerminalTheme } from '../theme';
+
 import { TerminalPrompt } from './TerminalPrompt';
 
 const meta: Meta<typeof TerminalPrompt> = {
   title: 'React Deep Dive/TerminalPrompt',
+  decorators: [withTerminalTheme],
   component: TerminalPrompt,
   parameters: {
     layout: 'padded',

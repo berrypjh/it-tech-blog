@@ -1,10 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Info } from 'lucide-react';
 
+import { withTerminalTheme } from '../theme';
+
 import { SectionBadgeHeader } from './SectionBadgeHeader';
 
 const meta: Meta<typeof SectionBadgeHeader> = {
   title: 'React Deep Dive/SectionBadgeHeader',
+  decorators: [withTerminalTheme],
   component: SectionBadgeHeader,
   parameters: {
     layout: 'padded',

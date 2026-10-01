@@ -1,10 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Boxes, Monitor, Network } from 'lucide-react';
 
+import { withTerminalTheme } from '../theme';
+
 import { MisconceptionCardGrid } from './MisconceptionCardGrid';
 
 const meta: Meta<typeof MisconceptionCardGrid> = {
   title: 'React Deep Dive/MisconceptionCardGrid',
+  decorators: [withTerminalTheme],
   component: MisconceptionCardGrid,
   parameters: {
     layout: 'padded',

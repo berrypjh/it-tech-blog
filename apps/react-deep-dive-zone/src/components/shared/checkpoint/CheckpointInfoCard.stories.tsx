@@ -1,10 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Code2, FileCode2, Info } from 'lucide-react';
 
+import { withTerminalTheme } from '../theme';
+
 import { CheckpointInfoCard } from './CheckpointInfoCard';
 
 const meta: Meta<typeof CheckpointInfoCard> = {
   title: 'React Deep Dive/CheckpointInfoCard',
+  decorators: [withTerminalTheme],
   component: CheckpointInfoCard,
   parameters: {
     layout: 'padded',
