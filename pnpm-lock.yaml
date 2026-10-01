@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@berrypjh/react-ui':
-        specifier: ^1.1.1
-        version: 1.1.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        specifier: ^1.2.0
+        version: 1.2.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       lucide-react:
         specifier: ^1.16.0
         version: 1.16.0(react@19.2.5)
@@ -25,17 +25,17 @@ importers:
         version: 19.2.5(react@19.2.5)
     devDependencies:
       '@berrypjh/commitlint-config':
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^1.2.0
+        version: 1.2.0
       '@berrypjh/eslint-config':
-        specifier: ^1.1.0
-        version: 1.1.0(72aceef7d867d222c2b068bf13e6ba55)
+        specifier: ^1.2.0
+        version: 1.2.0(72aceef7d867d222c2b068bf13e6ba55)
       '@berrypjh/prettier-config':
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^1.2.0
+        version: 1.2.0
       '@berrypjh/tsconfig':
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^1.2.0
+        version: 1.2.0
       '@commitlint/cli':
         specifier: ^20.5.3
         version: 20.5.3(@types/node@25.6.0)(conventional-commits-parser@6.4.0)(typescript@5.9.3)
@@ -991,27 +991,27 @@ packages:
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  '@berrypjh/commitlint-config@1.1.0':
-    resolution: {integrity: sha512-1Vi1xmy4PeAluVl2Hf0tU2hUnpJFIHEAgW7PcgmiTG+e7/6lkd/3HsjuSwFYQwBfewpdl6QCAvx1RuOURpcrjA==, tarball: https://npm.pkg.github.com/download/@berrypjh/commitlint-config/1.1.0/4d1a3e5804915ae0142138fa10e0f917c8758989}
+  '@berrypjh/commitlint-config@1.2.0':
+    resolution: {integrity: sha512-/V1YRTtft3r2yQC1odLGy7G/66QMBvsHiO058WlRoNo70JUlLpiop1/JbaB2GsqDmXYwLe0Hzpzf7m9wo/XxVw==, tarball: https://npm.pkg.github.com/download/@berrypjh/commitlint-config/1.2.0/6962ab1094ea834094c44839294c2ee59d234905}
 
-  '@berrypjh/eslint-config@1.1.0':
-    resolution: {integrity: sha512-Mj2dKd8sYS8a81Ni+DWP6b0QkiKri3VAA65d7lwl5HIes/GUfe2VAW4tMekk4/5nSgCqLT8y/N3V1+Xmb5fAVw==, tarball: https://npm.pkg.github.com/download/@berrypjh/eslint-config/1.1.0/3a0d428ca871b38df041ef2e6b12c08d2af0f9b0}
+  '@berrypjh/eslint-config@1.2.0':
+    resolution: {integrity: sha512-9o6U3cX4QygmCUMnNrCVRZWCotcU8qv/0tLip1Ctb4PKwPopBgALqF8GCQQleQ/8SPUMU+wd7D7s9BAhc1vwZg==, tarball: https://npm.pkg.github.com/download/@berrypjh/eslint-config/1.2.0/6af8177cd78335810161a5460a1c15c066233387}
     peerDependencies:
       '@nx/eslint-plugin': ^22.6.5
       eslint: ^9.8.0
 
-  '@berrypjh/prettier-config@1.1.0':
-    resolution: {integrity: sha512-6pfhPabNgm6k1on/yh6GSirv6fwwnjhSu6M9rAVpLkNklbrUb50r+tIXCynjQD3CWIgKUn/zzj/Dt9TtDbEPsg==, tarball: https://npm.pkg.github.com/download/@berrypjh/prettier-config/1.1.0/9eac85d69d1bc41df681bc7227f6a947b54d4372}
+  '@berrypjh/prettier-config@1.2.0':
+    resolution: {integrity: sha512-4iA0pzVA5OfJ/khTvxNjl1+zNBXXvizkViMwhAQU0oqErCQn13idmrU85Y1s3rghGfUKqFq13uBgiVsaD05d/w==, tarball: https://npm.pkg.github.com/download/@berrypjh/prettier-config/1.2.0/3a52d852364d14c87f6303d8b6e9f6542eb90be1}
 
-  '@berrypjh/react-ui@1.1.1':
-    resolution: {integrity: sha512-5DGczoaUEufnRVaYVI93RCiT5A5XXlAYXVtw95umL2xEhA0rvHBnpT6wQBWdqus18cs1vvGWC5BIBnLli9ZwfQ==, tarball: https://npm.pkg.github.com/download/@berrypjh/react-ui/1.1.1/9c736b1c37e201e5e8bf1d58854d31d05c854d5f}
+  '@berrypjh/react-ui@1.2.0':
+    resolution: {integrity: sha512-loFZdnHEr2wDomWRy4/3J4utpZOjTmr7rUnkQ50fn319WxyXq6GEe12AVsmXs0fasLTT0QgiHYWyvShsrayy2g==, tarball: https://npm.pkg.github.com/download/@berrypjh/react-ui/1.2.0/e6d8c3a32954fb81ae9ad74e23f8e7a916e5f0cc}
     hasBin: true
     peerDependencies:
       react: ^19.0.0
       react-dom: ^19.0.0
 
-  '@berrypjh/tsconfig@1.1.0':
-    resolution: {integrity: sha512-ZjwRxUoxtr9ATLPmLqq8BkjbkIOfnQnF8C/2fb9qjhaKfXIcWEs8DLw5nQQqO9YRVNlLf/fYyZbuv7KpdDXn1Q==, tarball: https://npm.pkg.github.com/download/@berrypjh/tsconfig/1.1.0/62ee8c22de773fad2e97441ba8ae75cea947f9ff}
+  '@berrypjh/tsconfig@1.2.0':
+    resolution: {integrity: sha512-32R0s8LQX6CNulROjlszMCdpx6kKZm+ZJS7DY4W+4it4rOvfs7+kDzrhwqhDr6F2FyzkvkncF+9ZQ5naj2dZNg==, tarball: https://npm.pkg.github.com/download/@berrypjh/tsconfig/1.2.0/965e508c7a3e08f986cd291738eeb1019f875d7a}
 
   '@borewit/text-codec@0.2.2':
     resolution: {integrity: sha512-DDaRehssg1aNrH4+2hnj1B7vnUGEjU6OIlyRdkMd0aUdIUvKXrJfXsy8LVtXAy7DRvYVluWbMspsRhz2lcW0mQ==}
@@ -10031,11 +10031,11 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@berrypjh/commitlint-config@1.1.0':
+  '@berrypjh/commitlint-config@1.2.0':
     dependencies:
       '@commitlint/config-conventional': 20.5.3
 
-  '@berrypjh/eslint-config@1.1.0(72aceef7d867d222c2b068bf13e6ba55)':
+  '@berrypjh/eslint-config@1.2.0(72aceef7d867d222c2b068bf13e6ba55)':
     dependencies:
       '@nx/eslint-plugin': 22.6.5(@babel/traverse@7.29.0(supports-color@8.1.1))(@swc-node/register@1.11.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@swc/core@1.15.30(@swc/helpers@0.5.21))(@swc/types@0.1.26)(supports-color@8.1.1)(typescript@5.9.3))(@swc/core@1.15.30(@swc/helpers@0.5.21))(@typescript-eslint/parser@8.59.0(eslint@9.39.4(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@5.9.3))(debug@4.4.3(supports-color@8.1.1))(eslint-config-prettier@10.1.8(eslint@9.39.4(jiti@2.6.1)(supports-color@8.1.1)))(eslint@9.39.4(jiti@2.6.1)(supports-color@8.1.1))(nx@22.6.5(@swc-node/register@1.11.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@swc/core@1.15.30(@swc/helpers@0.5.21))(@swc/types@0.1.26)(supports-color@8.1.1)(typescript@5.9.3))(@swc/core@1.15.30(@swc/helpers@0.5.21))(debug@4.4.3(supports-color@8.1.1)))(supports-color@8.1.1)(typescript@5.9.3)
       eslint: 9.39.4(jiti@2.6.1)(supports-color@8.1.1)
@@ -10046,14 +10046,14 @@ snapshots:
     transitivePeerDependencies:
       - '@typescript-eslint/eslint-plugin'
 
-  '@berrypjh/prettier-config@1.1.0': {}
+  '@berrypjh/prettier-config@1.2.0': {}
 
-  '@berrypjh/react-ui@1.1.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
+  '@berrypjh/react-ui@1.2.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
     dependencies:
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
 
-  '@berrypjh/tsconfig@1.1.0': {}
+  '@berrypjh/tsconfig@1.2.0': {}
 
   '@borewit/text-codec@0.2.2': {}
 
