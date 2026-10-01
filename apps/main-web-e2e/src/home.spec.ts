@@ -45,6 +45,7 @@ test('links active topics to their zones', async ({ page }) => {
     'href',
     '/accessibility',
   );
+  await expect(nav.getByRole('link', { name: /LLM/ })).toHaveAttribute('href', '/llm');
 });
 
 test('reaches topic links with the keyboard', async ({ page, browserName }) => {
@@ -56,7 +57,7 @@ test('reaches topic links with the keyboard', async ({ page, browserName }) => {
     focused.push(await page.evaluate<string | null>('document.activeElement.getAttribute("href")'));
   }
 
-  expect(focused).toEqual(expect.arrayContaining(['/react', '/accessibility']));
+  expect(focused).toEqual(expect.arrayContaining(['/react', '/accessibility', '/llm']));
 });
 
 for (const viewport of viewports) {

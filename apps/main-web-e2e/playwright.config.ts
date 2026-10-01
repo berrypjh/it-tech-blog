@@ -45,6 +45,13 @@ export default defineConfig({
       cwd: workspaceRoot,
       timeout: 120_000,
     },
+    {
+      command: 'pnpm exec nx run @it-tech-blog/llm-system-zone:dev',
+      url: 'http://localhost:4003/llm',
+      reuseExistingServer: true,
+      cwd: workspaceRoot,
+      timeout: 120_000,
+    },
   ],
   projects: [
     {
