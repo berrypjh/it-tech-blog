@@ -5,6 +5,7 @@ import {
   MotionProvider,
   ThemeProvider,
 } from '@it-tech-blog/preferences';
+import { UIThemeBridge } from '@it-tech-blog/ui';
 
 import type { Decorator, Preview } from '@storybook/react-vite';
 import { INITIAL_VIEWPORTS } from 'storybook/viewport';
@@ -29,7 +30,9 @@ const withProviders: Decorator = (Story, context) => {
           <MotionProvider defaultMotion="default">
             <FontFamilyProvider defaultFontFamily="sans">
               <div className={theme === 'dark' ? 'dark' : ''}>
-                <Story />
+                <UIThemeBridge>
+                  <Story />
+                </UIThemeBridge>
               </div>
             </FontFamilyProvider>
           </MotionProvider>
