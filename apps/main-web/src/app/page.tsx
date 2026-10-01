@@ -1,35 +1,27 @@
 import { getServerLocale } from '@it-tech-blog/preferences/server';
 
+import { LabBackground, SpatialTechLab } from '@/components/spatial-lab';
 import { ThemeToggle } from '@/components/theme';
-import { TopicBubbles, TopicGrid } from '@/components/topic';
 import { getVisibleTopics } from '@/data/topics';
+
+const SUBTITLE = {
+  ko: '하나의 개념을 실험대 위에서 차분히 풀어봐요',
+  en: 'Unfold one concept at a time, calmly, on the lab bench',
+};
 
 const Page = async () => {
   const locale = await getServerLocale();
-  const topics = getVisibleTopics();
 
   return (
-    <div className="min-w-[500px] overflow-hidden">
-      <div className="fixed inset-0 -z-10 bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0] dark:from-[#0a0520] dark:via-[#0d0a28] dark:to-[#1a0f3f]" />
-
+    <main className="lab-page">
+      <LabBackground />
       <ThemeToggle />
 
-      <div className="relative max-w-[1440px] mx-auto flex flex-col items-center justify-center min-h-[max(100vh,700px)] gap-8 px-6">
-        <TopicBubbles topics={topics} locale={locale} />
-
-        <h1 className="text-4xl min-[500px]:text-6xl lg:text-[96px] font-bold tracking-tight text-center cursor-default transition-colors duration-500 text-text-default">
-          Interactive Tech Lab
-        </h1>
-
-        <p className="text-sm min-[500px]:text-md md:text-xl text-center cursor-default text-text-light">
-          {locale === 'ko'
-            ? '복잡한 기술 개념을 예제와 실습형 콘텐츠로 쉽게 이해해봐요'
-            : 'Explore complex tech concepts through interactive examples and hands-on content'}
-        </p>
-
-        <TopicGrid topics={topics} locale={locale} />
-      </div>
-    </div>
+      <SpatialTechLab topics={getVisibleTopics()} locale={locale}>
+        <h1 className="lab-title">Interactive Tech Lab</h1>
+        <p className="lab-subtitle">{SUBTITLE[locale]}</p>
+      </SpatialTechLab>
+    </main>
   );
 };
 

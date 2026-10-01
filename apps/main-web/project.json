@@ -1,0 +1,13 @@
+{
+  "name": "@it-tech-blog/main-web",
+  "targets": {
+    "build": {
+      "inputs": [
+        "default",
+        "^production",
+        { "externalDependencies": ["next"] },
+        { "env": "ENABLED_ZONES" }
+      ]
+    }
+  }
+}

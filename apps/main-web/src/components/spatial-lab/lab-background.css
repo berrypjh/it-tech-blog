@@ -1,0 +1,224 @@
+/*
+ * 랩 배경 — 같은 실험실을 다른 빛의 상태로 해석한다.
+ *   라이트: Orbital Daylight (펄 화이트, 태양광 헤이즈, 프리즘 블룸)
+ *   다크:   Deep Space Laboratory (네이비 블랙, 성운 헤이즈, 성긴 별)
+ * 작은 화면일수록 단순해진다: 모바일은 base+광원+grain, 태블릿은 궤도 1개, 스테이지는 전체.
+ * 움직임은 transform/opacity만 쓴다: 광원 밝기 교차(전 화면), 별 반짝임·궤도선 흔들림(스테이지).
+ * 궤도를 따라 이동하는 점은 시선을 계속 끌어 쓰지 않는다.
+ */
+
+/* 고정 레이어가 닿지 않는 곳(오버스크롤, 긴 페이지 캡처)을 위한 base 색. */
+.lab-page {
+  background-color: #eceef2;
+}
+
+.dark .lab-page {
+  background-color: #05070c;
+}
+
+.lab-bg {
+  --bg-top: #f8f7f4;
+  --bg-mid: #f1f2f5;
+  --bg-bottom: #e5e8ee;
+  --bg-source: rgb(255 221 184 / 0.5);
+  --bg-bloom-a: rgb(196 181 253 / 0.2);
+  --bg-bloom-b: rgb(165 243 252 / 0.18);
+  --bg-lift: rgb(255 255 255 / 0.6);
+  --bg-counter: rgb(186 200 222 / 0.28);
+  --bg-vignette: rgb(140 150 172 / 0.2);
+  --bg-orbit: rgb(51 65 85 / 0.11);
+  --bg-grain-opacity: 0.035;
+
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--bg-top), var(--bg-mid) 50%, var(--bg-bottom));
+}
+
+.dark .lab-bg {
+  --bg-top: #0a0d17;
+  --bg-mid: #06080f;
+  --bg-bottom: #030408;
+  --bg-source: rgb(129 112 255 / 0.14);
+  --bg-bloom-a: rgb(139 92 246 / 0.07);
+  --bg-bloom-b: rgb(34 211 238 / 0.05);
+  --bg-lift: rgb(96 112 170 / 0.1);
+  --bg-counter: rgb(56 189 248 / 0.07);
+  --bg-vignette: rgb(0 0 0 / 0.6);
+  --bg-orbit: rgb(165 180 252 / 0.12);
+  --bg-star: rgb(226 232 255);
+  --bg-grain-opacity: 0.05;
+}
+
+/* ---------- 대기: 비네트 · 중앙 광 (고정) ---------- */
+
+.lab-bg-atmosphere {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 42%, var(--bg-lift), transparent 70%);
+}
+
+/* ---------- 광원: 따뜻한 쪽(위) · 차가운 쪽(아래) ---------- */
+
+.lab-bg-haze,
+.lab-bg-glow {
+  position: absolute;
+  inset: 0;
+}
+
+.lab-bg-haze {
+  background: radial-gradient(ellipse 90% 45% at 70% 0%, var(--bg-source), transparent 70%);
+}
+
+.lab-bg-glow {
+  background: radial-gradient(ellipse 70% 30% at 20% 100%, var(--bg-counter), transparent 70%);
+}
+
+/* ---------- 별: 다크 전용, 제목 뒤는 비운다 ---------- */
+
+.lab-bg-stars {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: var(--bg-star);
+  mask-image: radial-gradient(ellipse 42% 34% at 50% 48%, transparent 30%, black 100%);
+}
+
+/* ---------- 궤도 곡선과 궤도를 도는 빛 ---------- */
+
+.lab-bg-orbits {
+  display: none;
+  position: absolute;
+  inset: -6%;
+  width: 112%;
+  height: 112%;
+}
+
+.lab-bg-orbit {
+  fill: none;
+  stroke: url(#lab-bg-orbit-fade);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.lab-bg-orbit-stop {
+  stop-color: var(--bg-orbit);
+}
+
+.lab-bg-orbit--outer {
+  display: none;
+}
+
+/* ---------- grain: 재질감. 정적 타일이라 비용이 거의 없다 ---------- */
+
+.lab-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: var(--bg-grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- 태블릿: 궤도 1개 + 프리즘 블룸 ---------- */
+
+@media (min-width: 768px) {
+  .lab-bg-orbits {
+    display: block;
+  }
+
+  .lab-bg-atmosphere {
+    background: radial-gradient(ellipse 60% 45% at 50% 45%, var(--bg-lift), transparent 70%);
+  }
+
+  .lab-bg-haze {
+    background:
+      radial-gradient(ellipse 55% 36% at 70% 8%, var(--bg-source), transparent 70%),
+      radial-gradient(ellipse 28% 20% at 22% 24%, var(--bg-bloom-a), transparent 70%),
+      radial-gradient(ellipse 24% 18% at 27% 30%, var(--bg-bloom-b), transparent 70%);
+  }
+}
+
+/* ---------- 데스크톱 스테이지: 전체 층위 ---------- */
+
+@media (min-width: 1024px) and (min-height: 560px) {
+  .dark .lab-bg-stars,
+  .lab-bg-orbit--outer {
+    display: block;
+  }
+
+  .lab-bg-atmosphere {
+    background:
+      radial-gradient(ellipse 120% 95% at 50% 46%, transparent 58%, var(--bg-vignette) 100%),
+      radial-gradient(ellipse 55% 42% at 50% 48%, var(--bg-lift), transparent 70%);
+  }
+
+  .lab-bg-haze {
+    background:
+      radial-gradient(ellipse 50% 36% at 70% 8%, var(--bg-source), transparent 70%),
+      radial-gradient(ellipse 26% 20% at 21% 26%, var(--bg-bloom-a), transparent 70%),
+      radial-gradient(ellipse 22% 16% at 26% 33%, var(--bg-bloom-b), transparent 70%);
+  }
+
+  .lab-bg-glow {
+    background: radial-gradient(ellipse 42% 32% at 84% 88%, var(--bg-counter), transparent 70%);
+  }
+}
+
+/* ---------- 모션: 광원 교차는 전 화면, 별·궤도는 큰 화면에서만 ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .lab-bg-haze {
+    animation: lab-bg-light 36s ease-in-out infinite alternate;
+  }
+
+  .lab-bg-glow {
+    animation: lab-bg-light 36s ease-in-out infinite alternate-reverse;
+  }
+
+  @media (min-width: 1024px) and (min-height: 560px) {
+    .lab-bg-orbits {
+      animation: lab-bg-drift 90s ease-in-out infinite alternate;
+    }
+
+    .lab-bg-stars--twinkle-a {
+      animation: lab-bg-twinkle 7s ease-in-out infinite alternate;
+    }
+
+    .lab-bg-stars--twinkle-b {
+      animation: lab-bg-twinkle 9s ease-in-out infinite alternate-reverse;
+    }
+  }
+}
+
+@keyframes lab-bg-light {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.45;
+  }
+}
+
+@keyframes lab-bg-drift {
+  from {
+    transform: rotate(-1.2deg);
+  }
+
+  to {
+    transform: rotate(1.2deg);
+  }
+}
+
+@keyframes lab-bg-twinkle {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.2;
+  }
+}

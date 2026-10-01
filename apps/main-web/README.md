@@ -19,16 +19,16 @@ src/
     not-found.tsx       # 404
     global-error.tsx    # root layout 에러
   components/
-    theme-client-provider.tsx  # Provider
-    theme-toggle.tsx           # 테마/언어 토글
-    topic-bubbles.tsx          # BubbleButton 렌더
-    topics.tsx                 # 토픽 데이터
+    theme/                # Provider, 테마/언어 토글
+    spatial-lab/          # 랜딩 Spatial Tech Lab
+  data/
+    topics.tsx            # 토픽 데이터 + ENABLED_ZONES 필터
 ```
 
 ## 의존성
 
 | 패키지 | 용도 |
 |---|---|
-| [`@berrypjh/react-ui`](https://github.com/berrypjh/ui-source) | BubbleButton, IconButton |
+| [`@berrypjh/react-ui`](https://github.com/berrypjh/ui-source) | IconButton, 디자인 토큰 |
 | `@it-tech-blog/preferences` | 테마·언어 상태 관리 |
 | `@it-tech-blog/icons` | 아이콘 |

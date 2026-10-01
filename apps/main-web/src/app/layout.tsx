@@ -4,6 +4,7 @@ import { getServerLocale, getServerTheme } from '@it-tech-blog/preferences/serve
 import { ThemeClientProvider } from '@/components/theme';
 
 import '@berrypjh/react-ui/styles.css';
+import '@it-tech-blog/ui/zone-transition.css';
 import './global.css';
 
 export const generateMetadata = async () => {
