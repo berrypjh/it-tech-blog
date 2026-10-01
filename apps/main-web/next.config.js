@@ -13,10 +13,11 @@ const isZoneEnabled = (zone) => !enabledZones?.length || enabledZones.includes(z
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
  **/
 const nextConfig = {
-  transpilePackages: ['@it-tech-blog/icons', '@it-tech-blog/preferences'],
+  transpilePackages: ['@it-tech-blog/preferences'],
   async rewrites() {
     const ACCESSIBILITY = process.env.ACCESSIBILITY_DOMAIN ?? 'http://localhost:4001';
     const REACT_DEEP_DIVE = process.env.REACT_DEEP_DIVE_DOMAIN ?? 'http://localhost:4002';
+    const LLM_SYSTEM = process.env.LLM_SYSTEM_DOMAIN ?? 'http://localhost:4003';
 
     const rules = [];
 
@@ -39,6 +40,14 @@ const nextConfig = {
           source: '/react-static/:path*',
           destination: `${REACT_DEEP_DIVE}/react-static/:path*`,
         },
+      );
+    }
+
+    if (isZoneEnabled('llm')) {
+      rules.push(
+        { source: '/llm', destination: `${LLM_SYSTEM}/llm` },
+        { source: '/llm/:path*', destination: `${LLM_SYSTEM}/llm/:path*` },
+        { source: '/llm-static/:path*', destination: `${LLM_SYSTEM}/llm-static/:path*` },
       );
     }
 

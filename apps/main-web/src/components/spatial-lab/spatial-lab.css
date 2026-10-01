@@ -9,10 +9,11 @@
 
 .lab-page {
   --lab-floor-glow: rgb(99 102 241 / 0.1);
-  --lab-text: #12141a;
-  --lab-muted: #474e5e;
-  --lab-accent: #0e7490;
-  --lab-glow: rgb(14 116 144 / 0.35);
+  /* 글자 · 강조는 react-ui 테마 frost · midnight 토큰. 재질 · 빛(유리 · 그림자 · 테두리)은 대응 토큰이 없어 값으로 둔다 */
+  --lab-text: var(--ds-text-default);
+  --lab-muted: var(--ds-text-light);
+  --lab-accent: var(--ds-text-primary);
+  --lab-glow: color-mix(in srgb, var(--ds-text-primary) 35%, transparent);
   --lab-glass: rgb(255 255 255 / 0.6);
   --lab-glass-lit: rgb(255 255 255 / 0.92);
   --lab-side: rgb(58 66 84 / 0.3);
@@ -34,10 +35,7 @@
 
 .dark .lab-page {
   --lab-floor-glow: rgb(99 102 241 / 0.16);
-  --lab-text: #eef1f7;
-  --lab-muted: #a4acbe;
-  --lab-accent: #67e8f9;
-  --lab-glow: rgb(103 232 249 / 0.45);
+  --lab-glow: color-mix(in srgb, var(--ds-text-primary) 45%, transparent);
   --lab-glass: rgb(148 163 184 / 0.12);
   --lab-glass-lit: rgb(148 163 184 / 0.24);
   --lab-side: rgb(6 8 14 / 0.88);

@@ -9,11 +9,7 @@
 
 /* 고정 레이어가 닿지 않는 곳(오버스크롤, 긴 페이지 캡처)을 위한 base 색. */
 .lab-page {
-  background-color: #eceef2;
-}
-
-.dark .lab-page {
-  background-color: #05070c;
+  background-color: var(--ds-background-default);
 }
 
 .lab-bg {

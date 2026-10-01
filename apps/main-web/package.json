@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@berrypjh/react-ui": "^1.2.0",
     "@it-tech-blog/preferences": "workspace:*",
     "@it-tech-blog/ui": "workspace:*",
     "next": "~16.1.6",

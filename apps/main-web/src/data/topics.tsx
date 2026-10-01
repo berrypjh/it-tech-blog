@@ -69,7 +69,9 @@ export const TOPICS: Topic[] = [
   },
   {
     id: 'llm',
-    status: 'planned',
+    status: 'active',
+    zone: 'llm',
+    href: '/llm',
     icon: <LlmIcon />,
     label: { ko: 'LLM 시스템', en: 'LLM Systems' },
     description: {
