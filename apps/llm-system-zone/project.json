@@ -1,0 +1,21 @@
+{
+  "name": "@it-tech-blog/llm-system-zone",
+  "targets": {
+    "dev": {
+      "options": {
+        "command": "next dev",
+        "env": {
+          "PORT": "4003"
+        }
+      }
+    },
+    "start": {
+      "options": {
+        "command": "next start",
+        "env": {
+          "PORT": "4003"
+        }
+      }
+    }
+  }
+}

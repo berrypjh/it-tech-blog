@@ -1,0 +1,110 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css');
+@import url('https://cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-subset.css');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+@import 'tailwindcss';
+@import '@it-tech-blog/ui/doc.css';
+@config '../../tailwind.config.mjs';
+
+html[data-font-size='sm'] {
+  font-size: 14px;
+}
+
+html[data-font-size='lg'] {
+  font-size: 18px;
+}
+
+html[data-motion='reduce'] *,
+html[data-motion='reduce'] *::before,
+html[data-motion='reduce'] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ds-border-primary-color);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+:root {
+  --font-family: system-ui, -apple-system, sans-serif;
+}
+
+html[data-font='serif'] {
+  --font-family: Georgia, 'Batang', serif;
+}
+
+html[data-font='mono'] {
+  --font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* 로드된 웹폰트 — Pretendard(본문), D2Coding(코드), Nanum Myeongjo(명조) */
+html[data-font='pretendard'] {
+  --font-family: 'Pretendard Variable', Pretendard, system-ui, -apple-system, sans-serif;
+}
+
+html[data-font='d2coding'] {
+  --font-family: 'D2Coding', ui-monospace, 'JetBrains Mono', Menlo, Monaco, monospace;
+}
+
+html[data-font='myeongjo'] {
+  --font-family: 'Nanum Myeongjo', Georgia, 'Batang', serif;
+}
+
+body {
+  font-family: var(--font-family);
+}
+
+/* 1440px 초과 영역 배경 (앱 외부 캔버스).
+   body는 ThemeProvider 밖이라 --ds-* 를 못 쓴다. ivory/charcoal 의 background.default 값 */
+:root {
+  --color-canvas: #f6f4ec;
+  color-scheme: light;
+}
+
+.dark {
+  --color-canvas: #161616;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-canvas);
+}
+
+/* app-shell 토큰 매핑 — 디자인 시스템 기반.
+   --ds-* 는 ThemeProvider 루트에서 테마별로 정의되므로 같은 요소에서 매핑해야 테마를 따른다 */
+.ui-theme-root {
+  --shell-bg: var(--ds-background-surface);
+  --shell-fg: var(--ds-text-default);
+  --shell-border: var(--ds-stroke-default);
+  --shell-overlay: rgba(0, 0, 0, 0.5);
+  --shell-accent: var(--ds-stroke-primary);
+  --shell-sidebar-w: 280px;
+  --shell-header-h: 56px;
+}
+
+/* 스크롤바 — 디자인 토큰과 연결 */
+* {
+  scrollbar-color: rgb(var(--ds-stroke-default-rgb)) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--ds-stroke-default-rgb));
+  border-radius: 8px;
+  border: 2px solid var(--color-canvas);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(var(--ds-stroke-grey-rgb));
+}
