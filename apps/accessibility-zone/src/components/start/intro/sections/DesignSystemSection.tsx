@@ -1,9 +1,8 @@
 import type { Locale } from '@it-tech-blog/preferences';
+import { Callout, DocH2, DocH3, DocTable } from '@it-tech-blog/ui';
 
 import { Chip, List, ListItem, VisuallyHidden } from '@berrypjh/react-ui';
 import { RotateCcw } from 'lucide-react';
-
-import { Callout, DocH2, DocH3, DocTable } from '@/components/doc';
 
 import { getToc } from '../toc';
 

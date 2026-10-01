@@ -1,9 +1,8 @@
 import type { Locale } from '@it-tech-blog/preferences';
+import { Callout, DocH2, DocH3, ExternalLink } from '@it-tech-blog/ui';
 
 import { Chip, List, ListItem, VisuallyHidden } from '@berrypjh/react-ui';
 import { X } from 'lucide-react';
-
-import { Callout, DocH2, DocH3, ExternalLink } from '@/components/doc';
 
 import { TaskFlowDiagram } from '../diagrams/TaskFlowDiagram';
 import { getToc } from '../toc';

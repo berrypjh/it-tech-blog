@@ -1,6 +1,5 @@
 import type { Locale } from '@it-tech-blog/preferences';
-
-import { Callout, CodeBlock, DocH2, DocTable, ExternalLink } from '@/components/doc';
+import { Callout, CodeBlock, DocH2, DocTable, ExternalLink } from '@it-tech-blog/ui';
 
 import { getToc } from '../toc';
 

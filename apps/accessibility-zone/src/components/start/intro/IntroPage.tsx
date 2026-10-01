@@ -1,6 +1,5 @@
 import type { Locale } from '@it-tech-blog/preferences';
-
-import { DocLayout } from '@/components/doc';
+import { DocLayout } from '@it-tech-blog/ui';
 
 import { DesignSystemSection } from './sections/DesignSystemSection';
 import { MisconceptionsSection } from './sections/MisconceptionsSection';

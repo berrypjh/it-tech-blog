@@ -1,8 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
+import { Callout, DocH2, DocTable, ExternalLink } from '@it-tech-blog/ui';
 
 import { Keyboard, MousePointer2 } from 'lucide-react';
-
-import { Callout, DocH2, DocTable, ExternalLink } from '@/components/doc';
 
 import { getToc } from '../toc';
 

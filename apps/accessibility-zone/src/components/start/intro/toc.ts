@@ -1,6 +1,5 @@
 import type { Locale } from '@it-tech-blog/preferences';
-
-import type { TocItem } from '@/components/doc';
+import type { TocItem } from '@it-tech-blog/ui';
 
 const titles = {
   ko: {

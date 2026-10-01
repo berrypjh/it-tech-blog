@@ -1,8 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
+import { DocH2, DocTable } from '@it-tech-blog/ui';
 
 import { Check, X } from 'lucide-react';
-
-import { DocH2, DocTable } from '@/components/doc';
 
 import { getToc } from '../toc';
 

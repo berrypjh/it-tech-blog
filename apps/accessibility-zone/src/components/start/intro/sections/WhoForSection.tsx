@@ -1,8 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
+import { Callout, DocH2, DocH3, DocTable, ExternalLink } from '@it-tech-blog/ui';
 
 import { Chip, List, ListItem } from '@berrypjh/react-ui';
-
-import { Callout, DocH2, DocH3, DocTable, ExternalLink } from '@/components/doc';
 
 import { BarrierDiagram } from '../diagrams/BarrierDiagram';
 import { getToc } from '../toc';

@@ -1,6 +1,5 @@
 import type { Locale } from '@it-tech-blog/preferences';
-
-import { Callout, CodeCompare, DocH2, DocH3, DocTable, ExternalLink } from '@/components/doc';
+import { Callout, CodeCompare, DocH2, DocH3, DocTable, ExternalLink } from '@it-tech-blog/ui';
 
 import { KeyboardDemo } from '../demos/KeyboardDemo';
 import { LabelDemo } from '../demos/LabelDemo';

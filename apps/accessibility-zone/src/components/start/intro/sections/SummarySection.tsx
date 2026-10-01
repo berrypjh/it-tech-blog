@@ -1,8 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
+import { DocH2 } from '@it-tech-blog/ui';
 
 import { List, ListItem } from '@berrypjh/react-ui';
-
-import { DocH2 } from '@/components/doc';
 
 import { getToc } from '../toc';
 

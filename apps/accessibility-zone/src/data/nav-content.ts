@@ -21,12 +21,10 @@ export const sidebarStrings = {
     ...commonSidebarStrings.ko,
     title: 'A11y Lab',
     subtitle: '모두를 위한 웹 접근성 실험실',
-    progressStep: '시작하기 완료',
   },
   en: {
     ...commonSidebarStrings.en,
     title: 'A11y Lab',
     subtitle: 'Web Accessibility Lab for Everyone',
-    progressStep: 'Getting Started Done',
   },
 };
