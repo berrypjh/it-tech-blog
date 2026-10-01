@@ -12,6 +12,8 @@
     "build:main": "nx run @it-tech-blog/main-web:build",
     "build:a11y": "nx run @it-tech-blog/accessibility-zone:build",
     "build:react-deep-dive": "nx run @it-tech-blog/react-deep-dive-zone:build",
+    "start": "nx run-many -t start --projects=@it-tech-blog/main-web,@it-tech-blog/accessibility-zone,@it-tech-blog/react-deep-dive-zone --parallel",
+    "preview": "export ENABLED_ZONES=react,accessibility && pnpm build && pnpm start",
     "lint": "nx run-many -t lint --parallel",
     "test": "nx run-many -t test --parallel",
     "typecheck": "nx run-many -t typecheck --parallel",

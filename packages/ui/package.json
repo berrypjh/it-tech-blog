@@ -4,7 +4,8 @@
   "private": true,
   "main": "./src/index.ts",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./zone-transition.css": "./src/transition/zone-transition.css"
   },
   "dependencies": {
     "@it-tech-blog/preferences": "workspace:*",

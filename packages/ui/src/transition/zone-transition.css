@@ -1,0 +1,87 @@
+/*
+ * 존 간 문서 전환(cross-document View Transitions).
+ * 호스트와 모든 존이 같은 origin이라 브라우저가 이전/다음 문서를 이어 붙인다.
+ * 이 파일을 호스트와 각 존의 루트 레이아웃에서 import한다. 미지원 브라우저는 즉시 전환된다.
+ */
+
+@view-transition {
+  navigation: auto;
+}
+
+/*
+ * 페이지 전체(root)를 하나로 전환한다. 네비게이션·배경·본문이 같은 리듬으로 등장한다.
+ * 이전 문서: 카메라가 앞으로 나아가듯 살짝 커지며 사라진다.
+ */
+::view-transition-old(root) {
+  animation: zone-recede 360ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+::view-transition-new(root) {
+  animation: zone-reveal 420ms 140ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes zone-recede {
+  to {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes zone-reveal {
+  from {
+    opacity: 0;
+  }
+}
+
+/*
+ * 존 페이지 첫 등장 — 호스트 랜딩과 같은 리듬. 한 번만 재생된다.
+ *   .zone-enter        본문 컨테이너. 첫 자식(머리말)이 초점을 맞추듯 선명해지고 나머지가 뒤따른다.
+ *   .zone-enter-aside  목차 같은 보조 영역. 본문보다 늦게 등장한다.
+ * 존 모션 설정(data-motion='reduce')의 전역 규칙은 delay를 남기므로 아예 걸지 않는다.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  html:not([data-motion='reduce']) .zone-enter > :first-child {
+    animation: zone-focus-in 1000ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  }
+
+  html:not([data-motion='reduce']) .zone-enter > :nth-child(2) {
+    animation: zone-rise 800ms 180ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  }
+
+  /* 긴 문서라 화면 밖 섹션까지 지연을 누적하지 않는다. */
+  html:not([data-motion='reduce']) .zone-enter > :nth-child(n + 3) {
+    animation: zone-rise 800ms 300ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  }
+
+  html:not([data-motion='reduce']) .zone-enter-aside {
+    animation: zone-rise 800ms 420ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  }
+}
+
+@keyframes zone-focus-in {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    translate: 0 10px;
+  }
+}
+
+@keyframes zone-rise {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+  }
+}
+
+/* OS 설정과 존의 모션 설정(html[data-motion='reduce']) 모두 존중한다. */
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
+html[data-motion='reduce']::view-transition-group(*),
+html[data-motion='reduce']::view-transition-old(*),
+html[data-motion='reduce']::view-transition-new(*) {
+  animation: none;
+}
