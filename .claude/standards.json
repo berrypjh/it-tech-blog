@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "rules": {
+    "core": true,
+    "berry-consumer": {
+      "paths": ["apps/main-web/src/**", "apps/*-zone/src/**", "packages/ui/src/**"]
+    },
+    "ko-ui": {
+      "paths": ["apps/main-web/src/**/*.tsx", "apps/*-zone/src/**/*.tsx"]
+    }
+  }
+}

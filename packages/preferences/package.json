@@ -6,5 +6,10 @@
   "exports": {
     ".": "./src/index.ts",
     "./server": "./src/server/index.ts"
+  },
+  "dependencies": {
+    "@berrypjh/react-ui": "^1.2.0",
+    "next": "~16.1.6",
+    "react": "^19.0.0"
   }
 }

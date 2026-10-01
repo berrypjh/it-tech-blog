@@ -1,4 +1,5 @@
 import base from '@berrypjh/eslint-config/base';
+import nx from '@berrypjh/eslint-config/nx';
 import react from '@berrypjh/eslint-config/react';
 
 // 컨텐츠 카드 hover 테두리 변화 금지. 상호작용 요소 안이면 자동 허용.
@@ -53,9 +54,10 @@ const hoverPlugin = {
 
 export default [
   ...base,
+  ...nx,
   ...react,
   {
-    ignores: ['**/dist', '**/out-tsc', '**/test-output', '**/.next'],
+    ignores: ['**/dist', '**/out-tsc', '**/test-output', '**/.next', '**/storybook-static'],
   },
   {
     files: [

@@ -12,10 +12,8 @@ out
 .next
 .storybook-static
 
-# 문서
-README.md
-AGENTS.md
-CLAUDE.md
+# berry-dev가 생성하는 rule
+.claude/rules/_generated
 
 # Lock 파일
 package-lock.json

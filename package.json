@@ -1,19 +1,21 @@
 {
   "name": "@it-tech-blog/source",
   "version": "0.0.0",
+  "private": true,
   "license": "MIT",
-  "prettier": "@berrypjh/prettier-config",
   "scripts": {
-    "dev": "nx run-many -t dev --projects=@it-tech-blog/main-web,@it-tech-blog/accessibility-zone,@it-tech-blog/react-deep-dive-zone --parallel",
+    "dev": "nx run-many -t dev --projects=@it-tech-blog/main-web,@it-tech-blog/accessibility-zone,@it-tech-blog/react-deep-dive-zone,@it-tech-blog/llm-system-zone --parallel",
     "dev:main": "nx run @it-tech-blog/main-web:dev",
     "dev:a11y": "nx run @it-tech-blog/accessibility-zone:dev",
     "dev:react-deep-dive": "nx run @it-tech-blog/react-deep-dive-zone:dev",
-    "build": "nx run-many -t build --projects=@it-tech-blog/main-web,@it-tech-blog/accessibility-zone,@it-tech-blog/react-deep-dive-zone",
+    "dev:llm": "nx run @it-tech-blog/llm-system-zone:dev",
+    "build": "nx run-many -t build --projects=@it-tech-blog/main-web,@it-tech-blog/accessibility-zone,@it-tech-blog/react-deep-dive-zone,@it-tech-blog/llm-system-zone",
     "build:main": "nx run @it-tech-blog/main-web:build",
     "build:a11y": "nx run @it-tech-blog/accessibility-zone:build",
     "build:react-deep-dive": "nx run @it-tech-blog/react-deep-dive-zone:build",
-    "start": "nx run-many -t start --projects=@it-tech-blog/main-web,@it-tech-blog/accessibility-zone,@it-tech-blog/react-deep-dive-zone --parallel",
-    "preview": "export ENABLED_ZONES=react,accessibility && pnpm build && pnpm start",
+    "build:llm": "nx run @it-tech-blog/llm-system-zone:build",
+    "start": "nx run-many -t start --projects=@it-tech-blog/main-web,@it-tech-blog/accessibility-zone,@it-tech-blog/react-deep-dive-zone,@it-tech-blog/llm-system-zone --parallel",
+    "preview": "export ENABLED_ZONES=react,accessibility,llm && pnpm build && pnpm start",
     "lint": "nx run-many -t lint --parallel",
     "test": "nx run-many -t test --parallel",
     "typecheck": "nx run-many -t typecheck --parallel",
@@ -23,9 +25,10 @@
     "storybook": "nx storybook @it-tech-blog/storybook",
     "build-storybook": "nx build-storybook @it-tech-blog/storybook",
     "storybook:a11y": "concurrently -k -s first -n SB,A11Y \"http-server apps/storybook/storybook-static -p 6006 --silent\" \"wait-on tcp:6006 && test-storybook --url http://localhost:6006 --config-dir apps/storybook/.storybook\"",
+    "harness:sync": "node ${SHARED_STACK_DIR:-../shared-stack}/plugins/berry-dev/scripts/standards.mjs sync --project .",
+    "harness:check": "node ${SHARED_STACK_DIR:-../shared-stack}/plugins/berry-dev/scripts/standards.mjs check --project .",
     "prepare": "husky"
   },
-  "private": true,
   "dependencies": {
     "@berrypjh/react-ui": "^1.2.0",
     "lucide-react": "^1.16.0",
@@ -62,7 +65,6 @@
     "@swc/helpers": "~0.5.18",
     "@tailwindcss/postcss": "^4.3.0",
     "@tailwindcss/vite": "^4.3.0",
-    "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@types/node": "^25.6.0",
     "@types/react": "^19.0.0",
@@ -71,7 +73,6 @@
     "axe-playwright": "^2.2.2",
     "concurrently": "^9.1.0",
     "eslint": "^9.8.0",
-    "eslint-config-next": "^16.1.6",
     "eslint-config-prettier": "^10.0.0",
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-jsx-a11y": "6.10.1",
@@ -97,6 +98,7 @@
     "vitest": "^4.1.10",
     "wait-on": "^9.0.1"
   },
+  "prettier": "@berrypjh/prettier-config",
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix",

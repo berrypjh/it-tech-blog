@@ -1,0 +1,39 @@
+/* 프리셋 fontFamily에는 pretendard만 있어 font-mono가 생성되지 않는다 */
+@theme {
+  --font-mono: 'D2Coding', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* 문서 본문 타이포그래피 — @it-tech-blog/ui doc 컴포넌트가 쓴다. 값은 @berrypjh/react-ui 토큰 */
+.doc-prose {
+  color: var(--ds-text-default);
+  font-size: var(--ds-paragraph-default-font-size);
+  line-height: var(--ds-paragraph-default-line-height);
+  letter-spacing: var(--ds-paragraph-default-letter-spacing);
+}
+
+/* 본문 문단 사이만. 카드·다이어그램 안의 <p>에는 적용하지 않는다 */
+.doc-prose section > p + p {
+  margin-top: var(--ds-spacing-lg);
+}
+
+.doc-prose strong {
+  font-weight: var(--ds-font-weight-semi-bold);
+}
+
+.doc-prose a:not([data-plain]) {
+  color: var(--ds-text-link);
+  text-decoration: underline;
+  text-underline-offset: var(--ds-spacing-2xs);
+}
+
+.doc-prose :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  padding: var(--ds-spacing-2xs) var(--ds-spacing-sm);
+  border-radius: var(--ds-radius-xs);
+  background-color: var(--ds-field-surface-subtle);
+}
+
+.doc-prose [id] {
+  scroll-margin-top: var(--ds-spacing-xl);
+}

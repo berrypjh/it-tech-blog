@@ -1,3 +1,4 @@
+export * from './doc';
 export * from './error';
 export * from './icons';
 export * from './page';

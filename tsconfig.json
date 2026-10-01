@@ -29,6 +29,12 @@
     },
     {
       "path": "./packages/ui"
+    },
+    {
+      "path": "./apps/llm-system-zone"
+    },
+    {
+      "path": "./apps/llm-system-zone-e2e"
     }
   ]
 }

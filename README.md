@@ -1,37 +1,61 @@
-# IT Tech Blog
+# it-tech-blog
 
-**Nx** 기반 IT 기술 블로그 멀티존 모노레포입니다.
+복잡한 기술 개념을 예제와 실습형 콘텐츠로 풀어 보이는 블로그. 주제마다 독립된 Next.js 앱(존)을 두고, 호스트 앱 `main-web`이 같은 origin으로 묶는다(Next.js Multi-Zones).
 
-## 기술 스택
+## 구조
 
-| 분류 | 기술 |
-| --- | --- |
-| **Monorepo & Build** | ![Nx](https://img.shields.io/badge/Nx-143055?style=flat-square&logo=nx&logoColor=white) ![pnpm](https://img.shields.io/badge/pnpm-F69220?style=flat-square&logo=pnpm&logoColor=white) |
-| **Web** | ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white)  ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white) |
-| **Testing** | ![Playwright](https://img.shields.io/badge/Playwright-45ba4b?style=flat-square&logo=playwright&logoColor=white) |
+| 앱                     | 포트 | 경로             |
+| ---------------------- | ---- | ---------------- |
+| `main-web`             | 3000 | `/` (호스트)     |
+| `accessibility-zone`   | 4001 | `/accessibility` |
+| `react-deep-dive-zone` | 4002 | `/react`         |
+| `llm-system-zone`      | 4003 | `/llm`           |
 
-## 앱 구조
-
-```text
-apps/
-├── main-web/             # 메인 페이지
-├── main-web-e2e/         # 메인 페이지 E2E 테스트
-├── accessibility-zone/   # 접근성 페이지
-└── accessibility-zone-e2e/ # 접근성 페이지 E2E 테스트
 ```
+apps/
+├── main-web                 호스트 앱 · 랜딩
+├── accessibility-zone       웹 접근성 존
+├── react-deep-dive-zone     React 내부 동작 존
+├── llm-system-zone          LLM 시스템 존
+├── storybook                packages/ui 스토리 · axe 검사
+└── *-e2e                    각 앱의 E2E (Playwright)
+packages/
+├── ui                       존 공용 셸 · 문서 컴포넌트 · 페이지 · 아이콘 · 테마 브리지 · 존 전환
+├── preferences              테마 · 언어 · 글자 크기 · 폰트 · 모션 설정
+└── utils                    대비율 계산 · useLang
+```
+
+Nx가 작업 orchestration을 담당한다. 에이전트 지침은 [AGENTS.md](AGENTS.md)와 `.claude/rules/`에 있다.
 
 ## 시작하기
 
+공용 UI · lint · format · tsconfig 설정은 GitHub Packages의 `@berrypjh/*` 패키지에서 온다. **토큰이 없으면 `pnpm install`이 401로 실패한다.**
+
 ```bash
-# 의존성 설치
+export GITHUB_TOKEN=<read:packages 권한이 있는 PAT>
 pnpm install
-
-# 전체 개발 서버 실행
-pnpm dev
-
-# 메인 웹 개발 서버만 실행
-pnpm dev:main
-
-# 접근성 앱 개발 서버만 실행
-pnpm dev:a11y
 ```
+
+```bash
+pnpm dev                     # 모든 앱 — http://localhost:3000
+pnpm dev:main                # main-web만
+pnpm dev:a11y                # accessibility-zone만
+pnpm dev:react-deep-dive     # react-deep-dive-zone만
+pnpm dev:llm                 # llm-system-zone만
+pnpm preview                 # 빌드 후 프로덕션 모드로 실행
+pnpm storybook               # Storybook
+```
+
+## 검증
+
+```bash
+pnpm lint && pnpm typecheck && pnpm test && pnpm build
+pnpm format:check
+pnpm e2e              # Playwright (브라우저 필요)
+pnpm storybook:a11y   # Storybook axe 검사. build-storybook이 먼저 필요
+pnpm harness:check    # 공통 rule이 shared-stack 원본과 같은지 (../shared-stack checkout 필요)
+```
+
+## 라이선스
+
+MIT

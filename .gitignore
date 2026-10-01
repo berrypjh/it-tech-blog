@@ -93,6 +93,7 @@ storybook-static/
 # design token generated files
 **/.generated/
 **/_generated/
+!.claude/rules/_generated/
 
 # test / coverage
 coverage/
