@@ -11,6 +11,7 @@ import { UIThemeBridge } from '@it-tech-blog/ui';
 import { AppShell } from '@/components/shell';
 
 import '@berrypjh/react-ui/styles.css';
+import '@it-tech-blog/ui/zone-transition.css';
 import './global.css';
 
 export const generateMetadata = async () => {
