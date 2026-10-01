@@ -8,6 +8,14 @@
           "PORT": "4001"
         }
       }
+    },
+    "start": {
+      "options": {
+        "command": "next start",
+        "env": {
+          "PORT": "4001"
+        }
+      }
     }
   }
 }

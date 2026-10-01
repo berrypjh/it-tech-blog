@@ -11,6 +11,7 @@ import { UIThemeBridge } from '@it-tech-blog/ui';
 import { AppShell } from '@/components/shell';
 
 import '@berrypjh/react-ui/styles.css';
+import '@it-tech-blog/ui/zone-transition.css';
 import './global.css';
 
 /** 라이트/다크 설정에 대응하는 react-ui 테마. 둘 다 cyan·slate 계열로 짝을 이룬다. */
