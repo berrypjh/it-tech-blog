@@ -25,8 +25,6 @@ packages/
 └── utils                    대비율 계산 · useLang
 ```
 
-Nx가 작업 orchestration을 담당한다. 에이전트 지침은 [AGENTS.md](AGENTS.md)와 `.claude/rules/`에 있다.
-
 ## 시작하기
 
 공용 UI · lint · format · tsconfig 설정은 GitHub Packages의 `@berrypjh/*` 패키지에서 온다. **토큰이 없으면 `pnpm install`이 401로 실패한다.**
