@@ -1,12 +1,32 @@
 import type { Locale } from '@it-tech-blog/preferences';
 import { DocLayout } from '@it-tech-blog/ui';
 
-const title = { ko: 'LLM 시스템 시작하기', en: 'Getting Started with LLM Systems' };
+import { PageNav } from '@/components/shared/PageNav';
+
+import { ExampleSection } from './sections/ExampleSection';
+import { FlowSection } from './sections/FlowSection';
+import { MisconceptionsSection } from './sections/MisconceptionsSection';
+import { PageHeader } from './sections/PageHeader';
+import { PartsSection } from './sections/PartsSection';
+import { ProblemSection } from './sections/ProblemSection';
+import { ReferencesSection } from './sections/ReferencesSection';
+import { RolesSection } from './sections/RolesSection';
+import { SummarySection } from './sections/SummarySection';
+import { WhatIsSection } from './sections/WhatIsSection';
+import { getToc } from './toc';
 
 export const IntroPage = ({ locale }: { locale: Locale }) => (
-  <DocLayout toc={[]}>
-    <h1 className="text-3xl leading-3xl font-bold tracking-sm text-text-default">
-      {title[locale]}
-    </h1>
+  <DocLayout toc={Object.values(getToc(locale))}>
+    <PageHeader locale={locale} />
+    <ProblemSection locale={locale} />
+    <WhatIsSection locale={locale} />
+    <RolesSection locale={locale} />
+    <FlowSection locale={locale} />
+    <PartsSection locale={locale} />
+    <ExampleSection locale={locale} />
+    <MisconceptionsSection locale={locale} />
+    <SummarySection locale={locale} />
+    <ReferencesSection locale={locale} />
+    <PageNav locale={locale} next="software-differences" />
   </DocLayout>
 );
