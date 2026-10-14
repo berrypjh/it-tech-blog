@@ -163,7 +163,7 @@ export const DocSidebar = ({
                             className={cx(
                               'flex items-center justify-between px-2.5 py-1.5 rounded-xs transition-colors duration-150 outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary',
                               isActive
-                                ? 'bg-primary-pr100 text-text-primary font-medium'
+                                ? 'bg-primaryBtn-outlinedHover text-text-primary font-medium'
                                 : 'text-text-light hover:text-text-default hover:bg-background-grey/10',
                             )}
                           >

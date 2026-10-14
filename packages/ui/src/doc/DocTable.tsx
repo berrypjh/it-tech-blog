@@ -26,7 +26,7 @@ export const DocTable = ({
         {rows.map((row, r) => (
           <tr key={r}>
             {row.map((cell, c) => (
-              <td key={c} className="text-text-light">
+              <td key={c} className="break-keep text-text-light">
                 {cell}
               </td>
             ))}

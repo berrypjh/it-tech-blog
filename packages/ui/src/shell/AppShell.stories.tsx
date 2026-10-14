@@ -147,7 +147,7 @@ const DemoSidebar = ({ pathname }: { pathname: string }) => {
                             className={
                               'w-full flex items-center justify-between px-2.5 py-1.5 rounded-xs transition-colors text-left ' +
                               (isActive
-                                ? 'bg-primary-pr100 text-text-primary font-medium'
+                                ? 'bg-primaryBtn-outlinedHover text-text-primary font-medium'
                                 : 'text-text-light hover:text-text-default hover:bg-background-grey/10')
                             }
                           >
