@@ -1,4 +1,5 @@
 import type { Locale } from '@it-tech-blog/preferences';
+import { ListenButton } from '@it-tech-blog/ui';
 
 import { List, ListItem } from '@berrypjh/react-ui';
 import { Check, Clock } from 'lucide-react';
@@ -63,6 +64,7 @@ export const PageHeader = ({ locale }: { locale: Locale }) => {
           <Clock className="h-3.5 w-3.5" aria-hidden="true" />
           {c.readingTime}
         </span>
+        <ListenButton />
       </div>
 
       <section
