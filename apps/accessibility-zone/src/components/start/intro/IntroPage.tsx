@@ -1,8 +1,10 @@
 import type { Locale } from '@it-tech-blog/preferences';
 import { DocLayout } from '@it-tech-blog/ui';
 
+import { NextPage } from '@/components/shared/PageLink';
+
+import { BarrierCaseSection } from './sections/BarrierCaseSection';
 import { DesignSystemSection } from './sections/DesignSystemSection';
-import { MisconceptionsSection } from './sections/MisconceptionsSection';
 import { PageHeader } from './sections/PageHeader';
 import { ReferencesSection } from './sections/ReferencesSection';
 import { SemanticHtmlSection } from './sections/SemanticHtmlSection';
@@ -19,13 +21,14 @@ export const IntroPage = ({ locale }: { locale: Locale }) => (
     <PageHeader locale={locale} />
     <WhatIsSection locale={locale} />
     <WhoForSection locale={locale} />
+    <BarrierCaseSection locale={locale} />
     <WhyFrontendSection locale={locale} />
     <UsabilitySection locale={locale} />
     <SemanticHtmlSection locale={locale} />
     <DesignSystemSection locale={locale} />
     <StandardsSection locale={locale} />
-    <MisconceptionsSection locale={locale} />
     <SummarySection locale={locale} />
     <ReferencesSection locale={locale} />
+    <NextPage locale={locale} id="people-and-contexts" />
   </DocLayout>
 );

@@ -3,6 +3,7 @@ import { Callout, CodeCompare, DocH2, DocH3, DocTable, ExternalLink } from '@it-
 
 import { KeyboardDemo } from '../demos/KeyboardDemo';
 import { LabelDemo } from '../demos/LabelDemo';
+import { DevtoolsGuideDiagram } from '../diagrams/DevtoolsGuideDiagram';
 import { MarkupPipelineDiagram } from '../diagrams/MarkupPipelineDiagram';
 import { getToc } from '../toc';
 
@@ -13,12 +14,6 @@ const content = {
     sourceHeading: '접근성 정보는 프론트엔드 코드에서 나온다',
     sourceBody:
       '접근성은 별도 부서가 마지막에 붙이는 레이어가 아닙니다. 사용자가 실제로 받는 정보는 프론트엔드가 작성한 마크업에서 출발합니다.',
-    sourceNote: (
-      <>
-        개발자가 작성한 DOM과 의미 정보는 브라우저가 해석하며, 그 해석 결과가{' '}
-        <strong>보조기술이 사용할 수 있는 정보</strong>를 결정합니다.
-      </>
-    ),
     exampleAHeading: '예제 A — 동작을 나타내는 요소',
     exampleABody: (
       <>
@@ -26,15 +21,20 @@ const content = {
       </>
     ),
     exampleACode: {
-      before: `<div class="btn" onclick="save()">저장</div>`,
-      after: `<button type="button" onclick="save()">저장</button>`,
+      before: `<div class="btn" onclick="save()">
+  저장
+</div>`,
+      after: `<button type="button" onclick="save()">
+  저장
+</button>`,
     },
     diffCaption: 'div와 button의 기본 동작 비교',
+    diffFirstHead: '기본 동작',
     diffRows: [
       ['Tab으로 포커스', '안 됨', '됨'],
       ['Enter / Space로 실행', '안 됨', '됨'],
       ['보조기술에 전달되는 역할', '없음 (generic)', 'button'],
-      ['추가로 작성한 코드', '—', '없음'],
+      ['같은 동작을 위해 더 쓸 코드', 'role · tabindex · 키 처리', '없음'],
     ],
     exampleAOutro:
       '마우스로는 둘 다 정상 동작하므로 개발자 화면에서는 문제가 드러나지 않습니다. 직접 확인해 보세요.',
@@ -46,30 +46,41 @@ const content = {
     },
     exampleBExplain: (
       <>
-        placeholder는 값을 입력하면 사라지는 <strong>힌트</strong>이지 필드의 이름이 아닙니다. 입력
-        도중에는 무엇을 적는 칸이었는지 확인할 수 없습니다. <code>label</code>을 연결하면 필드에
-        안정적인 이름이 생기고, 라벨을 눌러도 입력 칸이 활성화되어 클릭 대상도 넓어집니다.
+        placeholder는 값을 입력하면 사라지는 <strong>힌트</strong>입니다. 입력 도중에는 무엇을 적는
+        칸이었는지 화면에서 다시 확인할 수 없고, 흐린 글자색이라 읽기 어려운 경우도 많습니다.
+        브라우저가 다른 이름이 없을 때 placeholder를 접근 가능한 이름으로 쓰기도 하지만, 그 결과는
+        브라우저와 보조기술 조합에 따라 다르고 보이는 라벨을 대신하지도 못합니다.
+      </>
+    ),
+    exampleBLabel: (
+      <>
+        <code>label</code>을 연결하면 화면과 접근성 트리 양쪽에 안정적인 이름이 생깁니다. 라벨을
+        눌러도 입력 칸에 포커스가 가서 클릭 대상도 넓어집니다.
       </>
     ),
     quickCheckTitle: '도구 없이 30초 확인',
     quickCheckTab: (
       <>
-        마우스를 치우고 <strong>Tab 키만으로</strong> 작업 중인 화면을 훑어봅니다. 도구를 설치하기
-        전에 할 수 있는 가장 저렴한 확인 방법입니다.
+        확인하려는 화면에서 마우스를 치우고, <strong>키보드만으로</strong> 주요 작업을 끝까지 해
+        봅니다. Tab으로 이동하고 Enter·Space로 실행하면서, 포커스가 보이는지, 순서가 자연스러운지,
+        닿지 않는 기능이 없는지 봅니다. 도구를 설치하기 전에 할 수 있는 가장 저렴한 확인 방법입니다.
       </>
     ),
+    devtoolsTitle: 'DevTools로 역할과 이름 보기',
+    devtoolsMobile:
+      'DevTools는 컴퓨터 브라우저에서 열 수 있습니다. 휴대폰으로 보고 있다면 3번 결과로 어떤 차이가 나는지 먼저 살펴봐도 좋습니다.',
     quickCheckDevtools: (
       <>
-        요소의 역할과 이름은 Chrome DevTools → Elements → <strong>Accessibility</strong> 탭에서 바로
-        볼 수 있습니다. <ExternalLink href={DEVTOOLS_A11Y}>DevTools 접근성 레퍼런스</ExternalLink>
+        화면 낭독기가 읽을 역할과 이름은 Chrome DevTools에서 바로 볼 수 있습니다.{' '}
+        <ExternalLink href={DEVTOOLS_A11Y}>DevTools 접근성 레퍼런스</ExternalLink>
       </>
     ),
     outro: (
       <>
         이 예제들의 목적은 구현 방법이 아니라,{' '}
         <strong>비슷해 보이는 UI라도 DOM의 의미와 기본 상호작용 계약이 다를 수 있다</strong>는 것을
-        보여 주는 데 있습니다. <code>div</code>에 버튼 동작을 직접 부여하는 방법은 ARIA, 키보드
-        접근성 챕터에서 다룹니다.
+        보여 주는 데 있습니다. <code>div</code>에 버튼 동작을 직접 부여하는 방법보다 알맞은 요소를
+        고르는 것이 먼저입니다.
       </>
     ),
   },
@@ -77,12 +88,6 @@ const content = {
     sourceHeading: 'Accessibility information comes from frontend code',
     sourceBody:
       'Accessibility is not a layer another team adds at the end. The information people actually receive starts from the markup frontend developers write.',
-    sourceNote: (
-      <>
-        The browser interprets the DOM and semantics you write, and that interpretation decides{' '}
-        <strong>what assistive technology can use</strong>.
-      </>
-    ),
     exampleAHeading: 'Example A — an element that performs an action',
     exampleABody: (
       <>
@@ -90,15 +95,20 @@ const content = {
       </>
     ),
     exampleACode: {
-      before: `<div class="btn" onclick="save()">Save</div>`,
-      after: `<button type="button" onclick="save()">Save</button>`,
+      before: `<div class="btn" onclick="save()">
+  Save
+</div>`,
+      after: `<button type="button" onclick="save()">
+  Save
+</button>`,
     },
     diffCaption: 'Default behavior of div vs. button',
+    diffFirstHead: 'Built-in behavior',
     diffRows: [
       ['Focus with Tab', 'No', 'Yes'],
       ['Activate with Enter / Space', 'No', 'Yes'],
       ['Role exposed to assistive tech', 'None (generic)', 'button'],
-      ['Extra code written', '—', 'None'],
+      ['Extra code for the same behavior', 'role · tabindex · key handling', 'None'],
     ],
     exampleAOutro:
       'Both work with a mouse, so the problem never shows up on the developer’s screen. Try it yourself.',
@@ -110,24 +120,35 @@ const content = {
     },
     exampleBExplain: (
       <>
-        A placeholder is a <strong>hint</strong> that disappears once you type, not the field’s
-        name. While typing, you can no longer check what the field was for. Connecting a{' '}
-        <code>label</code> gives the field a stable name, and clicking the label also focuses the
-        input, which enlarges the click target.
+        A placeholder is a <strong>hint</strong> that disappears once you type. While typing, you
+        can no longer check on screen what the field was for, and its faint color is often hard to
+        read. Browsers may use the placeholder as the accessible name when nothing else is
+        available, but the result differs across browser and assistive technology combinations, and
+        it never replaces a visible label.
+      </>
+    ),
+    exampleBLabel: (
+      <>
+        Connecting a <code>label</code> gives the field a stable name both on screen and in the
+        accessibility tree. Clicking the label also focuses the input, which enlarges the click
+        target.
       </>
     ),
     quickCheckTitle: 'A 30-second check without tools',
     quickCheckTab: (
       <>
-        Put the mouse away and move through the screen you are building with{' '}
-        <strong>only the Tab key</strong>. It is the cheapest check you can do before installing
-        anything.
+        Put the mouse away and complete the main task on the screen you want to check with{' '}
+        <strong>only the keyboard</strong>. Move with Tab and activate with Enter or Space, checking
+        that focus stays visible, the order makes sense, and nothing is out of reach. It is the
+        cheapest check you can do before installing anything.
       </>
     ),
+    devtoolsTitle: 'See role and name in DevTools',
+    devtoolsMobile:
+      'DevTools opens in a desktop browser. If you are on a phone, the results in step 3 show what to expect.',
     quickCheckDevtools: (
       <>
-        You can see an element’s role and name in Chrome DevTools → Elements →{' '}
-        <strong>Accessibility</strong>.{' '}
+        Chrome DevTools shows the role and name a screen reader will announce.{' '}
         <ExternalLink href={DEVTOOLS_A11Y}>DevTools accessibility reference</ExternalLink>
       </>
     ),
@@ -137,8 +158,8 @@ const content = {
         <strong>
           UI that looks the same can have different DOM semantics and default interaction contracts
         </strong>
-        . How to give a <code>div</code> button behavior yourself is covered in the ARIA and
-        keyboard accessibility chapters.
+        . Choosing the right element comes before giving a <code>div</code> button behavior
+        yourself.
       </>
     ),
   },
@@ -155,30 +176,33 @@ export const WhyFrontendSection = ({ locale }: { locale: Locale }) => {
       <DocH3>{c.sourceHeading}</DocH3>
       <p>{c.sourceBody}</p>
       <MarkupPipelineDiagram locale={locale} />
-      <Callout variant="note">
-        <p>{c.sourceNote}</p>
-      </Callout>
 
       <DocH3>{c.exampleAHeading}</DocH3>
       <p>{c.exampleABody}</p>
       <CodeCompare {...c.exampleACode} />
       <DocTable
         caption={c.diffCaption}
-        head={['', '<div onclick>', '<button>']}
+        head={[c.diffFirstHead, '<div onclick>', '<button>']}
         rows={c.diffRows}
       />
       <p>{c.exampleAOutro}</p>
-      <KeyboardDemo locale={locale} />
+      <KeyboardDemo />
 
       <DocH3>{c.exampleBHeading}</DocH3>
       <p>{c.exampleBBody}</p>
       <CodeCompare {...c.exampleBCode} />
       <p>{c.exampleBExplain}</p>
-      <LabelDemo locale={locale} />
+      <p>{c.exampleBLabel}</p>
+      <LabelDemo />
 
       <Callout variant="practice" title={c.quickCheckTitle}>
         <p>{c.quickCheckTab}</p>
+      </Callout>
+
+      <Callout variant="practice" title={c.devtoolsTitle}>
         <p>{c.quickCheckDevtools}</p>
+        <p className="text-xxsm text-text-light">{c.devtoolsMobile}</p>
+        <DevtoolsGuideDiagram locale={locale} />
       </Callout>
 
       <p>{c.outro}</p>

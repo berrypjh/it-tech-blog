@@ -3,6 +3,8 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { cx } from '@berrypjh/react-ui';
 import { ArrowDown, AudioLines, Code, Globe, type LucideIcon, Monitor } from 'lucide-react';
 
+import { failureStages } from '@/components/shared/failureStages';
+
 const content = {
   ko: {
     dom: {
@@ -10,10 +12,13 @@ const content = {
       detail: '요소 선택 · 속성 · 텍스트 · 연결 관계',
     },
     browser: { title: '브라우저', detail: '마크업을 해석해 두 갈래의 결과를 만듭니다' },
-    screen: { title: '렌더링된 화면', detail: '눈으로 보고 마우스로 조작' },
-    tree: { title: '접근성 트리', detail: '보조기술이 읽는 역할 · 이름 · 상태' },
-    result: '인식 · 이해 · 탐색 · 조작 → 작업 완료',
-    caption: '화면이 멀쩡해도 접근성 트리는 비어 있을 수 있습니다. 둘 다 같은 마크업에서 나옵니다.',
+    screen: { title: '렌더링된 화면', detail: '보고 확대하고, 포인터·키보드·터치로 조작' },
+    tree: {
+      title: '접근성 트리',
+      detail: '플랫폼 접근성 API를 거쳐 보조기술에 전달되는 역할 · 이름 · 상태',
+    },
+    caption:
+      '개념 모형입니다. 화면이 멀쩡해 보여도 접근성 트리에서는 역할·이름·상태가 빠지거나 틀릴 수 있습니다. 둘 다 같은 마크업에서 나옵니다.',
   },
   en: {
     dom: {
@@ -21,11 +26,16 @@ const content = {
       detail: 'Element choice · attributes · text · relationships',
     },
     browser: { title: 'Browser', detail: 'Interprets markup into two results' },
-    screen: { title: 'Rendered screen', detail: 'Seen with eyes, operated with a mouse' },
-    tree: { title: 'Accessibility tree', detail: 'Role · name · state read by assistive tech' },
-    result: 'Perceive · understand · navigate · operate → task done',
+    screen: {
+      title: 'Rendered screen',
+      detail: 'Seen and zoomed, operated by pointer, keyboard, or touch',
+    },
+    tree: {
+      title: 'Accessibility tree',
+      detail: 'Role · name · state passed to assistive tech through platform accessibility APIs',
+    },
     caption:
-      'The screen can look fine while the accessibility tree is empty. Both come from the same markup.',
+      'A conceptual model. The screen can look fine while roles, names, or states are missing or wrong in the accessibility tree. Both come from the same markup.',
   },
 };
 
@@ -42,7 +52,7 @@ const Node = ({
 }) => (
   <div
     className={cx(
-      'flex items-center gap-md rounded-md border p-md',
+      'flex h-full items-center gap-md rounded-md border p-md',
       highlight
         ? 'border-stroke-primary bg-[var(--ds-background-selected)]'
         : 'border-stroke-light bg-background-surface',
@@ -76,12 +86,12 @@ export const MarkupPipelineDiagram = ({ locale }: { locale: Locale }) => {
       </div>
 
       <div className="grid gap-sm sm:grid-cols-2">
-        <div className="grid gap-sm">
+        <div className="grid grid-rows-[auto_1fr_auto] gap-sm">
           <Arrow />
           <Node icon={Monitor} {...c.screen} />
           <Arrow />
         </div>
-        <div className="grid gap-sm">
+        <div className="grid grid-rows-[auto_1fr_auto] gap-sm">
           <Arrow />
           <Node icon={AudioLines} {...c.tree} />
           <Arrow />
@@ -89,7 +99,7 @@ export const MarkupPipelineDiagram = ({ locale }: { locale: Locale }) => {
       </div>
 
       <span className="rounded-md bg-success-su500/10 p-sm text-center text-xsm font-semiBold text-text-success">
-        {c.result}
+        {failureStages[locale].map((stage) => stage.title).join(' → ')}
       </span>
 
       <figcaption className="text-center text-xxsm text-text-light">{c.caption}</figcaption>

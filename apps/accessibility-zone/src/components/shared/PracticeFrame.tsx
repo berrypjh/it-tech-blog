@@ -8,7 +8,7 @@ export const PracticeFrame = ({
   instructions: React.ReactNode;
   children: React.ReactNode;
 }) => (
-  <div className="my-xl rounded-md border border-stroke-success">
+  <div data-narration="skip" className="my-xl rounded-md border border-stroke-success">
     <p className="border-b border-stroke-light px-lg py-sm text-xxsm text-text-light">
       <strong className="text-text-success">{label}</strong> — {instructions}
     </p>

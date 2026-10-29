@@ -70,9 +70,9 @@ export const BarrierDiagram = ({ locale }: { locale: Locale }) => {
       <ArrowDown className="h-4 w-4 self-center text-text-light" aria-hidden="true" />
 
       <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-sm text-center text-xsm font-semiBold">
-        <span className="rounded-sm bg-error-er500/10 p-sm text-text-error">{c.barrier}</span>
+        <span className="rounded-sm bg-error-er500/10 p-sm text-text-default">{c.barrier}</span>
         <span className="text-xxsm font-regular text-text-light">{c.or}</span>
-        <span className="rounded-sm bg-success-su500/10 p-sm text-text-success">
+        <span className="rounded-sm bg-success-su500/10 p-sm text-text-default">
           {c.accessible}
         </span>
       </div>

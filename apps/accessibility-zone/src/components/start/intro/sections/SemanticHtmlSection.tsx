@@ -19,7 +19,8 @@ const content = {
   ko: {
     intro: (
       <>
-        예제 A의 <code>button</code>은 추가 코드 없이 여러 동작을 제공했습니다. 이것이 시맨틱 HTML이
+        예제 A에서 <code>button</code>은 역할 · Tab 포커스 · Enter/Space 실행을 추가 코드 없이
+        제공했습니다. 비활성 상태와 폼 제출까지 더하면 아래 목록이 됩니다. 이것이 시맨틱 HTML이
         접근성의 출발점인 이유입니다. MDN은 이를{' '}
         <ExternalLink href={MDN_HTML}>적절한 요소를 쓰면 이 동작을 무료로 얻는다</ExternalLink>고
         설명합니다. 반대로 의미 없는 요소로 만들면 <strong>전부 직접 다시 만들어야</strong> 합니다.
@@ -28,11 +29,23 @@ const content = {
     tableCaption: 'button이 무료로 주는 것과 div로 다시 만들어야 하는 것',
     tableHead: ['기능', '<button>', '<div>로 재구현'],
     rows: [
-      ['역할(role) 전달', '기본 제공', 'role="button"'],
-      ['Tab 포커스', '기본 제공', 'tabindex="0"'],
-      ['Enter / Space 실행', '기본 제공', 'keydown 핸들러 직접 작성'],
-      ['비활성 상태', 'disabled', 'aria-disabled + 이벤트 차단 로직'],
-      ['폼 제출 연동', 'type="submit"', '직접 구현'],
+      ['역할(role) 전달', '기본 제공', <code key="c">role=&quot;button&quot;</code>],
+      ['Tab 포커스', '기본 제공', <code key="c">tabindex=&quot;0&quot;</code>],
+      [
+        'Enter / Space 실행',
+        '기본 제공',
+        <span key="c">
+          <code>keydown</code> 핸들러 직접 작성
+        </span>,
+      ],
+      [
+        '비활성 상태',
+        <code key="b">disabled</code>,
+        <span key="c">
+          <code>aria-disabled</code> + 이벤트 차단 로직
+        </span>,
+      ],
+      ['폼 제출 연동', <code key="b">type=&quot;submit&quot;</code>, '직접 구현'],
     ],
     rebuildBody: (
       <>
@@ -41,8 +54,9 @@ const content = {
       </>
     ),
     menuLabel: '메뉴 열기',
-    rebuiltLabel: 'div로 버튼을 재구현한 코드 — 이래도 disabled·submit은 아직 없습니다',
-    sameLabel: '같은 결과',
+    rebuiltLabel:
+      'div로 버튼을 재구현한 코드 — disabled·submit이 없고, Space를 누르면 페이지도 함께 스크롤됩니다',
+    sameLabel: 'button으로 쓰면 — 더 적은 코드로 더 많은 기본 동작',
     note: (
       <>
         접근성 구현은 ARIA를 추가하는 것보다 먼저, <strong>HTML이 이미 제공하는 의미와 동작</strong>
@@ -53,8 +67,9 @@ const content = {
   en: {
     intro: (
       <>
-        In Example A, <code>button</code> provided several behaviors with no extra code. That is why
-        semantic HTML is where accessibility starts. MDN describes it as{' '}
+        In Example A, <code>button</code> provided its role, Tab focus and Enter/Space activation
+        with no extra code. Add the disabled state and form submission and you get the list below.
+        That is why semantic HTML is where accessibility starts. MDN describes it as{' '}
         <ExternalLink href={MDN_HTML}>
           getting this behavior for free by using the right element
         </ExternalLink>
@@ -65,11 +80,23 @@ const content = {
     tableCaption: 'What button gives you for free vs. what a div must rebuild',
     tableHead: ['Feature', '<button>', 'Rebuilt with <div>'],
     rows: [
-      ['Exposes role', 'Built in', 'role="button"'],
-      ['Tab focus', 'Built in', 'tabindex="0"'],
-      ['Enter / Space activation', 'Built in', 'Hand-written keydown handler'],
-      ['Disabled state', 'disabled', 'aria-disabled + event blocking logic'],
-      ['Form submission', 'type="submit"', 'Implement it yourself'],
+      ['Exposes role', 'Built in', <code key="c">role=&quot;button&quot;</code>],
+      ['Tab focus', 'Built in', <code key="c">tabindex=&quot;0&quot;</code>],
+      [
+        'Enter / Space activation',
+        'Built in',
+        <span key="c">
+          Hand-written <code>keydown</code> handler
+        </span>,
+      ],
+      [
+        'Disabled state',
+        <code key="b">disabled</code>,
+        <span key="c">
+          <code>aria-disabled</code> + event blocking logic
+        </span>,
+      ],
+      ['Form submission', <code key="b">type=&quot;submit&quot;</code>, 'Implement it yourself'],
     ],
     rebuildBody: (
       <>
@@ -78,8 +105,9 @@ const content = {
       </>
     ),
     menuLabel: 'Open menu',
-    rebuiltLabel: 'A button rebuilt with div — still no disabled or submit',
-    sameLabel: 'Same result',
+    rebuiltLabel:
+      'A button rebuilt with div — no disabled or submit, and Space also scrolls the page',
+    sameLabel: 'With button — more built-in behavior with less code',
     note: (
       <>
         Accessible implementation starts not with adding ARIA, but with correctly using{' '}
@@ -92,18 +120,13 @@ const content = {
 export const SemanticHtmlSection = ({ locale }: { locale: Locale }) => {
   const c = content[locale];
   const toc = getToc(locale);
-  const rows = c.rows.map(([feature, button, div]) => [
-    feature,
-    <code key="button">{button}</code>,
-    <code key="div">{div}</code>,
-  ]);
 
   return (
     <section aria-labelledby={toc.semanticHtml.id}>
       <DocH2 {...toc.semanticHtml} />
       <p>{c.intro}</p>
 
-      <DocTable caption={c.tableCaption} head={c.tableHead} rows={rows} />
+      <DocTable caption={c.tableCaption} head={c.tableHead} rows={c.rows} />
 
       <p>{c.rebuildBody}</p>
       <CodeBlock label={c.rebuiltLabel} tone="bad" code={rebuiltDiv(c.menuLabel)} />

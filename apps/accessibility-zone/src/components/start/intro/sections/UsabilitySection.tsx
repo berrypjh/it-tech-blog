@@ -3,6 +3,8 @@ import { Callout, DocH2, DocTable, ExternalLink } from '@it-tech-blog/ui';
 
 import { Keyboard, MousePointer2 } from 'lucide-react';
 
+import { PageLink } from '@/components/shared/PageLink';
+
 import { getToc } from '../toc';
 
 const WAI_USABILITY = 'https://www.w3.org/WAI/fundamentals/accessibility-usability-inclusion/';
@@ -16,14 +18,19 @@ const content = {
       ['핵심 질문', '동등하게 사용할 수 있나요?', '효과적이고 만족스럽게 쓰나요?'],
       ['초점', '장벽의 제거', '경험의 품질'],
       ['기준 대상', '장애가 있는 사용자', '사용자 전반'],
-      ['평가 방법', '표준 적합성, 보조기술 테스트', '사용자 조사, 과업 분석'],
+      [
+        '평가 방법',
+        '표준 적합성 평가, 보조기술 테스트, 장애가 있는 사용자 참여 평가',
+        '사용성 테스트, 사용자 조사',
+      ],
     ],
     diagram: {
       label: '접근성과 사용성은 겹치는 영역이 있지만 서로를 포함하지 않습니다',
       accessibility: '접근성',
       usability: '사용성',
       overlap: ['명확한', '오류 메시지'],
-      caption: '겹치는 영역은 있지만, 어느 쪽도 다른 쪽을 포함하지 않습니다.',
+      caption:
+        '둘 다 좋아지는 예: 명확한 오류 메시지. 겹치는 곳 밖에는 한쪽만 다루는 문제가 남습니다.',
     },
     wai: (
       <>
@@ -31,19 +38,26 @@ const content = {
         <ExternalLink href={WAI_USABILITY}>
           사용성 절차와 사용자 참여만으로는 모든 접근성 문제를 해결할 수 없다
         </ExternalLink>
-        고 명시합니다. 예를 들어 드래그로만 조작하는 커스텀 슬라이더를 보겠습니다.
+        고 명시합니다. 예를 들어 드래그로만 조작하는 커스텀 슬라이더를 마우스 사용자들과
+        테스트했다고 해 보겠습니다.
       </>
     ),
-    mouseTitle: '마우스 사용자 평가',
-    mouseBody: '드래그가 편리합니다. 사용성 점수는 좋게 나옵니다.',
+    mouseTitle: '마우스 사용자',
+    mouseBody: '드래그가 편리합니다. 사용성 테스트 결과도 좋습니다.',
     keyboardTitle: '키보드 사용자',
-    keyboardBody: '값을 바꿀 방법이 없습니다. 작업 자체가 불가능합니다.',
-    reverseTitle: '반대 방향도 성립합니다',
+    keyboardBody: '값을 바꿀 방법이 없습니다. 테스트에서는 드러나지 않은 장벽입니다.',
+    reverseTitle: '접근성 기준을 충족해도 쓰기 어려울 수 있습니다',
+    more: (
+      <>
+        포용적 설계와 표준 적합성까지 더한 네 개념의 관계는{' '}
+        <PageLink locale="ko" id="concept-boundaries" />
+        에서 한 사례로 나눠 봅니다.
+      </>
+    ),
     reverseBody: (
       <>
-        접근성 기준을 통과했다고 좋은 UX가 보장되지는 않습니다. 모든 이미지에 대체 텍스트가 있어도
-        그 값이 <code>alt=&quot;이미지1&quot;</code>이라면 기술적으로는 존재하지만 아무 정보도
-        전달하지 못합니다.
+        결제가 12단계로 나뉘어 있어도 모든 칸에 라벨이 있고 키보드로 끝까지 갈 수 있다면 접근성
+        기준은 충족합니다. 하지만 누구에게나 지치는 흐름입니다.
       </>
     ),
   },
@@ -57,8 +71,8 @@ const content = {
       ['Reference group', 'People with disabilities', 'Users in general'],
       [
         'Evaluation',
-        'Standards conformance, assistive tech testing',
-        'User research, task analysis',
+        'Conformance evaluation, assistive tech testing, evaluation with disabled users',
+        'Usability testing, user research',
       ],
     ],
     diagram: {
@@ -66,7 +80,8 @@ const content = {
       accessibility: 'Accessibility',
       usability: 'Usability',
       overlap: ['Clear', 'error messages'],
-      caption: 'They overlap, but neither one contains the other.',
+      caption:
+        'One thing that improves both: clear error messages. Outside the overlap, each covers problems the other misses.',
     },
     wai: (
       <>
@@ -74,19 +89,24 @@ const content = {
         <ExternalLink href={WAI_USABILITY}>
           usability processes and user involvement alone do not solve every accessibility problem
         </ExternalLink>
-        . Take a custom slider that can only be dragged.
+        . Say a custom slider that can only be dragged is tested with mouse users.
       </>
     ),
-    mouseTitle: 'Mouse user testing',
-    mouseBody: 'Dragging feels convenient. The usability score comes out well.',
+    mouseTitle: 'Mouse user',
+    mouseBody: 'Dragging feels convenient. The usability test results are good.',
     keyboardTitle: 'Keyboard user',
-    keyboardBody: 'There is no way to change the value. The task is impossible.',
-    reverseTitle: 'The reverse is true too',
+    keyboardBody: 'There is no way to change the value. The test never surfaced this barrier.',
+    reverseTitle: 'Meeting accessibility criteria can still be hard to use',
+    more: (
+      <>
+        How these relate to inclusive design and standards conformance is worked through with one
+        case in <PageLink locale="en" id="concept-boundaries" />.
+      </>
+    ),
     reverseBody: (
       <>
-        Passing accessibility criteria does not guarantee good UX. Every image can have a text
-        alternative, yet if the value is <code>alt=&quot;image1&quot;</code>, it technically exists
-        but conveys nothing.
+        A checkout split into 12 steps still meets accessibility criteria if every field has a label
+        and the whole flow works with a keyboard. It is still exhausting for everyone.
       </>
     ),
   },
@@ -155,9 +175,10 @@ export const UsabilitySection = ({ locale }: { locale: Locale }) => {
         </div>
       </div>
 
-      <Callout variant="pitfall" title={c.reverseTitle}>
+      <Callout variant="note" title={c.reverseTitle}>
         <p>{c.reverseBody}</p>
       </Callout>
+      <p>{c.more}</p>
     </section>
   );
 };

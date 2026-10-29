@@ -27,7 +27,7 @@ const references: DocReference[] = [
   {
     href: 'https://www.w3.org/WAI/people-use-web/abilities-barriers/',
     source: same('W3C WAI'),
-    title: same('How People with Disabilities Use the Web: Abilities and Barriers'),
+    title: same('Diverse Abilities and Barriers'),
     note: {
       ko: '능력과 장벽을 기능적 관점으로 서술',
       en: 'Abilities and barriers described from a functional perspective',

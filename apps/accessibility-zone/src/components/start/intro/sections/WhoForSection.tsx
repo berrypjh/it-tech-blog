@@ -1,13 +1,20 @@
 import type { Locale } from '@it-tech-blog/preferences';
 import { Callout, DocH2, DocH3, DocTable, ExternalLink } from '@it-tech-blog/ui';
 
-import { Chip, List, ListItem } from '@berrypjh/react-ui';
+import { List, ListItem } from '@berrypjh/react-ui';
+import { Brain, Hand, Headphones, Keyboard, VolumeX, ZoomIn } from 'lucide-react';
+
+import { PageLink } from '@/components/shared/PageLink';
 
 import { BarrierDiagram } from '../diagrams/BarrierDiagram';
+import { SituationGallery } from '../diagrams/SituationGallery';
 import { getToc } from '../toc';
 
 const WAI_BARRIERS = 'https://www.w3.org/WAI/people-use-web/abilities-barriers/';
 const WAI_VIDEOS = 'https://www.w3.org/WAI/perspective-videos/';
+
+/** 상황 표의 행 순서와 같은 순서로 놓인 아이콘. */
+const situationIcons = [Headphones, ZoomIn, Keyboard, VolumeX, Hand, Brain];
 
 const content = {
   ko: {
@@ -25,28 +32,37 @@ const content = {
         그리고 그것으로 충분히 많은 장벽을 없앨 수 있습니다.
       </>
     ),
-    tableHeading: '어떤 상황에서 어떤 장벽이 생기는가',
-    tableCaption: '사용 상황별로 생길 수 있는 장벽',
-    tableHead: ['사용 상황', '생길 수 있는 장벽', '유형'],
+    tableHeading: '어떤 상황에서 어떤 과업이 막히는가',
+    tableCaption: '사용 상황별로 어떤 장벽이 어떤 과업을 막는지',
+    tableHead: ['이럴 때', '이런 장벽이 있으면', '이 과업이 막힙니다'],
     rows: [
-      ['화면을 보지 않고 소리로 듣는다', '이미지·아이콘에 대체 텍스트가 없습니다', '지속'],
-      ['화면을 크게 확대해서 본다', '확대하면 레이아웃이 겹치거나 잘립니다', '지속'],
-      ['마우스 없이 키보드만 사용한다', '포커스가 어디 있는지 보이지 않습니다', '지속'],
-      ['오디오를 들을 수 없다', '영상에 자막이나 대본이 없습니다', '지속'],
-      ['손 떨림으로 정밀 조작이 어렵다', '클릭 대상이 너무 작고 서로 붙어 있습니다', '지속'],
-      ['복잡한 절차를 기억하기 어렵다', '오류 메시지가 무엇을 고칠지 알려주지 않습니다', '지속'],
-      ['팔을 다쳐 한 손만 쓴다', '두 손이 필요한 조작만 제공됩니다', '일시적'],
-      ['밝은 햇빛 아래에서 본다', '대비가 낮아 글자가 읽히지 않습니다', '상황적'],
+      ['화면 낭독기로 들을 때', '대체 텍스트 없는 이미지', '상품 사진으로 색상 고르기'],
+      ['화면을 크게 확대해서 볼 때', '확대하면 겹치거나 잘리는 레이아웃', '결제 단계 진행'],
+      ['마우스 없이 키보드만 쓸 때', '보이지 않는 포커스', '메뉴 열기'],
+      ['오디오를 들을 수 없을 때', '자막이나 대본 없는 영상', '강의 영상 수강'],
+      ['손 떨림으로 정밀 조작이 어려울 때', '작고 서로 붙은 클릭 대상', '날짜 선택'],
+      ['복잡한 절차를 기억하기 어려울 때', '고칠 점을 알려주지 않는 오류 메시지', '회원가입'],
     ],
     overlapBody: (
       <>
-        표에서 볼 점은 <strong>장벽이 서로 겹친다</strong>는 것입니다. 낮은 대비는 저시력
-        사용자에게도, 햇빛 아래의 사용자에게도 같은 방식으로 문제가 됩니다.
+        이런 순간은 위 표의 장벽과 <strong>겹칩니다</strong>. 지하철에서 소리를 켤 수 없으면 자막
+        없는 영상의 내용을 알 수 없습니다. 오디오를 들을 수 없는 사람을 막는 것과 같은 장벽입니다.
+      </>
+    ),
+    limitHeading: '일시적·상황적 제약은 장애 경험과 같지 않다',
+    limitIntro:
+      'WAI는 접근성이 팔을 다친 사람 같은 일시적 제약이나 밝은 햇빛 같은 상황적 제약에도 도움이 된다고 설명합니다. 누구나 한 번쯤 겪는 이런 순간들입니다.',
+    limitGap:
+      '하지만 장벽이 겹친다고 경험까지 같지는 않습니다. 햇빛은 피하고 깁스는 풀리지만, 장애는 대개 매일 함께하고 대안이 없는 경우가 많으며 같은 장벽을 반복해 만나는 비용이 쌓입니다. 그만큼 오래 다듬은 자기만의 방법도 있습니다. 이 차이를 지우면 장애 당사자의 경험을 가볍게 보게 됩니다.',
+    limitOutro: (
+      <>
+        여러 특성과 환경이 겹치는 상황은 <PageLink locale="ko" id="people-and-contexts" />
+        에서 이어서 다룹니다.
       </>
     ),
     priorityHeading: '우선순위를 뒤집지 않기',
     priorityBody:
-      '이 겹침 때문에 "접근성은 사실 장애인보다 모두를 위한 것"이라는 설명을 자주 봅니다. 이 문장은 순서를 뒤집습니다.',
+      '장벽이 이렇게 겹치다 보니 "접근성은 사실 장애인보다 모두를 위한 것"이라는 설명을 자주 봅니다. 이 문장은 순서를 뒤집습니다.',
     primaryLabel: '1 · 일차 목적',
     primary: '장애가 있는 사용자가 웹을 동등하게 사용할 수 있게 합니다.',
     broaderLabel: '2 · 부수적 이점',
@@ -60,9 +76,9 @@ const content = {
     ),
     videos: (
       <>
-        실제 사용자가 보조기술로 웹을 쓰는 모습은 W3C의{' '}
-        <ExternalLink href={WAI_VIDEOS}>Web Accessibility Perspectives 영상</ExternalLink>(각
-        1~2분)에서 빠르게 볼 수 있습니다.
+        장애가 있는 사람이 실제로 웹을 쓰는 모습은 W3C의{' '}
+        <ExternalLink href={WAI_VIDEOS}>Web Accessibility Perspectives 영상</ExternalLink>에서 볼 수
+        있습니다.
       </>
     ),
   },
@@ -82,44 +98,50 @@ const content = {
         <strong>interface design</strong>. That alone is enough to remove a great many barriers.
       </>
     ),
-    tableHeading: 'Which situations create which barriers',
-    tableCaption: 'Barriers that can arise in different situations',
-    tableHead: ['Situation', 'Possible barrier', 'Type'],
+    tableHeading: 'Which situations block which tasks',
+    tableCaption: 'Which barrier blocks which task in each situation',
+    tableHead: ['When…', 'If there is…', 'This task is blocked'],
     rows: [
       [
-        'Listens instead of looking at the screen',
-        'Images and icons have no text alternative',
-        'Permanent',
-      ],
-      ['Zooms the screen way in', 'Layout overlaps or gets cut off when zoomed', 'Permanent'],
-      ['Uses only a keyboard, no mouse', 'It is impossible to see where focus is', 'Permanent'],
-      ['Cannot hear audio', 'Videos have no captions or transcript', 'Permanent'],
-      [
-        'Tremor makes precise pointing hard',
-        'Click targets are tiny and packed together',
-        'Permanent',
+        'Listening with a screen reader',
+        'Images without text alternatives',
+        'Picking a color from product photos',
       ],
       [
-        'Finds complex steps hard to remember',
-        'Error messages do not say what to fix',
-        'Permanent',
+        'Zooming the screen way in',
+        'Layout that overlaps or gets cut off when zoomed',
+        'Moving through checkout',
       ],
+      ['Using only a keyboard, no mouse', 'Invisible focus', 'Opening a menu'],
+      ['Audio cannot be heard', 'Videos without captions or transcripts', 'Taking a video lecture'],
+      ['Tremor makes precise pointing hard', 'Tiny, packed click targets', 'Choosing a date'],
       [
-        'Has an injured arm and uses one hand',
-        'Only two-handed interactions are offered',
-        'Temporary',
+        'Complex steps are hard to remember',
+        'Error messages that do not say what to fix',
+        'Signing up',
       ],
-      ['Reads in bright sunlight', 'Low contrast makes text unreadable', 'Situational'],
     ],
     overlapBody: (
       <>
-        Notice that <strong>barriers overlap</strong>. Low contrast is a problem in exactly the same
-        way for a low-vision user and for someone standing in the sun.
+        These moments <strong>overlap</strong> with the barriers in the table above. On a train
+        where you cannot play sound, you cannot follow a video without captions. It is the same
+        barrier that blocks people who cannot hear audio.
+      </>
+    ),
+    limitHeading: 'Temporary and situational limits are not the same as disability',
+    limitIntro:
+      'WAI explains that accessibility also helps people with temporary limitations, such as a broken arm, and situational ones, such as bright sunlight. These are moments almost anyone goes through.',
+    limitGap:
+      'But overlapping barriers do not mean the same experience. You can step out of the sun and a cast comes off, but a disability is usually there every day, often with no alternative, and the cost of meeting the same barrier again and again keeps adding up. Disabled people also often have long-practiced ways of their own. Erasing these differences makes light of what disabled people experience.',
+    limitOutro: (
+      <>
+        Situations where several traits and environments overlap continue in{' '}
+        <PageLink locale="en" id="people-and-contexts" />.
       </>
     ),
     priorityHeading: 'Do not flip the priority',
     priorityBody:
-      'Because of this overlap, you often hear "accessibility is really for everyone, not just people with disabilities." That sentence reverses the order.',
+      'Because barriers overlap like this, you often hear "accessibility is really for everyone, not just people with disabilities." That sentence reverses the order.',
     primaryLabel: '1 · Primary purpose',
     primary: 'People with disabilities can use the web on equal terms.',
     broaderLabel: '2 · Broader benefit',
@@ -133,9 +155,8 @@ const content = {
     ),
     videos: (
       <>
-        To quickly see how real people use the web with assistive technology, watch the W3C{' '}
-        <ExternalLink href={WAI_VIDEOS}>Web Accessibility Perspectives videos</ExternalLink> (1–2
-        minutes each).
+        To see how disabled people actually use the web, watch the W3C{' '}
+        <ExternalLink href={WAI_VIDEOS}>Web Accessibility Perspectives videos</ExternalLink>.
       </>
     ),
   },
@@ -144,14 +165,6 @@ const content = {
 export const WhoForSection = ({ locale }: { locale: Locale }) => {
   const c = content[locale];
   const toc = getToc(locale);
-  const rows = c.rows.map(([situation, barrier, kind]) => [
-    situation,
-    barrier,
-    <Chip key={kind} size="sm" variant="filled">
-      {kind}
-    </Chip>,
-  ]);
-
   return (
     <section aria-labelledby={toc.whoFor.id}>
       <DocH2 {...toc.whoFor} />
@@ -162,8 +175,28 @@ export const WhoForSection = ({ locale }: { locale: Locale }) => {
       <p>{c.controlBody}</p>
 
       <DocH3>{c.tableHeading}</DocH3>
-      <DocTable caption={c.tableCaption} head={c.tableHead} rows={rows} />
+      <DocTable
+        caption={c.tableCaption}
+        head={c.tableHead}
+        rows={c.rows.map(([situation, ...rest], i) => {
+          const Icon = situationIcons[i];
+          return [
+            <span key="situation" className="inline-flex items-center gap-sm">
+              <Icon className="h-4 w-4 shrink-0 text-text-primary" aria-hidden="true" />
+              {situation}
+            </span>,
+            ...rest,
+          ];
+        })}
+      />
+
+      <DocH3>{c.limitHeading}</DocH3>
+      <p>{c.limitIntro}</p>
+      <SituationGallery locale={locale} />
       <p>{c.overlapBody}</p>
+      <p>{c.limitGap}</p>
+      <p>{c.videos}</p>
+      <p>{c.limitOutro}</p>
 
       <DocH3>{c.priorityHeading}</DocH3>
       <p>{c.priorityBody}</p>
@@ -182,7 +215,6 @@ export const WhoForSection = ({ locale }: { locale: Locale }) => {
       <Callout variant="pitfall">
         <p>{c.pitfall}</p>
       </Callout>
-      <p>{c.videos}</p>
     </section>
   );
 };
