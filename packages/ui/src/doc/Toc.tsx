@@ -30,10 +30,10 @@ export const Toc = ({ items }: { items: TocItem[] }) => {
 
   return (
     <nav aria-labelledby="toc-heading">
-      <p id="toc-heading" className="mb-md text-xxsm font-bold uppercase text-text-light">
+      <p id="toc-heading" className="mb-lg text-xxsm font-bold uppercase text-text-light">
         {heading}
       </p>
-      <List className="flex flex-col gap-px border-l border-stroke-light">
+      <List className="flex flex-col gap-2xs border-l border-stroke-light">
         {items.map((item) => {
           const isActive = item.id === activeId;
           return (
@@ -42,7 +42,7 @@ export const Toc = ({ items }: { items: TocItem[] }) => {
                 href={`#${item.id}`}
                 aria-current={isActive ? 'location' : undefined}
                 className={cx(
-                  '-ml-px block border-l-semanticBorder-default py-xs pl-md text-xxsm leading-xxxsm transition-colors',
+                  '-ml-px block border-l-semanticBorder-default py-sm pl-lg text-xxsm leading-xxsm transition-colors',
                   isActive
                     ? 'border-stroke-primary font-semiBold text-text-primary'
                     : 'border-transparent text-text-light hover:text-text-default',

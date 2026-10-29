@@ -63,7 +63,7 @@ export const DocSidebar = ({
           <SettingsPopover onLocaleChange={() => router.refresh()} />
         </div>
 
-        <p className="text-xxsm text-text-light/60 leading-snug">{t.subtitle}</p>
+        <p className="text-xxsm text-text-light leading-snug">{t.subtitle}</p>
       </div>
 
       <div className="h-px bg-stroke-default mx-lg" />
@@ -72,7 +72,7 @@ export const DocSidebar = ({
       <div className="flex justify-end px-md pt-sm">
         <button
           onClick={toggleAll}
-          className="flex items-center gap-xs px-sm py-xs rounded text-text-light/40 hover:text-text-light hover:bg-background-grey/10 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-stroke-primary"
+          className="flex items-center gap-xs px-sm py-xs rounded text-text-light hover:text-text-default hover:bg-background-grey/20 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-stroke-primary"
         >
           {anyExpanded ? (
             <ChevronsDownUp className="h-3.5 w-3.5" aria-hidden="true" />
@@ -80,7 +80,7 @@ export const DocSidebar = ({
             <ChevronsUpDown className="h-3.5 w-3.5" aria-hidden="true" />
           )}
 
-          <span className="text-[10px]">{anyExpanded ? t.collapseAll : t.expandAll}</span>
+          <span className="text-xxsm">{anyExpanded ? t.collapseAll : t.expandAll}</span>
         </button>
       </div>
 
@@ -134,7 +134,7 @@ export const DocSidebar = ({
                 )}
               >
                 <div className="overflow-hidden">
-                  <ul className="px-lg pb-sm pt-0.5 space-y-px">
+                  <ul className="px-lg pb-md pt-xs space-y-xs">
                     {group.items.map((item) => {
                       const isActive = pathname === `/${item.id}`;
 
@@ -153,7 +153,7 @@ export const DocSidebar = ({
                         </span>
                       ) : null;
 
-                      const labelClass = 'truncate text-xxsm leading-snug';
+                      const labelClass = 'truncate text-xxsm leading-xxsm';
 
                       return (
                         <li key={item.id}>
@@ -161,10 +161,10 @@ export const DocSidebar = ({
                             href={`/${item.id}`}
                             aria-current={isActive ? 'page' : undefined}
                             className={cx(
-                              'flex items-center justify-between px-2.5 py-1.5 rounded-xs transition-colors duration-150 outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary',
+                              'flex items-center justify-between px-md py-sm rounded-sm transition-colors duration-150 outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary',
                               isActive
                                 ? 'bg-primaryBtn-outlinedHover text-text-primary font-medium'
-                                : 'text-text-light hover:text-text-default hover:bg-background-grey/10',
+                                : 'text-text-light hover:text-text-default hover:bg-background-grey/20',
                             )}
                           >
                             <span className={labelClass}>{item.label}</span>
@@ -188,7 +188,7 @@ export const DocSidebar = ({
       <div className="px-lg py-md">
         <a
           href="/"
-          className="flex items-center gap-sm text-xxsm text-text-light/50 hover:text-text-light transition-colors group"
+          className="flex items-center gap-sm text-xxsm text-text-light hover:text-text-default transition-colors group"
         >
           <ArrowLeft className="h-3 w-3" aria-hidden="true" />
           {t.backToMain}

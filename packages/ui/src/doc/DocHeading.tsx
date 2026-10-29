@@ -16,7 +16,7 @@ export const DocH2 = ({ id, title }: Props) => {
   return (
     <h2
       id={id}
-      className="group mt-5xl mb-lg pt-xl border-t border-stroke-light text-xl leading-xl font-bold tracking-sm text-text-default"
+      className="doc-h2 group mt-5xl mb-lg pt-xl border-t border-stroke-light text-xl leading-xl font-bold tracking-sm text-text-default"
     >
       {title}
       <a
@@ -35,5 +35,5 @@ export const DocH2 = ({ id, title }: Props) => {
 
 /** 하위 제목(h3). */
 export const DocH3 = ({ children }: { children: React.ReactNode }) => (
-  <h3 className="mt-3xl mb-md text-md leading-md font-semiBold text-text-default">{children}</h3>
+  <h3 className="mt-4xl mb-sm text-lg leading-lg font-bold text-text-default">{children}</h3>
 );

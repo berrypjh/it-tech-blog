@@ -75,10 +75,19 @@ export const CodeBlock = ({
   );
 };
 
-/** Before/After 코드를 나란히 비교한다. 좁은 화면에서는 위아래로 쌓인다. */
-export const CodeCompare = ({ before, after }: { before: string; after: string }) => (
-  <div className="my-lg grid gap-md md:grid-cols-2">
-    <CodeBlock label="Before" tone="bad" code={before} />
-    <CodeBlock label="After" tone="good" code={after} />
-  </div>
-);
+const compareStrings = {
+  ko: { before: '고치기 전', after: '고친 후' },
+  en: { before: 'Before', after: 'After' },
+};
+
+/** 고치기 전·후 코드를 나란히 비교한다. 좁은 화면에서는 위아래로 쌓인다. */
+export const CodeCompare = ({ before, after }: { before: string; after: string }) => {
+  const t = useLang(compareStrings);
+
+  return (
+    <div className="my-lg grid gap-md md:grid-cols-2">
+      <CodeBlock label={t.before} tone="bad" code={before} />
+      <CodeBlock label={t.after} tone="good" code={after} />
+    </div>
+  );
+};

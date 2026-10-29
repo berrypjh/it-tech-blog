@@ -4,5 +4,7 @@ export * from './DocHeading';
 export * from './DocLayout';
 export * from './DocTable';
 export * from './ExternalLink';
+export * from './listen/ListenButton';
+export type { NarrationScript, ScriptLine } from './listen/script';
 export * from './ReferenceList';
 export * from './Toc';

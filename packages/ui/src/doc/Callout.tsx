@@ -48,6 +48,7 @@ export const Callout = ({
   return (
     <aside
       aria-label={label}
+      data-variant={variant}
       className={cx('my-xl rounded-md border-l-primitiveBorder-md px-xl py-lg', v.box)}
     >
       <p className={cx('mb-xs flex items-center gap-sm text-xsm font-bold', v.title)}>

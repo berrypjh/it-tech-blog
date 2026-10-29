@@ -131,7 +131,7 @@ export const SettingsPopover = ({ onLocaleChange }: SettingsPopoverProps = {}) =
         <PopoverTrigger>
           <button
             aria-label={t.label}
-            className="w-9 h-9 flex items-center justify-center rounded-sm text-text-light hover:text-text-default hover:bg-background-grey/15 transition-colors"
+            className="w-9 h-9 flex items-center justify-center rounded-sm text-text-light hover:text-text-default hover:bg-background-grey/20 transition-colors"
           >
             <SettingsIcon />
           </button>
@@ -211,7 +211,7 @@ export const SettingsPopover = ({ onLocaleChange }: SettingsPopoverProps = {}) =
               'w-full text-[10px] py-1.5 rounded-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stroke-primary',
               isDefault
                 ? 'text-text-light/25 cursor-default'
-                : 'text-text-light hover:text-text-default hover:bg-background-grey/15',
+                : 'text-text-light hover:text-text-default hover:bg-background-grey/20',
             )}
           >
             {t.reset}

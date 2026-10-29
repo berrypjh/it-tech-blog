@@ -29,6 +29,10 @@
   text-underline-offset: var(--ds-spacing-2xs);
 }
 
+.doc-prose a:not([data-plain]):hover {
+  color: var(--ds-text-link-selected);
+}
+
 .doc-prose :not(pre) > code {
   font-family: var(--font-mono);
   font-size: 0.875em;
@@ -39,4 +43,82 @@
 
 .doc-prose [id] {
   scroll-margin-top: var(--ds-spacing-xl);
+}
+
+/*
+ * 듣기 재생기가 지금 읽는 블록. 포커스 링과 겹치지 않게 outline 대신 그림자로 표시하고,
+ * 글자에 붙지 않도록 페이지 배경색 틈(4px) 바깥에 선(3px)을 둔다.
+ * 그림자는 요소 밖 7px까지 그려져, 간격이 좁은 다음 요소(코드 블록 · 층 목록의 다음 칸)가 나중에 그려지며 덮는다.
+ * 쌓임 순서를 올려 이웃 위에 그린다.
+ */
+.doc-prose [data-narrating] {
+  position: relative;
+  z-index: 1;
+  border-radius: var(--ds-radius-sm);
+  box-shadow:
+    0 0 0 4px var(--ds-background-default),
+    0 0 0 7px var(--ds-stroke-primary);
+}
+
+/* 표의 행은 넘침을 자르는 스크롤 상자 안에 있어 바깥 테두리가 잘린다. 행 안쪽을 옅게 칠하고 첫 칸에 막대를 둔다 */
+.doc-prose tr[data-narrating] {
+  box-shadow: none;
+}
+
+.doc-prose tr[data-narrating] > * {
+  background-color: rgb(var(--ds-background-selected-rgb) / 0.12);
+}
+
+.doc-prose tr[data-narrating] > :first-child {
+  box-shadow: inset 3px 0 0 var(--ds-stroke-primary);
+}
+
+/* 섹션 제목(DocH2)은 구분선과 제목 사이의 위쪽 안쪽 여백(pt-xl)을 가진다. 강조는 그 여백을 빼고 제목 글자에만 두른다.
+   다른 h2(예: 머리말의 "이 페이지에서 배우는 것")는 여백이 없어 이 보정을 받지 않는다 */
+.doc-prose .doc-h2[data-narrating] {
+  position: relative;
+  box-shadow: none;
+}
+
+.doc-prose .doc-h2[data-narrating]::after {
+  content: '';
+  position: absolute;
+  inset: var(--ds-spacing-xl) 0 0;
+  border-radius: var(--ds-radius-sm);
+  box-shadow:
+    0 0 0 4px var(--ds-background-default),
+    0 0 0 7px var(--ds-stroke-primary);
+  pointer-events: none;
+}
+
+/*
+ * 듣기 재생기의 재질. 동영상 플레이어처럼 어느 테마에서나 어두운 카드 위 밝은 글자다.
+ * 라이트: 반전 표면(background-dark) 위 background-default 글자.
+ * 다크: background-grey 위 text-default 글자. background-surface는 페이지 색과 거의 같아 자막이 배경에 묻힌다.
+ */
+.doc-prose {
+  --listen-surface: var(--ds-background-dark-rgb);
+  --listen-on-rgb: var(--ds-background-default-rgb);
+}
+
+.dark .doc-prose {
+  --listen-surface: var(--ds-background-grey-rgb);
+  --listen-on-rgb: var(--ds-text-default-rgb);
+}
+
+/*
+ * 재생기 버튼의 포커스 링. 사이트 공통 링(강조색)은 어두운 카드 위에서 대비가 낮아 카드 글자색으로 바꾼다.
+ * 공통 :focus-visible 규칙이 레이어 밖이라 Tailwind 유틸리티로는 덮을 수 없어 여기에 둔다.
+ */
+.doc-prose .listen-control:focus-visible {
+  outline-color: rgb(var(--listen-on-rgb));
+}
+
+/*
+ * 듣기 재생기가 열려 있는 동안 본문 끝에 재생기 높이만큼 여백을 둔다. 마지막 내용도 재생기 위로 올라온다.
+ * 재생기가 닫히면 변수가 사라져 0이 된다.
+ */
+#main-content {
+  padding-bottom: var(--listen-overlay, 0px);
+  scroll-padding-bottom: var(--listen-overlay, 0px);
 }
