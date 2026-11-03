@@ -24,7 +24,7 @@ const labels: Record<Locale, Record<Key, string>> = {
   ko: {
     user: '사용자',
     task: '과업',
-    context: '환경 · 사용 방식',
+    context: '환경·사용 방식',
     barrier: '장벽',
     condition: '발생 조건',
     stage: '실패 단계',

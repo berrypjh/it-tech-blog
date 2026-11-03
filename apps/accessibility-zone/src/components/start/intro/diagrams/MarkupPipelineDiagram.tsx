@@ -12,13 +12,13 @@ const content = {
       detail: '요소 선택 · 속성 · 텍스트 · 연결 관계',
     },
     browser: { title: '브라우저', detail: '마크업을 해석해 두 갈래의 결과를 만듭니다' },
-    screen: { title: '렌더링된 화면', detail: '보고 확대하고, 포인터·키보드·터치로 조작' },
+    screen: { title: '렌더링된 화면', detail: '보고 확대하고, 포인터 · 키보드 · 터치로 조작' },
     tree: {
       title: '접근성 트리',
       detail: '플랫폼 접근성 API를 거쳐 보조기술에 전달되는 역할 · 이름 · 상태',
     },
     caption:
-      '개념 모형입니다. 화면이 멀쩡해 보여도 접근성 트리에서는 역할·이름·상태가 빠지거나 틀릴 수 있습니다. 둘 다 같은 마크업에서 나옵니다.',
+      '개념 모형입니다. 화면이 멀쩡해 보여도 접근성 트리에서는 역할 · 이름 · 상태가 빠지거나 틀릴 수 있습니다. 둘 다 같은 마크업에서 나옵니다.',
   },
   en: {
     dom: {
@@ -44,13 +44,16 @@ const Node = ({
   title,
   detail,
   highlight,
+  part,
 }: {
   icon: LucideIcon;
   title: string;
   detail: string;
   highlight?: boolean;
+  part?: string;
 }) => (
   <div
+    data-part={part}
     className={cx(
       'flex h-full items-center gap-md rounded-md border p-md',
       highlight
@@ -88,12 +91,12 @@ export const MarkupPipelineDiagram = ({ locale }: { locale: Locale }) => {
       <div className="grid gap-sm sm:grid-cols-2">
         <div className="grid grid-rows-[auto_1fr_auto] gap-sm">
           <Arrow />
-          <Node icon={Monitor} {...c.screen} />
+          <Node icon={Monitor} {...c.screen} part="screen" />
           <Arrow />
         </div>
         <div className="grid grid-rows-[auto_1fr_auto] gap-sm">
           <Arrow />
-          <Node icon={AudioLines} {...c.tree} />
+          <Node icon={AudioLines} {...c.tree} part="tree" />
           <Arrow />
         </div>
       </div>

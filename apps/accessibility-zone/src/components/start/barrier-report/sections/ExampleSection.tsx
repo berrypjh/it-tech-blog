@@ -15,7 +15,7 @@ type FieldKey = TextKey | 'steps' | 'stage';
 const groups: { name: Record<Locale, string>; keys: FieldKey[] }[] = [
   { name: { ko: '상황', en: 'Situation' }, keys: ['user', 'task', 'environment', 'method'] },
   { name: { ko: '재현', en: 'Reproduction' }, keys: ['steps', 'expected', 'actual'] },
-  { name: { ko: '판단', en: 'Assessment' }, keys: ['stage', 'impact', 'recovery'] },
+  { name: { ko: '결과', en: 'Outcome' }, keys: ['stage', 'impact', 'recovery'] },
   { name: { ko: '확인', en: 'Verification' }, keys: ['unknowns'] },
 ];
 
@@ -46,7 +46,7 @@ const content: Record<
         '키보드만 쓰는 사용자는 예약 변경을 끝낼 수 없습니다. 다른 사람의 도움을 받거나 전화로 처리해야 합니다.',
       recovery: '이 화면 안에서는 키보드로 복구할 경로가 없습니다.',
       unknowns:
-        '화면 낭독기의 읽기 모드나 음성 제어로 이 요소를 누를 수 있는지는 확인하지 않았습니다. 모바일 터치와 다른 브라우저에서도 확인하지 않았습니다.',
+        '화면 낭독기의 읽기 모드나 음성 입력으로 이 요소를 누를 수 있는지는 확인하지 않았습니다. 모바일 터치와 다른 브라우저에서도 확인하지 않았습니다.',
     },
     outro:
       '실패 단계를 "탐색"으로 고른 이유는, 버튼이 눈에 보여 인식과 이해는 되지만 키보드 포커스가 그 위치로 이동하지 못해 처음 막히기 때문입니다. 같은 결함이라도 사용자와 방식이 바뀌면 처음 막히는 단계가 달라질 수 있습니다.',
@@ -74,14 +74,14 @@ const content: Record<
         'Keyboard-only users cannot finish rebooking. They need someone else’s help or have to call.',
       recovery: 'There is no keyboard recovery path within this screen.',
       unknowns:
-        'Not checked whether a screen reader reading mode or voice control can press this element. Not checked on mobile touch or other browsers.',
+        'Not checked whether a screen reader reading mode or speech input can press this element. Not checked on mobile touch or other browsers.',
     },
     outro:
       'The example picks "navigate" because the button is visible, so perceiving and understanding work, but it first fails because keyboard focus cannot move to it. With a different user and method, the same defect can first fail at a different stage.',
   },
 };
 
-/** 재현 기록 열한 항목을 상황 · 재현 · 판단 · 확인 네 묶음으로 보여준다. */
+/** 재현 기록 열한 항목을 상황 · 재현 · 결과 · 확인 네 묶음으로 보여준다. */
 const RecordView = ({ locale, title }: { locale: Locale; title: string }) => {
   const { record } = content[locale];
   const labels = recordLabels[locale];
@@ -113,6 +113,7 @@ const RecordView = ({ locale, title }: { locale: Locale; title: string }) => {
                 <Fragment key={key}>
                   <dt className="font-semiBold text-text-default">{labels[key]}</dt>
                   <dd
+                    data-part={key}
                     className={
                       key === 'stage' ? 'font-semiBold text-text-default' : 'text-text-light'
                     }

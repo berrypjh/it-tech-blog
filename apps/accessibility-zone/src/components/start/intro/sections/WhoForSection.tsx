@@ -23,7 +23,9 @@ const content = {
       <>
         장애 유형 표부터 외울 필요는 없습니다. WAI는 사람을 의학적 분류로 나누기보다{' '}
         <ExternalLink href={WAI_BARRIERS}>기능적으로 다양한 필요</ExternalLink>를 고려하라고 합니다.
-        같은 진단명을 가진 두 사람이 완전히 다른 방식으로 웹을 쓸 수 있기 때문입니다.
+        진단명이 같은 두 사람이 완전히 다른 방식으로 웹을 쓸 수 있기 때문입니다. 그래서 진단명 대신,
+        지각하고 조작하고 이해하는 데 무엇이 필요한지를 봅니다. 이것을 <strong>기능적 필요</strong>
+        라고 합니다.
       </>
     ),
     controlBody: (
@@ -67,6 +69,7 @@ const content = {
     primary: '장애가 있는 사용자가 웹을 동등하게 사용할 수 있게 합니다.',
     broaderLabel: '2 · 부수적 이점',
     broader: '그 요구를 제대로 설계하면 다른 사용자와 환경에도 이점이 생길 수 있습니다.',
+    pitfallTitle: '모두에게 좋다는 논리만 남기지 않습니다',
     pitfall: (
       <>
         두 번째가 첫 번째를 대체하지 않습니다. &quot;모두에게 좋으니까 하자&quot;는 논리만 남으면,
@@ -89,7 +92,8 @@ const content = {
         You do not need to memorize a table of disability types. WAI recommends considering{' '}
         <ExternalLink href={WAI_BARRIERS}>diverse functional needs</ExternalLink> rather than
         medical categories, because two people with the same diagnosis can use the web in entirely
-        different ways.
+        different ways. So instead of a diagnosis, look at what someone needs to perceive, operate,
+        and understand. These are called <strong>functional needs</strong>.
       </>
     ),
     controlBody: (
@@ -146,6 +150,7 @@ const content = {
     primary: 'People with disabilities can use the web on equal terms.',
     broaderLabel: '2 · Broader benefit',
     broader: 'When that need is designed well, other users and environments can benefit too.',
+    pitfallTitle: 'Do not leave only the "good for everyone" argument',
     pitfall: (
       <>
         The second does not replace the first. If &quot;let&apos;s do it because it helps
@@ -212,7 +217,7 @@ export const WhoForSection = ({ locale }: { locale: Locale }) => {
           </ListItem>
         </List>
       </div>
-      <Callout variant="pitfall">
+      <Callout variant="pitfall" title={c.pitfallTitle}>
         <p>{c.pitfall}</p>
       </Callout>
     </section>

@@ -4,6 +4,8 @@ import { ListenButton } from '@it-tech-blog/ui';
 import { List, ListItem } from '@berrypjh/react-ui';
 import { Check, Clock } from 'lucide-react';
 
+import { narration } from '../narration';
+
 const content = {
   ko: {
     eyebrow: '01장 · 2 / 5',
@@ -21,11 +23,11 @@ const content = {
     readingTime: '읽는 시간 약 8분',
     learnHeading: '이 페이지에서 배우는 것',
     learnItems: [
-      '시각·청각·운동·인지 특성을 진단명이 아니라 기능적 필요로 설명하기',
+      '시각 · 청각 · 운동 · 인지 특성을 진단명이 아니라 기능적 필요로 설명하기',
       '장애 유형과 보조기술이 1:1로 대응하지 않는다는 점 이해하기',
-      '여러 특성과 기기·장소·네트워크 같은 환경이 겹친 복합 상황 읽기',
-      '한 과업이 맥락마다 다른 단계에서 막히는 조건과 복구 경로를 사례로 기록하기',
-      '장애 체험으로 알 수 있는 것과 없는 것 구분하기',
+      '여러 특성과 기기 · 장소 · 네트워크 같은 환경이 겹친 복합 상황 읽기',
+      '한 과업이 맥락마다 다른 단계에서 막히는 조건과 복구 경로 비교하기',
+      '직접 따라 해 보기로 알 수 있는 것과 없는 것 구분하기',
     ],
   },
   en: {
@@ -48,7 +50,7 @@ const content = {
       'Describe visual, auditory, motor, and cognitive traits as functional needs, not diagnoses',
       'Understand that disability types and assistive technologies do not map one-to-one',
       'Read combined situations where several traits meet device, place, and network',
-      'Record as a case the conditions and recovery paths of one task blocked at different stages',
+      'Compare the conditions and recovery paths of one task blocked at different stages',
       'Separate what disability simulation can and cannot tell you',
     ],
   },
@@ -69,7 +71,7 @@ export const PageHeader = ({ locale }: { locale: Locale }) => {
           <Clock className="h-3.5 w-3.5" aria-hidden="true" />
           {c.readingTime}
         </span>
-        <ListenButton />
+        <ListenButton script={narration} />
       </div>
 
       <section

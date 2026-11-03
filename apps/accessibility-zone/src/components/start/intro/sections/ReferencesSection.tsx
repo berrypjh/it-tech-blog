@@ -11,7 +11,7 @@ const references: DocReference[] = [
     source: same('W3C WAI'),
     title: same('Introduction to Web Accessibility'),
     note: {
-      ko: '웹접근성의 정의, 대상 장애 범위, 일시적·상황적 제약과의 관계',
+      ko: '웹 접근성의 정의, 대상 장애 범위, 일시적 · 상황적 제약과의 관계',
       en: 'Definition, disabilities covered, and relation to temporary and situational limitations',
     },
   },
@@ -71,7 +71,7 @@ const references: DocReference[] = [
     source: same('Chrome'),
     title: same('Accessibility features reference (DevTools)'),
     note: {
-      ko: 'Accessibility 탭에서 역할·이름·접근성 트리 확인',
+      ko: 'Accessibility 탭에서 역할 · 이름 · 접근성 트리 확인',
       en: 'Inspect role, name, and the accessibility tree in the Accessibility pane',
     },
   },

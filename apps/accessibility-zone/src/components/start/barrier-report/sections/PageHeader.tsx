@@ -4,6 +4,8 @@ import { ListenButton } from '@it-tech-blog/ui';
 import { List, ListItem } from '@berrypjh/react-ui';
 import { Check, Clock, FlaskConical } from 'lucide-react';
 
+import { narration } from '../narration';
+
 const content = {
   ko: {
     eyebrow: '01장 · 5 / 5',
@@ -18,7 +20,7 @@ const content = {
         을 작성합니다.
       </>
     ),
-    readingTime: '읽고 실습하는 시간 약 25분',
+    readingTime: '읽는 시간 약 25분',
     practices: '브라우저 실습 2개',
     learnHeading: '이 페이지에서 배우는 것',
     learnItems: [
@@ -43,7 +45,7 @@ const content = {
         .
       </>
     ),
-    readingTime: 'About 25 min to read and practice',
+    readingTime: 'About 25 min read',
     practices: '2 in-browser exercises',
     learnHeading: 'What you will learn',
     learnItems: [
@@ -75,7 +77,7 @@ export const PageHeader = ({ locale }: { locale: Locale }) => {
           <FlaskConical className="h-3.5 w-3.5" aria-hidden="true" />
           {c.practices}
         </span>
-        <ListenButton />
+        <ListenButton script={narration} />
       </div>
 
       <section

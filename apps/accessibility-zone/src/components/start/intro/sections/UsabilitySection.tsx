@@ -13,7 +13,7 @@ const content = {
   ko: {
     intro: '두 단어는 자주 같은 뜻처럼 쓰이지만, 던지는 질문이 다릅니다.',
     tableCaption: '접근성과 사용성 비교',
-    tableHead: ['구분', '접근성 (Accessibility)', '사용성 (Usability)'],
+    tableHead: ['구분', '접근성(accessibility)', '사용성(usability)'],
     rows: [
       ['핵심 질문', '동등하게 사용할 수 있나요?', '효과적이고 만족스럽게 쓰나요?'],
       ['초점', '장벽의 제거', '경험의 품질'],

@@ -15,7 +15,7 @@ const stageIcons: Record<FailureStageId, LucideIcon> = {
   complete: CircleCheck,
 };
 
-/** 실패 단계 아이콘과 이름. */
+/** 실패 단계 아이콘과 이름. 이름은 짧은 꼬리표라 좁은 표 칸에서도 한 줄로 둔다(여러 줄이면 아이콘이 세로 가운데로 떠 보인다). */
 export const StageLabel = ({
   locale,
   id,
@@ -27,7 +27,7 @@ export const StageLabel = ({
 }) => {
   const Icon = stageIcons[id];
   return (
-    <span className={cx('inline-flex items-center gap-xs', className)}>
+    <span className={cx('inline-flex items-center gap-xs whitespace-nowrap', className)}>
       <Icon className="h-4 w-4 shrink-0 text-text-primary" aria-hidden="true" />
       {stageTitle(locale, id)}
     </span>

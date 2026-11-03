@@ -2,7 +2,9 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { ListenButton } from '@it-tech-blog/ui';
 
 import { List, ListItem } from '@berrypjh/react-ui';
-import { Check, Clock, FlaskConical } from 'lucide-react';
+import { Check, Clock } from 'lucide-react';
+
+import { narration } from '../narration';
 
 const content = {
   ko: {
@@ -17,13 +19,12 @@ const content = {
       </>
     ),
     readingTime: '읽는 시간 약 12분',
-    practices: '자가 점검 5문항',
     learnHeading: '이 페이지에서 배우는 것',
     learnItems: [
-      '접근성 · 사용성 · 포용적 설계 · 표준 적합성이 각각 묻는 질문',
-      '한 사례에서 네 관점의 판단이 서로 달라지는 이유',
-      '표준 적합성 · 과업 성공 · 법적 의무를 나눠 말하는 방법',
-      '규범 문서와 참고 문서로 문장의 근거를 가리는 방법',
+      '접근성 · 사용성 · 포용적 설계 · 표준 적합성이 각각 묻는 질문 구분하기',
+      '한 사례에서 네 관점의 판단이 서로 달라지는 이유 이해하기',
+      '표준 적합성 · 과업 성공 · 법적 의무를 나눠 말하기',
+      '규범 문서와 참고 문서로 문장의 근거 가리기',
     ],
   },
   en: {
@@ -39,13 +40,12 @@ const content = {
       </>
     ),
     readingTime: 'About 12 min read',
-    practices: '5 self-check questions',
     learnHeading: 'What you will learn',
     learnItems: [
-      'The question each of accessibility, usability, inclusive design, and conformance asks',
-      'Why the four perspectives reach different judgments on one case',
-      'How to state conformance, task success, and legal obligation separately',
-      'How to tell where a statement comes from: normative or informative sources',
+      'Tell apart the question each of accessibility, usability, inclusive design, and conformance asks',
+      'Understand why the four perspectives reach different judgments on one case',
+      'State conformance, task success, and legal obligation separately',
+      'Tell where a statement comes from: normative or informative sources',
     ],
   },
 };
@@ -65,11 +65,7 @@ export const PageHeader = ({ locale }: { locale: Locale }) => {
           <Clock className="h-3.5 w-3.5" aria-hidden="true" />
           {c.readingTime}
         </span>
-        <span className="flex items-center gap-xs">
-          <FlaskConical className="h-3.5 w-3.5" aria-hidden="true" />
-          {c.practices}
-        </span>
-        <ListenButton />
+        <ListenButton script={narration} />
       </div>
 
       <section

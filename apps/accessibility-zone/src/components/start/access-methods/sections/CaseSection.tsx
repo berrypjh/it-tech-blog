@@ -15,7 +15,7 @@ const content = {
     fields: {
       user: '손으로 키보드와 마우스를 쓰기 어려워 음성 입력으로 컴퓨터를 쓰는 사용자',
       task: '고객 문의 내용을 받아쓰기로 입력하고 보내기',
-      context: '데스크톱 운영체제의 음성 제어 기능, 데스크톱 브라우저',
+      context: '데스크톱 운영체제의 음성 입력 기능, 데스크톱 브라우저',
       barrier: '버튼의 보이는 글자는 "보내기"인데 접근 가능한 이름은 "메시지 전송"입니다.',
       condition: 'aria-label이 보이는 글자를 포함하지 않는 다른 문구로 이름을 덮어쓸 때',
       stage: 'operate',
@@ -23,9 +23,9 @@ const content = {
       recovery:
         '번호나 격자 표시 명령을 알고 있으면 복구할 수 있습니다. 명령을 모르면 복구 경로가 없습니다.',
       observed:
-        '코드와 DevTools의 Accessibility 탭에서 이름이 "메시지 전송"으로 계산되는 것을 확인할 수 있습니다.',
+        '코드와 개발자 도구의 Accessibility 탭에서 이름이 "메시지 전송"으로 계산되는 것을 확인했습니다.',
       verify:
-        '실제 음성 제어 제품과 버전에서 "보내기"라는 명령이 이 버튼에 연결되는지, 제품마다 이름 일치를 판단하는 방식이 다른지.',
+        '실제 음성 입력 제품과 버전에서 "보내기"라는 명령이 이 버튼에 연결되는지, 제품마다 이름 일치를 판단하는 방식이 다른지는 아직 확인하지 않았습니다.',
     } satisfies CaseFields,
   },
   en: {
@@ -37,7 +37,7 @@ const content = {
     fields: {
       user: 'Someone who uses a computer by speech input because using a keyboard and mouse by hand is hard',
       task: 'Dictate a support request and send it',
-      context: 'Desktop OS voice control feature, desktop browser',
+      context: 'Desktop OS speech input feature, desktop browser',
       barrier: 'The button shows "Send", but its accessible name is "Submit message".',
       condition:
         'When aria-label overrides the name with wording that does not contain the visible text',
@@ -48,7 +48,7 @@ const content = {
       observed:
         'The code and the DevTools Accessibility pane show the name computed as "Submit message".',
       verify:
-        'Whether the command "Send" reaches this button in a real voice control product and version, and whether products judge name matching differently.',
+        'Whether the command "Send" reaches this button in a real speech input product and version, and whether products judge name matching differently, has not been checked yet.',
     } satisfies CaseFields,
   },
 };

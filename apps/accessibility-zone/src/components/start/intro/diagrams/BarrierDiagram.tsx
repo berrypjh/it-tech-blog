@@ -8,7 +8,7 @@ const content = {
     factors: [
       { title: '사용자의 능력', detail: '시각 · 청각 · 운동 · 인지' },
       { title: '사용 환경', detail: '밝기 · 소음 · 이동 중 · 네트워크' },
-      { title: '입력·출력 방식', detail: '키보드 · 스위치 · 음성 · 확대 · 스크린 리더' },
+      { title: '사용 방식', detail: '키보드 · 스위치 · 음성 입력 · 확대 · 화면 낭독기' },
       { title: '인터페이스 설계', detail: '프론트엔드가 직접 결정합니다', owned: true },
     ],
     barrier: '장벽(Barrier)',
@@ -20,7 +20,7 @@ const content = {
     factors: [
       { title: 'User abilities', detail: 'Vision · hearing · motor · cognition' },
       { title: 'Environment', detail: 'Glare · noise · on the move · network' },
-      { title: 'Input & output', detail: 'Keyboard · switch · voice · zoom · screen reader' },
+      { title: 'Way of use', detail: 'Keyboard · switch · speech input · zoom · screen reader' },
       { title: 'Interface design', detail: 'Decided directly by frontend', owned: true },
     ],
     barrier: 'Barrier',

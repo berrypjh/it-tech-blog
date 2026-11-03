@@ -11,7 +11,7 @@ const captions = {
   en: 'When an early step is blocked, every later step is blocked too. When you record a barrier, note the first step where it failed.',
 };
 
-/** 사용자가 작업을 끝내기까지 거치는 단계. 한 단계라도 막히면 완료되지 않는다. */
+/** 사용자가 과업을 끝내기까지 거치는 단계. 한 단계라도 막히면 완료되지 않는다. */
 export const TaskFlowDiagram = ({ locale }: { locale: Locale }) => (
   <figure className="my-xl">
     <List ordered className="grid grid-cols-2 gap-sm sm:grid-cols-3">

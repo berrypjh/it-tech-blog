@@ -53,11 +53,12 @@ const content = {
       keyboard: (
         <>
           체크는 이 브라우저에서 실제로 일어난 이벤트로만 채워집니다. macOS Safari는 기본 설정에서
-          Tab이 버튼을 건너뛰니 <Kbd>Option</Kbd>+<Kbd>Tab</Kbd>으로 이동해 보세요.
+          Tab이 링크와 버튼을 건너뜁니다. <Kbd>Option</Kbd>+<Kbd>Tab</Kbd>으로 이동하거나, Safari
+          설정의 고급에서 &apos;Tab 키를 눌러 웹 페이지의 각 항목 강조&apos;를 켭니다.
         </>
       ),
       touch:
-        'Tab 도착 여부는 이 브라우저가 계산한 tabIndex입니다. Enter·Space 실행은 키보드로만 확인할 수 있고, 휴대폰도 블루투스 키보드를 연결하면 해 볼 수 있습니다.',
+        'Tab 도착 여부는 이 브라우저가 계산한 tabIndex입니다. Enter · Space 실행은 키보드로만 확인할 수 있고, 휴대폰도 블루투스 키보드를 연결하면 해 볼 수 있습니다.',
     },
     reset: '다시 하기',
     checked: (target: string, check: string) => `${target} — ${check} 확인됨`,
@@ -91,7 +92,9 @@ const content = {
       keyboard: (
         <>
           Checks are filled only by events that actually happened in this browser. In macOS Safari,
-          Tab skips buttons by default, so move with <Kbd>Option</Kbd>+<Kbd>Tab</Kbd>.
+          Tab skips links and buttons by default. Move with <Kbd>Option</Kbd>+<Kbd>Tab</Kbd>, or
+          turn on &apos;Press Tab to highlight each item on a webpage&apos; in Safari Settings under
+          Advanced.
         </>
       ),
       touch:

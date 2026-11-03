@@ -52,6 +52,7 @@ const content: Record<
     startLabel: string;
     lookLabel: string;
     criteriaLabel: string;
+    criterion: (criterion: Criterion) => string;
     checks: Check[];
     recordTitle: string;
     record: string[];
@@ -63,13 +64,14 @@ const content: Record<
     criteriaNote: (standards) => (
       <>
         카드 아래에는 확인 항목과 이어지는 <ExternalLink href={WCAG22}>WCAG 2.2</ExternalLink> 성공
-        기준을 적었습니다. 괄호 안의 A·AA는 기준의 수준이며, 수준의 뜻은 01.1의 {standards}에서
+        기준을 적었습니다. 괄호 안의 A · AA는 기준의 수준이며, 수준의 뜻은 {standards}에서
         설명합니다. 각 기준의 정확한 조건은 원문에서 확인합니다.
       </>
     ),
     startLabel: '시작하기',
     lookLabel: '확인할 것',
     criteriaLabel: '관련 WCAG 2.2 기준',
+    criterion: ({ id, name, level }) => `${id} ${name}(${level})`,
     checks: [
       {
         name: '키보드',
@@ -86,8 +88,8 @@ const content: Record<
           <>
             macOS Safari는 기본 설정에서 Tab이 링크와 버튼을 건너뜁니다. <Kbd>Option</Kbd>
             {plus}
-            <Kbd>Tab</Kbd>을 쓰거나 Safari 설정의 고급에서 Tab으로 각 항목을 강조하는 옵션을 켭니다.
-            키보드를 연결하지 않은 휴대기기에서는 이 확인을 할 수 없습니다.
+            <Kbd>Tab</Kbd>으로 이동하거나, Safari 설정의 고급에서 &apos;Tab 키를 눌러 웹 페이지의 각
+            항목 강조&apos;를 켭니다. 키보드를 연결하지 않은 휴대폰에서는 이 확인을 할 수 없습니다.
           </>
         ),
         look: [
@@ -127,7 +129,7 @@ const content: Record<
         ],
         look: [
           '제목과 랜드마크만으로 페이지 구조를 파악할 수 있나요?',
-          '과업에 쓰는 컨트롤마다 이름·역할·상태가 전달되나요?',
+          '과업에 쓰는 컨트롤마다 이름 · 역할 · 상태가 전달되나요?',
           '오류와 완료 같은 상태 메시지가 포커스를 옮기지 않아도 전달되나요?',
         ],
         criteria: [
@@ -149,12 +151,12 @@ const content: Record<
         look: [
           '세로로 읽을 때 가로 스크롤이 필요하지 않나요?',
           '글자가 잘리거나 겹치지 않나요?',
-          '고정 헤더·배너가 남은 화면을 얼마나 차지하나요?',
-          '알림·툴팁이 확대된 영역 안에서 보이나요?',
+          '고정 헤더 · 배너가 남은 화면을 얼마나 차지하나요?',
+          '알림 · 툴팁이 확대된 영역 안에서 보이나요?',
         ],
         criteria: [
-          { id: '1.4.4', name: '텍스트 크기 조정 (200%)', level: 'AA' },
-          { id: '1.4.10', name: '리플로우 (320 CSS px)', level: 'AA' },
+          { id: '1.4.4', name: '텍스트 크기 조정 200%', level: 'AA' },
+          { id: '1.4.10', name: '리플로우 320 CSS px', level: 'AA' },
         ],
       },
       {
@@ -215,13 +217,13 @@ const content: Record<
       <>
         Each card ends with the <ExternalLink href={WCAG22}>WCAG 2.2</ExternalLink> success criteria
         its checks connect to. The A or AA in parentheses is the level of the criterion; levels are
-        explained in {standards} in 01.1. Check the exact conditions of each criterion in the
-        original text.
+        explained in {standards}. Check the exact conditions of each criterion in the original text.
       </>
     ),
     startLabel: 'Getting started',
     lookLabel: 'What to check',
     criteriaLabel: 'Related WCAG 2.2 criteria',
+    criterion: ({ id, name, level }) => `${id} ${name} (${level})`,
     checks: [
       {
         name: 'Keyboard',
@@ -238,7 +240,7 @@ const content: Record<
             In macOS Safari, Tab skips links and buttons by default. Use <Kbd>Option</Kbd>
             {plus}
             <Kbd>Tab</Kbd>, or turn on the option to highlight each item with Tab under Safari
-            settings, Advanced. This check cannot be done on a mobile device without a keyboard.
+            settings, Advanced. This check cannot be done on a phone without a keyboard.
           </>
         ),
         look: [
@@ -370,7 +372,7 @@ const CheckCard = ({ check, c }: { check: Check; c: (typeof content)[Locale] }) 
   <div className="rounded-md border border-stroke-light bg-background-surface p-lg">
     <h3 className="text-md leading-md font-bold text-text-default">{check.name}</h3>
     <dl className="mt-md grid gap-lg text-xsm leading-xsm sm:grid-cols-2">
-      <div>
+      <div data-part="start">
         <dt className={termClass}>{c.startLabel}</dt>
         <dd>
           <List marker className="flex flex-col gap-xs">
@@ -381,7 +383,7 @@ const CheckCard = ({ check, c }: { check: Check; c: (typeof content)[Locale] }) 
           {check.note && <p className="mt-sm text-xxsm text-text-light">{check.note}</p>}
         </dd>
       </div>
-      <div>
+      <div data-part="look">
         <dt className={termClass}>{c.lookLabel}</dt>
         <dd>
           <List marker className="flex flex-col gap-xs">
@@ -397,9 +399,7 @@ const CheckCard = ({ check, c }: { check: Check; c: (typeof content)[Locale] }) 
           <List className="flex flex-wrap gap-xs">
             {check.criteria.map((criterion) => (
               <ListItem key={criterion.id}>
-                <Chip size="sm">
-                  {criterion.id} {criterion.name} ({criterion.level})
-                </Chip>
+                <Chip size="sm">{c.criterion(criterion)}</Chip>
               </ListItem>
             ))}
           </List>
@@ -418,7 +418,7 @@ export const RealCheckSection = ({ locale }: { locale: Locale }) => {
     <section aria-labelledby={toc.realCheck.id}>
       <DocH2 {...toc.realCheck} />
       <p>{c.intro}</p>
-      <p>{c.criteriaNote(<Link href={`/intro#${standards.id}`}>{standards.title}</Link>)}</p>
+      <p>{c.criteriaNote(<Link href={`/intro#${standards.id}`}>01.1 {standards.title}</Link>)}</p>
       <div className="my-xl flex flex-col gap-md">
         {c.checks.map((check) => (
           <CheckCard key={check.name} check={check} c={c} />

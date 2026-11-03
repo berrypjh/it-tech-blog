@@ -4,6 +4,8 @@ import { ListenButton } from '@it-tech-blog/ui';
 import { List, ListItem } from '@berrypjh/react-ui';
 import { Check, Clock } from 'lucide-react';
 
+import { narration } from '../narration';
+
 const content = {
   ko: {
     eyebrow: '01장 · 3 / 5',
@@ -68,7 +70,7 @@ export const PageHeader = ({ locale }: { locale: Locale }) => {
           <Clock className="h-3.5 w-3.5" aria-hidden="true" />
           {c.readingTime}
         </span>
-        <ListenButton />
+        <ListenButton script={narration} />
       </div>
 
       <section

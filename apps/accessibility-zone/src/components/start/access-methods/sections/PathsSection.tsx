@@ -9,14 +9,14 @@ const content = {
   ko: {
     intro: (
       <>
-        <strong>보조기술</strong>(assistive technology, AT)은 장애가 있는 사람이 기기와 콘텐츠를
-        쓰도록 돕는 소프트웨어나 하드웨어입니다. 화면 낭독기·화면 확대기·음성 인식·스위치가 그
-        예이고, 키보드 조작처럼 별도 도구 없이 쓰는 전략도 있습니다. 어느 쪽이든 페이지를 쓰는
-        경로는 다음 세 축으로 나눠 볼 수 있습니다.
+        01.1에서 본 <strong>보조기술</strong>(assistive technology, AT)은 장애가 있는 사람이 기기와
+        콘텐츠를 쓰도록 돕는 소프트웨어나 하드웨어입니다. 화면 낭독기 · 화면 확대기 · 음성 입력
+        소프트웨어 · 스위치가 그 예이고, 키보드 조작처럼 별도 도구 없이 쓰는 전략도 있습니다. 어느
+        쪽이든 페이지를 쓰는 경로는 다음 세 축으로 나눠 볼 수 있습니다.
       </>
     ),
     axes: [
-      ['입력 방식', '명령을 넣는 방법입니다. 마우스·터치 대신 키, 말, 스위치 한두 개를 씁니다.'],
+      ['입력 방식', '명령을 넣는 방법입니다. 마우스 · 터치 대신 키, 말, 스위치 한두 개를 씁니다.'],
       [
         '출력 방식',
         '결과를 받는 방법입니다. 화면 전체 대신 음성, 점자, 확대된 일부 영역으로 받습니다.',
@@ -32,10 +32,10 @@ const content = {
   en: {
     intro: (
       <>
-        <strong>Assistive technology</strong> (AT) is software or hardware that helps disabled
-        people use devices and content: screen readers, screen magnifiers, speech recognition,
-        switches. Some strategies, like operating by keyboard, need no extra tool. Either way, the
-        path through a page can be split along three axes.
+        The <strong>assistive technology</strong> (AT) from 01.1 is software or hardware that helps
+        disabled people use devices and content: screen readers, screen magnifiers, speech input
+        software, switches. Some strategies, like operating by keyboard, need no extra tool. Either
+        way, the path through a page can be split along three axes.
       </>
     ),
     axes: [

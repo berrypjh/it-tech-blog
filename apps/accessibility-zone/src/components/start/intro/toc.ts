@@ -3,7 +3,7 @@ import type { TocItem } from '@it-tech-blog/ui';
 
 const titles = {
   ko: {
-    whatIs: '웹접근성이란?',
+    whatIs: '웹 접근성이란',
     whoFor: '누구를 위한 것인가?',
     barrierCase: '막힌 활동을 기록하는 법',
     whyFrontend: '프론트엔드에게 중요한 이유',

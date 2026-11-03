@@ -1,3 +1,5 @@
+import Image, { type StaticImageData } from 'next/image';
+
 import type { Locale } from '@it-tech-blog/preferences';
 import { DocH2, DocTable } from '@it-tech-blog/ui';
 
@@ -5,6 +7,16 @@ import { List, ListItem } from '@berrypjh/react-ui';
 
 import { PageLink } from '@/components/shared/PageLink';
 
+import keyboardDark from '../images/method-keyboard-dark.webp';
+import keyboardLight from '../images/method-keyboard-light.webp';
+import magnifierDark from '../images/method-magnifier-dark.webp';
+import magnifierLight from '../images/method-magnifier-light.webp';
+import screenReaderDark from '../images/method-screen-reader-dark.webp';
+import screenReaderLight from '../images/method-screen-reader-light.webp';
+import speechDark from '../images/method-speech-dark.webp';
+import speechLight from '../images/method-speech-light.webp';
+import switchDark from '../images/method-switch-dark.webp';
+import switchLight from '../images/method-switch-light.webp';
 import { getToc } from '../toc';
 
 type Method = {
@@ -13,6 +25,7 @@ type Method = {
   output: string;
   unit: string;
   what: string;
+  imageAlt: string;
   who: string;
   expects: string[];
   barriers: string[];
@@ -54,7 +67,9 @@ const content: Record<Locale, { intro: string; detailIntro: React.ReactNode; met
           output: '화면',
           unit: '포커스를 받을 수 있는 요소',
           what: '마우스 없이 키로 이동하고 실행합니다. Tab과 Shift+Tab으로 포커스를 옮기고, Enter나 Space로 실행하고, 메뉴나 탭 같은 컴포넌트 안에서는 방향키와 Esc를 씁니다.',
-          who: '정밀한 포인터 조작이 어려운 사람, 화면 낭독기 사용자, 키 입력을 흉내 내는 스위치·음성 도구 사용자, 빠른 조작을 원하는 사람',
+          imageAlt:
+            '책상 앞의 사람이 마우스 없이 키보드 키를 누르고, 모니터에서는 굵은 테두리로 그린 포커스 표시가 점선 경로를 따라 다음 버튼으로 옮겨 가 있습니다.',
+          who: '정밀한 포인터 조작이 어려운 사람, 화면 낭독기 사용자, 키 입력을 흉내 내는 스위치 · 음성 입력 도구 사용자, 빠른 조작을 원하는 사람',
           expects: [
             '모든 기능이 키로 동작합니다',
             '포커스가 어디 있는지 보입니다',
@@ -73,13 +88,15 @@ const content: Record<Locale, { intro: string; detailIntro: React.ReactNode; met
           input: '키보드 단축키, 터치 제스처',
           output: '음성, 점자',
           unit: '제목, 랜드마크, 링크, 폼 요소, 한 줄',
-          what: '화면의 내용과 요소의 역할·이름·상태를 음성이나 점자로 전달하는 소프트웨어입니다. 운영체제 기본 기능(VoiceOver, 내레이터, TalkBack)과 따로 설치하는 프로그램(NVDA 등)이 있습니다.',
+          what: '화면의 내용과 요소의 역할 · 이름 · 상태를 음성이나 점자로 전달하는 소프트웨어입니다. 운영체제 기본 기능(VoiceOver, 내레이터, TalkBack)과 따로 설치하는 프로그램(NVDA 등)이 있습니다.',
+          imageAlt:
+            '헤드폰을 쓴 사람이 눈을 감고 노트북 키보드에 두 손을 올린 채 듣고 있고, 화면 목록의 한 항목이 강조되어 있습니다.',
           who: '화면을 보지 않거나 보기 어려운 사람',
           expects: [
             '제목과 랜드마크로 페이지 구조가 드러납니다',
             '모든 컨트롤에 이름과 역할이 있습니다',
-            '펼침·선택 같은 상태가 전달됩니다',
-            '오류·완료 같은 상태 메시지가 전달됩니다',
+            '펼침 · 선택 같은 상태가 전달됩니다',
+            '오류 · 완료 같은 상태 메시지가 전달됩니다',
           ],
           barriers: [
             '이름 없는 아이콘 버튼',
@@ -93,6 +110,8 @@ const content: Record<Locale, { intro: string; detailIntro: React.ReactNode; met
           output: '확대된 화면이나 그 일부',
           unit: '스크롤과 확대 영역 이동',
           what: '브라우저 확대, 운영체제 화면 확대기, 글자 크기 설정으로 화면이나 글자를 크게 봅니다. 화면 확대기는 화면의 일부만 크게 보여줍니다.',
+          imageAlt:
+            '모니터 가까이 앉은 사람이 화면 일부를 크게 보여 주는 원형 확대 렌즈를 보고 있고, 렌즈 밖의 화면은 작게 남아 있습니다.',
           who: '저시력인 사람, 작은 화면에서 글자를 읽기 어려운 사람',
           expects: [
             '가로 스크롤 없이 한 열로 다시 배치됩니다',
@@ -109,8 +128,10 @@ const content: Record<Locale, { intro: string; detailIntro: React.ReactNode; met
           name: '음성 입력',
           input: '말 (받아쓰기, 명령)',
           output: '화면',
-          unit: '이름으로 부를 수 있는 컨트롤, 번호·격자 표시',
-          what: '말로 받아쓰기를 하고, 보이는 이름을 말해 컨트롤을 누르는 음성 인식 소프트웨어입니다. 이름을 모를 때는 화면에 번호나 격자를 띄워 고릅니다.',
+          unit: '이름으로 부를 수 있는 컨트롤, 번호 · 격자 표시',
+          what: '말로 받아쓰기를 하고, 보이는 이름을 말해 컨트롤을 누르는 음성 입력 소프트웨어입니다. 이름을 모를 때는 화면에 번호나 격자를 띄워 고릅니다.',
+          imageAlt:
+            '두 손을 무릎에 둔 사람이 책상 위 마이크에 말하고 있고, 노트북 화면의 버튼마다 작은 표시가 붙고 일부에는 격자가 겹쳐 있습니다.',
           who: '손으로 키보드나 마우스를 쓰기 어려운 사람, 손을 쓸 수 없는 상황의 사람',
           expects: [
             '화면에 보이는 라벨과 같은 단어로 컨트롤을 부를 수 있습니다',
@@ -128,6 +149,8 @@ const content: Record<Locale, { intro: string; detailIntro: React.ReactNode; met
           output: '화면',
           unit: '스캔되는 항목과 그룹',
           what: '버튼 한두 개(스위치)로 기기를 조작합니다. 하이라이트가 항목이나 그룹을 하나씩 지나가는 스캐닝 중에 원하는 곳에서 스위치를 눌러 선택합니다.',
+          imageAlt:
+            '책상 앞의 사람이 책상 가장자리에 고정한 둥근 스위치를 손으로 누르고, 태블릿 화면에서는 세 묶음 가운데 한 묶음이 강조되어 있습니다.',
           who: '움직일 수 있는 신체 부위나 동작이 제한된 사람',
           expects: [
             '핵심 기능에 적은 단계로 닿습니다',
@@ -156,6 +179,8 @@ const content: Record<Locale, { intro: string; detailIntro: React.ReactNode; met
           output: 'Screen',
           unit: 'Focusable elements',
           what: 'Moving and acting with keys instead of a mouse. Tab and Shift+Tab move focus, Enter or Space activate, and arrow keys and Esc work inside components such as menus and tabs.',
+          imageAlt:
+            'A person at a desk presses a key with no mouse in sight; on the monitor, a thick focus ring has moved along a dotted path to the next button.',
           who: 'People for whom precise pointing is hard, screen reader users, users of switch or speech tools that emulate keys, people who want speed',
           expects: [
             'Every function works by key',
@@ -176,6 +201,8 @@ const content: Record<Locale, { intro: string; detailIntro: React.ReactNode; met
           output: 'Speech, braille',
           unit: 'Headings, landmarks, links, form fields, lines',
           what: 'Software that conveys content and each element’s role, name, and state as speech or braille. Some are built into the OS (VoiceOver, Narrator, TalkBack); others are installed separately (such as NVDA).',
+          imageAlt:
+            'A person wearing headphones listens with eyes closed, both hands on the laptop keyboard, while one item in an on-screen list is highlighted.',
           who: 'People who do not or cannot easily see the screen',
           expects: [
             'Headings and landmarks reveal the page structure',
@@ -195,6 +222,8 @@ const content: Record<Locale, { intro: string; detailIntro: React.ReactNode; met
           output: 'The enlarged screen or a part of it',
           unit: 'Scrolling and panning',
           what: 'Browser zoom, OS screen magnifiers, and text size settings make the screen or text larger. A screen magnifier shows only part of the screen enlarged.',
+          imageAlt:
+            'A person sitting close to a monitor looks at a round magnifier lens that enlarges part of the screen, while the rest stays small.',
           who: 'People with low vision, people who struggle to read small screens',
           expects: [
             'Content reflows into one column without horizontal scrolling',
@@ -213,6 +242,8 @@ const content: Record<Locale, { intro: string; detailIntro: React.ReactNode; met
           output: 'Screen',
           unit: 'Controls callable by name, number or grid overlays',
           what: 'Speech recognition software for dictation and for pressing controls by saying their visible name. When the name is unknown, numbers or a grid can be overlaid to choose from.',
+          imageAlt:
+            'A person with hands resting on their lap speaks to a desk microphone; on the laptop screen, each button has a small badge and a grid is overlaid on part of the page.',
           who: 'People for whom using a keyboard or mouse by hand is hard, people whose hands are busy',
           expects: [
             'Controls can be called by the same words as their visible label',
@@ -230,6 +261,8 @@ const content: Record<Locale, { intro: string; detailIntro: React.ReactNode; met
           output: 'Screen',
           unit: 'Scanned items and groups',
           what: 'Operating a device with one or two buttons (switches). During scanning, a highlight moves through items or groups one at a time, and the user presses the switch when it reaches the target.',
+          imageAlt:
+            'A person at a desk presses a round switch clamped to the edge of the desk, while one of three groups on a tablet screen is highlighted.',
           who: 'People with limited movement or limited body parts they can move',
           expects: [
             'Key functions are reachable in few steps',
@@ -243,22 +276,64 @@ const content: Record<Locale, { intro: string; detailIntro: React.ReactNode; met
     },
   };
 
+/** 카드 순서(키보드 · 화면 낭독기 · 확대 · 음성 입력 · 스위치)와 같은 순서로 놓인 장면 그림. */
+const methodImages: { light: StaticImageData; dark: StaticImageData }[] = [
+  { light: keyboardLight, dark: keyboardDark },
+  { light: screenReaderLight, dark: screenReaderDark },
+  { light: magnifierLight, dark: magnifierDark },
+  { light: speechLight, dark: speechDark },
+  { light: switchLight, dark: switchDark },
+];
+
 const termClass = 'mb-xs text-xxsm font-semiBold text-text-light';
 
 /** 한 가지 사용 방식의 상세. 입력 · 출력 · 탐색 단위는 위 비교 표에만 둔다. */
-const MethodCard = ({ method, locale }: { method: Method; locale: Locale }) => {
+const MethodCard = ({
+  method,
+  image,
+  locale,
+}: {
+  method: Method;
+  image: { light: StaticImageData; dark: StaticImageData };
+  locale: Locale;
+}) => {
   const l = labels[locale];
 
   return (
     <div className="rounded-md border border-stroke-light bg-background-surface p-lg">
-      <h3 className="text-md leading-md font-bold text-text-default">{method.name}</h3>
-      <p className="mt-sm text-xsm leading-xsm">{method.what}</p>
-      <dl className="mt-lg grid gap-lg text-xsm leading-xsm sm:grid-cols-2">
-        <div className="sm:col-span-2">
-          <dt className={termClass}>{l.who}</dt>
-          <dd className="text-text-light">{method.who}</dd>
+      <div className="flex flex-col gap-md sm:flex-row sm:items-start">
+        <div className="min-w-0 flex-1">
+          <h3 className="text-md leading-md font-bold text-text-default">{method.name}</h3>
+          <p data-part="what" className="mt-sm text-xsm leading-xsm">
+            {method.what}
+          </p>
+          <dl className="mt-md text-xsm leading-xsm">
+            <dt className={termClass}>{l.who}</dt>
+            <dd className="text-text-light">{method.who}</dd>
+          </dl>
         </div>
-        <div>
+        {/* 좁은 화면에서는 제목 위, 넓은 화면에서는 오른쪽에 둔다. 읽는 순서는 제목이 먼저다.
+            "누가 쓰나"까지 왼쪽에 두어 그림 높이만큼 글이 차게 한다. */}
+        <div
+          data-part="picture"
+          className="order-first w-full max-w-[18rem] shrink-0 overflow-hidden rounded-md border border-stroke-light sm:order-none sm:w-[12rem]"
+        >
+          <Image
+            src={image.light}
+            alt={method.imageAlt}
+            unoptimized
+            className="h-auto w-full dark:hidden"
+          />
+          <Image
+            src={image.dark}
+            alt={method.imageAlt}
+            unoptimized
+            className="hidden h-auto w-full dark:block"
+          />
+        </div>
+      </div>
+      <dl className="mt-lg grid gap-lg text-xsm leading-xsm sm:grid-cols-2">
+        <div data-part="expects">
           <dt className={termClass}>{l.expects}</dt>
           <dd>
             <List marker className="flex flex-col gap-2xs">
@@ -268,7 +343,7 @@ const MethodCard = ({ method, locale }: { method: Method; locale: Locale }) => {
             </List>
           </dd>
         </div>
-        <div>
+        <div data-part="barriers">
           <dt className={termClass}>{l.barriers}</dt>
           <dd>
             <List marker className="flex flex-col gap-2xs">
@@ -303,8 +378,8 @@ export const MethodsSection = ({ locale }: { locale: Locale }) => {
       <DocTable caption={l.tableCaption} head={l.tableHead} rows={rows} />
       <p>{c.detailIntro}</p>
       <div className="my-xl flex flex-col gap-md">
-        {c.methods.map((method) => (
-          <MethodCard key={method.name} method={method} locale={locale} />
+        {c.methods.map((method, i) => (
+          <MethodCard key={method.name} method={method} image={methodImages[i]} locale={locale} />
         ))}
       </div>
     </section>

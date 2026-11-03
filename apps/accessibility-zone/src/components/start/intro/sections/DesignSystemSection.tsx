@@ -23,14 +23,15 @@ const content = {
     contractBody:
       '같은 요구를 시스템 수준으로 올리면, 한 번 고친 것이 이 컴포넌트를 쓰는 모든 화면에 반영됩니다.',
     tableCaption: '접근성 요구를 담는 컴포넌트 계약',
-    tableHead: ['계약', '정의하는 것', 'Button / Dialog 예시'],
+    tableHead: ['계약', '정의하는 것', 'Button·Dialog 예시'],
     labels: ['디자인 토큰', '컴포넌트 API', 'DOM 계약', '키보드 계약', '포커스 계약'],
     always: '항상',
-    token: ['대비 · 포커스 표시 · 간격 값이 정해져 있나요?', '포커스 링 색·두께를 토큰으로 고정'],
+    token: ['대비 · 포커스 표시 · 간격 값이 정해져 있나요?', '포커스 링 색 · 두께를 토큰으로 고정'],
     api: ['label · 상태 · 설명을 받나요?', '<IconButton label="닫기" />'],
     dom: ['어떤 요소로 렌더링되나요?', '<button type="button">'],
     keyboard: ['어떤 키로 조작되나요?', 'Esc로 Dialog 닫기 · Tab은 Dialog 안에서만 이동'],
     focus: ['포커스가 어디로 가고 돌아오나요?', 'Dialog가 닫히면 연 버튼으로 복귀'],
+    noteTitle: '접근성의 상당 부분은 컴포넌트에 담깁니다',
     note: (
       <>
         좋은 디자인 시스템에서 접근성의 상당 부분은{' '}
@@ -77,6 +78,7 @@ const content = {
     dom: ['Which element does it render?', '<button type="button">'],
     keyboard: ['Which keys operate it?', 'Esc closes Dialog · Tab stays inside Dialog'],
     focus: ['Where does focus go and return?', 'Returns to the opener when Dialog closes'],
+    noteTitle: 'Much of accessibility lives in components',
     note: (
       <>
         In a good design system, much of accessibility is{' '}
@@ -136,7 +138,7 @@ export const DesignSystemSection = ({ locale }: { locale: Locale }) => {
       <DocH3>{c.contractHeading}</DocH3>
       <p>{c.contractBody}</p>
       <DocTable caption={c.tableCaption} head={c.tableHead} rows={rows} />
-      <Callout variant="note">
+      <Callout variant="note" title={c.noteTitle}>
         <p>{c.note}</p>
       </Callout>
     </section>

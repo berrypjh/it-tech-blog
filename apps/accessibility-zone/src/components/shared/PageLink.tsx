@@ -9,9 +9,9 @@ import { navData } from '@/data';
 const labelOf = (locale: Locale, id: string) =>
   navData[locale].flatMap((group) => group.items).find((item) => item.id === id)?.label ?? id;
 
-/** 본문 안에서 같은 챕터의 다른 페이지로 가는 링크. 문구는 navData의 라벨을 그대로 쓴다. */
-export const PageLink = ({ locale, id }: { locale: Locale; id: string }) => (
-  <Link href={`/${id}`}>{labelOf(locale, id)}</Link>
+/** 본문 안에서 다른 페이지(또는 그 섹션)로 가는 링크. 문구는 navData의 라벨을 그대로 쓴다. */
+export const PageLink = ({ locale, id, hash }: { locale: Locale; id: string; hash?: string }) => (
+  <Link href={`/${id}${hash ? `#${hash}` : ''}`}>{labelOf(locale, id)}</Link>
 );
 
 const nextStrings = {

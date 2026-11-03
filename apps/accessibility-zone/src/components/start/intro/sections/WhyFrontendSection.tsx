@@ -13,7 +13,7 @@ const content = {
   ko: {
     sourceHeading: '접근성 정보는 프론트엔드 코드에서 나온다',
     sourceBody:
-      '접근성은 별도 부서가 마지막에 붙이는 레이어가 아닙니다. 사용자가 실제로 받는 정보는 프론트엔드가 작성한 마크업에서 출발합니다.',
+      '접근성은 별도 부서가 마지막에 붙이는 레이어가 아닙니다. 장애가 있는 사람이 기기와 콘텐츠를 쓰도록 돕는 소프트웨어나 하드웨어를 보조기술(assistive technology)이라고 합니다. 화면 낭독기 · 화면 확대기 · 음성 입력 소프트웨어 · 스위치가 그 예입니다. 사용자와 보조기술이 실제로 받는 정보는 프론트엔드가 작성한 마크업에서 출발합니다.',
     exampleAHeading: '예제 A — 동작을 나타내는 요소',
     exampleABody: (
       <>
@@ -32,12 +32,12 @@ const content = {
     diffFirstHead: '기본 동작',
     diffRows: [
       ['Tab으로 포커스', '안 됨', '됨'],
-      ['Enter / Space로 실행', '안 됨', '됨'],
+      ['Enter · Space로 실행', '안 됨', '됨'],
       ['보조기술에 전달되는 역할', '없음 (generic)', 'button'],
       ['같은 동작을 위해 더 쓸 코드', 'role · tabindex · 키 처리', '없음'],
     ],
     exampleAOutro:
-      '마우스로는 둘 다 정상 동작하므로 개발자 화면에서는 문제가 드러나지 않습니다. 직접 확인해 보세요.',
+      '마우스로는 둘 다 정상 동작하므로 개발자 화면에서는 문제가 드러나지 않습니다. 키보드로 직접 눌러 보면 차이가 보입니다.',
     exampleBHeading: '예제 B — 입력 필드의 이름',
     exampleBBody: '입력 칸 위에 텍스트를 두지 않고 placeholder로만 안내하고 싶습니다.',
     exampleBCode: {
@@ -48,8 +48,8 @@ const content = {
       <>
         placeholder는 값을 입력하면 사라지는 <strong>힌트</strong>입니다. 입력 도중에는 무엇을 적는
         칸이었는지 화면에서 다시 확인할 수 없고, 흐린 글자색이라 읽기 어려운 경우도 많습니다.
-        브라우저가 다른 이름이 없을 때 placeholder를 접근 가능한 이름으로 쓰기도 하지만, 그 결과는
-        브라우저와 보조기술 조합에 따라 다르고 보이는 라벨을 대신하지도 못합니다.
+        브라우저가 다른 이름이 없을 때 placeholder를 접근 가능한 이름(accessible name)으로 쓰기도
+        하지만, 그 결과는 브라우저와 보조기술 조합에 따라 다르고 보이는 라벨을 대신하지도 못합니다.
       </>
     ),
     exampleBLabel: (
@@ -61,18 +61,18 @@ const content = {
     quickCheckTitle: '도구 없이 30초 확인',
     quickCheckTab: (
       <>
-        확인하려는 화면에서 마우스를 치우고, <strong>키보드만으로</strong> 주요 작업을 끝까지 해
-        봅니다. Tab으로 이동하고 Enter·Space로 실행하면서, 포커스가 보이는지, 순서가 자연스러운지,
+        확인하려는 화면에서 마우스를 치우고, <strong>키보드만으로</strong> 주요 과업을 끝까지 해
+        봅니다. Tab으로 이동하고 Enter · Space로 실행하면서, 포커스가 보이는지, 순서가 자연스러운지,
         닿지 않는 기능이 없는지 봅니다. 도구를 설치하기 전에 할 수 있는 가장 저렴한 확인 방법입니다.
       </>
     ),
-    devtoolsTitle: 'DevTools로 역할과 이름 보기',
+    devtoolsTitle: '개발자 도구로 역할과 이름 보기',
     devtoolsMobile:
-      'DevTools는 컴퓨터 브라우저에서 열 수 있습니다. 휴대폰으로 보고 있다면 3번 결과로 어떤 차이가 나는지 먼저 살펴봐도 좋습니다.',
+      '개발자 도구는 컴퓨터 브라우저에서 열 수 있습니다. 휴대폰으로 보고 있다면 3번 결과로 어떤 차이가 나는지 먼저 살펴봐도 좋습니다.',
     quickCheckDevtools: (
       <>
-        화면 낭독기가 읽을 역할과 이름은 Chrome DevTools에서 바로 볼 수 있습니다.{' '}
-        <ExternalLink href={DEVTOOLS_A11Y}>DevTools 접근성 레퍼런스</ExternalLink>
+        화면 낭독기가 읽을 역할과 이름은 Chrome 개발자 도구에서 바로 볼 수 있습니다.{' '}
+        <ExternalLink href={DEVTOOLS_A11Y}>개발자 도구 접근성 레퍼런스</ExternalLink>
       </>
     ),
     outro: (
@@ -87,7 +87,7 @@ const content = {
   en: {
     sourceHeading: 'Accessibility information comes from frontend code',
     sourceBody:
-      'Accessibility is not a layer another team adds at the end. The information people actually receive starts from the markup frontend developers write.',
+      'Accessibility is not a layer another team adds at the end. Assistive technology is software or hardware that helps people with disabilities use devices and content, such as screen readers, screen magnifiers, speech input software, and switches. The information people and their assistive technology actually receive starts from the markup frontend developers write.',
     exampleAHeading: 'Example A — an element that performs an action',
     exampleABody: (
       <>
@@ -106,12 +106,12 @@ const content = {
     diffFirstHead: 'Built-in behavior',
     diffRows: [
       ['Focus with Tab', 'No', 'Yes'],
-      ['Activate with Enter / Space', 'No', 'Yes'],
+      ['Activate with Enter or Space', 'No', 'Yes'],
       ['Role exposed to assistive tech', 'None (generic)', 'button'],
       ['Extra code for the same behavior', 'role · tabindex · key handling', 'None'],
     ],
     exampleAOutro:
-      'Both work with a mouse, so the problem never shows up on the developer’s screen. Try it yourself.',
+      'Both work with a mouse, so the problem never shows up on the developer’s screen. Press them with a keyboard and the difference shows.',
     exampleBHeading: 'Example B — the name of an input field',
     exampleBBody: 'You want to guide users with a placeholder only, without text above the field.',
     exampleBCode: {

@@ -18,7 +18,7 @@ export const failureStages: Record<Locale, FailureStage[]> = {
     { id: 'navigate', title: '탐색', detail: '원하는 위치로 이동합니다' },
     { id: 'operate', title: '조작', detail: '누르고, 입력하고, 선택합니다' },
     { id: 'state', title: '상태·오류 이해', detail: '결과와 고칠 점을 압니다' },
-    { id: 'complete', title: '작업 완료', detail: '가입·주문·예약이 끝납니다' },
+    { id: 'complete', title: '과업 완료', detail: '가입·주문·예약이 끝납니다' },
   ],
   en: [
     { id: 'perceive', title: 'Perceive', detail: 'It is seen, heard, or read' },

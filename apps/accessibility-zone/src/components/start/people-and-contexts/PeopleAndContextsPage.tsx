@@ -3,7 +3,6 @@ import { DocLayout } from '@it-tech-blog/ui';
 
 import { NextPage } from '@/components/shared/PageLink';
 
-import { CaseSection } from './sections/CaseSection';
 import { CombinedSection } from './sections/CombinedSection';
 import { NeedsSection } from './sections/NeedsSection';
 import { OneTaskSection } from './sections/OneTaskSection';
@@ -20,7 +19,6 @@ export const PeopleAndContextsPage = ({ locale }: { locale: Locale }) => (
     <CombinedSection locale={locale} />
     <OneTaskSection locale={locale} />
     <SimulationSection locale={locale} />
-    <CaseSection locale={locale} />
     <SummarySection locale={locale} />
     <ReferencesSection locale={locale} />
     <NextPage locale={locale} id="access-methods" />

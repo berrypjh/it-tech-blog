@@ -4,6 +4,7 @@ import { Callout, CodeBlock, DocH2, DocTable } from '@it-tech-blog/ui';
 import type { FailureStageId } from '@/components/shared/failureStages';
 import { StageLabel } from '@/components/shared/StageLabel';
 
+import { IconOnlyDiagram, NameRowsDiagram } from '../diagrams/NameRowsDiagram';
 import { getToc } from '../toc';
 
 type Row = [string, string, string, FailureStageId];
@@ -57,20 +58,23 @@ const content = {
       ],
     ] satisfies Row[],
     body: '같은 버튼이 방식마다 다른 이유로 막히지만, 고치는 방법은 하나로 모입니다. 버튼 안에 보이는 글자 "주문 취소"를 두면 화면 낭독기가 전할 이름, 음성 입력으로 부를 단어, 툴팁 없이도 보이는 뜻이 함께 생깁니다.',
-    fixLabel: '수정 — 보이는 글자를 버튼 안에 둔 취소 버튼',
-    fix: `<button type="button">
-  <svg aria-hidden="true">…휴지통…</svg>
-  주문 취소
-</button>`,
     rowNote:
       '다만 모든 줄의 버튼 이름이 같으면 음성 입력과 스위치 사용자는 여전히 어느 주문의 버튼인지 구분하기 어렵습니다. 주문 번호처럼 줄을 구분하는 정보도 함께 전달해야 합니다.',
-    modelTitle: '이 표는 측정이 아니라 코드로 한 예상입니다',
+    rowFixLabel: '수정 — 보이는 글자와 주문 번호를 담은 취소 버튼',
+    rowFix: `<button type="button">
+  <svg aria-hidden="true">…휴지통…</svg>
+  주문 취소<span class="visually-hidden">, 주문 1024</span>
+</button>`,
+    rowFixNote:
+      '코드는 보이는 글자 "주문 취소" 뒤에, 화면에는 보이지 않는 주문 번호를 더합니다. 이름이 보이는 글자로 시작하므로 음성 입력 사용자는 여전히 "주문 취소"라고 말해 부를 수 있습니다. aria-label로 이름을 통째로 바꾸면 보이는 글자와 이름이 어긋나니 피합니다.',
+    modelTitle: '표와 그림은 측정이 아니라 코드로 한 예상입니다',
     model: (link: React.ReactNode) => (
       <>
-        화면 낭독기가 무엇을 어떤 순서로 읽는지, 음성 제어가 버튼에 번호를 어떻게 붙이는지, 스위치
-        스캔이 몇 단계인지는 제품·버전·브라우저·설정마다 다릅니다. 그래서 이 페이지는 특정 발화
-        문장을 정답처럼 보여주지 않고, 보조기술을 흉내 내는 데모도 두지 않습니다. 직접 확인할 때도
-        문장이 아니라 역할·이름·상태가 빠짐없이 전달되는지를 봅니다. 방법은 {link}에 있습니다.
+        화면 낭독기가 무엇을 어떤 순서로 읽는지, 음성 입력 소프트웨어가 버튼에 번호를 어떻게
+        붙이는지, 스위치 스캔이 몇 단계인지는 제품 · 버전 · 브라우저 · 설정마다 다릅니다. 그래서 이
+        페이지는 특정 발화 문장을 정답처럼 보여주지 않고, 보조기술을 흉내 내는 데모도 두지 않습니다.
+        직접 확인할 때도 문장이 아니라 역할 · 이름 · 상태가 빠짐없이 전달되는지를 봅니다. 방법은{' '}
+        {link}에 있습니다.
       </>
     ),
   },
@@ -123,14 +127,16 @@ const content = {
       ],
     ] satisfies Row[],
     body: 'The same button blocks each method for a different reason, but the fix converges on one change. Putting the visible text "Cancel order" inside the button gives a screen reader a name to convey, gives speech input a word to say, and shows the meaning without a tooltip.',
-    fixLabel: 'Fix — cancel button with visible text inside',
-    fix: `<button type="button">
-  <svg aria-hidden="true">…trash can…</svg>
-  Cancel order
-</button>`,
     rowNote:
       'If every row’s button has the same name, though, speech input and switch users still struggle to tell which order a button belongs to. Information that tells rows apart, such as the order number, must come through as well.',
-    modelTitle: 'This table is a prediction from code, not a measurement',
+    rowFixLabel: 'Fix — cancel button with visible text and the order number',
+    rowFix: `<button type="button">
+  <svg aria-hidden="true">…trash can…</svg>
+  Cancel order<span class="visually-hidden">, order 1024</span>
+</button>`,
+    rowFixNote:
+      'The code adds the order number after the visible text "Cancel order", hidden from the screen. Because the name starts with the visible text, speech input users can still say "Cancel order". Replacing the whole name with aria-label would split the name from the visible text, so avoid it.',
+    modelTitle: 'The table and figures are predictions from code, not measurements',
     model: (link: React.ReactNode) => (
       <>
         What a screen reader announces and in what order, how voice control numbers the button, and
@@ -157,11 +163,14 @@ export const OneTaskSection = ({ locale }: { locale: Locale }) => {
     <section aria-labelledby={toc.oneTask.id}>
       <DocH2 {...toc.oneTask} />
       <p>{c.intro}</p>
+      <IconOnlyDiagram locale={locale} />
       <CodeBlock label={c.codeLabel} tone="bad" code={c.code} />
       <DocTable caption={c.tableCaption} head={c.tableHead} rows={rows} />
       <p>{c.body}</p>
-      <CodeBlock label={c.fixLabel} tone="good" code={c.fix} />
       <p>{c.rowNote}</p>
+      <NameRowsDiagram locale={locale} />
+      <CodeBlock label={c.rowFixLabel} tone="good" code={c.rowFix} />
+      <p>{c.rowFixNote}</p>
       <Callout variant="note" title={c.modelTitle}>
         <p>{c.model(<a href={`#${toc.realCheck.id}`}>{toc.realCheck.title}</a>)}</p>
       </Callout>

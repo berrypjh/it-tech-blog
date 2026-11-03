@@ -1,6 +1,8 @@
 import type { Locale } from '@it-tech-blog/preferences';
 import { DocLayout } from '@it-tech-blog/ui';
 
+import { NextPage } from '@/components/shared/PageLink';
+
 import { ExampleSection } from './sections/ExampleSection';
 import { PageHeader } from './sections/PageHeader';
 import { ReferencesSection } from './sections/ReferencesSection';
@@ -21,5 +23,6 @@ export const BarrierReportPage = ({ locale }: { locale: Locale }) => (
     <ReviewSection locale={locale} />
     <SummarySection locale={locale} />
     <ReferencesSection locale={locale} />
+    <NextPage locale={locale} id="web-layers" />
   </DocLayout>
 );

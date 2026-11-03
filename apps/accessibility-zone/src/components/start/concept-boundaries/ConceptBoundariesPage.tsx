@@ -3,11 +3,9 @@ import { DocLayout } from '@it-tech-blog/ui';
 
 import { NextPage } from '@/components/shared/PageLink';
 
-import { CaseSection } from './sections/CaseSection';
 import { ConceptsSection } from './sections/ConceptsSection';
 import { GapsSection } from './sections/GapsSection';
 import { LevelsSection } from './sections/LevelsSection';
-import { OneCaseSection } from './sections/OneCaseSection';
 import { PageHeader } from './sections/PageHeader';
 import { ReferencesSection } from './sections/ReferencesSection';
 import { SummarySection } from './sections/SummarySection';
@@ -17,9 +15,7 @@ export const ConceptBoundariesPage = ({ locale }: { locale: Locale }) => (
   <DocLayout toc={Object.values(getToc(locale))}>
     <PageHeader locale={locale} />
     <ConceptsSection locale={locale} />
-    <OneCaseSection locale={locale} />
     <GapsSection locale={locale} />
-    <CaseSection locale={locale} />
     <LevelsSection locale={locale} />
     <SummarySection locale={locale} />
     <ReferencesSection locale={locale} />

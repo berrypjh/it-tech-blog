@@ -19,7 +19,7 @@ const content = {
   ko: {
     intro: (
       <>
-        예제 A에서 <code>button</code>은 역할 · Tab 포커스 · Enter/Space 실행을 추가 코드 없이
+        예제 A에서 <code>button</code>은 역할, Tab 포커스, Enter · Space 실행을 추가 코드 없이
         제공했습니다. 비활성 상태와 폼 제출까지 더하면 아래 목록이 됩니다. 이것이 시맨틱 HTML이
         접근성의 출발점인 이유입니다. MDN은 이를{' '}
         <ExternalLink href={MDN_HTML}>적절한 요소를 쓰면 이 동작을 무료로 얻는다</ExternalLink>고
@@ -32,7 +32,7 @@ const content = {
       ['역할(role) 전달', '기본 제공', <code key="c">role=&quot;button&quot;</code>],
       ['Tab 포커스', '기본 제공', <code key="c">tabindex=&quot;0&quot;</code>],
       [
-        'Enter / Space 실행',
+        'Enter · Space 실행',
         '기본 제공',
         <span key="c">
           <code>keydown</code> 핸들러 직접 작성
@@ -49,14 +49,16 @@ const content = {
     ],
     rebuildBody: (
       <>
-        표의 오른쪽 열을 모두 적용해도 겨우 <code>button</code> 수준에 도달할 뿐이고, 하나만 빠져도
-        장벽이 남습니다.
+        표의 &lt;div&gt;로 재구현 열을 모두 적용해도 겨우 <code>button</code> 수준에 도달할 뿐이고,
+        하나만 빠져도 장벽이 남습니다. 메뉴 버튼으로 비교하면, <code>div</code>로 다시 만든 코드는
+        길어지는데도 비활성 상태와 폼 제출이 없고, Space를 누르면 페이지도 함께 스크롤됩니다.{' '}
+        <code>button</code>으로 쓰면 더 적은 코드로 더 많은 기본 동작을 얻습니다.
       </>
     ),
     menuLabel: '메뉴 열기',
-    rebuiltLabel:
-      'div로 버튼을 재구현한 코드 — disabled·submit이 없고, Space를 누르면 페이지도 함께 스크롤됩니다',
-    sameLabel: 'button으로 쓰면 — 더 적은 코드로 더 많은 기본 동작',
+    rebuiltLabel: '가상의 화면 — div로 다시 만든 메뉴 버튼',
+    sameLabel: '수정 — button으로 쓴 메뉴 버튼',
+    noteTitle: 'ARIA보다 HTML이 먼저입니다',
     note: (
       <>
         접근성 구현은 ARIA를 추가하는 것보다 먼저, <strong>HTML이 이미 제공하는 의미와 동작</strong>
@@ -67,7 +69,7 @@ const content = {
   en: {
     intro: (
       <>
-        In Example A, <code>button</code> provided its role, Tab focus and Enter/Space activation
+        In Example A, <code>button</code> provided its role, Tab focus and Enter or Space activation
         with no extra code. Add the disabled state and form submission and you get the list below.
         That is why semantic HTML is where accessibility starts. MDN describes it as{' '}
         <ExternalLink href={MDN_HTML}>
@@ -83,7 +85,7 @@ const content = {
       ['Exposes role', 'Built in', <code key="c">role=&quot;button&quot;</code>],
       ['Tab focus', 'Built in', <code key="c">tabindex=&quot;0&quot;</code>],
       [
-        'Enter / Space activation',
+        'Enter or Space activation',
         'Built in',
         <span key="c">
           Hand-written <code>keydown</code> handler
@@ -100,14 +102,17 @@ const content = {
     ],
     rebuildBody: (
       <>
-        Even with every item in the right column applied, you only just reach <code>button</code>{' '}
-        level, and missing any one of them leaves a barrier.
+        Even with every item in the Rebuilt with &lt;div&gt; column applied, you only just reach{' '}
+        <code>button</code> level, and missing any one of them leaves a barrier. Compare a menu
+        button: the <code>div</code> version is longer yet still has no disabled state or form
+        submission, and Space also scrolls the page. With <code>button</code>, you get more built-in
+        behavior with less code.
       </>
     ),
     menuLabel: 'Open menu',
-    rebuiltLabel:
-      'A button rebuilt with div — no disabled or submit, and Space also scrolls the page',
-    sameLabel: 'With button — more built-in behavior with less code',
+    rebuiltLabel: 'Hypothetical screen — a menu button rebuilt with div',
+    sameLabel: 'Fix — the same menu button as a button',
+    noteTitle: 'HTML comes before ARIA',
     note: (
       <>
         Accessible implementation starts not with adding ARIA, but with correctly using{' '}
@@ -131,13 +136,12 @@ export const SemanticHtmlSection = ({ locale }: { locale: Locale }) => {
       <p>{c.rebuildBody}</p>
       <CodeBlock label={c.rebuiltLabel} tone="bad" code={rebuiltDiv(c.menuLabel)} />
       <CodeBlock
-        className="mt-md"
         label={c.sameLabel}
         tone="good"
         code={`<button type="button" onclick="toggleMenu()">${c.menuLabel}</button>`}
       />
 
-      <Callout variant="note">
+      <Callout variant="note" title={c.noteTitle}>
         <p>{c.note}</p>
       </Callout>
     </section>

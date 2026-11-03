@@ -16,15 +16,15 @@ const content = {
   ko: {
     intro: (
       <>
-        W3C의 Web Accessibility Initiative(WAI)는 웹접근성을{' '}
+        W3C의 Web Accessibility Initiative(WAI)는 웹 접근성을{' '}
         <ExternalLink href={WAI_INTRO}>이렇게 정의합니다</ExternalLink>.
       </>
     ),
     definitionTitle: '정의',
     definition: (
       <>
-        웹접근성은 장애가 있는 사람이 웹사이트, 도구, 기술을 <strong>사용할 수 있도록</strong>{' '}
-        설계하고 개발하는 것입니다. 구체적으로는 웹을 인식·이해·탐색·상호작용하고, 웹에{' '}
+        웹 접근성은 장애가 있는 사람이 웹사이트, 도구, 기술을 <strong>사용할 수 있도록</strong>{' '}
+        설계하고 개발하는 것입니다. 구체적으로는 웹을 인식 · 이해 · 탐색 · 상호작용하고, 웹에{' '}
         <strong>기여</strong>할 수 있게 하는 것입니다.
       </>
     ),
@@ -32,7 +32,7 @@ const content = {
       '"사용할 수 있다"는 말이 핵심입니다. 사용자는 화면을 감상하러 오지 않습니다. 회원가입을 하고, 주문을 취소하고, 예약을 변경하러 옵니다.',
     contribute:
       '"기여"는 읽고 누르는 것 너머의 활동입니다. 리뷰와 댓글을 쓰고, 문서를 편집하고, 사진을 올리고, 설문에 답하는 일도 접근성이 가능하게 해야 하는 활동입니다. 접근성을 볼 때는 "볼 수 있나"보다 "이 사람이 하려던 일을 끝낼 수 있나"를 묻습니다.',
-    flowHeading: '사용자가 작업을 끝내기까지',
+    flowHeading: '사용자가 과업을 끝내기까지',
     flowBody: (
       <>
         접근성은 사용자의 능력이나 사용하는 기술 때문에 이 흐름에 <strong>불필요한 장벽</strong>이
@@ -42,8 +42,8 @@ const content = {
     notHeading: '접근성을 좁게 보는 생각',
     notItems: [
       {
-        title: '스크린 리더만 대응하면 된다',
-        missing: '확대, 키보드, 음성 입력, 스위치, 인지적 필요를 가진 사용자가 빠집니다.',
+        title: '화면 낭독기만 대응하면 된다',
+        missing: '확대, 키보드, 음성 입력, 스위치, 인지적 필요가 있는 사용자가 빠집니다.',
       },
       {
         title: 'aria-* 속성을 붙이면 된다',

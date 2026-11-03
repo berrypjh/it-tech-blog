@@ -29,7 +29,7 @@ const references: DocReference[] = [
     source: same('W3C WAI'),
     title: same('Introduction to Web Accessibility'),
     note: {
-      ko: '일시적 장애와 상황적 제약의 예',
+      ko: '일시적 · 상황적 제약의 예',
       en: 'Examples of temporary disabilities and situational limitations',
     },
   },

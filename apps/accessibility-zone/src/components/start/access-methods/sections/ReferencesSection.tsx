@@ -11,7 +11,7 @@ const references: DocReference[] = [
     source: same('W3C WAI'),
     title: same('Tools and Techniques'),
     note: {
-      ko: '화면 낭독기, 화면 확대, 음성 인식, 스위치 같은 보조기술과 적응 전략',
+      ko: '화면 낭독기, 화면 확대, 음성 입력, 스위치 같은 보조기술과 적응 전략',
       en: 'Assistive technologies and adaptive strategies such as screen readers, magnification, speech recognition, and switches',
     },
   },

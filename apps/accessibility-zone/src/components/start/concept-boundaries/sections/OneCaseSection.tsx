@@ -23,22 +23,22 @@ const content = {
       [
         '표준 적합성',
         '충족 (평가 범위 안)',
-        '규칙을 입력 전에 글자로 안내하고(3.3.2 레이블 또는 설명), 오류를 글자로 알리며 어느 칸인지 보여줍니다(3.3.1 오류 식별). 페이지를 새로 불러오므로 4.1.3 상태 메시지의 대상도 아닙니다. 오류를 찾아가는 데 드는 시간은 성공 기준이 직접 요구하지 않습니다.',
+        '규칙을 입력 전에 글자로 안내해 WCAG 2.2 성공 기준 3.3.2 레이블 또는 설명(A)을 충족하고, 오류를 글자로 알리며 어느 칸인지 보여 줘 3.3.1 오류 식별(A)을 충족합니다. 페이지를 새로 불러오므로 4.1.3 상태 메시지(AA)의 대상도 아닙니다. 오류를 찾아가는 데 드는 시간은 성공 기준이 직접 요구하지 않습니다',
       ],
       [
         '사용성',
         '양호 (비장애 참여자 기준)',
-        '정해 둔 참여자 집단에서는 효과 · 효율 · 만족이 높았습니다. 그 집단에 장애가 있는 사람은 없었습니다.',
+        '정해 둔 참여자 집단에서는 효과 · 효율 · 만족이 높았습니다. 그 집단에 장애가 있는 사람은 없었습니다',
       ],
       [
         '접근성',
         '미흡 (과업 실패)',
-        '화면 낭독기 사용자는 오류를 찾는 데 오래 걸렸고, 한 명은 가입을 끝내지 못했습니다. 동등하게 사용한다고 보기 어렵습니다.',
+        '화면 낭독기 사용자는 오류를 찾는 데 오래 걸렸고, 한 명은 가입을 끝내지 못했습니다. 동등하게 사용한다고 보기 어렵습니다',
       ],
       [
         '포용적 설계',
         '미흡 (배제 있음)',
-        '본인 명의 휴대폰이 없는 사람(단기 체류 외국인, 보호자 명의 회선을 쓰는 사람 등)은 처음부터 가입할 수 없습니다. 장애와 무관한 배제입니다.',
+        '본인 명의 휴대폰이 없는 사람(단기 체류 외국인, 보호자 명의 회선을 쓰는 사람 등)은 처음부터 가입할 수 없습니다. 장애와 무관한 배제입니다',
       ],
     ],
     outro:
@@ -61,22 +61,22 @@ const content = {
       [
         'Standards conformance',
         'Met (within scope)',
-        'The rule is given in text before input (3.3.2 Labels or Instructions), and errors are described in text with their field (3.3.1 Error Identification). Because the page reloads, 4.1.3 Status Messages does not apply either. The time it takes to find errors is not something the success criteria directly require.',
+        'The rule is given in text before input, meeting WCAG 2.2 success criterion 3.3.2 Labels or Instructions (A), and errors are described in text with their field, meeting 3.3.1 Error Identification (A). Because the page reloads, 4.1.3 Status Messages (AA) does not apply either. The time it takes to find errors is not something the success criteria directly require',
       ],
       [
         'Usability',
         'Good (non-disabled participants)',
-        'Effectiveness, efficiency, and satisfaction were high for the chosen group. The group included no disabled people.',
+        'Effectiveness, efficiency, and satisfaction were high for the chosen group. The group included no disabled people',
       ],
       [
         'Accessibility',
         'Falls short (task failure)',
-        'Screen reader users took a long time to find errors, and one did not finish signing up. That is hard to call equal use.',
+        'Screen reader users took a long time to find errors, and one did not finish signing up. That is hard to call equal use',
       ],
       [
         'Inclusive design',
         'Falls short (exclusion)',
-        'People without a phone in their own name (short-term foreign visitors, people using a guardian’s line, and others) cannot sign up at all. This exclusion is unrelated to disability.',
+        'People without a phone in their own name (short-term foreign visitors, people using a guardian’s line, and others) cannot sign up at all. This exclusion is unrelated to disability',
       ],
     ],
     outro:

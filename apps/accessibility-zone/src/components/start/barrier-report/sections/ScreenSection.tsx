@@ -27,14 +27,14 @@ const content = {
       '마우스나 터치로 같은 과업을 해 보고 차이를 적습니다.',
       '날짜를 비운 채로 확정해 보고, 오류를 무엇으로 알 수 있는지 봅니다.',
       '날짜를 입력하는 도중에 무엇을 적는 칸이었는지 다시 확인할 수 있는지 봅니다.',
-      '컴퓨터 브라우저라면 DevTools의 Accessibility 탭에서 입력 칸과 확정 버튼의 이름 · 역할을 확인합니다.',
+      '컴퓨터 브라우저라면 개발자 도구의 Accessibility 탭에서 입력 칸과 확정 버튼의 이름 · 역할을 확인합니다.',
       '"비교용 수정 화면"에서 같은 과업을 다시 해 보고 무엇이 달라졌는지 비교합니다.',
     ],
     safari:
-      'macOS Safari는 기본 설정에서 Tab이 입력 칸과 팝업 메뉴로만 이동해, 수정 화면의 "변경 확정" 버튼까지 건너뜁니다. Option+Tab으로 이동하거나, 시스템 설정 > 키보드에서 "키보드 탐색"을 켠 뒤 해 보세요. 같은 절차라도 환경에 따라 결과가 달라지므로 기록에 환경을 적습니다.',
+      'macOS Safari는 기본 설정에서 Tab이 입력 칸과 팝업 메뉴로만 이동해, 수정 화면의 "변경 확정" 버튼까지 건너뜁니다. Option+Tab으로 이동하거나, Safari 설정의 고급에서 "Tab 키를 눌러 웹 페이지의 각 항목 강조"를 켠 뒤 해 보세요. 같은 절차라도 환경에 따라 결과가 달라지므로 기록에 환경을 적습니다.',
     phone:
       '키보드가 없는 휴대폰에서는 Tab 이동을 확인할 수 없습니다. 터치로 과업을 해 본 뒤, 아래 결함 목록과 코드를 수정 화면과 비교하면 같은 내용을 기록할 수 있습니다.',
-    defectsSummary: '이 화면에 넣은 결함 보기 (먼저 직접 찾아보세요)',
+    defectsSummary: '이 화면에 넣은 결함 보기',
     defects: [
       <>
         새 날짜 칸에 보이는 라벨이 없고 <code>placeholder</code>만 있습니다. 입력을 시작하면 안내가
@@ -51,7 +51,7 @@ const content = {
       </>,
     ],
     codeSummary: '결함 화면의 코드 보기',
-    codeLabel: '결함 화면의 핵심 마크업 (요약)',
+    codeLabel: '가상의 화면 — 결함 화면의 핵심 마크업(요약)',
     placeholder: '새 날짜 (예: 5월 20일)',
     confirm: '변경 확정',
     onError: '오류일 때: 테두리 색만 바뀜',
@@ -70,10 +70,10 @@ const content = {
       'Do the task again on the "fixed screen for comparison" and compare what changed.',
     ],
     safari:
-      'By default, Tab in macOS Safari moves only to text fields and pop-up menus, so it skips even the fixed screen’s "Confirm change" button. Move with Option+Tab, or turn on "Keyboard navigation" in System Settings > Keyboard first. The same steps can give different results in different environments, which is why a record includes the environment.',
+      'By default, Tab in macOS Safari moves only to text fields and pop-up menus, so it skips even the fixed screen’s "Confirm change" button. Move with Option+Tab, or first turn on "Press Tab to highlight each item on a webpage" in Safari Settings > Advanced. The same steps can give different results in different environments, which is why a record includes the environment.',
     phone:
       'On a phone without a keyboard you cannot check Tab movement. Do the task by touch, then compare the defect list and code below with the fixed screen; you can record the same things that way.',
-    defectsSummary: 'Show the defects in this screen (try finding them first)',
+    defectsSummary: 'Show the defects in this screen',
     defects: [
       <>
         The new date field has no visible label, only a <code>placeholder</code>. The hint
@@ -94,7 +94,7 @@ const content = {
       </>,
     ],
     codeSummary: 'Show the defect screen code',
-    codeLabel: 'Key markup of the defect screen (summary)',
+    codeLabel: 'Hypothetical screen — key markup of the defect screen (summary)',
     placeholder: 'New date (e.g. May 20)',
     confirm: 'Confirm change',
     onError: 'On error: only the border color changes',
