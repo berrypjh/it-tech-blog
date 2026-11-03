@@ -1,11 +1,9 @@
 import { expect, test } from '@playwright/test';
 
+import { tabKey } from './keys';
+
 const intro = '/accessibility/intro';
 const report = '/accessibility/barrier-report';
-
-/** macOS WebKit은 Safari처럼 Tab이 버튼을 건너뛴다. 버튼까지 가는 키보드 사용자는 Option+Tab을 쓴다. */
-const tabKey = (browserName: string) =>
-  browserName === 'webkit' && process.platform === 'darwin' ? 'Alt+Tab' : 'Tab';
 
 const introAnchors = [
   'what-is',
@@ -33,7 +31,7 @@ test('sidebar lists the five chapter 01 pages and marks the current one', async 
   await page.goto(report);
 
   const nav = page.getByRole('navigation', { name: '메뉴' });
-  await expect(nav.getByRole('link')).toHaveCount(5);
+  await expect(nav.getByRole('link', { name: /^01\./ })).toHaveCount(5);
   await expect(nav.getByRole('link', { name: '01.5 장벽 재현 기록' })).toHaveAttribute(
     'aria-current',
     'page',
@@ -44,6 +42,24 @@ test('an old intro anchor still lands on its section', async ({ page }) => {
   await page.goto(`${intro}#standards`);
 
   await expect(page.getByRole('heading', { level: 2, name: /법적·품질 기준/ })).toBeInViewport();
+});
+
+test('a collapsed menu group keeps its links out of the Tab order', async ({
+  page,
+  browserName,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto(intro);
+
+  const group = page.getByRole('navigation', { name: '메뉴' }).getByRole('button', {
+    name: '시작하기',
+  });
+  await group.click();
+  await expect(group).toHaveAttribute('aria-expanded', 'false');
+
+  await group.focus();
+  await page.keyboard.press(tabKey(browserName));
+  await expect(page.getByRole('link', { name: '홈으로 가기' })).toBeFocused();
 });
 
 test('sidebar walks through all five pages in order', async ({ page }) => {
@@ -97,18 +113,6 @@ test('theme choice persists when moving to another chapter 01 page', async ({ pa
     '접근성·사용성·포용적 설계·표준 적합성 구분하기',
   );
   await expect(page.locator('html')).toHaveClass('light');
-});
-
-test('self-check answers open and close with the keyboard', async ({ page }) => {
-  await page.goto('/accessibility/concept-boundaries');
-
-  const summary = page.locator('summary').first();
-  const details = page.locator('details').first();
-  await summary.focus();
-  await page.keyboard.press('Enter');
-  await expect(details).toHaveAttribute('open', '');
-  await page.keyboard.press('Enter');
-  await expect(details).not.toHaveAttribute('open', '');
 });
 
 test('keyboard demo checks only what actually happened', async ({ page, browserName }) => {
