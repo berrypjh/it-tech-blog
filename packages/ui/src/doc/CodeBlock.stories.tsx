@@ -42,3 +42,13 @@ export const BetweenParagraphs: Story = {
 export const Compare: StoryObj<typeof CodeCompare> = {
   render: () => <CodeCompare before={divButton} after={nativeButton} />,
 };
+
+/** 한 줄이 반 칸에 들어가지 않으면 가로 스크롤 대신 위아래로 쌓는다. */
+export const CompareStacked: StoryObj<typeof CodeCompare> = {
+  render: () => (
+    <CodeCompare
+      before={`<p>"쉽게 연결된다"고 리뷰어 김민지가 말했다.</p>`}
+      after={`<blockquote>\n  <p>쉽게 연결된다.</p>\n</blockquote>\n<p><strong>품절 시 자동 취소됩니다.</strong></p>`}
+    />
+  ),
+};

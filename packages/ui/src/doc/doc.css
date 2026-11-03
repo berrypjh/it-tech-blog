@@ -19,6 +19,16 @@
   margin-top: var(--ds-spacing-lg);
 }
 
+/* 코드 블록은 앞뒤 문단과 띄운다. 이어진 코드 블록끼리는 여백이 겹쳐 한 번만 띄운다.
+   고치기 전·후 비교 안에서는 grid gap이 간격을 맡는다 */
+.doc-prose [data-code-block] {
+  margin-block: var(--ds-spacing-lg);
+}
+
+.doc-prose [data-code-compare] [data-code-block] {
+  margin-block: 0;
+}
+
 .doc-prose strong {
   font-weight: var(--ds-font-weight-semi-bold);
 }
@@ -71,6 +81,17 @@
 
 .doc-prose tr[data-narrating] > :first-child {
   box-shadow: inset 3px 0 0 var(--ds-stroke-primary);
+}
+
+/* 표 전체도 같은 스크롤 상자(overflow-x: auto)에 바깥 테두리가 잘린다. 표 대신 표를 감싼 상자에 테두리를 그린다 */
+.doc-prose table[data-narrating] {
+  box-shadow: none;
+}
+
+.doc-prose [role='region']:has(> table[data-narrating]) {
+  box-shadow:
+    0 0 0 4px var(--ds-background-default),
+    0 0 0 7px var(--ds-stroke-primary);
 }
 
 /* 섹션 제목(DocH2)은 구분선과 제목 사이의 위쪽 안쪽 여백(pt-xl)을 가진다. 강조는 그 여백을 빼고 제목 글자에만 두른다.

@@ -34,6 +34,15 @@ describe('toSpeech', () => {
     );
   });
 
+  it('reads hyphenated names whole before their parts and one-letter elements last', () => {
+    expect(toSpeech('aria-expanded와 a 요소, grid-area와 grid', 'ko')).toBe(
+      '아리아 익스팬디드와 에이 요소, 그리드 에어리어와 그리드',
+    );
+    expect(toSpeech('h1부터 heading을 쓰고 currentTarget과 target을 본다', 'ko')).toBe(
+      '에이치 원부터 헤딩을 쓰고 커런트 타깃과 타깃을 본다',
+    );
+  });
+
   it('leaves English acronyms for the English voice', () => {
     expect(toSpeech('WCAG 01', 'en')).toBe('WCAG 1');
   });

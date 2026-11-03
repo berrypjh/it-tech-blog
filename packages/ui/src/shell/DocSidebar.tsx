@@ -128,6 +128,7 @@ export const DocSidebar = ({
 
               <div
                 id={panelId}
+                inert={!isExpanded}
                 className={cx(
                   'grid transition-all duration-200 ease-in-out',
                   isExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',

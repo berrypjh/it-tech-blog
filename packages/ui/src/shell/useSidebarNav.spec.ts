@@ -22,6 +22,16 @@ describe('useSidebarNav', () => {
     expect(result.current.expanded).toEqual(new Set([0]));
   });
 
+  it('expands the new current group when the pathname changes, keeping the others', () => {
+    const { result, rerender } = renderHook(({ path }) => useSidebarNav(groups, path), {
+      initialProps: { path: '/intro' },
+    });
+
+    rerender({ path: '/aria' });
+
+    expect(result.current.expanded).toEqual(new Set([0, 2]));
+  });
+
   it('toggle expands a collapsed group and collapses an expanded one', () => {
     const { result } = renderHook(() => useSidebarNav(groups, '/intro'));
 

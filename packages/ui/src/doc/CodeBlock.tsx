@@ -42,6 +42,7 @@ export const CodeBlock = ({
 
   return (
     <div
+      data-code-block
       className={cx(
         'overflow-hidden rounded-md border border-stroke-light bg-background-default',
         className,
@@ -80,12 +81,29 @@ const compareStrings = {
   en: { before: 'Before', after: 'After' },
 };
 
-/** 고치기 전·후 코드를 나란히 비교한다. 좁은 화면에서는 위아래로 쌓인다. */
+/** 본문 폭(46rem)을 반으로 나눈 칸에 가로 스크롤 없이 들어가는 고정폭 글자 수. */
+const HALF_COLUMNS = 44;
+
+/** 고정폭 글꼴에서 한글 · 전각 문자는 두 칸을 차지한다. */
+const columnsOf = (line: string) =>
+  [...line].reduce(
+    (sum, ch) => sum + (/[\u1100-\u11ff\u3000-\u9fff\uac00-\ud7af\uff00-\uffef]/.test(ch) ? 2 : 1),
+    0,
+  );
+
+const fitsHalf = (code: string) =>
+  code.split('\n').every((line) => columnsOf(line) <= HALF_COLUMNS);
+
+/**
+ * 고치기 전·후 코드를 비교한다. 두 코드가 반 칸에 들어가면 나란히, 아니면 가로 스크롤 대신 위아래로 쌓는다.
+ * 좁은 화면에서는 항상 위아래로 쌓인다.
+ */
 export const CodeCompare = ({ before, after }: { before: string; after: string }) => {
   const t = useLang(compareStrings);
+  const sideBySide = fitsHalf(before) && fitsHalf(after);
 
   return (
-    <div className="my-lg grid gap-md md:grid-cols-2">
+    <div data-code-compare className={cx('my-lg grid gap-md', sideBySide && 'md:grid-cols-2')}>
       <CodeBlock label={t.before} tone="bad" code={before} />
       <CodeBlock label={t.after} tone="good" code={after} />
     </div>
