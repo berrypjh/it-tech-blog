@@ -134,7 +134,7 @@ test('keyboard demo checks only what actually happened', async ({ page, browserN
 test('keyboard demo without a keyboard shows the measured Tab reachability', async ({ page }) => {
   await page.goto(intro);
 
-  await page.getByRole('radio', { name: '키보드 없이 보기' }).check();
+  await page.getByRole('radio', { name: '터치·마우스로 해 보기' }).check();
   await expect(page.getByText('Tab으로 도착: 불가 (tabIndex -1)')).toBeVisible();
   await expect(page.getByText('Tab으로 도착: 가능 (tabIndex 0)')).toBeVisible();
 });

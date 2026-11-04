@@ -264,9 +264,7 @@ test('02.3 start over clears recorded key results', async ({ page }) => {
 
   await page.getByRole('button', { name: '다시 하기' }).click();
   await expect(page.getByText('Enter → click 이벤트: 발생', { exact: true })).toHaveCount(0);
-  await expect(
-    page.getByText('Enter → click 이벤트: 아직 해 보지 않음', { exact: true }),
-  ).toHaveCount(3);
+  await expect(page.getByText('Enter → click 이벤트: 확인 전', { exact: true })).toHaveCount(3);
 });
 
 test('02.4 clear all empties the form and removes the result', async ({ page }) => {
@@ -321,7 +319,7 @@ test('02.7 start over returns to the defect version with quantity 1', async ({ p
 test('02.3 without a keyboard, a pointer click is recorded for every element', async ({ page }) => {
   await page.goto(page02('text-and-controls'));
 
-  await page.getByRole('radio', { name: '키보드 없이 보기' }).check();
+  await page.getByRole('radio', { name: '터치·마우스로 해 보기' }).check();
   await page.locator('div[role="button"]').click();
 
   await expect(
@@ -329,7 +327,9 @@ test('02.3 without a keyboard, a pointer click is recorded for every element', a
       .getByRole('status')
       .filter({ hasText: '<div role="button" tabindex="0"> — 포인터 click 발생' }),
   ).toBeAttached();
-  await expect(page.getByText('Enter → click 이벤트', { exact: false })).toHaveCount(0);
+  await expect(
+    page.getByText('Enter → click 이벤트: 발생 (표의 결과)', { exact: true }),
+  ).toHaveCount(2);
 });
 
 test('02.6 defect mode announces that the screen and aria-expanded disagree', async ({ page }) => {
