@@ -1,5 +1,5 @@
 import type { Locale } from '@it-tech-blog/preferences';
-import { CodeBlock, DocH2, DocTable } from '@it-tech-blog/ui';
+import { CodeBlock, DocH2, DocTable, ExternalLink } from '@it-tech-blog/ui';
 
 import { ThemedFigure } from '@/components/shared/ThemedFigure';
 
@@ -7,6 +7,8 @@ import { OrderDemo } from '../demos/OrderDemo';
 import magnifierFocusDark from '../images/magnifier-focus-dark.webp';
 import magnifierFocusLight from '../images/magnifier-focus-light.webp';
 import { getToc } from '../toc';
+
+const READING_FLOW = 'https://drafts.csswg.org/css-display-4/#reading-flow';
 
 const code = {
   ko: `<div class="actions">
@@ -79,7 +81,10 @@ const content = {
     ),
     readingFlow: (
       <>
-        최근 CSS에는 flex · grid의 화면 순서대로 포커스를 이동하게 하는 <code>reading-flow</code>{' '}
+        최근 CSS에는 flex · grid의 화면 순서대로 포커스를 이동하게 하는{' '}
+        <ExternalLink href={READING_FLOW}>
+          <code>reading-flow</code>
+        </ExternalLink>{' '}
         속성이 추가되고 있습니다. 아직 지원하는 브라우저가 일부이므로 이 속성에 기대지 말고 DOM
         순서를 먼저 맞춥니다.
       </>
@@ -134,9 +139,12 @@ const content = {
     ),
     readingFlow: (
       <>
-        CSS is gaining a <code>reading-flow</code> property that makes focus follow the visual order
-        of flex and grid layouts. Only some browsers support it so far, so do not rely on it; fix
-        the DOM order first.
+        CSS is gaining a{' '}
+        <ExternalLink href={READING_FLOW}>
+          <code>reading-flow</code>
+        </ExternalLink>{' '}
+        property that makes focus follow the visual order of flex and grid layouts. Only some
+        browsers support it so far, so do not rely on it; fix the DOM order first.
       </>
     ),
   },

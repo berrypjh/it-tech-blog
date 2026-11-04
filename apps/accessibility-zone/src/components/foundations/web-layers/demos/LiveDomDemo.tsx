@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useRef, useState } from 'react';
+import { Fragment, useEffect, useId, useRef, useState } from 'react';
 
 import { useLang } from '@it-tech-blog/utils';
 
@@ -19,10 +19,9 @@ const content = {
     toggle: '배송 정보',
     panel: '주문 후 3일 안에 도착합니다.',
     clicks: (n: number) => `button의 click 이벤트: ${n}회`,
-    initial: '처음 상태 (페이지를 열었을 때의 DOM)',
-    now: '지금 DOM',
-    classNote:
-      '두 코드 모두 이 브라우저의 실제 DOM을 읽은 것이고, 길어지는 class 속성만 생략했습니다.',
+    initial: '처음 DOM (페이지를 열었을 때)',
+    now: '지금 DOM (누를 때마다 갱신)',
+    note: '화면 낭독기가 전하는 펼침 · 접힘 상태도 지금 DOM의 aria-expanded 값에서 나옵니다.',
     reset: '다시 하기',
     status: (n: number, open: boolean, js: boolean) =>
       js
@@ -39,10 +38,9 @@ const content = {
     toggle: 'Shipping info',
     panel: 'Arrives within 3 days of your order.',
     clicks: (n: number) => `click events on the button: ${n}`,
-    initial: 'Initial state (the DOM when the page opened)',
-    now: 'DOM right now',
-    classNote:
-      'Both are read from this browser’s live DOM; only the long class attributes are left out.',
+    initial: 'Initial DOM (when the page opened)',
+    now: 'DOM right now (updated on every press)',
+    note: 'The expanded or collapsed state a screen reader announces also comes from aria-expanded in the current DOM.',
     reset: 'Start over',
     status: (n: number, open: boolean, js: boolean) =>
       js
@@ -51,16 +49,39 @@ const content = {
   },
 };
 
-/** class 속성을 뺀 outerHTML. 요소는 복제본에서만 고친다. */
+/** class 속성과 아이콘 svg 내용을 뺀 outerHTML. 요소는 복제본에서만 고친다. */
 const markupOf = (elements: (HTMLElement | null)[]) =>
   elements
     .map((el) => {
       if (!el) return '';
       const copy = el.cloneNode(true) as HTMLElement;
       [copy, ...copy.querySelectorAll('*')].forEach((node) => node.removeAttribute('class'));
-      return copy.outerHTML;
+      return copy.outerHTML.replace(/<svg[\s\S]*?<\/svg>/g, '<svg>…</svg>');
     })
     .join('\n');
+
+const ATTR = /(\s[\w-]+="[^"]*")/;
+
+/** 마크업을 보여 주고, 다른 쪽 마크업에 없는 속성을 굵은 밑줄로 표시한다. 색에만 기대지 않는다. */
+const DiffMarkup = ({ code, other }: { code: string; other: string }) => {
+  const others = new Set(other.split(ATTR));
+  return (
+    <code>
+      {code.split(ATTR).map((part, i) =>
+        ATTR.test(part) && !others.has(part) ? (
+          <Fragment key={i}>
+            {part[0]}
+            <mark className="rounded-xs bg-warning-wa500/10 font-semiBold text-text-default underline">
+              {part.slice(1)}
+            </mark>
+          </Fragment>
+        ) : (
+          part
+        ),
+      )}
+    </code>
+  );
+};
 
 /**
  * 펼침 버튼 하나로 층의 책임을 나눠 보는 실습. click 이벤트는 HTML button이 만들고,
@@ -138,21 +159,21 @@ export const LiveDomDemo = () => {
 
       <div className="grid gap-md md:grid-cols-2">
         {[
-          { label: c.initial, code: initial },
-          { label: c.now, code: now },
+          { label: c.initial, code: initial, other: now },
+          { label: c.now, code: now, other: initial },
         ].map((block) => (
           <figure key={block.label} className="min-w-0">
             <figcaption className="mb-xs text-xxsm font-semiBold text-text-light">
               {block.label}
             </figcaption>
             <pre className="whitespace-pre-wrap break-all rounded-sm border border-stroke-light bg-background-surface p-md text-xxsm">
-              <code>{block.code}</code>
+              <DiffMarkup code={block.code} other={block.other} />
             </pre>
           </figure>
         ))}
       </div>
 
-      <p className="text-xxsm text-text-light">{c.classNote}</p>
+      <p className="text-xxsm text-text-light">{c.note}</p>
       <p role="status" className="sr-only">
         {status}
       </p>

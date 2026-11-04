@@ -1,14 +1,24 @@
 import type { Locale } from '@it-tech-blog/preferences';
-import { CodeBlock, DocH2 } from '@it-tech-blog/ui';
+import { CodeBlock, DocH2, ExternalLink } from '@it-tech-blog/ui';
 
 import { type CaseFields, CaseRecord } from '@/components/shared/CaseRecord';
+import { understanding } from '@/components/shared/wcag';
 
 import { getToc } from '../toc';
 
 const content = {
   ko: {
-    intro:
-      '보이는 글자와 접근 가능한 이름이 어긋나면 화면 낭독기 사용자는 이름을 들을 수 있지만, 음성 입력 사용자는 보이는 글자를 말해도 버튼을 누를 수 없습니다. 아래 버튼은 이름이 보이는 글자를 포함하지 않으므로 WCAG 2.2 성공 기준 2.5.3 이름의 레이블(A)을 어깁니다.',
+    intro: (
+      <>
+        보이는 글자와 접근 가능한 이름이 어긋나면 화면 낭독기 사용자는 이름을 들을 수 있지만, 음성
+        입력 사용자는 보이는 글자를 말해도 버튼을 누를 수 없습니다. 아래 버튼은 이름이 보이는 글자를
+        포함하지 않으므로{' '}
+        <ExternalLink href={understanding('label-in-name')}>
+          WCAG 2.2 성공 기준 2.5.3 이름의 레이블(A)
+        </ExternalLink>
+        을 어깁니다.
+      </>
+    ),
     codeLabel: '가상의 화면 — 보이는 글자 "보내기", 접근 가능한 이름 "메시지 전송"',
     code: `<button type="button" aria-label="메시지 전송">보내기</button>`,
     title: '사례 — 고객 문의 보내기, 음성 입력 (가상의 화면)',
@@ -29,8 +39,17 @@ const content = {
     } satisfies CaseFields,
   },
   en: {
-    intro:
-      'When the visible text and the accessible name disagree, a screen reader user can hear the name, but a speech input user cannot press the button by saying the visible text. The button below fails WCAG 2.2 success criterion 2.5.3 Label in Name (A) because its name does not contain the visible text.',
+    intro: (
+      <>
+        When the visible text and the accessible name disagree, a screen reader user can hear the
+        name, but a speech input user cannot press the button by saying the visible text. The button
+        below fails{' '}
+        <ExternalLink href={understanding('label-in-name')}>
+          WCAG 2.2 success criterion 2.5.3 Label in Name (A)
+        </ExternalLink>{' '}
+        because its name does not contain the visible text.
+      </>
+    ),
     codeLabel: 'Hypothetical screen — visible text "Send", accessible name "Submit message"',
     code: `<button type="button" aria-label="Submit message">Send</button>`,
     title: 'Case — sending a support request with speech input (hypothetical screen)',

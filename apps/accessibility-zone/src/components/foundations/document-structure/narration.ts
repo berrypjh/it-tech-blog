@@ -65,6 +65,15 @@ export const narration: NarrationScript = {
         pause: 'long',
       },
       {
+        target: ':scope > figure',
+        text: '탭 그림은 탭이 좁아질 때 보이는 페이지 제목을 비교합니다. 공통 이름이 앞에 있으면, 세 탭의 보이는 부분이 거의 같아져요.',
+        pause: 'short',
+      },
+      {
+        text: '구별되는 내용이 앞에 있어야, 잘려도 페이지를 구분할 수 있습니다.',
+        pause: 'short',
+      },
+      {
         target: ':scope > h3:nth-of-type(2)',
         text: '다음은 언어입니다. 화면 낭독기는 어떤 발음 규칙으로 읽을지 어떻게 알까요?',
         pause: 'think',

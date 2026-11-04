@@ -1,5 +1,5 @@
 import type { Locale } from '@it-tech-blog/preferences';
-import { Callout, CodeCompare, DocH2, DocTable } from '@it-tech-blog/ui';
+import { Callout, CodeCompare, DocH2, DocTable, ExternalLink } from '@it-tech-blog/ui';
 
 import { Link, MousePointerClick } from 'lucide-react';
 
@@ -9,6 +9,8 @@ import { PageLink } from '@/components/shared/PageLink';
 
 import { KeyActivationDemo } from '../demos/KeyActivationDemo';
 import { getToc } from '../toc';
+
+const ARIA_RULE1 = 'https://www.w3.org/TR/using-aria/#rule1';
 
 const code = {
   ko: {
@@ -85,18 +87,11 @@ const content = {
         <code>href</code>가 없는 <code>a</code>는 링크가 아니어서 Tab으로 닿지도 않습니다.
       </>
     ),
-    safari: (
-      <>
-        macOS Safari는 기본 설정에서 Tab이 링크와 버튼을 건너뜁니다. Safari에서 확인할 때는{' '}
-        <Kbd>Option</Kbd>+<Kbd>Tab</Kbd>으로 이동하거나, Safari 설정의 고급에서 &apos;Tab 키를 눌러
-        웹 페이지의 각 항목 강조&apos;를 켭니다.
-      </>
-    ),
     demoIntro: (
       <>
-        표의 차이는 이 브라우저에서 직접 눌러 보면 보입니다. 세 번째 요소는 <code>div</code>에{' '}
-        <code>role=&quot;button&quot;</code>과 <code>tabindex=&quot;0&quot;</code>만 붙이고 click
-        처리만 둔 것입니다. 결과 칸은 키를 누른 뒤 실제로 click 이벤트가 일어났는지를 기록합니다.
+        링크와 버튼이 Enter · Space에 어떻게 반응하는지는 직접 눌러 보면 보입니다. 비교를 위해{' '}
+        <code>div</code>에 <code>role=&quot;button&quot;</code>과{' '}
+        <code>tabindex=&quot;0&quot;</code>만 붙인 요소도 함께 두었습니다.
       </>
     ),
     observe: (
@@ -110,10 +105,14 @@ const content = {
     ariaTitle: 'ARIA 역할은 무엇인지만 알리고 동작은 더하지 않습니다',
     aria: (
       <>
-        키 처리를 직접 더해도 <code>disabled</code> · 폼 제출 · 플랫폼별 세부 동작까지 같아지지는
-        않으므로, 같은 일을 하는 HTML 요소가 있으면 그 요소를 씁니다. 하나씩 다시 만들어야 하는
-        목록은 <PageLink locale="ko" id="intro" hash="semantic-html" />의 &quot;접근성과 시맨틱
-        HTML&quot;에 있습니다.
+        키 처리를 직접 더해도 진짜 버튼과 똑같아지지는 않습니다. <code>disabled</code>, 폼 제출,
+        운영체제마다 다른 세부 동작까지 하나씩 다시 만들어야 하기 때문입니다. 그래서{' '}
+        <ExternalLink href={ARIA_RULE1}>
+          같은 일을 하는 HTML 요소가 있으면 그 요소를 씁니다
+        </ExternalLink>
+        . 다시 만들어야 하는 것의 전체 목록은{' '}
+        <PageLink locale="ko" id="intro" hash="semantic-html" />의 &quot;접근성과 시맨틱
+        HTML&quot;에서 볼 수 있습니다.
       </>
     ),
   },
@@ -175,19 +174,11 @@ const content = {
         <code>href</code> is not a link, so Tab does not even reach it.
       </>
     ),
-    safari: (
-      <>
-        With default settings, Tab in macOS Safari skips links and buttons. When checking in Safari,
-        use <Kbd>Option</Kbd>+<Kbd>Tab</Kbd>, or turn on &quot;Press Tab to highlight each item on a
-        webpage&quot; in Safari Settings → Advanced.
-      </>
-    ),
     demoIntro: (
       <>
-        You can see the table&apos;s differences by pressing the keys yourself in this browser. The
-        third element is a <code>div</code> with only <code>role=&quot;button&quot;</code>,{' '}
-        <code>tabindex=&quot;0&quot;</code>, and a click handler. The result rows record whether a
-        click event actually fired after you pressed the key.
+        You can see how links and buttons respond to Enter and Space by pressing them yourself. For
+        comparison, there is also a <code>div</code> with only <code>role=&quot;button&quot;</code>{' '}
+        and <code>tabindex=&quot;0&quot;</code>.
       </>
     ),
     observe: (
@@ -201,10 +192,12 @@ const content = {
     ariaTitle: 'An ARIA role only says what something is; it adds no behavior',
     aria: (
       <>
-        Even if you add key handling yourself, <code>disabled</code>, form submission, and
-        platform-specific details still differ, so use the HTML element that does the same job when
-        there is one. The list of things you would have to rebuild is in &quot;Accessibility and
-        semantic HTML&quot; on <PageLink locale="en" id="intro" hash="semantic-html" />.
+        Adding key handling yourself still does not make it a real button. You would have to rebuild{' '}
+        <code>disabled</code>, form submission, and the details that differ by operating system one
+        by one. So{' '}
+        <ExternalLink href={ARIA_RULE1}>use the HTML element that does the same job</ExternalLink>{' '}
+        when there is one. The full list of what you would have to rebuild is in &quot;Accessibility
+        and semantic HTML&quot; on <PageLink locale="en" id="intro" hash="semantic-html" />.
       </>
     ),
   },
@@ -237,7 +230,6 @@ export const LinkOrButtonSection = ({ locale }: { locale: Locale }) => {
       <DocTable caption={c.caption} head={c.head} rows={c.rows} />
       <p>{c.rows2}</p>
       <CodeCompare before={code[locale].before} after={code[locale].after} />
-      <p>{c.safari}</p>
       <p>{c.demoIntro}</p>
       <KeyActivationDemo />
       <p>{c.observe}</p>

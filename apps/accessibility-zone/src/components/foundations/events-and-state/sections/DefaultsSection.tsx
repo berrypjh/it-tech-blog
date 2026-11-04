@@ -1,5 +1,5 @@
 import type { Locale } from '@it-tech-blog/preferences';
-import { Callout, DocH2, DocH3, DocTable } from '@it-tech-blog/ui';
+import { Callout, DocH2, DocH3, DocTable, ExternalLink } from '@it-tech-blog/ui';
 
 import { Keyboard, Link, Send, SquareCheck } from 'lucide-react';
 
@@ -9,6 +9,8 @@ import { Kbd } from '@/components/shared/Kbd';
 import { EventPathDemo } from '../demos/EventPathDemo';
 import { getToc } from '../toc';
 
+const MDN_PREVENT_DEFAULT = 'https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault';
+
 /** 표의 행 순서와 같은 순서로 놓인 첫 열 아이콘: 링크의 click · 폼의 submit · 체크박스의 click · keydown. */
 const rowIcons = [Link, Send, SquareCheck, Keyboard];
 
@@ -17,9 +19,11 @@ const content = {
     intro: (
       <>
         많은 이벤트에는 브라우저가 실행하는 <strong>기본 동작</strong>이 있습니다. 리스너에서{' '}
-        <code>event.preventDefault()</code>를 부르면 그 동작이 실행되지 않습니다. 기본 동작에는
-        키보드 · 보조기술 사용자가 기대는 기능이 많으므로, 막을 때는 그 기능을 직접 대신할 수 있을
-        때만 막습니다.
+        <ExternalLink href={MDN_PREVENT_DEFAULT}>
+          <code>event.preventDefault()</code>
+        </ExternalLink>
+        를 부르면 그 동작이 실행되지 않습니다. 기본 동작에는 키보드 · 보조기술 사용자가 기대는
+        기능이 많으므로, 막을 때는 그 기능을 직접 대신할 수 있을 때만 막습니다.
       </>
     ),
     caption: '기본 동작과 막을 때의 판단',
@@ -95,9 +99,11 @@ const content = {
     intro: (
       <>
         Many events have a <strong>default action</strong> the browser runs. Calling{' '}
-        <code>event.preventDefault()</code> in a listener stops it. Default actions include many
-        features keyboard and assistive technology users rely on, so block one only when you can
-        replace what it did.
+        <ExternalLink href={MDN_PREVENT_DEFAULT}>
+          <code>event.preventDefault()</code>
+        </ExternalLink>{' '}
+        in a listener stops it. Default actions include many features keyboard and assistive
+        technology users rely on, so block one only when you can replace what it did.
       </>
     ),
     caption: 'Default actions and when blocking them is fine',

@@ -1,7 +1,9 @@
 import type { Locale } from '@it-tech-blog/preferences';
-import { CodeBlock, CodeCompare, DocH2, DocH3, DocTable } from '@it-tech-blog/ui';
+import { CodeBlock, CodeCompare, DocH2, DocH3, DocTable, ExternalLink } from '@it-tech-blog/ui';
 
 import { getToc } from '../toc';
+
+const REACT_USE_ID = 'https://react.dev/reference/react/useId';
 
 const duplicate = {
   ko: {
@@ -95,8 +97,11 @@ const content = {
     ),
     useId: (
       <>
-        React에서는 <code>useId</code>로 인스턴스마다 다른 id를 만듭니다. 이 페이지의 문의 폼도 이
-        방법으로 id를 만듭니다.
+        React에서는{' '}
+        <ExternalLink href={REACT_USE_ID}>
+          <code>useId</code>
+        </ExternalLink>
+        로 인스턴스마다 다른 id를 만듭니다. 이 페이지의 문의 폼도 이 방법으로 id를 만듭니다.
       </>
     ),
     useIdLabel: 'useId로 인스턴스마다 다른 id 만들기',
@@ -142,8 +147,12 @@ const content = {
     ),
     useId: (
       <>
-        In React, <code>useId</code> creates a different id for each instance. The contact form on
-        this page creates its ids this way too.
+        In React,{' '}
+        <ExternalLink href={REACT_USE_ID}>
+          <code>useId</code>
+        </ExternalLink>{' '}
+        creates a different id for each instance. The contact form on this page creates its ids this
+        way too.
       </>
     ),
     useIdLabel: 'A different id per instance with useId',

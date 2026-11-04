@@ -1,9 +1,10 @@
 import type { Locale } from '@it-tech-blog/preferences';
-import { CodeCompare, DocH2, DocTable } from '@it-tech-blog/ui';
+import { CodeCompare, DocH2, DocTable, ExternalLink } from '@it-tech-blog/ui';
 
 import { Check, Lightbulb, Minus } from 'lucide-react';
 
 import { IconLabel } from '@/components/shared/IconLabel';
+import { understanding } from '@/components/shared/wcag';
 
 import { getToc } from '../toc';
 
@@ -72,10 +73,12 @@ const content = {
     ),
     basis: (
       <>
-        WCAG 2.2 성공 기준 1.3.1 정보와 관계(A)가 요구하는 것은 <code>fieldset</code> 자체가 아니라,
-        화면에서 보이는 묶음과 질문을 기계도 읽을 수 있게 하는 것입니다. <code>fieldset</code> ·{' '}
-        <code>legend</code>는 그 요구를 충족하는 대표적인 방법이어서 표에서 &quot;사용&quot;으로
-        적었습니다.
+        <ExternalLink href={understanding('info-and-relationships')}>
+          WCAG 2.2 성공 기준 1.3.1 정보와 관계(A)
+        </ExternalLink>
+        가 요구하는 것은 <code>fieldset</code> 자체가 아니라, 화면에서 보이는 묶음과 질문을 기계도
+        읽을 수 있게 하는 것입니다. <code>fieldset</code> · <code>legend</code>는 그 요구를 충족하는
+        대표적인 방법이어서 표에서 &quot;사용&quot;으로 적었습니다.
       </>
     ),
   },
@@ -124,9 +127,10 @@ const content = {
     basis: (
       <>
         What WCAG requires is not <code>fieldset</code> itself, but that the grouping and question
-        visible on screen are also machine-readable (1.3.1, A). <code>fieldset</code> and{' '}
-        <code>legend</code> are the typical way to meet that, which is why the table says
-        &quot;Use&quot;.
+        visible on screen are also machine-readable (
+        <ExternalLink href={understanding('info-and-relationships')}>1.3.1, A</ExternalLink>).{' '}
+        <code>fieldset</code> and <code>legend</code> are the typical way to meet that, which is why
+        the table says &quot;Use&quot;.
       </>
     ),
   },

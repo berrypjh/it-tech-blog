@@ -23,7 +23,7 @@ const content = {
     link: '배송 안내 보기',
     check: '선물 포장',
     submit: '주문하기',
-    target: '링크가 이동한 곳: 배송 안내',
+    target: '이 링크가 가는 곳: 배송 안내',
     log: '이벤트 기록',
     empty: '아직 기록이 없습니다.',
     clear: '기록 지우기',

@@ -1,8 +1,10 @@
 import type { Locale } from '@it-tech-blog/preferences';
-import { CodeBlock, DocH2 } from '@it-tech-blog/ui';
+import { CodeBlock, DocH2, ExternalLink } from '@it-tech-blog/ui';
 
 import { LiveDomDemo } from '../demos/LiveDomDemo';
 import { getToc } from '../toc';
+
+const HTML_PARSING = 'https://html.spec.whatwg.org/multipage/parsing.html';
 
 const tableSource = `<table>
   <tr><td>배송비</td><td>무료</td></tr>
@@ -19,8 +21,9 @@ const content = {
     intro: (
       <>
         HTML 소스는 서버가 보낸 <strong>글자</strong>이고, DOM은 브라우저가 그 글자를 읽어 만든{' '}
-        <strong>객체 트리</strong>입니다. 둘은 처음부터 다를 수 있습니다. 브라우저는 HTML 파싱
-        규칙에 따라 빠진 요소를 채우고 잘못 닫힌 태그를 바로잡습니다.
+        <strong>객체 트리</strong>입니다. 둘은 처음부터 다를 수 있습니다. 브라우저는{' '}
+        <ExternalLink href={HTML_PARSING}>HTML 파싱 규칙</ExternalLink>에 따라 빠진 요소를 채우고
+        잘못 닫힌 태그를 바로잡습니다.
       </>
     ),
     sourceLabel: 'HTML 소스 — tbody를 쓰지 않음',
@@ -39,8 +42,6 @@ const content = {
         <code>button</code> 요소입니다. JavaScript 처리를 꺼도 Tab으로 닿고 Enter · Space · 클릭으로
         click 이벤트가 발생합니다. 이것은 HTML이 주는 기본 동작입니다. 하지만 패널을 열고{' '}
         <code>aria-expanded</code>를 바꾸는 일은 JavaScript가 하지 않으면 일어나지 않습니다.
-        &quot;꺼짐&quot;은 실제로 JavaScript를 끄는 것이 아니라 상태를 바꾸는 코드만 건너뛰는 학습용
-        흉내이고, click 횟수도 이 페이지의 스크립트가 셉니다.
       </>
     ),
     observe: (
@@ -56,8 +57,8 @@ const content = {
       <>
         HTML source is the <strong>text</strong> the server sends; the DOM is the{' '}
         <strong>object tree</strong> the browser builds by reading it. They can differ from the
-        start: following the HTML parsing rules, the browser fills in missing elements and fixes
-        badly closed tags.
+        start: following <ExternalLink href={HTML_PARSING}>the HTML parsing rules</ExternalLink>,
+        the browser fills in missing elements and fixes badly closed tags.
       </>
     ),
     sourceLabel: 'HTML source — no tbody written',
@@ -76,9 +77,7 @@ const content = {
         info&quot; button is a real <code>button</code> element. Even with JavaScript handling off,
         Tab reaches it and Enter, Space, or a click fires a click event. That is HTML&apos;s
         built-in behavior. But opening the panel and changing <code>aria-expanded</code> only
-        happens if JavaScript does it. &quot;Off&quot; does not really disable JavaScript; it is a
-        teaching stand-in that skips only the state-changing code, and the click count is also kept
-        by this page&apos;s script.
+        happens if JavaScript does it.
       </>
     ),
     observe: (

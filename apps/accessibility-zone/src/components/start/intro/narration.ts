@@ -472,7 +472,7 @@ export const narration: NarrationScript = {
         text: '예제 A 실습 상자에서 직접 확인할 수 있습니다.',
         pause: 'short',
       },
-      // 키보드 모드에만 있는 시작 칸. 키보드 없이 보기 모드면 앞 요소(실습 상자)를 잇는다.
+      // 키보드 모드에만 있는 시작 칸. 터치·마우스 모드면 앞 요소(실습 상자)를 잇는다.
       {
         target: ':scope > [data-narration="skip"] label:has(> input:not([type]))',
         text: '키보드로 해 보기에서는 실습 시작 지점 칸을 누르고,',

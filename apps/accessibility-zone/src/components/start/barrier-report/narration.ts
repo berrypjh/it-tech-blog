@@ -129,11 +129,6 @@ export const narration: NarrationScript = {
         pause: 'short',
       },
       {
-        target: ':scope > aside > div > p:nth-of-type(1)',
-        text: '맥의 사파리는 기본 설정에서 Tab이 버튼을 건너뜁니다. Option과 Tab을 함께 누르거나, 사파리 설정의 고급에서 Tab 키로 각 항목을 강조하는 설정을 켠 뒤 해 보세요.',
-        pause: 'short',
-      },
-      {
         text: '같은 절차도 환경에 따라 결과가 달라서, 기록에 환경을 적는 거예요.',
         pause: 'short',
       },

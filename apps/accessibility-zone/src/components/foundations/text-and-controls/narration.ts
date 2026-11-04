@@ -104,7 +104,7 @@ export const narration: NarrationScript = {
       },
       {
         target: 'aside',
-        text: '주의할 점이 하나 있어요. 목록 기호를 지우면 목록의 의미가 빠지기도 합니다. CSS로 목록 기호를 지우면, Safari 같은 일부 브라우저는 목록의 의미를 접근성 트리에서 빼기도 합니다. 브라우저마다 다르니, 실제 환경에서 확인해요.',
+        text: '주의할 점이 하나 있어요. CSS로 목록 기호를 지우면, Safari 같은 일부 브라우저는 목록의 의미를 접근성 트리에서 빼기도 합니다. 브라우저마다 다르니, 실제 환경에서 확인해요.',
         pause: 'short',
       },
       {
@@ -195,39 +195,30 @@ export const narration: NarrationScript = {
       },
       {
         target: ':scope > p:nth-of-type(4)',
-        text: 'macOS의 Safari는 기본 설정에서 Tab이 링크와 버튼을 건너뜁니다. Safari에서 확인할 때는 Option 키를 누른 채 Tab을 눌러 이동합니다. 또는 Safari 설정의 고급에서 Tab 키를 눌러 웹 페이지의 각 항목 강조를 켭니다.',
+        text: '그럼 링크와 버튼이 키에 어떻게 반응하는지, 직접 확인해 볼게요.',
         pause: 'short',
       },
       {
-        text: '그럼 링크와 버튼의 기본 동작 표에서 본 차이를, 이 브라우저에서 직접 확인해 볼게요.',
-        pause: 'short',
-      },
-      {
-        target: ':scope > p:nth-of-type(5)',
-        text: '확인할 요소는 셋입니다. 링크와 버튼, 그리고 div에 role을 button으로, tabindex를 0으로만 붙이고 click 처리만 둔 요소예요.',
-        pause: 'short',
-      },
-      {
-        text: '결과 칸은 키를 누른 뒤, 실제로 click 이벤트가 일어났는지를 기록합니다.',
+        text: '비교를 위해 div에 role을 button으로, tabindex를 0으로만 붙인 요소도 함께 두었어요.',
         pause: 'short',
       },
       {
         target: '[data-narration="skip"]',
-        text: 'Tab으로 세 요소에 차례로 가서, 각각 Enter와 Space를 한 번씩 눌러 보세요. 링크는 이동하니까 마지막에 확인하고요.',
+        text: 'Tab으로 세 요소에 차례로 가서, 각각 Enter와 Space를 한 번씩 눌러 보세요.',
         pause: 'short',
       },
       {
-        text: '키보드가 없다면 키보드 없이 보기를 골라 보세요. Enter와 Space 결과는 링크와 버튼의 기본 동작 표와, 관찰할 것에 적어 두었습니다.',
+        text: '키보드가 없다면 터치·마우스로 해 보기를 골라 보세요. Enter와 Space 줄에 표에 적힌 결과가 보입니다.',
         pause: 'short',
       },
       { text: '잠깐 멈추고 직접 해 보셔도 좋아요.', pause: 'long' },
       {
-        target: ':scope > p:nth-of-type(6)',
-        text: 'role을 button으로 붙인 div는 어떻게 됐을까요?',
+        target: ':scope > p:nth-of-type(5)',
+        text: '세 요소는 Enter와 Space에 어떻게 반응했을까요?',
         pause: 'think',
       },
       {
-        text: '먼저 링크는 Enter에만 반응하고, Space에서는 페이지가 스크롤됩니다. 버튼은 둘 다에 반응하고요.',
+        text: '링크는 Enter에만 반응하고, Space에서는 페이지가 스크롤됩니다. 버튼은 둘 다에 반응하고요.',
         pause: 'short',
       },
       {
@@ -240,11 +231,11 @@ export const narration: NarrationScript = {
         pause: 'short',
       },
       {
-        text: '키 처리를 직접 더해도 disabled나 폼 제출, 플랫폼별 세부 동작까지 같아지지는 않아요. 그래서 같은 일을 하는 HTML 요소가 있으면 그 요소를 씁니다.',
+        text: '키 처리를 직접 더해도 진짜 버튼과 똑같아지지는 않아요. disabled나 폼 제출까지 하나씩 다시 만들어야 하거든요. 그래서 같은 일을 하는 HTML 요소가 있으면 그 요소를 씁니다.',
         pause: 'short',
       },
       {
-        text: '하나씩 다시 만들어야 하는 목록은, 1장의 첫 번째 페이지인 누구의 어떤 활동인가의, 접근성과 시맨틱 HTML 부분에 있어요.',
+        text: '다시 만들어야 하는 것의 전체 목록은, 1장의 첫 번째 페이지인 누구의 어떤 활동인가의, 접근성과 시맨틱 HTML 부분에서 볼 수 있어요.',
         pause: 'short',
       },
       {

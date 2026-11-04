@@ -151,7 +151,7 @@ export const narration: NarrationScript = {
         pause: 'think',
       },
       {
-        text: '페이지가 열린 뒤에도 JavaScript가 DOM을 계속 바꿉니다. 그래서 페이지 소스 보기는 처음 받은 글자를, 개발자 도구, 곧 DevTools의 Elements 패널은 지금의 DOM을 보여 줘요.',
+        text: '페이지가 열린 뒤에도 JavaScript가 DOM을 계속 바꿉니다. 그래서 페이지 소스 보기는 처음 받은 글자를, 개발자 도구의 Elements 패널은 지금의 DOM을 보여 줘요.',
         pause: 'short',
       },
       {
@@ -159,11 +159,11 @@ export const narration: NarrationScript = {
         pause: 'short',
       },
       {
+        target: ':scope > p:nth-of-type(3)',
         text: '그럼 지금의 DOM이 바뀌는 순간을 직접 볼게요.',
         pause: 'short',
       },
       {
-        target: ':scope > p:nth-of-type(3)',
         text: '배송 정보 버튼은 실제 button 요소입니다. JavaScript 처리를 꺼도 Tab으로 닿고, Enter나 Space, 클릭으로 click 이벤트가 발생해요. 이것이 HTML이 주는 기본 동작입니다.',
         pause: 'short',
       },
@@ -172,7 +172,7 @@ export const narration: NarrationScript = {
         pause: 'short',
       },
       {
-        text: '꺼짐은 실제로 JavaScript를 끄는 게 아니라, 상태를 바꾸는 코드만 건너뛰는 학습용 흉내예요. click 횟수도 이 페이지의 스크립트가 셉니다.',
+        text: '데모의 두 코드 칸은, 처음 DOM과 지금 DOM을 나란히 보여 줍니다.',
         pause: 'short',
       },
       {
@@ -183,7 +183,19 @@ export const narration: NarrationScript = {
       { text: '잠깐 멈추고 직접 해 보셔도 좋아요.', pause: 'long' },
       {
         target: ':scope > p:nth-of-type(4)',
-        text: '처리를 켠 상태에서 누르면, 지금 DOM의 aria-expanded가 true로 바뀌고, 패널의 hidden 속성이 사라집니다. 처리를 끄면 click 횟수만 늘고, 두 속성은 그대로예요.',
+        text: '처리를 끄고 누르면, 지금 DOM은 어떻게 될까요?',
+        pause: 'think',
+      },
+      {
+        text: 'click 횟수만 늘고, aria-expanded와 hidden 속성은 그대로예요.',
+        pause: 'short',
+      },
+      {
+        text: '처리를 켜고 누를 때만, aria-expanded가 true로 바뀌고 패널의 hidden 속성이 사라집니다.',
+        pause: 'short',
+      },
+      {
+        text: '화면 낭독기가 전하는 펼침, 접힘 상태도 이 aria-expanded 값에서 나옵니다.',
         pause: 'short',
       },
       {

@@ -36,7 +36,7 @@ const content = {
       touch: <>두 저장 버튼을 눌러 보고, 각 버튼에 Tab으로 도착할 수 있는지 확인해 보세요.</>,
     },
     modeLabel: '실습 방법',
-    modes: { keyboard: '키보드로 해 보기', touch: '키보드 없이 보기' },
+    modes: { keyboard: '키보드로 해 보기', touch: '터치·마우스로 해 보기' },
     startLabel: '실습 시작 지점',
     save: '저장',
     checks: {
@@ -75,7 +75,7 @@ const content = {
       touch: <>Press both Save buttons, then check whether Tab can reach each one.</>,
     },
     modeLabel: 'How to try it',
-    modes: { keyboard: 'With a keyboard', touch: 'Without a keyboard' },
+    modes: { keyboard: 'With a keyboard', touch: 'With touch or a mouse' },
     startLabel: 'Exercise starting point',
     save: 'Save',
     checks: {

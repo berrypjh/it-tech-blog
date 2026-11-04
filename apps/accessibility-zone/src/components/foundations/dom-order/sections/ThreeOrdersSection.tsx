@@ -1,9 +1,10 @@
 import type { Locale } from '@it-tech-blog/preferences';
-import { Callout, DocH2, DocTable } from '@it-tech-blog/ui';
+import { Callout, DocH2, DocTable, ExternalLink } from '@it-tech-blog/ui';
 
 import { Code, Keyboard, Monitor } from 'lucide-react';
 
 import { IconLabel } from '@/components/shared/IconLabel';
+import { understanding } from '@/components/shared/wcag';
 
 import { getToc } from '../toc';
 
@@ -40,10 +41,16 @@ const content = {
     ),
     rules: (
       <>
-        WCAG는 두 가지를 요구합니다. 순서가 뜻을 바꾸면 그 순서를 기계가 읽을 수 있어야 하고(WCAG
-        2.2 성공 기준 1.3.2 의미 있는 순서(A)), 포커스는 뜻과 조작이 유지되는 순서로 이동해야
-        합니다(WCAG 2.2 성공 기준 2.4.3 포커스 순서(A)). &quot;화면과 DOM 순서가 완전히 같아야
-        한다&quot;는 문장은 요구가 아니지만, 어긋나면 이 두 요구를 어기기 쉽습니다.
+        WCAG는 두 가지를 요구합니다. 순서가 뜻을 바꾸면 그 순서를 기계가 읽을 수 있어야 하고(
+        <ExternalLink href={understanding('meaningful-sequence')}>
+          WCAG 2.2 성공 기준 1.3.2 의미 있는 순서(A)
+        </ExternalLink>
+        ), 포커스는 뜻과 조작이 유지되는 순서로 이동해야 합니다(
+        <ExternalLink href={understanding('focus-order')}>
+          WCAG 2.2 성공 기준 2.4.3 포커스 순서(A)
+        </ExternalLink>
+        ). &quot;화면과 DOM 순서가 완전히 같아야 한다&quot;는 문장은 요구가 아니지만, 어긋나면 이 두
+        요구를 어기기 쉽습니다.
       </>
     ),
     tabindexTitle: '양수 tabindex로 순서를 고치지 않습니다',
@@ -90,9 +97,12 @@ const content = {
     rules: (
       <>
         WCAG requires two things: when sequence affects meaning, that sequence must be
-        programmatically determinable (1.3.2, A), and focus must move in an order that preserves
-        meaning and operability (2.4.3, A). &quot;Visual and DOM order must be identical&quot; is
-        not itself a requirement, but when they disagree it is easy to break these two.
+        programmatically determinable (
+        <ExternalLink href={understanding('meaningful-sequence')}>1.3.2, A</ExternalLink>), and
+        focus must move in an order that preserves meaning and operability (
+        <ExternalLink href={understanding('focus-order')}>2.4.3, A</ExternalLink>). &quot;Visual and
+        DOM order must be identical&quot; is not itself a requirement, but when they disagree it is
+        easy to break these two.
       </>
     ),
     tabindexTitle: 'Do not fix the order with a positive tabindex',

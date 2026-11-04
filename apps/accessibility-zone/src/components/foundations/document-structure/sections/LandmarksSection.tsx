@@ -1,5 +1,5 @@
 import type { Locale } from '@it-tech-blog/preferences';
-import { Callout, CodeBlock, DocH2, DocTable } from '@it-tech-blog/ui';
+import { Callout, CodeBlock, DocH2, DocTable, ExternalLink } from '@it-tech-blog/ui';
 
 import {
   FileText,
@@ -13,10 +13,13 @@ import {
 
 import { IconLabel } from '@/components/shared/IconLabel';
 import { ThemedFigure } from '@/components/shared/ThemedFigure';
+import { understanding } from '@/components/shared/wcag';
 
 import landmarksDark from '../images/landmarks-dark.webp';
 import landmarksLight from '../images/landmarks-light.webp';
 import { getToc } from '../toc';
+
+const HTML_AAM = 'https://www.w3.org/TR/html-aam-1.0/';
 
 const code = {
   ko: `<body>
@@ -65,7 +68,8 @@ const content = {
       <>
         랜드마크는 페이지를 머리글 · 메뉴 · 본문 · 바닥글 같은 <strong>큰 영역</strong>으로
         나눕니다. 많은 화면 낭독기는 랜드마크 목록을 보여 주거나 영역 사이를 키 하나로 이동하게
-        합니다. HTML 요소 몇 개는 조건에 따라 자동으로 랜드마크가 됩니다.
+        합니다. HTML 요소 몇 개는{' '}
+        <ExternalLink href={HTML_AAM}>조건에 따라 자동으로 랜드마크</ExternalLink>가 됩니다.
       </>
     ),
     caption: 'HTML 요소와 랜드마크 역할',
@@ -98,10 +102,13 @@ const content = {
     codeLabel: '상품 페이지 — 랜드마크를 갖춤',
     bypass: (
       <>
-        WCAG 2.2 성공 기준 2.4.1 블록 우회(A)는 여러 페이지에 반복되는 메뉴를 건너뛸 방법을
-        요구합니다. 랜드마크와 제목은 보조기술 사용자에게 그 방법이 되지만, 화면 낭독기 없이
-        키보드만 쓰는 사용자는 랜드마크로 이동할 수 없습니다. 그래서 이 사이트는 Tab을 처음 누르면
-        나타나는 &quot;본문으로 건너뛰기&quot; 링크도 함께 둡니다.
+        <ExternalLink href={understanding('bypass-blocks')}>
+          WCAG 2.2 성공 기준 2.4.1 블록 우회(A)
+        </ExternalLink>
+        는 여러 페이지에 반복되는 메뉴를 건너뛸 방법을 요구합니다. 랜드마크와 제목은 보조기술
+        사용자에게 그 방법이 되지만, 화면 낭독기 없이 키보드만 쓰는 사용자는 랜드마크로 이동할 수
+        없습니다. 그래서 이 사이트는 Tab을 처음 누르면 나타나는 &quot;본문으로 건너뛰기&quot; 링크도
+        함께 둡니다.
       </>
     ),
     tradeoffTitle: '랜드마크가 많으면 목록이 길어져 이동이 느려집니다',
@@ -123,7 +130,11 @@ const content = {
       <>
         Landmarks divide a page into <strong>large regions</strong> such as the banner, menus, main
         content, and footer. Many screen readers list the landmarks or move between regions with a
-        single key. Several HTML elements become landmarks automatically under certain conditions.
+        single key. Several HTML elements{' '}
+        <ExternalLink href={HTML_AAM}>
+          become landmarks automatically under certain conditions
+        </ExternalLink>
+        .
       </>
     ),
     caption: 'HTML elements and landmark roles',
@@ -157,10 +168,11 @@ const content = {
     codeLabel: 'A product page with landmarks',
     bypass: (
       <>
-        WCAG 2.4.1 (A) requires a way to skip menus repeated across pages. Landmarks and headings
-        give assistive technology users that way, but keyboard users without a screen reader cannot
-        move by landmark. That is why this site also has a &quot;Skip to main content&quot; link
-        that appears on the first Tab.
+        <ExternalLink href={understanding('bypass-blocks')}>WCAG 2.4.1 (A)</ExternalLink> requires a
+        way to skip menus repeated across pages. Landmarks and headings give assistive technology
+        users that way, but keyboard users without a screen reader cannot move by landmark. That is
+        why this site also has a &quot;Skip to main content&quot; link that appears on the first
+        Tab.
       </>
     ),
     tradeoffTitle: 'Too many landmarks make the list long and moving slow',

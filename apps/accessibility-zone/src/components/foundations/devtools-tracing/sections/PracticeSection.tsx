@@ -1,5 +1,5 @@
 import type { Locale } from '@it-tech-blog/preferences';
-import { Callout, CodeCompare, DocH2, DocH3, DocTable } from '@it-tech-blog/ui';
+import { Callout, CodeCompare, DocH2, DocH3, DocTable, ExternalLink } from '@it-tech-blog/ui';
 
 import { Keyboard, Lightbulb, RotateCcw, Search, Wrench } from 'lucide-react';
 
@@ -7,6 +7,9 @@ import { IconLabel } from '@/components/shared/IconLabel';
 
 import { TraceDemo } from '../demos/TraceDemo';
 import { getToc } from '../toc';
+
+const IMPLICIT_SUBMISSION =
+  'https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#implicit-submission';
 
 const code = {
   ko: {
@@ -100,8 +103,9 @@ const content = {
     preserve: (
       <>
         수정은 HTML 한 줄씩입니다. 결함 1을 &quot;submit 이벤트를 막는다&quot;로 고치면 수량 칸에서
-        Enter로 주문하는 기본 동작(암시적 제출)까지 사라지고, 결함 2를 &quot;tabindex와 keydown을
-        더한다&quot;로 고치면 새 탭 열기 · 주소 복사는 여전히 없습니다.{' '}
+        Enter로 주문하는 기본 동작(
+        <ExternalLink href={IMPLICIT_SUBMISSION}>암시적 제출</ExternalLink>)까지 사라지고, 결함 2를
+        &quot;tabindex와 keydown을 더한다&quot;로 고치면 새 탭 열기 · 주소 복사는 여전히 없습니다.{' '}
         <strong>원인이 있는 곳을 고치면 기본 기능이 그대로 남습니다.</strong>
       </>
     ),
@@ -168,7 +172,8 @@ const content = {
     preserve: (
       <>
         Each fix is one line of HTML. Fixing defect 1 by &quot;blocking the submit event&quot; would
-        also remove ordering with Enter from the quantity field (implicit submission), and fixing
+        also remove ordering with Enter from the quantity field (
+        <ExternalLink href={IMPLICIT_SUBMISSION}>implicit submission</ExternalLink>), and fixing
         defect 2 by &quot;adding tabindex and keydown&quot; still leaves no open-in-new-tab or
         copy-link. <strong>Fix it where the cause is, and the built-in features stay.</strong>
       </>
