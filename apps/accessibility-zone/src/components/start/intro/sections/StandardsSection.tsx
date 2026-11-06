@@ -41,9 +41,8 @@ const content = {
     kwcag: (
       <>
         「한국형 웹 콘텐츠 접근성 지침 2.2」(KS X OT0003)는 국립전파연구원이 2022년 12월 28일 개정
-        고시했습니다. WCAG 2.1과, 당시 초안이던 2.2를 반영해 기존 24개 검사 항목에 9개를
-        추가했습니다. 즉 KWCAG는 WCAG를 참조한 한국의 국가표준이지,{' '}
-        <strong>번역본도 법률 조문도 아닙니다</strong>.
+        고시했습니다. WCAG 2.1을 반영해 기존 24개 검사 항목에 9개를 추가했습니다. 즉 KWCAG는 WCAG를
+        참조한 한국의 국가표준이지, <strong>번역본도 법률 조문도 아닙니다</strong>.
       </>
     ),
     pitfallTitle: '확인 없이 단정하지 않습니다',
@@ -99,9 +98,9 @@ const content = {
     kwcag: (
       <>
         The Korean Web Content Accessibility Guidelines 2.2 (KS X OT0003) were revised and announced
-        by the National Radio Research Agency on December 28, 2022. Reflecting WCAG 2.1 and the then
-        draft of 2.2, the revision added 9 items to the existing 24. KWCAG is Korea&apos;s national
-        standard that references WCAG — <strong>neither a translation nor a legal text</strong>.
+        by the National Radio Research Agency on December 28, 2022. Reflecting WCAG 2.1, the
+        revision added 9 items to the existing 24. KWCAG is Korea&apos;s national standard that
+        references WCAG — <strong>neither a translation nor a legal text</strong>.
       </>
     ),
     pitfallTitle: 'Do not assert without checking',

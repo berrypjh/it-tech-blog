@@ -32,8 +32,8 @@ const content = {
       <>
         페이지가 열린 뒤에는 JavaScript가 DOM을 계속 바꿉니다. 그래서 &quot;페이지 소스 보기&quot;는
         처음 받은 글자를, 개발자 도구(DevTools)의 Elements 패널은 지금의 DOM을 보여 줍니다.
-        보조기술이 읽는 정보도 지금의 DOM에서 나오므로, 접근성 문제를 확인할 때는{' '}
-        <strong>소스가 아니라 DOM</strong>을 봅니다.
+        브라우저가 보조기술에 넘기는 정보도 지금의 DOM을 바탕으로 만들어지므로, 접근성 문제를 확인할
+        때는 <strong>소스가 아니라 DOM</strong>을 봅니다.
       </>
     ),
     demoIntro: (
@@ -67,8 +67,9 @@ const content = {
       <>
         After the page opens, JavaScript keeps changing the DOM. So &quot;View page source&quot;
         shows the text that first arrived, while the Elements panel in developer tools shows the DOM
-        as it is now. What assistive technology reads also comes from the current DOM, so when you
-        check an accessibility problem, look at <strong>the DOM, not the source</strong>.
+        as it is now. The information the browser passes to assistive technology is also built from
+        the current DOM, so when you check an accessibility problem, look at{' '}
+        <strong>the DOM, not the source</strong>.
       </>
     ),
     demoIntro: (

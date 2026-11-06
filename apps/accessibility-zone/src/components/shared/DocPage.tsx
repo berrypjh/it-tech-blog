@@ -16,7 +16,8 @@ export type HeaderContent = {
   title: string;
   lead: React.ReactNode;
   readingTime: string;
-  practices: string;
+  /** 브라우저 실습 수. 실습이 없는 페이지는 두지 않는다. */
+  practices?: string;
   learnItems: string[];
 };
 
@@ -42,10 +43,12 @@ export const DocPageHeader = ({
         <Clock className="h-3.5 w-3.5" aria-hidden="true" />
         {c.readingTime}
       </span>
-      <span className="flex items-center gap-xs">
-        <FlaskConical className="h-3.5 w-3.5" aria-hidden="true" />
-        {c.practices}
-      </span>
+      {c.practices && (
+        <span className="flex items-center gap-xs">
+          <FlaskConical className="h-3.5 w-3.5" aria-hidden="true" />
+          {c.practices}
+        </span>
+      )}
       <ListenButton script={script} />
     </div>
 

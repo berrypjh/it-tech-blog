@@ -60,7 +60,7 @@ export const narration: NarrationScript = {
         pause: 'short',
       },
       {
-        text: 'JavaScript는 DOM을 바꾸고, 보조기술은 DOM과 스타일에서 만든 접근성 트리를 받습니다.',
+        text: 'JavaScript는 DOM을 바꾸고, 브라우저는 DOM과 스타일로 접근성 트리를 만들어 보조기술에 넘깁니다.',
         pause: 'short',
       },
       {
@@ -75,7 +75,7 @@ export const narration: NarrationScript = {
       },
       {
         target: 'tbody tr:nth-child(2)',
-        text: 'DOM은 브라우저가 HTML을 읽어 만든 객체 트리이고, 스크립트가 읽고 바꾸는 대상입니다. 보조기술에 전달되는 정보는 소스 파일이 아니라, 지금 이 순간의 DOM에서 나와요.',
+        text: 'DOM은 브라우저가 HTML을 읽어 만든 객체 트리이고, 스크립트가 읽고 바꾸는 대상입니다. 브라우저가 보조기술에 넘기는 정보는 소스 파일이 아니라, 지금 이 순간의 DOM을 바탕으로 만들어져요.',
         pause: 'short',
       },
       {
@@ -94,7 +94,7 @@ export const narration: NarrationScript = {
         pause: 'think',
       },
       {
-        text: '브라우저는 DOM과 계산된 스타일에서 접근성 트리를 만듭니다. 그리고 운영체제의 접근성 API를 거쳐, 화면 낭독기 같은 보조기술에 역할, 이름, 상태를 전달해요.',
+        text: '브라우저는 DOM과 계산된 스타일에서 접근성 트리를 만듭니다. 그리고 운영체제의 접근성 API를 거쳐, 화면 낭독기 같은 보조기술에 역할, 이름, 상태를 전달해요. 보조기술은 DOM이나 CSS를 그대로 읽지 않고, 이렇게 받은 정보를 해석해 전합니다.',
         pause: 'short',
       },
       {
@@ -155,7 +155,7 @@ export const narration: NarrationScript = {
         pause: 'short',
       },
       {
-        text: '보조기술이 읽는 정보도 지금의 DOM에서 나오니, 소스가 아니라 DOM을 봅니다.',
+        text: '브라우저가 보조기술에 넘기는 정보도 지금의 DOM을 바탕으로 만들어지니, 소스가 아니라 DOM을 봅니다.',
         pause: 'short',
       },
       {
@@ -199,7 +199,7 @@ export const narration: NarrationScript = {
         pause: 'short',
       },
       {
-        text: '정리하면, 보조기술이 읽는 것은 처음 받은 HTML 소스가 아니라 지금의 DOM입니다. click 이벤트는 button이 기본으로 만듭니다. 하지만 상태를 속성에 반영해 DOM을 바꾸는 일은 JavaScript의 책임이에요.',
+        text: '정리하면, 브라우저가 보조기술에 넘기는 정보의 바탕은 처음 받은 HTML 소스가 아니라 지금의 DOM입니다. click 이벤트는 button이 기본으로 만듭니다. 하지만 상태를 속성에 반영해 DOM을 바꾸는 일은 JavaScript의 책임이에요.',
         pause: 'section',
       },
     ],
@@ -275,7 +275,7 @@ export const narration: NarrationScript = {
       },
       {
         target: ':scope > ol > li:nth-child(2)',
-        text: '둘째, 보조기술은 지금의 DOM을 읽으니, 상태를 속성에 반영하는 일은 JavaScript의 책임입니다.',
+        text: '둘째, 브라우저가 보조기술에 넘기는 정보는 지금의 DOM을 바탕으로 만들어집니다. 그래서 상태를 속성에 반영하는 일은 JavaScript의 책임입니다.',
         pause: 'short',
       },
       {

@@ -2,6 +2,7 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { DocLayout, type DocReference } from '@it-tech-blog/ui';
 
 import { ReferencesSection, same, SummarySection } from '@/components/shared/DocPage';
+import { NextPage } from '@/components/shared/PageLink';
 
 import { AtCheckSection } from './sections/AtCheckSection';
 import { LevelsSection } from './sections/LevelsSection';
@@ -79,6 +80,7 @@ export const DevtoolsTracingPage = ({ locale }: { locale: Locale }) => {
       <AtCheckSection locale={locale} />
       <SummarySection item={toc.summary} points={points[locale]} />
       <ReferencesSection item={toc.references} locale={locale} references={references} />
+      <NextPage locale={locale} id="accessibility-tree" />
     </DocLayout>
   );
 };

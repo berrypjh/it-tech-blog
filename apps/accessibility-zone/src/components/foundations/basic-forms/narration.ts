@@ -153,12 +153,33 @@ export const narration: NarrationScript = {
       },
       {
         target: 'tbody tr:nth-child(3)',
-        text: 'autocomplete를 email로 두면, 저장된 값으로 자동 완성되고 입력 목적을 기계가 알 수 있어요. 사용자 본인 정보 칸이라면, WCAG의 입력 목적 식별 기준이 AA 수준으로 요구하는 것입니다.',
+        text: 'autocomplete를 email로 두면, 저장된 값으로 자동 완성되고 입력 목적을 기계가 알 수 있어요.',
         pause: 'short',
       },
       {
         target: 'tbody tr:nth-child(4)',
         text: 'required는 브라우저 기본 검사를 켜고, 보조기술에 필수라는 정보를 전달합니다. type과 required의 근거는 HTML이에요.',
+        pause: 'long',
+      },
+      {
+        target: ':scope > aside',
+        text: '그럼 WCAG의 입력 목적 식별 기준은 무엇을 요구할까요?',
+        pause: 'think',
+      },
+      {
+        text: '이 기준은 사용자 본인에 관한 정보를 받는 칸에 적용됩니다.',
+        pause: 'short',
+      },
+      {
+        text: '요구하는 결과는 그 칸의 목적을 프로그램이 알 수 있는 것입니다.',
+        pause: 'short',
+      },
+      {
+        text: 'HTML에서는 알맞은 autocomplete 토큰을 쓰는 것이, 그 결과를 내는 기법이에요.',
+        pause: 'short',
+      },
+      {
+        text: '받는 사람 이메일처럼 다른 사람의 정보를 받는 칸은 대상이 아닙니다.',
         pause: 'long',
       },
       {

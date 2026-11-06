@@ -13,13 +13,13 @@ import { getToc } from './toc';
 const points = {
   ko: [
     'HTML은 구조 · 의미 · 기본 동작을, CSS는 표현을, JavaScript는 이벤트에 따른 상태 변경을 맡습니다. DOM은 브라우저가 HTML을 읽어 만든, 스크립트가 바꾸는 트리입니다.',
-    '보조기술이 읽는 정보는 소스 파일이 아니라 지금의 DOM과 계산된 스타일에서 나옵니다.',
+    '브라우저가 보조기술에 넘기는 정보는 소스 파일이 아니라 지금의 DOM과 계산된 스타일을 바탕으로 만들어집니다.',
     'click 이벤트는 button이 기본으로 만들어도, 상태를 속성에 반영하는 일은 JavaScript의 책임입니다.',
     '같은 과업의 결함도 층마다 막히는 사람과 고칠 곳이 다르므로, 책임이 있는 층에서 고칩니다.',
   ],
   en: [
     'HTML owns structure, meaning, and built-in behavior; CSS owns presentation; JavaScript owns state changes in response to events. The DOM is the tree the browser builds from HTML and scripts change.',
-    'What assistive technology reads comes from the current DOM and computed styles, not the source file.',
+    'What the browser passes to assistive technology is built from the current DOM and computed styles, not the source file.',
     'A button fires click events on its own, but writing the state into attributes is JavaScript’s job.',
     'Defects in the same task block different people and need different fixes per layer, so fix them in the layer that owns them.',
   ],

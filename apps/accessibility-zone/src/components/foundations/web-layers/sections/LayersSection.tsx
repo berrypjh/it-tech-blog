@@ -19,7 +19,7 @@ const content = {
     figure: {
       alt: '페이지 뼈대, DOM 트리, 꾸민 화면, 동작을 뜻하는 톱니바퀴가 네 층으로 쌓여 있고, 번개 화살표가 DOM 트리의 한 노드를 가리킵니다. 꾸민 화면과 DOM 트리에서 나온 점선은 오른쪽의 작은 트리를 거쳐 스피커로 이어집니다.',
       caption:
-        '웹 페이지는 네 층이 함께 만듭니다. JavaScript는 DOM을 바꾸고, 보조기술은 DOM과 스타일에서 만든 접근성 트리를 받습니다. 학습용으로 단순화한 그림입니다.',
+        '웹 페이지는 네 층이 함께 만듭니다. JavaScript는 DOM을 바꾸고, 브라우저는 DOM과 스타일로 접근성 트리를 만들어 보조기술에 넘깁니다. 학습용으로 단순화한 그림입니다.',
     },
     intro: (
       <>
@@ -41,7 +41,7 @@ const content = {
       [
         'DOM',
         '브라우저가 HTML을 읽어 만든 객체 트리이자 스크립트가 읽고 바꾸는 대상',
-        '보조기술에 전달되는 정보는 소스 파일이 아니라 지금 이 순간의 DOM에서 나옵니다',
+        '브라우저가 보조기술에 넘기는 정보는 소스 파일이 아니라 지금 이 순간의 DOM을 바탕으로 만들어집니다',
       ],
       [
         'CSS',
@@ -63,7 +63,8 @@ const content = {
     tree: (
       <>
         브라우저는 DOM과 계산된 스타일에서 <strong>접근성 트리</strong>를 만들고, 운영체제의 접근성
-        API를 거쳐 화면 낭독기 같은 보조기술에 역할 · 이름 · 상태를 전달합니다. 이 흐름의 그림은{' '}
+        API를 거쳐 화면 낭독기 같은 보조기술에 역할 · 이름 · 상태를 전달합니다. 보조기술은 DOM이나
+        CSS를 그대로 읽지 않고 이렇게 받은 정보를 해석해 전합니다. 이 흐름의 그림은{' '}
         <PageLink locale="ko" id="intro" hash="why-frontend" />의 &quot;프론트엔드에게 중요한
         이유&quot;에 있습니다.
       </>
@@ -88,7 +89,7 @@ const content = {
     figure: {
       alt: 'Four stacked layers: a page skeleton, a node tree, a styled page, and gears standing for behavior. A lightning arrow points at one node in the tree. Dotted lines from the styled page and the node tree lead through a small tree on the right to a speaker.',
       caption:
-        'Four layers build a web page together. JavaScript changes the DOM, and assistive technology receives an accessibility tree built from the DOM and styles. A simplified teaching picture.',
+        'Four layers build a web page together. JavaScript changes the DOM, and the browser builds an accessibility tree from the DOM and styles and passes it to assistive technology. A simplified teaching picture.',
     },
     intro: (
       <>
@@ -110,7 +111,7 @@ const content = {
       [
         'DOM',
         'The object tree the browser builds from HTML; what scripts read and change',
-        'What reaches assistive technology comes from the DOM as it is right now, not the source file',
+        'What the browser passes to assistive technology is built from the DOM as it is right now, not the source file',
       ],
       [
         'CSS',
@@ -133,8 +134,10 @@ const content = {
       <>
         The browser builds an <strong>accessibility tree</strong> from the DOM and computed styles,
         and passes role, name, and state through the operating system&apos;s accessibility API to
-        assistive technology such as screen readers. A diagram of this flow is in &quot;Why it
-        matters to frontend&quot; on <PageLink locale="en" id="intro" hash="why-frontend" />.
+        assistive technology such as screen readers. Assistive technology does not read the DOM or
+        CSS as is; it interprets the information it receives and presents it. A diagram of this flow
+        is in &quot;Why it matters to frontend&quot; on{' '}
+        <PageLink locale="en" id="intro" hash="why-frontend" />.
       </>
     ),
     aria: (

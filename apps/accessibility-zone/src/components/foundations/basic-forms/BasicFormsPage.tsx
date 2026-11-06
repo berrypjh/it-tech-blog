@@ -15,14 +15,14 @@ const points = {
   ko: [
     '보이는 라벨을 for · id나 감싸기로 연결하면 접근 가능한 이름과 넓은 누름 영역이 함께 생깁니다.',
     'placeholder는 예시 힌트입니다. 입력하면 사라지고 이름으로 전달되는 방식도 환경마다 달라 라벨을 대신하지 못합니다.',
-    'type · autocomplete · required는 필요한 것만 정확히 씁니다. 사용자 본인 정보 칸의 autocomplete는 WCAG 2.2 성공 기준 1.3.5 입력 목적 식별(AA)의 요구입니다.',
+    'type · autocomplete · required는 필요한 것만 정확히 씁니다. WCAG 2.2 성공 기준 1.3.5(AA)는 사용자 본인 정보 칸의 목적을 프로그램이 알 수 있기를 요구하고, autocomplete 토큰은 그 방법입니다.',
     'id는 문서 안에서 하나여야 합니다. 같은 컴포넌트를 여러 번 그리면 useId 같은 방법으로 id를 만듭니다.',
     '한 질문에 속한 라디오 · 체크박스는 fieldset으로 묶고 legend에 질문을 씁니다.',
   ],
   en: [
     'Associating a visible label with for/id or by wrapping gives both an accessible name and a larger click target.',
     'A placeholder is an example hint. It disappears when you type, and how it is conveyed as a name varies, so it cannot replace a label.',
-    'Use type, autocomplete, and required only where needed, accurately. autocomplete on fields about the user is required by WCAG 1.3.5.',
+    'Use type, autocomplete, and required only where needed, accurately. WCAG 2.2 SC 1.3.5 (AA) requires that the purpose of fields about the user be programmatically determinable; an autocomplete token is how HTML does it.',
     'An id must be unique in the document. When rendering a component several times, create ids with something like useId.',
     'Group radio buttons and checkboxes that answer one question with fieldset and put the question in legend.',
   ],

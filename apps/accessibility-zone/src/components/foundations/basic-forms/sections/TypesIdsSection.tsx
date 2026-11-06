@@ -1,5 +1,13 @@
 import type { Locale } from '@it-tech-blog/preferences';
-import { CodeBlock, CodeCompare, DocH2, DocH3, DocTable, ExternalLink } from '@it-tech-blog/ui';
+import {
+  Callout,
+  CodeBlock,
+  CodeCompare,
+  DocH2,
+  DocH3,
+  DocTable,
+  ExternalLink,
+} from '@it-tech-blog/ui';
 
 import { getToc } from '../toc';
 
@@ -83,10 +91,20 @@ const content = {
       [
         <code key="a">autocomplete=&quot;email&quot;</code>,
         '저장된 값 자동 완성. 입력 목적을 기계가 알 수 있습니다',
-        '요구 — WCAG 2.2 성공 기준 1.3.5 입력 목적 식별(AA), 사용자 본인 정보 칸',
+        'HTML 자동 완성 토큰. WCAG 2.2 성공 기준 1.3.5(AA)를 충족하는 기법',
       ],
       [<code key="a">required</code>, '브라우저 기본 검사, 보조기술에 "필수" 전달', 'HTML'],
     ],
+    purposeTitle: '1.3.5가 요구하는 것은 결과입니다',
+    purpose: (
+      <>
+        WCAG 2.2 성공 기준 1.3.5 입력 목적 식별(AA)은 <strong>사용자 본인에 관한 정보</strong>를
+        받는 칸에 적용됩니다. 그 목적이 WCAG의 입력 목적 목록에 있고, 목적을 알릴 수 있는 기술로
+        만들었을 때입니다. 요구하는 결과는 그 칸의 목적을 프로그램이 알 수 있는 것입니다. HTML에서는
+        알맞은 <code>autocomplete</code> 토큰을 쓰는 것이 그 결과를 내는 기법입니다. 받는 사람
+        이메일처럼 다른 사람의 정보를 받는 칸은 이 기준의 대상이 아닙니다.
+      </>
+    ),
     idsHeading: 'id는 문서 안에서 하나여야 한다',
     ids: (
       <>
@@ -129,7 +147,7 @@ const content = {
       [
         <code key="a">autocomplete=&quot;email&quot;</code>,
         'Autofill from saved values; the input purpose is machine-readable',
-        'Required — WCAG 1.3.5 (AA), for fields about the user',
+        'An HTML autofill token; a technique for meeting WCAG 2.2 SC 1.3.5 (AA)',
       ],
       [
         <code key="a">required</code>,
@@ -137,6 +155,17 @@ const content = {
         'HTML',
       ],
     ],
+    purposeTitle: 'What 1.3.5 requires is an outcome',
+    purpose: (
+      <>
+        WCAG 2.2 Success Criterion 1.3.5 Identify Input Purpose (AA) applies to fields that collect{' '}
+        <strong>information about the user</strong>, when the purpose is in WCAG&apos;s list of
+        input purposes and the technology can identify that meaning. The required outcome is that
+        the field&apos;s purpose can be programmatically determined. In HTML, using the right{' '}
+        <code>autocomplete</code> token is a technique that produces that outcome. A field for
+        someone else&apos;s information, such as a recipient&apos;s email, is not in scope.
+      </>
+    ),
     idsHeading: 'An id must be unique in the document',
     ids: (
       <>
@@ -168,6 +197,9 @@ export const TypesIdsSection = ({ locale }: { locale: Locale }) => {
       <DocH2 {...toc.typesIds} />
       <p>{c.intro}</p>
       <DocTable caption={c.caption} head={c.head} rows={c.rows} />
+      <Callout variant="note" title={c.purposeTitle}>
+        <p>{c.purpose}</p>
+      </Callout>
 
       <DocH3>{c.idsHeading}</DocH3>
       <p>{c.ids}</p>
