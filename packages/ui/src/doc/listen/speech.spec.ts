@@ -43,6 +43,18 @@ describe('toSpeech', () => {
     );
   });
 
+  it('reads chapter 03 · 04 names whole before the shorter terms inside them', () => {
+    expect(toSpeech('aria-labelledby와 aria-label, HTML-AAM과 Core-AAM', 'ko')).toBe(
+      '아리아 레이블드바이와 아리아 라벨, 에이치 티 엠 엘 에이에이엠과 코어 에이에이엠',
+    );
+    expect(toSpeech('NV Access의 NVDA, ACT 규칙과 VO 키', 'ko')).toBe(
+      '엔브이 액세스의 엔브이디에이, 액트 규칙과 브이오 키',
+    );
+    expect(toSpeech('Show accessibility tree, opacity와 visibility', 'ko')).toBe(
+      '쇼 어세서빌리티 트리, 오패시티와 비저빌리티',
+    );
+  });
+
   it('leaves English acronyms for the English voice', () => {
     expect(toSpeech('WCAG 01', 'en')).toBe('WCAG 1');
   });

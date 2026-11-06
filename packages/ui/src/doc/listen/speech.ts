@@ -10,6 +10,11 @@
  * KWCAG가 WCAG로, aria-label이 label로 먼저 바뀌지 않는다.
  */
 const KO_TERMS: [string, string][] = [
+  // 3 · 4장의 명세 이름. 하이픈으로 이은 이름을 HTML · AA보다 먼저 둬야 통째로 읽힌다.
+  ['HTML-AAM', '에이치 티 엠 엘 에이에이엠'],
+  ['Core-AAM', '코어 에이에이엠'],
+  ['AAM', '에이에이엠'],
+  ['ACT', '액트'],
   ['KWCAG', '케이 위캐그'],
   ['WCAG', '위캐그'],
   ['W3C', '더블유 쓰리 씨'],
@@ -33,6 +38,7 @@ const KO_TERMS: [string, string][] = [
   ['DevTools', '데브툴즈'],
   ['Chrome', '크롬'],
   ['aria-disabled', '아리아 디스에이블드'],
+  ['aria-labelledby', '아리아 레이블드바이'],
   ['aria-label', '아리아 라벨'],
   ['placeholder', '플레이스홀더'],
   ['tabindex', '탭인덱스'],
@@ -73,6 +79,18 @@ const KO_TERMS: [string, string][] = [
   ['Safari', '사파리'],
   ['Firefox', '파이어폭스'],
   ['Edge', '엣지'],
+  // 3장의 도구 · 화면 낭독기 이름과 CSS 속성.
+  ['Show accessibility tree', '쇼 어세서빌리티 트리'],
+  ['NV Access', '엔브이 액세스'],
+  ['activeElement', '액티브 엘리먼트'],
+  ['visibility', '비저빌리티'],
+  ['opacity', '오패시티'],
+  ['before', '비포'],
+  ['span', '스팬'],
+  ['Windows', '윈도우'],
+  ['Apple', '애플'],
+  ['Gecko', '게코'],
+  ['VO', '브이오'],
   ['VoiceOver', '보이스오버'],
   ['TalkBack', '톡백'],
   ['NVDA', '엔브이디에이'],
