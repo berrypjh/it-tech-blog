@@ -12,8 +12,8 @@ describe('getPlacement', () => {
   });
 
   it('keeps every module inside the stage', () => {
-    for (let index = 0; index < 11; index++) {
-      const { x, y, depth } = getPlacement(index, 11);
+    for (let index = 0; index < 12; index++) {
+      const { x, y, depth } = getPlacement(index, 12);
       expect(x).toBeGreaterThan(0);
       expect(x).toBeLessThan(100);
       expect(y).toBeGreaterThan(0);

@@ -6,7 +6,8 @@
         "default",
         "^production",
         { "externalDependencies": ["next"] },
-        { "env": "ENABLED_ZONES" }
+        { "env": "ENABLED_ZONES" },
+        { "env": "COMPUTER_ARCHITECTURE_DOMAIN" }
       ]
     }
   }

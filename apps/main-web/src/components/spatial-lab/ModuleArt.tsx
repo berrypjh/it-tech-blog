@@ -80,6 +80,16 @@ const LlmArt = () => (
   </g>
 );
 
+const ComputerArchitectureArt = () => (
+  <g>
+    <IsoBox cx={60} cy={52} half={30} height={10} />
+    <IsoBox cx={60} cy={42} half={14} height={8} top="m-glass m-glass--lit" />
+    <path className="m-line" d="M46 47L35 52M74 47L85 52M60 57V63" />
+    <polyline className="m-accent" points="46,42 60,49 74,42" />
+    <circle className="m-core" cx="60" cy="42" r="3" />
+  </g>
+);
+
 const BundlerArt = () => (
   <g>
     <IsoBox cx={60} cy={62} half={26} height={8} />
@@ -155,6 +165,7 @@ const ART: Record<TopicId, () => React.JSX.Element> = {
   accessibility: AccessibilityArt,
   network: NetworkArt,
   llm: LlmArt,
+  'computer-architecture': ComputerArchitectureArt,
   bundler: BundlerArt,
   devtools: DevtoolsArt,
   lighthouse: LighthouseArt,

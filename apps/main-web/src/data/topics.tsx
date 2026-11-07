@@ -2,6 +2,7 @@ import {
   AccessibilityIcon,
   AtomIcon,
   BundlerIcon,
+  CpuIcon,
   DataStructureIcon,
   DesignPatternIcon,
   DevtoolsIcon,
@@ -19,6 +20,7 @@ export type TopicId =
   | 'security'
   | 'react'
   | 'llm'
+  | 'computer-architecture'
   | 'network'
   | 'design-patterns'
   | 'bundler'
@@ -77,6 +79,18 @@ export const TOPICS: Topic[] = [
     description: {
       ko: '모델에서 시스템까지, LLM 소프트웨어의 구조와 검증, 운영을 따라갑니다.',
       en: 'From model to system: structure, verification and operation of LLM software.',
+    },
+  },
+  {
+    id: 'computer-architecture',
+    status: 'active',
+    zone: 'computer-architecture',
+    href: '/computer-architecture',
+    icon: <CpuIcon />,
+    label: { ko: '컴퓨터 구조', en: 'Computer Architecture' },
+    description: {
+      ko: '컴퓨터가 명령을 실행하는 구조를 한 장씩 열어 갑니다.',
+      en: 'Open up, one chapter at a time, how a computer runs instructions.',
     },
   },
   {
@@ -168,14 +182,23 @@ export const parseEnabledZones = (value: string | undefined): string[] =>
     .map((zone) => zone.trim())
     .filter(Boolean) ?? [];
 
+/** 외부 Private 저장소의 존. 호스트 build가 도메인을 확인했을 때만 보인다. */
+const PRIVATE_TOPIC_IDS: TopicId[] = ['computer-architecture'];
+
 /**
  * 배포 시 노출할 토픽을 거른다.
  * 활성 존이 없으면(개발) 전체 토픽을, 있으면 해당 존에 연결된 토픽만 반환한다.
+ * Private 토픽은 `next.config.js`가 build 때 굽는 `COMPUTER_ARCHITECTURE_ACTIVE`가 참일 때만 남는다.
+ * rewrite와 같은 판정이라 링크와 프록시가 어긋나지 않는다.
  */
 export const getVisibleTopics = (
   enabledZones = parseEnabledZones(process.env.ENABLED_ZONES),
+  privateZoneActive = process.env.COMPUTER_ARCHITECTURE_ACTIVE === 'true',
 ): Topic[] => {
-  if (!enabledZones.length) return TOPICS;
+  const topics = privateZoneActive
+    ? TOPICS
+    : TOPICS.filter((topic) => !PRIVATE_TOPIC_IDS.includes(topic.id));
+  if (!enabledZones.length) return topics;
 
-  return TOPICS.filter((topic) => topic.status === 'active' && enabledZones.includes(topic.zone));
+  return topics.filter((topic) => topic.status === 'active' && enabledZones.includes(topic.zone));
 };
