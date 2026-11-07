@@ -59,8 +59,8 @@ pnpm pack:shared   # → dist/shared-packages/*.tgz
 1. 세 `packages/*/package.json`의 `version`을 함께 올린다 (이미 나간 버전은 다시 쓸 수 없다)
 2. 로컬 검증 — 영향 프로젝트 lint · typecheck · test, `pnpm pack:shared`, 외부 소비자 설치 · typecheck · build
 3. 커밋 뒤 `git tag shared-packages@<version>` → 태그 push (사용자 승인)
-4. workflow가 태그 버전과 `version`이 같은지 확인(`--expect-version`)하고 `utils → preferences → ui` 순서로 publish
+4. workflow가 태그 버전과 `version`이 같은지 확인(`--expect-version`)하고 `utils → preferences → ui` 순서로 publish한 뒤, 공유 패키지 경로의 커밋으로 GitHub Release를 만든다
 
-- 토큰은 workflow의 `GITHUB_TOKEN`(`contents: read` · `packages: write`)뿐이다. PAT secret을 두지 않는다. 패키지는 `repository` 필드로 이 저장소에 연결된다
+- 토큰은 workflow의 `GITHUB_TOKEN`(`contents: write` — Release 생성 · `packages: write`)뿐이다. PAT secret을 두지 않는다. 패키지는 `repository` 필드로 이 저장소에 연결된다
 - 수동 배포는 `write:packages` classic PAT를 사용자 수준 `~/.npmrc`에만 두고 `npm publish <tgz>`. 프로젝트 `.npmrc` · 로그 · 명령 인자에 토큰 값을 쓰지 않는다
 - 소비자 읽기는 `read:packages`. GitHub Packages는 public 패키지도 설치에 토큰이 필요하다. 다른 저장소의 Actions가 읽으려면 패키지 설정에서 그 저장소에 읽기 권한을 준다

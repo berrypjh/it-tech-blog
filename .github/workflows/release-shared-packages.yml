@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: read
+  contents: write # GitHub Release 생성
   packages: write
 
 jobs:
@@ -26,6 +26,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
         with:
+          fetch-depth: 0 # 직전 태그 이후 커밋으로 릴리스 노트를 만든다
           persist-credentials: false
 
       - name: Install pnpm
@@ -53,3 +54,19 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # 직전 shared-packages 태그 이후 공유 패키지 경로의 커밋만 노트로 쓴다. main의 콘텐츠 커밋은 섞지 않는다.
+      - name: GitHub Release
+        run: |
+          version="${GITHUB_REF_NAME#shared-packages@}"
+          previous=$(git tag --list 'shared-packages@*' --sort=-v:refname | grep -vxF "$GITHUB_REF_NAME" | head -1 || true)
+          {
+            echo "## 패키지"
+            for name in ui preferences utils; do echo "- \`@berrypjh/it-tech-blog-${name}@${version}\`"; done
+            echo
+            echo "## 변경"
+            git log --format='- %s (%h)' "${previous:+$previous..}$GITHUB_REF_NAME" -- packages tools/pack-shared-packages.mjs LICENSE
+          } > "$RUNNER_TEMP/notes.md"
+          gh release create "$GITHUB_REF_NAME" --verify-tag --title "shared-packages ${version}" --notes-file "$RUNNER_TEMP/notes.md"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
