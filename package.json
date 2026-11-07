@@ -27,6 +27,7 @@
     "storybook:a11y": "concurrently -k -s first -n SB,A11Y \"http-server apps/storybook/storybook-static -p 6006 --silent\" \"wait-on tcp:6006 && test-storybook --url http://localhost:6006 --config-dir apps/storybook/.storybook\"",
     "harness:sync": "node ${SHARED_STACK_DIR:-../shared-stack}/plugins/berry-dev/scripts/standards.mjs sync --project .",
     "harness:check": "node ${SHARED_STACK_DIR:-../shared-stack}/plugins/berry-dev/scripts/standards.mjs check --project .",
+    "pack:shared": "node tools/pack-shared-packages.mjs",
     "prepare": "husky"
   },
   "dependencies": {

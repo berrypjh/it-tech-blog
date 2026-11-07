@@ -1,0 +1,55 @@
+name: Release Shared Packages
+
+# packages/ui · preferences · utils 를 @berrypjh/it-tech-blog-* 로 GitHub Packages에 배포한다.
+# 태그 shared-packages@<version> push 때만 실행된다. 버전은 세 package.json의 version이다.
+on:
+  push:
+    tags:
+      - "shared-packages@*"
+
+concurrency:
+  group: ${{ github.workflow }}
+  # 배포 도중 취소되면 일부 패키지만 나간다. 뒤 실행은 앞 실행이 끝나기를 기다린다.
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  release:
+    name: Pack and publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 11.25.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: https://npm.pkg.github.com
+          scope: "@berrypjh"
+
+      # 의존성 설치 없이 소스만 싣는다. 태그 버전과 package.json 버전이 다르면 여기서 멈춘다.
+      - name: Pack
+        run: node tools/pack-shared-packages.mjs --expect-version="${GITHUB_REF_NAME#shared-packages@}"
+
+      # 의존 순서대로 publish한다. 프로젝트 .npmrc의 ${GITHUB_TOKEN} 참조도 같은 토큰으로 채운다.
+      - name: Publish
+        run: |
+          for name in utils preferences ui; do
+            npm publish "dist/shared-packages/berrypjh-it-tech-blog-${name}-${GITHUB_REF_NAME#shared-packages@}.tgz"
+          done
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

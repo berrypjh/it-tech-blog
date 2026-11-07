@@ -52,6 +52,7 @@ pnpm format:check
 pnpm e2e              # Playwright (브라우저 필요)
 pnpm storybook:a11y   # Storybook axe 검사. build-storybook이 먼저 필요
 pnpm harness:check    # 공통 rule이 shared-stack 원본과 같은지 (../shared-stack checkout 필요)
+pnpm pack:shared      # 공유 패키지 배포용 tarball → dist/shared-packages
 ```
 
 ## 라이선스
