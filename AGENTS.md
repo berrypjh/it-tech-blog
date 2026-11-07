@@ -43,17 +43,28 @@ Nx 프로젝트가 아닌 곳도 있다.
 
 `main-web`이 호스트로서 각 존의 경로를 rewrite한다. 정의는 `apps/main-web/next.config.js` 한 곳이다.
 
-| 앱                     | 포트 | basePath         | 호스트 환경변수          |
-| ---------------------- | ---- | ---------------- | ------------------------ |
-| `main-web`             | 3000 | `/`              | —                        |
-| `accessibility-zone`   | 4001 | `/accessibility` | `ACCESSIBILITY_DOMAIN`   |
-| `react-deep-dive-zone` | 4002 | `/react`         | `REACT_DEEP_DIVE_DOMAIN` |
-| `llm-system-zone`      | 4003 | `/llm`           | `LLM_SYSTEM_DOMAIN`      |
+| 앱                     | 포트 | basePath                 | 호스트 환경변수                |
+| ---------------------- | ---- | ------------------------ | ------------------------------ |
+| `main-web`             | 3000 | `/`                      | —                              |
+| `accessibility-zone`   | 4001 | `/accessibility`         | `ACCESSIBILITY_DOMAIN`         |
+| `react-deep-dive-zone` | 4002 | `/react`                 | `REACT_DEEP_DIVE_DOMAIN`       |
+| `llm-system-zone`      | 4003 | `/llm`                   | `LLM_SYSTEM_DOMAIN`            |
+| (Private) 컴퓨터 구조  | 4004 | `/computer-architecture` | `COMPUTER_ARCHITECTURE_DOMAIN` |
 
 - **`ENABLED_ZONES`** — 비어 있으면(개발) 모든 존, 값이 있으면(`react,accessibility`) 그 존만 rewrite하고 랜딩에도 그 존의 토픽만 보인다
 - **존 사이 이동은 페이지 전체 이동이다.** 존끼리 코드로 import하지 않는다
 - **존 전환 애니메이션은 `@it-tech-blog/ui/zone-transition.css` 한 곳이 정의한다.** 모든 앱의 루트 layout이 import한다. 새 존도 import만 하면 된다
 - 새 존을 더하면 함께 고친다 — `next.config.js` rewrite, `data/topics.tsx` 토픽 활성화, 루트 `package.json`의 `dev` · `build` · `start` · `preview`, 루트 `tsconfig.json` references, `main-web-e2e`의 존 목록 · webServer, 이 표
+
+#### 외부 Private 존 예외
+
+컴퓨터 구조 존은 이 저장소 밖(Private)에 있다. 위 목록 중 `next.config.js` · `topics.tsx` · `ModuleArt` · 토픽 아이콘(`packages/ui`) · `project.json` build inputs · `.env.example` · 이 표만 고친다.
+
+- **fail-closed다.** 유효한 `COMPUTER_ARCHITECTURE_DOMAIN`이 있고 `ENABLED_ZONES`가 비었거나 `computer-architecture`를 포함할 때만 켜진다. localhost 기본값이 없다. Public 존의 `ENABLED_ZONES` 의미는 그대로다
+- **꺼져 있으면 토픽을 숨긴다** (G3 작업 결정). 링크 없는 카드도 보이지 않는다
+- 도메인 검증과 활성 판정은 `apps/main-web/zone-env.mjs` 한 곳이다. 잘못된 값은 이 존만 끈다
+- **rewrite와 토픽 노출은 같은 판정 하나를 쓴다.** production rewrite는 build 때 고정되므로 `next.config.js`가 결과(boolean)만 `env.COMPUTER_ARCHITECTURE_ACTIVE`로 굽는다. origin은 클라이언트로 나가지 않는다
+- 루트 `package.json` 스크립트 · `tsconfig.json` references · `main-web-e2e` · CI에는 넣지 않는다. 양쪽 통합 e2e는 Private 저장소가 Public SHA를 읽어 돌린다
 
 ## Working Principles
 

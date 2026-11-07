@@ -25,6 +25,7 @@ src/
 - **토픽 도메인 데이터는 `data/topics.tsx`, 스테이지 배치는 `spatial-lab.layout.ts`다.** 둘을 섞지 않는다. `active` 토픽은 zone · href, `planned` 토픽은 링크 없이 "준비 중" 배지
 - **장식 SVG(`ModuleArt` · `LabScene`)는 `aria-hidden`이다**
 - **`ENABLED_ZONES`가 있으면 `getVisibleTopics()`는 그 존의 활성 토픽만 돌려준다.** 준비 중 토픽도 숨긴다
+- **Private 토픽(`computer-architecture`)은 build가 구운 `COMPUTER_ARCHITECTURE_ACTIVE`가 참일 때만 보인다.** 규칙은 루트 `AGENTS.md`의 외부 Private 존 예외
 - **설정은 `theme` · `locale` 두 가지만 쓴다.** Provider는 `ThemeClientProvider` 한 곳에서 감싼다
 - **react-ui 테마는 `ThemeClientProvider`의 `uiThemes`(frost · midnight)가 정한다.** 랜딩 글자 · 강조색은 `--ds-*` 토큰으로 쓰고, 유리 · 그림자 · 배경 빛 같은 재질 값만 `spatial-lab.css` · `lab-background.css`에 둔다
 - **아이콘은 `@it-tech-blog/ui`에서 가져온다**

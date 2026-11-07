@@ -11,6 +11,8 @@
 | `react-deep-dive-zone` | 4002 | `/react`         |
 | `llm-system-zone`      | 4003 | `/llm`           |
 
+컴퓨터 구조 존(`/computer-architecture`, 로컬 4004)은 별도 Private 저장소에 있다. 그 저장소가 없어도 이 저장소만으로 dev · build가 된다. 연결 규칙은 `AGENTS.md`의 Multi-Zones.
+
 ```
 apps/
 ├── main-web                 호스트 앱 · 랜딩
