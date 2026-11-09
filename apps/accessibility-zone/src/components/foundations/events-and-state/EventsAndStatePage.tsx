@@ -1,7 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 import { DocLayout, type DocReference } from '@it-tech-blog/ui';
+import { ReferencesSection, same, SummarySection } from '@it-tech-blog/ui';
 
-import { ReferencesSection, same, SummarySection } from '@/components/shared/DocPage';
 import { NextPage } from '@/components/shared/PageLink';
 
 import { DefaultsSection } from './sections/DefaultsSection';

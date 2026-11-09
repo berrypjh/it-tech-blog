@@ -2,12 +2,11 @@
 
 import { Fragment, useEffect, useId, useRef, useState } from 'react';
 
+import { PracticeFrame } from '@it-tech-blog/ui';
 import { useLang } from '@it-tech-blog/utils';
 
 import { Button, Radio, RadioGroup } from '@berrypjh/react-ui';
 import { ChevronDown } from 'lucide-react';
-
-import { PracticeFrame } from '@/components/shared/PracticeFrame';
 
 const content = {
   ko: {

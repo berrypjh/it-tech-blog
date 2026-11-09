@@ -2,11 +2,10 @@
 
 import { useId, useRef, useState } from 'react';
 
+import { PracticeFrame } from '@it-tech-blog/ui';
 import { useLang } from '@it-tech-blog/utils';
 
 import { Button, TableScroll } from '@berrypjh/react-ui';
-
-import { PracticeFrame } from '@/components/shared/PracticeFrame';
 
 type Link = { id: string; name: string; labels: string; group: string };
 

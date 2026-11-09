@@ -2,12 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+import { PracticeFrame } from '@it-tech-blog/ui';
 import { useLang } from '@it-tech-blog/utils';
 
 import { Button, List } from '@berrypjh/react-ui';
 
 import { type CheckResult, CheckRow } from '@/components/shared/CheckRow';
-import { PracticeFrame } from '@/components/shared/PracticeFrame';
 
 type Field = 'placeholder' | 'label';
 

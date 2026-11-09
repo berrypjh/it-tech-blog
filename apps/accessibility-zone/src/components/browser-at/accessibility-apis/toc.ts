@@ -1,4 +1,4 @@
-import { tocOf } from '@/components/shared/DocPage';
+import { tocOf } from '@it-tech-blog/ui';
 
 export const getToc = tocOf(
   {

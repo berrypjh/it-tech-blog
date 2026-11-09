@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+import { PracticeFrame } from '@it-tech-blog/ui';
 import { useLang } from '@it-tech-blog/utils';
 
 import { Button, cx, List, Radio, RadioGroup } from '@berrypjh/react-ui';
 
 import { type CheckResult, CheckRow } from '@/components/shared/CheckRow';
 import { Kbd } from '@/components/shared/Kbd';
-import { PracticeFrame } from '@/components/shared/PracticeFrame';
 
 type Mode = 'keyboard' | 'touch';
 type Target = 'div' | 'button';

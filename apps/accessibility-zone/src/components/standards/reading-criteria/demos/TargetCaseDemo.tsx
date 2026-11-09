@@ -3,11 +3,11 @@
 import { useState } from 'react';
 
 import { useLocale } from '@it-tech-blog/preferences';
+import { PracticeFrame } from '@it-tech-blog/ui';
 import { useLang } from '@it-tech-blog/utils';
 
 import { Button, Radio, RadioGroup } from '@berrypjh/react-ui';
 
-import { PracticeFrame } from '@/components/shared/PracticeFrame';
 import { SourceTag } from '@/components/shared/SourceTag';
 
 type Basis = 'size' | 'spacing' | 'equivalent' | 'inline' | 'userAgent' | 'essential' | 'none';

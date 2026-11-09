@@ -1,6 +1,5 @@
 import type { Locale } from '@it-tech-blog/preferences';
-
-import { PracticeFrame } from '@/components/shared/PracticeFrame';
+import { PracticeFrame } from '@it-tech-blog/ui';
 
 const content = {
   ko: {

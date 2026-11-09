@@ -2,12 +2,11 @@
 
 import { useEffect, useId, useRef, useState } from 'react';
 
+import { PracticeFrame } from '@it-tech-blog/ui';
 import { useLang } from '@it-tech-blog/utils';
 
 import { Button, cx, Radio, RadioGroup, TableScroll } from '@berrypjh/react-ui';
 import { ChevronDown } from 'lucide-react';
-
-import { PracticeFrame } from '@/components/shared/PracticeFrame';
 
 type Mode = 'sync' | 'defect';
 type Row = { what: string; attribute: string; property: string };

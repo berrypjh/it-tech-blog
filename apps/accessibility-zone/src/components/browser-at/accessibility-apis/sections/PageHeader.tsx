@@ -1,6 +1,5 @@
 import type { Locale } from '@it-tech-blog/preferences';
-
-import { DocPageHeader, type HeaderContent } from '@/components/shared/DocPage';
+import { DocPageHeader, type HeaderContent } from '@it-tech-blog/ui';
 
 import { narration } from '../narration';
 

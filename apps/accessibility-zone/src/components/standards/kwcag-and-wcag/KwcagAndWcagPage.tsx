@@ -1,7 +1,7 @@
 import type { Locale } from '@it-tech-blog/preferences';
 import { DocLayout, type DocReference } from '@it-tech-blog/ui';
+import { ReferencesSection, same, SummarySection } from '@it-tech-blog/ui';
 
-import { ReferencesSection, same, SummarySection } from '@/components/shared/DocPage';
 import { KWCAG_REGISTRY } from '@/components/shared/kwcag';
 import { NextPage } from '@/components/shared/PageLink';
 import { wcag22 } from '@/components/shared/wcag';
