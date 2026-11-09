@@ -62,11 +62,11 @@ berry-dev의 generic rule · skill(`repo-verify` · `frontend-quality`)이 읽�
 
 ### 확인 수단
 
-| 방식      | 있는 것                                         | 이 세션에서                    |
-| --------- | ----------------------------------------------- | ------------------------------ |
-| 자동      | `main-web` · `ui` · `utils` test(Vitest, jsdom) | 실행 가능                      |
-| 자동(axe) | `pnpm storybook:a11y` — Storybook axe 검사      | 포트 — unsupported, 사용자에게 |
-| 실제 web  | `*-e2e` Playwright, Storybook                   | 포트 — unsupported, 사용자에게 |
+| 방식      | 있는 것                                                                                 | 이 세션에서                    |
+| --------- | --------------------------------------------------------------------------------------- | ------------------------------ |
+| 자동      | `main-web` · `ui` · `utils` test(Vitest, jsdom) · `llm-system-zone` test(`node --test`) | 실행 가능                      |
+| 자동(axe) | `pnpm storybook:a11y` — Storybook axe 검사                                              | 포트 — unsupported, 사용자에게 |
+| 실제 web  | `*-e2e` Playwright, Storybook                                                           | 포트 — unsupported, 사용자에게 |
 
 ## 한국어 화면 (ko-ui)
 
