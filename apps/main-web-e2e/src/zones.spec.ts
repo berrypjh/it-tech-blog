@@ -20,3 +20,17 @@ for (const zone of zones) {
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   });
 }
+
+test('serves an LLM deep link through the host with its /llm-static assets', async ({ page }) => {
+  const assets: number[] = [];
+  page.on('response', (response) => {
+    if (new URL(response.url()).pathname.startsWith('/llm-static/')) assets.push(response.status());
+  });
+
+  await page.goto('/llm/notebook-to-service#transfer');
+
+  await expect(page).toHaveURL('/llm/notebook-to-service#transfer');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1);
+  expect(assets.length).toBeGreaterThan(0);
+  expect(assets.every((status) => status < 400)).toBe(true);
+});
