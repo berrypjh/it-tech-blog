@@ -8,8 +8,9 @@ type Step = { label: string; owner: Owner };
 const content = {
   ko: {
     singleTitle: '단일 모델 호출',
-    singleChain: ['요청', '모델', '결과로 간주'],
-    singleNote: '응답이 생겼으니 끝났다고 가정합니다. 검증, 권한 확인, 저장 단계가 없습니다.',
+    singleChain: ['문의', '모델', '접수된 것으로 간주'],
+    singleNote:
+      '큐 이름이 생성되었으니 접수되었다고 가정합니다. 검증, 티켓 기록, 기록 확인 단계가 없습니다.',
     flowTitle: '시스템 흐름',
     flowSummary: (total: number, app: number) =>
       `${total}단계 중 모델이 하는 일은 1단계이고 나머지 ${app}단계는 앱의 일입니다.`,
@@ -17,22 +18,19 @@ const content = {
     steps: [
       { label: '입력 확인', owner: 'app' },
       { label: 'context 구성', owner: 'app' },
-      { label: '모델 호출', owner: 'model' },
-      { label: '출력 검증', owner: 'app' },
-      {
-        label: '실패하면 보류',
-        owner: 'app',
-      },
-      { label: '사용자 확인', owner: 'app' },
-      { label: '허용된 동작 실행', owner: 'app' },
-      { label: '결과 확인', owner: 'app' },
+      { label: '라우팅 제안 생성', owner: 'model' },
+      { label: '큐 목록 검증', owner: 'app' },
+      { label: '실패하면 보류', owner: 'app' },
+      { label: '티켓 기록 요청', owner: 'app' },
+      { label: '접수 ID 확인', owner: 'app' },
+      { label: '사용자에게 표시', owner: 'app' },
     ] as Step[],
   },
   en: {
     singleTitle: 'A single model call',
-    singleChain: ['Request', 'Model', 'Taken as the result'],
+    singleChain: ['Request', 'Model', 'Taken as filed'],
     singleNote:
-      'It assumes it is done because a response exists. There is no validation, permission check, or save step.',
+      'It assumes the request is filed because a queue name was generated. There is no validation, ticket write, or record check.',
     flowTitle: 'A system flow',
     flowSummary: (total: number, app: number) =>
       `Of ${total} steps the model does 1, and the other ${app} are the app’s job.`,
@@ -40,18 +38,12 @@ const content = {
     steps: [
       { label: 'Check input', owner: 'app' },
       { label: 'Build context', owner: 'app' },
-      { label: 'Call the model', owner: 'model' },
-      { label: 'Validate output', owner: 'app' },
-      {
-        label: 'Hold on failure',
-        owner: 'app',
-      },
-      { label: 'User confirmation', owner: 'app' },
-      {
-        label: 'Run the allowed action',
-        owner: 'app',
-      },
-      { label: 'Confirm the result', owner: 'app' },
+      { label: 'Generate a routing suggestion', owner: 'model' },
+      { label: 'Validate against the queue list', owner: 'app' },
+      { label: 'Hold on failure', owner: 'app' },
+      { label: 'Request the ticket write', owner: 'app' },
+      { label: 'Check the ticket ID', owner: 'app' },
+      { label: 'Show the user', owner: 'app' },
     ] as Step[],
   },
 };

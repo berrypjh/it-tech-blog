@@ -7,39 +7,33 @@ const content = {
   ko: {
     main: [
       {
-        title: '사용자',
-        gist: '요청을 시작',
-        output: '요청 텍스트',
-        owner: '사용자',
+        title: '입력',
+        gist: '직원이 문의를 적고 앱이 빈 값 · 길이를 확인',
+        output: '문의 텍스트와 요청 ID',
+        owner: '사용자 · 앱',
       },
       {
-        title: '앱',
-        gist: '입력 확인 · context 구성',
-        output: '모델에 보낼 입력',
-        owner: '앱',
-      },
-      {
-        title: '모델',
-        gist: '응답 생성',
-        output: '결과 텍스트',
+        title: '라우팅 제안',
+        gist: '담당 큐 이름을 텍스트로 생성',
+        output: '큐 이름 텍스트 (제안)',
         owner: '모델 (추론 API 경유)',
       },
       {
         title: '검증',
-        gist: '형식 · 규칙 확인',
+        gist: '허용된 큐 목록 · 형식 확인',
         output: '통과 또는 실패 판정과 이유',
         owner: '앱',
       },
       {
-        title: '조건부 실행',
-        gist: '통과했고 필요할 때만',
-        output: '허용된 동작 하나의 결과',
-        owner: '앱의 실행 계층',
+        title: '업무 시스템 기록',
+        gist: '통과했을 때만 티켓 생성 요청',
+        output: '접수 ID 또는 거절 응답',
+        owner: '앱의 실행 계층 · 티켓 시스템',
       },
       {
-        title: '결과',
-        gist: '사용자에게 상태 표시',
-        output: '사용자에게 보이는 상태',
+        title: '사용자 확인',
+        gist: '티켓 시스템이 돌려준 기록을 표시',
+        output: '접수 ID와 담당 큐',
         owner: '앱',
       },
     ],
@@ -47,19 +41,19 @@ const content = {
     outputLabel: '출력',
     ownerLabel: '책임',
     mainHeading: '주 흐름 (요청이 지나는 순서)',
-    branchHeading: '분기 (실행하지 않는 경로도 정상 흐름입니다)',
+    branchHeading: '분기 (기록하지 않는 경로도 정상 흐름입니다)',
     atLabel: '분기점',
     pathLabel: '경로',
     branches: [
       {
         title: '검증 실패',
-        at: '4단계 검증',
-        path: '5단계 없이 보류하거나 수정을 요청. 이유는 6단계에 표시',
+        at: '3단계 검증',
+        path: '4단계 없이 사람이 분류하는 대기열로 보류. 이유는 5단계에 표시',
       },
       {
-        title: '사용자 확인 거절',
-        at: '5단계 실행 직전',
-        path: '실행 없이 보류. 이유는 6단계에 표시',
+        title: '기록 거절',
+        at: '4단계 티켓 시스템 응답',
+        path: '완료로 표시하지 않음. 접수되지 않았다는 사실과 다음 행동을 5단계에 표시',
       },
     ],
     auxHeading: '보조 관계 (필요할 때만, 요청의 직렬 단계가 아님)',
@@ -75,39 +69,33 @@ const content = {
   en: {
     main: [
       {
-        title: 'User',
-        gist: 'Starts the request',
-        output: 'Request text',
-        owner: 'User',
+        title: 'Input',
+        gist: 'An employee writes the request; the app checks for empty or overlong text',
+        output: 'Request text and request ID',
+        owner: 'User · App',
       },
       {
-        title: 'App',
-        gist: 'Checks input, builds context',
-        output: 'Input for the model',
-        owner: 'App',
-      },
-      {
-        title: 'Model',
-        gist: 'Generates the response',
-        output: 'Result text',
+        title: 'Routing suggestion',
+        gist: 'Generates a queue name as text',
+        output: 'Queue name text (a suggestion)',
         owner: 'Model (via the inference API)',
       },
       {
         title: 'Validation',
-        gist: 'Checks format and rules',
+        gist: 'Checks the allowed queue list and format',
         output: 'Pass or fail verdict and reason',
         owner: 'App',
       },
       {
-        title: 'Conditional action',
-        gist: 'Only if it passed and is needed',
-        output: 'Result of one allowed action',
-        owner: 'App execution layer',
+        title: 'Business system record',
+        gist: 'Asks for a ticket only if it passed',
+        output: 'Ticket ID or a rejection',
+        owner: 'App execution layer · Ticket system',
       },
       {
-        title: 'Result',
-        gist: 'Shows the state to the user',
-        output: 'State shown to the user',
+        title: 'User confirmation',
+        gist: 'Shows the record the ticket system returned',
+        output: 'Ticket ID and queue',
         owner: 'App',
       },
     ],
@@ -115,19 +103,19 @@ const content = {
     outputLabel: 'Output',
     ownerLabel: 'Responsible',
     mainHeading: 'Main flow (the order a request passes through)',
-    branchHeading: 'Branches (paths that do not execute are normal flow too)',
+    branchHeading: 'Branches (paths that record nothing are normal flow too)',
     atLabel: 'At',
     pathLabel: 'Then',
     branches: [
       {
         title: 'Validation fails',
-        at: 'Step 4, validation',
-        path: 'Holds or asks for a revision without step 5. Reason shown in step 6',
+        at: 'Step 3, validation',
+        path: 'Held for a person to triage, without step 4. Reason shown in step 5',
       },
       {
-        title: 'User confirmation rejected',
-        at: 'Right before step 5',
-        path: 'Holds without executing. Reason shown in step 6',
+        title: 'Write rejected',
+        at: 'Step 4, ticket system response',
+        path: 'Not shown as done. Step 5 says it was not filed and what to do next',
       },
     ],
     auxHeading: 'Supporting relations (only when needed, not serial steps of a request)',
@@ -148,7 +136,7 @@ const content = {
   },
 };
 
-/** 사용자 요청이 검증과 조건부 실행을 거쳐 결과가 되는 흐름. 정적 서버 컴포넌트다. */
+/** IT 문의가 라우팅 제안 · 검증 · 티켓 기록을 거쳐 사용자에게 확인되는 흐름. 정적 서버 컴포넌트다. */
 export const SystemFlowDiagram = ({ locale }: { locale: Locale }) => {
   const c = content[locale];
 

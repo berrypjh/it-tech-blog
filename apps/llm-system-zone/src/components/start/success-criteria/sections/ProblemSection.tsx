@@ -8,7 +8,7 @@ import { getToc } from '../toc';
 const content = {
   ko: {
     intro:
-      '01-05의 마지막에서 성공 기준이 비어 있으면 실패가 무엇인지도 정할 수 없다고 했습니다. 요구사항이 "잘 만들어 줘" 한 문장일 때 먼저 할 일은 그 문장을 네 가지로 분해하는 것입니다.',
+      '01.4는 Baseline과 LLM 후보를 같은 조건에서 비교하라고 했습니다. 그런데 성공 기준이 비어 있으면 실패가 무엇인지도 정할 수 없습니다. IT 문의 접수도 요구사항이 "잘 만들어 줘" 한 문장일 때 먼저 할 일은 그 문장을 네 가지로 분해하는 것입니다.',
     labels: ['질문', '적을 내용'],
     elements: [
       [
@@ -33,7 +33,7 @@ const content = {
   },
   en: {
     intro:
-      'At the end of 01-05 we said that without success criteria you cannot even say what a failure is. When a requirement is the single sentence "make it good", the first thing to do is break it into four parts.',
+      '01.4 said to compare the baseline and an LLM candidate under the same conditions. But without success criteria you cannot even say what a failure is. For IT request filing too, when a requirement is the single sentence "make it good", the first thing to do is break it into four parts.',
     labels: ['Question', 'What to write'],
     elements: [
       [

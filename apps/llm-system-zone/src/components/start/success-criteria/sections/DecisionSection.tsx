@@ -19,7 +19,7 @@ const content = {
       ],
       [
         '수정',
-        '일부 필수 조건을 만족하지 못하고, 실패 위치가 보인다 (01-05의 범주)',
+        '일부 필수 조건을 만족하지 못하고, 실패 위치가 보인다 (01.6에서 다룰 범주)',
         '해당 위치만 고치고 같은 실패 사례와 정상 사례를 다시 실행한다',
       ],
       [
@@ -41,7 +41,7 @@ const content = {
       ],
       [
         'Revise',
-        'Some mandatory conditions are not met, and the failing place is visible (a category from 01-05)',
+        'Some mandatory conditions are not met, and the failing place is visible (a category covered in 01.6)',
         'Fix only that place and rerun the same failing cases and a normal case',
       ],
       [

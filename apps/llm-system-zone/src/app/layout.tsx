@@ -21,11 +21,11 @@ export const generateMetadata = async () => {
   const locale = await getServerLocale();
   return locale === 'en'
     ? {
-        title: 'LLM Lab — LLM Systems',
+        title: 'LLM System — From Model to System',
         description: 'From model to system: structure, verification and operation of LLM software.',
       }
     : {
-        title: 'LLM Lab — LLM 시스템',
+        title: 'LLM System — 모델에서 시스템까지',
         description: '모델에서 시스템까지, LLM 소프트웨어의 구조와 검증, 운영을 따라갑니다.',
       };
 };

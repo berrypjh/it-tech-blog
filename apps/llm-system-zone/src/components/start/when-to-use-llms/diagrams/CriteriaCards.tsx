@@ -5,76 +5,88 @@ import { List, ListItem } from '@berrypjh/react-ui';
 const content = {
   ko: {
     questionLabel: '질문',
-    effectLabel: '설계 영향',
+    effectLabel: 'Baseline · 보류에 미치는 영향',
     criteria: [
       {
-        name: '실시간성',
-        question: '사용자가 즉시 응답을 기다리는가',
-        effect: '지연이 큰 호출은 비동기로 돌리거나 가벼운 방식을 앞세운다',
+        name: '실패 비용',
+        question: '잘못된 큐에 접수되면 누가 얼마나 늦어지고, 되돌릴 수 있는가',
+        effect: '비용이 클수록 확신 없는 문의는 보류하고, 검증 수단이 없으면 LLM 도입을 미룬다',
       },
       {
-        name: '비용 예산',
-        question: '요청 수와 호출당 비용을 감당할 수 있는가',
-        effect: '대량 입력은 호출 비용이 누적되므로 ML이나 규칙을 먼저 비교한다',
+        name: '데이터',
+        question: '안정된 라벨이 쌓여 있는가, 문의를 외부 모델로 보낼 수 있는가',
+        effect: '라벨이 있으면 분류기를 Baseline에 넣고, 반출이 막히면 처리 위치부터 정한다',
       },
       {
-        name: '오류 허용도',
-        question: '틀린 출력이 나와도 괜찮은 범위는 어디까지인가',
-        effect: '허용도가 낮을수록 검증과 사람 검토를 더하거나 모델 책임을 줄인다',
+        name: '변경 빈도',
+        question: '큐 · 정책 · 라벨 체계가 얼마나 자주 바뀌는가',
+        effect: '자주 바뀌면 규칙 표와 재학습 비용을 함께 보고, 정책 검색으로 근거를 최신으로 둔다',
       },
       {
-        name: '잘못된 상태 변경의 피해',
-        question: '금전, 개인정보, 권한이 걸려 있고 되돌릴 수 있는가',
-        effect: '피해가 크면 모델 응답만으로 실행하지 않고 권한 확인과 명시적 승인을 둔다',
+        name: '품질',
+        question: '같은 평가 사례에서 각 방식이 얼마나 맞히는가',
+        effect: 'Baseline이 이미 성공 조건을 넘으면 LLM이 더할 몫이 무엇인지부터 묻는다',
       },
       {
-        name: '사람 검토 가능성',
-        question: '실행 전에 확인할 사람과 시간이 있는가',
-        effect: '검토가 불가능하면 자동 처리 범위를 규칙으로 한정한다',
+        name: '지연',
+        question: '사용자가 접수 확인을 기다리는가',
+        effect: '기다린다면 즉시 처리할 수 있는 규칙 · 분류기를 앞에 둔다',
       },
       {
-        name: '데이터 제약',
-        question: '라벨 데이터가 있는가, 개인정보를 외부로 보낼 수 있는가',
-        effect: '라벨이 있으면 ML을 비교하고, 데이터 반출이 제한되면 처리 위치를 다시 고려한다',
+        name: '비용',
+        question: '문의 수와 호출당 비용을 감당할 수 있는가',
+        effect: '호출 비용은 문의 수에 비례해 쌓이므로 LLM은 다른 경로가 못 맡은 문의에만 쓴다',
+      },
+      {
+        name: '검증 가능성',
+        question: '출력이 맞았는지 코드나 평가 사례로 확인할 수 있는가',
+        effect: '확인할 방법이 없으면 품질을 주장할 수 없으므로 도입을 보류한다',
       },
     ],
   },
   en: {
     questionLabel: 'Question',
-    effectLabel: 'Design effect',
+    effectLabel: 'Effect on the baseline · holding off',
     criteria: [
       {
-        name: 'Real-time need',
-        question: 'Is the user waiting for an instant response',
-        effect: 'Run slow calls asynchronously or put a lighter approach first',
-      },
-      {
-        name: 'Cost budget',
-        question: 'Can you afford the request count and per-call cost',
-        effect: 'Call costs accumulate at volume, so compare ML or rules first',
-      },
-      {
-        name: 'Error tolerance',
-        question: 'How far is a wrong output acceptable',
+        name: 'Failure cost',
+        question: 'Filed in the wrong queue, who is delayed and by how much, and can it be undone',
         effect:
-          'The lower the tolerance, the more validation and review you add, or reduce the model’s responsibility',
+          'The higher the cost, the more uncertain requests are held; with no means of verification, an LLM is put off',
       },
       {
-        name: 'Damage of a wrong state change',
-        question: 'Is money, personal data, or permission involved, and can it be undone',
+        name: 'Data',
+        question: 'Are stable labels available, and may requests be sent to an external model',
         effect:
-          'When damage is large, do not execute on the model response alone; add an authorization check and explicit approval',
+          'With labels, put a classifier in the baseline; if data may not leave, decide where processing runs first',
       },
       {
-        name: 'Human review possible',
-        question: 'Is there a person and time to check before execution',
-        effect: 'When review is impossible, limit the automatic range by rules',
-      },
-      {
-        name: 'Data constraints',
-        question: 'Is labeled data available, and may personal data leave for an external service',
+        name: 'Change frequency',
+        question: 'How often do queues, policies, and the label scheme change',
         effect:
-          'With labels, compare ML; with limits on moving data, reconsider where processing runs',
+          'If often, weigh rule-table and retraining costs together, and keep evidence current with policy search',
+      },
+      {
+        name: 'Quality',
+        question: 'How often does each approach get the same evaluation cases right',
+        effect:
+          'If the baseline already meets the success criteria, first ask what an LLM would add',
+      },
+      {
+        name: 'Latency',
+        question: 'Is the user waiting for a filing confirmation',
+        effect: 'If so, put rules and the classifier, which answer instantly, first',
+      },
+      {
+        name: 'Cost',
+        question: 'Can you afford the request volume and the per-call cost',
+        effect:
+          'Call costs grow with volume, so use the LLM only for requests other paths could not take',
+      },
+      {
+        name: 'Verifiability',
+        question: 'Can you confirm the output was right, with code or evaluation cases',
+        effect: 'With no way to confirm, no quality claim can be made, so hold off',
       },
     ],
   },

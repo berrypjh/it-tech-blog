@@ -8,30 +8,30 @@ const content = {
     intro:
       'LLM 앱 이야기에서 자주 나오는 용어를 흐름 위의 자리와 함께 정리합니다. 아래 구성 요소가 모두 필수는 아닙니다. 필요할 때 더하는 것입니다.',
     caption: '용어, 용례, 흐름에서의 위치, 필수 여부',
-    head: ['용어', '이 장에서의 용례', '흐름에서의 위치', '필수인가'],
+    head: ['용어', '이 페이지에서의 용례', '흐름에서의 위치', '필수인가'],
     rows: [
       [
         'Prompt',
         '모델에게 작업과 형식, 제약을 알리는 지시 문구',
-        '2단계에서 앱이 context의 일부로 구성',
+        '1단계 뒤, 모델 호출 전에 앱이 context의 일부로 구성',
         '거의 필수 · 형태는 다양',
       ],
       [
         'Context',
         '모델 호출 때 함께 넣는 정보 전체(지시, 사용자 입력, 근거, 이전 대화 등)',
-        '2단계의 결과이자 3단계의 입력',
+        '앱이 모델 호출 전에 만들어 2단계에 넣는 입력',
         '필수 · 모든 호출에 있다',
       ],
       [
         'Retrieval',
         '필요한 근거 문서를 찾아 context에 넣는 앱 쪽 단계',
-        '모델 호출 전, 2단계 안',
+        '모델 호출 전, 앱이 context를 만들 때',
         '선택 · 근거가 짧고 고정이면 직접 넣어도 된다',
       ],
       [
         'Tools',
         '앱의 실행 계층이 호출하는 기능. 모델은 호출을 요청하는 출력을 낼 수 있다',
-        '5단계, 앱이 권한을 확인하고 실행',
+        '4단계, 앱이 권한을 확인하고 실행',
         '선택 · 기능이 필요할 때만',
       ],
       [
@@ -56,39 +56,39 @@ const content = {
         <p>
           Evaluation은 &quot;정해 둔 사례 집합으로 얼마나 잘하는지&quot;를 재는 일이고, Monitoring은
           &quot;지금 들어오는 실제 요청이 어떤지&quot;를 보는 일입니다. 요청 안에서 출력을 확인하는
-          4단계 검증과도 다릅니다.
+          3단계 검증과도 다릅니다.
         </p>
       </>
     ),
   },
   en: {
     intro:
-      'Here are terms that often come up in LLM app talk, with their place in the flow. None of these components is mandatory. You add them when needed.',
+      'Here are terms that often come up in LLM app talk, with their place in the flow. Not all of these components are required. You add them when needed.',
     caption: 'Term, usage, place in the flow, and whether it is required',
-    head: ['Term', 'Usage in this chapter', 'Place in the flow', 'Required?'],
+    head: ['Term', 'Usage in this page', 'Place in the flow', 'Required?'],
     rows: [
       [
         'Prompt',
         'The instruction text that tells the model the task, format, and constraints',
-        'Built by the app in step 2 as part of the context',
+        'Built by the app after step 1, before the model call, as part of the context',
         'Almost required · its form varies',
       ],
       [
         'Context',
         'All information passed with a model call (instruction, user input, evidence, prior turns)',
-        'The result of step 2 and the input of step 3',
+        'Input the app builds before the model call and passes into step 2',
         'Required · every call has one',
       ],
       [
         'Retrieval',
         'An app-side step that finds needed evidence and puts it in the context',
-        'Before the model call, within step 2',
+        'Before the model call, while the app builds the context',
         'Optional · short, fixed evidence can be included directly',
       ],
       [
         'Tools',
         'Functions the app execution layer calls. A model can output a request to call one',
-        'Step 5, run by the app after permission checks',
+        'Step 4, run by the app after permission checks',
         'Optional · only when the feature needs it',
       ],
       [
@@ -112,7 +112,7 @@ const content = {
         </p>
         <p>
           Evaluation measures &quot;how well it does on a fixed set of cases&quot;, while Monitoring
-          watches &quot;what real incoming requests look like now&quot;. Both differ from the step 4
+          watches &quot;what real incoming requests look like now&quot;. Both differ from the step 3
           validation, which checks output inside a request.
         </p>
       </>

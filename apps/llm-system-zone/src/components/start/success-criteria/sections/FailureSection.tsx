@@ -24,13 +24,13 @@ const content = {
       ['핵심 값이 근거와 다름', '사람 검토로 넘김', '필수 정확성 조건 위반'],
       [
         '금전, 개인정보, 권한이 걸려 오류 비용이 큰 변경',
-        '사람의 명시적 승인 (01-04)',
+        '사람의 명시적 승인 (01.4)',
         '오류 비용이 큼 (낮고 되돌릴 수 있으면 선택)',
       ],
     ],
     mandatoryTitle: '필수 조건은 평균 점수로 가리지 않는다',
     mandatory:
-      '항목별 평균이 높아도 중요한 필드 하나가 틀린 사례가 섞여 있을 수 있고, 평균은 그 오류를 가립니다. 그래서 중요한 필드는 평균 점수와 별도로 "하나라도 틀리면 실패"인 필수 조건으로 둡니다. 이 장의 Task Success는 점수를 합산하지 않고 필수 조건의 결합으로 계산합니다. 허용 범위는 어조 같은 선택 항목에만 두며, 그 비율은 사용자가 정하는 값이지 업계 기준이 아닙니다.',
+      '항목별 평균이 높아도 중요한 필드 하나가 틀린 사례가 섞여 있을 수 있고, 평균은 그 오류를 가립니다. 그래서 중요한 필드는 평균 점수와 별도로 "하나라도 틀리면 실패"인 필수 조건으로 둡니다. 이 페이지의 Task Success는 점수를 합산하지 않고 필수 조건의 결합으로 계산합니다. 허용 범위는 어조 같은 선택 항목에만 두며, 그 비율은 사용자가 정하는 값이지 업계 기준이 아닙니다.',
   },
   en: {
     intro:
@@ -54,13 +54,13 @@ const content = {
       ],
       [
         'A change with high error cost, involving money, personal data, or permission',
-        'Explicit human approval (01-04)',
+        'Explicit human approval (01.4)',
         'The error cost is high (optional if low and reversible)',
       ],
     ],
     mandatoryTitle: 'Do not hide mandatory conditions in an average score',
     mandatory:
-      'Even when the per-item average is high, a case with a wrong important field can be mixed in, and the average hides that error. So keep important fields as mandatory conditions where a single miss is a failure, separately from the average score. Task Success in this chapter is computed not by summing scores but by combining mandatory conditions. Tolerance applies only to optional items such as tone, and that ratio is a value the user decides, not an industry standard.',
+      'Even when the per-item average is high, a case with a wrong important field can be mixed in, and the average hides that error. So keep important fields as mandatory conditions where a single miss is a failure, separately from the average score. Task Success in this page is computed not by summing scores but by combining mandatory conditions. Tolerance applies only to optional items such as tone, and that ratio is a value the user decides, not an industry standard.',
   },
 };
 

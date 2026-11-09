@@ -6,7 +6,7 @@ import { getToc } from '../toc';
 const content = {
   ko: {
     intro:
-      '관측한 실패는 증상입니다. 01-04의 구성 요소가 모두 쓰인 기능이라, 틀린 응답 하나에 여러 가설이 가능합니다. 모델을 바꾸거나 프롬프트를 고치기 전에 가설마다 "맞다면 어떤 증거가 보여야 하는가"를 적습니다.',
+      '관측한 실패는 증상입니다. 01.1에서 본 Retrieval · Context · Tools 같은 구성 요소가 함께 쓰인 기능이라, 틀린 응답 하나에 여러 가설이 가능합니다. 모델을 바꾸거나 프롬프트를 고치기 전에 가설마다 "맞다면 어떤 증거가 보여야 하는가"를 적습니다.',
     caption: '틀린 응답에 대한 가설과 맞다면 보일 증거',
     head: ['가설', '맞다면 보일 증거', '어디서 확인하나'],
     rows: [
@@ -34,7 +34,7 @@ const content = {
   },
   en: {
     intro:
-      'An observed failure is a symptom. This feature uses every component from 01-04, so one wrong response allows several hypotheses. Before changing the model or editing the prompt, write down for each hypothesis "if it is true, what evidence should show?".',
+      'An observed failure is a symptom. This feature combines components seen in 01.1, such as Retrieval, Context, and Tools, so one wrong response allows several hypotheses. Before changing the model or editing the prompt, write down for each hypothesis "if it is true, what evidence should show?".',
     caption: 'Hypotheses for a wrong response and the evidence each would show',
     head: ['Hypothesis', 'Evidence if true', 'Where to check'],
     rows: [

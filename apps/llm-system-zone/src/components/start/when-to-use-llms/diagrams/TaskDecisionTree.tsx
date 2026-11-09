@@ -21,7 +21,7 @@ const content = {
         q: '1. 명확한 규칙이나 계산인가?',
         side: {
           branch: 'yes',
-          text: '코드로 구현하고 테스트합니다. 형식 검사, 값 계산, 권한, 상태 전이가 여기에 속합니다.',
+          text: '코드로 구현하고 테스트합니다. 서비스 코드 → 큐 표, 형식 검사, 권한, 상태 전이가 여기에 속합니다.',
         },
         down: { branch: 'no' },
       },
@@ -29,7 +29,7 @@ const content = {
         q: '2. 정보를 찾기만 하면 되는가?',
         side: {
           branch: 'yes',
-          text: '기존 검색이나 조회로 시작합니다. 찾은 결과로 문장을 만들어야 한다면 그 부분은 3번 질문으로 분리합니다.',
+          text: '정책 검색이나 조회로 시작합니다. 찾은 결과로 문장이나 판단을 만들어야 한다면 그 부분은 3번 질문으로 분리합니다.',
         },
         down: { branch: 'no' },
       },
@@ -43,11 +43,14 @@ const content = {
       },
       {
         q: '4. 오류 비용이 낮고 검증 방법이 분명한가?',
-        side: { branch: 'yes', text: 'LLM 출력에 형식 검증과 표본 평가를 둡니다.' },
+        side: {
+          branch: 'yes',
+          text: 'LLM 출력에 01.3의 계약 검사(네 경계)와 표본 평가를 둡니다.',
+        },
       },
     ] as Row[],
     final:
-      '오류 비용이 높거나 검증이 어렵습니다. 검증, 권한 확인, 사람의 명시적 승인을 거친 뒤 시스템이 실행하도록 설계합니다.',
+      '오류 비용이 높거나 검증이 어렵습니다. LLM 자동화를 보류하고 비LLM Baseline이나 사람 처리로 둡니다. 승인 단계를 더하는 것만으로는 타당해지지 않습니다. 승인자가 근거를 보고 판단할 정보와 시간이 있고, 그 판단이 기록 · 평가될 때만 승인이 위험을 줄입니다.',
     combo: '조합과 다음 실험',
     comboBody: (
       <>
@@ -68,7 +71,7 @@ const content = {
         q: '1. Is it a clear rule or a calculation?',
         side: {
           branch: 'yes',
-          text: 'Implement it in code and test it. Format checks, value calculation, permissions, and state transitions belong here.',
+          text: 'Implement it in code and test it. A service code → queue table, format checks, permissions, and state transitions belong here.',
         },
         down: { branch: 'no' },
       },
@@ -92,12 +95,12 @@ const content = {
         q: '4. Is the error cost low and the verification method clear?',
         side: {
           branch: 'yes',
-          text: 'Add format validation and sampled evaluation to the LLM output.',
+          text: 'Put the 01.3 contract checks (four boundaries) and sampled evaluation on the LLM output.',
         },
       },
     ] as Row[],
     final:
-      'The error cost is high or verification is hard. Design it so the system executes only after validation, an authorization check, and explicit human approval.',
+      'The error cost is high or verification is hard. Hold off on LLM automation and keep the non-LLM baseline or human handling. Adding an approval step does not make it justified by itself. Approval reduces risk only when the approver has the information and time to judge from evidence, and that judgement is recorded and evaluated.',
     combo: 'Combinations and the next experiment',
     comboBody: (
       <>

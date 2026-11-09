@@ -21,12 +21,13 @@ const content = {
       <>
         오늘날 챗봇처럼 텍스트를 생성하는 LLM은 대개 <strong>생성형 자기회귀</strong> 방식입니다.
         지금까지의 토큰을 조건으로 다음 토큰의 후보를 계산하고, 하나를 골라 이어 붙이는 일을 반복해
-        응답을 만듭니다. 예를 들어 &quot;하늘이 맑아서 산책하기&quot; 다음에는 &quot;좋다&quot;,
-        &quot;편하다&quot;, &quot;어렵다&quot; 같은 후보가 각각 얼마나 그럴듯한지 계산됩니다.
+        응답을 만듭니다. IT 문의 예시에서 &quot;추천 담당 큐는&quot; 다음에는 &quot;네트워크&quot;,
+        &quot;계정&quot;, &quot;장비&quot; 같은 후보가 각각 얼마나 그럴듯한지 계산됩니다. 모델이
+        내놓는 것은 이렇게 이어 붙인 <strong>텍스트</strong>이고, 티켓 시스템의 기록이 아닙니다.
       </>
     ),
     notAll:
-      '이것은 대표 사례이지 모든 언어 모델의 정의가 아닙니다. 가려진 토큰을 맞히도록 학습한 마스크 언어 모델처럼, 텍스트를 한 토큰씩 이어 쓰지 않는 모델도 있습니다.',
+      '이것은 대표 사례이지 모든 언어 모델의 정의가 아닙니다. 가려진 토큰을 맞히도록 학습한 마스크 언어 모델처럼, 텍스트를 한 토큰씩 이어 쓰지 않는 모델도 있습니다. 후보의 점수를 Transformer 같은 구조 안에서 어떻게 계산하는지는 후속 장에서 다루고, 여기서는 텍스트를 생성하는 역할만 봅니다.',
     largeHeading: 'LLM: Large의 기준은 하나가 아니다',
     large: (
       <>
@@ -63,13 +64,14 @@ const content = {
         LLMs that generate text, like today&apos;s chatbots, are usually{' '}
         <strong>generative autoregressive</strong> models. Conditioned on the tokens so far, they
         compute candidates for the next token, pick one, append it, and repeat to build a response.
-        After &quot;The sky is clear, so a walk is&quot;, for example, candidates such as
-        &quot;nice&quot;, &quot;easy&quot;, or &quot;hard&quot; each get a score of how plausible
-        they are.
+        In the IT request example, after &quot;Suggested queue:&quot; candidates such as
+        &quot;Network&quot;, &quot;Accounts&quot;, or &quot;Hardware&quot; each get a score of how
+        plausible they are. What the model puts out is this appended <strong>text</strong>, not a
+        record in the ticket system.
       </>
     ),
     notAll:
-      'This is a representative case, not the definition of every language model. Some models do not write text one token at a time, such as masked language models trained to predict hidden tokens.',
+      'This is a representative case, not the definition of every language model. Some models do not write text one token at a time, such as masked language models trained to predict hidden tokens. How the model computes those scores, for example inside a Transformer, is left to a later chapter; here we only need its role of generating text.',
     largeHeading: 'LLM: there is no single bar for Large',
     large: (
       <>

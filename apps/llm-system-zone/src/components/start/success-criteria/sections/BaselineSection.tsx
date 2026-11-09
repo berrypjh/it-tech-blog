@@ -8,7 +8,7 @@ import { getToc } from '../toc';
 const content = {
   ko: {
     intro:
-      '새 구성이 좋아졌는지는 baseline과 같은 조건에서 비교해야 알 수 있습니다. 01-04의 순서를 이어, 가장 단순한 방식을 baseline으로 두고 후보와 나란히 같은 사례를 통과시킵니다.',
+      '새 구성이 좋아졌는지는 baseline과 같은 조건에서 비교해야 알 수 있습니다. 01.4의 순서를 이어, 가장 단순한 방식을 baseline으로 두고 후보와 나란히 같은 사례를 통과시킵니다.',
     labels: ['무엇인가', '맞출 조건'],
     baselines: [
       [
@@ -33,7 +33,7 @@ const content = {
   },
   en: {
     intro:
-      'Whether a new setup improved can only be known by comparing under the same conditions as the baseline. Continuing the order of 01-04, put the simplest approach as the baseline and run the same cases through it and the candidate side by side.',
+      'Whether a new setup improved can only be known by comparing under the same conditions as the baseline. Continuing the order of 01.4, put the simplest approach as the baseline and run the same cases through it and the candidate side by side.',
     labels: ['What it is', 'Conditions to match'],
     baselines: [
       [

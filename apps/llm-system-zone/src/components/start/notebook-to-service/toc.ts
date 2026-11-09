@@ -1,5 +1,4 @@
-import type { Locale } from '@it-tech-blog/preferences';
-import type { TocItem } from '@it-tech-blog/ui';
+import { tocOf } from '@it-tech-blog/ui';
 
 const titles = {
   ko: {
@@ -11,8 +10,7 @@ const titles = {
     compare: 'Notebook과 서비스 코드의 요구 비교',
     handoff: '실험에서 계약으로',
     flow: '실험과 서비스의 흐름과 환류',
-    misconceptions: '흔한 오해',
-    wrapup: '01장 마무리',
+    transfer: '최종 과업: 시설 고장 신고',
     summary: '핵심 요약',
     references: '참고 자료',
   },
@@ -25,16 +23,13 @@ const titles = {
     compare: 'Notebook vs. service code requirements',
     handoff: 'From experiment to contract',
     flow: 'Flow and feedback between experiment and service',
-    misconceptions: 'Common misconceptions',
-    wrapup: 'Wrapping up chapter 01',
+    transfer: 'Final task: facility fault reports',
     summary: 'Key takeaways',
     references: 'References',
   },
 };
 
-type TocKey = keyof (typeof titles)['ko'];
-
-const ids: Record<TocKey, string> = {
+const ids = {
   purpose: 'purpose',
   inspection: 'dataset-inspection',
   experiment: 'prompt-experiment',
@@ -43,17 +38,10 @@ const ids: Record<TocKey, string> = {
   compare: 'notebook-vs-service',
   handoff: 'handoff',
   flow: 'flow',
-  misconceptions: 'misconceptions',
-  wrapup: 'wrap-up',
+  transfer: 'transfer',
   summary: 'summary',
   references: 'references',
 };
 
-/** 로케일에 맞는 섹션 id·제목. id는 로케일과 무관해 앵커 링크가 유지된다. */
-export const getToc = (locale: Locale) =>
-  Object.fromEntries(
-    (Object.keys(ids) as TocKey[]).map((key) => [
-      key,
-      { id: ids[key], title: titles[locale][key] },
-    ]),
-  ) as Record<TocKey, TocItem>;
+/** 로케일에 맞는 섹션 id · 제목. id는 로케일과 무관해 앵커 링크가 유지된다. */
+export const getToc = tocOf(ids, titles);

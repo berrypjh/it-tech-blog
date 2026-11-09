@@ -11,8 +11,8 @@ const content = {
       <>
         증거는 대개 요청 한 건이 지나간 단계별 기록(trace)에서 나옵니다.{' '}
         <ExternalLink href={OTEL}>관측 도구의 trace 개념</ExternalLink>은 요청의 경로를 단위
-        작업(span)들의 모음으로 나타내고, 각 span에 시작과 끝 시각, 속성, 상태를 붙입니다. 이 장은
-        로그 수집이나 관측 플랫폼을 만들지 않고, 읽는 법만 다룹니다.
+        작업(span)들의 모음으로 나타내고, 각 span에 시작과 끝 시각, 속성, 상태를 붙입니다. 이
+        페이지는 로그 수집이나 관측 플랫폼을 만들지 않고, 읽는 법만 다룹니다.
       </>
     ),
     caption: '필드별로 무엇을 읽는가',
@@ -63,7 +63,7 @@ const content = {
       ],
     ],
     noteTitle: 'trace는 증거이지 결론이 아닙니다',
-    note: 'trace가 보여 주는 사실은 가설을 좁힐 뿐입니다. 원인을 확정하려면 원본의 현행 버전과 색인 시각 같은 다음 증거가 필요합니다. 개인정보와 비밀값은 trace에 그대로 남기지 않고 마스킹합니다.',
+    note: 'trace가 보여 주는 사실은 가설을 좁힐 뿐입니다. 원인을 확정하려면 request_id로 업무 시스템의 기록을 조회하거나 원본 문서의 현행 버전을 확인하는 것 같은 다음 증거가 필요합니다. 개인정보와 비밀값은 trace에 그대로 남기지 않고 마스킹합니다.',
   },
   en: {
     intro: (
@@ -71,8 +71,8 @@ const content = {
         Evidence usually comes from a per-step record (a trace) of one request. The{' '}
         <ExternalLink href={OTEL}>trace concept in observability tools</ExternalLink> shows a
         request’s path as a set of units of work (spans), each with start and end times, attributes,
-        and a status. This chapter does not build log collection or an observability platform; it
-        only covers reading.
+        and a status. This page does not build log collection or an observability platform; it only
+        covers reading.
       </>
     ),
     caption: 'What each field is read for',
@@ -128,7 +128,7 @@ const content = {
       ],
     ],
     noteTitle: 'A trace is evidence, not a conclusion',
-    note: 'The facts a trace shows only narrow the hypotheses. To confirm the cause you need the next evidence, such as the current source version and the index time. Personal data and secrets are masked rather than kept as they are in a trace.',
+    note: 'The facts a trace shows only narrow the hypotheses. To confirm the cause you need the next evidence, such as looking up the business system’s record by request_id or checking the current version of a source document. Personal data and secrets are masked rather than kept as they are in a trace.',
   },
 };
 

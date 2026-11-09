@@ -12,11 +12,14 @@ const content = {
     intro: (
       <>
         용어를 한 장의 중첩 원으로 그리면 모든 용어가 하나의 계층에 놓인 것처럼 보입니다. 실제로는
-        <strong> 서로 다른 질문에 답하는 축</strong>이 섞여 있습니다.
+        <strong> 서로 다른 질문에 답하는 축</strong>이 섞여 있습니다. 이 페이지는 세 축을 씁니다.
+        기술 범주는 &quot;어떤 접근으로 만들었나&quot;, 생성 과업과 모델 관점은 &quot;무엇을
+        생성하고 어떻게 다시 쓰나&quot;, 학습 신호는 &quot;무엇을 정답 삼아 학습했나&quot;를
+        묻습니다.
       </>
     ),
     overlap:
-      '한 구현은 여러 축의 값을 동시에 가질 수 있습니다. 예를 들어 사전학습한 언어 모델은 계열로는 DL, 재사용으로는 Foundation Model, 데이터로는 LM입니다.',
+      '한 구현은 여러 축의 값을 동시에 가질 수 있습니다. 예를 들어 01.1에서 큐를 제안한 LLM은 기술 범주(축 1)로는 DL이고, 생성 과업과 모델 관점(축 2)으로는 텍스트를 생성하는 Generative AI이자 재사용되는 Foundation Model이며 다루는 데이터로는 LM입니다. 사전학습의 학습 신호(축 3)로는 자기지도 학습입니다.',
     ai: (
       <>
         미국 NIST가 <ExternalLink href={NIST}>AI 시스템을 정의한 문서</ExternalLink>는 이를 주어진
@@ -39,10 +42,13 @@ const content = {
       <>
         Drawing the terms as one set of nested circles makes every term look like it sits in a
         single hierarchy. In fact they mix <strong>axes that answer different questions</strong>.
+        This page uses three. Technology category asks &quot;what approach built it?&quot;, the
+        generative task and model view asks &quot;what does it generate and how is it reused?&quot;,
+        and learning signal asks &quot;what did it learn to treat as the answer?&quot;.
       </>
     ),
     overlap:
-      'One implementation can have values on several axes at once. For example, a pretrained language model is DL by lineage, a foundation model by reuse, and an LM by data.',
+      'One implementation can have values on several axes at once. For example, the LLM that suggested a queue in 01.1 is DL by technology category (axis 1); by the generative task and model view (axis 2) it is generative AI that produces text, a reused foundation model, and an LM by data handled; and by the learning signal of its pretraining (axis 3) it is self-supervised.',
     ai: (
       <>
         NIST&apos;s <ExternalLink href={NIST}>definition of an AI system</ExternalLink> describes it

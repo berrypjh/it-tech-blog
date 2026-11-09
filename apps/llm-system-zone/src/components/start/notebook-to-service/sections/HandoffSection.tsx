@@ -1,5 +1,5 @@
 import type { Locale } from '@it-tech-blog/preferences';
-import { Callout, DocH2 } from '@it-tech-blog/ui';
+import { Callout, DocH2, DocH3, DocTable } from '@it-tech-blog/ui';
 
 import { FieldCards } from '@/components/shared/FieldCards';
 
@@ -31,6 +31,29 @@ const content = {
       ['실패와 경계 사례와 기대 판정', 'cases (입력과 기대 판정)'],
     ],
     note: '계약의 값은 실험에서 확인한 근거와 함께 기록합니다. 서비스는 이 계약에서 코드를 만들고, 같은 확인 사례를 테스트로 옮겨 실험과 같은 분기가 나오는지 확인합니다.',
+    dutiesHeading: '계약 밖에서 서비스 코드가 맡는 책임',
+    dutiesHead: ['책임', '서비스가 하는 일'],
+    duties: [
+      [
+        '오류',
+        '스키마 위반 · 시간 초과 · 거절을 구분해 기록하고, 사용자에게 다음 행동을 보여 준다 (01.1 · 01.6)',
+      ],
+      [
+        '취소',
+        '사용자가 요청을 취소하면 진행 중인 호출을 멈추고, 이미 남은 기록이 있는지 확인한다',
+      ],
+      [
+        '재시도',
+        '같은 request_id로 다시 시도해도 티켓이 두 번 생기지 않게 한다. 시간 초과 뒤에는 먼저 기록을 조회한다 (01.6)',
+      ],
+      [
+        '권위 있는 업무 상태',
+        '접수 여부의 기준은 모델 응답이 아니라 티켓 시스템의 기록이다 (01.1)',
+      ],
+      ['민감정보', '문의 원문의 개인정보를 모델 입력과 trace에서 필요한 만큼만 남기고 마스킹한다'],
+      ['테스트', '계약의 사례와 01.3의 가상 사례를 단위 테스트로 옮긴다'],
+      ['관측', '요청 ID로 입력부터 UI까지 묶은 trace와, 01.5의 지표를 운영 중에 계속 잰다'],
+    ],
     noteTitle: '자동 처리 후보는 실행 권한이 아닙니다',
   },
   en: {
@@ -76,6 +99,35 @@ const content = {
       ],
     ],
     note: 'Record the contract’s values together with the evidence confirmed in the experiment. The service builds code from this contract and carries the same confirmation cases into tests to check that the same branches come out as in the experiment.',
+    dutiesHeading: 'Duties the service code takes on outside the contract',
+    dutiesHead: ['Duty', 'What the service does'],
+    duties: [
+      [
+        'Errors',
+        'Record schema violations, timeouts, and refusals as different things, and show the user a next step (01.1 · 01.6)',
+      ],
+      [
+        'Cancellation',
+        'When the user cancels, stop calls in progress and check whether a record was already left',
+      ],
+      [
+        'Retries',
+        'Retrying with the same request_id must not create a second ticket. After a timeout, look up the record first (01.6)',
+      ],
+      [
+        'Authoritative business state',
+        'Whether a request is filed is decided by the ticket system’s record, not the model response (01.1)',
+      ],
+      [
+        'Sensitive data',
+        'Keep only as much personal data from the request text in model input and traces as needed, and mask it',
+      ],
+      ['Tests', 'Carry the contract cases and the fictional cases from 01.3 into unit tests'],
+      [
+        'Observation',
+        'Keep measuring, in operation, the trace tied by request ID from input to UI and the metrics from 01.5',
+      ],
+    ],
     noteTitle: 'An auto-processing candidate is not permission to execute',
   },
 };
@@ -96,6 +148,8 @@ export const HandoffSection = ({ locale }: { locale: Locale }) => {
       <Callout variant="note" title={c.noteTitle}>
         <p>{c.note}</p>
       </Callout>
+      <DocH3>{c.dutiesHeading}</DocH3>
+      <DocTable caption={c.dutiesHeading} head={c.dutiesHead} rows={c.duties} />
     </section>
   );
 };

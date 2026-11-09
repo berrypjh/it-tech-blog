@@ -32,7 +32,7 @@ const content = {
       </>
     ),
     relation:
-      '01-02의 Validation(명시 제약 확인)은 이 조건 가운데 코드로 단언할 수 있는 것이고, Evaluation(정의한 기준과 데이터에 따른 품질 평가)은 같은 조건을 사례 집합에 적용해 측정하는 일입니다.',
+      '01.3의 Validation(명시 제약 확인)은 이 조건 가운데 코드로 단언할 수 있는 것이고, Evaluation(정의한 기준과 데이터에 따른 품질 평가)은 같은 조건을 사례 집합에 적용해 측정하는 일입니다.',
   },
   en: {
     intro:
@@ -61,7 +61,7 @@ const content = {
       </>
     ),
     relation:
-      'Validation (checking stated constraints) in 01-02 is the part of these conditions that code can assert, and Evaluation (assessing quality against defined criteria and data) is applying the same conditions to a set of cases and measuring.',
+      'Validation (checking stated constraints) in 01.3 is the part of these conditions that code can assert, and Evaluation (assessing quality against defined criteria and data) is applying the same conditions to a set of cases and measuring.',
   },
 };
 

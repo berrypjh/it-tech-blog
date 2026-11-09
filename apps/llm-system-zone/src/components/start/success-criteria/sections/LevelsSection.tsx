@@ -10,7 +10,7 @@ const HELM = 'https://arxiv.org/abs/2211.09110';
 const content = {
   ko: {
     intro:
-      '"결과가 맞다"는 말은 서로 다른 질문을 뭉뚱그립니다. 01-02의 여섯 층 가운데 이 장에서는 네 가지를 따로 측정합니다.',
+      '"결과가 맞다"는 말은 서로 다른 질문을 뭉뚱그립니다. 이 페이지는 01.3의 여섯 층 가운데 스키마 · 의미적 품질 · Task Success를 네 지표로 나눠 측정합니다. 의미적 품질은 정확성과 완전성으로 갈라 봅니다.',
     labels: ['묻는 질문', '분모', '누락값 처리'],
     metrics: [
       [
@@ -49,7 +49,7 @@ const content = {
   },
   en: {
     intro:
-      '"The result is right" lumps different questions together. Of the six layers in 01-02, this chapter measures four separately.',
+      '"The result is right" lumps different questions together. Of the six layers in 01.3, this page measures schema, semantic quality, and task success as four metrics, splitting semantic quality into correctness and completeness.',
     labels: ['Question it asks', 'Denominator', 'Missing-value handling'],
     metrics: [
       [

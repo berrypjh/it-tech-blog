@@ -4,35 +4,50 @@ import { List, ListItem } from '@berrypjh/react-ui';
 
 const content = {
   ko: {
-    heading: '"AI 기능"이라는 같은 이름 아래 가능한 구현',
+    heading: '"담당 큐 정하기"라는 같은 기능의 가능한 구현',
     cards: [
-      { name: '규칙 기반 추론', detail: '사람이 쓴 규칙과 추론 엔진. 데이터로 학습하지 않는다' },
-      { name: '고전적 기계학습', detail: '데이터로 학습한 비신경망 모델 (예: 로지스틱 회귀)' },
-      { name: '신경망', detail: '다층 신경망을 데이터로 학습한다' },
-      { name: '대규모 사전학습 모델', detail: '넓은 데이터로 사전학습한 뒤 작업에 적응시킨다' },
+      {
+        name: '규칙 기반',
+        detail: '"VPN"이 들어 있으면 네트워크 큐로 보내는 규칙을 사람이 쓴다. 학습하지 않는다',
+      },
+      {
+        name: '고전적 기계학습',
+        detail: '상담원이 큐를 붙인 과거 문의로 비신경망 분류기를 학습한다 (예: 로지스틱 회귀)',
+      },
+      { name: '신경망 분류기', detail: '같은 라벨로 다층 신경망 분류기를 학습한다' },
+      {
+        name: 'LLM',
+        detail: '대량의 원문으로 사전학습한 언어 모델이 큐 이름을 텍스트로 생성한다 (01.1)',
+      },
     ],
   },
   en: {
-    heading: 'Implementations possible under the same name, "AI feature"',
+    heading: 'Possible implementations of the same feature, "pick the queue"',
     cards: [
       {
-        name: 'Rule-based reasoning',
-        detail: 'Rules written by people and an inference engine. It does not learn from data',
+        name: 'Rule-based',
+        detail:
+          'People write a rule: if it mentions "VPN", send it to the network queue. No learning',
       },
       {
         name: 'Classical machine learning',
-        detail: 'A non-neural model learned from data (e.g. logistic regression)',
+        detail:
+          'A non-neural classifier learned from past requests that agents labeled with a queue (e.g. logistic regression)',
       },
-      { name: 'Neural networks', detail: 'A multi-layer neural network learned from data' },
       {
-        name: 'Large pretrained models',
-        detail: 'Pretrained on broad data, then adapted to a task',
+        name: 'Neural network classifier',
+        detail: 'A multi-layer neural network classifier learned from the same labels',
+      },
+      {
+        name: 'LLM',
+        detail:
+          'A language model pretrained on a large amount of raw text generates the queue name as text (01.1)',
       },
     ],
   },
 };
 
-/** 같은 "AI 기능"이라는 이름 아래 가능한 서로 다른 구현을 카드로 보여 준다. 서버 컴포넌트다. */
+/** 같은 "담당 큐 정하기" 기능 아래 가능한 서로 다른 구현을 카드로 보여 준다. 서버 컴포넌트다. */
 export const ImplementationCards = ({ locale }: { locale: Locale }) => {
   const c = content[locale];
 

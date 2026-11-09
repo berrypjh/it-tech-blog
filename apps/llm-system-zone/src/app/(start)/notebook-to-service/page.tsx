@@ -4,14 +4,15 @@ import { NotebookToServicePage } from '@/components/start/notebook-to-service/No
 
 const metadata = {
   ko: {
-    title: 'Python Notebook과 서비스 코드는 어떻게 역할이 다른가? — LLM Lab',
+    title: 'Notebook과 서비스 코드: 실험 기록 · 재현성 · 책임의 차이 — LLM System',
     description:
-      '실험 결과를 버전이 있는 출력 스키마, 임계값 정책, 실패 처리, 확인 사례를 담은 계약으로 옮기는 챕터.',
+      '실험 기록과 서비스 책임을 나누고, 고정 점수로 임계값의 채택 집합과 조건부 오류율을 구별한 뒤, 시설 고장 신고를 최종 과업으로 다루는 01장 일곱 번째 페이지.',
   },
   en: {
-    title: 'How Do a Python Notebook and Service Code Differ in Role? — LLM Lab',
+    title:
+      'Notebooks and service code: experiment records, reproducibility, and responsibility — LLM System',
     description:
-      'A chapter on moving experiment results into a contract with a versioned output schema, threshold policy, failure handling, and confirmation cases.',
+      'Chapter 01, page 7: separating experiment records from service duties, telling a threshold’s adopted set from its conditional error rate on fixed scores, and closing with facility fault reports as the final task.',
   },
 };
 

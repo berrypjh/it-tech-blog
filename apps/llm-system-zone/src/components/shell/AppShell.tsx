@@ -6,7 +6,7 @@ export const AppShell = ({ children }: { children: React.ReactNode }) => (
   <BaseAppShell
     sidebar={<Sidebar />}
     mobileBrand={
-      <span className="font-bold text-xsm text-text-default tracking-tight">LLM Lab</span>
+      <span className="font-bold text-xsm text-text-default tracking-tight">LLM System</span>
     }
   >
     {children}

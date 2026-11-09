@@ -11,11 +11,11 @@ const content = {
     successHeading: '성공을 이 세 가지로 판단하지 않는다',
     success: [
       'HTTP 성공: 요청이 처리되었다는 뜻이지 내용이 맞다는 뜻이 아닙니다.',
-      '스키마 통과: 구조가 약속과 같다는 뜻이며 의미가 맞다는 뜻이 아닙니다(01-02).',
+      '스키마 통과: 구조가 약속과 같다는 뜻이며 의미가 맞다는 뜻이 아닙니다(01.3).',
       '그럴듯한 문장: 유창함은 정확함의 증거가 아닙니다.',
     ],
     successAfter:
-      '성공 여부는 정의된 기준으로 확인한 결과로 판단합니다. 그 기준이 아직 비어 있다면 그 공백도 조사 대상입니다. 이 공백은 01-06에서 다룹니다.',
+      '성공 여부는 정의된 기준으로 확인한 결과로 판단합니다. 그 기준이 아직 비어 있다면 그 공백도 조사 대상입니다. 기준을 정하는 방법은 01.5에서 다뤘습니다.',
   },
   en: {
     splitHeading: 'Model failure and system failure are distinguished, yet can coexist',
@@ -24,11 +24,11 @@ const content = {
     successHeading: 'Do not judge success by these three',
     success: [
       'HTTP success: the request was processed, not that the content is right.',
-      'Passing the schema: the structure matches the promise, not that the meaning is right (01-02).',
+      'Passing the schema: the structure matches the promise, not that the meaning is right (01.3).',
       'A plausible sentence: fluency is not evidence of correctness.',
     ],
     successAfter:
-      'Judge success by results checked against defined criteria. If those criteria are still empty, that gap is also something to investigate. We take up that gap in 01-06.',
+      'Judge success by results checked against defined criteria. If those criteria are still empty, that gap is also something to investigate. We covered how to set those criteria in 01.5.',
   },
 };
 

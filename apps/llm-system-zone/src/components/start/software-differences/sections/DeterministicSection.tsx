@@ -17,6 +17,11 @@ const content = {
       ],
       ['정확성 기준', '명세에 대한 단언과 테스트', '허용 가능한 출력의 범위와 그 범위 안의 품질'],
       ['주된 실패 형태', '예외, 명세와 다른 반환값(버그)', '오류 신호 없이 반환된 그럴듯한 오답'],
+      [
+        '재현 조건',
+        '코드 · 입력 · 상태 · 환경을 고정하면 재현된다',
+        '모델 버전, 디코딩 설정, 실행 환경까지 같아야 기대할 수 있고, 제공자가 보장하지 않을 수도 있다',
+      ],
     ],
     both: (
       <>
@@ -26,7 +31,9 @@ const content = {
       </>
     ),
     model:
-      '반대로 확률적 모델도 디코딩 조건을 고정하면 같은 출력을 낼 수 있습니다. 예를 들어 매번 가장 가능성이 높은 토큰을 고르는 선택 규칙이 그렇습니다. 같은 입력, 같은 모델, 같은 선택 규칙이라면 계산은 같은 결과로 이어집니다.',
+      '반대로 확률적 모델도 디코딩 조건을 고정하면 같은 출력을 낼 수 있습니다. 예를 들어 매번 가장 가능성이 높은 토큰을 고르는 선택 규칙이 그렇습니다. 다만 이 재현은 모델 버전, 디코딩 설정, 실행 환경(하드웨어와 소프트웨어 구성)이 모두 같을 때 기대할 수 있는 것이고, 아래에서 보듯 제공자가 보장하지 않을 수 있습니다.',
+    design:
+      '그래서 이 페이지의 설계는 두 부분으로 나뉩니다. 모델이 만든 텍스트는 같은 입력에서도 같을 수도 다를 수도 있다고 봅니다. 그 텍스트를 판정하는 검사 함수는 결정적으로 만듭니다. 검사 함수는 모델 출력과 신뢰된 입력만 받고, 같은 입력에는 언제나 같은 판정을 냅니다.',
   },
   en: {
     intro:
@@ -49,6 +56,11 @@ const content = {
         'An exception, or a return value that differs from the spec (a bug)',
         'A plausible wrong answer returned with no error signal',
       ],
+      [
+        'Reproduction',
+        'Reproduced once code, input, state, and environment are fixed',
+        'Expected only when model version, decoding settings, and runtime environment also match, and the provider may not guarantee it',
+      ],
     ],
     both: (
       <>
@@ -59,7 +71,9 @@ const content = {
       </>
     ),
     model:
-      'Conversely, a probabilistic model can produce the same output once decoding conditions are fixed. A selection rule that always picks the most likely token is one example. With the same input, the same model, and the same selection rule, the computation leads to the same result.',
+      'Conversely, a probabilistic model can produce the same output once decoding conditions are fixed. A selection rule that always picks the most likely token is one example. That reproduction, though, can be expected only when the model version, decoding settings, and runtime environment (hardware and software setup) all match, and as shown below, the provider may not guarantee it.',
+    design:
+      'So the design in this page has two parts. Text the model makes may be the same or different for the same input. The check function that judges that text is made deterministic: it takes only the model output and trusted inputs, and always gives the same verdict for the same input.',
   },
 };
 
@@ -81,6 +95,7 @@ export const DeterministicSection = ({ locale }: { locale: Locale }) => {
       <p>
         {c.both} {c.model}
       </p>
+      <p>{c.design}</p>
     </section>
   );
 };

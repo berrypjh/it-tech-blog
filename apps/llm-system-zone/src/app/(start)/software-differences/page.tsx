@@ -4,14 +4,15 @@ import { SoftwareDifferencesPage } from '@/components/start/software-differences
 
 const metadata = {
   ko: {
-    title: 'LLM 애플리케이션은 일반 소프트웨어와 무엇이 다른가? — LLM Lab',
+    title: 'LLM 애플리케이션의 특성: 확률적 출력과 결정적인 소프트웨어 계약 — LLM System',
     description:
-      '실행 오류, 구조 위반, 의미적 오답을 구별하고 코드와 평가 데이터로 무엇을 확인할지 고르는 챕터.',
+      'IT 문의의 라우팅 JSON을 형식 · 사실과 근거 · 업무 규칙 · 실행 권한의 네 경계로 나누고, 신뢰된 입력으로 쓰기 허용 여부를 결정적으로 판정하는 01장 세 번째 페이지.',
   },
   en: {
-    title: 'How Do LLM Applications Differ from Regular Software? — LLM Lab',
+    title:
+      'Traits of LLM applications: probabilistic output and a deterministic software contract — LLM System',
     description:
-      'A chapter on telling execution errors, structure violations, and semantic wrong answers apart, and choosing what to check in code versus evaluation data.',
+      'Chapter 01, page 3: splitting the routing JSON of an IT request into four boundaries (format, fact and evidence, business rule, execution permission) and judging deterministically from trusted inputs whether a write is allowed.',
   },
 };
 

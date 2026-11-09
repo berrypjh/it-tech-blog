@@ -28,7 +28,7 @@ const content = {
       <>
         후자를 다룬 대표적인 연구가 검색과 생성기를 결합한{' '}
         <ExternalLink href={RAG}>RAG 논문</ExternalLink>입니다. 둘을 분리하면 오답이 났을 때 어느 쪽
-        문제인지 찾을 수 있고, 이 구분은 01-05의 진단으로 이어집니다.
+        문제인지 찾을 수 있고, 이 구분은 01.6의 진단으로 이어집니다.
       </>
     ),
     noteTitle: '검색 결과 목록만으로 충분하면 생성은 필요 없습니다',
@@ -55,7 +55,7 @@ const content = {
         A well-known line of work on the latter is{' '}
         <ExternalLink href={RAG}>the RAG paper</ExternalLink>, which combines retrieval with a
         generator. When they are separated, you can find which side is at fault when a wrong answer
-        appears, and this split leads into the diagnosis in 01-05.
+        appears, and this split leads into the diagnosis in 01.6.
       </>
     ),
     noteTitle: 'A list of search results may be the whole solution',

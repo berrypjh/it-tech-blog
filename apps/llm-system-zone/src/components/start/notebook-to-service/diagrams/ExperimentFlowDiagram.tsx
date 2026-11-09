@@ -10,7 +10,7 @@ const content = {
     steps: [
       { title: 'Dataset', detail: '버전이 있는 평가 데이터. 결측, 중복, 라벨, 분포를 확인한다' },
       { title: 'Notebook Experiment', detail: '바꿀 요인을 정해 실험하고 결과를 비교한다' },
-      { title: 'Evaluation', detail: '01-06의 기준으로 필수 조건과 지표를 계산한다' },
+      { title: 'Evaluation', detail: '01.5의 기준으로 필수 조건과 지표를 계산한다' },
       {
         title: 'Decision',
         detail: '선택 근거를 남기고 계약(스키마, 임계값, 실패 정책)으로 정한다',
@@ -53,7 +53,7 @@ const content = {
       },
       {
         title: 'Evaluation',
-        detail: 'Compute mandatory conditions and metrics with the 01-06 criteria',
+        detail: 'Compute mandatory conditions and metrics with the 01.5 criteria',
       },
       {
         title: 'Decision',

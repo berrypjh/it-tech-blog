@@ -16,6 +16,15 @@
           "PORT": "4003"
         }
       }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --test \"src/**/*.spec.mjs\"",
+        "cwd": "{projectRoot}"
+      },
+      "inputs": ["{projectRoot}/src/**/*.ts", "{projectRoot}/src/**/*.spec.mjs"],
+      "cache": true
     }
   }
 }

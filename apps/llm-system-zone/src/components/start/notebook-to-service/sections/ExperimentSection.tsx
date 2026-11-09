@@ -12,7 +12,7 @@ const content = {
       '한 번에 하나의 요인만 바꿉니다. 지시문 문구, 예시, 검색 문서 수, 모델 중 무엇을 바꾸는지 정하고, 나머지는 고정해 어느 변화가 결과를 만들었는지 알 수 있게 합니다. 모델을 비교할 때는 같은 데이터, 같은 기준, 같은 설정 조건을 씁니다.',
     errorHeading: '결과 시각화와 Error Analysis',
     error:
-      '지표 하나만 보지 않고 실패 사례를 직접 봅니다. 표나 그래프로 실패의 모양을 보고, 어떤 종류의 사례에서 틀리는지 묶습니다. 01-05의 가설과 증거의 흐름이 여기서도 쓰입니다.',
+      '지표 하나만 보지 않고 실패 사례를 직접 봅니다. 표나 그래프로 실패의 모양을 보고, 어떤 종류의 사례에서 틀리는지 묶습니다. 01.6의 가설과 증거의 흐름이 여기서도 쓰입니다.',
     labels: ['무엇을 알 수 있나'],
     views: [
       ['혼동 표 (정답 대 예측)', '어떤 카테고리끼리 자주 섞이는가'],
@@ -28,7 +28,7 @@ const content = {
       'Change only one factor at a time. Decide which of the instruction wording, examples, number of retrieved documents, or model you change, and fix the rest so you can tell which change produced the result. When comparing models, use the same data, the same criteria, and the same settings.',
     errorHeading: 'Visualizing results and Error Analysis',
     error:
-      'Do not look at a single metric; look at the failure cases directly. See the shape of failures in tables or charts and group which kinds of cases go wrong. The hypothesis-and-evidence flow from 01-05 is used here too.',
+      'Do not look at a single metric; look at the failure cases directly. See the shape of failures in tables or charts and group which kinds of cases go wrong. The hypothesis-and-evidence flow from 01.6 is used here too.',
     labels: ['What it shows'],
     views: [
       ['Confusion table (truth vs prediction)', 'Which categories are often mixed up'],

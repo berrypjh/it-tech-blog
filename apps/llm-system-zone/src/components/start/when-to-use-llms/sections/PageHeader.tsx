@@ -1,89 +1,52 @@
 import type { Locale } from '@it-tech-blog/preferences';
-import { ListenButton } from '@it-tech-blog/ui';
+import { DocPageHeader, type HeaderContent } from '@it-tech-blog/ui';
 
-import { List, ListItem } from '@berrypjh/react-ui';
-import { Check, Clock } from 'lucide-react';
-
-const content = {
+const content: Record<Locale, HeaderContent> = {
   ko: {
-    eyebrow: '시작하기 · 01-04',
-    title: 'LLM을 사용해야 하는 문제와 사용하지 말아야 할 문제',
+    eyebrow: '01장 · 4 / 7',
+    title: '규칙 · 검색 · 기존 ML · LLM 비교: 도입 타당성과 비LLM Baseline',
     lead: (
       <>
         <strong className="text-text-default">
-          &quot;LLM을 쓸까?&quot;보다 &quot;어떤 하위 작업을 어떤 책임과 제약으로 맡길까?&quot;를
-          먼저 결정합니다.
+          &quot;LLM을 쓸까?&quot;보다 &quot;LLM 없이 어디까지 되는가?&quot;를 먼저 확인합니다.
         </strong>{' '}
-        이 장은 기능을 작업 단위로 나누고, 제약과 대안을 근거로 구현 방식을 고르는 법을 다룹니다.
+        01.3의 업무 계약에서 출발해, 같은 IT 문의를 규칙 · 검색 · 분류기 · LLM으로 풀어 보고 비LLM
+        Baseline과 도입을 보류할 조건을 정합니다.
       </>
     ),
-    readingTime: '읽는 시간 약 8분',
-    learnHeading: '이 페이지에서 배우는 것',
+    readingTime: '읽는 시간 약 12분',
     learnItems: [
-      '한 기능을 작업 단위로 나누고 작업마다 책임을 배정하기',
-      '규칙 · 검색 · ML · LLM의 유지보수, 품질, 비용, 지연, 데이터 요구를 비교하기',
-      '실시간성, 비용, 오류 허용도, 상태 변경의 피해, 사람 검토 가능성, 데이터 제약으로 구성 정하기',
-      '위험한 변경을 모델 응답만으로 승인하지 않는 설계 설명하기',
+      '같은 문의에 서비스 코드 규칙, 정책 검색, 분류기, LLM이 각각 무엇을 맡는지 구분하기',
+      '단독 선택과 조합에서 각 방식의 역할을 나누기',
+      '실패 비용 · 데이터 · 변경 빈도 · 품질 · 지연 · 비용 · 검증 가능성으로 비LLM Baseline을 정하기',
+      '도입 보류 조건과 재평가 조건을 적고, 승인자가 있다는 사실만으로 자동화를 정당화하지 않기',
     ],
   },
   en: {
-    eyebrow: 'Getting Started · 01-04',
-    title: 'Problems to Use an LLM For, and Problems to Avoid',
+    eyebrow: 'Chapter 01 · 4 of 7',
+    title:
+      'Rules, search, classic ML, and LLMs compared: whether an LLM is justified, and the non-LLM baseline',
     lead: (
       <>
         <strong className="text-text-default">
-          Decide &quot;which subtask do we hand to what responsibility and constraints?&quot; before
-          &quot;should we use an LLM?&quot;.
+          Before &quot;should we use an LLM?&quot;, check &quot;how far do we get without
+          one?&quot;.
         </strong>{' '}
-        This chapter splits a feature into task units and picks an implementation by constraints and
-        alternatives.
+        Starting from the business contract in 01.3, this page solves the same IT request with
+        rules, search, a classifier, and an LLM, and sets a non-LLM baseline and the conditions for
+        holding off.
       </>
     ),
-    readingTime: 'About 8 min read',
-    learnHeading: 'What you will learn',
+    readingTime: 'About 12 min read',
     learnItems: [
-      'Split one feature into task units and assign responsibility per task',
-      'Compare maintenance, quality, cost, latency, and data needs of rules, search, ML, and LLM',
-      'Decide a design by real-time need, cost, error tolerance, damage of a state change, human review, and data constraints',
-      'Explain a design where a risky change is never approved by the model response alone',
+      'Tell what service-code rules, policy search, a classifier, and an LLM each take on for the same request',
+      'Separate the role of each approach when used alone and in combination',
+      'Set a non-LLM baseline using failure cost, data, change frequency, quality, latency, cost, and verifiability',
+      'Write conditions for holding off and for re-evaluating, without treating the presence of an approver as a justification for automation',
     ],
   },
 };
 
-/** 챕터 제목, 핵심 명제, 학습 목표를 보여주는 머리말. */
-export const PageHeader = ({ locale }: { locale: Locale }) => {
-  const c = content[locale];
-
-  return (
-    <header>
-      <p className="mb-sm text-xsm font-semiBold text-text-primary">{c.eyebrow}</p>
-      <h1 className="text-3xl leading-3xl font-bold tracking-sm text-text-default">{c.title}</h1>
-      <p className="mt-lg text-md leading-md text-text-light">{c.lead}</p>
-
-      <div className="mt-lg flex flex-wrap gap-x-xl gap-y-xs text-xxsm text-text-light">
-        <span className="flex items-center gap-xs">
-          <Clock className="h-3.5 w-3.5" aria-hidden="true" />
-          {c.readingTime}
-        </span>
-        <ListenButton />
-      </div>
-
-      <section
-        aria-labelledby="learn-heading"
-        className="mt-2xl rounded-md border border-stroke-light bg-background-default p-xl"
-      >
-        <h2 id="learn-heading" className="mb-md text-xsm font-bold text-text-default">
-          {c.learnHeading}
-        </h2>
-        <List className="flex flex-col gap-sm text-xsm">
-          {c.learnItems.map((item) => (
-            <ListItem key={item} className="flex gap-sm">
-              <Check className="mt-xs h-4 w-4 shrink-0 text-text-success" aria-hidden="true" />
-              {item}
-            </ListItem>
-          ))}
-        </List>
-      </section>
-    </header>
-  );
-};
+export const PageHeader = ({ locale }: { locale: Locale }) => (
+  <DocPageHeader locale={locale} content={content[locale]} />
+);

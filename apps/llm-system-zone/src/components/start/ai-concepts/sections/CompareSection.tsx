@@ -11,12 +11,12 @@ const content = {
     rows: [
       [
         'AI',
-        '계열 (가장 넓음)',
+        '기술 범주 (가장 넓음)',
         '목표에 대해 예측 · 추천 · 결정을 출력하는 시스템인가',
         'AI는 모두 학습한다 / 모두 신경망이다',
       ],
-      ['ML', '계열', '데이터에서 모델을 학습하는가', 'ML은 곧 딥러닝이다'],
-      ['DL', '계열', '다층 신경망이 중심인가', 'DL이면 생성 모델이다'],
+      ['ML', '기술 범주', '데이터에서 모델을 학습하는가', 'ML은 곧 딥러닝이다'],
+      ['DL', '기술 범주', '다층 신경망이 중심인가', 'DL이면 생성 모델이다'],
       [
         'Generative AI',
         '목적 · 능력',
@@ -42,6 +42,18 @@ const content = {
         '둘 이상의 모달리티를 다루는가',
         '멀티모달 모델은 모두 LLM이다',
       ],
+      [
+        '지도 학습',
+        '학습 신호',
+        '표적이 사람이 붙인 라벨인가',
+        '분류 과업이면 언제나 지도 학습이다',
+      ],
+      [
+        '자기지도 학습',
+        '학습 신호',
+        '표적을 데이터 자체에서 만들었는가',
+        '라벨이 없으니 표적도 없다',
+      ],
     ],
   },
   en: {
@@ -52,14 +64,14 @@ const content = {
     rows: [
       [
         'AI',
-        'Lineage (broadest)',
+        'Technology category (broadest)',
         'Is it a system that outputs predictions, recommendations, or decisions for an objective',
         'All AI learns / is all neural networks',
       ],
-      ['ML', 'Lineage', 'Does it learn a model from data', 'ML means deep learning'],
+      ['ML', 'Technology category', 'Does it learn a model from data', 'ML means deep learning'],
       [
         'DL',
-        'Lineage',
+        'Technology category',
         'Is a multi-layer neural network at the center',
         'DL means a generative model',
       ],
@@ -92,6 +104,18 @@ const content = {
         'Data (modality)',
         'Does it handle two or more modalities',
         'Every multimodal model is an LLM',
+      ],
+      [
+        'Supervised',
+        'Learning signal',
+        'Is the target a label people assigned',
+        'A classification task always means supervised learning',
+      ],
+      [
+        'Self-supervised',
+        'Learning signal',
+        'Was the target made from the data itself',
+        'No labels means no target',
       ],
     ],
   },

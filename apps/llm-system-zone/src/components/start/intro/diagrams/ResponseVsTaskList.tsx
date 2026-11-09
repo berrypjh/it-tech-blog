@@ -9,16 +9,16 @@ const content = {
     taskLabel: '업무',
     cases: [
       {
-        title: '응답의 내용이 요구사항이나 근거와 다르다',
-        outcome: '틀린 내용이 사용자에게 전달될 수 있음',
+        title: '계정 잠금 문의인데 모델이 네트워크 큐를 제안했다',
+        outcome: '다른 팀에 접수되어 처리가 늦어짐',
       },
       {
-        title: '내용은 맞지만 결과를 저장하는 요청이 실패한다',
-        outcome: '저장되지 않아 다음 사람이 볼 수 없음',
+        title: '큐 제안은 맞지만 티켓 시스템이 기록 요청을 거절했다',
+        outcome: '접수 ID가 없어 담당자가 문의를 볼 수 없음',
       },
       {
-        title: '응답의 형식이 앱과 약속한 값이 아니다',
-        outcome: '다음 단계가 응답을 처리하지 못해 흐름이 멈춤',
+        title: '앱과 약속한 큐 이름 하나 대신 긴 문장이 돌아왔다',
+        outcome: '다음 단계가 담당 큐를 읽지 못해 흐름이 멈춤',
       },
     ],
   },
@@ -27,16 +27,16 @@ const content = {
     taskLabel: 'Task',
     cases: [
       {
-        title: 'The content of the response differs from the requirement or the evidence',
-        outcome: 'Wrong content may reach the user',
+        title: 'The request was about a locked account, but the model suggested the network queue',
+        outcome: 'Filed with another team, so handling is delayed',
       },
       {
-        title: 'The content is right, but the request to store the result fails',
-        outcome: 'It is not stored, so the next person cannot see it',
+        title: 'The queue suggestion is right, but the ticket system rejected the write',
+        outcome: 'No ticket ID, so no agent can see the request',
       },
       {
-        title: 'The response is not in the format agreed with the app',
-        outcome: 'The next step cannot process it and the flow stops',
+        title: 'A long sentence came back instead of the single queue name agreed with the app',
+        outcome: 'The next step cannot read the queue and the flow stops',
       },
     ],
   },
