@@ -3,6 +3,7 @@ import { DocLayout, type DocReference } from '@it-tech-blog/ui';
 import { ReferencesSection, same, SummarySection } from '@it-tech-blog/ui';
 
 import { KWCAG_REGISTRY } from '@/components/shared/kwcag';
+import { NextPage } from '@/components/shared/PageLink';
 import { wcag22 } from '@/components/shared/wcag';
 
 import { AxesSection } from './sections/AxesSection';
@@ -78,6 +79,7 @@ export const RequirementsAndObligationsPage = ({ locale }: { locale: Locale }) =
       <TaskSection locale={locale} />
       <SummarySection item={toc.summary} points={points[locale]} />
       <ReferencesSection item={toc.references} locale={locale} references={references} />
+      <NextPage locale={locale} id="native-first" />
     </DocLayout>
   );
 };

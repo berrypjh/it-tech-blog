@@ -190,6 +190,14 @@ export const narration: NarrationScript = {
       },
       {
         text: '이 페이지는 여기까지예요. 이렇게 4장, 표준과 적용 범위가 끝났습니다.',
+        pause: 'short',
+      },
+      {
+        text: '다음 페이지부터는 5장, ARIA와 HTML 의미예요. 5장은 이 질문으로 시작합니다.',
+        pause: 'short',
+      },
+      {
+        text: 'role 속성을 붙이면, 그 요소가 버튼처럼 동작할까요?',
         pause: 'section',
       },
     ],

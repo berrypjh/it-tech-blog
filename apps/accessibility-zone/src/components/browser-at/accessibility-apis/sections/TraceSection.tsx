@@ -49,11 +49,11 @@ const steps: { source: SourceId; ko: [string, string]; en: [string, string] }[] 
     source: 'model',
     ko: [
       '3. 플랫폼 API',
-      'HTML-AAM이 플랫폼 API마다 기대하는 매핑을 적어 둡니다. 실제로 나간 값은 운영체제의 접근성 검사 도구로만 확인할 수 있고, 이 사이트는 확인하지 않았습니다.',
+      'HTML-AAM이 플랫폼 API마다 기대하는 매핑을 적어 둡니다. 실제로 나간 값은 그 플랫폼 API를 관찰할 수 있는 접근성 검사 도구로 확인하며, 이 사이트는 확인하지 않았습니다.',
     ],
     en: [
       '3. Platform API',
-      'HTML-AAM lists the expected mapping for each platform API. What actually went out can only be confirmed with an OS accessibility inspection tool, and this site has not checked it.',
+      'HTML-AAM lists the expected mapping for each platform API. What actually went out is confirmed with an accessibility inspection tool that can observe that platform API, and this site has not checked it.',
     ],
   },
   {

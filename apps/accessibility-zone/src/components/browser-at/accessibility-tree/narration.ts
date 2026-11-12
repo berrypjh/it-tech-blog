@@ -93,7 +93,7 @@ export const narration: NarrationScript = {
       },
       {
         target: '[aria-label="노출을 바꾸는 세 가지 원인"] tbody tr:nth-child(1)',
-        text: '네이티브 의미부터 봅니다. button은 버튼이라는 역할과 포커스를 갖지만, 클릭만 붙인 div는 역할이 없는 일반 노드로 남아요.',
+        text: '네이티브 의미부터 봅니다. button은 버튼이라는 역할과 포커스, 키보드 동작을 기본으로 갖습니다. 클릭만 붙인 div에는 버튼 의미도 기본 키보드 동작도 없어요. 트리에 일반 노드로 남을지는 브라우저마다 다를 수 있습니다.',
         pause: 'short',
       },
       {

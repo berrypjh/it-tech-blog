@@ -124,7 +124,7 @@ export const narration: NarrationScript = {
       },
       {
         target: 'tbody tr:nth-child(3)',
-        text: '플랫폼 API로 실제로 나간 값은, 운영체제의 접근성 검사 도구로만 확인할 수 있어요. 이 사이트는 확인하지 않았습니다.',
+        text: '플랫폼 API로 실제로 나간 값은 그 API를 관찰할 수 있는 검사 도구로 확인해요. 이 사이트는 확인하지 않았습니다.',
         pause: 'short',
       },
       {

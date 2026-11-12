@@ -1,6 +1,8 @@
 import type { Locale } from '@it-tech-blog/preferences';
 import { Callout, CodeBlock, DocH2 } from '@it-tech-blog/ui';
 
+import { PageLink } from '@/components/shared/PageLink';
+
 import { getToc } from '../toc';
 
 const code = {
@@ -34,7 +36,9 @@ const content = {
     later: (
       <>
         어떤 경우에 숨긴 글자가 이름에 들어가고 어떤 경우에 빠지는지는 접근 가능한 이름 계산 명세가
-        단계별로 정합니다. 이 장에서는 두 질문을 나눠 묻는 데까지만 봅니다.
+        단계별로 정합니다. 이 장에서는 두 질문을 나눠 묻는 데까지만 보고, 이 예제는{' '}
+        <PageLink locale="ko" id="reference-edge-cases" hash="hidden-references" />
+        에서 다시 출발점으로 씁니다.
       </>
     ),
   },
@@ -60,7 +64,8 @@ const content = {
       <>
         When hidden text goes into a name and when it does not is defined step by step by the
         accessible name computation spec. This chapter only goes as far as asking the two questions
-        separately.
+        separately, and this example is the starting point again on{' '}
+        <PageLink locale="en" id="reference-edge-cases" hash="hidden-references" />.
       </>
     ),
   },

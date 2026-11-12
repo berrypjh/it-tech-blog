@@ -47,6 +47,28 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
         { id: 'requirements-and-obligations', label: '04.6 표준 · 계약 · 법령 구분', type: 'link' },
       ],
     },
+    {
+      title: 'ARIA와 HTML 의미',
+      items: [
+        { id: 'native-first', label: '05.1 네이티브 HTML 우선', type: 'link' },
+        { id: 'roles-and-relations', label: '05.2 역할 · 상태 · 관계 읽기', type: 'link' },
+        { id: 'aria-in-html', label: '05.3 ARIA in HTML 확인', type: 'link' },
+        { id: 'hiding-and-inert', label: '05.4 숨김과 inert', type: 'link' },
+        { id: 'disabled-and-required', label: '05.5 비활성 · 읽기 전용 · 필수', type: 'link' },
+        { id: 'fixing-controls', label: '05.6 모순된 컨트롤 고치기', type: 'link' },
+      ],
+    },
+    {
+      title: '접근 가능한 이름과 설명',
+      items: [
+        { id: 'name-and-label', label: '06.1 라벨 · 이름 · 설명 · 값', type: 'link' },
+        { id: 'html-name-sources', label: '06.2 HTML의 이름 출처', type: 'link' },
+        { id: 'labelledby-and-label', label: '06.3 이름 출처의 조건과 순서', type: 'link' },
+        { id: 'reference-edge-cases', label: '06.4 숨김 · 여러 ID · 빈 값', type: 'link' },
+        { id: 'descriptions-and-errors', label: '06.5 설명과 오류 메시지', type: 'link' },
+        { id: 'label-in-name', label: '06.6 Label in Name 확인', type: 'link' },
+      ],
+    },
   ],
   en: [
     {
@@ -103,6 +125,28 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
           label: '04.6 Standards, contracts, and law',
           type: 'link',
         },
+      ],
+    },
+    {
+      title: 'ARIA and HTML Semantics',
+      items: [
+        { id: 'native-first', label: '05.1 Native HTML first', type: 'link' },
+        { id: 'roles-and-relations', label: '05.2 Roles, states, and relations', type: 'link' },
+        { id: 'aria-in-html', label: '05.3 Checking ARIA in HTML', type: 'link' },
+        { id: 'hiding-and-inert', label: '05.4 Hiding and inert', type: 'link' },
+        { id: 'disabled-and-required', label: '05.5 Disabled, read-only, required', type: 'link' },
+        { id: 'fixing-controls', label: '05.6 Fixing contradicting controls', type: 'link' },
+      ],
+    },
+    {
+      title: 'Accessible Names and Descriptions',
+      items: [
+        { id: 'name-and-label', label: '06.1 Label, name, description, value', type: 'link' },
+        { id: 'html-name-sources', label: '06.2 HTML name sources', type: 'link' },
+        { id: 'labelledby-and-label', label: '06.3 Conditions and precedence', type: 'link' },
+        { id: 'reference-edge-cases', label: '06.4 Hidden, several IDs, empty', type: 'link' },
+        { id: 'descriptions-and-errors', label: '06.5 Descriptions and errors', type: 'link' },
+        { id: 'label-in-name', label: '06.6 Checking Label in Name', type: 'link' },
       ],
     },
   ],

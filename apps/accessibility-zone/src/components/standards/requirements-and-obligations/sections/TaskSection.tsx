@@ -1,63 +1,18 @@
-import { Fragment } from 'react';
-
 import type { Locale } from '@it-tech-blog/preferences';
 import { CodeBlock, DocH2, DocH3 } from '@it-tech-blog/ui';
 
+import { type JudgmentFields, JudgmentRecord } from '@/components/shared/JudgmentRecord';
 import { PageLink } from '@/components/shared/PageLink';
 import { SourceTag } from '@/components/shared/SourceTag';
 import { Steps } from '@/components/shared/Steps';
-import { type VerdictId, VerdictLabel } from '@/components/shared/VerdictLabel';
+import type { VerdictId } from '@/components/shared/VerdictLabel';
 
 import { getToc } from '../toc';
-
-type Key =
-  | 'standard'
-  | 'clause'
-  | 'scope'
-  | 'conditions'
-  | 'evidence'
-  | 'verdict'
-  | 'unconfirmed'
-  | 'followUp';
-
-const keys: Key[] = [
-  'standard',
-  'clause',
-  'scope',
-  'conditions',
-  'evidence',
-  'verdict',
-  'unconfirmed',
-  'followUp',
-];
-
-const labels: Record<Locale, Record<Key, string>> = {
-  ko: {
-    standard: '기준 · 버전',
-    clause: '조항',
-    scope: '대상 범위',
-    conditions: '적용 조건 · 예외',
-    evidence: '관찰 증거',
-    verdict: '판정',
-    unconfirmed: '미확인',
-    followUp: '후속 확인',
-  },
-  en: {
-    standard: 'Standard · version',
-    clause: 'Clause',
-    scope: 'Scope',
-    conditions: 'Conditions · exceptions',
-    evidence: 'Observed evidence',
-    verdict: 'Verdict',
-    unconfirmed: 'Unconfirmed',
-    followUp: 'Follow-up',
-  },
-};
 
 /** 예시 기록의 순서와 같은 순서로 놓인 판정. */
 const recordVerdicts: VerdictId[] = ['fail', 'na', 'fail', 'unconfirmed'];
 
-const records: Record<Locale, Record<Key, string>[]> = {
+const records: Record<Locale, JudgmentFields[]> = {
   ko: [
     {
       standard: 'WCAG 2.2 (W3C Recommendation, 2024-12-12)',
@@ -240,30 +195,13 @@ export const TaskSection = ({ locale }: { locale: Locale }) => {
         <span className="text-xxsm text-text-light">{c.exampleNote}</span>
       </p>
       {records[locale].map((record, i) => (
-        <div
-          key={record.clause}
-          className="my-lg rounded-md border border-stroke-light bg-background-default p-lg"
-        >
-          <p className="mb-md text-xsm font-bold text-text-default">{c.record(i + 1)}</p>
-          <dl className="grid gap-x-lg gap-y-sm text-xsm sm:grid-cols-[9rem_1fr]">
-            {keys.map((key) => (
-              <Fragment key={key}>
-                <dt className="font-semiBold text-text-default">{labels[locale][key]}</dt>
-                <dd
-                  className={
-                    key === 'verdict' ? 'font-semiBold text-text-default' : 'text-text-light'
-                  }
-                >
-                  {key === 'verdict' ? (
-                    <VerdictLabel id={recordVerdicts[i]}>{record[key]}</VerdictLabel>
-                  ) : (
-                    record[key]
-                  )}
-                </dd>
-              </Fragment>
-            ))}
-          </dl>
-        </div>
+        <JudgmentRecord
+          key={c.record(i + 1)}
+          locale={locale}
+          title={c.record(i + 1)}
+          fields={record}
+          verdict={recordVerdicts[i]}
+        />
       ))}
       <DocH3>{c.templateHeading}</DocH3>
       <CodeBlock label={c.templateLabel} code={template[locale]} />

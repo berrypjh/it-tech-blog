@@ -38,8 +38,9 @@ const content = {
           <code>&lt;button&gt;</code>과 클릭 핸들러만 붙인 <code>&lt;div&gt;</code>
         </>,
         <>
-          button은 역할 &quot;button&quot;과 포커스를 갖고, div는 역할이 없는 일반 노드로 남습니다.{' '}
-          <PageLink locale="ko" id="text-and-controls" />의 사례입니다
+          button은 역할 &quot;button&quot;과 포커스, Enter · Space 키 동작을 기본으로 갖습니다.
+          div에는 버튼 의미와 기본 키보드 동작이 없고, 트리에 일반 노드로 남을지는 브라우저마다 다를
+          수 있습니다. <PageLink locale="ko" id="text-and-controls" />의 사례입니다
         </>,
       ],
       [
@@ -85,8 +86,10 @@ const content = {
           A <code>&lt;button&gt;</code> and a <code>&lt;div&gt;</code> with only a click handler
         </>,
         <>
-          The button has the role &quot;button&quot; and focus; the div stays a generic node with no
-          role. This is the case from <PageLink locale="en" id="text-and-controls" />
+          The button has the role &quot;button&quot;, focus, and Enter and Space activation by
+          default. The div has no button meaning and no default keyboard behavior; whether it stays
+          in the tree as a generic node can vary by browser. This is the case from{' '}
+          <PageLink locale="en" id="text-and-controls" />
         </>,
       ],
       [
