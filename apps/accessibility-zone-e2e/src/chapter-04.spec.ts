@@ -55,9 +55,17 @@ test('each chapter 04 page links to the next', async ({ page }) => {
   }
 });
 
-test('04.6 has no next page until chapter 05 exists', async ({ page }) => {
+test('04.6 continues to 05.1 by its real name and destination', async ({ page }) => {
   await page.goto(page04('requirements-and-obligations'));
-  await expect(page.getByRole('navigation', { name: '다음 페이지' })).toHaveCount(0);
+  const next = page.getByRole('navigation', { name: '다음 페이지' }).getByRole('link');
+
+  await expect(next).toHaveAccessibleName(/05\.1 네이티브 HTML 우선/);
+  await expect(next).toHaveAttribute('href', '/accessibility/native-first');
+  await next.click();
+  await expect(page).toHaveURL(/\/accessibility\/native-first$/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+    '네이티브 HTML을 우선하고 ARIA가 필요한 경우 판단하기',
+  );
 });
 
 test('English shows all six chapter 04 pages on the same routes', async ({ page }) => {
