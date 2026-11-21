@@ -42,13 +42,21 @@ test('the sidebar walks all six chapter 06 pages', async ({ page }) => {
   }
 });
 
-test('each chapter 06 page links to the next, and 06.6 is the end point', async ({ page }) => {
+test('each chapter 06 page links to the next, and 06.6 continues to 07.1', async ({ page }) => {
   for (const [i, id] of ids.slice(0, -1).entries()) {
     await page.goto(page06(id));
     await page.getByRole('navigation', { name: '다음 페이지' }).getByRole('link').click();
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(titles[i + 1]);
   }
-  await expect(page.getByRole('navigation', { name: '다음 페이지' })).toHaveCount(0);
+
+  const next = page.getByRole('navigation', { name: '다음 페이지' }).getByRole('link');
+  await expect(next).toHaveAccessibleName(/07\.1 포커스 이동과 tabindex/);
+  await expect(next).toHaveAttribute('href', '/accessibility/focus-and-tabindex');
+  await next.click();
+  await expect(page).toHaveURL(/\/accessibility\/focus-and-tabindex$/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+    '순차 포커스 · 프로그램 포커스와 tabindex의 동작',
+  );
 });
 
 test('English shows all six chapter 06 pages on the same routes', async ({ page }) => {
