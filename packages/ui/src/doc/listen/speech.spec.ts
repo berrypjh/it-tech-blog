@@ -55,6 +55,15 @@ describe('toSpeech', () => {
     );
   });
 
+  it('reads the chapter 07 and 08 terms whole', () => {
+    expect(toSpeech('aria-activedescendant와 active', 'ko')).toBe(
+      '아리아 액티브 디센던트와 액티브',
+    );
+    expect(toSpeech('forced-color-adjust, scroll-margin', 'ko')).toBe(
+      '포스드 컬러 어드저스트, 스크롤 마진',
+    );
+  });
+
   it('leaves English acronyms for the English voice', () => {
     expect(toSpeech('WCAG 01', 'en')).toBe('WCAG 1');
   });

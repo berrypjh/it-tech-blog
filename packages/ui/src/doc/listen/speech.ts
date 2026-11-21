@@ -48,6 +48,18 @@ const KO_TERMS: [string, string][] = [
   ['textContent', '텍스트 콘텐트'],
   ['Label in Name', '레이블 인 네임'],
   ['AccName', '액네임'],
+  // 8장의 CSS · 시각 표현 용어. 하이픈으로 이은 이름을 먼저 둔다.
+  ['forced-color-adjust', '포스드 컬러 어드저스트'],
+  ['Forced Colors', '포스드 컬러스'],
+  ['scroll-margin', '스크롤 마진'],
+  ['sticky', '스티키'],
+  ['viewport', '뷰포트'],
+  // 7장의 포커스 · 복합 위젯 용어.
+  ['aria-activedescendant', '아리아 액티브 디센던트'],
+  ['aria-selected', '아리아 셀렉티드'],
+  ['Roving', '로빙'],
+  ['scroll-padding', '스크롤 패딩'],
+  ['active', '액티브'],
   // 5장의 ARIA 상태 · 속성과 HTML 속성. 하이픈 뒤의 hidden · checked · required도 따로 맞으므로 그보다 먼저 둬야 통째로 읽힌다.
   ['aria-pressed', '아리아 프레스드'],
   ['aria-current', '아리아 커런트'],
