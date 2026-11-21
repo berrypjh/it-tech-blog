@@ -31,3 +31,12 @@ export const APG_DISCLOSURE = 'https://www.w3.org/WAI/ARIA/apg/patterns/disclosu
 
 /** 05 · 06장 근거를 공식 원문에서 확인한 날. HTML Living Standard는 2026-11-06 갱신본을 읽었다. */
 export const ARIA_CHECKED_ON = { ko: '2026년 11월 9일 확인', en: 'Checked November 9, 2026' };
+
+/** APG Developing a Keyboard Interface. 규범이 아닌 권장 지침이다. */
+export const APG_KEYBOARD = 'https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/';
+
+/** APG Listbox 패턴. 규범이 아닌 권장 패턴이다. */
+export const APG_LISTBOX = 'https://www.w3.org/WAI/ARIA/apg/patterns/listbox/';
+
+/** 07장 근거를 공식 원문에서 확인한 날. HTML Living Standard는 2026-11-17 갱신본을 읽었다. */
+export const KEYBOARD_CHECKED_ON = { ko: '2026년 11월 18일 확인', en: 'Checked November 18, 2026' };

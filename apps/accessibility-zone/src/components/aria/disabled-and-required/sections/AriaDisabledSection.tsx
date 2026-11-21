@@ -15,7 +15,7 @@ const code = {
         aria-describedby="why" onclick="guard(event)">주문하기</button>
 <p id="why">배송지를 입력하면 주문할 수 있습니다.</p>
 <script>
-  // 실행 경로에서 같은 상태를 확인해 막는다
+  // 이 버튼의 click 경로에서 같은 상태를 확인해 막는다
   const guard = (e) => {
     if (e.currentTarget.getAttribute('aria-disabled') === 'true') e.preventDefault();
   };
@@ -28,7 +28,7 @@ const code = {
         aria-describedby="why" onclick="guard(event)">Place order</button>
 <p id="why">You can order after entering a shipping address.</p>
 <script>
-  // Check the same state on the execution path and block it
+  // Check the same state on this button's click path and block it
   const guard = (e) => {
     if (e.currentTarget.getAttribute('aria-disabled') === 'true') e.preventDefault();
   };
@@ -52,7 +52,9 @@ const content = {
         그래서 disabled를 쓸 수 있는 요소에는 disabled를 씁니다. 그래도 aria-disabled를 고르는
         경우는, 포커스를 남겨 &quot;왜 쓸 수 없는지&quot;를 읽게 하고 싶을 때입니다. 그때는 아래처럼
         실행 경로가 같은 상태를 확인해 막아야 합니다. 위 코드처럼 막지 않으면 의미와 동작이
-        어긋납니다.
+        어긋납니다. 아래 예제가 막는 것은 이 버튼의 활성화, 곧 마우스 click과 버튼에서 누른 Enter ·
+        Space입니다. 다른 제출 버튼이나 <code>requestSubmit()</code> 호출처럼 이 버튼의 click을
+        거치지 않는 제출은 막지 못하므로 따로 확인합니다.
       </>
     ),
   },
@@ -71,7 +73,10 @@ const content = {
         So use disabled on elements that allow it. The case for choosing aria-disabled anyway is
         when you want to keep focus so that &quot;why it is unavailable&quot; can be read. Then the
         execution path must check the same state and block it, as below. Without that, as in the
-        code above, meaning and behavior disagree.
+        code above, meaning and behavior disagree. The example below blocks only this button&apos;s
+        activation: a mouse click, or Enter or Space pressed on the button. Submission that does not
+        go through this button&apos;s click, such as another submit button or a{' '}
+        <code>requestSubmit()</code> call, is not blocked, so check those paths separately.
       </>
     ),
   },

@@ -26,10 +26,10 @@ const content = {
     titles: { before: '수정 전 (의도한 결함)', after: '수정 후' },
     name: '상세 보기',
     panel: '주문 상세 (가상의 주문): 상품 2개 · 배송비 3,000원',
-    observed: '지금 관찰한 값',
+    observed: '지금 관찰한 DOM 값 · 이벤트 횟수',
     rows: {
       element: '요소 · role',
-      tab: 'tabIndex (0 이상이면 Tab 순서에 있음)',
+      tab: 'tabIndex 프로퍼티 값',
       text: '보이는 글자',
       expanded: 'aria-expanded',
       hidden: '패널이 숨어 있는가',
@@ -45,7 +45,7 @@ const content = {
     missing: (id: string) => `없음 (#${id}를 찾지 못함)`,
     keyCount: (k: Keys) => `Enter ${k.Enter}회 · Space ${k.Space}회`,
     times: (n: number) => `${n}회`,
-    note: '관찰 값은 페이지가 DOM에서 직접 읽은 것입니다. 보조기술이 무엇을 말하는지는 실제 보조기술로 들어 봐야 합니다.',
+    note: '관찰 값은 페이지가 DOM과 이벤트에서 직접 읽은 것입니다. tabIndex가 0 이상이어도 Tab이 실제로 닿는다는 뜻은 아니므로, 도달 여부는 Tab을 눌러 확인합니다. 보조기술이 무엇을 말하는지는 실제 보조기술로 들어 봐야 합니다.',
   },
   en: {
     practice: 'Exercise',
@@ -58,10 +58,10 @@ const content = {
     titles: { before: 'Before (intentional defect)', after: 'After' },
     name: 'Show details',
     panel: 'Order details (fictional order): 2 items, shipping $3',
-    observed: 'What you observe now',
+    observed: 'Observed now: DOM values and event counts',
     rows: {
       element: 'Element and role',
-      tab: 'tabIndex (0 or more means in the Tab order)',
+      tab: 'tabIndex property value',
       text: 'Visible text',
       expanded: 'aria-expanded',
       hidden: 'Is the panel hidden?',
@@ -77,7 +77,7 @@ const content = {
     missing: (id: string) => `Missing (#${id} not found)`,
     keyCount: (k: Keys) => `Enter ${k.Enter}, Space ${k.Space}`,
     times: (n: number) => `${n}`,
-    note: 'The observed values are read by the page directly from the DOM. What assistive technology says has to be heard with real assistive technology.',
+    note: 'The observed values are read by the page directly from the DOM and from events. A tabIndex of 0 or more does not mean Tab actually reaches the control, so press Tab to check. What assistive technology says has to be heard with real assistive technology.',
   },
 };
 
@@ -91,7 +91,7 @@ type Reading = {
   targetFound: boolean;
 };
 
-/** 컨트롤과 패널에서 실제 DOM 값을 읽는다. 이름 · 역할의 최종 노출은 페이지 스크립트로 읽을 수 없다. */
+/** 컨트롤과 패널에서 실제 DOM 값을 읽는다. tabIndex는 프로퍼티 값일 뿐 Tab 도달을 보장하지 않고, 이름 · 역할의 최종 노출은 페이지 스크립트로 읽을 수 없다. */
 const read = (control: HTMLElement, panel: HTMLElement): Reading => {
   const controls = control.getAttribute('aria-controls');
   const role = control.getAttribute('role');

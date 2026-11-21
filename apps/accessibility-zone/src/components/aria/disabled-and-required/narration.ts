@@ -46,7 +46,12 @@ export const narration: NarrationScript = {
       },
       {
         target: 'table',
-        text: 'disabled는 편집과 포커스, 제출 데이터에서 모두 빠집니다. readonly는 편집만 막고 포커스와 제출 데이터는 남겨요.',
+        text: 'disabled는 편집과 포커스, 제출 데이터에서 모두 빠집니다. readonly는 편집을 막지만 포커스와 제출 데이터는 남겨요.',
+        pause: 'short',
+      },
+      {
+        target: 'table',
+        text: 'readonly 칸은 기본 유효성 검사에서도 빠집니다.',
         pause: 'short',
       },
       {
@@ -86,8 +91,13 @@ export const narration: NarrationScript = {
         pause: 'short',
       },
       {
-        target: ':scope > p:last-of-type',
+        target: ':scope > p:nth-of-type(2)',
         text: '포커스를 남겨야 할 때만 aria-disabled를 쓰고, 실행 경로에서 같은 상태를 확인해 막습니다.',
+        pause: 'short',
+      },
+      {
+        target: ':scope > p:nth-of-type(2)',
+        text: '예제의 확인은 그 버튼의 활성화만 막아요. 다른 제출 경로는 따로 확인합니다.',
         pause: 'short',
       },
       {
@@ -145,7 +155,7 @@ export const narration: NarrationScript = {
       },
       {
         target: ':scope > ol > li:nth-child(3)',
-        text: '둘째, aria-disabled는 의미만 알리므로 실행 경로에서 상태를 확인합니다.',
+        text: '둘째, aria-disabled는 의미만 알리므로 실행 경로마다 상태를 확인합니다.',
         pause: 'short',
       },
       {

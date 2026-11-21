@@ -14,15 +14,15 @@ import { getToc } from './toc';
 
 const points = {
   ko: [
-    'disabled는 편집 · 포커스 · 활성화 · 제출 데이터 · 기본 유효성 검사에서 모두 빠지고, readonly는 편집만 막고 포커스와 제출 데이터를 남깁니다.',
+    'disabled는 편집 · 포커스 · 활성화 · 제출 데이터 · 기본 유효성 검사에서 모두 빠집니다. 적용되는 입력에서 readonly는 편집을 막고 기본 유효성 검사에서 빠지지만, 포커스와 제출 데이터는 남깁니다.',
     'readonly와 required는 적용되는 요소가 정해져 있습니다. readonly는 checkbox · radio · select에 효과가 없고, required의 뜻은 입력 종류마다 다릅니다.',
-    'aria-disabled는 비활성 의미만 알립니다. click과 제출은 그대로 일어나므로, 쓸 때는 실행 경로에서 같은 상태를 확인해 막습니다.',
+    'aria-disabled는 비활성 의미만 알립니다. click과 제출은 그대로 일어나므로, 쓸 때는 막아야 할 실행 경로마다 같은 상태를 확인합니다.',
     'aria-required는 필수 의미만 알리고 빈 값 제출을 막지 않습니다. 네이티브 칸에는 required를 씁니다.',
   ],
   en: [
-    'disabled leaves out editing, focus, activation, submitted data, and built-in validation; readonly blocks only editing and keeps focus and submitted data.',
+    'disabled leaves out editing, focus, activation, submitted data, and built-in validation. On inputs it applies to, readonly blocks editing and bars the field from built-in validation, but keeps focus and submitted data.',
     'readonly and required apply to specific elements. readonly has no effect on checkbox, radio, or select, and what required means differs by input type.',
-    'aria-disabled conveys only the disabled meaning. Clicks and submission still happen, so when you use it, check the same state on the execution path and block it.',
+    'aria-disabled conveys only the disabled meaning. Clicks and submission still happen, so when you use it, check the same state on every execution path that must be blocked.',
     'aria-required conveys only the required meaning and does not block empty submission. Use required on native fields.',
   ],
 };

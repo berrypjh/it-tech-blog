@@ -143,6 +143,15 @@ export const narration: NarrationScript = {
       },
       {
         text: '이 페이지는 여기까지예요. 이렇게 6장, 접근 가능한 이름과 설명이 끝났습니다.',
+        pause: 'short',
+      },
+      {
+        text: '다음 페이지부터는 7장, 키보드와 포커스예요. 7장은 이 질문으로 시작합니다.',
+        pause: 'short',
+      },
+      {
+        text: 'tabindex를 -1로 두면 포커스를 못 받을까요?',
+        say: 'tabindex를 마이너스 일로 두면 포커스를 못 받을까요?',
         pause: 'section',
       },
     ],

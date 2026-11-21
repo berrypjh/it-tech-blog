@@ -2,6 +2,7 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { DocLayout, type DocReference } from '@it-tech-blog/ui';
 import { ReferencesSection, same, SummarySection } from '@it-tech-blog/ui';
 
+import { NextPage } from '@/components/shared/PageLink';
 import { understanding, wcag22 } from '@/components/shared/wcag';
 
 import { CasesSection } from './sections/CasesSection';
@@ -66,6 +67,7 @@ export const LabelInNamePage = ({ locale }: { locale: Locale }) => {
       <TaskSection locale={locale} />
       <SummarySection item={toc.summary} points={points[locale]} />
       <ReferencesSection item={toc.references} locale={locale} references={references} />
+      <NextPage locale={locale} id="focus-and-tabindex" />
     </DocLayout>
   );
 };

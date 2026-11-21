@@ -2,6 +2,7 @@ import type { Locale } from '@it-tech-blog/preferences';
 
 import {
   BookOpen,
+  Calculator,
   Eye,
   FileCheck,
   Headphones,
@@ -14,7 +15,8 @@ import {
 
 /**
  * 결과 · 설명 옆에 붙이는 출처. 같은 내용이라도 어디서 왔는지에 따라 증명하는 범위가 다르다.
- * 03장은 관찰 출처(model · dom · devtools · at), 04장은 근거 종류(normative · informative · example · observed)를 쓴다.
+ * 03장은 관찰 출처(model · dom · devtools · at), 04장은 근거 종류(normative · informative · example · observed),
+ * 08장은 입력값에서 낸 계산값(computed)을 더해 쓴다.
  */
 export type SourceId =
   | 'model'
@@ -24,7 +26,8 @@ export type SourceId =
   | 'normative'
   | 'informative'
   | 'example'
-  | 'observed';
+  | 'observed'
+  | 'computed';
 
 const sources: Record<SourceId, { icon: LucideIcon; ko: string; en: string }> = {
   model: { icon: BookOpen, ko: '교육용 모델', en: 'Teaching model' },
@@ -35,6 +38,7 @@ const sources: Record<SourceId, { icon: LucideIcon; ko: string; en: string }> = 
   informative: { icon: FileCheck, ko: '보충 설명', en: 'Informative guidance' },
   example: { icon: Lightbulb, ko: '교육 예시', en: 'Teaching example' },
   observed: { icon: Microscope, ko: '실제 관찰 근거', en: 'Real observation' },
+  computed: { icon: Calculator, ko: '계산 결과', en: 'Computed result' },
 };
 
 /** 출처 꼬리표. 뜻은 글자가 전달하므로 아이콘은 숨긴다. */

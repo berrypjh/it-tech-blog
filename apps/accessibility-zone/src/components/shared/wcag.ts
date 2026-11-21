@@ -8,3 +8,6 @@ export const wcag22 = (anchor: string) =>
 
 /** 04장 근거를 공식 원문에서 확인한 날. */
 export const CHECKED_ON = { ko: '2026년 11월 6일 확인', en: 'Checked November 6, 2026' };
+
+/** 08장 근거를 공식 원문에서 확인한 날. */
+export const VISUAL_CHECKED_ON = { ko: '2026년 11월 19일 확인', en: 'Checked November 19, 2026' };

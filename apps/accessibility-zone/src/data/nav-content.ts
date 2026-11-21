@@ -69,6 +69,30 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
         { id: 'label-in-name', label: '06.6 Label in Name 확인', type: 'link' },
       ],
     },
+    {
+      title: '키보드와 포커스',
+      items: [
+        { id: 'focus-and-tabindex', label: '07.1 포커스 이동과 tabindex', type: 'link' },
+        { id: 'keys-and-defaults', label: '07.2 키 역할과 기본 동작', type: 'link' },
+        { id: 'focus-visibility', label: '07.3 포커스 표시 · 대비 · 가림', type: 'link' },
+        { id: 'focus-after-changes', label: '07.4 변경 뒤 포커스 위치', type: 'link' },
+        { id: 'composite-focus', label: '07.5 Roving과 활성 하위 항목', type: 'link' },
+        { id: 'skip-and-shortcuts', label: '07.6 건너뛰기와 문자 단축키', type: 'link' },
+        { id: 'keyboard-path-check', label: '07.7 키보드 경로 검증', type: 'link' },
+      ],
+    },
+    {
+      title: '시각 표현과 반응형',
+      items: [
+        { id: 'contrast-conditions', label: '08.1 대비 조건과 예외', type: 'link' },
+        { id: 'sensory-information', label: '08.2 색 · 모양 · 위치만의 정보', type: 'link' },
+        { id: 'zoom-and-reflow', label: '08.3 확대와 Reflow', type: 'link' },
+        { id: 'text-spacing', label: '08.4 텍스트 간격과 긴 문구', type: 'link' },
+        { id: 'forced-colors', label: '08.5 Forced Colors와 고대비', type: 'link' },
+        { id: 'covered-content', label: '08.6 고정 영역과 가상 키보드', type: 'link' },
+        { id: 'hover-focus-content', label: '08.7 호버 · 포커스 추가 내용', type: 'link' },
+      ],
+    },
   ],
   en: [
     {
@@ -147,6 +171,30 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
         { id: 'reference-edge-cases', label: '06.4 Hidden, several IDs, empty', type: 'link' },
         { id: 'descriptions-and-errors', label: '06.5 Descriptions and errors', type: 'link' },
         { id: 'label-in-name', label: '06.6 Checking Label in Name', type: 'link' },
+      ],
+    },
+    {
+      title: 'Keyboard and Focus',
+      items: [
+        { id: 'focus-and-tabindex', label: '07.1 Focus movement and tabindex', type: 'link' },
+        { id: 'keys-and-defaults', label: '07.2 Key roles and defaults', type: 'link' },
+        { id: 'focus-visibility', label: '07.3 Focus visibility and obscuring', type: 'link' },
+        { id: 'focus-after-changes', label: '07.4 Focus after changes', type: 'link' },
+        { id: 'composite-focus', label: '07.5 Roving and active descendant', type: 'link' },
+        { id: 'skip-and-shortcuts', label: '07.6 Skip links and shortcuts', type: 'link' },
+        { id: 'keyboard-path-check', label: '07.7 Verifying a keyboard path', type: 'link' },
+      ],
+    },
+    {
+      title: 'Visual Presentation and Responsive Layout',
+      items: [
+        { id: 'contrast-conditions', label: '08.1 Contrast conditions', type: 'link' },
+        { id: 'sensory-information', label: '08.2 Beyond color and position', type: 'link' },
+        { id: 'zoom-and-reflow', label: '08.3 Zoom and reflow', type: 'link' },
+        { id: 'text-spacing', label: '08.4 Text spacing and long strings', type: 'link' },
+        { id: 'forced-colors', label: '08.5 Forced colors and contrast', type: 'link' },
+        { id: 'covered-content', label: '08.6 Fixed areas and virtual keyboards', type: 'link' },
+        { id: 'hover-focus-content', label: '08.7 Content on hover or focus', type: 'link' },
       ],
     },
   ],
