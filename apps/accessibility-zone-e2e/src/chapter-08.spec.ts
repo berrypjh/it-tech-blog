@@ -50,13 +50,19 @@ test('the sidebar walks all seven chapter 08 pages', async ({ page }) => {
   }
 });
 
-test('each chapter 08 page links to the next, and 08.7 is the end point', async ({ page }) => {
+test('each chapter 08 page links to the next, and 08.7 continues to 09.1', async ({ page }) => {
   for (const [i, id] of ids.slice(0, -1).entries()) {
     await page.goto(page08(id));
     await page.getByRole('navigation', { name: '다음 페이지' }).getByRole('link').click();
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(titles[i + 1]);
   }
-  await expect(page.getByRole('navigation', { name: '다음 페이지' })).toHaveCount(0);
+  const next = page.getByRole('navigation', { name: '다음 페이지' }).getByRole('link');
+  await expect(next).toHaveAccessibleName(/09\.1 이미지 대체 텍스트/);
+  await expect(next).toHaveAttribute('href', '/accessibility/image-alternatives');
+  await next.click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+    '이미지의 목적과 문맥에 맞는 대체 텍스트 결정하기',
+  );
 });
 
 test('English shows all seven chapter 08 pages on the same routes', async ({ page }) => {
