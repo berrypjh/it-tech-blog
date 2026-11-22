@@ -14,3 +14,9 @@ export const VISUAL_CHECKED_ON = { ko: '2026년 11월 19일 확인', en: 'Checke
 
 /** 09장 근거를 공식 원문에서 확인한 날. */
 export const CONTENT_CHECKED_ON = { ko: '2026년 11월 21일 확인', en: 'Checked November 21, 2026' };
+
+/** 11장 근거를 공식 원문에서 확인한 날. HTML Living Standard는 2026-11-20 갱신본을 읽었다. */
+export const FORMS_CHECKED_ON = { ko: '2026년 11월 22일 확인', en: 'Checked November 22, 2026' };
+
+/** WAI Forms Tutorial의 쪽 주소. 규범이 아닌 보충 자료다. page는 주소의 마지막 부분(예: notifications). */
+export const formsTutorial = (page = '') => `https://www.w3.org/WAI/tutorials/forms/${page}`;

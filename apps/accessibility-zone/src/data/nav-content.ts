@@ -130,6 +130,44 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
         { id: 'stale-responses', label: '10.5 중복 · 경쟁 응답 다루기', type: 'link' },
       ],
     },
+    {
+      title: '폼 · 오류 복구 · 인증',
+      items: [
+        { id: 'input-purpose', label: '11.1 입력 유형과 형식 안내', type: 'link' },
+        {
+          id: 'validation-responsibility',
+          label: '11.2 네이티브 · 사용자 정의 검증',
+          type: 'link',
+        },
+        { id: 'error-summary', label: '11.3 오류 요약과 수정 제안', type: 'link' },
+        { id: 'server-errors', label: '11.4 서버 오류 뒤 값 보존', type: 'link' },
+        { id: 'multi-step-forms', label: '11.5 다단계 · 조건부 · 반복 입력', type: 'link' },
+        { id: 'authentication-paths', label: '11.6 비밀번호 · OTP · CAPTCHA', type: 'link' },
+        {
+          id: 'timeouts-and-confirmation',
+          label: '11.7 시간제한 · 재인증 · 오류 예방',
+          type: 'link',
+        },
+      ],
+    },
+    {
+      title: '선택 · 펼침 · 탐색 컴포넌트',
+      items: [
+        {
+          id: 'selection-controls',
+          label: '12.1 Checkbox · Radio · Switch · Toggle',
+          type: 'link',
+        },
+        { id: 'disclosure-and-accordion', label: '12.2 Disclosure와 Accordion', type: 'link' },
+        { id: 'tabs-pattern', label: '12.3 Tabs의 선택과 활성화', type: 'link' },
+        { id: 'navigation-and-current', label: '12.4 내비게이션과 현재 위치', type: 'link' },
+        { id: 'menus-and-toolbars', label: '12.5 Menu · Menubar · Toolbar', type: 'link' },
+        { id: 'slider-values', label: '12.6 Slider의 값과 터치 대안', type: 'link' },
+        { id: 'spinbutton-input', label: '12.7 Spinbutton의 입력과 증감', type: 'link' },
+        { id: 'window-splitter', label: '12.8 분할 영역 조절', type: 'link' },
+        { id: 'carousel-pattern', label: '12.9 Carousel의 탐색과 정지', type: 'link' },
+      ],
+    },
   ],
   en: [
     {
@@ -269,6 +307,44 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
           type: 'link',
         },
         { id: 'stale-responses', label: '10.5 Duplicate and racing responses', type: 'link' },
+      ],
+    },
+    {
+      title: 'Forms, Error Recovery, and Authentication',
+      items: [
+        { id: 'input-purpose', label: '11.1 Input types and format hints', type: 'link' },
+        {
+          id: 'validation-responsibility',
+          label: '11.2 Native and custom validation',
+          type: 'link',
+        },
+        { id: 'error-summary', label: '11.3 Error summary and suggestions', type: 'link' },
+        { id: 'server-errors', label: '11.4 Values after server errors', type: 'link' },
+        { id: 'multi-step-forms', label: '11.5 Steps, conditions, repeated entry', type: 'link' },
+        { id: 'authentication-paths', label: '11.6 Passwords, OTP, and CAPTCHA', type: 'link' },
+        {
+          id: 'timeouts-and-confirmation',
+          label: '11.7 Time limits, re-auth, prevention',
+          type: 'link',
+        },
+      ],
+    },
+    {
+      title: 'Selection, Disclosure, and Navigation Components',
+      items: [
+        { id: 'selection-controls', label: '12.1 Checkbox, radio, switch, toggle', type: 'link' },
+        { id: 'disclosure-and-accordion', label: '12.2 Disclosure and accordion', type: 'link' },
+        { id: 'tabs-pattern', label: '12.3 Tab selection and activation', type: 'link' },
+        {
+          id: 'navigation-and-current',
+          label: '12.4 Navigation and current location',
+          type: 'link',
+        },
+        { id: 'menus-and-toolbars', label: '12.5 Menu, menubar, and toolbar', type: 'link' },
+        { id: 'slider-values', label: '12.6 Slider values and touch alternatives', type: 'link' },
+        { id: 'spinbutton-input', label: '12.7 Spinbutton input and steps', type: 'link' },
+        { id: 'window-splitter', label: '12.8 Resizing split panes', type: 'link' },
+        { id: 'carousel-pattern', label: '12.9 Carousel navigation and pausing', type: 'link' },
       ],
     },
   ],

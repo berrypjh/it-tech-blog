@@ -3,6 +3,7 @@ import { DocLayout, type DocReference } from '@it-tech-blog/ui';
 import { ReferencesSection, same, SummarySection } from '@it-tech-blog/ui';
 
 import { aria12 } from '@/components/shared/aria';
+import { NextPage } from '@/components/shared/PageLink';
 import { understanding, wcag22 } from '@/components/shared/wcag';
 
 import { AbortSection } from './sections/AbortSection';
@@ -71,6 +72,7 @@ export const StaleResponsesPage = ({ locale }: { locale: Locale }) => {
       <TaskSection locale={locale} />
       <SummarySection item={toc.summary} points={points[locale]} />
       <ReferencesSection item={toc.references} locale={locale} references={references} />
+      <NextPage locale={locale} id="input-purpose" />
     </DocLayout>
   );
 };

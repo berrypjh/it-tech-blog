@@ -15,7 +15,7 @@ const content = {
   ko: {
     practice: '실습',
     instructions:
-      '“자막”(A)을 검색하고 이어서 “대본”(B)을 검색한 뒤, 가상 서버에서 #2를 먼저, #1을 나중에 응답하세요. 그다음 취소 · 오류 · 같은 응답 반복 · 재설정도 해 봅니다.',
+      '“자막”(A)을 검색하고 이어서 “대본”(B)을 검색한 뒤, 가상 서버 목록에서 현재 B(대본) 요청에 먼저, A(자막) 요청에 나중에 응답하세요. 그다음 취소 · 오류 · 같은 응답 반복 · 재설정도 해 봅니다.',
     observed: '페이지가 읽은 DOM과 상태',
     active: '활성 요청 (페이지 상태)',
     status: 'role="status"의 글자',
@@ -27,7 +27,7 @@ const content = {
   en: {
     practice: 'Exercise',
     instructions:
-      'Search for “caption” (A), then “transcript” (B), and respond from the simulated server to #2 first and #1 later. Then also try cancel, an error, repeating the same response, and reset.',
+      'Search for “caption” (A), then “transcript” (B), and in the simulated server list respond to the current B (transcript) request first and the A (caption) request later. Then also try cancel, an error, repeating the same response, and reset.',
     observed: 'DOM and state the page read',
     active: 'Active request (page state)',
     status: 'Text of role="status"',

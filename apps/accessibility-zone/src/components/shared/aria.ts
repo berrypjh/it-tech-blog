@@ -43,3 +43,9 @@ export const KEYBOARD_CHECKED_ON = { ko: '2026년 11월 18일 확인', en: 'Chec
 
 /** 10장 근거를 공식 원문에서 확인한 날. */
 export const DYNAMIC_CHECKED_ON = { ko: '2026년 11월 22일 확인', en: 'Checked November 22, 2026' };
+
+/** APG 패턴 문서 주소. 규범이 아닌 권장 패턴이고, 예제가 실제 호환성을 보증하지 않는다. pattern은 주소의 이름(예: tabs, menu-button). */
+export const apg = (pattern: string) => `https://www.w3.org/WAI/ARIA/apg/patterns/${pattern}/`;
+
+/** 12장 근거를 공식 원문에서 확인한 날. */
+export const WIDGETS_CHECKED_ON = { ko: '2026년 11월 22일 확인', en: 'Checked November 22, 2026' };

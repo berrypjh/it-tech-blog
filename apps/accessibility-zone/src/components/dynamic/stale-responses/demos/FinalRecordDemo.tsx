@@ -31,7 +31,7 @@ const content = {
     none: '없음',
     model: (order: string, display: string, message: string, busy: boolean) => ({
       order,
-      ids: '#1 = A “자막”, #2 = B “대본”. 마지막 사건 뒤 활성 요청 없음',
+      ids: '먼저 보낸 요청 = A “자막”, 나중에 보낸 요청 = B “대본”. 번호는 화면에 보이는 값. 마지막 사건 뒤 활성 요청 없음',
       display: display || '없음 (목록 비어 있음)',
       message,
       dom: `status 글자 “${message}”, aria-busy ${busy}, 늦은 응답 뒤에도 그대로`,
@@ -59,7 +59,7 @@ const content = {
     none: 'None',
     model: (order: string, display: string, message: string, busy: boolean) => ({
       order,
-      ids: '#1 = A “caption”, #2 = B “transcript”. No active request after the last event',
+      ids: 'Earlier request = A “caption”, later request = B “transcript”; numbers are the ones on screen. No active request after the last event',
       display: display || 'None (empty list)',
       message,
       dom: `status text “${message}”, aria-busy ${busy}, unchanged after the late response`,
