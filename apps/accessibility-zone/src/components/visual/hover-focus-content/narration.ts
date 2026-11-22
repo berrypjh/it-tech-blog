@@ -83,7 +83,8 @@ export const narration: NarrationScript = {
         text: '처음 질문에 답하면, 내용 위로 옮겨도 남아야 합니다. 이 페이지는 여기까지예요.',
         pause: 'short',
       },
-      { text: '이렇게 8장, 시각 표현과 반응형이 끝났습니다.', pause: 'section' },
+      { text: '이렇게 8장, 시각 표현과 반응형이 끝났습니다.', pause: 'short' },
+      { text: '다음 9장은 묻습니다. 같은 아이콘에 늘 같은 alt를 붙여도 될까요?', pause: 'section' },
     ],
   },
 };

@@ -11,3 +11,6 @@ export const CHECKED_ON = { ko: '2026년 11월 6일 확인', en: 'Checked Novemb
 
 /** 08장 근거를 공식 원문에서 확인한 날. */
 export const VISUAL_CHECKED_ON = { ko: '2026년 11월 19일 확인', en: 'Checked November 19, 2026' };
+
+/** 09장 근거를 공식 원문에서 확인한 날. */
+export const CONTENT_CHECKED_ON = { ko: '2026년 11월 21일 확인', en: 'Checked November 21, 2026' };

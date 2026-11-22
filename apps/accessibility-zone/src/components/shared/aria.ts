@@ -40,3 +40,6 @@ export const APG_LISTBOX = 'https://www.w3.org/WAI/ARIA/apg/patterns/listbox/';
 
 /** 07장 근거를 공식 원문에서 확인한 날. HTML Living Standard는 2026-11-17 갱신본을 읽었다. */
 export const KEYBOARD_CHECKED_ON = { ko: '2026년 11월 18일 확인', en: 'Checked November 18, 2026' };
+
+/** 10장 근거를 공식 원문에서 확인한 날. */
+export const DYNAMIC_CHECKED_ON = { ko: '2026년 11월 22일 확인', en: 'Checked November 22, 2026' };

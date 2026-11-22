@@ -93,6 +93,43 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
         { id: 'hover-focus-content', label: '08.7 호버 · 포커스 추가 내용', type: 'link' },
       ],
     },
+    {
+      title: '콘텐츠 · 미디어 · 인지',
+      items: [
+        { id: 'image-alternatives', label: '09.1 이미지 대체 텍스트', type: 'link' },
+        { id: 'complex-images', label: '09.2 차트 · 그림 · 지도 대안', type: 'link' },
+        { id: 'svg-and-canvas', label: '09.3 SVG와 Canvas', type: 'link' },
+        { id: 'math-content', label: '09.4 수식과 MathML', type: 'link' },
+        { id: 'data-tables', label: '09.5 데이터 표의 관계', type: 'link' },
+        { id: 'media-alternatives', label: '09.6 자막 · 대본 · 오디오 설명 · 수화', type: 'link' },
+        { id: 'media-player', label: '09.7 미디어 플레이어 제어', type: 'link' },
+        { id: 'motion-and-updates', label: '09.8 모션 · 점멸 · 자동 갱신', type: 'link' },
+        { id: 'clear-content', label: '09.9 명확한 문장과 일관된 도움', type: 'link' },
+        {
+          id: 'documents-and-page-references',
+          label: '09.10 다운로드 문서와 참조 위치',
+          type: 'link',
+        },
+      ],
+    },
+    {
+      title: '동적 상태와 비동기 결과',
+      items: [
+        {
+          id: 'choosing-update-means',
+          label: '10.1 갱신 · 포커스 · 알림 고르기',
+          type: 'link',
+        },
+        { id: 'live-region-roles', label: '10.2 live 영역과 역할', type: 'link' },
+        { id: 'live-region-scope', label: '10.3 atomic · relevant · busy', type: 'link' },
+        {
+          id: 'loading-and-results',
+          label: '10.4 로딩 · 결과 · 빈 상태 · Toast',
+          type: 'link',
+        },
+        { id: 'stale-responses', label: '10.5 중복 · 경쟁 응답 다루기', type: 'link' },
+      ],
+    },
   ],
   en: [
     {
@@ -195,6 +232,43 @@ export const navData: Record<'ko' | 'en', NavGroup[]> = {
         { id: 'forced-colors', label: '08.5 Forced colors and contrast', type: 'link' },
         { id: 'covered-content', label: '08.6 Fixed areas and virtual keyboards', type: 'link' },
         { id: 'hover-focus-content', label: '08.7 Content on hover or focus', type: 'link' },
+      ],
+    },
+    {
+      title: 'Content, Media, and Cognition',
+      items: [
+        { id: 'image-alternatives', label: '09.1 Image text alternatives', type: 'link' },
+        { id: 'complex-images', label: '09.2 Charts, figures, and maps', type: 'link' },
+        { id: 'svg-and-canvas', label: '09.3 SVG and Canvas', type: 'link' },
+        { id: 'math-content', label: '09.4 Math and MathML', type: 'link' },
+        { id: 'data-tables', label: '09.5 Data table relationships', type: 'link' },
+        {
+          id: 'media-alternatives',
+          label: '09.6 Captions, transcripts, description, sign',
+          type: 'link',
+        },
+        { id: 'media-player', label: '09.7 Media player controls', type: 'link' },
+        { id: 'motion-and-updates', label: '09.8 Motion, flashing, and updates', type: 'link' },
+        { id: 'clear-content', label: '09.9 Clear text and consistent help', type: 'link' },
+        {
+          id: 'documents-and-page-references',
+          label: '09.10 Documents and page references',
+          type: 'link',
+        },
+      ],
+    },
+    {
+      title: 'Dynamic State and Async Results',
+      items: [
+        { id: 'choosing-update-means', label: '10.1 Update, focus, or message', type: 'link' },
+        { id: 'live-region-roles', label: '10.2 Live regions and roles', type: 'link' },
+        { id: 'live-region-scope', label: '10.3 atomic, relevant, and busy', type: 'link' },
+        {
+          id: 'loading-and-results',
+          label: '10.4 Loading, results, empty, toast',
+          type: 'link',
+        },
+        { id: 'stale-responses', label: '10.5 Duplicate and racing responses', type: 'link' },
       ],
     },
   ],

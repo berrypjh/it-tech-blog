@@ -2,6 +2,7 @@ import type { Locale } from '@it-tech-blog/preferences';
 import { DocLayout, type DocReference } from '@it-tech-blog/ui';
 import { ReferencesSection, same, SummarySection } from '@it-tech-blog/ui';
 
+import { NextPage } from '@/components/shared/PageLink';
 import { understanding, wcag22 } from '@/components/shared/wcag';
 
 import { CriterionSection } from './sections/CriterionSection';
@@ -51,6 +52,7 @@ export const HoverFocusContentPage = ({ locale }: { locale: Locale }) => {
       <TaskSection locale={locale} />
       <SummarySection item={toc.summary} points={points[locale]} />
       <ReferencesSection item={toc.references} locale={locale} references={references} />
+      <NextPage locale={locale} id="image-alternatives" />
     </DocLayout>
   );
 };
