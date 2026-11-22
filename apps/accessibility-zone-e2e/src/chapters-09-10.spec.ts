@@ -182,6 +182,20 @@ const chain: Entry[] = [
 ];
 
 const newPages = chain.slice(1);
+
+/** 10.5의 다음 페이지. 09 · 10장 순회의 끝이 11.1로 이어지는지만 확인하고, 11장 자체는 chapter-11.spec.ts가 본다. */
+const afterChain: Entry = {
+  id: 'input-purpose',
+  ko: {
+    label: '11.1 입력 유형과 형식 안내',
+    h1: '입력 유형 · autocomplete · inputmode와 필수 · 형식 안내 설계하기',
+  },
+  en: {
+    label: '11.1 Input types and format hints',
+    h1: 'Designing input types, autocomplete, inputmode, and required and format instructions',
+  },
+};
+const path = [...chain, afterChain];
 const url = (id: string) => `/accessibility/${id}`;
 const nextNav = { ko: '다음 페이지', en: 'Next page' };
 const menu = { ko: '메뉴', en: 'Menu' };
@@ -194,13 +208,13 @@ const observedValue = (page: Page, label: string) =>
   page.locator(`dt:text-is("${label}") + dd`).first();
 
 for (const locale of ['ko', 'en'] as const) {
-  test(`${locale}: every next link from 08.7 to 10.5 has the right name, href, and destination`, async ({
+  test(`${locale}: every next link from 08.7 through 10.5 to 11.1 has the right name, href, and destination`, async ({
     page,
   }) => {
     test.slow();
     await useLocale(page, locale);
-    for (const [i, entry] of chain.slice(0, -1).entries()) {
-      const target = chain[i + 1];
+    for (const [i, entry] of path.slice(0, -1).entries()) {
+      const target = path[i + 1];
       await page.goto(url(entry.id));
       await expect(page.getByRole('heading', { level: 1 })).toHaveText(entry[locale].h1);
       const next = page.getByRole('navigation', { name: nextNav[locale] }).getByRole('link');
@@ -212,7 +226,6 @@ for (const locale of ['ko', 'en'] as const) {
       await expect(page).toHaveURL(new RegExp(`${url(target.id)}$`));
       await expect(page.getByRole('heading', { level: 1 })).toHaveText(target[locale].h1);
     }
-    await expect(page.getByRole('navigation', { name: nextNav[locale] })).toHaveCount(0);
   });
 
   test(`${locale}: the menu marks the current page, and title and lang match`, async ({ page }) => {

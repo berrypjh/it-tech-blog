@@ -68,13 +68,19 @@ test('the sidebar walks all five chapter 10 pages', async ({ page }) => {
   }
 });
 
-test('each chapter 10 page links to the next, and 10.5 is the end point', async ({ page }) => {
+test('each chapter 10 page links to the next, and 10.5 continues to 11.1', async ({ page }) => {
   for (const [i, id] of ids.slice(0, -1).entries()) {
     await page.goto(page10(id));
     await page.getByRole('navigation', { name: '다음 페이지' }).getByRole('link').click();
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(titles[i + 1]);
   }
-  await expect(page.getByRole('navigation', { name: '다음 페이지' })).toHaveCount(0);
+  const next = page.getByRole('navigation', { name: '다음 페이지' }).getByRole('link');
+  await expect(next).toHaveAccessibleName(/11\.1 입력 유형과 형식 안내/);
+  await expect(next).toHaveAttribute('href', '/accessibility/input-purpose');
+  await next.click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+    '입력 유형 · autocomplete · inputmode와 필수 · 형식 안내 설계하기',
+  );
 });
 
 test('English shows all five chapter 10 pages on the same routes', async ({ page }) => {
@@ -325,6 +331,29 @@ test('10.5 reset clears requests, results, and the message', async ({ page }) =>
   await expect(page.getByText('보낸 요청이 없습니다.')).toBeVisible();
   await expect(main(page).getByRole('status')).toHaveText('');
   await expect(results(page)).toHaveAttribute('aria-busy', 'false');
+});
+
+test('10.5 searching again after reset still keeps B when B answers first', async ({ page }) => {
+  await page.goto(page10('stale-responses'));
+  await expect(
+    main(page).getByText(/현재 B\(대본\) 요청에 먼저, A\(자막\) 요청에 나중에/),
+  ).toBeVisible();
+  await expect(main(page).getByText(/#2를 먼저/)).toHaveCount(0);
+
+  await search(page, fixture.A.query);
+  await search(page, fixture.B.query);
+  await page.getByRole('button', { name: '재설정', exact: true }).click();
+
+  await search(page, fixture.A.query);
+  await search(page, fixture.B.query);
+  await expect(page.getByText('요청 #3 “자막”')).toBeVisible();
+  await expect(page.getByText('요청 #4 “대본”')).toBeVisible();
+  await expect(page.getByRole('button', { name: '#1 결과 응답', exact: true })).toHaveCount(0);
+
+  await respond(page, 4, '결과');
+  await expectShown(page, fixture.B.results, '“대본” 1건 찾음');
+  await respond(page, 3, '결과');
+  await expectShown(page, fixture.B.results, '“대본” 1건 찾음');
 });
 
 test('10.5 leaving with a pending request cleans up without errors', async ({ page }) => {
